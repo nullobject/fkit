@@ -1,0 +1,28 @@
+{
+  "name": "fkit",
+  "version": "0.1.0",
+  "description": "A functional programming toolkit for JavaScript.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nullobject/fkit.git"
+  },
+  "keywords": [
+    "functional",
+    "toolkit"
+  ],
+  "author": "Josh Bassett",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nullobject/fkit/issues"
+  },
+  "homepage": "https://github.com/nullobject/fkit",
+  "devDependencies": {
+    "chai": "^1.9.1",
+    "jshint": "^2.5.4",
+    "mocha": "^1.21.4"
+  }
+}
