@@ -24,8 +24,8 @@ function variadic(fn) {
   }
 }
 
-function copy(source, objects) {
-  return extend(new source.constructor(), [source].concat(objects));
+function copy(target, objects) {
+  return extend(new target.constructor(), [target].concat(objects));
 }
 
 function extend(target, objects) {
@@ -39,6 +39,13 @@ function extend(target, objects) {
 }
 
 module.exports = {
-  copy:   variadic(copy),
-  extend: variadic(extend)
+  copy: variadic(copy),
+
+  extend: variadic(extend),
+
+  set: function(target, property, value) {
+    var object = {};
+    object[property] = value;
+    return copy(target, [object]);
+  }
 };
