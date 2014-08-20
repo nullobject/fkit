@@ -2,7 +2,7 @@
   "name": "fkit",
   "version": "0.1.0",
   "description": "A functional programming toolkit for JavaScript.",
-  "main": "./src/index.js",
+  "main": "./src/fkit.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
