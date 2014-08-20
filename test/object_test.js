@@ -41,19 +41,6 @@ describe('copy', function() {
   });
 });
 
-describe('extend', function() {
-  var target = buildObject();
-
-  object.extend(target, {b: 'dolor'}, {c: 0});
-
-  it('should extend the target with the given objects', function() {
-    expect(target).to.have.property('a', 'lorem');
-    expect(target).to.have.property('b', 'dolor');
-    expect(target).to.have.property('c', 0);
-    expect(target).to.have.property('d', 2);
-  });
-});
-
 describe('set', function() {
   var target = buildObject(),
       result = object.set(target, 'b', 'dolor');
