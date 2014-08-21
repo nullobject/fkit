@@ -56,6 +56,11 @@ function constant(a) {
   };
 }
 
+// identity(a) == a
+function identity(a) {
+  return a;
+}
+
 function add(a, b) { return a + b; }
 
 module.exports = {
@@ -65,5 +70,6 @@ module.exports = {
   compose:  compose,
   constant: constant,
   curry:    curry,
+  identity: identity,
   variadic: variadic
 };

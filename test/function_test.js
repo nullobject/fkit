@@ -29,6 +29,12 @@ describe('function', function() {
     });
   });
 
+  describe('#identity', function() {
+    it('should return a function which returns its argument', function () {
+      expect(fn.identity(1)).to.equal(1);
+    });
+  });
+
   describe('#add', function() {
     it('should add the given values', function () {
       expect(fn.add(1)(2)).to.equal(3);
