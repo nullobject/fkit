@@ -42,15 +42,28 @@ function variadic(f) {
   }
 }
 
-// compose(f, g)(x) == f(g(x))
+// compose(f, g)(a) == f(g(a))
 function compose(f, g) {
   return function() {
     return f(g.apply(this, __slice.call(arguments)));
   };
 }
 
+// constant(a)(b) == a
+function constant(a) {
+  return function() {
+    return a;
+  };
+}
+
+function add(a, b) { return a + b; }
+
 module.exports = {
+  add:      curry(add),
+  inc:      function(a) { return add(a, 1); },
+  dec:      function(a) { return add(a, -1); },
   compose:  compose,
+  constant: constant,
   curry:    curry,
   variadic: variadic
 };
