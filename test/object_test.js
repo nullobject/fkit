@@ -1,6 +1,6 @@
 'use strict';
 
-var object = require('../src/object');
+var obj = require('../src/object');
 
 function MyObject() {}
 MyObject.prototype.constructor = MyObject;
@@ -19,7 +19,7 @@ function buildObject() {
 describe('object', function() {
   describe('#copy', function() {
     var target = buildObject(),
-        result = object.copy(target, {b: 'dolor'}, {c: 0});
+        result = obj.copy(target, {b: 'dolor'}, {c: 0});
 
     it('should copy the properties of the given objects', function() {
       expect(result).to.have.property('a', 'lorem');
@@ -42,7 +42,7 @@ describe('object', function() {
 
   describe('#set', function() {
     var target = buildObject(),
-        result = object.set(target, 'b', 'dolor');
+        result = obj.set(target, 'b', 'dolor');
 
     it('should set the given property', function() {
       expect(result).to.have.property('a', 'lorem');

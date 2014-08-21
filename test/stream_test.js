@@ -1,7 +1,8 @@
 'use strict';
 
-var fn     = require('../src/function'),
-    Stream = require('../src/stream');
+var Stream = require('../src/stream'),
+    fn     = require('../src/function');
+
 
 describe('stream', function() {
   var push;
