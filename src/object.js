@@ -16,7 +16,11 @@ function extend(target, objects) {
   return target;
 }
 
-function set(target, property, value) {
+function get(property, target) {
+  return target[property];
+}
+
+function set(value, property, target) {
   var object = {};
   object[property] = value;
   return copy(target, [object]);
@@ -24,5 +28,6 @@ function set(target, property, value) {
 
 module.exports = {
   copy: fn.variadic(copy),
+  get:  fn.curry(get),
   set:  fn.curry(set)
 };

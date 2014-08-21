@@ -40,9 +40,20 @@ describe('object', function() {
     });
   });
 
+  describe('#get', function() {
+    var target = buildObject();
+
+    it('should set the given property', function() {
+      expect(obj.get('a', target)).to.have.equal('lorem');
+      expect(obj.get('b', target)).to.have.equal('ipsum');
+      expect(obj.get('c', target)).to.have.equal(1);
+      expect(obj.get('d', target)).to.have.equal(2);
+    });
+  });
+
   describe('#set', function() {
     var target = buildObject(),
-        result = obj.set(target, 'b', 'dolor');
+        result = obj.set('dolor', 'b', target);
 
     it('should set the given property', function() {
       expect(result).to.have.property('a', 'lorem');
