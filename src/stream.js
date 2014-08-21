@@ -25,6 +25,4 @@ Stream.prototype.scan = function(a, f) {
   });
 };
 
-module.exports = {
-  Stream: Stream
-};
+module.exports = Stream;

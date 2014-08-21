@@ -1,12 +1,12 @@
 'use strict';
 
 var fn     = require('../src/function'),
-    stream = require('../src/stream');
+    Stream = require('../src/stream');
 
 describe('stream', function() {
   var push;
 
-  var s = new stream.Stream(function(next, done) {
+  var s = new Stream(function(next, done) {
     push = next;
   });
 
