@@ -1,5 +1,3 @@
-/* global describe, it, expect */
-
 'use strict';
 
 var object = require('../src/object');
