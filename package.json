@@ -23,6 +23,8 @@
   "devDependencies": {
     "chai": "^1.9.1",
     "jshint": "^2.5.4",
-    "mocha": "^1.21.4"
+    "mocha": "^1.21.4",
+    "sinon": "^1.10.3",
+    "sinon-chai": "^2.5.0"
   }
 }
