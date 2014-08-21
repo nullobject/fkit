@@ -1,16 +1,17 @@
 'use strict';
 
-var fn = require('./function');
+var fn  = require('./function'),
+    obj = require('./object');
 
-function Stream(fork) {
-  this.fork = fork;
+function Stream(subscribe) {
+  this.subscribe = subscribe;
 }
 
 Stream.prototype.constructor = Stream;
 
 Stream.fromArray = function(a) {
   return new Stream(function(next, done) {
-    a.map(next);
+    a.map(fn.compose(next, fn.identity));
     return done();
   });
 };
@@ -20,7 +21,7 @@ Stream.fromEvent = function(target, type) {
     if (target.on) {
       target.on(type, next);
     } else if (target.addEventListener) {
-      target.addEventListener(type, function(e) { next(e.detail); });
+      target.addEventListener(type, fn.compose(next, obj.get('detail')));
     }
   });
 };
@@ -28,14 +29,14 @@ Stream.fromEvent = function(target, type) {
 Stream.prototype.map = function(f) {
   var env = this;
   return new Stream(function(next, done) {
-    env.fork(fn.compose(next, f), done);
+    env.subscribe(fn.compose(next, f), done);
   });
 };
 
 Stream.prototype.scan = function(a, f) {
   var env = this;
   return new Stream(function(next, done) {
-    env.fork(function(b) {
+    env.subscribe(function(b) {
       a = f(a, b);
       return next(a);
     }, done);
@@ -46,7 +47,7 @@ Stream.prototype.fold = function(a, f) {
   var env = this;
   return new Stream(
     function(next, done) {
-      return env.fork(
+      return env.subscribe(
         function(b) {
           a = f(a, b);
           return a;
