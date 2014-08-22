@@ -65,10 +65,9 @@ function add(a, b) { return a + b; }
 function sub(a, b) { return a - b; }
 function mul(a, b) { return a * b; }
 function div(a, b) { return a / b; }
-
-function eql(a, b) { return a === b; }
 function and(a, b) { return a && b; }
 function or(a, b)  { return a || b; }
+function eql(a, b) { return a === b; }
 function gt(a, b)  { return a > b; }
 function gte(a, b) { return a >= b; }
 function lt(a, b)  { return a < b; }

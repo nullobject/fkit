@@ -3,7 +3,6 @@
 var Bus = require('../src/bus'),
     fn  = require('../src/function');
 
-
 describe('Bus', function() {
   var next, done;
 
