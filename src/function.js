@@ -62,14 +62,42 @@ function identity(a) {
 }
 
 function add(a, b) { return a + b; }
+function sub(a, b) { return a - b; }
+function mul(a, b) { return a * b; }
+function div(a, b) { return a / b; }
+
+function eql(a, b) { return a === b; }
+function and(a, b) { return a && b; }
+function or(a, b)  { return a || b; }
+function gt(a, b)  { return a > b; }
+function gte(a, b) { return a >= b; }
+function lt(a, b)  { return a < b; }
+function lte(a, b) { return a <= b; }
 
 module.exports = {
-  add:      curry(add),
-  inc:      function(a) { return add(a, 1); },
-  dec:      function(a) { return add(a, -1); },
+  // Utility functions.
   compose:  compose,
   constant: constant,
   curry:    curry,
   identity: identity,
-  variadic: variadic
+  unit:     function() {},
+  variadic: variadic,
+
+  // Arithmetic functions.
+  add: curry(add),
+  sub: curry(sub),
+  mul: curry(mul),
+  div: curry(div),
+  inc: function(a) { return add(a, 1); },
+  dec: function(a) { return add(a, -1); },
+
+  // Logical functions.
+  not: function(a) { return !a; },
+  and: curry(and),
+  or:  curry(or),
+  eql: curry(eql),
+  gt:  curry(gt),
+  gte: curry(gte),
+  lt:  curry(lt),
+  lte: curry(lte),
 };
