@@ -53,7 +53,7 @@ describe('object', function() {
 
   describe('#set', function() {
     var target = buildObject(),
-        result = obj.set('dolor', 'b', target);
+        result = obj.set('b', 'dolor', target);
 
     it('should set the given property', function() {
       expect(result).to.have.property('a', 'lorem');

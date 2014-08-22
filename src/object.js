@@ -20,7 +20,7 @@ function get(property, target) {
   return target[property];
 }
 
-function set(value, property, target) {
+function set(property, value, target) {
   var object = {};
   object[property] = value;
   return copy(target, [object]);
