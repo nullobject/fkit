@@ -109,12 +109,20 @@ Stream.prototype.scan = function(a, f) {
   });
 };
 
-Stream.prototype.merge = function(a) {
+Stream.prototype.merge = fn.variadic(function(as) {
   var env = this;
   return new Stream(function(next, done) {
-    a.subscribe(next);
-    env.subscribe(next);
+    var count = 0;
+    var onDone = function() {
+      if (fn.gt(++count, as.length)) {
+        done();
+      }
+    };
+    env.subscribe(next, onDone);
+    as.map(function(a) {
+      a.subscribe(next, onDone);
+    });
   });
-};
+});
 
 module.exports = Stream;

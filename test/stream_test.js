@@ -4,7 +4,6 @@ var Stream = require('../src/stream'),
     events = require('events'),
     fn     = require('../src/function');
 
-
 describe('Stream', function() {
   var next, done;
 
@@ -19,10 +18,13 @@ describe('Stream', function() {
 
       s.subscribe(next, done);
 
-      expect(next.calledWithExactly(1)).to.be.true;
-      expect(next.calledWithExactly(2)).to.be.true;
-      expect(next.calledWithExactly(3)).to.be.true;
+      [1, 2, 3].map(function(a, index) {
+        var call = next.getCall(index);
+        expect(call.calledWithExactly(a)).to.be.true;
+      });
+
       expect(done.called).to.be.true;
+      expect(done.calledAfter(next)).to.be.true;
     });
   });
 
@@ -39,9 +41,11 @@ describe('Stream', function() {
       emit(2);
       emit(3);
 
-      expect(next.calledWithExactly(1)).to.be.true;
-      expect(next.calledWithExactly(2)).to.be.true;
-      expect(next.calledWithExactly(3)).to.be.true;
+      [1, 2, 3].map(function(a, index) {
+        var call = next.getCall(index);
+        expect(call.calledWithExactly(a)).to.be.true;
+      });
+
       expect(done.called).to.be.false;
     });
   });
@@ -57,9 +61,11 @@ describe('Stream', function() {
       emitter.emit('lol', 2);
       emitter.emit('lol', 3);
 
-      expect(next.calledWithExactly(1)).to.be.true;
-      expect(next.calledWithExactly(2)).to.be.true;
-      expect(next.calledWithExactly(3)).to.be.true;
+      [1, 2, 3].map(function(a, index) {
+        var call = next.getCall(index);
+        expect(call.calledWithExactly(a)).to.be.true;
+      });
+
       expect(done.called).to.be.false;
     });
   });
@@ -77,7 +83,9 @@ describe('Stream', function() {
       expect(next.calledWithExactly(1)).to.be.true;
       expect(next.calledWithExactly(2)).to.be.true;
       expect(next.calledWithExactly(3)).to.be.true;
+
       expect(done.called).to.be.true;
+      expect(done.calledAfter(next)).to.be.true;
     });
   });
 
@@ -88,7 +96,9 @@ describe('Stream', function() {
       s.subscribe(next, done);
 
       expect(next.calledWithExactly(1)).to.be.true;
+
       expect(done.called).to.be.true;
+      expect(done.calledAfter(next)).to.be.true;
     });
   });
 
@@ -99,10 +109,13 @@ describe('Stream', function() {
 
       s.flatMap(f).subscribe(next, done);
 
-      expect(next.calledWithExactly(1)).to.be.true;
-      expect(next.calledWithExactly(2)).to.be.true;
-      expect(next.calledWithExactly(3)).to.be.true;
+      [1, 2, 3].map(function(a, index) {
+        var call = next.getCall(index);
+        expect(call.calledWithExactly(a)).to.be.true;
+      });
+
       expect(done.called).to.be.true;
+      expect(done.calledAfter(next)).to.be.true;
     });
   });
 
@@ -112,10 +125,13 @@ describe('Stream', function() {
 
       s.map(fn.inc).subscribe(next, done);
 
-      expect(next.calledWithExactly(2)).to.be.true;
-      expect(next.calledWithExactly(3)).to.be.true;
-      expect(next.calledWithExactly(4)).to.be.true;
+      [2, 3, 4].map(function(a, index) {
+        var call = next.getCall(index);
+        expect(call.calledWithExactly(a)).to.be.true;
+      });
+
       expect(done.called).to.be.true;
+      expect(done.calledAfter(next)).to.be.true;
     });
   });
 
@@ -128,7 +144,9 @@ describe('Stream', function() {
       expect(next.calledWithExactly(1)).to.be.false;
       expect(next.calledWithExactly(2)).to.be.true;
       expect(next.calledWithExactly(3)).to.be.false;
+
       expect(done.called).to.be.true;
+      expect(done.calledAfter(next)).to.be.true;
     });
   });
 
@@ -139,7 +157,9 @@ describe('Stream', function() {
       s.fold(0, fn.add).subscribe(next, done);
 
       expect(next.calledWithExactly(6)).to.be.true;
+
       expect(done.called).to.be.true;
+      expect(done.calledAfter(next)).to.be.true;
     });
   });
 
@@ -149,24 +169,31 @@ describe('Stream', function() {
 
       s.scan(0, fn.add).subscribe(next, done);
 
-      expect(next.calledWithExactly(1)).to.be.true;
-      expect(next.calledWithExactly(3)).to.be.true;
-      expect(next.calledWithExactly(6)).to.be.true;
+      [0, 1, 3, 6].map(function(a, index) {
+        var call = next.getCall(index);
+        expect(call.calledWithExactly(a)).to.be.true;
+      });
+
       expect(done.called).to.be.true;
+      expect(done.calledAfter(next)).to.be.true;
     });
   });
 
   describe('#merge', function() {
     it('should merge the given stream', function() {
       var s = Stream.fromArray([1, 2, 3]),
-          t = Stream.fromArray([4, 5, 6]);
+          t = Stream.fromArray([4, 5, 6]),
+          u = Stream.fromArray([7, 8, 9]);
 
-      s.merge(t).subscribe(next, done);
+      s.merge(t, u).subscribe(next, done);
 
-      expect(next.calledWithExactly(1)).to.be.true;
-      // expect(next.calledWithExactly(3)).to.be.true;
-      // expect(next.calledWithExactly(6)).to.be.true;
+      [1, 2, 3, 4, 5, 6, 7, 8, 9].map(function(a, index) {
+        var call = next.getCall(index);
+        expect(call.calledWithExactly(a)).to.be.true;
+      });
+
       expect(done.called).to.be.true;
+      expect(done.calledAfter(next)).to.be.true;
     });
   });
 });
