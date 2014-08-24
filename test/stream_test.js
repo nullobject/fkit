@@ -23,7 +23,6 @@ describe('Stream', function() {
         expect(call.calledWithExactly(a)).to.be.true;
       });
 
-      expect(done.called).to.be.true;
       expect(done.calledAfter(next)).to.be.true;
     });
   });
@@ -71,7 +70,25 @@ describe('Stream', function() {
   });
 
   describe('.fromPromise', function() {
-    it('should return a stream of values from the promise');
+    it('should return a stream of values from the promise', function() {
+      var emit;
+      var s = Stream.fromPromise({then: function(callback) {
+        emit = callback;
+      }});
+
+      s.subscribe(next, done);
+
+      emit(1);
+      emit(2);
+      emit(3);
+
+      [1, 2, 3].map(function(a, index) {
+        var call = next.getCall(index);
+        expect(call.calledWithExactly(a)).to.be.true;
+      });
+
+      expect(done.called).to.be.false;
+    });
   });
 
   describe('#subscribe', function() {
@@ -83,8 +100,6 @@ describe('Stream', function() {
       expect(next.calledWithExactly(1)).to.be.true;
       expect(next.calledWithExactly(2)).to.be.true;
       expect(next.calledWithExactly(3)).to.be.true;
-
-      expect(done.called).to.be.true;
       expect(done.calledAfter(next)).to.be.true;
     });
   });
@@ -97,7 +112,6 @@ describe('Stream', function() {
 
       expect(next.calledWithExactly(1)).to.be.true;
 
-      expect(done.called).to.be.true;
       expect(done.calledAfter(next)).to.be.true;
     });
   });
@@ -114,7 +128,6 @@ describe('Stream', function() {
         expect(call.calledWithExactly(a)).to.be.true;
       });
 
-      expect(done.called).to.be.true;
       expect(done.calledAfter(next)).to.be.true;
     });
   });
@@ -130,7 +143,6 @@ describe('Stream', function() {
         expect(call.calledWithExactly(a)).to.be.true;
       });
 
-      expect(done.called).to.be.true;
       expect(done.calledAfter(next)).to.be.true;
     });
   });
@@ -144,8 +156,6 @@ describe('Stream', function() {
       expect(next.calledWithExactly(1)).to.be.false;
       expect(next.calledWithExactly(2)).to.be.true;
       expect(next.calledWithExactly(3)).to.be.false;
-
-      expect(done.called).to.be.true;
       expect(done.calledAfter(next)).to.be.true;
     });
   });
@@ -157,8 +167,6 @@ describe('Stream', function() {
       s.fold(0, fn.add).subscribe(next, done);
 
       expect(next.calledWithExactly(6)).to.be.true;
-
-      expect(done.called).to.be.true;
       expect(done.calledAfter(next)).to.be.true;
     });
   });
@@ -174,7 +182,6 @@ describe('Stream', function() {
         expect(call.calledWithExactly(a)).to.be.true;
       });
 
-      expect(done.called).to.be.true;
       expect(done.calledAfter(next)).to.be.true;
     });
   });
@@ -192,7 +199,6 @@ describe('Stream', function() {
         expect(call.calledWithExactly(a)).to.be.true;
       });
 
-      expect(done.called).to.be.true;
       expect(done.calledAfter(next)).to.be.true;
     });
   });
