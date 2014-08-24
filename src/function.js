@@ -79,7 +79,6 @@ module.exports = {
   constant: constant,
   curry:    curry,
   identity: identity,
-  unit:     function() {},
   variadic: variadic,
 
   // Arithmetic functions.

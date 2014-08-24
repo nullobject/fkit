@@ -53,7 +53,7 @@ Stream.prototype.flatMap = function(f) {
   var env = this;
   return new Stream(function(next, done) {
     return env.subscribe(function(a) {
-      return f(a).subscribe(next, fn.unit);
+      return f(a).subscribe(next, function() {});
     }, done);
   });
 };
