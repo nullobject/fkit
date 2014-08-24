@@ -61,6 +61,12 @@ function identity(a) {
   return a;
 }
 
+function unary(a) {
+  return compose(a, identity);
+}
+
+function not(a) { return !a; }
+
 function add(a, b) { return a + b; }
 function sub(a, b) { return a - b; }
 function mul(a, b) { return a * b; }
@@ -73,12 +79,16 @@ function gte(a, b) { return a >= b; }
 function lt(a, b)  { return a < b; }
 function lte(a, b) { return a <= b; }
 
+function inc(a) { return add(a, 1); }
+function dec(a) { return sub(a, 1); }
+
 module.exports = {
   // Utility functions.
   compose:  compose,
   constant: constant,
   curry:    curry,
   identity: identity,
+  unary:    unary,
   variadic: variadic,
 
   // Arithmetic functions.
@@ -86,11 +96,11 @@ module.exports = {
   sub: curry(sub),
   mul: curry(mul),
   div: curry(div),
-  inc: function(a) { return add(a, 1); },
-  dec: function(a) { return add(a, -1); },
+  inc: inc,
+  dec: dec,
 
   // Logical functions.
-  not: function(a) { return !a; },
+  not: not,
   and: curry(and),
   or:  curry(or),
   eql: curry(eql),

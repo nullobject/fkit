@@ -11,9 +11,7 @@ Stream.prototype.constructor = Stream;
 
 Stream.fromArray = function(a) {
   return new Stream(function(next, done) {
-    // Compose with the identity function to strip off the other arguments
-    // passed by the map function.
-    a.map(fn.compose(next, fn.identity));
+    a.map(fn.unary(next));
     return done();
   });
 };
