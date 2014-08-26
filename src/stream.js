@@ -120,7 +120,6 @@ Stream.prototype.map = function(f) {
   });
 };
 
-
 /**
  * Creates a new stream that filters the values of the stream using the
  * predicate function `p`. The predicate function `p` must return a boolean

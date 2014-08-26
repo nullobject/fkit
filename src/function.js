@@ -49,9 +49,9 @@ function variadic(f) {
  */
 module.exports = {
   /**
-   * The identity function.
+   * Creates a new function that returns its first argument.
    *
-   * @returns {function} The identity function.
+   * @returns {function} A new function.
    * @example identity(a) == a
    */
   identity: function(a) {
