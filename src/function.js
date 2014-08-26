@@ -1,3 +1,5 @@
+/** @author Josh Bassett */
+
 'use strict';
 
 var __slice = Array.prototype.slice;
@@ -42,70 +44,234 @@ function variadic(f) {
   }
 }
 
-// compose(f, g)(a) == f(g(a))
-function compose(f, g) {
-  return function() {
-    return f(g.apply(this, __slice.call(arguments)));
-  };
-}
-
-// constant(a)(b) == a
-function constant(a) {
-  return function() {
-    return a;
-  };
-}
-
-// identity(a) == a
-function identity(a) {
-  return a;
-}
-
-function unary(a) {
-  return compose(a, identity);
-}
-
-function not(a) { return !a; }
-
-function add(a, b) { return a + b; }
-function sub(a, b) { return a - b; }
-function mul(a, b) { return a * b; }
-function div(a, b) { return a / b; }
-function and(a, b) { return a && b; }
-function or(a, b)  { return a || b; }
-function eql(a, b) { return a === b; }
-function gt(a, b)  { return a > b; }
-function gte(a, b) { return a >= b; }
-function lt(a, b)  { return a < b; }
-function lte(a, b) { return a <= b; }
-
-function inc(a) { return add(a, 1); }
-function dec(a) { return sub(a, 1); }
-
+/**
+ * @module fn
+ */
 module.exports = {
-  // Utility functions.
-  compose:  compose,
-  constant: constant,
-  curry:    curry,
-  identity: identity,
-  unary:    unary,
+  /**
+   * The identity function.
+   *
+   * @returns {function} The identity function.
+   * @example identity(a) == a
+   */
+  identity: function(a) {
+    return a;
+  },
+
+  /**
+   * Creates a new function that applies the function `f` to the result of the
+   * function `g`.
+   *
+   * This function is curried by default.
+   *
+   * @static
+   * @function
+   * @param {function} f
+   * @param {function} g
+   * @returns {function} A new function.
+   * @example compose(f, g)(x) == f(g(x))
+   */
+  compose: curry(function(f, g) {
+    return function() {
+      return f(g.apply(this, __slice.call(arguments)));
+    };
+  }),
+
+  /**
+   * Creates a function that always returns the value `c`, regardless of any
+   * given arguments.
+   *
+   * @param {*} c The constant value.
+   * @returns {function} A new function.
+   * @example constant(c)(1, 2, 3, ...) == c
+   */
+  constant: function(c) {
+    return function() {
+      return c;
+    };
+  },
+
+  /**
+   * Creates a new function that allows partial application of the arguments to
+   * the function `f`.
+   *
+   * @static
+   * @function
+   * @param {function} f The function to be curried.
+   * @returns {function} A new function.
+   * @example
+   *   function add(a, b) { return a + b; }
+   *   curry(add)(1)(2) == 3
+   */
+  curry: curry,
+
+  /**
+   * Creates a new function that wraps the function `f` to accept only one
+   * argument.
+   *
+   * @static
+   * @function
+   * @param {function} f The function to be wrapped.
+   * @returns {function} A new function.
+   */
+  unary: function(f) {
+    if (f.length === 1) {
+      return f;
+    } else {
+      return function(a) {
+        return f.call(this, a);
+      };
+    }
+  },
+
+  /**
+   * Creates a new function that wraps the function `f` to accept any number of
+   * agruments. The last named parameter will be given an array of arguments.
+   *
+   * @static
+   * @function
+   * @param {function} f The function to be wrapped.
+   * @returns {function} A new function.
+   * @example
+   *   function foo(head, tail) { ... }
+   *   variadic(foo)(1, 2, 3) == foo(1, [2, 3])
+   */
   variadic: variadic,
 
-  // Arithmetic functions.
-  add: curry(add),
-  sub: curry(sub),
-  mul: curry(mul),
-  div: curry(div),
-  inc: inc,
-  dec: dec,
+  /**
+   * Curried version of `+`.
+   *
+   * @static
+   * @function
+   * @param {number} a
+   * @param {number} b
+   * @returns {number} The result.
+   */
+  add: curry(function(a, b) { return a + b; }),
 
-  // Logical functions.
-  not: not,
-  and: curry(and),
-  or:  curry(or),
-  eql: curry(eql),
-  gt:  curry(gt),
-  gte: curry(gte),
-  lt:  curry(lt),
-  lte: curry(lte),
+  /**
+   * Curried version of `-`.
+   *
+   * @static
+   * @function
+   * @param {number} a
+   * @param {number} b
+   * @returns {number} The result.
+   */
+  sub: curry(function(a, b) { return a - b; }),
+
+  /**
+   * Curried version of `*`.
+   *
+   * @static
+   * @function
+   * @param {number} a
+   * @param {number} b
+   * @returns {number} The result.
+   */
+  mul: curry(function(a, b) { return a * b; }),
+
+  /**
+   * Curried version of `/`.
+   *
+   * @static
+   * @function
+   * @param {number} a
+   * @param {number} b
+   * @returns {number} The result.
+   */
+  div: curry(function(a, b) { return a / b; }),
+
+  /**
+   * Curried version of `&&`.
+   *
+   * @static
+   * @function
+   * @param {boolean} a
+   * @param {boolean} b
+   * @returns {boolean} The result.
+   */
+  and: curry(function(a, b) { return a && b; }),
+
+  /**
+   * Curried version of `||`.
+   *
+   * @static
+   * @function
+   * @param {boolean} a
+   * @param {boolean} b
+   * @returns {boolean} The result.
+   */
+  or: curry(function(a, b) { return a || b; }),
+
+  /**
+   * Curried version of `===`.
+   *
+   * @static
+   * @function
+   * @param {*} a
+   * @param {*} b
+   * @returns {boolean} The result.
+   */
+  eql: curry(function(a, b) { return a === b; }),
+
+  /**
+   * Curried version of `>`.
+   *
+   * @static
+   * @function
+   * @param {number} a
+   * @param {number} b
+   * @returns {boolean} The result.
+   */
+  gt: curry(function(a, b) { return a > b; }),
+
+  /**
+   * Curried version of `>=`.
+   *
+   * @static
+   * @function
+   * @param {number} a
+   * @param {number} b
+   * @returns {boolean} The result.
+   */
+  gte: curry(function(a, b) { return a >= b; }),
+
+  /**
+   * Curried version of `<`.
+   *
+   * @static
+   * @function
+   * @param {number} a
+   * @param {number} b
+   * @returns {boolean} The result.
+   */
+  lt: curry(function(a, b) { return a < b; }),
+
+  /**
+   * Curried version of `<=`.
+   *
+   * @static
+   * @function
+   * @param {number} a
+   * @param {number} b
+   * @returns {boolean} The result.
+   */
+  lte: curry(function(a, b) { return a <= b; }),
+
+  /**
+   * Increments the number.
+   *
+   * @param {number} a
+   * @returns {number} The result.
+   */
+  inc: function(a) { return a + 1; },
+
+  /**
+   * Decrements the number.
+   *
+   * @param {number} a
+   * @returns {number} The result.
+   */
+  dec: function(a) { return a - 1; }
 };
