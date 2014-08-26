@@ -22,6 +22,7 @@
   "homepage": "https://github.com/nullobject/fkit",
   "devDependencies": {
     "chai": "^1.9.1",
+    "jsdoc": "^3.3.0-alpha9",
     "jshint": "^2.5.4",
     "mocha": "^1.21.4",
     "sinon": "^1.10.3",
