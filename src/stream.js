@@ -8,10 +8,14 @@ var fn  = require('./function'),
 /**
  * Creates a new stream with the `subscribe` function.
  *
- * @constructor
- * @param {function} subscribe The subscribe function.
+ * The `subscribe` function is called by an observer who wishes to subscribe to
+ * the stream values.
+ *
+ * @class
+ * @param {function} subscribe A subscribe function.
  */
 function Stream(subscribe) {
+  /** @member {function} */
   this.subscribe = subscribe;
 }
 
@@ -100,12 +104,6 @@ Stream.prototype.flatMap = function(f) {
   });
 };
 
-// Stream.prototype.map = function(f) {
-//   return this.flatMap(function(a) {
-//     return Stream.of(f(a));
-//   });
-// };
-
 /**
  * Creates a new stream that applies the function `f` to the values in the
  * stream. The unary function `f` must return a stream value.
@@ -119,6 +117,12 @@ Stream.prototype.map = function(f) {
     env.subscribe(fn.compose(next, f), done);
   });
 };
+
+// Stream.prototype.map = function(f) {
+//   return this.flatMap(function(a) {
+//     return Stream.of(f(a));
+//   });
+// };
 
 /**
  * Creates a new stream that filters the values of the stream using the
