@@ -11,7 +11,7 @@ var fn  = require('./function'),
  * The `subscribe` function is called by an observer who wishes to subscribe to
  * the stream values.
  *
- * @class
+ * @constructor
  * @param {function} subscribe A subscribe function.
  */
 function Stream(subscribe) {
@@ -198,7 +198,7 @@ Stream.prototype.merge = fn.variadic(function(as) {
     var count = 0;
     var onDone = function() {
       if (fn.gt(++count, as.length)) {
-        done();
+        return done();
       }
     };
     env.subscribe(next, onDone);

@@ -4,22 +4,27 @@ var Bus = require('../src/bus'),
     fn  = require('../src/function');
 
 describe('Bus', function() {
-  var next, done;
+  var a, b, c, d;
 
   beforeEach(function() {
-    next = sinon.spy();
-    done = sinon.spy();
+    a = sinon.spy();
+    b = sinon.spy();
+    c = sinon.spy();
+    d = sinon.spy();
   });
 
   describe('#push', function() {
-    it('should push a value onto the bus', function() {
-      var b = new Bus();
+    it('should push a value onto the bus and notify the subscribers', function() {
+      var bus = new Bus();
 
-      b.subscribe(next, done);
-      b.push(1);
+      bus.subscribe(a, b);
+      bus.subscribe(c, d);
+      bus.push(1);
 
-      expect(next.calledWithExactly(1)).to.be.true;
-      expect(done.called).to.be.false;
+      expect(a.calledWithExactly(1)).to.be.true;
+      expect(b.calledAfter(a)).to.be.false;
+      expect(c.calledWithExactly(1)).to.be.true;
+      expect(d.calledAfter(c)).to.be.false;
     });
   });
 });

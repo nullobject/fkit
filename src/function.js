@@ -59,6 +59,20 @@ module.exports = {
   },
 
   /**
+   * Applies the value `a` to the function `f`.
+   *
+   * This function is curried by default.
+   *
+   * @param {*} a
+   * @param {function} f
+   * @returns {*} The result.
+   * @example apply(a, f) == f(a)
+   */
+  apply: curry(function(a, f) {
+    return f.call(this, a);
+  }),
+
+  /**
    * Creates a new function that applies the function `f` to the result of the
    * function `g`.
    *
