@@ -42,6 +42,14 @@ describe('function', function() {
     });
   });
 
+  describe('#binary', function() {
+    it('should return a function that accepts only two arguments', function() {
+      var spy = sinon.spy();
+      fn.binary(spy)(1, 2, 3);
+      expect(spy.calledWithExactly(1, 2)).to.be.true;
+    });
+  });
+
   describe('#variadic', function() {
     it('should return a function that accepts any number of arguments', function() {
       function f(a, b) {}

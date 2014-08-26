@@ -109,8 +109,6 @@ module.exports = {
    * Creates a new function that wraps the function `f` to accept only one
    * argument.
    *
-   * @static
-   * @function
    * @param {function} f The function to be wrapped.
    * @returns {function} A new function.
    */
@@ -120,6 +118,23 @@ module.exports = {
     } else {
       return function(a) {
         return f.call(this, a);
+      };
+    }
+  },
+
+  /**
+   * Creates a new function that wraps the function `f` to accept only two
+   * arguments.
+   *
+   * @param {function} f The function to be wrapped.
+   * @returns {function} A new function.
+   */
+  binary: function(f) {
+    if (f.length === 2) {
+      return f;
+    } else {
+      return function(a, b) {
+        return f.call(this, a, b);
       };
     }
   },
