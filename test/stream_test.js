@@ -5,20 +5,21 @@ var Stream = require('../src/stream'),
     fn     = require('../src/function');
 
 describe('Stream', function() {
-  var next, done;
+  var bind, next, done;
 
   beforeEach(function() {
+    bind = sinon.spy();
     next = sinon.spy();
     done = sinon.spy();
   });
 
   describe('.fromArray', function() {
     it('should return a stream of values from the given array', function() {
-      var stream = Stream.fromArray([1, 2, 3]);
+      var s = Stream.fromArray(fn.range(1, 3));
 
-      stream.subscribe(next, done);
+      s.subscribe(next, done);
 
-      [1, 2, 3].map(function(a, index) {
+      fn.range(1, 3).map(function(a, index) {
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
       });
@@ -30,13 +31,13 @@ describe('Stream', function() {
   describe('.fromCallback', function() {
     it('should return a stream of values from the callback function', function() {
       var emit;
-      var stream = Stream.fromCallback(function(callback) {
+      var s = Stream.fromCallback(function(callback) {
         emit = callback;
       });
 
-      stream.subscribe(next, done);
+      s.subscribe(next, done);
 
-      [1, 2, 3].map(function(a, index) {
+      fn.range(1, 3).map(function(a, index) {
         emit(a);
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
@@ -49,11 +50,11 @@ describe('Stream', function() {
   describe('.fromEvent', function() {
     it('should return a stream of values from the given event', function() {
       var emitter = new events.EventEmitter();
-      var stream = Stream.fromEvent(emitter, 'lol');
+      var s = Stream.fromEvent(emitter, 'lol');
 
-      stream.subscribe(next, done);
+      s.subscribe(next, done);
 
-      [1, 2, 3].map(function(a, index) {
+      fn.range(1, 3).map(function(a, index) {
         emitter.emit('lol', a);
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
@@ -66,13 +67,13 @@ describe('Stream', function() {
   describe('.fromPromise', function() {
     it('should return a stream of values from the promise', function() {
       var emit;
-      var stream = Stream.fromPromise({then: function(callback) {
+      var s = Stream.fromPromise({then: function(callback) {
         emit = callback;
       }});
 
-      stream.subscribe(next, done);
+      s.subscribe(next, done);
 
-      [1, 2, 3].map(function(a, index) {
+      fn.range(1, 3).map(function(a, index) {
         emit(a);
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
@@ -82,40 +83,39 @@ describe('Stream', function() {
     });
   });
 
-  describe('#subscribe', function() {
-    it('should be called when the next value is available', function() {
-      var stream = Stream.fromArray([1, 2, 3]);
-
-      stream.subscribe(next, done);
-
-      [1, 2, 3].map(function(a, index) {
-        var call = next.getCall(index);
-        expect(call.calledWithExactly(a)).to.be.true;
-      });
-
-      expect(done.calledAfter(next)).to.be.true;
-    });
-  });
-
   describe('.of', function() {
     it('should return a stream with the given value', function() {
-      var stream = Stream.of(1);
+      var s = Stream.of(1);
 
-      stream.subscribe(next, done);
+      s.subscribe(next, done);
 
       expect(next.calledWithExactly(1)).to.be.true;
       expect(done.calledAfter(next)).to.be.true;
     });
   });
 
+  describe('#subscribe', function() {
+    var s, a = {}, b = {}, c = {}, d = {};
+
+    beforeEach(function() {
+      s = new Stream(bind);
+    });
+
+    it('should bind the stream with the given callbacks', function() {
+      s.subscribe(a, b);
+      expect(bind.calledOnce).to.be.true;
+      expect(bind.calledWithExactly(a, b)).to.be.true;
+    });
+  });
+
   describe('#flatMap', function() {
     it('should flat map the given function over stream values', function() {
-      var stream = Stream.fromArray([1, 2, 3]);
+      var s = Stream.fromArray(fn.range(1, 3));
       var f = function(a) { return Stream.of(a); };
 
-      stream.flatMap(f).subscribe(next, done);
+      s.flatMap(f).subscribe(next, done);
 
-      [1, 2, 3].map(function(a, index) {
+      fn.range(1, 3).map(function(a, index) {
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
       });
@@ -126,9 +126,9 @@ describe('Stream', function() {
 
   describe('#map', function() {
     it('should map the given function over stream values', function() {
-      var stream = Stream.fromArray([1, 2, 3]);
+      var s = Stream.fromArray(fn.range(1, 3));
 
-      stream.map(fn.inc).subscribe(next, done);
+      s.map(fn.inc).subscribe(next, done);
 
       [2, 3, 4].map(function(a, index) {
         var call = next.getCall(index);
@@ -141,9 +141,9 @@ describe('Stream', function() {
 
   describe('#filter', function() {
     it('should filter the stream values with the given predicate', function() {
-      var stream = Stream.fromArray([1, 2, 3]);
+      var s = Stream.fromArray(fn.range(1, 3));
 
-      stream.filter(fn.eql(2)).subscribe(next, done);
+      s.filter(fn.eql(2)).subscribe(next, done);
 
       expect(next.calledWithExactly(1)).to.be.false;
       expect(next.calledWithExactly(2)).to.be.true;
@@ -154,9 +154,9 @@ describe('Stream', function() {
 
   describe('#fold', function() {
     it('should fold the given function over stream values', function() {
-      var stream = Stream.fromArray([1, 2, 3]);
+      var s = Stream.fromArray(fn.range(1, 3));
 
-      stream.fold(0, fn.add).subscribe(next, done);
+      s.fold(0, fn.add).subscribe(next, done);
 
       expect(next.calledWithExactly(6)).to.be.true;
       expect(done.calledAfter(next)).to.be.true;
@@ -165,9 +165,9 @@ describe('Stream', function() {
 
   describe('#scan', function() {
     it('should scan the given function over stream values', function() {
-      var stream = Stream.fromArray([1, 2, 3]);
+      var s = Stream.fromArray(fn.range(1, 3));
 
-      stream.scan(0, fn.add).subscribe(next, done);
+      s.scan(0, fn.add).subscribe(next, done);
 
       [0, 1, 3, 6].map(function(a, index) {
         var call = next.getCall(index);
@@ -179,14 +179,32 @@ describe('Stream', function() {
   });
 
   describe('#merge', function() {
-    it('should merge the given stream', function() {
-      var stream = Stream.fromArray([1, 2, 3]),
-          t = Stream.fromArray([4, 5, 6]),
-          u = Stream.fromArray([7, 8, 9]);
+    it('should merge the given streams', function() {
+      var s = Stream.fromArray(fn.range(1, 3)),
+          t = Stream.fromArray(fn.range(4, 6)),
+          u = Stream.fromArray(fn.range(7, 9));
 
-      stream.merge(t, u).subscribe(next, done);
+      s.merge(t, u).subscribe(next, done);
 
-      [1, 2, 3, 4, 5, 6, 7, 8, 9].map(function(a, index) {
+      fn.range(1, 9).map(function(a, index) {
+        var call = next.getCall(index);
+        expect(call.calledWithExactly(a)).to.be.true;
+      });
+
+      expect(done.calledAfter(next)).to.be.true;
+    });
+  });
+
+  describe('#split', function() {
+    it('should split the given stream', function() {
+      var streams = Stream.fromArray(fn.range(1, 3)).split(2),
+          t       = streams[0],
+          u       = streams[1];
+
+      t.subscribe(next, done);
+      u.subscribe(function() {}, function() {});
+
+      fn.range(1, 3).map(function(a, index) {
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
       });

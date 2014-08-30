@@ -18,6 +18,10 @@ function copy(target, objects) {
   return extend(new target.constructor(), [target].concat(objects));
 }
 
+function get(property, target) {
+  return target[property];
+}
+
 /**
  * @module obj
  */
@@ -50,9 +54,7 @@ module.exports = {
    * @returns {*} A property value.
    * @example get('name', person) == 'bob'
    */
-  get: fn.curry(function(property, target) {
-    return target[property];
-  }),
+  get: fn.curry(get),
 
   /**
    * Creates a copy of the `target` object with the `property` set to the
@@ -72,5 +74,20 @@ module.exports = {
     var object = {};
     object[property] = value;
     return copy(target, [object]);
+  }),
+
+  /**
+   * Applies the function of the `property` on the `target` object to the value `a`.
+   *
+   * This function is curried by default.
+   *
+   * @param {string} property A string representing the property name.
+   * @param {*} a
+   * @param {Object} target A target object.
+   * @returns {*} The result.
+   * @example apply('say', 'hello', person) == person.say('hello')
+   */
+  apply: fn.curry(function(property, a, target) {
+    return get(property, target).call(target, a);
   })
 };

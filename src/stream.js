@@ -8,14 +8,21 @@ var fn  = require('./function'),
 /**
  * Creates a new stream with the `subscribe` function.
  *
- * The `subscribe` function is called by an observer who wishes to subscribe to
- * the stream values.
+ * The `subscribe` function is called by an observer who wishes to subscribe
+ * to the stream values.
  *
- * @constructor
+ *
+ * @class
  * @param {function} subscribe A subscribe function.
  */
 function Stream(subscribe) {
-  /** @member {function} */
+  /**
+   * Subscribes to the stream with the callbacks `next` and `end`.
+   *
+   * @param {function} next A callback function.
+   * @param {function} end A callback function.
+   * @function Stream#subscribe
+   */
   this.subscribe = subscribe;
 }
 
@@ -30,7 +37,7 @@ Stream.prototype.constructor = Stream;
 Stream.fromArray = function(as) {
   return new Stream(function(next, done) {
     as.map(fn.unary(next));
-    return done();
+    done();
   });
 };
 
@@ -84,7 +91,7 @@ Stream.fromPromise = function(p) {
 Stream.of = function(a) {
   return new Stream(function(next, done) {
     if (a) { next(a); }
-    return done();
+    done();
   });
 };
 
@@ -97,10 +104,12 @@ Stream.of = function(a) {
  */
 Stream.prototype.flatMap = function(f) {
   var env = this;
-  return new Stream(function(next, done) {
-    return env.subscribe(function(a) {
-      return f(a).subscribe(next, function() {});
-    }, done);
+  return obj.copy(this, {
+    subscribe: function(next, done) {
+      env.subscribe(function(a) {
+        f(a).subscribe(next, function() {});
+      }, done);
+    }
   });
 };
 
@@ -113,8 +122,10 @@ Stream.prototype.flatMap = function(f) {
  */
 Stream.prototype.map = function(f) {
   var env = this;
-  return new Stream(function(next, done) {
-    env.subscribe(fn.compose(next, f), done);
+  return obj.copy(this, {
+    subscribe: function(next, done) {
+      env.subscribe(fn.compose(next, f), done);
+    }
   });
 };
 
@@ -134,10 +145,12 @@ Stream.prototype.map = function(f) {
  */
 Stream.prototype.filter = function(p) {
   var env = this;
-  return new Stream(function(next, done) {
-    return env.subscribe(function(a) {
-      if (p(a)) { next(a); }
-    }, done);
+  return obj.copy(this, {
+    subscribe: function(next, done) {
+      env.subscribe(function(a) {
+        if (p(a)) { next(a); }
+      }, done);
+    }
   });
 };
 
@@ -151,17 +164,19 @@ Stream.prototype.filter = function(p) {
  */
 Stream.prototype.fold = function(a, f) {
   var env = this;
-  return new Stream(function(next, done) {
-    return env.subscribe(
-      function(b) {
-        a = f(a, b);
-        return a;
-      },
-      function() {
-        next(a);
-        return done();
-      }
-    );
+  return obj.copy(this, {
+    subscribe: function(next, done) {
+      env.subscribe(
+        function(b) {
+          a = f(a, b);
+          return a;
+        },
+        function() {
+          next(a);
+          return done();
+        }
+      );
+    }
   });
 };
 
@@ -176,12 +191,14 @@ Stream.prototype.fold = function(a, f) {
  */
 Stream.prototype.scan = function(a, f) {
   var env = this;
-  return new Stream(function(next, done) {
-    next(a);
-    env.subscribe(function(b) {
-      a = f(a, b);
-      return next(a);
-    }, done);
+  return obj.copy(this, {
+    subscribe: function(next, done) {
+      next(a);
+      env.subscribe(function(b) {
+        a = f(a, b);
+        return next(a);
+      }, done);
+    }
   });
 };
 
@@ -194,18 +211,59 @@ Stream.prototype.scan = function(a, f) {
  */
 Stream.prototype.merge = fn.variadic(function(as) {
   var env = this;
-  return new Stream(function(next, done) {
-    var count = 0;
-    var onDone = function() {
-      if (fn.gt(++count, as.length)) {
-        return done();
-      }
-    };
-    env.subscribe(next, onDone);
-    as.map(function(a) {
-      a.subscribe(next, onDone);
-    });
+  return obj.copy(this, {
+    subscribe: function(next, done) {
+      var count = 0;
+      var onDone = function() {
+        if (fn.gt(++count, as.length)) {
+          done();
+        }
+      };
+      env.subscribe(next, onDone);
+      as.map(function(a) {
+        a.subscribe(next, onDone);
+      });
+    }
   });
 });
+
+/**
+ * Creates a new stream that splits the stream into one or more streams.
+ *
+ * @param {number} n A number of streams to split.
+ * @returns {Array} An array of streams.
+ */
+Stream.prototype.split = function(n) {
+  var env = this;
+  var bound = false;
+  var nexts = [], dones = [];
+  var streams = fn
+    .range(0, n - 1)
+    .map(function(_) {
+      return obj.copy(env, {
+        subscribe: function(next, done) {
+          nexts.push(next);
+          dones.push(done);
+          subscribe();
+        }
+      });
+    });
+
+  function subscribe() {
+    if (!bound) {
+      env.subscribe(
+        function(a) {
+          nexts.map(fn.applyRight(a));
+        },
+        function() {
+          dones.map(fn.apply());
+        }
+      );
+    }
+    bound = true;
+  }
+
+  return streams;
+};
 
 module.exports = Stream;

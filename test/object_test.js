@@ -1,6 +1,7 @@
 'use strict';
 
-var obj = require('../src/object');
+var fn  = require('../src/function'),
+    obj = require('../src/object');
 
 function MyObject() {}
 MyObject.prototype.constructor = MyObject;
@@ -12,14 +13,16 @@ function buildObject() {
   o.b = 'ipsum';
   o.c = 1;
   o.d = 2;
+  o.e = fn.identity;
 
   return o;
 }
 
 describe('object', function() {
+  var target = buildObject();
+
   describe('#copy', function() {
-    var target = buildObject(),
-        result = obj.copy(target, {b: 'dolor'}, {c: 0});
+    var result = obj.copy(target, {b: 'dolor'}, {c: 0});
 
     it('should copy the properties of the given objects', function() {
       expect(result).to.have.property('a', 'lorem');
@@ -41,19 +44,16 @@ describe('object', function() {
   });
 
   describe('#get', function() {
-    var target = buildObject();
-
     it('should set the given property', function() {
-      expect(obj.get('a', target)).to.have.equal('lorem');
-      expect(obj.get('b', target)).to.have.equal('ipsum');
-      expect(obj.get('c', target)).to.have.equal(1);
-      expect(obj.get('d', target)).to.have.equal(2);
+      expect(obj.get('a', target)).to.equal('lorem');
+      expect(obj.get('b', target)).to.equal('ipsum');
+      expect(obj.get('c', target)).to.equal(1);
+      expect(obj.get('d', target)).to.equal(2);
     });
   });
 
   describe('#set', function() {
-    var target = buildObject(),
-        result = obj.set('b', 'dolor', target);
+    var result = obj.set('b', 'dolor', target);
 
     it('should set the given property', function() {
       expect(result).to.have.property('a', 'lorem');
@@ -71,6 +71,12 @@ describe('object', function() {
 
     it('should preserve the prototype of the target object', function() {
       expect(result).to.be.instanceof(MyObject);
+    });
+  });
+
+  describe('#apply', function() {
+    it('should apply the function of the given property', function() {
+      expect(obj.apply('e', 1, target)).to.equal(1);
     });
   });
 });

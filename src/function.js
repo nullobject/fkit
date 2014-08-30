@@ -44,6 +44,16 @@ function variadic(f) {
   }
 }
 
+function apply(f, a) {
+  return f.call(null, a);
+}
+
+function flip(f) {
+  return function(a, b) {
+    return f(b, a);
+  };
+}
+
 /**
  * @module fn
  */
@@ -59,18 +69,32 @@ module.exports = {
   },
 
   /**
-   * Applies the value `a` to the function `f`.
+   * Applies the function `f` to the value `a`.
    *
    * This function is curried by default.
    *
+   * @static
+   * @function
+   * @param {function} f
+   * @param {*} a
+   * @returns {*} The result.
+   * @example apply(f, a) == f(a)
+   */
+  apply: curry(apply),
+
+  /**
+   * Applies the function `f` to the value `a`.
+   *
+   * This function is curried by default.
+   *
+   * @static
+   * @function
    * @param {*} a
    * @param {function} f
    * @returns {*} The result.
-   * @example apply(a, f) == f(a)
+   * @example applyRight(a, f) == f(a)
    */
-  apply: curry(function(a, f) {
-    return f.call(this, a);
-  }),
+  applyRight: curry(flip(apply)),
 
   /**
    * Creates a new function that applies the function `f` to the result of the
@@ -92,14 +116,24 @@ module.exports = {
   }),
 
   /**
-   * Creates a function that always returns the value `c`, regardless of any
+   * Wraps the binary function `f` and flips the order of the arguments.
+   *
+   * @static
+   * @function
+   * @param {function} f
+   * @returns {function} A new function.
+   */
+  flip: flip,
+
+  /**
+   * Creates a function that always returns the value `c`, regardless of the
    * given arguments.
    *
    * @param {*} c The constant value.
    * @returns {function} A new function.
-   * @example constant(c)(1, 2, 3, ...) == c
+   * @example const(c)(1, 2, 3, ...) == c
    */
-  constant: function(c) {
+  const: function(c) {
     return function() {
       return c;
     };
@@ -212,6 +246,28 @@ module.exports = {
   div: curry(function(a, b) { return a / b; }),
 
   /**
+   * Curried version of `max`.
+   *
+   * @static
+   * @function
+   * @param {number} a
+   * @param {number} b
+   * @returns {number} The maximum value.
+   */
+  max: curry(function(a, b) { return Math.max(a,  b); }),
+
+  /**
+   * Curried version of `min`.
+   *
+   * @static
+   * @function
+   * @param {number} a
+   * @param {number} b
+   * @returns {number} The minimum value.
+   */
+  min: curry(function(a, b) { return Math.min(a,  b); }),
+
+  /**
    * Curried version of `&&`.
    *
    * @static
@@ -302,5 +358,21 @@ module.exports = {
    * @param {number} a
    * @returns {number} The result.
    */
-  dec: function(a) { return a - 1; }
+  dec: function(a) { return a - 1; },
+
+  /**
+   * Creates a new array of numbers from `a` to `b`.
+   *
+   * @param {number} a
+   * @param {number} b
+   * @returns {Array} A new array.
+   */
+  range: curry(function(a, b) {
+    var n    = Math.abs(b - a) + 1,
+        sign = b > a ? 1 : -1;
+
+    return Array
+      .apply(null, Array(n))
+      .map(function(_, i) { return a + (i * sign); });
+  })
 };
