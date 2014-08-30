@@ -8,32 +8,25 @@ var Stream = require('./stream'),
 /**
  * Creates a new bus.
  *
- * @constructor
+ * @class
  * @augments Stream
  */
 function Bus() {
   var env = this;
 
-  this.as = [];
-  this.bs = [];
-
   Stream.call(this, function(next, done) {
-    env.as.push(next);
-    env.bs.push(done);
+    /**
+     * Pushes a value `a` onto the stream.
+     *
+     * @function Bus#push
+     * @param {*} a A value.
+     */
+    env.push = next;
   });
 }
 
 Bus.prototype = new Stream();
 
 Bus.prototype.constructor = Bus;
-
-/**
- * Pushes the value `a` onto the stream.
- *
- * @param {*} a A value.
- */
-Bus.prototype.push = function(a) {
-  this.as.map(fn.apply(a));
-};
 
 module.exports = Bus;
