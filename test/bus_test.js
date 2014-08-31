@@ -1,7 +1,6 @@
 'use strict';
 
-var Bus = require('../src/bus'),
-    fn  = require('../src/function');
+var Bus = require('../src/bus');
 
 describe('Bus', function() {
   var b, next, done;

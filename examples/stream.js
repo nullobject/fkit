@@ -7,7 +7,8 @@
 var fkit    = require('../src/fkit'),
     fn      = fkit.fn,
     obj     = fkit.obj,
-    request = require('superagent');
+    request = require('superagent'),
+    util    = fkit.util;
 
 var Stream = fkit.Stream;
 
@@ -34,6 +35,6 @@ var up   = Stream.fromEvent(document.getElementById('up'), 'click').map(fn.const
 
 up
   .merge(down)
-  .scan(1, fn.compose(fn.max(1), fn.add))
+  .scan(1, fn.compose(util.max(1), util.add))
   .flatMap(randomNumbers)
   .subscribe(fn.curry(console.log, console));

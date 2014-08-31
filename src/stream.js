@@ -2,8 +2,9 @@
 
 'use strict';
 
-var fn  = require('./function'),
-    obj = require('./object');
+var fn   = require('./fn'),
+    obj  = require('./obj'),
+    util = require('./util');
 
 /**
  * Creates a new stream with the `subscribe` function.
@@ -215,7 +216,7 @@ Stream.prototype.merge = fn.variadic(function(as) {
     subscribe: function(next, done) {
       var count = 0;
       var onDone = function() {
-        if (fn.gt(++count, as.length)) {
+        if (++count > as.length) {
           done();
         }
       };
@@ -237,7 +238,7 @@ Stream.prototype.split = function(n) {
   var env = this;
   var bound = false;
   var nexts = [], dones = [];
-  var streams = fn
+  var streams = util
     .range(0, n - 1)
     .map(function(_) {
       return obj.copy(env, {

@@ -2,8 +2,7 @@
 
 'use strict';
 
-var Stream = require('./stream'),
-    fn     = require('./function');
+var Stream = require('./stream');
 
 /**
  * Creates a new bus.

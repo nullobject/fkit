@@ -1,7 +1,7 @@
 'use strict';
 
-var fn  = require('../src/function'),
-    obj = require('../src/object');
+var fn  = require('../src/fn'),
+    obj = require('../src/obj');
 
 function MyObject() {}
 MyObject.prototype.constructor = MyObject;

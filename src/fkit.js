@@ -1,8 +1,11 @@
+/** @author Josh Bassett */
+
 'use strict';
 
 module.exports = {
   Bus:    require('./bus'),
   Stream: require('./stream'),
-  fn:     require('./function'),
-  obj:    require('./object')
+  fn:     require('./fn'),
+  obj:    require('./obj'),
+  util:   require('./util')
 };

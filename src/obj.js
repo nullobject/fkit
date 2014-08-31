@@ -2,7 +2,7 @@
 
 'use strict';
 
-var fn = require('./function');
+var fn = require('./fn');
 
 function extend(target, objects) {
   objects.forEach(function(object) {
