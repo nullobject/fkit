@@ -4,8 +4,12 @@
 
 var __slice = Array.prototype.slice;
 
-function curry(f) {
+function curry(f, env) {
   var arity = f.length;
+
+  if (env === void 0) {
+    env = this;
+  }
 
   return given([]);
 
@@ -14,7 +18,7 @@ function curry(f) {
       var updatedArgsSoFar = argsSoFar.concat(__slice.call(arguments, 0));
 
       if (updatedArgsSoFar.length >= arity) {
-        return f.apply(this, updatedArgsSoFar);
+        return f.apply(env, updatedArgsSoFar);
       } else {
         return given(updatedArgsSoFar);
       }
@@ -146,6 +150,7 @@ module.exports = {
    * @static
    * @function
    * @param {function} f The function to be curried.
+   * @param {Object} [env] The value of `this` provided for the call to `f`.
    * @returns {function} A new function.
    * @example
    *   function add(a, b) { return a + b; }

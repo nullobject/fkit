@@ -36,4 +36,4 @@ up
   .merge(down)
   .scan(1, fn.compose(fn.max(1), fn.add))
   .flatMap(randomNumbers)
-  .subscribe(fkit.log);
+  .subscribe(fn.curry(console.log, console));
