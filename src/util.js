@@ -1,11 +1,10 @@
-/** @author Josh Bassett */
-
 'use strict';
 
 var fn = require('./fn');
 
 /**
  * @module util
+ * @author Josh Bassett
  */
 module.exports = {
   /**

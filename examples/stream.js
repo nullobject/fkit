@@ -4,12 +4,11 @@
  * @tutorial test-tutorial
  */
 
-var fkit    = require('../src/fkit'),
-    fn      = fkit.fn,
-    obj     = fkit.obj,
+var fn      = require('../src/fn'),
+    obj     = require('../src/obj'),
     request = require('superagent'),
-    util    = fkit.util,
-    Stream  = fkit.Stream;
+    util    = require('../src/util'),
+    Stream  = require('../src/stream');
 
 var URL = 'http://www.random.org/strings/?num=@&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new';
 
@@ -18,15 +17,15 @@ function splitOnNewline(x) {
 }
 
 function randomNumbers(count) {
-  var f = function(callback) {
+  return Stream
+    .fromCallback(doRequest)
+    .map(fn.compose(splitOnNewline, obj.get('text')));
+
+  function doRequest(callback) {
     request
       .get(URL.replace('@', count))
       .end(callback);
-  };
-
-  return Stream
-    .fromCallback(f)
-    .map(fn.compose(splitOnNewline, obj.get('text')));
+  }
 }
 
 function show(result) {

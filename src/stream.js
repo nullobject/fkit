@@ -1,5 +1,3 @@
-/** @author Josh Bassett */
-
 'use strict';
 
 var fn   = require('./fn'),
@@ -15,6 +13,7 @@ var fn   = require('./fn'),
  *
  * @class
  * @param {function} subscribe A subscribe function.
+ * @author Josh Bassett
  */
 function Stream(subscribe) {
   /**
@@ -250,6 +249,8 @@ Stream.prototype.split = function(n) {
       });
     });
 
+  return streams;
+
   function subscribe() {
     if (!bound) {
       env.subscribe(
@@ -263,8 +264,6 @@ Stream.prototype.split = function(n) {
     }
     bound = true;
   }
-
-  return streams;
 };
 
 module.exports = Stream;

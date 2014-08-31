@@ -1,5 +1,3 @@
-/** @author Josh Bassett */
-
 'use strict';
 
 var Stream = require('./stream');
@@ -9,6 +7,7 @@ var Stream = require('./stream');
  *
  * @class
  * @augments Stream
+ * @author Josh Bassett
  */
 function Bus() {
   var env = this;

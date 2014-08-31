@@ -1,26 +1,20 @@
-/** @author Josh Bassett */
-
 'use strict';
 
 var __slice = Array.prototype.slice;
 
-function curry(f, env) {
+function curry(f) {
   var arity = f.length;
-
-  if (env === void 0) {
-    env = this;
-  }
 
   return given([]);
 
-  function given(argsSoFar) {
+  function given(args) {
     return function() {
-      var updatedArgsSoFar = argsSoFar.concat(__slice.call(arguments, 0));
+      var newArgs = args.concat(__slice.call(arguments, 0));
 
-      if (updatedArgsSoFar.length >= arity) {
-        return f.apply(env, updatedArgsSoFar);
+      if (newArgs.length >= arity) {
+        return f.apply(this, newArgs);
       } else {
-        return given(updatedArgsSoFar);
+        return given(newArgs);
       }
     };
   }
@@ -37,19 +31,19 @@ function variadic(f) {
     };
   } else {
     return function() {
-      var numArgs      = arguments.length,
-          namedArgs    = __slice.call(arguments, 0, arity - 1),
-          missingArgs  = Math.max(arity - numArgs - 1, 0),
-          padding      = new Array(missingArgs),
-          variadicArgs = __slice.call(arguments, f.length - 1);
+      var numMissingArgs = Math.max(arity - arguments.length - 1, 0),
+          missingArgs    = new Array(numMissingArgs),
+          namedArgs      = __slice.call(arguments, 0, arity - 1),
+          variadicArgs   = __slice.call(arguments, f.length - 1);
 
-      return f.apply(this, namedArgs.concat(padding).concat([variadicArgs]));
+      return f.apply(this, namedArgs.concat(missingArgs).concat([variadicArgs]));
     };
   }
 }
 
 function apply(f, a) {
-  return f.call(null, a);
+  /* jshint validthis: true */
+  return f.call(this, a);
 }
 
 function flip(f) {
@@ -59,7 +53,11 @@ function flip(f) {
 }
 
 /**
+ * This module defines the core functions which make up the building blocks of
+ * FKit.
+ *
  * @module fn
+ * @author Josh Bassett
  */
 module.exports = {
   /**
@@ -151,7 +149,6 @@ module.exports = {
    * @static
    * @function
    * @param {function} f The function to be curried.
-   * @param {Object} [env] The value of `this` provided for the call to `f`.
    * @returns {function} A new function.
    * @example
    *   function add(a, b) { return a + b; }
@@ -208,18 +205,18 @@ module.exports = {
   variadic: variadic,
 
   /**
-   * Applies the side-effecting function `f` to a value `a` and returns the
+   * Applies the side-effecting function `f` to the value `a` and returns the
    * value `a`.
    *
    * @static
    * @function
-   * @param {function} f The function to be tapped.
+   * @param {function} f The function to be applied.
    * @param {*} a A value.
-   * @returns {*} A value.
-   * @example tap(f, a) == a
+   * @returns {*} The value `a`.
+   * @example tap(f)(a) == a
    */
   tap: curry(function(f, a) {
-    f(a);
+    f.call(this, a);
     return a;
   })
 };

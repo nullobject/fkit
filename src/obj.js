@@ -1,5 +1,3 @@
-/** @author Josh Bassett */
-
 'use strict';
 
 var fn = require('./fn');
@@ -24,6 +22,7 @@ function get(property, target) {
 
 /**
  * @module obj
+ * @author Josh Bassett
  */
 module.exports = {
   /**
