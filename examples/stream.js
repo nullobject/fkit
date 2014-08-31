@@ -8,9 +8,8 @@ var fkit    = require('../src/fkit'),
     fn      = fkit.fn,
     obj     = fkit.obj,
     request = require('superagent'),
-    util    = fkit.util;
-
-var Stream = fkit.Stream;
+    util    = fkit.util,
+    Stream  = fkit.Stream;
 
 var URL = 'http://www.random.org/strings/?num=@&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new';
 
@@ -30,11 +29,21 @@ function randomNumbers(count) {
     .map(fn.compose(splitOnNewline, obj.get('text')));
 }
 
-var up   = Stream.fromEvent(document.getElementById('up'), 'click').map(fn.const(1)),
-    down = Stream.fromEvent(document.getElementById('down'), 'click').map(fn.const(-1));
+function show(result) {
+  document
+    .getElementById('results')
+    .appendChild(
+      fn.tap(function(li) {
+        li.appendChild(document.createTextNode(result.join(', ')));
+      }, document.createElement('li'))
+    );
+}
 
-up
-  .merge(down)
+var more = Stream.fromEvent(document.getElementById('more'), 'click').map(fn.const(1)),
+    less = Stream.fromEvent(document.getElementById('less'), 'click').map(fn.const(-1));
+
+more
+  .merge(less)
   .scan(1, fn.compose(util.max(1), util.add))
   .flatMap(randomNumbers)
-  .subscribe(fn.curry(console.log, console));
+  .subscribe(show);
