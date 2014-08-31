@@ -1,8 +1,8 @@
 'use strict';
 
-var Stream = require('../src/stream'),
-    events = require('events'),
-    util   = require('../src/util');
+var events = require('events'),
+    util   = require('../src/util'),
+    Stream = require('../src/stream');
 
 describe('Stream', function() {
   var bind, next, done;

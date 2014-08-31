@@ -81,5 +81,14 @@ describe('function', function() {
       expect(spy.calledWithExactly(1, [2, 3])).to.be.true;
     });
   });
+
+  describe('#tap', function() {
+    it('should return apply the given function to a value and return the value', function() {
+      function f(a) {}
+      var spy = sinon.spy(f);
+      expect(fn.tap(spy)(1)).to.be.equal(1);
+      expect(spy.calledWithExactly(1)).to.be.true;
+    });
+  });
 });
 

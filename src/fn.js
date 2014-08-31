@@ -65,7 +65,8 @@ module.exports = {
   /**
    * Creates a new function that returns its first argument.
    *
-   * @returns {function} A new function.
+   * @param {*} a A value.
+   * @returns {*} A value.
    * @example identity(a) == a
    */
   identity: function(a) {
@@ -204,5 +205,21 @@ module.exports = {
    *   function foo(head, tail) { ... }
    *   variadic(foo)(1, 2, 3) == foo(1, [2, 3])
    */
-  variadic: variadic
+  variadic: variadic,
+
+  /**
+   * Applies the side-effecting function `f` to a value `a` and returns the
+   * value `a`.
+   *
+   * @static
+   * @function
+   * @param {function} f The function to be tapped.
+   * @param {*} a A value.
+   * @returns {*} A value.
+   * @example tap(f, a) == a
+   */
+  tap: curry(function(f, a) {
+    f(a);
+    return a;
+  })
 };
