@@ -3,7 +3,7 @@
 test: unit lint
 
 doc:
-	@node_modules/.bin/jsdoc -c jsdoc.config.json -d doc src
+	@node_modules/.bin/jsdoc -c jsdoc.config.json src README.md
 
 lint:
 	@node_modules/.bin/jshint src

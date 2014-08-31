@@ -1,3 +1,9 @@
+/**
+ * Stream example.
+ *
+ * @tutorial test-tutorial
+ */
+
 var fkit    = require('../src/fkit'),
     fn      = fkit.fn,
     obj     = fkit.obj,
