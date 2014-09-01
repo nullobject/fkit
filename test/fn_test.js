@@ -24,11 +24,18 @@ describe('function', function() {
   });
 
   describe('#compose', function() {
-    it('should compose the given functions', function() {
+    it('should compose two functions', function() {
       function f(a) { return a / 2; }
       function g(a) { return a + 2; }
-      var h = fn.compose(f)(g);
+      var h = fn.compose(f, g);
       expect(h(1)).to.equal(f(g(1)));
+    });
+    it('should compose any number of functions', function() {
+      function f(a) { return a / 2; }
+      function g(a) { return a + 2; }
+      function h(a) { return a * 2; }
+      var i = fn.compose(f, g, h);
+      expect(i(1)).to.equal(f(g(h(1))));
     });
   });
 

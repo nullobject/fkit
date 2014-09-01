@@ -100,21 +100,19 @@ module.exports = {
   applyRight: curry(flip(apply)),
 
   /**
-   * Creates a new function that applies the function `f` to the result of the
-   * function `g`.
-   *
-   * This function is curried by default.
+   * Creates a new function that composes the functions.
    *
    * @static
    * @function
-   * @param {function} f
-   * @param {function} g
+   * @param {...function} fs A list of functions.
    * @returns {function} A new function.
-   * @example compose(f, g)(x) == f(g(x))
+   * @example compose(f, g, h)(a) == f(g(h(a)))
    */
-  compose: curry(function(f, g) {
-    return function() {
-      return f(g.apply(this, __slice.call(arguments)));
+  compose: variadic(function(fs) {
+    return function(a) {
+      return fs.reduceRight(function(a, f) {
+        return apply(f, a);
+      }, a);
     };
   }),
 
@@ -151,8 +149,8 @@ module.exports = {
    * @param {function} f The function to be curried.
    * @returns {function} A new function.
    * @example
-   *   function add(a, b) { return a + b; }
-   *   curry(add)(1)(2) == 3
+   *   var add = curry(function(a, b) { return a + b; });
+   *   add(1)(2) == 3
    */
   curry: curry,
 
