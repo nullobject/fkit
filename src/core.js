@@ -56,7 +56,7 @@ function flip(f) {
  * This module defines the core functions which make up the building blocks of
  * FKit.
  *
- * @module fn
+ * @module core
  * @author Josh Bassett
  */
 module.exports = {

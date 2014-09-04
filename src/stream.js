@@ -1,6 +1,6 @@
 'use strict';
 
-var fn   = require('./fn'),
+var core   = require('./core'),
     obj  = require('./obj'),
     util = require('./util');
 
@@ -36,7 +36,7 @@ Stream.prototype.constructor = Stream;
  */
 Stream.fromArray = function(as) {
   return new Stream(function(next, done) {
-    as.map(fn.unary(next));
+    as.map(core.unary(next));
     done();
   });
 };
@@ -65,7 +65,7 @@ Stream.fromEvent = function(target, type) {
     if (target.on) {
       target.on(type, next);
     } else if (target.addEventListener) {
-      target.addEventListener(type, fn.compose(next, obj.get('detail')));
+      target.addEventListener(type, core.compose(next, obj.get('detail')));
     }
   });
 };
@@ -124,7 +124,7 @@ Stream.prototype.map = function(f) {
   var env = this;
   return obj.copy(this, {
     subscribe: function(next, done) {
-      env.subscribe(fn.compose(next, f), done);
+      env.subscribe(core.compose(next, f), done);
     }
   });
 };
@@ -209,7 +209,7 @@ Stream.prototype.scan = function(a, f) {
  * @param {...Stream} as A list of streams to be merged.
  * @returns {Stream} A new stream.
  */
-Stream.prototype.merge = fn.variadic(function(as) {
+Stream.prototype.merge = core.variadic(function(as) {
   var env = this;
   return obj.copy(this, {
     subscribe: function(next, done) {
@@ -255,10 +255,10 @@ Stream.prototype.split = function(n) {
     if (!bound) {
       env.subscribe(
         function(a) {
-          nexts.map(fn.applyRight(a));
+          nexts.map(core.applyRight(a));
         },
         function() {
-          dones.map(fn.apply());
+          dones.map(core.apply());
         }
       );
     }

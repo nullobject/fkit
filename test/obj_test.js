@@ -1,7 +1,7 @@
 'use strict';
 
-var fn  = require('../src/fn'),
-    obj = require('../src/obj');
+var core = require('../src/core'),
+    obj  = require('../src/obj');
 
 function MyObject() {}
 MyObject.prototype.constructor = MyObject;
@@ -13,7 +13,7 @@ function buildObject() {
   o.b = 'ipsum';
   o.c = 1;
   o.d = 2;
-  o.e = fn.identity;
+  o.e = core.identity;
 
   return o;
 }

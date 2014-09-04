@@ -5,7 +5,7 @@
 module.exports = {
   Bus:    require('./bus'),
   Stream: require('./stream'),
-  fn:     require('./fn'),
+  core:   require('./core'),
   obj:    require('./obj'),
   util:   require('./util')
 };
