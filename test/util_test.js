@@ -27,6 +27,12 @@ describe('util', function() {
     });
   });
 
+  describe('#mod', function() {
+    it('should modulo the given values', function() {
+      expect(util.mod(1)(2)).to.equal(1);
+    });
+  });
+
   describe('#max', function() {
     it('should compare the given values', function() {
       expect(util.max(1)(2)).to.equal(2);

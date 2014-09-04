@@ -52,6 +52,17 @@ module.exports = {
   div: fn.curry(function(a, b) { return a / b; }),
 
   /**
+   * Curried version of `%`.
+   *
+   * @static
+   * @function
+   * @param {number} a
+   * @param {number} b
+   * @returns {number} The result.
+   */
+  mod: fn.curry(function(a, b) { return a % b; }),
+
+  /**
    * Curried version of `max`.
    *
    * @static
