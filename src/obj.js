@@ -21,6 +21,8 @@ function get(property, target) {
 }
 
 /**
+ * This module defines the object immutability helper functions.
+ *
  * @module obj
  * @author Josh Bassett
  */
