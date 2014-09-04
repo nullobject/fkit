@@ -72,6 +72,13 @@ describe('util', function() {
     });
   });
 
+  describe('#negate', function() {
+    it('should negate the given value', function() {
+      expect(util.negate(1)).to.equal(-1);
+      expect(util.negate(-1)).to.equal(1);
+    });
+  });
+
   describe('#eql', function() {
     it('should compare the given values', function() {
       var a = {}, b = {};

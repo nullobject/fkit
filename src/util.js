@@ -116,6 +116,13 @@ module.exports = {
 
   /**
    * Curried version of `===`.
+   * The unary negation operator.
+   *
+   * @param {number} a
+   * @returns {number} The result.
+   */
+  negate: function(a) { return -a; },
+
    *
    * @static
    * @function
