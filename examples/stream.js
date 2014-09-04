@@ -4,10 +4,10 @@
  * @tutorial test-tutorial
  */
 
-var fn      = require('../src/fn'),
+var core    = require('../src/core'),
+    fn      = require('../src/fn'),
     obj     = require('../src/obj'),
     request = require('superagent'),
-    util    = require('../src/util'),
     Stream  = require('../src/stream');
 
 var URL = 'http://www.random.org/strings/?num=@&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new';
@@ -19,7 +19,7 @@ function splitOnNewline(x) {
 function randomNumbers(count) {
   return Stream
     .fromCallback(doRequest)
-    .map(fn.compose(splitOnNewline, obj.get('text')));
+    .map(core.compose(splitOnNewline, obj.get('text')));
 
   function doRequest(callback) {
     request
@@ -32,17 +32,17 @@ function show(result) {
   document
     .getElementById('results')
     .appendChild(
-      fn.tap(function(li) {
+      core.tap(function(li) {
         li.appendChild(document.createTextNode(result.join(', ')));
       }, document.createElement('li'))
     );
 }
 
-var more = Stream.fromEvent(document.getElementById('more'), 'click').map(fn.const(1)),
-    less = Stream.fromEvent(document.getElementById('less'), 'click').map(fn.const(-1));
+var more = Stream.fromEvent(document.getElementById('more'), 'click').map(core.const(1)),
+    less = Stream.fromEvent(document.getElementById('less'), 'click').map(core.const(-1));
 
 more
   .merge(less)
-  .scan(1, fn.compose(util.max(1), util.add))
+  .scan(1, core.compose(fn.max(1), fn.add))
   .flatMap(randomNumbers)
   .subscribe(show);

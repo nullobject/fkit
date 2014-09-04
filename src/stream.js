@@ -1,8 +1,8 @@
 'use strict';
 
-var core   = require('./core'),
-    obj  = require('./obj'),
-    util = require('./util');
+var core = require('./core'),
+    fn   = require('./fn'),
+    obj  = require('./obj');
 
 /**
  * Creates a new stream with the `subscribe` function.
@@ -237,7 +237,7 @@ Stream.prototype.split = function(n) {
   var env = this;
   var bound = false;
   var nexts = [], dones = [];
-  var streams = util
+  var streams = fn
     .range(0, n - 1)
     .map(function(_) {
       return obj.copy(env, {

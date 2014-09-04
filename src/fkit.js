@@ -3,9 +3,9 @@
 'use strict';
 
 module.exports = {
-  Bus:    require('./bus'),
-  Stream: require('./stream'),
   core:   require('./core'),
+  fn:     require('./fn'),
   obj:    require('./obj'),
-  util:   require('./util')
+  Bus:    require('./bus'),
+  Stream: require('./stream')
 };

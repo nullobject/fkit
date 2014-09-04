@@ -3,7 +3,7 @@
 var core = require('./core');
 
 /**
- * @module util
+ * @module fn
  * @author Josh Bassett
  */
 module.exports = {
