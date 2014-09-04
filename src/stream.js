@@ -206,21 +206,21 @@ Stream.prototype.scan = function(a, f) {
  * Creates a new stream that merges the stream with one or more streams.
  *
  * @function Stream#merge
- * @param {...Stream} as A list of streams to be merged.
+ * @param {...Stream} ss A list of streams to be merged.
  * @returns {Stream} A new stream.
  */
-Stream.prototype.merge = core.variadic(function(as) {
+Stream.prototype.merge = core.variadic(function(ss) {
   var env = this;
   return obj.copy(this, {
     subscribe: function(next, done) {
       var count = 0;
       var onDone = function() {
-        if (++count > as.length) {
+        if (++count > ss.length) {
           done();
         }
       };
       env.subscribe(next, onDone);
-      as.map(function(a) {
+      ss.map(function(a) {
         a.subscribe(next, onDone);
       });
     }
