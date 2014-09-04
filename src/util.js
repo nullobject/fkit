@@ -107,6 +107,14 @@ module.exports = {
   or: fn.curry(function(a, b) { return a || b; }),
 
   /**
+   * Curried version of `!`.
+   *
+   * @param {*} a
+   * @returns {boolean} The result.
+   */
+  not: function(a) { return !a; },
+
+  /**
    * Curried version of `===`.
    *
    * @static

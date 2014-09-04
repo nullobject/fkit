@@ -65,6 +65,13 @@ describe('util', function() {
     });
   });
 
+  describe('#not', function() {
+    it('should NOT the given value', function() {
+      expect(util.not(false)).to.be.true;
+      expect(util.not(true)).to.be.false;
+    });
+  });
+
   describe('#eql', function() {
     it('should compare the given values', function() {
       var a = {}, b = {};
