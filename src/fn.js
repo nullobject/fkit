@@ -227,6 +227,10 @@ module.exports = {
   /**
    * Creates a new array of numbers from `a` to `b`.
    *
+   * This function is curried by default.
+   *
+   * @static
+   * @function
    * @param {number} a
    * @param {number} b
    * @returns {Array} A new array.
