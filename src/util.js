@@ -8,7 +8,9 @@ var fn = require('./fn');
  */
 module.exports = {
   /**
-   * Curried version of `+`.
+   * The addition operator.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -19,7 +21,9 @@ module.exports = {
   add: fn.curry(function(a, b) { return a + b; }),
 
   /**
-   * Curried version of `-`.
+   * The subtraction operator.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -30,7 +34,9 @@ module.exports = {
   sub: fn.curry(function(a, b) { return a - b; }),
 
   /**
-   * Curried version of `*`.
+   * The multiplication operator.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -41,7 +47,9 @@ module.exports = {
   mul: fn.curry(function(a, b) { return a * b; }),
 
   /**
-   * Curried version of `/`.
+   * The division operator.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -52,7 +60,9 @@ module.exports = {
   div: fn.curry(function(a, b) { return a / b; }),
 
   /**
-   * Curried version of `%`.
+   * The modulo operator.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -63,7 +73,9 @@ module.exports = {
   mod: fn.curry(function(a, b) { return a % b; }),
 
   /**
-   * Curried version of `max`.
+   * Returns the largest of the given values `a` and `b`.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -74,7 +86,9 @@ module.exports = {
   max: fn.curry(function(a, b) { return Math.max(a,  b); }),
 
   /**
-   * Curried version of `min`.
+   * Returns the smallest of the given values `a` and `b`.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -85,7 +99,9 @@ module.exports = {
   min: fn.curry(function(a, b) { return Math.min(a,  b); }),
 
   /**
-   * Curried version of `&&`.
+   * The logical AND operator.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -96,7 +112,9 @@ module.exports = {
   and: fn.curry(function(a, b) { return a && b; }),
 
   /**
-   * Curried version of `||`.
+   * The logical OR operator.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -107,15 +125,14 @@ module.exports = {
   or: fn.curry(function(a, b) { return a || b; }),
 
   /**
-   * Curried version of `!`.
+   * The logical NOT operator.
    *
-   * @param {*} a
+   * @param {boolean} a
    * @returns {boolean} The result.
    */
   not: function(a) { return !a; },
 
   /**
-   * Curried version of `===`.
    * The unary negation operator.
    *
    * @param {number} a
@@ -123,6 +140,10 @@ module.exports = {
    */
   negate: function(a) { return -a; },
 
+  /**
+   * The equality operator.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -133,7 +154,9 @@ module.exports = {
   eql: fn.curry(function(a, b) { return a === b; }),
 
   /**
-   * Curried version of `>`.
+   * The greater than operator.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -144,7 +167,9 @@ module.exports = {
   gt: fn.curry(function(a, b) { return a > b; }),
 
   /**
-   * Curried version of `>=`.
+   * The greater than or equal operator.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -155,7 +180,9 @@ module.exports = {
   gte: fn.curry(function(a, b) { return a >= b; }),
 
   /**
-   * Curried version of `<`.
+   * The less than operator.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
@@ -166,7 +193,9 @@ module.exports = {
   lt: fn.curry(function(a, b) { return a < b; }),
 
   /**
-   * Curried version of `<=`.
+   * The less than or equal operator.
+   *
+   * This function is curried by default.
    *
    * @static
    * @function
