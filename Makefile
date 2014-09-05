@@ -30,7 +30,7 @@ doc:
 	@node_modules/.bin/jsdoc -c jsdoc.config.json src README.md
 	@git checkout gh-pages
 	@rsync -a --delete --exclude='.git*' --exclude-from=.gitignore doc/ ./
-	@git add .
+	@git add --all .
 	@git commit -m "Publish $(version)."
 	@git push
 	@git checkout master
