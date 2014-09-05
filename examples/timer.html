@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en-au">
+  <head>
+    <meta charset="utf-8">
+    <title>Stream Example</title>
+    <script src="../build/fkit.js"></script>
+  </head>
+  <body>
+    <script>
+      function timer(next) {
+        setInterval(fkit.compose(next, Math.random), 100);
+      }
+
+      var sum = fkit.fn.fold(fkit.fn.add, 0),
+          s   = new fkit.Stream(timer).map(fkit.fn.mul(+1)),
+          t   = new fkit.Stream(timer).map(fkit.fn.mul(-1)),
+          u   = s.zip(t).map(sum);
+
+      u.subscribe(console.log.bind(console));
+    </script>
+  </body>
+</html>

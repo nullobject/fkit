@@ -1,7 +1,7 @@
 /**
  * Stream example.
  *
- * @tutorial test-tutorial
+ * @author Josh Bassett
  */
 
 var core    = require('../src/core'),
