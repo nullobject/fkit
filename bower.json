@@ -1,0 +1,25 @@
+{
+  "name": "fkit",
+  "version": "0.2.0",
+  "homepage": "https://github.com/nullobject/fkit",
+  "authors": [
+    "Josh Bassett <josh.bassett@gmail.com>"
+  ],
+  "description": "A functional programming toolkit for JavaScript.",
+  "main": "./build/fkit.js",
+  "keywords": [
+    "functional",
+    "programming",
+    "library",
+    "toolkit"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "doc",
+    "examples",
+    "node_modules",
+    "bower_components",
+    "test"
+  ]
+}
