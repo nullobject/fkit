@@ -1,14 +1,25 @@
 var webpack = require('webpack');
 
+plugins = [
+  new webpack.DefinePlugin({
+    DEVELOPMENT: JSON.stringify(JSON.parse(process.env.NODE_ENV === 'development' || true)),
+    PRODUCTION:  JSON.stringify(JSON.parse(process.env.NODE_ENV === 'production' || false))
+  })
+];
+
+if (process.env.NODE_ENV === 'production') {
+  plugins.push(new webpack.optimize.DedupePlugin());
+  plugins.push(new webpack.optimize.UglifyJsPlugin());
+}
+
 module.exports = {
   entry: {
-    // fkit: './src/fkit',
-    stream: './examples/stream'
+    fkit: './src/fkit.js',
+    stream: './examples/stream.js'
   },
   output: {
     filename: '[name].js',
     path: './build',
-    publicPath: '/build/'
-  },
-  // plugins: [new webpack.optimize.CommonsChunkPlugin('./src/fkit.js', ['stream'])]
+    library: 'fkit'
+  }
 };
