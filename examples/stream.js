@@ -43,6 +43,7 @@ var more = Stream.fromEvent(document.getElementById('more'), 'click').map(core.c
 
 more
   .merge(less)
-  .scan(1, core.compose(fn.max(1), fn.add))
+  .scan(1, fn.add)
+  .map(fn.max(1))
   .flatMap(randomNumbers)
   .subscribe(show);
