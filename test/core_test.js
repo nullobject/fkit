@@ -40,7 +40,7 @@ describe('function', function() {
   });
 
   describe('#flip', function() {
-    it('should flip the arguments to the given function', function() {
+    it('should flip the arguments for the given function', function() {
       function f(a, b) {}
       var spy = sinon.spy(f);
       core.flip(spy)('hello', 'world');
@@ -56,16 +56,31 @@ describe('function', function() {
   });
 
   describe('#curry', function() {
-    it('should curry the given function', function() {
+    it('should not curry a nullary function', function() {
+      function f() {}
+      var g = core.curry(f);
+      expect(f).to.equal(g);
+    });
+
+    it('should not curry a unary function', function() {
+      function f(a) {}
+      var g = core.curry(f);
+      expect(f).to.equal(g);
+    });
+
+    it('should curry a binary function', function() {
       function f(a, b) {}
       var spy = sinon.spy(f);
-      core.curry(spy)('hello')('world');
+      var g = core.curry(spy);
+
+      expect(f).to.not.equal(g);
+      g('hello')('world');
       expect(spy.calledWithExactly('hello', 'world')).to.be.true;
     });
   });
 
   describe('#unary', function() {
-    it('should return a function that accepts only one argument', function() {
+    it('should return a unary function', function() {
       var spy = sinon.spy();
       core.unary(spy)(1, 2, 3);
       expect(spy.calledWithExactly(1)).to.be.true;
@@ -73,7 +88,7 @@ describe('function', function() {
   });
 
   describe('#binary', function() {
-    it('should return a function that accepts only two arguments', function() {
+    it('should return a binary function', function() {
       var spy = sinon.spy();
       core.binary(spy)(1, 2, 3);
       expect(spy.calledWithExactly(1, 2)).to.be.true;
@@ -81,7 +96,7 @@ describe('function', function() {
   });
 
   describe('#variadic', function() {
-    it('should return a function that accepts any number of arguments', function() {
+    it('should return a variadic function', function() {
       function f(a, b) {}
       var spy = sinon.spy(f);
       core.variadic(spy)(1, 2, 3);

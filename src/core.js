@@ -5,7 +5,11 @@ var __slice = Array.prototype.slice;
 function curry(f) {
   var arity = f.length;
 
-  return given([]);
+  if (arity <= 1) {
+    return f;
+  } else {
+    return given([]);
+  }
 
   function given(args) {
     return function() {
