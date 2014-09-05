@@ -147,4 +147,32 @@ describe('fn', function() {
       expect(fn.range(1)(1)).to.eql([1]);
     });
   });
+
+  describe('#map', function() {
+    it('should map the given array', function() {
+      function f(a) { return a + 1; }
+      expect(fn.map(f)([1, 2, 3])).to.be.eql([2, 3, 4]);
+    });
+  });
+
+  describe('#filter', function() {
+    it('should filter the given array', function() {
+      function f(a) { return a > 1; }
+      expect(fn.filter(f)([1, 2, 3])).to.be.eql([2, 3]);
+    });
+  });
+
+  describe('#fold', function() {
+    it('should fold the given array', function() {
+      function f(a, b) { return a + b; }
+      expect(fn.fold(f)(0)([1, 2, 3])).to.be.equal(6);
+    });
+  });
+
+  describe('#scan', function() {
+    it('should scan the given array', function() {
+      function f(a, b) { return a + b; }
+      expect(fn.scan(f)(0)([1, 2, 3])).to.be.eql([0, 1, 3, 6]);
+    });
+  });
 });

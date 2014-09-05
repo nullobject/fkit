@@ -242,5 +242,71 @@ module.exports = {
     return Array
       .apply(null, Array(n))
       .map(function(_, i) { return a + (i * sign); });
+  }),
+
+  /**
+   * Maps the list of `as` with the function `f`.
+   *
+   * This function is curried by default.
+   *
+   * @static
+   * @function
+   * @param {function} f
+   * @param {Array} as
+   * @returns {Array} A new array.
+   */
+  map: core.curry(function(f, as) {
+    return as.map(f);
+  }),
+
+  /**
+   * Filters the list of `as` with the predicate function `f`.
+   *
+   * This function is curried by default.
+   *
+   * @static
+   * @function
+   * @param {function} f
+   * @param {Array} as
+   * @returns {Array} A new array.
+   */
+  filter: core.curry(function(f, as) {
+    return as.filter(f);
+  }),
+
+  /**
+   * Folds the list of `as` with the function `f` and and starting value `s`.
+   *
+   * This function is curried by default.
+   *
+   * @static
+   * @function
+   * @param {function} f
+   * @param {*} s
+   * @param {Array} as
+   * @returns {*} The result.
+   */
+  fold: core.curry(function(f, s, as) {
+    return as.reduce(f, s);
+  }),
+
+  /**
+   * Scans the list of `as` with the function `f` and and starting value `s`.
+   *
+   * This function is curried by default.
+   *
+   * @static
+   * @function
+   * @param {function} f
+   * @param {*} s
+   * @param {Array} as
+   * @returns {*} The result.
+   */
+  scan: core.curry(function(f, s, as) {
+    var bs = [s];
+    as.reduce(function(r, a) {
+      return core.tap(bs.push.bind(bs), f(r, a));
+    }, s);
+    return bs;
   })
 };
