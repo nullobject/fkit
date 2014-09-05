@@ -1,9 +1,29 @@
-status := $(shell git status --porcelain)
+status  := $(shell git status --porcelain)
 version := $(shell git describe --tags)
 
-.PHONY: doc test list unit
+.PHONY: all clean doc lint production setup test unit
+
+all: setup production
+
+clean:
+	@rm -rf build
+
+setup:
+	@npm install
+
+production: build/fkit.js
+
+build/fkit.js:
+	@mkdir -p build
+	@NODE_ENV=production webpack --colors --optimize-minimize --progress
 
 test: unit lint
+
+unit:
+	@node_modules/.bin/mocha
+
+lint:
+	@node_modules/.bin/jshint src
 
 doc:
 	@test -z "$(status)"
@@ -14,9 +34,3 @@ doc:
 	@git commit -m "Publish $(version)."
 	@git push
 	@git checkout master
-
-lint:
-	@node_modules/.bin/jshint src
-
-unit:
-	@node_modules/.bin/mocha
