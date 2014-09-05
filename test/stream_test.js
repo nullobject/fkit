@@ -212,4 +212,8 @@ describe('Stream', function() {
       expect(done.calledAfter(next)).to.be.true;
     });
   });
+
+  describe('#zip', function() {
+    it('should zip the given streams');
+  });
 });

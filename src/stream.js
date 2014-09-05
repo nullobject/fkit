@@ -219,9 +219,9 @@ Stream.prototype.merge = core.variadic(function(ss) {
           done();
         }
       };
-      env.subscribe(next, onDone);
-      ss.map(function(a) {
-        a.subscribe(next, onDone);
+
+      [env].concat(ss).map(function(s) {
+        s.subscribe(next, onDone);
       });
     }
   });
@@ -234,9 +234,11 @@ Stream.prototype.merge = core.variadic(function(ss) {
  * @returns {Array} An array of streams.
  */
 Stream.prototype.split = function(n) {
-  var env = this;
-  var bound = false;
-  var nexts = [], dones = [];
+  var env = this,
+      isSubscribed = false,
+      nexts = [],
+      dones = [];
+
   var streams = fn
     .range(0, n - 1)
     .map(function(_) {
@@ -244,15 +246,15 @@ Stream.prototype.split = function(n) {
         subscribe: function(next, done) {
           nexts.push(next);
           dones.push(done);
-          subscribe();
+          onSubscribe();
         }
       });
     });
 
   return streams;
 
-  function subscribe() {
-    if (!bound) {
+  function onSubscribe() {
+    if (!isSubscribed) {
       env.subscribe(
         function(a) {
           nexts.map(core.applyRight(a));
@@ -262,8 +264,46 @@ Stream.prototype.split = function(n) {
         }
       );
     }
-    bound = true;
+    isSubscribed = true;
   }
 };
+
+/**
+ * Creates a new stream that zips the stream with one or more streams.
+ *
+ * @function Stream#zip
+ * @param {...Stream} ss A list of streams to be zipped.
+ * @returns {Stream} A new stream.
+ */
+Stream.prototype.zip = core.variadic(function(ss) {
+  var env = this;
+
+  return obj.copy(this, {
+    subscribe: function(next, done) {
+      var isDone = false,
+          count = 0,
+          nexts = new Array(ss.length);
+
+      var onNext = function(a, index) {
+        nexts[index] = a;
+        if (++count > ss.length) {
+          next(nexts);
+          count = 0;
+        }
+      };
+
+      var onDone = function() {
+        if (!isDone) {
+          done();
+        }
+        isDone = true;
+      };
+
+      [env].concat(ss).map(function(s, index) {
+        s.subscribe(function(a) { onNext(a, index); }, onDone);
+      });
+    }
+  });
+});
 
 module.exports = Stream;
