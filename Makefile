@@ -38,7 +38,8 @@ bump:
 	@sed -i "" $(regex) bower.json
 	@sed -i "" $(regex) package.json
 
-release: build bump
+release: test build bump
 	@git changelog -t "v$(version)"
 	@git add --all .
 	@git release "v$(version)"
+	@npm publish
