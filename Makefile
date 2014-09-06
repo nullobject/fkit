@@ -1,9 +1,10 @@
 status  := $(shell git status --porcelain)
 version := $(shell git describe --tags)
+regex   := "s/\([\"\']version[\"\'][[:space:]]*:[[:space:]]*\)\([\"\'].*[\"\']\)/\1\"$(version)\"/g"
 
-.PHONY: all clean doc lint production setup test unit
+.PHONY: all build bump clean doc lint release setup test unit
 
-all: setup production
+all: setup build
 
 clean:
 	@rm -rf build
@@ -11,11 +12,9 @@ clean:
 setup:
 	@npm install
 
-production: build/fkit.js
-
-build/fkit.js:
+build:
 	@mkdir -p build
-	@NODE_ENV=production webpack --colors --optimize-minimize --progress
+	@NODE_ENV=build webpack --colors --optimize-minimize --progress
 
 test: unit lint
 
@@ -29,8 +28,17 @@ doc:
 	@test -z "$(status)"
 	@node_modules/.bin/jsdoc -c jsdoc.config.json src README.md
 	@git checkout gh-pages
-	@rsync -a --delete --exclude='.git*' --exclude-from=.gitignore doc/ ./
+	@rsync -a --delete --exclude=".git*" --exclude-from=.gitignore doc/ ./
 	@git add --all .
 	@git commit -m "Publish $(version)."
 	@git push
 	@git checkout master
+
+bump:
+	@sed -i "" $(regex) bower.json
+	@sed -i "" $(regex) package.json
+
+release: bump
+	@git changelog -t "v$(version)"
+	@git add --all .
+	@git release "v$(version)"
