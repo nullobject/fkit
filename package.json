@@ -1,6 +1,6 @@
 {
   "name": "fkit",
-  "version": "0.1.0",
+  "version": "0.2.1",
   "description": "A functional programming toolkit for JavaScript.",
   "main": "./src/fkit.js",
   "scripts": {

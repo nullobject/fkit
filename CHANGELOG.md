@@ -1,3 +1,26 @@
+v0.2.1 / 2014-09-06
+==================
+
+ * Add bump & release tasks to makefile.
+ * Add bower.json.
+ * Add examples to readme.
+ * Update doc task to ensure removals are tracked.
+ * Add a timer example.
+ * Alias the core module to fkit.
+ * Add zip function to stream.
+ * Add map, filter, fold, and scan to fn module.
+ * Remove src dir from npmignore.
+ * Fix webpack config.
+ * Add prod tasks to makefile.
+ * Fix stream example.
+ * Don't curry nullary or unary functions.
+ * Don't build with node 0.8.x.
+ * Add travis badge to readme.
+ * Change test script to mocha.
+ * Stream cleanups.
+ * Add travis.yml.
+ * Fix the jsdoc for fn.range.
+
 v0.2.0 / 2014-09-04
 ==================
 
