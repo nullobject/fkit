@@ -14,12 +14,11 @@ if (process.env.NODE_ENV === 'production') {
 
 module.exports = {
   entry: {
-    fkit: './src/fkit.js',
-    stream: './examples/stream.js'
+    fkit: './src/fkit.js'
   },
   output: {
     filename: '[name].js',
-    path: './build',
-    library: 'fkit'
+    path:     './build',
+    library:  'fkit'
   }
 };
