@@ -3,6 +3,8 @@
   <head>
     <meta charset="utf-8">
     <title>Stream Example</title>
+    <script src="../build/fkit.js"></script>
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
   </head>
   <body>
     <button id="more">More</button>
@@ -11,6 +13,44 @@
     <h1>Results</h1>
     <ul id="results"></ul>
 
-    <script src="../build/stream.js"></script>
+    <script>
+      var URL = 'http://www.random.org/strings/?num=@&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new';
+
+      function splitOnNewline(x) {
+        return x.trim().split(/\n/);
+      }
+
+      function randomNumbers(count) {
+        return fkit.Stream
+          .fromCallback(doRequest)
+          .map(fkit.compose(splitOnNewline, fkit.obj.get('text')));
+
+        function doRequest(callback) {
+          superagent
+            .get(URL.replace('@', count))
+            .end(callback);
+        }
+      }
+
+      function show(result) {
+        document
+          .getElementById('results')
+          .appendChild(
+            fkit.tap(function(li) {
+              li.appendChild(document.createTextNode(result.join(', ')));
+            }, document.createElement('li'))
+          );
+      }
+
+      var more = fkit.Stream.fromEvent(document.getElementById('more'), 'click').map(fkit.const(1)),
+          less = fkit.Stream.fromEvent(document.getElementById('less'), 'click').map(fkit.const(-1));
+
+      more
+        .merge(less)
+        .scan(1, fkit.fn.add)
+        .map(fkit.fn.max(1))
+        .flatMap(randomNumbers)
+        .subscribe(show);
+    </script>
   </body>
 </html>
