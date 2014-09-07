@@ -12,7 +12,7 @@
     "toolkit"
   ],
   "main": "./src/fkit.js",
-  "files": "./src",
+  "files": ["./src"],
   "scripts": {
     "test": "mocha"
   },

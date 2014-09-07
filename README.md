@@ -2,10 +2,10 @@
 
 FKit is a [functional
 programming](http://en.wikipedia.org/wiki/Functional_programming) library for
-JavaScript. It is made up of a small number of functions and classes which are
-squarely focused on every-day utility. This provides developers with functional
-programming "building blocks" that they can use to write better, more
-expressive code.
+JavaScript. It consists of a small number of functions and classes that are
+squarely focused on everyday utility. This provides developers with the
+functional programming "building blocks" that they can use to write better,
+more expressive code.
 
 ## Examples
 
@@ -118,4 +118,30 @@ values:
 var f = fkit.scan(fkit.fn.add, 0);
 f([1, 2, 3]);
 => [0, 1, 3, 6]
+```
+
+## Contributing
+
+### Build
+
+Build FKit:
+
+```
+> make build
+```
+
+### Test
+
+Run the tests:
+
+```
+> make test
+```
+
+### Release
+
+Ship a new release x.y.z:
+
+```
+> make release version=x.y.z
 ```
