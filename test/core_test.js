@@ -3,9 +3,9 @@
 var core = require('../src/core');
 
 describe('function', function() {
-  describe('#identity', function() {
+  describe('#id', function() {
     it('should return a function that returns its argument', function() {
-      expect(core.identity(1)).to.equal(1);
+      expect(core.id(1)).to.equal(1);
     });
   });
 

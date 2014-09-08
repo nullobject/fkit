@@ -1,7 +1,6 @@
 'use strict';
 
-var core = require('../src/core'),
-    obj  = require('../src/obj');
+var obj = require('../src/obj');
 
 function MyObject() {}
 MyObject.prototype.constructor = MyObject;
@@ -13,7 +12,7 @@ function buildObject() {
   o.b = 'ipsum';
   o.c = 1;
   o.d = 2;
-  o.e = core.identity;
+  o.e = function() {};
 
   return o;
 }
@@ -76,7 +75,9 @@ describe('object', function() {
 
   describe('#apply', function() {
     it('should apply the function of the given property', function() {
-      expect(obj.apply('e', 1, target)).to.equal(1);
+      var spy = sinon.spy(target, 'e');
+      obj.apply('e', 1, target)
+      expect(spy.calledWithExactly(1)).to.be.true
     });
   });
 });

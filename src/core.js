@@ -69,9 +69,9 @@ module.exports = {
    *
    * @param {*} a A value.
    * @returns {*} A value.
-   * @example identity(a) == a
+   * @example id(a) == a
    */
-  identity: function(a) {
+  id: function(a) {
     return a;
   },
 
