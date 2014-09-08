@@ -4,7 +4,7 @@ regex   := "s/\([\"\']version[\"\'][[:space:]]*:[[:space:]]*\)\([\"\'].*[\"\']\)
 
 .PHONY: all build bump changelog clean doc lint publish-api publish-npm release test unit
 
-all: setup build
+all: build
 
 test: unit lint
 
