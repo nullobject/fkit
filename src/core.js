@@ -65,25 +65,14 @@ function flip(f) {
  */
 module.exports = {
   /**
-   * Creates a new function that returns its first argument.
-   *
-   * @param {*} a A value.
-   * @returns {*} A value.
-   * @example id(a) == a
-   */
-  id: function(a) {
-    return a;
-  },
-
-  /**
    * Applies the function `f` to the value `a`.
    *
    * This function is curried by default.
    *
    * @static
    * @function
-   * @param {function} f
-   * @param {*} a
+   * @param {function} f A function to be applied.
+   * @param {*} a A value.
    * @returns {*} The result.
    * @example apply(f, a) == f(a)
    */
@@ -96,19 +85,19 @@ module.exports = {
    *
    * @static
    * @function
-   * @param {*} a
-   * @param {function} f
+   * @param {*} a A value.
+   * @param {function} f A function to be applied.
    * @returns {*} The result.
    * @example applyRight(a, f) == f(a)
    */
   applyRight: curry(flip(apply)),
 
   /**
-   * Creates a new function that composes the functions.
+   * Composes the list of functions `fs`.
    *
    * @static
    * @function
-   * @param {...function} fs A list of functions.
+   * @param {...function} fs A list of functions to be composed.
    * @returns {function} A new function.
    * @example compose(f, g, h)(a) == f(g(h(a)))
    */
@@ -125,16 +114,28 @@ module.exports = {
    *
    * @static
    * @function
-   * @param {function} f
+   * @param {function} f A function to be flipped.
    * @returns {function} A new function.
    */
   flip: flip,
 
   /**
-   * Creates a function that always returns the value `c`, regardless of the
-   * given arguments.
+   * Returns the identity function (a function that returns its first
+   * argument).
    *
-   * @param {*} c The constant value.
+   * @param {*} a A value.
+   * @returns {*} The value `a`.
+   * @example id(a) == a
+   */
+  id: function(a) {
+    return a;
+  },
+
+  /**
+   * Returns the constant function (a function that always returns the value
+   * `c`, regardless of the given arguments).
+   *
+   * @param {*} c A value.
    * @returns {function} A new function.
    * @example const(c)(1, 2, 3, ...) == c
    */
@@ -150,7 +151,7 @@ module.exports = {
    *
    * @static
    * @function
-   * @param {function} f The function to be curried.
+   * @param {function} f A function to be curried.
    * @returns {function} A new function.
    * @example
    *   var add = curry(function(a, b) { return a + b; });
@@ -162,7 +163,7 @@ module.exports = {
    * Creates a new function that wraps the function `f` to accept only one
    * argument.
    *
-   * @param {function} f The function to be wrapped.
+   * @param {function} f A function to be wrapped.
    * @returns {function} A new function.
    */
   unary: function(f) {
@@ -179,7 +180,7 @@ module.exports = {
    * Creates a new function that wraps the function `f` to accept only two
    * arguments.
    *
-   * @param {function} f The function to be wrapped.
+   * @param {function} f A function to be wrapped.
    * @returns {function} A new function.
    */
   binary: function(f) {
@@ -198,7 +199,7 @@ module.exports = {
    *
    * @static
    * @function
-   * @param {function} f The function to be wrapped.
+   * @param {function} f A function to be wrapped.
    * @returns {function} A new function.
    * @example
    *   function foo(head, tail) { ... }
@@ -212,7 +213,7 @@ module.exports = {
    *
    * @static
    * @function
-   * @param {function} f The function to be applied.
+   * @param {function} f A function to be applied.
    * @param {*} a A value.
    * @returns {*} The value `a`.
    * @example tap(f)(a) == a

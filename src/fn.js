@@ -84,7 +84,7 @@ module.exports = {
    * @function
    * @param {number} a
    * @param {number} b
-   * @returns {number} The maximum value.
+   * @returns {number} The result.
    */
   max: core.curry(function(a, b) { return Math.max(a,  b); }),
 
@@ -97,7 +97,7 @@ module.exports = {
    * @function
    * @param {number} a
    * @param {number} b
-   * @returns {number} The minimum value.
+   * @returns {number} The result.
    */
   min: core.curry(function(a, b) { return Math.min(a,  b); }),
 
