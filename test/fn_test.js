@@ -175,4 +175,14 @@ describe('fn', function() {
       expect(fn.scan(f)(0)([1, 2, 3])).to.be.eql([0, 1, 3, 6]);
     });
   });
+
+  describe('#concat', function() {
+    it('should concat arrays', function() {
+      expect(fn.concat([1, 2, 3])([4, 5, 6])).to.be.eql([1, 2, 3, 4, 5, 6]);
+    });
+
+    it('should concat strings', function() {
+      expect(fn.concat("foo")("bar")).to.be.eql("foobar");
+    });
+  });
 });

@@ -308,5 +308,20 @@ module.exports = {
       return core.tap(bs.push.bind(bs), f(r, a));
     }, s);
     return bs;
+  }),
+
+  /**
+   * Concatenates the objects `a` and `b`.
+   *
+   * This function is curried by default.
+   *
+   * @static
+   * @function
+   * @param {*} a
+   * @param {*} b
+   * @returns {*} The result.
+   */
+  concat: core.curry(function(a, b) {
+    return a.concat(b);
   })
 };
