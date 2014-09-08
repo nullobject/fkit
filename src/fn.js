@@ -21,9 +21,8 @@ module.exports = {
   /**
    * The addition operator.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {number} a
    * @param {number} b
@@ -34,9 +33,8 @@ module.exports = {
   /**
    * The subtraction operator.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {number} a
    * @param {number} b
@@ -47,9 +45,8 @@ module.exports = {
   /**
    * The multiplication operator.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {number} a
    * @param {number} b
@@ -60,9 +57,8 @@ module.exports = {
   /**
    * The division operator.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {number} a
    * @param {number} b
@@ -73,9 +69,8 @@ module.exports = {
   /**
    * The modulo operator.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {number} a
    * @param {number} b
@@ -86,9 +81,8 @@ module.exports = {
   /**
    * Returns the largest of the given values `a` and `b`.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {number} a
    * @param {number} b
@@ -99,9 +93,8 @@ module.exports = {
   /**
    * Returns the smallest of the given values `a` and `b`.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {number} a
    * @param {number} b
@@ -112,9 +105,8 @@ module.exports = {
   /**
    * The logical AND operator.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {boolean} a
    * @param {boolean} b
@@ -125,9 +117,8 @@ module.exports = {
   /**
    * The logical OR operator.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {boolean} a
    * @param {boolean} b
@@ -154,9 +145,8 @@ module.exports = {
   /**
    * The equality operator.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {*} a
    * @param {*} b
@@ -167,9 +157,8 @@ module.exports = {
   /**
    * The greater than operator.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {number} a
    * @param {number} b
@@ -180,9 +169,8 @@ module.exports = {
   /**
    * The greater than or equal operator.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {number} a
    * @param {number} b
@@ -193,9 +181,8 @@ module.exports = {
   /**
    * The less than operator.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {number} a
    * @param {number} b
@@ -206,9 +193,8 @@ module.exports = {
   /**
    * The less than or equal operator.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {number} a
    * @param {number} b
@@ -235,9 +221,8 @@ module.exports = {
   /**
    * Creates a new array of numbers from `a` to `b`.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {number} a
    * @param {number} b
@@ -255,9 +240,8 @@ module.exports = {
   /**
    * Maps the list of `as` with the function `f`.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {function} f
    * @param {Array} as
@@ -270,9 +254,8 @@ module.exports = {
   /**
    * Filters the list of `as` with the predicate function `f`.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {function} f
    * @param {Array} as
@@ -285,9 +268,8 @@ module.exports = {
   /**
    * Folds the list of `as` with the function `f` and and starting value `s`.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {function} f
    * @param {*} s
@@ -299,9 +281,8 @@ module.exports = {
   /**
    * Scans the list of `as` with the function `f` and and starting value `s`.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {function} f
    * @param {*} s
@@ -321,9 +302,8 @@ module.exports = {
   /**
    * Appends the objects `a` and `b`.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {*} a
    * @param {*} b
@@ -333,8 +313,6 @@ module.exports = {
 
   /**
    * Concatenates the list of `as`.
-   *
-   * This function is curried by default.
    *
    * @static
    * @function

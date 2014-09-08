@@ -46,9 +46,8 @@ module.exports = {
   /**
    * Gets a property of the target object.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {string} property A string representing the property name.
    * @param {Object} target A target object.
@@ -61,9 +60,8 @@ module.exports = {
    * Creates a copy of the `target` object with the `property` set to the
    * `value`.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {string} property A string representing the property name.
    * @param {Object} value A property value.
@@ -80,8 +78,9 @@ module.exports = {
   /**
    * Applies the function of the `property` on the `target` object to the value `a`.
    *
-   * This function is curried by default.
-   *
+   * @static
+   * @curried
+   * @function
    * @param {string} property A string representing the property name.
    * @param {*} a
    * @param {Object} target A target object.

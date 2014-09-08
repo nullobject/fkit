@@ -67,9 +67,8 @@ module.exports = {
   /**
    * Applies the function `f` to the value `a`.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {function} f A function to be applied.
    * @param {*} a A value.
@@ -81,9 +80,8 @@ module.exports = {
   /**
    * Applies the function `f` to the value `a`.
    *
-   * This function is curried by default.
-   *
    * @static
+   * @curried
    * @function
    * @param {*} a A value.
    * @param {function} f A function to be applied.

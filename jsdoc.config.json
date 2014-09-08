@@ -1,7 +1,10 @@
 {
+  "tags": {
+    "allowUnknownTags": true
+  },
   "plugins": ["plugins/markdown"],
   "opts": {
     "destination": "doc",
     "tutorials": "examples"
-}
+  }
 }
