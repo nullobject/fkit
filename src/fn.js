@@ -2,6 +2,14 @@
 
 var core = require('./core');
 
+function append(a, b) {
+  return a.concat(b);
+}
+
+function fold(f, s, as) {
+  return as.reduce(f, s);
+}
+
 /**
  * This module defines the utility functions which can be easily combined and
  * composed.
@@ -286,9 +294,7 @@ module.exports = {
    * @param {Array} as
    * @returns {*} The result.
    */
-  fold: core.curry(function(f, s, as) {
-    return as.reduce(f, s);
-  }),
+  fold: core.curry(fold),
 
   /**
    * Scans the list of `as` with the function `f` and and starting value `s`.
@@ -304,14 +310,16 @@ module.exports = {
    */
   scan: core.curry(function(f, s, as) {
     var bs = [s];
-    as.reduce(function(r, a) {
+
+    fold(function(r, a) {
       return core.tap(bs.push.bind(bs), f(r, a));
-    }, s);
+    }, s, as);
+
     return bs;
   }),
 
   /**
-   * Concatenates the objects `a` and `b`.
+   * Appends the objects `a` and `b`.
    *
    * This function is curried by default.
    *
@@ -321,7 +329,19 @@ module.exports = {
    * @param {*} b
    * @returns {*} The result.
    */
-  concat: core.curry(function(a, b) {
-    return a.concat(b);
+  append: core.curry(append),
+
+  /**
+   * Concatenates the list of `as`.
+   *
+   * This function is curried by default.
+   *
+   * @static
+   * @function
+   * @param {...*} as
+   * @returns {*} The result.
+   */
+  concat: core.variadic(function(a, as) {
+    return fold(append, a, as);
   })
 };

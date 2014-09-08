@@ -176,13 +176,23 @@ describe('fn', function() {
     });
   });
 
+  describe('#append', function() {
+    it('should append arrays', function() {
+      expect(fn.append([1, 2, 3])([4, 5, 6])).to.be.eql([1, 2, 3, 4, 5, 6]);
+    });
+
+    it('should append strings', function() {
+      expect(fn.append('foo')('bar')).to.be.equal('foobar');
+    });
+  });
+
   describe('#concat', function() {
     it('should concat arrays', function() {
-      expect(fn.concat([1, 2, 3])([4, 5, 6])).to.be.eql([1, 2, 3, 4, 5, 6]);
+      expect(fn.concat([1, 2, 3], [4, 5, 6], [7, 8, 9])).to.be.eql([1, 2, 3, 4, 5, 6, 7, 8, 9]);
     });
 
     it('should concat strings', function() {
-      expect(fn.concat("foo")("bar")).to.be.eql("foobar");
+      expect(fn.concat('foo', 'bar', 'baz')).to.be.equal('foobarbaz');
     });
   });
 });
