@@ -1,11 +1,53 @@
-# [FKit](http://nullobject.github.io/fkit/) [![Build Status](https://travis-ci.org/nullobject/fkit.svg?branch=master)](https://travis-ci.org/nullobject/fkit)
+# FKit [![Build Status](https://travis-ci.org/nullobject/fkit.svg?branch=master)](https://travis-ci.org/nullobject/fkit)
 
 FKit is a [functional
 programming](http://en.wikipedia.org/wiki/Functional_programming) library for
 JavaScript. It consists of a small number of functions and classes that are
-squarely focused on everyday utility. This provides developers with the
-functional programming "building blocks" that they can use to write better,
-more expressive code.
+squarely focused on everyday utility. This provides developers with functional
+programming "building blocks" that they can use to write better, more
+expressive code.
+
+## Documentation
+
+* [API documentation](http://nullobject.github.io/fkit/)
+
+## Installing
+
+### Browser
+
+Download the [fkit.js](https://raw.githubusercontent.com/nullobject/fkit/master/build/fkit.js) minified library.
+
+Then load it in a script tag:
+
+```html
+<script src="fkit.js"></script>
+<script>
+  console.log(fkit.add(1)(2));
+</script>
+```
+
+### Node
+
+Install the npm package:
+
+```
+> npm install fkit
+```
+
+Then require it:
+
+```js
+var fkit = require('fkit');
+console.log(fkit.add(1)(2));
+```
+
+### Bower
+
+Install the bower component:
+
+```
+> bower install fkit
+```
 
 ## Examples
 
@@ -25,9 +67,9 @@ f(1)(2);
 ```
 
 The [`fkit.fn`](http://nullobject.github.io/fkit/module-fn.html) module
-provides curried versions for many of the standard JavaScript functions. Using
-the `fkit.fn.add` function (which is the curried version of the `+` operator)
-the above code can be rewritten as:
+provides curried versions for many of the standard JavaScript functions and
+operators. Using the `fkit.fn.add` function (which is the curried version of
+the `+` operator) the above code can be rewritten as:
 
 ```js
 fkit.fn.add(1)(2);
