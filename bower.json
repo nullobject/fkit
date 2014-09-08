@@ -13,7 +13,7 @@
     "library",
     "toolkit"
   ],
-  "main": "./build/fkit.js",
+  "main": "./dist/fkit.js",
   "ignore": [
     "**/.*",
     "bower_components",

@@ -15,7 +15,7 @@ expressive code.
 
 ### Browser
 
-Download the [fkit.js](https://raw.githubusercontent.com/nullobject/fkit/master/build/fkit.js) minified library.
+Download the [fkit.js](https://raw.githubusercontent.com/nullobject/fkit/master/dist/fkit.js) minified library.
 
 Then load it in a script tag:
 
