@@ -1,3 +1,11 @@
+v0.2.4 / 2014-09-09
+==================
+
+ * Add a #branch function.
+ * Flip the arguments to the math functions.
+ * Rename #concat -> #append and add the real #concat function.
+ * Rename #identity -> #id.
+
 v0.2.3 / 2014-09-06
 ==================
 
