@@ -72,12 +72,4 @@ describe('object', function() {
       expect(result).to.be.instanceof(MyObject);
     });
   });
-
-  describe('#apply', function() {
-    it('should apply the function of the given property', function() {
-      var spy = sinon.spy(target, 'e');
-      obj.apply('e', 1, target)
-      expect(spy.calledWithExactly(1)).to.be.true
-    });
-  });
 });

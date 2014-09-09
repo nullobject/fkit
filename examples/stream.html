@@ -47,8 +47,8 @@
 
       more
         .merge(less)
-        .scan(1, fkit.fn.add)
-        .map(fkit.fn.max(1))
+        .scan(1, fkit.add)
+        .map(fkit.max(1))
         .flatMap(randomNumbers)
         .subscribe(show);
     </script>

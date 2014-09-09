@@ -2,18 +2,8 @@
 
 var core = require('./core');
 
-function extend(target, objects) {
-  objects.forEach(function(object) {
-    Object.getOwnPropertyNames(object).forEach(function(property) {
-      target[property] = object[property];
-    });
-  });
-
-  return target;
-}
-
 function copy(target, objects) {
-  return extend(new target.constructor(), [target].concat(objects));
+  return core.extend(new target.constructor(), [target].concat(objects));
 }
 
 function get(property, target) {
@@ -73,21 +63,5 @@ module.exports = {
     var object = {};
     object[property] = value;
     return copy(target, [object]);
-  }),
-
-  /**
-   * Applies the function of the `property` on the `target` object to the value `a`.
-   *
-   * @static
-   * @curried
-   * @function
-   * @param {string} property A string representing the property name.
-   * @param {*} a
-   * @param {Object} target A target object.
-   * @returns {*} The result.
-   * @example apply('say', 'hello', person) == person.say('hello')
-   */
-  apply: core.curry(function(property, a, target) {
-    return get(property, target).call(target, a);
   })
 };

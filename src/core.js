@@ -64,6 +64,15 @@ function flip(f) {
  * @author Josh Bassett
  */
 module.exports = {
+  extend: function(target, objects) {
+    objects.forEach(function(object) {
+      Object.getOwnPropertyNames(object).forEach(function(property) {
+        target[property] = object[property];
+      });
+    });
+    return target;
+  },
+
   /**
    * Applies the function `f` to the value `a`.
    *

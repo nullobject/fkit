@@ -11,9 +11,9 @@
         setInterval(fkit.compose(next, Math.random), 100);
       }
 
-      var sum = fkit.fn.fold(fkit.fn.add, 0),
-          s   = new fkit.Stream(timer).map(fkit.fn.mul(+1)),
-          t   = new fkit.Stream(timer).map(fkit.fn.mul(-1)),
+      var sum = fkit.fold(fkit.add, 0),
+          s   = new fkit.Stream(timer).map(fkit.mul(+1)),
+          t   = new fkit.Stream(timer).map(fkit.mul(-1)),
           u   = s.zip(t).map(sum);
 
       u.subscribe(console.log.bind(console));
