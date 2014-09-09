@@ -197,4 +197,23 @@ describe('fn', function() {
       expect(fn.concat('foo', 'bar', 'baz')).to.be.equal('foobarbaz');
     });
   });
+
+  describe('#branch', function() {
+    var p = sinon.stub().returns(true),
+        f = sinon.spy(),
+        g = sinon.spy(),
+        a = {};
+
+    it('should return f(a) if p(a) is true', function() {
+      fn.branch(p.returns(true), f, g, a);
+      expect(p.calledWithExactly(a)).to.be.true;
+      expect(f.calledWithExactly(a)).to.be.true;
+    });
+
+    it('should return g(a) if p(a) is false', function() {
+      fn.branch(p.returns(false), f, g, a);
+      expect(p.calledWithExactly(a)).to.be.true;
+      expect(g.calledWithExactly(a)).to.be.true;
+    });
+  });
 });

@@ -321,5 +321,26 @@ module.exports = {
    */
   concat: core.variadic(function(a, as) {
     return fold(append, a, as);
+  }),
+
+  /**
+   * Branches execution based on the predicate function `p`. If `p(a)` is true
+   * then `f` is applied to `a`, otherwise `g` is applied to `a`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {function} p
+   * @param {function} f
+   * @param {function} g
+   * @param {*} a
+   * @returns {*} The result.
+   */
+  branch: core.curry(function(p, f, g, a) {
+    if (p(a)) {
+      return f(a);
+    } else {
+      return g(a);
+    }
   })
 };
