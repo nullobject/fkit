@@ -28,7 +28,7 @@ module.exports = {
    * @param {number} b
    * @returns {number} The result.
    */
-  add: core.curry(function(a, b) { return a + b; }),
+  add: core.curry(function(a, b) { return b + a; }),
 
   /**
    * The subtraction operator.
@@ -40,7 +40,7 @@ module.exports = {
    * @param {number} b
    * @returns {number} The result.
    */
-  sub: core.curry(function(a, b) { return a - b; }),
+  sub: core.curry(function(a, b) { return b - a; }),
 
   /**
    * The multiplication operator.
@@ -52,7 +52,7 @@ module.exports = {
    * @param {number} b
    * @returns {number} The result.
    */
-  mul: core.curry(function(a, b) { return a * b; }),
+  mul: core.curry(function(a, b) { return b * a; }),
 
   /**
    * The division operator.
@@ -64,7 +64,7 @@ module.exports = {
    * @param {number} b
    * @returns {number} The result.
    */
-  div: core.curry(function(a, b) { return a / b; }),
+  div: core.curry(function(a, b) { return b / a; }),
 
   /**
    * The modulo operator.
@@ -76,7 +76,7 @@ module.exports = {
    * @param {number} b
    * @returns {number} The result.
    */
-  mod: core.curry(function(a, b) { return a % b; }),
+  mod: core.curry(function(a, b) { return b % a; }),
 
   /**
    * Returns the largest of the given values `a` and `b`.
@@ -88,7 +88,7 @@ module.exports = {
    * @param {number} b
    * @returns {number} The result.
    */
-  max: core.curry(function(a, b) { return Math.max(a,  b); }),
+  max: core.curry(function(a, b) { return Math.max(a, b); }),
 
   /**
    * Returns the smallest of the given values `a` and `b`.
@@ -100,7 +100,7 @@ module.exports = {
    * @param {number} b
    * @returns {number} The result.
    */
-  min: core.curry(function(a, b) { return Math.min(a,  b); }),
+  min: core.curry(function(a, b) { return Math.min(a, b); }),
 
   /**
    * The logical AND operator.
@@ -164,7 +164,7 @@ module.exports = {
    * @param {number} b
    * @returns {boolean} The result.
    */
-  gt: core.curry(function(a, b) { return a > b; }),
+  gt: core.curry(function(a, b) { return b > a; }),
 
   /**
    * The greater than or equal operator.
@@ -176,7 +176,7 @@ module.exports = {
    * @param {number} b
    * @returns {boolean} The result.
    */
-  gte: core.curry(function(a, b) { return a >= b; }),
+  gte: core.curry(function(a, b) { return b >= a; }),
 
   /**
    * The less than operator.
@@ -188,7 +188,7 @@ module.exports = {
    * @param {number} b
    * @returns {boolean} The result.
    */
-  lt: core.curry(function(a, b) { return a < b; }),
+  lt: core.curry(function(a, b) { return b < a; }),
 
   /**
    * The less than or equal operator.
@@ -200,7 +200,7 @@ module.exports = {
    * @param {number} b
    * @returns {boolean} The result.
    */
-  lte: core.curry(function(a, b) { return a <= b; }),
+  lte: core.curry(function(a, b) { return b <= a; }),
 
   /**
    * Increments the number.
@@ -252,17 +252,17 @@ module.exports = {
   }),
 
   /**
-   * Filters the list of `as` with the predicate function `f`.
+   * Filters the list of `as` with the predicate function `p`.
    *
    * @static
    * @curried
    * @function
-   * @param {function} f
+   * @param {function} p
    * @param {Array} as
    * @returns {Array} A new array.
    */
-  filter: core.curry(function(f, as) {
-    return as.filter(f);
+  filter: core.curry(function(p, as) {
+    return as.filter(p);
   }),
 
   /**

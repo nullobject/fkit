@@ -30,6 +30,7 @@ describe('function', function() {
       var h = core.compose(f, g);
       expect(h(1)).to.equal(f(g(1)));
     });
+
     it('should compose any number of functions', function() {
       function f(a) { return a / 2; }
       function g(a) { return a + 2; }

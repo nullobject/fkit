@@ -5,31 +5,31 @@ var fn = require('../src/fn');
 describe('fn', function() {
   describe('#add', function() {
     it('should add the given values', function() {
-      expect(fn.add(1)(2)).to.equal(3);
+      expect(fn.add(2)(1)).to.equal(3);
     });
   });
 
   describe('#sub', function() {
     it('should subtract the given values', function() {
-      expect(fn.sub(1)(2)).to.equal(-1);
+      expect(fn.sub(2)(1)).to.equal(-1);
     });
   });
 
   describe('#mul', function() {
     it('should multiply the given values', function() {
-      expect(fn.mul(1)(2)).to.equal(2);
+      expect(fn.mul(2)(1)).to.equal(2);
     });
   });
 
   describe('#div', function() {
     it('should divide the given values', function() {
-      expect(fn.div(1)(2)).to.equal(0.5);
+      expect(fn.div(2)(1)).to.equal(0.5);
     });
   });
 
   describe('#mod', function() {
     it('should modulo the given values', function() {
-      expect(fn.mod(1)(2)).to.equal(1);
+      expect(fn.mod(2)(1)).to.equal(1);
     });
   });
 
@@ -37,6 +37,7 @@ describe('fn', function() {
     it('should compare the given values', function() {
       expect(fn.max(1)(2)).to.equal(2);
       expect(fn.max(2)(1)).to.equal(2);
+      expect(fn.max(2)(2)).to.equal(2);
     });
   });
 
@@ -44,6 +45,7 @@ describe('fn', function() {
     it('should compare the given values', function() {
       expect(fn.min(1)(2)).to.equal(1);
       expect(fn.min(2)(1)).to.equal(1);
+      expect(fn.min(2)(2)).to.equal(2);
     });
   });
 
@@ -96,32 +98,32 @@ describe('fn', function() {
 
   describe('#gt', function() {
     it('should compare the given values', function() {
-      expect(fn.gt(1)(2)).to.be.false;
-      expect(fn.gt(2)(1)).to.be.true;
+      expect(fn.gt(1)(2)).to.be.true;
+      expect(fn.gt(2)(1)).to.be.false;
       expect(fn.gt(2)(2)).to.be.false;
     });
   });
 
   describe('#gte', function() {
     it('should compare the given values', function() {
-      expect(fn.gte(1)(2)).to.be.false;
-      expect(fn.gte(2)(1)).to.be.true;
+      expect(fn.gte(1)(2)).to.be.true;
+      expect(fn.gte(2)(1)).to.be.false;
       expect(fn.gte(2)(2)).to.be.true;
     });
   });
 
   describe('#lt', function() {
     it('should compare the given values', function() {
-      expect(fn.lt(1)(2)).to.be.true;
-      expect(fn.lt(2)(1)).to.be.false;
+      expect(fn.lt(1)(2)).to.be.false;
+      expect(fn.lt(2)(1)).to.be.true;
       expect(fn.lt(2)(2)).to.be.false;
     });
   });
 
   describe('#lte', function() {
     it('should compare the given values', function() {
-      expect(fn.lte(1)(2)).to.be.true;
-      expect(fn.lte(2)(1)).to.be.false;
+      expect(fn.lte(1)(2)).to.be.false;
+      expect(fn.lte(2)(1)).to.be.true;
       expect(fn.lte(2)(2)).to.be.true;
     });
   });
