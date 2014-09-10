@@ -2,8 +2,8 @@ var webpack = require('webpack');
 
 plugins = [
   new webpack.DefinePlugin({
-    DEVELOPMENT: JSON.stringify(JSON.parse(process.env.NODE_ENV === 'development' || true)),
-    PRODUCTION:  JSON.stringify(JSON.parse(process.env.NODE_ENV === 'production' || false))
+    DEVELOPMENT: process.env.NODE_ENV === 'development' || true,
+    PRODUCTION:  process.env.NODE_ENV === 'production' || false
   })
 ];
 
