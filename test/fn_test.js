@@ -33,19 +33,19 @@ describe('fn', function() {
     });
   });
 
-  describe('#max', function() {
-    it('should compare the given values', function() {
-      expect(fn.max(1)(2)).to.equal(2);
-      expect(fn.max(2)(1)).to.equal(2);
-      expect(fn.max(2)(2)).to.equal(2);
-    });
-  });
-
   describe('#min', function() {
     it('should compare the given values', function() {
       expect(fn.min(1)(2)).to.equal(1);
       expect(fn.min(2)(1)).to.equal(1);
       expect(fn.min(2)(2)).to.equal(2);
+    });
+  });
+
+  describe('#max', function() {
+    it('should compare the given values', function() {
+      expect(fn.max(1)(2)).to.equal(2);
+      expect(fn.max(2)(1)).to.equal(2);
+      expect(fn.max(2)(2)).to.equal(2);
     });
   });
 
@@ -165,16 +165,34 @@ describe('fn', function() {
   });
 
   describe('#fold', function() {
-    it('should fold the given array', function() {
-      function f(a, b) { return a + b; }
-      expect(fn.fold(f)(0)([1, 2, 3])).to.be.equal(6);
+    it('should fold the given array from left to right', function() {
+      function f(a, g) { return g.call(null, a); }
+      var fs = [fn.add(1), fn.mul(2)];
+      expect(fn.fold(f)(1)(fs)).to.be.equal(4);
+    });
+  });
+
+  describe('#foldRight', function() {
+    it('should fold the given array from right to left', function() {
+      function f(a, g) { return g.call(null, a); }
+      var fs = [fn.add(1), fn.mul(2)];
+      expect(fn.foldRight(f)(1)(fs)).to.be.equal(3);
     });
   });
 
   describe('#scan', function() {
-    it('should scan the given array', function() {
-      function f(a, b) { return a + b; }
-      expect(fn.scan(f)(0)([1, 2, 3])).to.be.eql([0, 1, 3, 6]);
+    it('should scan the given array from left to right', function() {
+      function f(a, g) { return g.call(null, a); }
+      var fs = [fn.add(1), fn.mul(2)];
+      expect(fn.scan(f)(1)(fs)).to.be.eql([1, 2, 4]);
+    });
+  });
+
+  describe('#scanRight', function() {
+    it('should scan the given array from right to left', function() {
+      function f(a, g) { return g.call(null, a); }
+      var fs = [fn.add(1), fn.mul(2)];
+      expect(fn.scanRight(f)(1)(fs)).to.be.eql([1, 2, 3]);
     });
   });
 

@@ -10,6 +10,10 @@ function fold(f, s, as) {
   return as.reduce(f, s);
 }
 
+function foldRight(f, s, as) {
+  return as.reduceRight(f, s);
+}
+
 /**
  * This module defines the utility functions which can be easily combined and
  * composed.
@@ -79,18 +83,6 @@ module.exports = {
   mod: core.curry(function(a, b) { return b % a; }),
 
   /**
-   * Returns the largest of the given values `a` and `b`.
-   *
-   * @static
-   * @curried
-   * @function
-   * @param {number} a
-   * @param {number} b
-   * @returns {number} The result.
-   */
-  max: core.curry(function(a, b) { return Math.max(a, b); }),
-
-  /**
    * Returns the smallest of the given values `a` and `b`.
    *
    * @static
@@ -101,6 +93,18 @@ module.exports = {
    * @returns {number} The result.
    */
   min: core.curry(function(a, b) { return Math.min(a, b); }),
+
+  /**
+   * Returns the largest of the given values `a` and `b`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {number} a
+   * @param {number} b
+   * @returns {number} The result.
+   */
+  max: core.curry(function(a, b) { return Math.max(a, b); }),
 
   /**
    * The logical AND operator.
@@ -266,7 +270,8 @@ module.exports = {
   }),
 
   /**
-   * Folds the list of `as` with the function `f` and and starting value `s`.
+   * Folds the list of `as` with the binary function `f` and starting value
+   * `s`, from left to right.
    *
    * @static
    * @curried
@@ -279,7 +284,22 @@ module.exports = {
   fold: core.curry(fold),
 
   /**
-   * Scans the list of `as` with the function `f` and and starting value `s`.
+   * Folds the list of `as` with the binary function `f` and starting value
+   * `s`, from right to left.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {function} f
+   * @param {*} s
+   * @param {Array} as
+   * @returns {*} The result.
+   */
+  foldRight: core.curry(foldRight),
+
+  /**
+   * Scans the list of `as` with the binary function `f` and starting value
+   * `s`, from left to right.
    *
    * @static
    * @curried
@@ -293,6 +313,28 @@ module.exports = {
     var bs = [s];
 
     fold(function(r, a) {
+      return core.tap(bs.push.bind(bs), f(r, a));
+    }, s, as);
+
+    return bs;
+  }),
+
+  /**
+   * Scans the list of `as` with the binary function `f` and starting value
+   * `s`, from right to left.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {function} f
+   * @param {*} s
+   * @param {Array} as
+   * @returns {*} The result.
+   */
+  scanRight: core.curry(function(f, s, as) {
+    var bs = [s];
+
+    foldRight(function(r, a) {
       return core.tap(bs.push.bind(bs), f(r, a));
     }, s, as);
 
