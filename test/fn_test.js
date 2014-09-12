@@ -216,6 +216,30 @@ describe('fn', function() {
     });
   });
 
+  describe('#head', function() {
+    it('should return the first element of the given array', function() {
+      expect(fn.head(1, 2, 3)).to.be.equal(1);
+    });
+  });
+
+  describe('#tail', function() {
+    it('should return elements after the first element of the given array', function() {
+      expect(fn.tail(1, 2, 3)).to.be.eql([2, 3]);
+    });
+  });
+
+  describe('#init', function() {
+    it('should return the elements before the last element of the given array', function() {
+      expect(fn.init(1, 2, 3)).to.be.eql([1, 2]);
+    });
+  });
+
+  describe('#last', function() {
+    it('should return the last element of the given array', function() {
+      expect(fn.last(1, 2, 3)).to.be.equal(3);
+    });
+  });
+
   describe('#branch', function() {
     var p = sinon.stub().returns(true),
         f = sinon.spy(),

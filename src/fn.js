@@ -2,6 +2,8 @@
 
 var core = require('./core');
 
+var __slice = Array.prototype.slice;
+
 function append(a, b) {
   return a.concat(b);
 }
@@ -363,6 +365,58 @@ module.exports = {
    */
   concat: core.variadic(function(a, as) {
     return fold(append, a, as);
+  }),
+
+  /**
+   * Returns the first element in the list of `as`.
+   *
+   * @static
+   * @variadic
+   * @function
+   * @param {...*} as
+   * @returns {*} The result.
+   */
+  head: core.variadic(function(as) {
+    return as[0];
+  }),
+
+  /**
+   * Returns the elements after the first element in the list of `as`.
+   *
+   * @static
+   * @variadic
+   * @function
+   * @param {...*} as
+   * @returns {*} The result.
+   */
+  tail: core.variadic(function(as) {
+    return __slice.call(as, 1);
+  }),
+
+  /**
+   * Returns the elements before the last element in the list of `as`.
+   *
+   * @static
+   * @variadic
+   * @function
+   * @param {...*} as
+   * @returns {*} The result.
+   */
+  init: core.variadic(function(as) {
+    return __slice.call(as, 0, as.length - 1);
+  }),
+
+  /**
+   * Returns the last element in the list of `as`.
+   *
+   * @static
+   * @variadic
+   * @function
+   * @param {...*} as
+   * @returns {*} The result.
+   */
+  last: core.variadic(function(as) {
+    return as[as.length - 1];
   }),
 
   /**
