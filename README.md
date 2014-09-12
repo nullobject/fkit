@@ -67,13 +67,12 @@ f(1)(2);
 => 3
 ```
 
-The [`fkit.fn`](http://nullobject.github.io/fkit/module-fn.html) module
-provides curried versions for many of the standard JavaScript functions and
-operators. Using the `fkit.fn.add` function (which is the curried version of
+FKit provides curried versions for many of the standard JavaScript functions
+and operators. Using the `fkit.add` function (which is the curried version of
 the `+` operator) the above code can be rewritten as:
 
 ```js
-fkit.fn.add(1)(2);
+fkit.add(1)(2);
 => 3
 ```
 
@@ -83,11 +82,11 @@ If we don't specify all the arguments to a curried function, then instead of a
 result we get what is known as a *partially applied function*. This is useful
 because the partially applied function can be used in further calculations.
 
-For example, we can partially apply the `fkit.fn.mul` function to the value
+For example, we can partially apply the `fkit.mul` function to the value
 `2`. This results in a new function which multiplies a given number by two:
 
 ```js
-var f = fkit.fn.mul(2);
+var f = fkit.mul(2);
 f(1);
 => 2
 f(2);
@@ -105,7 +104,7 @@ This function adds one to a given number, then multiplies it by two and
 subtracts three:
 
 ```js
-var f = fkit.compose(fkit.fn.sub(3), fkit.fn.mul(2), fkit.fn.add(1));
+var f = fkit.compose(fkit.sub(3), fkit.mul(2), fkit.add(1));
 f(1);
 => 1
 f(2);
@@ -116,7 +115,8 @@ f(3);
 
 ### Combinators
 
-FKit provides curried versions of all your favourite combinators: map, filter, fold, and scan.
+FKit provides curried versions of all your favourite combinators: map, filter,
+fold, and scan.
 
 #### Map
 
@@ -124,7 +124,7 @@ Using `fkit.map` we can map a function over a list. Here we multiply every
 number in the list by two:
 
 ```js
-var f = fkit.map(fkit.fn.mul(2));
+var f = fkit.map(fkit.mul(2));
 f([1, 2, 3]);
 => [2, 3, 4]
 ```
@@ -135,7 +135,7 @@ Using `fkit.filter` we can filter a list using a *predicate function*. In this
 example we filter all numbers in the list that are greater than one:
 
 ```js
-var f = fkit.filter(fkit.fn.gt(1));
+var f = fkit.filter(fkit.gt(1));
 f([1, 2, 3]);
 => [2, 3]
 ```
@@ -146,7 +146,7 @@ Using `fkit.fold` we can fold a list with a binary function and get a single
 value. Here we sum all the numbers in the list:
 
 ```js
-var f = fkit.fold(fkit.fn.add, 0);
+var f = fkit.fold(fkit.add, 0);
 f([1, 2, 3]);
 => 6
 ```
@@ -158,7 +158,7 @@ values. Here we again sum all the numbers in the list and get the intermediate
 values:
 
 ```js
-var f = fkit.scan(fkit.fn.add, 0);
+var f = fkit.scan(fkit.add, 0);
 f([1, 2, 3]);
 => [0, 1, 3, 6]
 ```
