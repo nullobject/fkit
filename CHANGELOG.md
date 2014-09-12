@@ -1,3 +1,9 @@
+v0.3.2 / 2014-09-12
+==================
+
+ * Fix an issue with unary variadic functions.
+ * Ensure gh-pages is up to date before syncing the docs.
+
 v0.3.1 / 2014-09-12
 ==================
 
