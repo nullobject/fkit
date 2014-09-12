@@ -10,6 +10,7 @@ expressive code.
 ## Documentation
 
 * [API documentation](http://nullobject.github.io/fkit/)
+* [Examples](http://codepen.io/collection/DeIGH/)
 
 ## Installing
 
