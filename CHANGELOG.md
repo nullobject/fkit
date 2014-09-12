@@ -1,3 +1,10 @@
+v0.3.1 / 2014-09-12
+==================
+
+ * Add array functions.
+ * Add #foldRight and #scanRight functions.
+ * Webpack config cleanups.
+
 v0.3.0 / 2014-09-09
 ==================
 
