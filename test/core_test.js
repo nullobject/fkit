@@ -97,11 +97,34 @@ describe('function', function() {
   });
 
   describe('#variadic', function() {
-    it('should return a variadic function', function() {
+    context('with a unary function', function() {
+      function f(a) {}
+      var spy = sinon.spy(f);
+
+      it('should handle a list of arguments', function() {
+        core.variadic(spy)(1, 2, 3);
+        expect(spy.calledWithExactly([1, 2, 3])).to.be.true;
+      });
+
+      it('should handle an array of arguments', function() {
+        core.variadic(spy)([1, 2, 3]);
+        expect(spy.calledWithExactly([1, 2, 3])).to.be.true;
+      });
+    });
+
+    context('with a binary function', function() {
       function f(a, b) {}
       var spy = sinon.spy(f);
-      core.variadic(spy)(1, 2, 3);
-      expect(spy.calledWithExactly(1, [2, 3])).to.be.true;
+
+      it('should handle a list of arguments', function() {
+        core.variadic(spy)(1, 2, 3);
+        expect(spy.calledWithExactly(1, [2, 3])).to.be.true;
+      });
+
+      it('should handle an array of arguments', function() {
+        core.variadic(spy)([1, 2, 3]);
+        expect(spy.calledWith([1, 2, 3])).to.be.true;
+      });
     });
   });
 
