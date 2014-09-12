@@ -240,6 +240,12 @@ describe('fn', function() {
     });
   });
 
+  describe('#reverse', function() {
+    it('should return the elements of the given array in reverse order', function() {
+      expect(fn.reverse(1, 2, 3)).to.be.eql([3, 2, 1]);
+    });
+  });
+
   describe('#branch', function() {
     var p = sinon.stub().returns(true),
         f = sinon.spy(),

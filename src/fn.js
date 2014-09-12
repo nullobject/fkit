@@ -312,13 +312,13 @@ module.exports = {
    * @returns {*} The result.
    */
   scan: core.curry(function(f, s, as) {
-    var bs = [s];
+    var r = [s];
 
-    fold(function(r, a) {
-      return core.tap(bs.push.bind(bs), f(r, a));
+    fold(function(b, a) {
+      return core.tap(r.push.bind(r), f(b, a));
     }, s, as);
 
-    return bs;
+    return r;
   }),
 
   /**
@@ -334,13 +334,13 @@ module.exports = {
    * @returns {*} The result.
    */
   scanRight: core.curry(function(f, s, as) {
-    var bs = [s];
+    var r = [s];
 
-    foldRight(function(r, a) {
-      return core.tap(bs.push.bind(bs), f(r, a));
+    foldRight(function(b, a) {
+      return core.tap(r.push.bind(r), f(b, a));
     }, s, as);
 
-    return bs;
+    return r;
   }),
 
   /**
@@ -417,6 +417,21 @@ module.exports = {
    */
   last: core.variadic(function(as) {
     return as[as.length - 1];
+  }),
+
+  /**
+   * Returns the elements of list of `as` in reverse order.
+   *
+   * @static
+   * @variadic
+   * @function
+   * @param {...*} as
+   * @returns {*} The result.
+   */
+  reverse: core.variadic(function(as) {
+    return foldRight(function(b, a) {
+      return b.concat(a);
+    }, [], as);
   }),
 
   /**
