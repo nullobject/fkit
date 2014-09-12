@@ -47,6 +47,7 @@ changelog:
 publish-api: doc
 	@test -z "$(status)"
 	@git checkout gh-pages
+	@git pull origin gh-pages
 	@rsync -a --delete --exclude=".git*" --exclude-from=.gitignore doc/ ./
 	@git add --all .
 	@git commit -m "Publish $(version)."
