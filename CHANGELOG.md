@@ -1,3 +1,8 @@
+v0.4.2 / 2014-09-13
+==================
+
+ * Update the combinators to work with strings.
+
 v0.4.1 / 2014-09-13
 ==================
 
