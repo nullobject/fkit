@@ -8,17 +8,19 @@ function curry(f) {
   if (arity <= 1) {
     return f;
   } else {
-    return given([]);
+    return given([], 0);
   }
 
-  function given(args) {
+  function given(args, applications) {
     return function() {
-      var newArgs = args.concat(util.slice.call(arguments, 0));
+      var newArgs = args.concat(
+        (arguments.length > 0) ? util.slice.call(arguments, 0) : undefined
+      );
 
       if (newArgs.length >= arity) {
         return f.apply(this, newArgs);
       } else {
-        return given(newArgs);
+        return given(newArgs, applications + 1);
       }
     };
   }

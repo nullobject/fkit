@@ -10,16 +10,34 @@ describe('function', function() {
   });
 
   describe('#apply', function() {
-    it('should apply the given function', function() {
-      function f(a) { return a + 1; }
-      expect(core.apply(f)(1)).to.equal(f(1));
+    it('should apply a nullary function', function() {
+      function f() {}
+      var spy = sinon.spy(f);
+      core.apply(spy)();
+      expect(spy.calledWithExactly(undefined)).to.be.true;
+    });
+
+    it('should apply a unary function', function() {
+      function f(a) {}
+      var spy = sinon.spy(f);
+      core.apply(spy)(1);
+      expect(spy.calledWithExactly(1)).to.be.true;
     });
   });
 
   describe('#applyRight', function() {
-    it('should apply the given function', function() {
-      function f(a) { return a + 1; }
-      expect(core.applyRight(1)(f)).to.equal(f(1));
+    it('should apply a nullary function', function() {
+      function f() {}
+      var spy = sinon.spy(f);
+      core.applyRight()(spy);
+      expect(spy.calledWithExactly(undefined)).to.be.true;
+    });
+
+    it('should apply a unary function', function() {
+      function f(a) {}
+      var spy = sinon.spy(f);
+      core.applyRight(1)(spy);
+      expect(spy.calledWithExactly(1)).to.be.true;
     });
   });
 

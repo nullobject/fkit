@@ -255,7 +255,7 @@ Signal.prototype.split = function(n) {
           nexts.map(core.applyRight(a));
         },
         function() {
-          dones.map(core.apply());
+          dones.map(core.applyRight());
         }
       );
     }
