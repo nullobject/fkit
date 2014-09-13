@@ -2,6 +2,7 @@
 
 var events = require('events'),
     fn     = require('../src/fn'),
+    list   = require('../src/list'),
     Signal = require('../src/signal');
 
 describe('Signal', function() {
@@ -15,11 +16,11 @@ describe('Signal', function() {
 
   describe('.fromArray', function() {
     it('should return a signal of values from the given array', function() {
-      var s = Signal.fromArray(fn.range(1, 3));
+      var s = Signal.fromArray(list.range(1, 3));
 
       s.subscribe(next, done);
 
-      fn.range(1, 3).map(function(a, index) {
+      list.range(1, 3).map(function(a, index) {
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
       });
@@ -37,7 +38,7 @@ describe('Signal', function() {
 
       s.subscribe(next, done);
 
-      fn.range(1, 3).map(function(a, index) {
+      list.range(1, 3).map(function(a, index) {
         emit(a);
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
@@ -54,7 +55,7 @@ describe('Signal', function() {
 
       s.subscribe(next, done);
 
-      fn.range(1, 3).map(function(a, index) {
+      list.range(1, 3).map(function(a, index) {
         emitter.emit('lol', a);
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
@@ -73,7 +74,7 @@ describe('Signal', function() {
 
       s.subscribe(next, done);
 
-      fn.range(1, 3).map(function(a, index) {
+      list.range(1, 3).map(function(a, index) {
         emit(a);
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
@@ -110,12 +111,12 @@ describe('Signal', function() {
 
   describe('#flatMap', function() {
     it('should flat map the given function over signal values', function() {
-      var s = Signal.fromArray(fn.range(1, 3));
+      var s = Signal.fromArray(list.range(1, 3));
       var f = function(a) { return Signal.of(a); };
 
       s.flatMap(f).subscribe(next, done);
 
-      fn.range(1, 3).map(function(a, index) {
+      list.range(1, 3).map(function(a, index) {
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
       });
@@ -126,7 +127,7 @@ describe('Signal', function() {
 
   describe('#map', function() {
     it('should map the given function over signal values', function() {
-      var s = Signal.fromArray(fn.range(1, 3));
+      var s = Signal.fromArray(list.range(1, 3));
 
       s.map(fn.inc).subscribe(next, done);
 
@@ -141,7 +142,7 @@ describe('Signal', function() {
 
   describe('#filter', function() {
     it('should filter the signal values with the given predicate', function() {
-      var s = Signal.fromArray(fn.range(1, 3));
+      var s = Signal.fromArray(list.range(1, 3));
 
       s.filter(fn.eql(2)).subscribe(next, done);
 
@@ -154,7 +155,7 @@ describe('Signal', function() {
 
   describe('#fold', function() {
     it('should fold the given function over signal values', function() {
-      var s = Signal.fromArray(fn.range(1, 3));
+      var s = Signal.fromArray(list.range(1, 3));
 
       s.fold(0, fn.add).subscribe(next, done);
 
@@ -165,7 +166,7 @@ describe('Signal', function() {
 
   describe('#scan', function() {
     it('should scan the given function over signal values', function() {
-      var s = Signal.fromArray(fn.range(1, 3));
+      var s = Signal.fromArray(list.range(1, 3));
 
       s.scan(0, fn.add).subscribe(next, done);
 
@@ -180,13 +181,13 @@ describe('Signal', function() {
 
   describe('#merge', function() {
     it('should merge the given signals', function() {
-      var s = Signal.fromArray(fn.range(1, 3)),
-          t = Signal.fromArray(fn.range(4, 6)),
-          u = Signal.fromArray(fn.range(7, 9));
+      var s = Signal.fromArray(list.range(1, 3)),
+          t = Signal.fromArray(list.range(4, 6)),
+          u = Signal.fromArray(list.range(7, 9));
 
       s.merge(t, u).subscribe(next, done);
 
-      fn.range(1, 9).map(function(a, index) {
+      list.range(1, 9).map(function(a, index) {
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
       });
@@ -197,14 +198,14 @@ describe('Signal', function() {
 
   describe('#split', function() {
     it('should split the given signal', function() {
-      var signals = Signal.fromArray(fn.range(1, 3)).split(2),
+      var signals = Signal.fromArray(list.range(1, 3)).split(2),
           t       = signals[0],
           u       = signals[1];
 
       t.subscribe(next, done);
       u.subscribe(function() {}, function() {});
 
-      fn.range(1, 3).map(function(a, index) {
+      list.range(1, 3).map(function(a, index) {
         var call = next.getCall(index);
         expect(call.calledWithExactly(a)).to.be.true;
       });

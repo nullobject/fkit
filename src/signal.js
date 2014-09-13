@@ -2,6 +2,7 @@
 
 var core = require('./core'),
     fn   = require('./fn'),
+    list = require('./list'),
     obj  = require('./obj');
 
 /**
@@ -233,7 +234,7 @@ Signal.prototype.split = function(n) {
       nexts = [],
       dones = [];
 
-  var signals = fn
+  var signals = list
     .range(0, n - 1)
     .map(function(_) {
       return obj.copy(env, {

@@ -9,5 +9,6 @@ module.exports = util.extend({
 }, [
   require('./core'),
   require('./fn'),
+  require('./list'),
   require('./obj')
 ]);
