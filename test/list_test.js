@@ -97,21 +97,21 @@ describe('list', function() {
 
   describe('#append', function() {
     it('should append an element to an array', function() {
-      expect(list.append([1, 2, 3])(4)).to.be.eql([1, 2, 3, 4]);
+      expect(list.append(4)([1, 2, 3])).to.be.eql([1, 2, 3, 4]);
     });
 
     it('should append two strings', function() {
-      expect(list.append('foo')('bar')).to.be.equal('foobar');
+      expect(list.append('bar')('foo')).to.be.equal('foobar');
     });
   });
 
   describe('#prepend', function() {
     it('should prepend an element to an array', function() {
-      expect(list.prepend([1, 2, 3])(4)).to.be.eql([4, 1, 2, 3]);
+      expect(list.prepend(4)([1, 2, 3])).to.be.eql([4, 1, 2, 3]);
     });
 
     it('should prepend two strings', function() {
-      expect(list.prepend('foo')('bar')).to.be.equal('barfoo');
+      expect(list.prepend('bar')('foo')).to.be.equal('barfoo');
     });
   });
 

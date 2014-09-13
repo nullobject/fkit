@@ -8,23 +8,23 @@ function pure(as) {
 }
 
 function append(a, b) {
-  if (typeof a === 'string') {
-    return a + b;
+  if (typeof b === 'string') {
+    return b + a;
   } else {
-    return a.concat(b);
+    return b.concat(a);
   }
 }
 
 function prepend(a, b) {
-  if (typeof a === 'string') {
-    return b + a;
+  if (typeof b === 'string') {
+    return a + b;
   } else {
-    return [b].concat(a);
+    return [a].concat(b);
   }
 }
 
 function concat(as) {
-  return toArray(as).reduce(append, pure(as));
+  return toArray(as).reduce(core.flip(append), pure(as));
 }
 
 function concatMap(f, as) {
@@ -195,7 +195,7 @@ module.exports = {
   }),
 
   /**
-   * Appends `b` to `a`.
+   * Appends `a` to `b`.
    *
    * @static
    * @curried
@@ -285,6 +285,6 @@ module.exports = {
    * @returns {*} The result.
    */
   reverse: function(as) {
-    return fold(prepend, pure(as), toArray(as));
+    return fold(core.flip(prepend), pure(as), toArray(as));
   },
 };
