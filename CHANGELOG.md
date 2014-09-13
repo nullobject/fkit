@@ -1,3 +1,9 @@
+v0.4.3 / 2014-09-13
+==================
+
+ * Flip the args to #append and #prepend.
+ * Add #toUpper and #toLower methods.
+
 v0.4.2 / 2014-09-13
 ==================
 
