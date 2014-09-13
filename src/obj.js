@@ -1,13 +1,10 @@
 'use strict';
 
-var core = require('./core');
+var core = require('./core'),
+    util = require('./util');
 
 function copy(target, objects) {
-  return core.extend(new target.constructor(), [target].concat(objects));
-}
-
-function get(property, target) {
-  return target[property];
+  return util.extend(new target.constructor(), [target].concat(objects));
 }
 
 /**
@@ -44,7 +41,9 @@ module.exports = {
    * @returns {*} A property value.
    * @example get('name', person) == 'bob'
    */
-  get: core.curry(get),
+  get: core.curry(function(property, target) {
+    return target[property];
+  }),
 
   /**
    * Creates a copy of the `target` object with the `property` set to the

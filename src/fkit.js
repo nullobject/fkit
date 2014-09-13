@@ -2,9 +2,10 @@
 
 'use strict';
 
-var core = require('./core');
+var util = require('./util');
 
-module.exports = core.extend(core, [
+module.exports = util.extend({}, [
+  require('./core'),
   require('./fn'),
   require('./obj'),
   {

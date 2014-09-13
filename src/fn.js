@@ -1,8 +1,7 @@
 'use strict';
 
-var core = require('./core');
-
-var __slice = Array.prototype.slice;
+var core = require('./core'),
+    util = require('./util');
 
 function append(a, b) {
   return a.concat(b);
@@ -410,7 +409,7 @@ module.exports = {
    * @returns {*} The result.
    */
   tail: core.variadic(function(as) {
-    return __slice.call(as, 1);
+    return util.slice.call(as, 1);
   }),
 
   /**
@@ -423,7 +422,7 @@ module.exports = {
    * @returns {*} The result.
    */
   init: core.variadic(function(as) {
-    return __slice.call(as, 0, as.length - 1);
+    return util.slice.call(as, 0, as.length - 1);
   }),
 
   /**

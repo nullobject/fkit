@@ -1,10 +1,6 @@
 'use strict';
 
-var __slice = Array.prototype.slice;
-
-function flatten(as) {
-  return as.reduce(function(a, b) { return a.concat(b); }, []);
-}
+var util = require('./util');
 
 function curry(f) {
   var arity = f.length;
@@ -17,7 +13,7 @@ function curry(f) {
 
   function given(args) {
     return function() {
-      var newArgs = args.concat(__slice.call(arguments, 0));
+      var newArgs = args.concat(util.slice.call(arguments, 0));
 
       if (newArgs.length >= arity) {
         return f.apply(this, newArgs);
@@ -35,14 +31,14 @@ function variadic(f) {
     return f;
   } else if (arity === 1)  {
     return function() {
-      return f.call(this, flatten(__slice.call(arguments, 0)));
+      return f.call(this, flatten(util.slice.call(arguments, 0)));
     };
   } else {
     return function() {
       var numMissingArgs = Math.max(arity - arguments.length - 1, 0),
           missingArgs    = new Array(numMissingArgs),
-          namedArgs      = __slice.call(arguments, 0, arity - 1),
-          variadicArgs   = __slice.call(arguments, f.length - 1);
+          namedArgs      = util.slice.call(arguments, 0, arity - 1),
+          variadicArgs   = util.slice.call(arguments, f.length - 1);
 
       return f.apply(this, namedArgs.concat(missingArgs).concat([variadicArgs]));
     };
@@ -60,6 +56,10 @@ function flip(f) {
   };
 }
 
+function flatten(as) {
+  return as.reduce(function(a, b) { return a.concat(b); }, []);
+}
+
 /**
  * This module defines the core functions which make up the building blocks of
  * FKit.
@@ -68,15 +68,6 @@ function flip(f) {
  * @author Josh Bassett
  */
 module.exports = {
-  extend: function(target, objects) {
-    objects.forEach(function(object) {
-      Object.getOwnPropertyNames(object).forEach(function(property) {
-        target[property] = object[property];
-      });
-    });
-    return target;
-  },
-
   /**
    * Applies the function `f` to the value `a`.
    *
