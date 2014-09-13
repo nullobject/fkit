@@ -211,6 +211,22 @@ module.exports = {
   dec: function(a) { return a - 1; },
 
   /**
+   * Returns the string converted to uppercase.
+   *
+   * @param {String} a
+   * @returns {String} The result.
+   */
+  toUpper: function(a) { return a.toUpperCase(); },
+
+  /**
+   * Returns the string converted to lowercase.
+   *
+   * @param {String} a
+   * @returns {String} The result.
+   */
+  toLower: function(a) { return a.toLowerCase(); },
+
+  /**
    * Branches execution based on the predicate function `p`. If `p(a)` is true
    * then `f` is applied to `a`, otherwise `g` is applied to `a`.
    *

@@ -142,6 +142,20 @@ describe('fn', function() {
     });
   });
 
+  describe('#toUpper', function() {
+    it('should convert a string to uppercase', function() {
+      expect(fn.toUpper('a')).to.equal('A');
+      expect(fn.toUpper('A')).to.equal('A');
+    });
+  });
+
+  describe('#toLower', function() {
+    it('should convert a string to uppercase', function() {
+      expect(fn.toLower('a')).to.equal('a');
+      expect(fn.toLower('A')).to.equal('a');
+    });
+  });
+
   describe('#branch', function() {
     var p = sinon.stub().returns(true),
         f = sinon.spy(),
