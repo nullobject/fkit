@@ -31,7 +31,7 @@ function variadic(f) {
     return f;
   } else if (arity === 1)  {
     return function() {
-      return f.call(this, flatten(util.slice.call(arguments, 0)));
+      return f.call(this, util.slice.call(arguments, 0));
     };
   } else {
     return function() {
@@ -54,10 +54,6 @@ function flip(f) {
   return function(a, b) {
     return f(b, a);
   };
-}
-
-function flatten(as) {
-  return as.reduce(function(a, b) { return a.concat(b); }, []);
 }
 
 /**

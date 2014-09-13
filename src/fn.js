@@ -20,6 +20,14 @@ function foldRight(f, s, as) {
   return as.reduceRight(f, s);
 }
 
+function toArray(as) {
+  if (typeof as === 'string') {
+    return as.split('');
+  } else {
+    return as;
+  }
+}
+
 /**
  * This module defines the utility functions which can be easily combined and
  * composed.
@@ -376,14 +384,11 @@ module.exports = {
    * @curried
    * @function
    * @param {function} f
-   * @param {Array} as
+   * @param {Array|String} as
    * @returns {Array} A new array.
    */
   concatMap: core.curry(function(f, as) {
-    if (typeof as === 'string') {
-      as = as.split('');
-    }
-    return concat(as.map(f));
+    return concat(toArray(as).map(f));
   }),
 
   /**
@@ -391,60 +396,61 @@ module.exports = {
    *
    * @static
    * @function
-   * @param {...*} as
+   * @param {Array|String} as
    * @returns {*} The result.
    */
-  head: core.variadic(function(as) {
+  head: function(as) {
     return as[0];
-  }),
+  },
 
   /**
    * Returns the elements after the first element in the list of `as`.
    *
    * @static
    * @function
-   * @param {...*} as
+   * @param {Array|String} as
    * @returns {*} The result.
    */
-  tail: core.variadic(function(as) {
-    return util.slice.call(as, 1);
-  }),
+  tail: function(as) {
+    return as.slice(1);
+  },
 
   /**
    * Returns the elements before the last element in the list of `as`.
    *
    * @static
    * @function
-   * @param {...*} as
+   * @param {Array|String} as
    * @returns {*} The result.
    */
-  init: core.variadic(function(as) {
-    return util.slice.call(as, 0, as.length - 1);
-  }),
+  init: function(as) {
+    return as.slice(0, as.length - 1);
+  },
 
   /**
    * Returns the last element in the list of `as`.
    *
    * @static
    * @function
-   * @param {...*} as
+   * @param {Array|String} as
    * @returns {*} The result.
    */
-  last: core.variadic(function(as) {
+  last: function(as) {
     return as[as.length - 1];
-  }),
+  },
 
   /**
    * Returns the elements of list of `as` in reverse order.
    *
    * @static
    * @function
-   * @param {...*} as
+   * @param {Array|String} as
    * @returns {*} The result.
    */
-  reverse: core.variadic(function(as) {
-    return foldRight(append, [], as);
-  }),
+  reverse: function(as) {
+    var s = (typeof as === 'string') ? '' : [];
+    return foldRight(append, s, toArray(as));
+  },
 
   /**
    * Branches execution based on the predicate function `p`. If `p(a)` is true

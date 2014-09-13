@@ -229,32 +229,52 @@ describe('fn', function() {
   });
 
   describe('#head', function() {
-    it('should return the first element of the given array', function() {
-      expect(fn.head(1, 2, 3)).to.be.equal(1);
+    it('should return the first element of an array', function() {
+      expect(fn.head([1, 2, 3])).to.be.equal(1);
+    });
+
+    it('should return the first character of a string', function() {
+      expect(fn.head('foo')).to.be.equal('f');
     });
   });
 
   describe('#tail', function() {
-    it('should return elements after the first element of the given array', function() {
-      expect(fn.tail(1, 2, 3)).to.be.eql([2, 3]);
+    it('should return the elements after the first element of an array', function() {
+      expect(fn.tail([1, 2, 3])).to.be.eql([2, 3]);
+    });
+
+    it('should return the characters after the first character of a string', function() {
+      expect(fn.tail('foo')).to.be.equal('oo');
     });
   });
 
   describe('#init', function() {
-    it('should return the elements before the last element of the given array', function() {
-      expect(fn.init(1, 2, 3)).to.be.eql([1, 2]);
+    it('should return the elements before the last element of an array', function() {
+      expect(fn.init([1, 2, 3])).to.be.eql([1, 2]);
+    });
+
+    it('should return the characters before the last character of a string', function() {
+      expect(fn.init('foo')).to.be.equal('fo');
     });
   });
 
   describe('#last', function() {
-    it('should return the last element of the given array', function() {
-      expect(fn.last(1, 2, 3)).to.be.equal(3);
+    it('should return the last element of an array', function() {
+      expect(fn.last([1, 2, 3])).to.be.equal(3);
+    });
+
+    it('should return the last character of a string', function() {
+      expect(fn.last('foo')).to.be.equal('o');
     });
   });
 
   describe('#reverse', function() {
-    it('should return the elements of the given array in reverse order', function() {
-      expect(fn.reverse(1, 2, 3)).to.be.eql([3, 2, 1]);
+    it('should return the array reversed', function() {
+      expect(fn.reverse([1, 2, 3])).to.be.eql([3, 2, 1]);
+    });
+
+    it('should return the string reversed', function() {
+      expect(fn.reverse('foo')).to.be.equal('oof')
     });
   });
 

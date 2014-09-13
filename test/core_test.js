@@ -101,12 +101,22 @@ describe('function', function() {
       function f(a) {}
       var spy = sinon.spy(f);
 
-      it('should handle a list of arguments', function() {
+      it('should handle one argument', function() {
+        core.variadic(spy)(1);
+        expect(spy.calledWithExactly([1])).to.be.true;
+      });
+
+      it('should handle many arguments', function() {
         core.variadic(spy)(1, 2, 3);
         expect(spy.calledWithExactly([1, 2, 3])).to.be.true;
       });
 
-      it('should handle an array of arguments', function() {
+      it('should handle an array with one element', function() {
+        core.variadic(spy)([1]);
+        expect(spy.calledWithExactly([1])).to.be.true;
+      });
+
+      it('should handle an array with many elements', function() {
         core.variadic(spy)([1, 2, 3]);
         expect(spy.calledWithExactly([1, 2, 3])).to.be.true;
       });
