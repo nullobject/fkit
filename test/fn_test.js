@@ -4,37 +4,37 @@ var fn = require('../src/fn');
 
 describe('fn', function() {
   describe('#add', function() {
-    it('should add the given values', function() {
+    it('should add the values', function() {
       expect(fn.add(2)(1)).to.equal(3);
     });
   });
 
   describe('#sub', function() {
-    it('should subtract the given values', function() {
+    it('should subtract the values', function() {
       expect(fn.sub(2)(1)).to.equal(-1);
     });
   });
 
   describe('#mul', function() {
-    it('should multiply the given values', function() {
+    it('should multiply the values', function() {
       expect(fn.mul(2)(1)).to.equal(2);
     });
   });
 
   describe('#div', function() {
-    it('should divide the given values', function() {
+    it('should divide the values', function() {
       expect(fn.div(2)(1)).to.equal(0.5);
     });
   });
 
   describe('#mod', function() {
-    it('should modulo the given values', function() {
+    it('should modulo the values', function() {
       expect(fn.mod(2)(1)).to.equal(1);
     });
   });
 
   describe('#min', function() {
-    it('should compare the given values', function() {
+    it('should compare the values', function() {
       expect(fn.min(1)(2)).to.equal(1);
       expect(fn.min(2)(1)).to.equal(1);
       expect(fn.min(2)(2)).to.equal(2);
@@ -42,7 +42,7 @@ describe('fn', function() {
   });
 
   describe('#max', function() {
-    it('should compare the given values', function() {
+    it('should compare the values', function() {
       expect(fn.max(1)(2)).to.equal(2);
       expect(fn.max(2)(1)).to.equal(2);
       expect(fn.max(2)(2)).to.equal(2);
@@ -50,7 +50,7 @@ describe('fn', function() {
   });
 
   describe('#and', function() {
-    it('should AND the given values', function() {
+    it('should AND the values', function() {
       expect(fn.and(false)(false)).to.be.false;
       expect(fn.and(false)(true)).to.be.false;
       expect(fn.and(true)(false)).to.be.false;
@@ -59,7 +59,7 @@ describe('fn', function() {
   });
 
   describe('#or', function() {
-    it('should OR the given values', function() {
+    it('should OR the values', function() {
       expect(fn.or(false)(false)).to.be.false;
       expect(fn.or(false)(true)).to.be.true;
       expect(fn.or(true)(false)).to.be.true;
@@ -68,21 +68,21 @@ describe('fn', function() {
   });
 
   describe('#not', function() {
-    it('should NOT the given value', function() {
+    it('should NOT the value', function() {
       expect(fn.not(false)).to.be.true;
       expect(fn.not(true)).to.be.false;
     });
   });
 
   describe('#negate', function() {
-    it('should negate the given value', function() {
+    it('should negate the value', function() {
       expect(fn.negate(1)).to.equal(-1);
       expect(fn.negate(-1)).to.equal(1);
     });
   });
 
   describe('#eql', function() {
-    it('should compare the given values', function() {
+    it('should compare the values', function() {
       var a = {}, b = {};
 
       expect(fn.eql(1)(2)).to.be.false;
@@ -97,7 +97,7 @@ describe('fn', function() {
   });
 
   describe('#gt', function() {
-    it('should compare the given values', function() {
+    it('should compare the values', function() {
       expect(fn.gt(1)(2)).to.be.true;
       expect(fn.gt(2)(1)).to.be.false;
       expect(fn.gt(2)(2)).to.be.false;
@@ -105,7 +105,7 @@ describe('fn', function() {
   });
 
   describe('#gte', function() {
-    it('should compare the given values', function() {
+    it('should compare the values', function() {
       expect(fn.gte(1)(2)).to.be.true;
       expect(fn.gte(2)(1)).to.be.false;
       expect(fn.gte(2)(2)).to.be.true;
@@ -113,7 +113,7 @@ describe('fn', function() {
   });
 
   describe('#lt', function() {
-    it('should compare the given values', function() {
+    it('should compare the values', function() {
       expect(fn.lt(1)(2)).to.be.false;
       expect(fn.lt(2)(1)).to.be.true;
       expect(fn.lt(2)(2)).to.be.false;
@@ -121,7 +121,7 @@ describe('fn', function() {
   });
 
   describe('#lte', function() {
-    it('should compare the given values', function() {
+    it('should compare the values', function() {
       expect(fn.lte(1)(2)).to.be.false;
       expect(fn.lte(2)(1)).to.be.true;
       expect(fn.lte(2)(2)).to.be.true;
@@ -129,14 +129,14 @@ describe('fn', function() {
   });
 
   describe('#inc', function() {
-    it('should increment the given value', function() {
+    it('should increment the value', function() {
       expect(fn.inc(1)).to.equal(2);
       expect(fn.inc(2)).to.equal(3);
     });
   });
 
   describe('#dec', function() {
-    it('should decrement the given value', function() {
+    it('should decrement the value', function() {
       expect(fn.dec(3)).to.equal(2);
       expect(fn.dec(2)).to.equal(1);
     });
@@ -150,81 +150,117 @@ describe('fn', function() {
     });
   });
 
-  describe('#map', function() {
-    it('should map the given array', function() {
-      function f(a) { return a + 1; }
-      expect(fn.map(f)([1, 2, 3])).to.be.eql([2, 3, 4]);
-    });
-  });
-
-  describe('#filter', function() {
-    it('should filter the given array', function() {
-      function f(a) { return a > 1; }
-      expect(fn.filter(f)([1, 2, 3])).to.be.eql([2, 3]);
-    });
-  });
-
-  describe('#fold', function() {
-    it('should fold the given array from left to right', function() {
-      function f(a, g) { return g.call(null, a); }
-      var fs = [fn.add(1), fn.mul(2)];
-      expect(fn.fold(f)(1)(fs)).to.be.equal(4);
-    });
-  });
-
-  describe('#foldRight', function() {
-    it('should fold the given array from right to left', function() {
-      function f(a, g) { return g.call(null, a); }
-      var fs = [fn.add(1), fn.mul(2)];
-      expect(fn.foldRight(f)(1)(fs)).to.be.equal(3);
-    });
-  });
-
-  describe('#scan', function() {
-    it('should scan the given array from left to right', function() {
-      function f(a, g) { return g.call(null, a); }
-      var fs = [fn.add(1), fn.mul(2)];
-      expect(fn.scan(f)(1)(fs)).to.be.eql([1, 2, 4]);
-    });
-  });
-
-  describe('#scanRight', function() {
-    it('should scan the given array from right to left', function() {
-      function f(a, g) { return g.call(null, a); }
-      var fs = [fn.add(1), fn.mul(2)];
-      expect(fn.scanRight(f)(1)(fs)).to.be.eql([1, 2, 3]);
-    });
-  });
-
-  describe('#append', function() {
-    it('should append arrays', function() {
-      expect(fn.append([1, 2, 3])([4, 5, 6])).to.be.eql([1, 2, 3, 4, 5, 6]);
-    });
-
-    it('should append strings', function() {
-      expect(fn.append('foo')('bar')).to.be.equal('foobar');
-    });
-  });
-
-  describe('#concat', function() {
-    it('should concat arrays', function() {
-      expect(fn.concat([1, 2, 3], [4, 5, 6], [7, 8, 9])).to.be.eql([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-    });
-
-    it('should concat strings', function() {
-      expect(fn.concat('foo', 'bar', 'baz')).to.be.equal('foobarbaz');
-    });
-  });
-
   describe('#concatMap', function() {
-    it('should concat map arrays', function() {
+    it('should concat map an array', function() {
       function f(a) { return [a + 1]; }
       expect(fn.concatMap(f)([1, 2, 3])).to.be.eql([2, 3, 4]);
     });
 
-    it('should concat map strings', function() {
+    it('should concat map a string', function() {
       function f(a) { return a + '-'; }
       expect(fn.concatMap(f)('foo')).to.be.eql('f-o-o-');
+    });
+  });
+
+  describe('#map', function() {
+    it('should map an array', function() {
+      function f(a) { return [a + 1]; }
+      expect(fn.map(f)([1, 2, 3])).to.be.eql([[2], [3], [4]]);
+    });
+
+    it('should map a string', function() {
+      function f(a) { return a + '-'; }
+      expect(fn.map(f)('foo')).to.be.equal('f-o-o-');
+    });
+  });
+
+  describe('#filter', function() {
+    it('should filter an array', function() {
+      function f(a) { return a > 1; }
+      expect(fn.filter(f)([1, 2, 3])).to.be.eql([2, 3]);
+    });
+
+    it('should filter a string', function() {
+      function f(a) { return a == 'o'; }
+      expect(fn.filter(f)('foo')).to.be.equal('oo');
+    });
+  });
+
+  describe('#fold', function() {
+    it('should fold an array from left to right', function() {
+      function f(b, a) { return [a].concat(b); }
+      expect(fn.fold(f)([])([1, 2, 3])).to.be.eql([3, 2, 1]);
+    });
+
+    it('should fold a string from left to right', function() {
+      function f(b, a) { return a + b; }
+      expect(fn.fold(f)('')('foo')).to.be.equal('oof');
+    });
+  });
+
+  describe('#foldRight', function() {
+    it('should fold an array from right to left', function() {
+      function f(a, b) { return [a].concat(b); }
+      expect(fn.foldRight(f)([])([1, 2, 3])).to.be.eql([1, 2, 3]);
+    });
+
+    it('should fold a string from right to left', function() {
+      function f(a, b) { return a + b; }
+      expect(fn.foldRight(f)('')('foo')).to.be.equal('foo');
+    });
+  });
+
+  describe('#scan', function() {
+    it('should scan an array from left to right', function() {
+      function f(b, a) { return [a].concat(b); }
+      expect(fn.scan(f)([])([1, 2, 3])).to.be.eql([[], [1], [2,1], [3,2,1]]);
+    });
+
+    it('should scan a string from left to right', function() {
+      function f(b, a) { return a + b; }
+      expect(fn.scan(f)('')('foo')).to.be.eql(['', 'f', 'of', 'oof']);
+    });
+  });
+
+  describe('#scanRight', function() {
+    it('should scan an array from right to left', function() {
+      function f(a, b) { return [a].concat(b); }
+      expect(fn.scanRight(f)([])([1, 2, 3])).to.be.eql([[1,2,3], [2,3], [3], []]);
+    });
+
+    it('should scan an array from right to left', function() {
+      function f(a, b) { return a + b; }
+      expect(fn.scanRight(f)('')('foo')).to.be.eql(['foo', 'oo', 'o', '']);
+    });
+  });
+
+  describe('#append', function() {
+    it('should append an element to an array', function() {
+      expect(fn.append([1, 2, 3])(4)).to.be.eql([1, 2, 3, 4]);
+    });
+
+    it('should append two strings', function() {
+      expect(fn.append('foo')('bar')).to.be.equal('foobar');
+    });
+  });
+
+  describe('#prepend', function() {
+    it('should prepend an element to an array', function() {
+      expect(fn.prepend([1, 2, 3])(4)).to.be.eql([4, 1, 2, 3]);
+    });
+
+    it('should prepend two strings', function() {
+      expect(fn.prepend('foo')('bar')).to.be.equal('barfoo');
+    });
+  });
+
+  describe('#concat', function() {
+    it('should concatenate arrays', function() {
+      expect(fn.concat([1, 2, 3], [4, 5, 6], [7, 8, 9])).to.be.eql([1, 2, 3, 4, 5, 6, 7, 8, 9]);
+    });
+
+    it('should concatenate strings', function() {
+      expect(fn.concat('foo', 'bar', 'baz')).to.be.equal('foobarbaz');
     });
   });
 

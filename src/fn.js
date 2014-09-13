@@ -4,20 +4,39 @@ var core = require('./core'),
     util = require('./util');
 
 function append(a, b) {
-  return a.concat(b);
+  if (typeof a === 'string') {
+    return a + b;
+  } else {
+    return a.concat(b);
+  }
+}
+
+function prepend(a, b) {
+  if (typeof a === 'string') {
+    return b + a;
+  } else {
+    return [b].concat(a);
+  }
+}
+
+function pure(as) {
+  return (typeof as[0] === 'string') ? '' : [];
 }
 
 function concat(as) {
-  var s = (typeof as[0] === 'string') ? '' : [];
-  return fold(append, s, as);
+  return fold(append, pure(as), toArray(as));
+}
+
+function concatMap(f, as) {
+  return concat(toArray(as).map(f));
 }
 
 function fold(f, s, as) {
-  return as.reduce(f, s);
+  return toArray(as).reduce(f, s);
 }
 
 function foldRight(f, s, as) {
-  return as.reduceRight(f, s);
+  return toArray(as).reduceRight(core.flip(f), s);
 }
 
 function toArray(as) {
@@ -256,6 +275,18 @@ module.exports = {
   }),
 
   /**
+   * Maps and concatenates the list of `as` with the function `f`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {function} f
+   * @param {Array|String} as
+   * @returns {Array} A new array.
+   */
+  concatMap: core.curry(concatMap),
+
+  /**
    * Maps the list of `as` with the function `f`.
    *
    * @static
@@ -266,7 +297,11 @@ module.exports = {
    * @returns {Array} A new array.
    */
   map: core.curry(function(f, as) {
-    return as.map(f);
+    if (typeof as === 'string') {
+      return concatMap(f, as);
+    } else {
+      return as.map(f);
+    }
   }),
 
   /**
@@ -280,7 +315,13 @@ module.exports = {
    * @returns {Array} A new array.
    */
   filter: core.curry(function(p, as) {
-    return as.filter(p);
+    if (typeof as === 'string') {
+      return concatMap(function(a) {
+        return p(a) ? a : '';
+      }, as);
+    } else {
+      return as.filter(p);
+    }
   }),
 
   /**
@@ -348,24 +389,36 @@ module.exports = {
   scanRight: core.curry(function(f, s, as) {
     var r = [s];
 
-    foldRight(function(b, a) {
-      return core.tap(r.push.bind(r), f(b, a));
+    foldRight(function(a, b) {
+      return core.tap(r.unshift.bind(r), f(a, b));
     }, s, as);
 
     return r;
   }),
 
   /**
-   * Appends the objects `a` and `b`.
+   * Appends `b` to `a`.
    *
    * @static
    * @curried
    * @function
-   * @param {*} a
+   * @param {Array|String} a
    * @param {*} b
    * @returns {*} The result.
    */
   append: core.curry(append),
+
+  /**
+   * Prepends `a` to `b`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {Array|String} a
+   * @param {*} b
+   * @returns {*} The result.
+   */
+  prepend: core.curry(prepend),
 
   /**
    * Concatenates the list of `as`.
@@ -376,20 +429,6 @@ module.exports = {
    * @returns {*} The result.
    */
   concat: core.variadic(concat),
-
-  /**
-   * Maps and concatenates the list of `as` with the function `f`.
-   *
-   * @static
-   * @curried
-   * @function
-   * @param {function} f
-   * @param {Array|String} as
-   * @returns {Array} A new array.
-   */
-  concatMap: core.curry(function(f, as) {
-    return concat(toArray(as).map(f));
-  }),
 
   /**
    * Returns the first element in the list of `as`.
@@ -448,8 +487,7 @@ module.exports = {
    * @returns {*} The result.
    */
   reverse: function(as) {
-    var s = (typeof as === 'string') ? '' : [];
-    return foldRight(append, s, toArray(as));
+    return fold(prepend, pure(as), toArray(as));
   },
 
   /**
