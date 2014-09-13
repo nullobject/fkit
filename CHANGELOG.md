@@ -1,3 +1,10 @@
+v0.3.4 / 2014-09-13
+==================
+
+ * Add #concatMap function.
+ * Fix examples in readme.
+ * Fix an issue in makefile where gh-pages could cause conflicts.
+
 v0.3.3 / 2014-09-12
 ==================
 
