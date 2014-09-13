@@ -1,3 +1,8 @@
+v0.4.1 / 2014-09-13
+==================
+
+ * Update #head, #tail, #init, #last, and #reverse to work with strings.
+
 v0.4.0 / 2014-09-13
 ==================
 
