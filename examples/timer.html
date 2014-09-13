@@ -2,7 +2,7 @@
 <html lang="en-au">
   <head>
     <meta charset="utf-8">
-    <title>Stream Example</title>
+    <title>Timer Example</title>
     <script src="../dist/fkit.js"></script>
   </head>
   <body>
@@ -12,8 +12,8 @@
       }
 
       var sum = fkit.fold(fkit.add, 0),
-          s   = new fkit.Stream(timer).map(fkit.mul(+1)),
-          t   = new fkit.Stream(timer).map(fkit.mul(-1)),
+          s   = new fkit.Signal(timer).map(fkit.mul(+1)),
+          t   = new fkit.Signal(timer).map(fkit.mul(-1)),
           u   = s.zip(t).map(sum);
 
       u.subscribe(console.log.bind(console));

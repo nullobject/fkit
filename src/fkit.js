@@ -4,12 +4,10 @@
 
 var util = require('./util');
 
-module.exports = util.extend({}, [
+module.exports = util.extend({
+  Signal: require('./signal')
+}, [
   require('./core'),
   require('./fn'),
-  require('./obj'),
-  {
-    Bus: require('./bus'),
-    Stream: require('./stream')
-  }
+  require('./obj')
 ]);

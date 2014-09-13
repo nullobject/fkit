@@ -390,7 +390,6 @@ module.exports = {
    * Returns the first element in the list of `as`.
    *
    * @static
-   * @variadic
    * @function
    * @param {...*} as
    * @returns {*} The result.
@@ -403,7 +402,6 @@ module.exports = {
    * Returns the elements after the first element in the list of `as`.
    *
    * @static
-   * @variadic
    * @function
    * @param {...*} as
    * @returns {*} The result.
@@ -416,7 +414,6 @@ module.exports = {
    * Returns the elements before the last element in the list of `as`.
    *
    * @static
-   * @variadic
    * @function
    * @param {...*} as
    * @returns {*} The result.
@@ -429,7 +426,6 @@ module.exports = {
    * Returns the last element in the list of `as`.
    *
    * @static
-   * @variadic
    * @function
    * @param {...*} as
    * @returns {*} The result.
@@ -442,7 +438,6 @@ module.exports = {
    * Returns the elements of list of `as` in reverse order.
    *
    * @static
-   * @variadic
    * @function
    * @param {...*} as
    * @returns {*} The result.

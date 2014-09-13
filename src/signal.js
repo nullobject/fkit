@@ -5,63 +5,63 @@ var core = require('./core'),
     obj  = require('./obj');
 
 /**
- * Creates a new stream with the `subscribe` function.
+ * Creates a new signal with the `subscribe` function.
  *
  * The `subscribe` function is called by an observer who wishes to subscribe
- * to the stream values.
+ * to the signal values.
  *
  *
  * @class
  * @param {function} subscribe A subscribe function.
  * @author Josh Bassett
  */
-function Stream(subscribe) {
+function Signal(subscribe) {
   /**
-   * Subscribes to the stream with the callbacks `next` and `end`.
+   * Subscribes to the signal with the callbacks `next` and `end`.
    *
    * @param {function} next A callback function.
    * @param {function} end A callback function.
-   * @function Stream#subscribe
+   * @function Signal#subscribe
    */
   this.subscribe = subscribe;
 }
 
-Stream.prototype.constructor = Stream;
+Signal.prototype.constructor = Signal;
 
 /**
- * Creates a new stream from the array `as`.
+ * Creates a new signal from the array `as`.
  *
  * @param {Array} as An array of values.
- * @returns {Stream} A new stream.
+ * @returns {Signal} A new signal.
  */
-Stream.fromArray = function(as) {
-  return new Stream(function(next, done) {
+Signal.fromArray = function(as) {
+  return new Signal(function(next, done) {
     as.map(core.unary(next));
     done();
   });
 };
 
 /**
- * Creates a new stream from the callback function `f`.
+ * Creates a new signal from the callback function `f`.
  *
  * @param {function} f A callback function.
- * @returns {Stream} A new stream.
+ * @returns {Signal} A new signal.
  */
-Stream.fromCallback = function(f) {
-  return new Stream(function(next, done) {
+Signal.fromCallback = function(f) {
+  return new Signal(function(next, done) {
     f(next);
   });
 };
 
 /**
- * Creates a new stream by listening for events of `type` on the `target` object.
+ * Creates a new signal by listening for events of `type` on the `target` object.
  *
  * @param {Element} target A DOM element.
  * @param {string} type A string representing the event type to listen for.
- * @returns {Stream} A new stream.
+ * @returns {Signal} A new signal.
  */
-Stream.fromEvent = function(target, type) {
-  return new Stream(function(next, done) {
+Signal.fromEvent = function(target, type) {
+  return new Signal(function(next, done) {
     if (target.on) {
       target.on(type, next);
     } else if (target.addEventListener) {
@@ -71,38 +71,38 @@ Stream.fromEvent = function(target, type) {
 };
 
 /**
- * Creates a new stream from the promise `p`.
+ * Creates a new signal from the promise `p`.
  *
  * @param {Promise} p A Promises/A+ conformant promise.
- * @returns {Stream} A new stream.
+ * @returns {Signal} A new signal.
  */
-Stream.fromPromise = function(p) {
-  return new Stream(function(next, done) {
+Signal.fromPromise = function(p) {
+  return new Signal(function(next, done) {
     p.then(next);
   });
 };
 
 /**
- * Creates a new stream that contains a single value `a`.
+ * Creates a new signal that contains a single value `a`.
  *
  * @param {*} a A value.
- * @returns {Stream} A new stream.
+ * @returns {Signal} A new signal.
  */
-Stream.of = function(a) {
-  return new Stream(function(next, done) {
+Signal.of = function(a) {
+  return new Signal(function(next, done) {
     if (a) { next(a); }
     done();
   });
 };
 
 /**
- * Creates a new stream that applies the function `f` to the values in the
- * stream. The unary function `f` must return a {@link Stream}.
+ * Creates a new signal that applies the function `f` to the values in the
+ * signal. The unary function `f` must return a {@link Signal}.
  *
  * @param {function} f A unary function.
- * @returns {Stream} A new stream.
+ * @returns {Signal} A new signal.
  */
-Stream.prototype.flatMap = function(f) {
+Signal.prototype.flatMap = function(f) {
   var env = this;
   return obj.copy(this, {
     subscribe: function(next, done) {
@@ -114,13 +114,13 @@ Stream.prototype.flatMap = function(f) {
 };
 
 /**
- * Creates a new stream that applies the function `f` to the values in the
- * stream. The unary function `f` must return a stream value.
+ * Creates a new signal that applies the function `f` to the values in the
+ * signal. The unary function `f` must return a signal value.
  *
  * @param {function} f A unary function.
- * @returns {Stream} A new stream.
+ * @returns {Signal} A new signal.
  */
-Stream.prototype.map = function(f) {
+Signal.prototype.map = function(f) {
   var env = this;
   return obj.copy(this, {
     subscribe: function(next, done) {
@@ -129,21 +129,15 @@ Stream.prototype.map = function(f) {
   });
 };
 
-// Stream.prototype.map = function(f) {
-//   return this.flatMap(function(a) {
-//     return Stream.of(f(a));
-//   });
-// };
-
 /**
- * Creates a new stream that filters the values of the stream using the
+ * Creates a new signal that filters the values of the signal using the
  * predicate function `p`. The predicate function `p` must return a boolean
  * value.
  *
  * @param {function} p A predicate function.
- * @returns {Stream} A new stream.
+ * @returns {Signal} A new signal.
  */
-Stream.prototype.filter = function(p) {
+Signal.prototype.filter = function(p) {
   var env = this;
   return obj.copy(this, {
     subscribe: function(next, done) {
@@ -155,14 +149,14 @@ Stream.prototype.filter = function(p) {
 };
 
 /**
- * Creates a new stream that reduces the stream with the starting value `a` and
- * binary function `f'. The new stream yields the result of all the applications of `f`.
+ * Creates a new signal that reduces the signal with the starting value `a` and
+ * binary function `f'. The new signal yields the result of all the applications of `f`.
  *
  * @param {*} a An object to use as the starting value.
  * @param {function} f A binary function.
- * @returns {Stream} A new stream.
+ * @returns {Signal} A new signal.
  */
-Stream.prototype.fold = function(a, f) {
+Signal.prototype.fold = function(a, f) {
   var env = this;
   return obj.copy(this, {
     subscribe: function(next, done) {
@@ -181,15 +175,15 @@ Stream.prototype.fold = function(a, f) {
 };
 
 /**
- * Creates a new stream that scans the stream with the starting value `a` and
- * binary function `f`. The new stream yields all the intermediate applications
+ * Creates a new signal that scans the signal with the starting value `a` and
+ * binary function `f`. The new signal yields all the intermediate applications
  * of `f`.
  *
  * @param {*} a An object to use as the starting value.
  * @param {function} f A binary function.
- * @returns {Stream} A new stream.
+ * @returns {Signal} A new signal.
  */
-Stream.prototype.scan = function(a, f) {
+Signal.prototype.scan = function(a, f) {
   var env = this;
   return obj.copy(this, {
     subscribe: function(next, done) {
@@ -203,13 +197,13 @@ Stream.prototype.scan = function(a, f) {
 };
 
 /**
- * Creates a new stream that merges the stream with one or more streams.
+ * Creates a new signal that merges the signal with one or more signals.
  *
- * @function Stream#merge
- * @param {...Stream} ss A list of streams to be merged.
- * @returns {Stream} A new stream.
+ * @function Signal#merge
+ * @param {...Signal} ss A list of signals to be merged.
+ * @returns {Signal} A new signal.
  */
-Stream.prototype.merge = core.variadic(function(ss) {
+Signal.prototype.merge = core.variadic(function(ss) {
   var env = this;
   return obj.copy(this, {
     subscribe: function(next, done) {
@@ -228,18 +222,18 @@ Stream.prototype.merge = core.variadic(function(ss) {
 });
 
 /**
- * Creates a new stream that splits the stream into one or more streams.
+ * Creates a new signal that splits the signal into one or more signals.
  *
- * @param {number} n A number of streams to split.
- * @returns {Array} An array of streams.
+ * @param {number} n A number of signals to split.
+ * @returns {Array} An array of signals.
  */
-Stream.prototype.split = function(n) {
+Signal.prototype.split = function(n) {
   var env = this,
       isSubscribed = false,
       nexts = [],
       dones = [];
 
-  var streams = fn
+  var signals = fn
     .range(0, n - 1)
     .map(function(_) {
       return obj.copy(env, {
@@ -251,7 +245,7 @@ Stream.prototype.split = function(n) {
       });
     });
 
-  return streams;
+  return signals;
 
   function onSubscribe() {
     if (!isSubscribed) {
@@ -269,13 +263,13 @@ Stream.prototype.split = function(n) {
 };
 
 /**
- * Creates a new stream that zips the stream with one or more streams.
+ * Creates a new signal that zips the signal with one or more signals.
  *
- * @function Stream#zip
- * @param {...Stream} ss A list of streams to be zipped.
- * @returns {Stream} A new stream.
+ * @function Signal#zip
+ * @param {...Signal} ss A list of signals to be zipped.
+ * @returns {Signal} A new signal.
  */
-Stream.prototype.zip = core.variadic(function(ss) {
+Signal.prototype.zip = core.variadic(function(ss) {
   var env = this;
 
   return obj.copy(this, {
@@ -306,4 +300,4 @@ Stream.prototype.zip = core.variadic(function(ss) {
   });
 });
 
-module.exports = Stream;
+module.exports = Signal;

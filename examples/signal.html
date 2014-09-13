@@ -2,7 +2,7 @@
 <html lang="en-au">
   <head>
     <meta charset="utf-8">
-    <title>Stream Example</title>
+    <title>Signal Example</title>
     <script src="../dist/fkit.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
   </head>
@@ -21,9 +21,9 @@
       }
 
       function randomNumbers(count) {
-        return fkit.Stream
+        return fkit.Signal
           .fromCallback(doRequest)
-          .map(fkit.compose(splitOnNewline, fkit.obj.get('text')));
+          .map(fkit.compose(splitOnNewline, fkit.get('text')));
 
         function doRequest(callback) {
           superagent
@@ -42,8 +42,8 @@
           );
       }
 
-      var more = fkit.Stream.fromEvent(document.getElementById('more'), 'click').map(fkit.const(1)),
-          less = fkit.Stream.fromEvent(document.getElementById('less'), 'click').map(fkit.const(-1));
+      var more = fkit.Signal.fromEvent(document.getElementById('more'), 'click').map(fkit.const(1)),
+          less = fkit.Signal.fromEvent(document.getElementById('less'), 'click').map(fkit.const(-1));
 
       more
         .merge(less)

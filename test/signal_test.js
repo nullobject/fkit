@@ -2,9 +2,9 @@
 
 var events = require('events'),
     fn     = require('../src/fn'),
-    Stream = require('../src/stream');
+    Signal = require('../src/signal');
 
-describe('Stream', function() {
+describe('Signal', function() {
   var bind, next, done;
 
   beforeEach(function() {
@@ -14,8 +14,8 @@ describe('Stream', function() {
   });
 
   describe('.fromArray', function() {
-    it('should return a stream of values from the given array', function() {
-      var s = Stream.fromArray(fn.range(1, 3));
+    it('should return a signal of values from the given array', function() {
+      var s = Signal.fromArray(fn.range(1, 3));
 
       s.subscribe(next, done);
 
@@ -29,9 +29,9 @@ describe('Stream', function() {
   });
 
   describe('.fromCallback', function() {
-    it('should return a stream of values from the callback function', function() {
+    it('should return a signal of values from the callback function', function() {
       var emit;
-      var s = Stream.fromCallback(function(callback) {
+      var s = Signal.fromCallback(function(callback) {
         emit = callback;
       });
 
@@ -48,9 +48,9 @@ describe('Stream', function() {
   });
 
   describe('.fromEvent', function() {
-    it('should return a stream of values from the given event', function() {
+    it('should return a signal of values from the given event', function() {
       var emitter = new events.EventEmitter();
-      var s = Stream.fromEvent(emitter, 'lol');
+      var s = Signal.fromEvent(emitter, 'lol');
 
       s.subscribe(next, done);
 
@@ -65,9 +65,9 @@ describe('Stream', function() {
   });
 
   describe('.fromPromise', function() {
-    it('should return a stream of values from the promise', function() {
+    it('should return a signal of values from the promise', function() {
       var emit;
-      var s = Stream.fromPromise({then: function(callback) {
+      var s = Signal.fromPromise({then: function(callback) {
         emit = callback;
       }});
 
@@ -84,8 +84,8 @@ describe('Stream', function() {
   });
 
   describe('.of', function() {
-    it('should return a stream with the given value', function() {
-      var s = Stream.of(1);
+    it('should return a signal with the given value', function() {
+      var s = Signal.of(1);
 
       s.subscribe(next, done);
 
@@ -98,10 +98,10 @@ describe('Stream', function() {
     var s, a = {}, b = {}, c = {}, d = {};
 
     beforeEach(function() {
-      s = new Stream(bind);
+      s = new Signal(bind);
     });
 
-    it('should bind the stream with the given callbacks', function() {
+    it('should bind the signal with the given callbacks', function() {
       s.subscribe(a, b);
       expect(bind.calledOnce).to.be.true;
       expect(bind.calledWithExactly(a, b)).to.be.true;
@@ -109,9 +109,9 @@ describe('Stream', function() {
   });
 
   describe('#flatMap', function() {
-    it('should flat map the given function over stream values', function() {
-      var s = Stream.fromArray(fn.range(1, 3));
-      var f = function(a) { return Stream.of(a); };
+    it('should flat map the given function over signal values', function() {
+      var s = Signal.fromArray(fn.range(1, 3));
+      var f = function(a) { return Signal.of(a); };
 
       s.flatMap(f).subscribe(next, done);
 
@@ -125,8 +125,8 @@ describe('Stream', function() {
   });
 
   describe('#map', function() {
-    it('should map the given function over stream values', function() {
-      var s = Stream.fromArray(fn.range(1, 3));
+    it('should map the given function over signal values', function() {
+      var s = Signal.fromArray(fn.range(1, 3));
 
       s.map(fn.inc).subscribe(next, done);
 
@@ -140,8 +140,8 @@ describe('Stream', function() {
   });
 
   describe('#filter', function() {
-    it('should filter the stream values with the given predicate', function() {
-      var s = Stream.fromArray(fn.range(1, 3));
+    it('should filter the signal values with the given predicate', function() {
+      var s = Signal.fromArray(fn.range(1, 3));
 
       s.filter(fn.eql(2)).subscribe(next, done);
 
@@ -153,8 +153,8 @@ describe('Stream', function() {
   });
 
   describe('#fold', function() {
-    it('should fold the given function over stream values', function() {
-      var s = Stream.fromArray(fn.range(1, 3));
+    it('should fold the given function over signal values', function() {
+      var s = Signal.fromArray(fn.range(1, 3));
 
       s.fold(0, fn.add).subscribe(next, done);
 
@@ -164,8 +164,8 @@ describe('Stream', function() {
   });
 
   describe('#scan', function() {
-    it('should scan the given function over stream values', function() {
-      var s = Stream.fromArray(fn.range(1, 3));
+    it('should scan the given function over signal values', function() {
+      var s = Signal.fromArray(fn.range(1, 3));
 
       s.scan(0, fn.add).subscribe(next, done);
 
@@ -179,10 +179,10 @@ describe('Stream', function() {
   });
 
   describe('#merge', function() {
-    it('should merge the given streams', function() {
-      var s = Stream.fromArray(fn.range(1, 3)),
-          t = Stream.fromArray(fn.range(4, 6)),
-          u = Stream.fromArray(fn.range(7, 9));
+    it('should merge the given signals', function() {
+      var s = Signal.fromArray(fn.range(1, 3)),
+          t = Signal.fromArray(fn.range(4, 6)),
+          u = Signal.fromArray(fn.range(7, 9));
 
       s.merge(t, u).subscribe(next, done);
 
@@ -196,10 +196,10 @@ describe('Stream', function() {
   });
 
   describe('#split', function() {
-    it('should split the given stream', function() {
-      var streams = Stream.fromArray(fn.range(1, 3)).split(2),
-          t       = streams[0],
-          u       = streams[1];
+    it('should split the given signal', function() {
+      var signals = Signal.fromArray(fn.range(1, 3)).split(2),
+          t       = signals[0],
+          u       = signals[1];
 
       t.subscribe(next, done);
       u.subscribe(function() {}, function() {});
@@ -214,6 +214,6 @@ describe('Stream', function() {
   });
 
   describe('#zip', function() {
-    it('should zip the given streams');
+    it('should zip the given signals');
   });
 });
