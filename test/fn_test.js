@@ -216,6 +216,18 @@ describe('fn', function() {
     });
   });
 
+  describe('#concatMap', function() {
+    it('should concat map arrays', function() {
+      function f(a) { return [a + 1]; }
+      expect(fn.concatMap(f)([1, 2, 3])).to.be.eql([2, 3, 4]);
+    });
+
+    it('should concat map strings', function() {
+      function f(a) { return a + '-'; }
+      expect(fn.concatMap(f)('foo')).to.be.eql('f-o-o-');
+    });
+  });
+
   describe('#head', function() {
     it('should return the first element of the given array', function() {
       expect(fn.head(1, 2, 3)).to.be.equal(1);

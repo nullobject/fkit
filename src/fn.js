@@ -8,6 +8,11 @@ function append(a, b) {
   return a.concat(b);
 }
 
+function concat(as) {
+  var s = (typeof as[0] === 'string') ? '' : [];
+  return fold(append, s, as);
+}
+
 function fold(f, s, as) {
   return as.reduce(f, s);
 }
@@ -363,8 +368,23 @@ module.exports = {
    * @param {...*} as
    * @returns {*} The result.
    */
-  concat: core.variadic(function(a, as) {
-    return fold(append, a, as);
+  concat: core.variadic(concat),
+
+  /**
+   * Maps and concatenates the list of `as` with the function `f`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {function} f
+   * @param {Array} as
+   * @returns {Array} A new array.
+   */
+  concatMap: core.curry(function(f, as) {
+    if (typeof as === 'string') {
+      as = as.split('');
+    }
+    return concat(as.map(f));
   }),
 
   /**
@@ -429,9 +449,7 @@ module.exports = {
    * @returns {*} The result.
    */
   reverse: core.variadic(function(as) {
-    return foldRight(function(b, a) {
-      return b.concat(a);
-    }, [], as);
+    return foldRight(append, [], as);
   }),
 
   /**
