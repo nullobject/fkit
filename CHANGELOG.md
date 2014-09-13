@@ -1,3 +1,9 @@
+v0.4.0 / 2014-09-13
+==================
+
+ * Rename stream -> signal and remove bus.
+ * Extract util module.
+
 v0.3.4 / 2014-09-13
 ==================
 
