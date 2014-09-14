@@ -48,8 +48,7 @@ function toArray(as) {
 }
 
 /**
- * This module defines the utility functions which can be easily combined and
- * composed.
+ * This module defines operations on lists.
  *
  * @module list
  * @author Josh Bassett

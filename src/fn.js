@@ -3,8 +3,7 @@
 var core = require('./core');
 
 /**
- * This module defines the utility functions which can be easily combined and
- * composed.
+ * This module defines many utility functions.
  *
  * @module fn
  * @author Josh Bassett

@@ -8,7 +8,7 @@ function copy(target, objects) {
 }
 
 /**
- * This module defines the object immutability helper functions.
+ * This module defines operations on objects.
  *
  * @module obj
  * @author Josh Bassett
