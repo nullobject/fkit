@@ -80,7 +80,7 @@ module.exports = {
    * @param {number} b
    * @returns {number} The result.
    */
-  min: core.curry(function(a, b) { return Math.min(a, b); }),
+  min: core.curry(function(a, b) { return Math.min(b, a); }),
 
   /**
    * Returns the largest of the given values `a` and `b`.
@@ -92,7 +92,7 @@ module.exports = {
    * @param {number} b
    * @returns {number} The result.
    */
-  max: core.curry(function(a, b) { return Math.max(a, b); }),
+  max: core.curry(function(a, b) { return Math.max(b, a); }),
 
   /**
    * The logical AND operator.
@@ -104,7 +104,7 @@ module.exports = {
    * @param {boolean} b
    * @returns {boolean} The result.
    */
-  and: core.curry(function(a, b) { return a && b; }),
+  and: core.curry(function(a, b) { return b && a; }),
 
   /**
    * The logical OR operator.
@@ -116,7 +116,7 @@ module.exports = {
    * @param {boolean} b
    * @returns {boolean} The result.
    */
-  or: core.curry(function(a, b) { return a || b; }),
+  or: core.curry(function(a, b) { return b || a; }),
 
   /**
    * The logical NOT operator.
@@ -144,7 +144,7 @@ module.exports = {
    * @param {*} b
    * @returns {boolean} The result.
    */
-  eql: core.curry(function(a, b) { return a === b; }),
+  eql: core.curry(function(a, b) { return b === a; }),
 
   /**
    * The greater than operator.

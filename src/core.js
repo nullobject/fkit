@@ -146,8 +146,8 @@ module.exports = {
   },
 
   /**
-   * Creates a new function that allows partial application of the arguments to
-   * the function `f`.
+   * Creates a new function that allows partial application of the arguments
+   * to the function `f`.
    *
    * @static
    * @function

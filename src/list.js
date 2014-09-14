@@ -286,5 +286,5 @@ module.exports = {
    */
   reverse: function(as) {
     return fold(core.flip(prepend), pure(as), toArray(as));
-  },
+  }
 };

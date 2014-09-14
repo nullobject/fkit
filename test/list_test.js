@@ -1,6 +1,7 @@
 'use strict';
 
-var list = require('../src/list');
+var core = require('../src/core'),
+    list = require('../src/list');
 
 describe('list', function() {
   describe('#range', function() {
@@ -49,49 +50,49 @@ describe('list', function() {
 
   describe('#fold', function() {
     it('should fold an array from left to right', function() {
-      function f(b, a) { return [a].concat(b); }
+      var f = core.flip(list.prepend);
       expect(list.fold(f)([])([1, 2, 3])).to.be.eql([3, 2, 1]);
     });
 
     it('should fold a string from left to right', function() {
-      function f(b, a) { return a + b; }
+      var f = core.flip(list.prepend);
       expect(list.fold(f)('')('foo')).to.be.equal('oof');
     });
   });
 
   describe('#foldRight', function() {
     it('should fold an array from right to left', function() {
-      function f(a, b) { return [a].concat(b); }
-      expect(list.foldRight(f)([])([1, 2, 3])).to.be.eql([1, 2, 3]);
+      var f = list.append;
+      expect(list.foldRight(f)([])([1, 2, 3])).to.be.eql([3, 2, 1]);
     });
 
     it('should fold a string from right to left', function() {
-      function f(a, b) { return a + b; }
-      expect(list.foldRight(f)('')('foo')).to.be.equal('foo');
+      var f = list.append;
+      expect(list.foldRight(f)('')('foo')).to.be.equal('oof');
     });
   });
 
   describe('#scan', function() {
     it('should scan an array from left to right', function() {
-      function f(b, a) { return [a].concat(b); }
-      expect(list.scan(f)([])([1, 2, 3])).to.be.eql([[], [1], [2,1], [3,2,1]]);
+      var f = core.flip(list.prepend);
+      expect(list.scan(f)([])([1, 2, 3])).to.be.eql([[], [1], [2, 1], [3, 2, 1]]);
     });
 
     it('should scan a string from left to right', function() {
-      function f(b, a) { return a + b; }
+      var f = core.flip(list.prepend);
       expect(list.scan(f)('')('foo')).to.be.eql(['', 'f', 'of', 'oof']);
     });
   });
 
   describe('#scanRight', function() {
     it('should scan an array from right to left', function() {
-      function f(a, b) { return [a].concat(b); }
-      expect(list.scanRight(f)([])([1, 2, 3])).to.be.eql([[1,2,3], [2,3], [3], []]);
+      var f = list.append;
+      expect(list.scanRight(f)([])([1, 2, 3])).to.be.eql([[3, 2, 1], [3, 2], [3], []]);
     });
 
     it('should scan an array from right to left', function() {
-      function f(a, b) { return a + b; }
-      expect(list.scanRight(f)('')('foo')).to.be.eql(['foo', 'oo', 'o', '']);
+      var f = list.append;
+      expect(list.scanRight(f)('')('foo')).to.be.eql(['oof', 'oo', 'o', '']);
     });
   });
 
