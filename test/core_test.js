@@ -164,5 +164,10 @@ describe('function', function() {
       expect(spy.calledWithExactly(1)).to.be.true;
     });
   });
-});
 
+  describe('#tuple', function() {
+    it('should return a tuple', function() {
+      expect(core.tuple(1)(2)).to.be.eql([1, 2]);
+    });
+  });
+});

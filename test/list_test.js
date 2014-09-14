@@ -185,4 +185,16 @@ describe('list', function() {
       expect(list.zip('foo')('bar')).to.be.eql([['f', 'b'], ['o', 'a'], ['o', 'r']]);
     });
   });
+
+  describe('#zipWith', function() {
+    function f(a, b) { return a + b; }
+
+    it('should zip arrays', function() {
+      expect(list.zipWith(f)([1, 2, 3])([4, 5, 6])).to.be.eql([5, 7, 9]);
+    });
+
+    it('should zip strings', function() {
+      expect(list.zipWith(f)('foo')('bar')).to.be.eql(['fb', 'oa', 'or']);
+    });
+  });
 });

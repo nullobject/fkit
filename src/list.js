@@ -39,6 +39,12 @@ function foldRight(f, s, as) {
   return toArray(as).reduceRight(core.flip(f), s);
 }
 
+function zipWith(f, as, bs) {
+  return toArray(as).map(function(a, i) {
+    return f(a, bs[i]);
+  });
+}
+
 function toArray(as) {
   if (typeof as === 'string') {
     return as.split('');
@@ -298,8 +304,19 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   zip: core.curry(function(as, bs) {
-    return toArray(as).map(function(a, i) {
-      return [a, bs[i]];
-    });
-  })
+    return zipWith(core.tuple, as, bs);
+  }),
+
+  /**
+   * Zips the corresponding elements in the list of `as` and `bs` with the function `f`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {function} f
+   * @param {Array|String} as
+   * @param {Array|String} bs
+   * @returns {Array|String} The result.
+   */
+  zipWith: core.curry(zipWith)
 };
