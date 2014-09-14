@@ -175,4 +175,14 @@ describe('list', function() {
       expect(list.reverse('foo')).to.be.equal('oof')
     });
   });
+
+  describe('#zip', function() {
+    it('should zip arrays', function() {
+      expect(list.zip([1, 2, 3])([4, 5, 6])).to.be.eql([[1, 4], [2, 5], [3, 6]]);
+    });
+
+    it('should zip strings', function() {
+      expect(list.zip('foo')('bar')).to.be.eql([['f', 'b'], ['o', 'a'], ['o', 'r']]);
+    });
+  });
 });

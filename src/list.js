@@ -81,7 +81,7 @@ module.exports = {
    * @function
    * @param {function} f
    * @param {Array|String} as
-   * @returns {Array} A new array.
+   * @returns {Array|String} The result.
    */
   concatMap: core.curry(concatMap),
 
@@ -93,7 +93,7 @@ module.exports = {
    * @function
    * @param {function} f
    * @param {Array} as
-   * @returns {Array} A new array.
+   * @returns {Array|String} The result.
    */
   map: core.curry(function(f, as) {
     if (typeof as === 'string') {
@@ -110,8 +110,8 @@ module.exports = {
    * @curried
    * @function
    * @param {function} p
-   * @param {Array} as
-   * @returns {Array} A new array.
+   * @param {Array|String} as
+   * @returns {Array|String} The result.
    */
   filter: core.curry(function(p, as) {
     if (typeof as === 'string') {
@@ -130,7 +130,7 @@ module.exports = {
    * @function
    * @param {function} f
    * @param {*} s
-   * @param {Array} as
+   * @param {Array|String} as
    * @returns {*} The result.
    */
   fold: core.curry(fold),
@@ -144,7 +144,7 @@ module.exports = {
    * @function
    * @param {function} f
    * @param {*} s
-   * @param {Array} as
+   * @param {Array|String} as
    * @returns {*} The result.
    */
   foldRight: core.curry(foldRight),
@@ -158,7 +158,7 @@ module.exports = {
    * @function
    * @param {function} f
    * @param {*} s
-   * @param {Array} as
+   * @param {Array|String} as
    * @returns {*} The result.
    */
   scan: core.curry(function(f, s, as) {
@@ -180,7 +180,7 @@ module.exports = {
    * @function
    * @param {function} f
    * @param {*} s
-   * @param {Array} as
+   * @param {Array|String} as
    * @returns {*} The result.
    */
   scanRight: core.curry(function(f, s, as) {
@@ -201,7 +201,7 @@ module.exports = {
    * @function
    * @param {Array|String} a
    * @param {*} b
-   * @returns {*} The result.
+   * @returns {Array|String} The result.
    */
   append: core.curry(append),
 
@@ -213,7 +213,7 @@ module.exports = {
    * @function
    * @param {Array|String} a
    * @param {*} b
-   * @returns {*} The result.
+   * @returns {Array|String} The result.
    */
   prepend: core.curry(prepend),
 
@@ -223,7 +223,7 @@ module.exports = {
    * @static
    * @function
    * @param {...*} as
-   * @returns {*} The result.
+   * @returns {Array|String} The result.
    */
   concat: core.variadic(concat),
 
@@ -245,7 +245,7 @@ module.exports = {
    * @static
    * @function
    * @param {Array|String} as
-   * @returns {*} The result.
+   * @returns {Array|String} The result.
    */
   tail: function(as) {
     return as.slice(1);
@@ -257,7 +257,7 @@ module.exports = {
    * @static
    * @function
    * @param {Array|String} as
-   * @returns {*} The result.
+   * @returns {Array|String} The result.
    */
   init: function(as) {
     return as.slice(0, as.length - 1);
@@ -281,9 +281,25 @@ module.exports = {
    * @static
    * @function
    * @param {Array|String} as
-   * @returns {*} The result.
+   * @returns {Array|String} The result.
    */
   reverse: function(as) {
     return fold(core.flip(prepend), pure(as), toArray(as));
-  }
+  },
+
+  /**
+   * Zips the corresponding elements in the list of `as` and the list of `bs`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {Array|String} as
+   * @param {Array|String} bs
+   * @returns {Array|String} The result.
+   */
+  zip: core.curry(function(as, bs) {
+    return toArray(as).map(function(a, i) {
+      return [a, bs[i]];
+    });
+  })
 };
