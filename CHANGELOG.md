@@ -1,3 +1,12 @@
+v0.4.4 / 2014-09-15
+==================
+
+ * Add #zipWith and #tuple functions.
+ * Add #zip function.
+ * Add CodePen examples to readme.
+ * Fix a bug in the #curry function.
+ * Change travis notification settings.
+
 v0.4.3 / 2014-09-13
 ==================
 
