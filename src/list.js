@@ -53,6 +53,10 @@ function toArray(as) {
   }
 }
 
+function pair(a, b) {
+  return [a, b];
+}
+
 /**
  * This module defines operations on lists.
  *
@@ -60,6 +64,17 @@ function toArray(as) {
  * @author Josh Bassett
  */
 module.exports = {
+  /**
+   * Returns a pair with the values `a` and `b`.
+   *
+   * @static
+   * @function
+   * @param {*} a A value.
+   * @param {*} b A value.
+   * @returns {Array} A pair.
+   */
+  pair: core.curry(pair),
+
   /**
    * Creates a new array of numbers from `a` to `b`.
    *
@@ -317,7 +332,7 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   zip: core.curry(function(as, bs) {
-    return zipWith(core.pair, as, bs);
+    return zipWith(pair, as, bs);
   }),
 
   /**
@@ -332,6 +347,6 @@ module.exports = {
       var a = ps[0], b = ps[1],
           as = p[0], bs = p[1];
       return [prepend(a, as), prepend(b, bs)];
-    }, core.pair(s, s), as);
+    }, pair(s, s), as);
   }
 };

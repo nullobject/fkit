@@ -4,6 +4,12 @@ var core = require('../src/core'),
     list = require('../src/list');
 
 describe('list', function() {
+  describe('#pair', function() {
+    it('should return a pair', function() {
+      expect(list.pair(1)(2)).to.be.eql([1, 2]);
+    });
+  });
+
   describe('#range', function() {
     it('should return an array of numbers', function() {
       expect(list.range(1)(3)).to.eql([1, 2, 3]);

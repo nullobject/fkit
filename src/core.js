@@ -58,10 +58,6 @@ function flip(f) {
   };
 }
 
-function pair(a, b) {
-  return [a, b];
-}
-
 /**
  * This module defines the core functions.
  *
@@ -224,16 +220,5 @@ module.exports = {
   tap: curry(function(f, a) {
     f.call(this, a);
     return a;
-  }),
-
-  /**
-   * Returns a pair with the values `a` and `b`.
-   *
-   * @static
-   * @function
-   * @param {*} a A value.
-   * @param {*} b A value.
-   * @returns {Array} A pair.
-   */
-  pair: curry(pair)
+  })
 };
