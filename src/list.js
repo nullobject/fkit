@@ -297,6 +297,18 @@ module.exports = {
   },
 
   /**
+   * Returns the length of the list of `as`.
+   *
+   * @static
+   * @function
+   * @param {Array|String} as
+   * @returns {number} The length.
+   */
+  length: function(as) {
+    return as.length;
+  },
+
+  /**
    * Returns the elements of list of `as` in reverse order.
    *
    * @static

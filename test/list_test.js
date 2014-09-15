@@ -172,6 +172,16 @@ describe('list', function() {
     });
   });
 
+  describe('#length', function() {
+    it('should return the length of an array', function() {
+      expect(list.length([1, 2, 3])).to.be.equal(3);
+    });
+
+    it('should return the length of a string', function() {
+      expect(list.length('foo')).to.be.equal(3);
+    });
+  });
+
   describe('#reverse', function() {
     it('should return the elements of an array in reverse', function() {
       expect(list.reverse([1, 2, 3])).to.be.eql([3, 2, 1]);
