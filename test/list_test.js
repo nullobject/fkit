@@ -176,6 +176,18 @@ describe('list', function() {
     });
   });
 
+  describe('#zipWith', function() {
+    function f(a, b) { return a + b; }
+
+    it('should zip arrays', function() {
+      expect(list.zipWith(f)([1, 2, 3])([4, 5, 6])).to.be.eql([5, 7, 9]);
+    });
+
+    it('should zip strings', function() {
+      expect(list.zipWith(f)('foo')('bar')).to.be.eql(['fb', 'oa', 'or']);
+    });
+  });
+
   describe('#zip', function() {
     it('should zip arrays', function() {
       expect(list.zip([1, 2, 3])([4, 5, 6])).to.be.eql([[1, 4], [2, 5], [3, 6]]);
@@ -186,15 +198,13 @@ describe('list', function() {
     });
   });
 
-  describe('#zipWith', function() {
-    function f(a, b) { return a + b; }
-
-    it('should zip arrays', function() {
-      expect(list.zipWith(f)([1, 2, 3])([4, 5, 6])).to.be.eql([5, 7, 9]);
+  describe('#unzip', function() {
+    it('should unzip arrays', function() {
+      expect(list.unzip([[1, 4], [2, 5], [3, 6]])).to.be.eql([[1, 2, 3], [4, 5, 6]]);
     });
 
-    it('should zip strings', function() {
-      expect(list.zipWith(f)('foo')('bar')).to.be.eql(['fb', 'oa', 'or']);
+    it('should unzip strings', function() {
+      expect(list.unzip([['f', 'b'], ['o', 'a'], ['o', 'r']])).to.be.eql(['foo', 'bar']);
     });
   });
 });

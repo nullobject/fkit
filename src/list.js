@@ -319,4 +319,19 @@ module.exports = {
   zip: core.curry(function(as, bs) {
     return zipWith(core.pair, as, bs);
   }),
+
+  /**
+   * Unzips a list of pairs into a pair of lists of `as` and `bs`.
+   *
+   * @param {Array|String} as
+   * @returns {Array|String} The result.
+   */
+  unzip: function(as) {
+    var s = pure(as[0]);
+    return foldRight(function(ps, p) {
+      var a = ps[0], b = ps[1],
+          as = p[0], bs = p[1];
+      return [prepend(a, as), prepend(b, bs)];
+    }, core.pair(s, s), as);
+  }
 };
