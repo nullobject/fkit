@@ -3,31 +3,31 @@
 var core = require('./core'),
     fn   = require('./fn');
 
-// Returns an array of length `n`.
+// Returns a new array of length `n`.
 function array(n) {
   return Array.apply(null, Array(n));
 }
 
-function replicate(n, a) {
-  return concat(array(n).map(function() { return pure(a); }));
+function head(as) {
+  return as[0];
+}
+
+function tail(as) {
+  return as.slice(1);
 }
 
 function length(as) {
   return as.length;
 }
 
-function init(as) {
-  return as.slice(0, as.length - 1);
-}
-
 // Returns an empty monoid.
 function mempty(as) {
-  return (typeof as[0] === 'string') ? '' : [];
+  return (as && typeof as[0] === 'string') ? '' : [];
 }
 
 // Returns a value in a pure context.
 function pure(x) {
-  return (typeof x[0] === 'string') ? x : [x];
+  return (x && typeof x[0] === 'string') ? x : [x];
 }
 
 function append(a, b) {
@@ -125,7 +125,9 @@ module.exports = {
    * @param {number} a
    * @returns {Array} A new array.
    */
-  replicate: core.curry(replicate),
+  replicate: core.curry(function(n, a) {
+    return concat(array(n).map(function() { return pure(a); }));
+  }),
 
   /**
    * Maps and concatenates the list of `as` with the function `f`.
@@ -289,9 +291,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {*} The result.
    */
-  head: function(as) {
-    return as[0];
-  },
+  head: head,
 
   /**
    * Returns the elements after the first element in the list of `as`.
@@ -301,9 +301,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {Array|String} The result.
    */
-  tail: function(as) {
-    return as.slice(1);
-  },
+  tail: tail,
 
   /**
    * Returns the elements before the last element in the list of `as`.
@@ -313,7 +311,9 @@ module.exports = {
    * @param {Array|String} as
    * @returns {Array|String} The result.
    */
-  init: init,
+  init: function(as) {
+    return as.slice(0, as.length - 1);
+  },
 
   /**
    * Returns the last element in the list of `as`.
@@ -369,8 +369,15 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   intersperse: core.curry(function(s, as) {
-    var bs = replicate(as.length, s);
-    return init(concat(zipWith(prepend, as, bs)));
+    return concat([head(as), prependToAll(tail(as))]);
+
+    function prependToAll(as) {
+      if (as.length === 0) {
+        return [];
+      } else {
+        return concat([s, head(as), prependToAll(tail(as))]);
+      }
+    }
   }),
 
   /**

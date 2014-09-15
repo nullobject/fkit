@@ -219,12 +219,20 @@ describe('list', function() {
   });
 
   describe('#intersperse', function() {
-    it('should intersperse an array', function() {
+    it('should intersperse an array with a value', function() {
       expect(list.intersperse(4)([1, 2, 3])).to.be.eql([1, 4, 2, 4, 3]);
     });
 
-    it('should intersperse a string', function() {
+    it('should intersperse an array with a null value', function() {
+      expect(list.intersperse(null)([1, 2, 3])).to.be.eql([1, null, 2, null, 3]);
+    });
+
+    it('should intersperse a string with another string', function() {
       expect(list.intersperse('-')('foo')).to.be.equal('f-o-o');
+    });
+
+    it('should intersperse a string with an empty string', function() {
+      expect(list.intersperse('')('foo')).to.be.equal('foo');
     });
   });
 
