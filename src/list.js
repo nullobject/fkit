@@ -3,6 +3,7 @@
 var core = require('./core'),
     fn   = require('./fn');
 
+// Returns an array of length `n`.
 function array(n) {
   return Array.apply(null, Array(n));
 }
@@ -11,10 +12,12 @@ function length(as) {
   return as.length;
 }
 
+// Returns an empty monoid.
 function mempty(as) {
   return (typeof as[0] === 'string') ? '' : [];
 }
 
+// Returns a value in a pure context.
 function pure(x) {
   return (typeof x[0] === 'string') ? x : [x];
 }
@@ -52,7 +55,8 @@ function foldRight(f, s, as) {
 }
 
 function zipWith(f, as, bs) {
-  return toArray(as).map(function(a, i) {
+  var n = Math.min(as.length, bs.length);
+  return toArray(as.slice(0, n)).map(function(a, i) {
     return f(a, bs[i]);
   });
 }

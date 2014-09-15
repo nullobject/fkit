@@ -228,6 +228,14 @@ describe('list', function() {
     it('should zip strings', function() {
       expect(list.zipWith(f)('foo')('bar')).to.be.eql(['fb', 'oa', 'or']);
     });
+
+    it('should zip arrays of non-equal length', function() {
+      expect(list.zipWith(f)([1, 2, 3])([4, 5])).to.be.eql([5, 7]);
+    });
+
+    it('should zip strings of non-equal length', function() {
+      expect(list.zipWith(f)('foo')('ba')).to.be.eql(['fb', 'oa']);
+    });
   });
 
   describe('#zip', function() {
@@ -238,9 +246,6 @@ describe('list', function() {
     it('should zip strings of equal length', function() {
       expect(list.zip('foo')('bar')).to.be.eql([['f', 'b'], ['o', 'a'], ['o', 'r']]);
     });
-
-    it('should zip arrays of non-equal length');
-    it('should zip strings of non-equal length');
   });
 
   describe('#unzip', function() {
