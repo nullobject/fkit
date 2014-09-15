@@ -18,6 +18,20 @@ describe('list', function() {
     });
   });
 
+  describe('#replicate', function() {
+    it('should replicate numbers', function() {
+      expect(list.replicate(3)(1)).to.eql([1, 1, 1]);
+    });
+
+    it('should replicate arrays', function() {
+      expect(list.replicate(3)([1])).to.eql([[1], [1], [1]]);
+    });
+
+    it('should replicate strings', function() {
+      expect(list.replicate(3)('a')).to.eql('aaa');
+    });
+  });
+
   describe('#concatMap', function() {
     it('should concat map an array', function() {
       function f(a) { return [a + 1]; }
@@ -195,11 +209,11 @@ describe('list', function() {
   });
 
   describe('#reverse', function() {
-    it('should return the elements of an array in reverse', function() {
+    it('should reverse an array', function() {
       expect(list.reverse([1, 2, 3])).to.be.eql([3, 2, 1]);
     });
 
-    it('should return the characters of a string in reverse', function() {
+    it('should reverse a string', function() {
       expect(list.reverse('foo')).to.be.equal('oof');
     });
   });
@@ -217,13 +231,16 @@ describe('list', function() {
   });
 
   describe('#zip', function() {
-    it('should zip arrays', function() {
+    it('should zip arrays of equal length', function() {
       expect(list.zip([1, 2, 3])([4, 5, 6])).to.be.eql([[1, 4], [2, 5], [3, 6]]);
     });
 
-    it('should zip strings', function() {
+    it('should zip strings of equal length', function() {
       expect(list.zip('foo')('bar')).to.be.eql([['f', 'b'], ['o', 'a'], ['o', 'r']]);
     });
+
+    it('should zip arrays of non-equal length');
+    it('should zip strings of non-equal length');
   });
 
   describe('#unzip', function() {

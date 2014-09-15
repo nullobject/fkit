@@ -3,12 +3,20 @@
 var core = require('./core'),
     fn   = require('./fn');
 
+function array(n) {
+  return Array.apply(null, Array(n));
+}
+
 function length(as) {
   return as.length;
 }
 
-function pure(as) {
+function mempty(as) {
   return (typeof as[0] === 'string') ? '' : [];
+}
+
+function pure(x) {
+  return (typeof x[0] === 'string') ? x : [x];
 }
 
 function append(a, b) {
@@ -28,7 +36,7 @@ function prepend(a, b) {
 }
 
 function concat(as) {
-  return toArray(as).reduce(core.flip(append), pure(as));
+  return toArray(as).reduce(core.flip(append), mempty(as));
 }
 
 function concatMap(f, as) {
@@ -92,10 +100,21 @@ module.exports = {
   range: core.curry(function(a, b) {
     var n    = Math.abs(b - a) + 1,
         sign = b > a ? 1 : -1;
+    return array(n).map(function(_, i) { return a + (i * sign); });
+  }),
 
-    return Array
-      .apply(null, Array(n))
-      .map(function(_, i) { return a + (i * sign); });
+  /**
+   * Creates a new list of length `n` with `a` the value of every element.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {number} n
+   * @param {number} a
+   * @returns {Array} A new array.
+   */
+  replicate: core.curry(function(n, a) {
+    return concat(array(n).map(function() { return pure(a); }));
   }),
 
   /**
@@ -329,7 +348,7 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   reverse: function(as) {
-    return fold(core.flip(prepend), pure(as), toArray(as));
+    return fold(core.flip(prepend), mempty(as), toArray(as));
   },
 
   /**
@@ -366,7 +385,7 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   unzip: function(as) {
-    var s = pure(as[0]);
+    var s = mempty(as[0]);
     return foldRight(function(ps, p) {
       var a = ps[0], b = ps[1],
           as = p[0], bs = p[1];
