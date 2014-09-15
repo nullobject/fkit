@@ -4,11 +4,31 @@ var core = require('../src/core'),
     list = require('../src/list');
 
 describe('list', function() {
+  describe('#pair', function() {
+    it('should return a pair', function() {
+      expect(list.pair(1)(2)).to.be.eql([1, 2]);
+    });
+  });
+
   describe('#range', function() {
     it('should return an array of numbers', function() {
       expect(list.range(1)(3)).to.eql([1, 2, 3]);
       expect(list.range(3)(1)).to.eql([3, 2, 1]);
       expect(list.range(1)(1)).to.eql([1]);
+    });
+  });
+
+  describe('#replicate', function() {
+    it('should replicate numbers', function() {
+      expect(list.replicate(3)(1)).to.eql([1, 1, 1]);
+    });
+
+    it('should replicate arrays', function() {
+      expect(list.replicate(3)([1])).to.eql([[1], [1], [1]]);
+    });
+
+    it('should replicate strings', function() {
+      expect(list.replicate(3)('a')).to.eql('aaa');
     });
   });
 
@@ -166,13 +186,45 @@ describe('list', function() {
     });
   });
 
+  describe('#length', function() {
+    it('should return the length of an array', function() {
+      expect(list.length([1, 2, 3])).to.be.equal(3);
+    });
+
+    it('should return the length of a string', function() {
+      expect(list.length('foo')).to.be.equal(3);
+    });
+  });
+
+  describe('#empty', function() {
+    it('should test whether an array is empty', function() {
+      expect(list.empty([])).to.be.true;
+      expect(list.empty([1, 2, 3])).to.be.false;
+    });
+
+    it('should test whether a string is empty', function() {
+      expect(list.empty('')).to.be.true;
+      expect(list.empty('foo')).to.be.false;
+    });
+  });
+
   describe('#reverse', function() {
-    it('should return the elements of an array in reverse', function() {
+    it('should reverse an array', function() {
       expect(list.reverse([1, 2, 3])).to.be.eql([3, 2, 1]);
     });
 
-    it('should return the characters of a string in reverse', function() {
-      expect(list.reverse('foo')).to.be.equal('oof')
+    it('should reverse a string', function() {
+      expect(list.reverse('foo')).to.be.equal('oof');
+    });
+  });
+
+  describe('#intersperse', function() {
+    it('should intersperse an array', function() {
+      expect(list.intersperse(4)([1, 2, 3])).to.be.eql([1, 4, 2, 4, 3]);
+    });
+
+    it('should intersperse a string', function() {
+      expect(list.intersperse('-')('foo')).to.be.equal('f-o-o');
     });
   });
 
@@ -186,14 +238,22 @@ describe('list', function() {
     it('should zip strings', function() {
       expect(list.zipWith(f)('foo')('bar')).to.be.eql(['fb', 'oa', 'or']);
     });
+
+    it('should zip arrays of non-equal length', function() {
+      expect(list.zipWith(f)([1, 2, 3])([4, 5])).to.be.eql([5, 7]);
+    });
+
+    it('should zip strings of non-equal length', function() {
+      expect(list.zipWith(f)('foo')('ba')).to.be.eql(['fb', 'oa']);
+    });
   });
 
   describe('#zip', function() {
-    it('should zip arrays', function() {
+    it('should zip arrays of equal length', function() {
       expect(list.zip([1, 2, 3])([4, 5, 6])).to.be.eql([[1, 4], [2, 5], [3, 6]]);
     });
 
-    it('should zip strings', function() {
+    it('should zip strings of equal length', function() {
       expect(list.zip('foo')('bar')).to.be.eql([['f', 'b'], ['o', 'a'], ['o', 'r']]);
     });
   });

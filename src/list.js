@@ -3,8 +3,31 @@
 var core = require('./core'),
     fn   = require('./fn');
 
-function pure(as) {
+// Returns an array of length `n`.
+function array(n) {
+  return Array.apply(null, Array(n));
+}
+
+function replicate(n, a) {
+  return concat(array(n).map(function() { return pure(a); }));
+}
+
+function length(as) {
+  return as.length;
+}
+
+function init(as) {
+  return as.slice(0, as.length - 1);
+}
+
+// Returns an empty monoid.
+function mempty(as) {
   return (typeof as[0] === 'string') ? '' : [];
+}
+
+// Returns a value in a pure context.
+function pure(x) {
+  return (typeof x[0] === 'string') ? x : [x];
 }
 
 function append(a, b) {
@@ -24,7 +47,7 @@ function prepend(a, b) {
 }
 
 function concat(as) {
-  return toArray(as).reduce(core.flip(append), pure(as));
+  return toArray(as).reduce(core.flip(append), mempty(as));
 }
 
 function concatMap(f, as) {
@@ -40,7 +63,8 @@ function foldRight(f, s, as) {
 }
 
 function zipWith(f, as, bs) {
-  return toArray(as).map(function(a, i) {
+  var n = Math.min(as.length, bs.length);
+  return toArray(as.slice(0, n)).map(function(a, i) {
     return f(a, bs[i]);
   });
 }
@@ -53,6 +77,10 @@ function toArray(as) {
   }
 }
 
+function pair(a, b) {
+  return [a, b];
+}
+
 /**
  * This module defines operations on lists.
  *
@@ -60,6 +88,17 @@ function toArray(as) {
  * @author Josh Bassett
  */
 module.exports = {
+  /**
+   * Returns a pair with the values `a` and `b`.
+   *
+   * @static
+   * @function
+   * @param {*} a A value.
+   * @param {*} b A value.
+   * @returns {Array} A pair.
+   */
+  pair: core.curry(pair),
+
   /**
    * Creates a new array of numbers from `a` to `b`.
    *
@@ -73,11 +112,20 @@ module.exports = {
   range: core.curry(function(a, b) {
     var n    = Math.abs(b - a) + 1,
         sign = b > a ? 1 : -1;
-
-    return Array
-      .apply(null, Array(n))
-      .map(function(_, i) { return a + (i * sign); });
+    return array(n).map(function(_, i) { return a + (i * sign); });
   }),
+
+  /**
+   * Creates a new list of length `n` with `a` the value of every element.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {number} n
+   * @param {number} a
+   * @returns {Array} A new array.
+   */
+  replicate: core.curry(replicate),
 
   /**
    * Maps and concatenates the list of `as` with the function `f`.
@@ -265,9 +313,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {Array|String} The result.
    */
-  init: function(as) {
-    return as.slice(0, as.length - 1);
-  },
+  init: init,
 
   /**
    * Returns the last element in the list of `as`.
@@ -282,6 +328,26 @@ module.exports = {
   },
 
   /**
+   * Returns the length of the list of `as`.
+   *
+   * @static
+   * @function
+   * @param {Array|String} as
+   * @returns {number} The length.
+   */
+  length: length,
+
+  /**
+   * Test whether the list of `as` is empty.
+   *
+   * @static
+   * @function
+   * @param {Array|String} as
+   * @returns {boolean} The result.
+   */
+  empty: core.compose(fn.eql(0), length),
+
+  /**
    * Returns the elements of list of `as` in reverse order.
    *
    * @static
@@ -290,8 +356,22 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   reverse: function(as) {
-    return fold(core.flip(prepend), pure(as), toArray(as));
+    return fold(core.flip(prepend), mempty(as), toArray(as));
   },
+
+  /**
+   * Intersperses the elements of list of `as` with a separator `s`.
+   *
+   * @static
+   * @function
+   * @param {Array|String} as
+   * @param {*} s A separator.
+   * @returns {Array|String} The result.
+   */
+  intersperse: core.curry(function(s, as) {
+    var bs = replicate(as.length, s);
+    return init(concat(zipWith(prepend, as, bs)));
+  }),
 
   /**
    * Zips the lists of `as` and `bs` with the function `f`.
@@ -317,7 +397,7 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   zip: core.curry(function(as, bs) {
-    return zipWith(core.pair, as, bs);
+    return zipWith(pair, as, bs);
   }),
 
   /**
@@ -327,11 +407,11 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   unzip: function(as) {
-    var s = pure(as[0]);
+    var s = mempty(as[0]);
     return foldRight(function(ps, p) {
       var a = ps[0], b = ps[1],
           as = p[0], bs = p[1];
       return [prepend(a, as), prepend(b, bs)];
-    }, core.pair(s, s), as);
+    }, pair(s, s), as);
   }
 };

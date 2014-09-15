@@ -2,7 +2,7 @@
 
 var core = require('../src/core');
 
-describe('function', function() {
+describe('core', function() {
   describe('#id', function() {
     it('should return a function that returns its argument', function() {
       expect(core.id(1)).to.equal(1);
@@ -162,12 +162,6 @@ describe('function', function() {
       var spy = sinon.spy(f);
       expect(core.tap(spy)(1)).to.be.equal(1);
       expect(spy.calledWithExactly(1)).to.be.true;
-    });
-  });
-
-  describe('#pair', function() {
-    it('should return a pair', function() {
-      expect(core.pair(1)(2)).to.be.eql([1, 2]);
     });
   });
 });
