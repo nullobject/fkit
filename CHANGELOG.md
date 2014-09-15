@@ -1,3 +1,12 @@
+v0.4.6 / 2014-09-15
+==================
+
+ * Add #intersperse function.
+ * Fix an issue in the #zipWith function.
+ * Add #replicate function.
+ * Add #empty function.
+ * Add #length function.
+
 v0.4.5 / 2014-09-15
 ==================
 
