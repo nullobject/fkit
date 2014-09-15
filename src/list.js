@@ -8,8 +8,16 @@ function array(n) {
   return Array.apply(null, Array(n));
 }
 
+function replicate(n, a) {
+  return concat(array(n).map(function() { return pure(a); }));
+}
+
 function length(as) {
   return as.length;
+}
+
+function init(as) {
+  return as.slice(0, as.length - 1);
 }
 
 // Returns an empty monoid.
@@ -117,9 +125,7 @@ module.exports = {
    * @param {number} a
    * @returns {Array} A new array.
    */
-  replicate: core.curry(function(n, a) {
-    return concat(array(n).map(function() { return pure(a); }));
-  }),
+  replicate: core.curry(replicate),
 
   /**
    * Maps and concatenates the list of `as` with the function `f`.
@@ -307,9 +313,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {Array|String} The result.
    */
-  init: function(as) {
-    return as.slice(0, as.length - 1);
-  },
+  init: init,
 
   /**
    * Returns the last element in the list of `as`.
@@ -354,6 +358,20 @@ module.exports = {
   reverse: function(as) {
     return fold(core.flip(prepend), mempty(as), toArray(as));
   },
+
+  /**
+   * Intersperses the elements of list of `as` with a separator `s`.
+   *
+   * @static
+   * @function
+   * @param {Array|String} as
+   * @param {*} s A separator.
+   * @returns {Array|String} The result.
+   */
+  intersperse: core.curry(function(s, as) {
+    var bs = replicate(as.length, s);
+    return init(concat(zipWith(prepend, as, bs)));
+  }),
 
   /**
    * Zips the lists of `as` and `bs` with the function `f`.

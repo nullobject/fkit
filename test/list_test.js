@@ -218,6 +218,16 @@ describe('list', function() {
     });
   });
 
+  describe('#intersperse', function() {
+    it('should intersperse an array', function() {
+      expect(list.intersperse(4)([1, 2, 3])).to.be.eql([1, 4, 2, 4, 3]);
+    });
+
+    it('should intersperse a string', function() {
+      expect(list.intersperse('-')('foo')).to.be.equal('f-o-o');
+    });
+  });
+
   describe('#zipWith', function() {
     function f(a, b) { return a + b; }
 
