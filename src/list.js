@@ -3,6 +3,10 @@
 var core = require('./core'),
     fn   = require('./fn');
 
+function length(as) {
+  return as.length;
+}
+
 function pure(as) {
   return (typeof as[0] === 'string') ? '' : [];
 }
@@ -304,9 +308,17 @@ module.exports = {
    * @param {Array|String} as
    * @returns {number} The length.
    */
-  length: function(as) {
-    return as.length;
-  },
+  length: length,
+
+  /**
+   * Test whether the list of `as` is empty.
+   *
+   * @static
+   * @function
+   * @param {Array|String} as
+   * @returns {boolean} The result.
+   */
+  empty: core.compose(fn.eql(0), length),
 
   /**
    * Returns the elements of list of `as` in reverse order.

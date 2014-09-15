@@ -182,13 +182,25 @@ describe('list', function() {
     });
   });
 
+  describe('#empty', function() {
+    it('should test whether an array is empty', function() {
+      expect(list.empty([])).to.be.true;
+      expect(list.empty([1, 2, 3])).to.be.false;
+    });
+
+    it('should test whether a string is empty', function() {
+      expect(list.empty('')).to.be.true;
+      expect(list.empty('foo')).to.be.false;
+    });
+  });
+
   describe('#reverse', function() {
     it('should return the elements of an array in reverse', function() {
       expect(list.reverse([1, 2, 3])).to.be.eql([3, 2, 1]);
     });
 
     it('should return the characters of a string in reverse', function() {
-      expect(list.reverse('foo')).to.be.equal('oof')
+      expect(list.reverse('foo')).to.be.equal('oof');
     });
   });
 
