@@ -165,9 +165,9 @@ describe('function', function() {
     });
   });
 
-  describe('#tuple', function() {
-    it('should return a tuple', function() {
-      expect(core.tuple(1)(2)).to.be.eql([1, 2]);
+  describe('#pair', function() {
+    it('should return a pair', function() {
+      expect(core.pair(1)(2)).to.be.eql([1, 2]);
     });
   });
 });

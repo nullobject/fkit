@@ -58,7 +58,7 @@ function flip(f) {
   };
 }
 
-function tuple(a, b) {
+function pair(a, b) {
   return [a, b];
 }
 
@@ -227,13 +227,13 @@ module.exports = {
   }),
 
   /**
-   * Returns a tuple with the values `a` and `b`.
+   * Returns a pair with the values `a` and `b`.
    *
    * @static
    * @function
    * @param {*} a A value.
    * @param {*} b A value.
-   * @returns {Array} A tuple.
+   * @returns {Array} A pair.
    */
-  tuple: curry(tuple)
+  pair: curry(pair)
 };

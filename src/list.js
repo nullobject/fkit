@@ -294,21 +294,7 @@ module.exports = {
   },
 
   /**
-   * Zips the corresponding elements in the list of `as` and the list of `bs`.
-   *
-   * @static
-   * @curried
-   * @function
-   * @param {Array|String} as
-   * @param {Array|String} bs
-   * @returns {Array|String} The result.
-   */
-  zip: core.curry(function(as, bs) {
-    return zipWith(core.tuple, as, bs);
-  }),
-
-  /**
-   * Zips the corresponding elements in the list of `as` and `bs` with the function `f`.
+   * Zips the lists of `as` and `bs` with the function `f`.
    *
    * @static
    * @curried
@@ -318,5 +304,19 @@ module.exports = {
    * @param {Array|String} bs
    * @returns {Array|String} The result.
    */
-  zipWith: core.curry(zipWith)
+  zipWith: core.curry(zipWith),
+
+  /**
+   * Zips the lists of `as` and `bs` into a list of pairs.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {Array|String} as
+   * @param {Array|String} bs
+   * @returns {Array|String} The result.
+   */
+  zip: core.curry(function(as, bs) {
+    return zipWith(core.pair, as, bs);
+  }),
 };
