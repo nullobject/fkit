@@ -5,6 +5,7 @@
   "plugins": ["plugins/markdown"],
   "opts": {
     "destination": "doc",
+    "recurse": true,
     "tutorials": "examples"
   }
 }
