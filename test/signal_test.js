@@ -2,7 +2,7 @@
 
 var build  = require('../src/list/build'),
     events = require('events'),
-    fn     = require('../src/fn'),
+    math   = require('../src/math'),
     Signal = require('../src/signal');
 
 describe('Signal', function() {
@@ -129,7 +129,7 @@ describe('Signal', function() {
     it('should map the given function over signal values', function() {
       var s = Signal.fromArray(build.range(1, 3));
 
-      s.map(fn.inc).subscribe(next, done);
+      s.map(math.inc).subscribe(next, done);
 
       [2, 3, 4].map(function(a, index) {
         var call = next.getCall(index);
@@ -144,7 +144,7 @@ describe('Signal', function() {
     it('should filter the signal values with the given predicate', function() {
       var s = Signal.fromArray(build.range(1, 3));
 
-      s.filter(fn.eql(2)).subscribe(next, done);
+      s.filter(math.eql(2)).subscribe(next, done);
 
       expect(next.calledWithExactly(1)).to.be.false;
       expect(next.calledWithExactly(2)).to.be.true;
@@ -157,7 +157,7 @@ describe('Signal', function() {
     it('should fold the given function over signal values', function() {
       var s = Signal.fromArray(build.range(1, 3));
 
-      s.fold(0, fn.add).subscribe(next, done);
+      s.fold(0, math.add).subscribe(next, done);
 
       expect(next.calledWithExactly(6)).to.be.true;
       expect(done.calledAfter(next)).to.be.true;
@@ -168,7 +168,7 @@ describe('Signal', function() {
     it('should scan the given function over signal values', function() {
       var s = Signal.fromArray(build.range(1, 3));
 
-      s.scan(0, fn.add).subscribe(next, done);
+      s.scan(0, math.add).subscribe(next, done);
 
       [0, 1, 3, 6].map(function(a, index) {
         var call = next.getCall(index);

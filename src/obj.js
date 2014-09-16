@@ -1,6 +1,6 @@
 'use strict';
 
-var core = require('./core'),
+var fn   = require('./fn'),
     util = require('./util');
 
 function copy(target, objects) {
@@ -28,7 +28,7 @@ module.exports = {
    * @returns {Object} A new object.
    * @example copy(person, {name: 'bob'})
    */
-  copy: core.variadic(copy),
+  copy: fn.variadic(copy),
 
   /**
    * Gets a property of the target object.
@@ -41,7 +41,7 @@ module.exports = {
    * @returns {*} A property value.
    * @example get('name', person) == 'bob'
    */
-  get: core.curry(function(property, target) { return target[property]; }),
+  get: fn.curry(function(property, target) { return target[property]; }),
 
   /**
    * Creates a copy of the `target` object with the `property` set to the
@@ -56,7 +56,7 @@ module.exports = {
    * @returns {Object} A new object.
    * @example set('name', 'bob', person)
    */
-  set: core.curry(function(property, value, target) {
+  set: fn.curry(function(property, value, target) {
     var object = {};
     object[property] = value;
     return copy(target, [object]);

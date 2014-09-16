@@ -1,7 +1,7 @@
 'use strict';
 
 var build = require('./build'),
-    core  = require('../core'),
+    fn    = require('../fn'),
     list  = require('../list');
 
 function zipWith(f, as, bs) {
@@ -29,7 +29,7 @@ module.exports = {
    * @param {Array|String} bs
    * @returns {Array|String} The result.
    */
-  zipWith: core.curry(zipWith),
+  zipWith: fn.curry(zipWith),
 
   /**
    * Zips the lists of `as` and `bs` into a list of pairs.
@@ -41,7 +41,7 @@ module.exports = {
    * @param {Array|String} bs
    * @returns {Array|String} The result.
    */
-  zip: core.curry(function(as, bs) { return zipWith(build.pair, as, bs); }),
+  zip: fn.curry(function(as, bs) { return zipWith(build.pair, as, bs); }),
 
   /**
    * Unzips a list of pairs into a pair of lists of `as` and `bs`.

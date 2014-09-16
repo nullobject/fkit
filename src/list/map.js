@@ -1,6 +1,6 @@
 'use strict';
 
-var core = require('../core'),
+var fn   = require('../fn'),
     fold = require('./fold'),
     list = require('../list');
 
@@ -21,7 +21,7 @@ module.exports = {
    * @param {Array} as
    * @returns {Array|String} The result.
    */
-  map: core.curry(function(f, as) {
+  map: fn.curry(function(f, as) {
     if (typeof as === 'string') {
       return fold.concatMap(f, as);
     } else {
@@ -39,7 +39,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {Array|String} The result.
    */
-  filter: core.curry(function(p, as) {
+  filter: fn.curry(function(p, as) {
     if (typeof as === 'string') {
       return fold.concatMap(function(a) {
         return p(a) ? a : '';
@@ -60,7 +60,7 @@ module.exports = {
   reverse: function(as) {
     return list
       .toArray(as)
-      .reduce(core.flip(list.prepend), list.mempty(as));
+      .reduce(fn.flip(list.prepend), list.mempty(as));
   },
 
   /**
@@ -72,7 +72,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {Array|String} The result.
    */
-  intersperse: core.curry(function(s, as) {
+  intersperse: fn.curry(function(s, as) {
     return fold.concat(
       list.head(as),
       prependToAll(list.tail(as))

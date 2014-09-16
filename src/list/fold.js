@@ -1,12 +1,12 @@
 'use strict';
 
-var core = require('../core'),
+var fn   = require('../fn'),
     list = require('../list');
 
 function concat(as) {
   return list
     .toArray(as)
-    .reduce(core.flip(list.append), list.mempty(as));
+    .reduce(fn.flip(list.append), list.mempty(as));
 }
 
 function fold(f, s, as) {
@@ -18,7 +18,7 @@ function fold(f, s, as) {
 function foldRight(f, s, as) {
   return list
     .toArray(as)
-    .reduceRight(core.flip(f), s);
+    .reduceRight(fn.flip(f), s);
 }
 
 /**
@@ -36,7 +36,7 @@ module.exports = {
    * @param {...*} as
    * @returns {Array|String} The result.
    */
-  concat: core.variadic(concat),
+  concat: fn.variadic(concat),
 
   /**
    * Maps and concatenates the list of `as` with the function `f`.
@@ -48,7 +48,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {Array|String} The result.
    */
-  concatMap: core.curry(function(f, as) {
+  concatMap: fn.curry(function(f, as) {
     return concat(list.toArray(as).map(f));
   }),
 
@@ -64,7 +64,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {*} The result.
    */
-  fold: core.curry(fold),
+  fold: fn.curry(fold),
 
   /**
    * Folds the list of `as` with the binary function `f` and starting value
@@ -78,7 +78,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {*} The result.
    */
-  foldRight: core.curry(foldRight),
+  foldRight: fn.curry(foldRight),
 
   /**
    * Scans the list of `as` with the binary function `f` and starting value
@@ -92,10 +92,10 @@ module.exports = {
    * @param {Array|String} as
    * @returns {*} The result.
    */
-  scan: core.curry(function(f, s, as) {
+  scan: fn.curry(function(f, s, as) {
     var r = [s];
     fold(function(b, a) {
-      return core.tap(r.push.bind(r), f(b, a));
+      return fn.tap(r.push.bind(r), f(b, a));
     }, s, as);
     return r;
   }),
@@ -112,10 +112,10 @@ module.exports = {
    * @param {Array|String} as
    * @returns {*} The result.
    */
-  scanRight: core.curry(function(f, s, as) {
+  scanRight: fn.curry(function(f, s, as) {
     var r = [s];
     foldRight(function(a, b) {
-      return core.tap(r.unshift.bind(r), f(a, b));
+      return fn.tap(r.unshift.bind(r), f(a, b));
     }, s, as);
     return r;
   }),
