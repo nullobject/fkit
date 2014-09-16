@@ -1,3 +1,4 @@
+name     = fkit
 status  := $(shell git status --porcelain)
 version := $(shell git describe --tags)
 regex   := "s/\([\"\']version[\"\'][[:space:]]*:[[:space:]]*\)\([\"\'].*[\"\']\)/\1\"$(version)\"/g"
@@ -13,6 +14,8 @@ test: unit lint
 release: build test bump changelog publish
 
 publish: publish-api publish-npm
+
+unpublish: delete-tag unpublish-npm
 
 clean:
 	@rm -rf doc node_modules
@@ -43,6 +46,10 @@ changelog:
 	@git add --all .
 	@git release "v$(version)"
 
+delete-tag:
+	@git tag --delete "v$(version)"
+	@git push --delete origin "v$(version)"
+
 # Publishes the API documentation.
 publish-api: doc
 	@test -z "$(status)"
@@ -57,3 +64,6 @@ publish-api: doc
 # Publishes the npm package.
 publish-npm:
 	@npm publish
+
+unpublish-npm:
+	@npm unpublish "$(name)@$(version)"
