@@ -1,7 +1,7 @@
 'use strict';
 
 var build = require('./list/build'),
-    core  = require('./core'),
+    fn    = require('./fn'),
     obj   = require('./obj');
 
 /**
@@ -36,7 +36,7 @@ Signal.prototype.constructor = Signal;
  */
 Signal.fromArray = function(as) {
   return new Signal(function(next, done) {
-    as.map(core.unary(next));
+    as.map(fn.unary(next));
     done();
   });
 };
@@ -65,7 +65,7 @@ Signal.fromEvent = function(target, type) {
     if (target.on) {
       target.on(type, next);
     } else if (target.addEventListener) {
-      target.addEventListener(type, core.compose(next, obj.get('detail')));
+      target.addEventListener(type, fn.compose(next, obj.get('detail')));
     }
   });
 };
@@ -124,7 +124,7 @@ Signal.prototype.map = function(f) {
   var env = this;
   return obj.copy(this, {
     subscribe: function(next, done) {
-      env.subscribe(core.compose(next, f), done);
+      env.subscribe(fn.compose(next, f), done);
     }
   });
 };
@@ -203,7 +203,7 @@ Signal.prototype.scan = function(a, f) {
  * @param {...Signal} ss A list of signals to be merged.
  * @returns {Signal} A new signal.
  */
-Signal.prototype.merge = core.variadic(function(ss) {
+Signal.prototype.merge = fn.variadic(function(ss) {
   var env = this;
   return obj.copy(this, {
     subscribe: function(next, done) {
@@ -251,10 +251,10 @@ Signal.prototype.split = function(n) {
     if (!isSubscribed) {
       env.subscribe(
         function(a) {
-          nexts.map(core.applyRight(a));
+          nexts.map(fn.applyRight(a));
         },
         function() {
-          dones.map(core.applyRight());
+          dones.map(fn.applyRight());
         }
       );
     }
@@ -269,7 +269,7 @@ Signal.prototype.split = function(n) {
  * @param {...Signal} ss A list of signals to be zipped.
  * @returns {Signal} A new signal.
  */
-Signal.prototype.zip = core.variadic(function(ss) {
+Signal.prototype.zip = fn.variadic(function(ss) {
   var env = this;
 
   return obj.copy(this, {

@@ -1,7 +1,6 @@
 'use strict';
 
-var core = require('./core'),
-    fn   = require('./fn');
+var fn = require('../fn');
 
 function length(as) { return as.length; }
 
@@ -24,7 +23,7 @@ function prepend(a, b) {
 /**
  * This module defines basic operations on lists.
  *
- * @module list
+ * @module
  * @author Josh Bassett
  */
 module.exports = {
@@ -56,7 +55,7 @@ module.exports = {
    * @param {*} b
    * @returns {Array|String} The result.
    */
-  append: core.curry(append),
+  append: fn.curry(append),
 
   /**
    * Prepends `a` to `b`.
@@ -68,7 +67,7 @@ module.exports = {
    * @param {*} b
    * @returns {Array|String} The result.
    */
-  prepend: core.curry(prepend),
+  prepend: fn.curry(prepend),
 
   /**
    * Returns the first element in the list of `as`.

@@ -1,13 +1,13 @@
 'use strict';
 
-var core = require('../core'),
-    fold = require('./fold'),
-    list = require('../list');
+var base = require('./base'),
+    fn   = require('../fn'),
+    fold = require('./fold');
 
 /**
  * This module defines map operations on lists.
  *
- * @module list/map
+ * @module
  * @author Josh Bassett
  */
 module.exports = {
@@ -21,7 +21,7 @@ module.exports = {
    * @param {Array} as
    * @returns {Array|String} The result.
    */
-  map: core.curry(function(f, as) {
+  map: fn.curry(function(f, as) {
     if (typeof as === 'string') {
       return fold.concatMap(f, as);
     } else {
@@ -39,7 +39,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {Array|String} The result.
    */
-  filter: core.curry(function(p, as) {
+  filter: fn.curry(function(p, as) {
     if (typeof as === 'string') {
       return fold.concatMap(function(a) {
         return p(a) ? a : '';
@@ -58,9 +58,9 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   reverse: function(as) {
-    return list
+    return base
       .toArray(as)
-      .reduce(core.flip(list.prepend), list.mempty(as));
+      .reduce(fn.flip(base.prepend), base.mempty(as));
   },
 
   /**
@@ -72,20 +72,20 @@ module.exports = {
    * @param {Array|String} as
    * @returns {Array|String} The result.
    */
-  intersperse: core.curry(function(s, as) {
+  intersperse: fn.curry(function(s, as) {
     return fold.concat(
-      list.head(as),
-      prependToAll(list.tail(as))
+      base.head(as),
+      prependToAll(base.tail(as))
     );
 
     function prependToAll(as) {
-      if (list.empty(as)) {
-        return list.mempty(as);
+      if (base.empty(as)) {
+        return base.mempty(as);
       } else {
         return fold.concat(
           s,
-          list.head(as),
-          prependToAll(list.tail(as))
+          base.head(as),
+          prependToAll(base.tail(as))
         );
       }
     }

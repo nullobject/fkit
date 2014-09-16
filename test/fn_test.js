@@ -3,175 +3,165 @@
 var fn = require('../src/fn');
 
 describe('fn', function() {
-  describe('#add', function() {
-    it('should add the values', function() {
-      expect(fn.add(2)(1)).to.equal(3);
+  describe('#id', function() {
+    it('should return a function that returns its argument', function() {
+      expect(fn.id(1)).to.equal(1);
     });
   });
 
-  describe('#sub', function() {
-    it('should subtract the values', function() {
-      expect(fn.sub(2)(1)).to.equal(-1);
+  describe('#apply', function() {
+    it('should apply a nullary function', function() {
+      function f() {}
+      var spy = sinon.spy(f);
+      fn.apply(spy)();
+      expect(spy.calledWithExactly(undefined)).to.be.true;
+    });
+
+    it('should apply a unary function', function() {
+      function f(a) {}
+      var spy = sinon.spy(f);
+      fn.apply(spy)(1);
+      expect(spy.calledWithExactly(1)).to.be.true;
     });
   });
 
-  describe('#mul', function() {
-    it('should multiply the values', function() {
-      expect(fn.mul(2)(1)).to.equal(2);
+  describe('#applyRight', function() {
+    it('should apply a nullary function', function() {
+      function f() {}
+      var spy = sinon.spy(f);
+      fn.applyRight()(spy);
+      expect(spy.calledWithExactly(undefined)).to.be.true;
+    });
+
+    it('should apply a unary function', function() {
+      function f(a) {}
+      var spy = sinon.spy(f);
+      fn.applyRight(1)(spy);
+      expect(spy.calledWithExactly(1)).to.be.true;
     });
   });
 
-  describe('#div', function() {
-    it('should divide the values', function() {
-      expect(fn.div(2)(1)).to.equal(0.5);
+  describe('#compose', function() {
+    it('should compose two functions', function() {
+      function f(a) { return a / 2; }
+      function g(a) { return a + 2; }
+      var h = fn.compose(f, g);
+      expect(h(1)).to.equal(f(g(1)));
+    });
+
+    it('should compose any number of functions', function() {
+      function f(a) { return a / 2; }
+      function g(a) { return a + 2; }
+      function h(a) { return a * 2; }
+      var i = fn.compose(f, g, h);
+      expect(i(1)).to.equal(f(g(h(1))));
     });
   });
 
-  describe('#mod', function() {
-    it('should modulo the values', function() {
-      expect(fn.mod(2)(1)).to.equal(1);
+  describe('#flip', function() {
+    it('should flip the arguments for the given function', function() {
+      function f(a, b) {}
+      var spy = sinon.spy(f);
+      fn.flip(spy)('hello', 'world');
+      expect(spy.calledWithExactly('world', 'hello')).to.be.true;
     });
   });
 
-  describe('#min', function() {
-    it('should compare the values', function() {
-      expect(fn.min(1)(2)).to.equal(1);
-      expect(fn.min(2)(1)).to.equal(1);
-      expect(fn.min(2)(2)).to.equal(2);
+  describe('#const', function() {
+    it('should return a function that returns a constant value', function() {
+      var f = fn.const(1);
+      expect(f()).to.equal(1);
     });
   });
 
-  describe('#max', function() {
-    it('should compare the values', function() {
-      expect(fn.max(1)(2)).to.equal(2);
-      expect(fn.max(2)(1)).to.equal(2);
-      expect(fn.max(2)(2)).to.equal(2);
+  describe('#curry', function() {
+    it('should not curry a nullary function', function() {
+      function f() {}
+      var g = fn.curry(f);
+      expect(f).to.equal(g);
+    });
+
+    it('should not curry a unary function', function() {
+      function f(a) {}
+      var g = fn.curry(f);
+      expect(f).to.equal(g);
+    });
+
+    it('should curry a binary function', function() {
+      function f(a, b) {}
+      var spy = sinon.spy(f);
+      var g = fn.curry(spy);
+
+      expect(f).to.not.equal(g);
+      g('hello')('world');
+      expect(spy.calledWithExactly('hello', 'world')).to.be.true;
     });
   });
 
-  describe('#and', function() {
-    it('should AND the values', function() {
-      expect(fn.and(false)(false)).to.be.false;
-      expect(fn.and(false)(true)).to.be.false;
-      expect(fn.and(true)(false)).to.be.false;
-      expect(fn.and(true)(true)).to.be.true;
+  describe('#unary', function() {
+    it('should return a unary function', function() {
+      var spy = sinon.spy();
+      fn.unary(spy)(1, 2, 3);
+      expect(spy.calledWithExactly(1)).to.be.true;
     });
   });
 
-  describe('#or', function() {
-    it('should OR the values', function() {
-      expect(fn.or(false)(false)).to.be.false;
-      expect(fn.or(false)(true)).to.be.true;
-      expect(fn.or(true)(false)).to.be.true;
-      expect(fn.or(true)(true)).to.be.true;
+  describe('#binary', function() {
+    it('should return a binary function', function() {
+      var spy = sinon.spy();
+      fn.binary(spy)(1, 2, 3);
+      expect(spy.calledWithExactly(1, 2)).to.be.true;
     });
   });
 
-  describe('#not', function() {
-    it('should NOT the value', function() {
-      expect(fn.not(false)).to.be.true;
-      expect(fn.not(true)).to.be.false;
+  describe('#variadic', function() {
+    context('with a unary function', function() {
+      function f(a) {}
+      var spy = sinon.spy(f);
+
+      it('should handle one argument', function() {
+        fn.variadic(spy)(1);
+        expect(spy.calledWithExactly([1])).to.be.true;
+      });
+
+      it('should handle many arguments', function() {
+        fn.variadic(spy)(1, 2, 3);
+        expect(spy.calledWithExactly([1, 2, 3])).to.be.true;
+      });
+
+      it('should handle an array with one element', function() {
+        fn.variadic(spy)([1]);
+        expect(spy.calledWithExactly([1])).to.be.true;
+      });
+
+      it('should handle an array with many elements', function() {
+        fn.variadic(spy)([1, 2, 3]);
+        expect(spy.calledWithExactly([1, 2, 3])).to.be.true;
+      });
+    });
+
+    context('with a binary function', function() {
+      function f(a, b) {}
+      var spy = sinon.spy(f);
+
+      it('should handle a list of arguments', function() {
+        fn.variadic(spy)(1, 2, 3);
+        expect(spy.calledWithExactly(1, [2, 3])).to.be.true;
+      });
+
+      it('should handle an array of arguments', function() {
+        fn.variadic(spy)([1, 2, 3]);
+        expect(spy.calledWith([1, 2, 3])).to.be.true;
+      });
     });
   });
 
-  describe('#negate', function() {
-    it('should negate the value', function() {
-      expect(fn.negate(1)).to.equal(-1);
-      expect(fn.negate(-1)).to.equal(1);
-    });
-  });
-
-  describe('#eql', function() {
-    it('should compare the values', function() {
-      var a = {}, b = {};
-
-      expect(fn.eql(1)(2)).to.be.false;
-      expect(fn.eql(2)(2)).to.be.true;
-
-      expect(fn.eql('lorem')('ipsum')).to.be.false;
-      expect(fn.eql('lorem')('lorem')).to.be.true;
-
-      expect(fn.eql(a)(b)).to.be.false;
-      expect(fn.eql(a)(a)).to.be.true;
-    });
-  });
-
-  describe('#gt', function() {
-    it('should compare the values', function() {
-      expect(fn.gt(1)(2)).to.be.true;
-      expect(fn.gt(2)(1)).to.be.false;
-      expect(fn.gt(2)(2)).to.be.false;
-    });
-  });
-
-  describe('#gte', function() {
-    it('should compare the values', function() {
-      expect(fn.gte(1)(2)).to.be.true;
-      expect(fn.gte(2)(1)).to.be.false;
-      expect(fn.gte(2)(2)).to.be.true;
-    });
-  });
-
-  describe('#lt', function() {
-    it('should compare the values', function() {
-      expect(fn.lt(1)(2)).to.be.false;
-      expect(fn.lt(2)(1)).to.be.true;
-      expect(fn.lt(2)(2)).to.be.false;
-    });
-  });
-
-  describe('#lte', function() {
-    it('should compare the values', function() {
-      expect(fn.lte(1)(2)).to.be.false;
-      expect(fn.lte(2)(1)).to.be.true;
-      expect(fn.lte(2)(2)).to.be.true;
-    });
-  });
-
-  describe('#inc', function() {
-    it('should increment the value', function() {
-      expect(fn.inc(1)).to.equal(2);
-      expect(fn.inc(2)).to.equal(3);
-    });
-  });
-
-  describe('#dec', function() {
-    it('should decrement the value', function() {
-      expect(fn.dec(3)).to.equal(2);
-      expect(fn.dec(2)).to.equal(1);
-    });
-  });
-
-  describe('#toUpper', function() {
-    it('should convert a string to uppercase', function() {
-      expect(fn.toUpper('a')).to.equal('A');
-      expect(fn.toUpper('A')).to.equal('A');
-    });
-  });
-
-  describe('#toLower', function() {
-    it('should convert a string to uppercase', function() {
-      expect(fn.toLower('a')).to.equal('a');
-      expect(fn.toLower('A')).to.equal('a');
-    });
-  });
-
-  describe('#branch', function() {
-    var p = sinon.stub().returns(true),
-        f = sinon.spy(),
-        g = sinon.spy(),
-        a = {};
-
-    it('should return f(a) if p(a) is true', function() {
-      fn.branch(p.returns(true), f, g, a);
-      expect(p.calledWithExactly(a)).to.be.true;
-      expect(f.calledWithExactly(a)).to.be.true;
-    });
-
-    it('should return g(a) if p(a) is false', function() {
-      fn.branch(p.returns(false), f, g, a);
-      expect(p.calledWithExactly(a)).to.be.true;
-      expect(g.calledWithExactly(a)).to.be.true;
+  describe('#tap', function() {
+    it('should return apply the given function to a value and return the value', function() {
+      function f(a) {}
+      var spy = sinon.spy(f);
+      expect(fn.tap(spy)(1)).to.be.equal(1);
+      expect(spy.calledWithExactly(1)).to.be.true;
     });
   });
 });
