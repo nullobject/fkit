@@ -1,22 +1,22 @@
 'use strict';
 
-var fn   = require('../fn'),
-    list = require('../list');
+var base = require('./base'),
+    fn   = require('../fn');
 
 function concat(as) {
-  return list
+  return base
     .toArray(as)
-    .reduce(fn.flip(list.append), list.mempty(as));
+    .reduce(fn.flip(base.append), base.mempty(as));
 }
 
 function fold(f, s, as) {
-  return list
+  return base
     .toArray(as)
     .reduce(f, s);
 }
 
 function foldRight(f, s, as) {
-  return list
+  return base
     .toArray(as)
     .reduceRight(fn.flip(f), s);
 }
@@ -24,7 +24,7 @@ function foldRight(f, s, as) {
 /**
  * This module defines fold operations on lists.
  *
- * @module list/fold
+ * @module list
  * @author Josh Bassett
  */
 module.exports = {
@@ -49,7 +49,7 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   concatMap: fn.curry(function(f, as) {
-    return concat(list.toArray(as).map(f));
+    return concat(base.toArray(as).map(f));
   }),
 
   /**

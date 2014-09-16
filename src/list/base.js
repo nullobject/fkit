@@ -1,6 +1,6 @@
 'use strict';
 
-var fn = require('./fn');
+var fn = require('../fn');
 
 function length(as) { return as.length; }
 

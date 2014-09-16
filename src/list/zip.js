@@ -1,12 +1,12 @@
 'use strict';
 
-var build = require('./build'),
-    fn    = require('../fn'),
-    list  = require('../list');
+var base = require('./base'),
+    build = require('./build'),
+    fn   = require('../fn');
 
 function zipWith(f, as, bs) {
   var n = Math.min(as.length, bs.length);
-  return list
+  return base
     .toArray(as.slice(0, n))
     .map(function(a, i) { return f(a, bs[i]); });
 }
@@ -14,7 +14,7 @@ function zipWith(f, as, bs) {
 /**
  * This module defines zip operations on lists.
  *
- * @module list/zip
+ * @module list
  * @author Josh Bassett
  */
 module.exports = {
@@ -50,11 +50,11 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   unzip: function(as) {
-    var s = list.mempty(as[0]);
+    var s = base.mempty(as[0]);
     return as.reduceRight(function(p, ps) {
       var a = ps[0], b = ps[1],
           as = p[0], bs = p[1];
-      return [list.prepend(a, as), list.prepend(b, bs)];
+      return [base.prepend(a, as), base.prepend(b, bs)];
     }, build.pair(s, s));
   },
 };

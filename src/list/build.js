@@ -1,8 +1,8 @@
 'use strict';
 
-var fn   = require('../fn'),
-    fold = require('./fold'),
-    list = require('../list');
+var base = require('./base'),
+    fn   = require('../fn'),
+    fold = require('./fold');
 
 function array(n) { return Array.apply(null, Array(n)); }
 
@@ -11,7 +11,7 @@ function pair(a, b) { return [a, b]; }
 /**
  * This module defines build operations on lists.
  *
- * @module list/build
+ * @module list
  * @author Josh Bassett
  */
 module.exports = {
@@ -61,6 +61,6 @@ module.exports = {
    * @returns {Array} A new array.
    */
   replicate: fn.curry(function(n, a) {
-    return fold.concat(array(n).map(function() { return list.pure(a); }));
+    return fold.concat(array(n).map(function() { return base.pure(a); }));
   }),
 };

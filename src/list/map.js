@@ -1,13 +1,13 @@
 'use strict';
 
-var fn   = require('../fn'),
-    fold = require('./fold'),
-    list = require('../list');
+var base = require('./base'),
+    fn   = require('../fn'),
+    fold = require('./fold');
 
 /**
  * This module defines map operations on lists.
  *
- * @module list/map
+ * @module list
  * @author Josh Bassett
  */
 module.exports = {
@@ -58,9 +58,9 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   reverse: function(as) {
-    return list
+    return base
       .toArray(as)
-      .reduce(fn.flip(list.prepend), list.mempty(as));
+      .reduce(fn.flip(base.prepend), base.mempty(as));
   },
 
   /**
@@ -74,18 +74,18 @@ module.exports = {
    */
   intersperse: fn.curry(function(s, as) {
     return fold.concat(
-      list.head(as),
-      prependToAll(list.tail(as))
+      base.head(as),
+      prependToAll(base.tail(as))
     );
 
     function prependToAll(as) {
-      if (list.empty(as)) {
-        return list.mempty(as);
+      if (base.empty(as)) {
+        return base.mempty(as);
       } else {
         return fold.concat(
           s,
-          list.head(as),
-          prependToAll(list.tail(as))
+          base.head(as),
+          prependToAll(base.tail(as))
         );
       }
     }
