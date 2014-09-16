@@ -4,12 +4,7 @@ var base = require('./base'),
     build = require('./build'),
     fn   = require('../fn');
 
-function zipWith(f, as, bs) {
-  var n = Math.min(as.length, bs.length);
-  return base
-    .toArray(as.slice(0, n))
-    .map(function(a, i) { return f(a, bs[i]); });
-}
+var self;
 
 /**
  * This module defines zip operations on lists.
@@ -17,7 +12,7 @@ function zipWith(f, as, bs) {
  * @module
  * @author Josh Bassett
  */
-module.exports = {
+module.exports = self = {
   /**
    * Zips the lists of `as` and `bs` with the function `f`.
    *
@@ -29,7 +24,12 @@ module.exports = {
    * @param {Array|String} bs
    * @returns {Array|String} The result.
    */
-  zipWith: fn.curry(zipWith),
+  zipWith: fn.curry(function(f, as, bs) {
+    var n = Math.min(as.length, bs.length);
+    return base
+      .toArray(as.slice(0, n))
+      .map(function(a, i) { return f(a, bs[i]); });
+  }),
 
   /**
    * Zips the lists of `as` and `bs` into a list of pairs.
@@ -41,7 +41,7 @@ module.exports = {
    * @param {Array|String} bs
    * @returns {Array|String} The result.
    */
-  zip: fn.curry(function(as, bs) { return zipWith(build.pair, as, bs); }),
+  zip: fn.curry(function(as, bs) { return self.zipWith(build.pair, as, bs); }),
 
   /**
    * Unzips a list of pairs into a pair of lists of `as` and `bs`.

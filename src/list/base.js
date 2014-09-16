@@ -2,24 +2,6 @@
 
 var fn = require('../fn');
 
-function length(as) { return as.length; }
-
-function append(a, b) {
-  if (typeof b === 'string') {
-    return b + a;
-  } else {
-    return b.concat(a);
-  }
-}
-
-function prepend(a, b) {
-  if (typeof b === 'string') {
-    return a + b;
-  } else {
-    return [a].concat(b);
-  }
-}
-
 /**
  * This module defines basic operations on lists.
  *
@@ -55,7 +37,13 @@ module.exports = {
    * @param {*} b
    * @returns {Array|String} The result.
    */
-  append: fn.curry(append),
+  append: fn.curry(function(a, b) {
+    if (typeof b === 'string') {
+      return b + a;
+    } else {
+      return b.concat(a);
+    }
+  }),
 
   /**
    * Prepends `a` to `b`.
@@ -67,7 +55,13 @@ module.exports = {
    * @param {*} b
    * @returns {Array|String} The result.
    */
-  prepend: fn.curry(prepend),
+  prepend: fn.curry(function(a, b) {
+    if (typeof b === 'string') {
+      return a + b;
+    } else {
+      return [a].concat(b);
+    }
+  }),
 
   /**
    * Returns the first element in the list of `as`.
@@ -109,7 +103,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {number} The length.
    */
-  length: length,
+  length: function(as) { return as.length; },
 
   /**
    * Test whether the list of `as` is empty.
@@ -117,5 +111,5 @@ module.exports = {
    * @param {Array|String} as
    * @returns {boolean} The result.
    */
-  empty: function(as) { return length(as) === 0; },
+  empty: function(as) { return as.length === 0; },
 };

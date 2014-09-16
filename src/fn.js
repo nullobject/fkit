@@ -51,17 +51,7 @@ function variadic(f) {
   }
 }
 
-function flip(f) {
-  return function(a, b) {
-    return f(b, a);
-  };
-}
-
-function apply(f, a) { return f(a); }
-
-function apply2(f, a, b) { return f(a, b); }
-
-function apply3(f, a, b, c) { return f(a, b, c); }
+var self;
 
 /**
  * This module defines the basic functions.
@@ -69,7 +59,7 @@ function apply3(f, a, b, c) { return f(a, b, c); }
  * @module
  * @author Josh Bassett
  */
-module.exports = {
+module.exports = self = {
   /**
    * Applies the function `f` to the value `a`.
    *
@@ -81,7 +71,7 @@ module.exports = {
    * @returns {*} The result.
    * @example apply(f, a) == f(a)
    */
-  apply: curry(apply),
+  apply: curry(function(f, a) { return f(a); }),
 
   /**
    * Applies the function `f` to the values `a` and `b`.
@@ -95,7 +85,7 @@ module.exports = {
    * @returns {*} The result.
    * @example apply(f, a) == f(a)
    */
-  apply2: curry(apply2),
+  apply2: curry(function(f, a, b) { return f(a, b); }),
 
   /**
    * Applies the function `f` to the values `a`, `b`, and `c`.
@@ -110,7 +100,7 @@ module.exports = {
    * @returns {*} The result.
    * @example apply(f, a) == f(a)
    */
-  apply3: curry(apply3),
+  apply3: curry(function(f, a, b, c) { return f(a, b, c); }),
 
   /**
    * Applies the function `f` to the value `a`.
@@ -123,7 +113,7 @@ module.exports = {
    * @returns {*} The result.
    * @example applyRight(a, f) == f(a)
    */
-  applyRight: curry(flip(apply)),
+  applyRight: curry(function(a, f) { return f(a); }),
 
   /**
    * Composes the list of functions `fs`.
@@ -137,7 +127,7 @@ module.exports = {
   compose: variadic(function(fs) {
     return function(a) {
       return fs.reduceRight(function(a, f) {
-        return apply(f, a);
+        return f(a);
       }, a);
     };
   }),
@@ -145,12 +135,10 @@ module.exports = {
   /**
    * Wraps the binary function `f` and flips the order of the arguments.
    *
-   * @static
-   * @function
    * @param {function} f A function to be flipped.
    * @returns {function} A new function.
    */
-  flip: flip,
+  flip: function(f) { return function(a, b) { return f(b, a); }; },
 
   /**
    * Returns the identity function (a function that returns its first
@@ -160,9 +148,7 @@ module.exports = {
    * @returns {*} The value `a`.
    * @example id(a) == a
    */
-  id: function(a) {
-    return a;
-  },
+  id: function(a) { return a; },
 
   /**
    * Returns the constant function (a function that always returns the value
@@ -172,11 +158,7 @@ module.exports = {
    * @returns {function} A new function.
    * @example const(c)(1, 2, 3, ...) == c
    */
-  const: function(c) {
-    return function() {
-      return c;
-    };
-  },
+  const: function(c) { return function() { return c; }; },
 
   /**
    * Creates a new function that allows partial application of the arguments
@@ -199,15 +181,7 @@ module.exports = {
    * @param {function} f A function to be wrapped.
    * @returns {function} A new function.
    */
-  unary: function(f) {
-    if (f.length === 1) {
-      return f;
-    } else {
-      return function(a) {
-        return f.call(this, a);
-      };
-    }
-  },
+  unary: function(f) { return (f.length === 1) ? f : self.apply(f); },
 
   /**
    * Creates a new function that wraps the function `f` to accept only two
@@ -216,15 +190,7 @@ module.exports = {
    * @param {function} f A function to be wrapped.
    * @returns {function} A new function.
    */
-  binary: function(f) {
-    if (f.length === 2) {
-      return f;
-    } else {
-      return function(a, b) {
-        return f.call(this, a, b);
-      };
-    }
-  },
+  binary: function(f) { return (f.length === 2) ? f : self.apply2(f); },
 
   /**
    * Creates a new function that wraps the function `f` to accept any number of
@@ -251,8 +217,5 @@ module.exports = {
    * @returns {*} The value `a`.
    * @example tap(f)(a) == a
    */
-  tap: curry(function(f, a) {
-    f.call(this, a);
-    return a;
-  })
+  tap: curry(function(f, a) { f(a); return a; })
 };

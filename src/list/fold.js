@@ -3,22 +3,12 @@
 var base = require('./base'),
     fn   = require('../fn');
 
+var self;
+
 function concat(as) {
   return base
     .toArray(as)
     .reduce(fn.flip(base.append), base.mempty(as));
-}
-
-function fold(f, s, as) {
-  return base
-    .toArray(as)
-    .reduce(f, s);
-}
-
-function foldRight(f, s, as) {
-  return base
-    .toArray(as)
-    .reduceRight(fn.flip(f), s);
 }
 
 /**
@@ -27,7 +17,7 @@ function foldRight(f, s, as) {
  * @module
  * @author Josh Bassett
  */
-module.exports = {
+module.exports = self = {
   /**
    * Concatenates the list of `as`.
    *
@@ -64,7 +54,11 @@ module.exports = {
    * @param {Array|String} as
    * @returns {*} The result.
    */
-  fold: fn.curry(fold),
+  fold: fn.curry(function(f, s, as) {
+    return base
+      .toArray(as)
+      .reduce(f, s);
+  }),
 
   /**
    * Folds the list of `as` with the binary function `f` and starting value
@@ -78,7 +72,11 @@ module.exports = {
    * @param {Array|String} as
    * @returns {*} The result.
    */
-  foldRight: fn.curry(foldRight),
+  foldRight: fn.curry(function(f, s, as) {
+    return base
+      .toArray(as)
+      .reduceRight(fn.flip(f), s);
+  }),
 
   /**
    * Scans the list of `as` with the binary function `f` and starting value
@@ -94,7 +92,7 @@ module.exports = {
    */
   scan: fn.curry(function(f, s, as) {
     var r = [s];
-    fold(function(b, a) {
+    self.fold(function(b, a) {
       return fn.tap(r.push.bind(r), f(b, a));
     }, s, as);
     return r;
@@ -114,7 +112,7 @@ module.exports = {
    */
   scanRight: fn.curry(function(f, s, as) {
     var r = [s];
-    foldRight(function(a, b) {
+    self.foldRight(function(a, b) {
       return fn.tap(r.unshift.bind(r), f(a, b));
     }, s, as);
     return r;

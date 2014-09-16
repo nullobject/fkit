@@ -4,9 +4,7 @@ var base = require('./base'),
     fn   = require('../fn'),
     fold = require('./fold');
 
-function array(n) { return Array.apply(null, Array(n)); }
-
-function pair(a, b) { return [a, b]; }
+var self;
 
 /**
  * This module defines build operations on lists.
@@ -14,7 +12,7 @@ function pair(a, b) { return [a, b]; }
  * @module
  * @author Josh Bassett
  */
-module.exports = {
+module.exports = self = {
   /**
    * Returns a new array of length `n`.
    *
@@ -23,7 +21,7 @@ module.exports = {
    * @param {number} n
    * @returns {Array} A new array.
    */
-  array: array,
+  array: function(n) { return Array.apply(null, Array(n)); },
 
   /**
    * Returns a pair with the values `a` and `b`.
@@ -34,7 +32,7 @@ module.exports = {
    * @param {*} b A value.
    * @returns {Array} A pair.
    */
-  pair: fn.curry(pair),
+  pair: fn.curry(function(a, b) { return [a, b]; }),
 
   /**
    * Creates a new array of numbers from `a` of length `n`.
@@ -47,7 +45,7 @@ module.exports = {
    * @returns {Array} A new array.
    */
   range: fn.curry(function(a, n) {
-    return array(n).map(function(_, i) { return a + i; });
+    return self.array(n).map(function(_, i) { return a + i; });
   }),
 
   /**
@@ -61,6 +59,6 @@ module.exports = {
    * @returns {Array} A new array.
    */
   replicate: fn.curry(function(n, a) {
-    return fold.concat(array(n).map(function() { return base.pure(a); }));
+    return fold.concat(self.array(n).map(function() { return base.pure(a); }));
   }),
 };
