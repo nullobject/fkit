@@ -10,18 +10,62 @@ describe('fn', function() {
   });
 
   describe('#apply', function() {
+    function f() {}
+    var spy = sinon.spy(f);
+
     it('should apply a nullary function', function() {
-      function f() {}
-      var spy = sinon.spy(f);
       fn.apply(spy)();
       expect(spy.calledWithExactly(undefined)).to.be.true;
     });
 
     it('should apply a unary function', function() {
-      function f(a) {}
-      var spy = sinon.spy(f);
       fn.apply(spy)(1);
       expect(spy.calledWithExactly(1)).to.be.true;
+    });
+  });
+
+  describe('#apply2', function() {
+    function f() {}
+    var spy = sinon.spy(f);
+
+    it('should apply a nullary function', function() {
+      fn.apply2(spy)()();
+      expect(spy.calledWithExactly(undefined, undefined)).to.be.true;
+    });
+
+    it('should apply a unary function', function() {
+      fn.apply2(spy)(1)();
+      expect(spy.calledWithExactly(1, undefined)).to.be.true;
+    });
+
+    it('should apply a binary function', function() {
+      fn.apply2(spy)(1)(2);
+      expect(spy.calledWithExactly(1, 2)).to.be.true;
+    });
+  });
+
+  describe('#apply3', function() {
+    function f() {}
+    var spy = sinon.spy(f);
+
+    it('should apply a nullary function', function() {
+      fn.apply3(spy)()()();
+      expect(spy.calledWithExactly(undefined, undefined, undefined)).to.be.true;
+    });
+
+    it('should apply a unary function', function() {
+      fn.apply3(spy)(1)()();
+      expect(spy.calledWithExactly(1, undefined, undefined)).to.be.true;
+    });
+
+    it('should apply a binary function', function() {
+      fn.apply3(spy)(1)(2)();
+      expect(spy.calledWithExactly(1, 2, undefined)).to.be.true;
+    });
+
+    it('should apply a ternary function', function() {
+      fn.apply3(spy)(1)(2)(3);
+      expect(spy.calledWithExactly(1, 2, 3)).to.be.true;
     });
   });
 

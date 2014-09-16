@@ -51,16 +51,17 @@ function variadic(f) {
   }
 }
 
-function apply(f, a) {
-  /* jshint validthis: true */
-  return f.call(this, a);
-}
-
 function flip(f) {
   return function(a, b) {
     return f(b, a);
   };
 }
+
+function apply(f, a) { return f(a); }
+
+function apply2(f, a, b) { return f(a, b); }
+
+function apply3(f, a, b, c) { return f(a, b, c); }
 
 /**
  * This module defines the basic functions.
@@ -81,6 +82,35 @@ module.exports = {
    * @example apply(f, a) == f(a)
    */
   apply: curry(apply),
+
+  /**
+   * Applies the function `f` to the values `a` and `b`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {function} f A function to be applied.
+   * @param {*} a A value.
+   * @param {*} b A value.
+   * @returns {*} The result.
+   * @example apply(f, a) == f(a)
+   */
+  apply2: curry(apply2),
+
+  /**
+   * Applies the function `f` to the values `a`, `b`, and `c`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {function} f A function to be applied.
+   * @param {*} a A value.
+   * @param {*} b A value.
+   * @param {*} c A value.
+   * @returns {*} The result.
+   * @example apply(f, a) == f(a)
+   */
+  apply3: curry(apply3),
 
   /**
    * Applies the function `f` to the value `a`.
