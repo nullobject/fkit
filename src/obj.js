@@ -10,7 +10,7 @@ function copy(target, objects) {
 /**
  * This module defines operations on objects.
  *
- * @module obj
+ * @module
  * @author Josh Bassett
  */
 module.exports = {

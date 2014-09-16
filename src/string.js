@@ -3,7 +3,7 @@
 /**
  * This module defines string functions.
  *
- * @module string
+ * @module
  * @author Josh Bassett
  */
 module.exports = {

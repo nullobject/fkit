@@ -24,7 +24,7 @@ function foldRight(f, s, as) {
 /**
  * This module defines fold operations on lists.
  *
- * @module list
+ * @module
  * @author Josh Bassett
  */
 module.exports = {

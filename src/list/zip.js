@@ -14,7 +14,7 @@ function zipWith(f, as, bs) {
 /**
  * This module defines zip operations on lists.
  *
- * @module list
+ * @module
  * @author Josh Bassett
  */
 module.exports = {

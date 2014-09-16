@@ -23,7 +23,7 @@ function prepend(a, b) {
 /**
  * This module defines basic operations on lists.
  *
- * @module list
+ * @module
  * @author Josh Bassett
  */
 module.exports = {

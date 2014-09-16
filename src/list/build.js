@@ -11,7 +11,7 @@ function pair(a, b) { return [a, b]; }
 /**
  * This module defines build operations on lists.
  *
- * @module list
+ * @module
  * @author Josh Bassett
  */
 module.exports = {

@@ -65,7 +65,7 @@ function flip(f) {
 /**
  * This module defines the basic functions.
  *
- * @module fn
+ * @module
  * @author Josh Bassett
  */
 module.exports = {
