@@ -42,14 +42,6 @@ module.exports = {
   not: function(a) { return !a; },
 
   /**
-   * The unary negation operator.
-   *
-   * @param {number} a
-   * @returns {number} The result.
-   */
-  negate: function(a) { return -a; },
-
-  /**
    * Branches execution based on the predicate function `p`. If `p(a)` is true
    * then `f` is applied to `a`, otherwise `g` is applied to `a`.
    *

@@ -28,13 +28,6 @@ describe('logic', function() {
     });
   });
 
-  describe('#negate', function() {
-    it('should negate the value', function() {
-      expect(logic.negate(1)).to.equal(-1);
-      expect(logic.negate(-1)).to.equal(1);
-    });
-  });
-
   describe('#branch', function() {
     var p = sinon.stub().returns(true),
         f = sinon.spy(),
