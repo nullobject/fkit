@@ -3,6 +3,12 @@
 var build = require('../../src/list/build');
 
 describe('list.build', function() {
+  describe('#array', function() {
+    it('should return a new array', function() {
+      expect(build.array(3)).to.be.eql([undefined, undefined, undefined]);
+    });
+  });
+
   describe('#pair', function() {
     it('should return a pair', function() {
       expect(build.pair(1)(2)).to.be.eql([1, 2]);

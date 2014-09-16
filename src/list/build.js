@@ -4,7 +4,6 @@ var core = require('../core'),
     fold = require('./fold'),
     list = require('../list');
 
-// Returns a new array of length `n`.
 function array(n) {
   return Array.apply(null, Array(n));
 }
@@ -20,6 +19,16 @@ function pair(a, b) {
  * @author Josh Bassett
  */
 module.exports = {
+  /**
+   * Returns a new array of length `n`.
+   *
+   * @static
+   * @function
+   * @param {number} n
+   * @returns {Array} A new array.
+   */
+  array: array,
+
   /**
    * Returns a pair with the values `a` and `b`.
    *
