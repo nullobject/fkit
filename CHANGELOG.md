@@ -1,3 +1,11 @@
+v0.5.0 / 2014-09-16
+==================
+
+ * Refactor modules.
+ * Change #range function to take a length argument.
+ * Add #array function.
+ * Fix an issue in the #intersperse function.
+
 v0.4.6 / 2014-09-15
 ==================
 
