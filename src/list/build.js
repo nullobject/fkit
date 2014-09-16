@@ -41,19 +41,17 @@ module.exports = {
   pair: core.curry(pair),
 
   /**
-   * Creates a new array of numbers from `a` to `b`.
+   * Creates a new array of numbers from `a` of length `n`.
    *
    * @static
    * @curried
    * @function
    * @param {number} a
-   * @param {number} b
+   * @param {number} n
    * @returns {Array} A new array.
    */
-  range: core.curry(function(a, b) {
-    var n    = Math.abs(b - a) + 1,
-        sign = b > a ? 1 : -1;
-    return array(n).map(function(_, i) { return a + (i * sign); });
+  range: core.curry(function(a, n) {
+    return array(n).map(function(_, i) { return a + i; });
   }),
 
   /**

@@ -234,7 +234,7 @@ Signal.prototype.split = function(n) {
       dones = [];
 
   var signals = build
-    .range(0, n - 1)
+    .range(0, n)
     .map(function(_) {
       return obj.copy(env, {
         subscribe: function(next, done) {
