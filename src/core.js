@@ -2,6 +2,10 @@
 
 var util = require('./util');
 
+function flatten(as) {
+  return as.reduce(function(a, b) { return a.concat(b); }, []);
+}
+
 function curry(f) {
   var arity = f.length;
 
@@ -33,7 +37,7 @@ function variadic(f) {
     return f;
   } else if (arity === 1)  {
     return function() {
-      return f.call(this, util.slice.call(arguments, 0));
+      return f.call(this, flatten(util.slice.call(arguments, 0)));
     };
   } else {
     return function() {

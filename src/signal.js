@@ -1,9 +1,8 @@
 'use strict';
 
-var core = require('./core'),
-    fn   = require('./fn'),
-    list = require('./list'),
-    obj  = require('./obj');
+var build = require('./list/build'),
+    core  = require('./core'),
+    obj   = require('./obj');
 
 /**
  * Creates a new signal with the `subscribe` function.
@@ -234,8 +233,8 @@ Signal.prototype.split = function(n) {
       nexts = [],
       dones = [];
 
-  var signals = list
-    .range(0, n - 1)
+  var signals = build
+    .range(0, n)
     .map(function(_) {
       return obj.copy(env, {
         subscribe: function(next, done) {

@@ -12,5 +12,9 @@ module.exports = util.extend({
   require('./core'),
   require('./fn'),
   require('./list'),
+  require('./list/build'),
+  require('./list/fold'),
+  require('./list/map'),
+  require('./list/zip'),
   require('./obj')
 ]);

@@ -1,121 +1,8 @@
 'use strict';
 
-var core = require('../src/core'),
-    list = require('../src/list');
+var list = require('../src/list');
 
 describe('list', function() {
-  describe('#pair', function() {
-    it('should return a pair', function() {
-      expect(list.pair(1)(2)).to.be.eql([1, 2]);
-    });
-  });
-
-  describe('#range', function() {
-    it('should return an array of numbers', function() {
-      expect(list.range(1)(3)).to.eql([1, 2, 3]);
-      expect(list.range(3)(1)).to.eql([3, 2, 1]);
-      expect(list.range(1)(1)).to.eql([1]);
-    });
-  });
-
-  describe('#replicate', function() {
-    it('should replicate numbers', function() {
-      expect(list.replicate(3)(1)).to.eql([1, 1, 1]);
-    });
-
-    it('should replicate arrays', function() {
-      expect(list.replicate(3)([1])).to.eql([[1], [1], [1]]);
-    });
-
-    it('should replicate strings', function() {
-      expect(list.replicate(3)('a')).to.eql('aaa');
-    });
-  });
-
-  describe('#concatMap', function() {
-    it('should concat map an array', function() {
-      function f(a) { return [a + 1]; }
-      expect(list.concatMap(f)([1, 2, 3])).to.be.eql([2, 3, 4]);
-    });
-
-    it('should concat map a string', function() {
-      function f(a) { return a + '-'; }
-      expect(list.concatMap(f)('foo')).to.be.eql('f-o-o-');
-    });
-  });
-
-  describe('#map', function() {
-    it('should map an array', function() {
-      function f(a) { return [a + 1]; }
-      expect(list.map(f)([1, 2, 3])).to.be.eql([[2], [3], [4]]);
-    });
-
-    it('should map a string', function() {
-      function f(a) { return a + '-'; }
-      expect(list.map(f)('foo')).to.be.equal('f-o-o-');
-    });
-  });
-
-  describe('#filter', function() {
-    it('should filter an array', function() {
-      function f(a) { return a > 1; }
-      expect(list.filter(f)([1, 2, 3])).to.be.eql([2, 3]);
-    });
-
-    it('should filter a string', function() {
-      function f(a) { return a == 'o'; }
-      expect(list.filter(f)('foo')).to.be.equal('oo');
-    });
-  });
-
-  describe('#fold', function() {
-    it('should fold an array from left to right', function() {
-      var f = core.flip(list.prepend);
-      expect(list.fold(f)([])([1, 2, 3])).to.be.eql([3, 2, 1]);
-    });
-
-    it('should fold a string from left to right', function() {
-      var f = core.flip(list.prepend);
-      expect(list.fold(f)('')('foo')).to.be.equal('oof');
-    });
-  });
-
-  describe('#foldRight', function() {
-    it('should fold an array from right to left', function() {
-      var f = list.append;
-      expect(list.foldRight(f)([])([1, 2, 3])).to.be.eql([3, 2, 1]);
-    });
-
-    it('should fold a string from right to left', function() {
-      var f = list.append;
-      expect(list.foldRight(f)('')('foo')).to.be.equal('oof');
-    });
-  });
-
-  describe('#scan', function() {
-    it('should scan an array from left to right', function() {
-      var f = core.flip(list.prepend);
-      expect(list.scan(f)([])([1, 2, 3])).to.be.eql([[], [1], [2, 1], [3, 2, 1]]);
-    });
-
-    it('should scan a string from left to right', function() {
-      var f = core.flip(list.prepend);
-      expect(list.scan(f)('')('foo')).to.be.eql(['', 'f', 'of', 'oof']);
-    });
-  });
-
-  describe('#scanRight', function() {
-    it('should scan an array from right to left', function() {
-      var f = list.append;
-      expect(list.scanRight(f)([])([1, 2, 3])).to.be.eql([[3, 2, 1], [3, 2], [3], []]);
-    });
-
-    it('should scan an array from right to left', function() {
-      var f = list.append;
-      expect(list.scanRight(f)('')('foo')).to.be.eql(['oof', 'oo', 'o', '']);
-    });
-  });
-
   describe('#append', function() {
     it('should append an element to an array', function() {
       expect(list.append(4)([1, 2, 3])).to.be.eql([1, 2, 3, 4]);
@@ -133,16 +20,6 @@ describe('list', function() {
 
     it('should prepend two strings', function() {
       expect(list.prepend('bar')('foo')).to.be.equal('barfoo');
-    });
-  });
-
-  describe('#concat', function() {
-    it('should concatenate arrays', function() {
-      expect(list.concat([1, 2, 3], [4, 5, 6], [7, 8, 9])).to.be.eql([1, 2, 3, 4, 5, 6, 7, 8, 9]);
-    });
-
-    it('should concatenate strings', function() {
-      expect(list.concat('foo', 'bar', 'baz')).to.be.equal('foobarbaz');
     });
   });
 
@@ -205,74 +82,6 @@ describe('list', function() {
     it('should test whether a string is empty', function() {
       expect(list.empty('')).to.be.true;
       expect(list.empty('foo')).to.be.false;
-    });
-  });
-
-  describe('#reverse', function() {
-    it('should reverse an array', function() {
-      expect(list.reverse([1, 2, 3])).to.be.eql([3, 2, 1]);
-    });
-
-    it('should reverse a string', function() {
-      expect(list.reverse('foo')).to.be.equal('oof');
-    });
-  });
-
-  describe('#intersperse', function() {
-    it('should intersperse an array with a value', function() {
-      expect(list.intersperse(4)([1, 2, 3])).to.be.eql([1, 4, 2, 4, 3]);
-    });
-
-    it('should intersperse an array with a null value', function() {
-      expect(list.intersperse(null)([1, 2, 3])).to.be.eql([1, null, 2, null, 3]);
-    });
-
-    it('should intersperse a string with another string', function() {
-      expect(list.intersperse('-')('foo')).to.be.equal('f-o-o');
-    });
-
-    it('should intersperse a string with an empty string', function() {
-      expect(list.intersperse('')('foo')).to.be.equal('foo');
-    });
-  });
-
-  describe('#zipWith', function() {
-    function f(a, b) { return a + b; }
-
-    it('should zip arrays', function() {
-      expect(list.zipWith(f)([1, 2, 3])([4, 5, 6])).to.be.eql([5, 7, 9]);
-    });
-
-    it('should zip strings', function() {
-      expect(list.zipWith(f)('foo')('bar')).to.be.eql(['fb', 'oa', 'or']);
-    });
-
-    it('should zip arrays of non-equal length', function() {
-      expect(list.zipWith(f)([1, 2, 3])([4, 5])).to.be.eql([5, 7]);
-    });
-
-    it('should zip strings of non-equal length', function() {
-      expect(list.zipWith(f)('foo')('ba')).to.be.eql(['fb', 'oa']);
-    });
-  });
-
-  describe('#zip', function() {
-    it('should zip arrays of equal length', function() {
-      expect(list.zip([1, 2, 3])([4, 5, 6])).to.be.eql([[1, 4], [2, 5], [3, 6]]);
-    });
-
-    it('should zip strings of equal length', function() {
-      expect(list.zip('foo')('bar')).to.be.eql([['f', 'b'], ['o', 'a'], ['o', 'r']]);
-    });
-  });
-
-  describe('#unzip', function() {
-    it('should unzip arrays', function() {
-      expect(list.unzip([[1, 4], [2, 5], [3, 6]])).to.be.eql([[1, 2, 3], [4, 5, 6]]);
-    });
-
-    it('should unzip strings', function() {
-      expect(list.unzip([['f', 'b'], ['o', 'a'], ['o', 'r']])).to.be.eql(['foo', 'bar']);
     });
   });
 });
