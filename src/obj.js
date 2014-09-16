@@ -3,9 +3,7 @@
 var fn   = require('./fn'),
     util = require('./util');
 
-function copy(target, objects) {
-  return util.extend(new target.constructor(), [target].concat(objects));
-}
+var self;
 
 /**
  * This module defines operations on objects.
@@ -13,7 +11,7 @@ function copy(target, objects) {
  * @module
  * @author Josh Bassett
  */
-module.exports = {
+module.exports = self = {
   /**
    * Creates a copy of the `target` object (using the *same* prototype). All
    * the properties of the `target` object will be copied to the new object.
@@ -28,7 +26,9 @@ module.exports = {
    * @returns {Object} A new object.
    * @example copy(person, {name: 'bob'})
    */
-  copy: fn.variadic(copy),
+  copy: fn.variadic(function(target, objects) {
+    return util.extend(new target.constructor(), [target].concat(objects));
+  }),
 
   /**
    * Gets a property of the target object.
@@ -41,7 +41,9 @@ module.exports = {
    * @returns {*} A property value.
    * @example get('name', person) == 'bob'
    */
-  get: fn.curry(function(property, target) { return target[property]; }),
+  get: fn.curry(function(property, target) {
+    return target[property];
+  }),
 
   /**
    * Creates a copy of the `target` object with the `property` set to the
@@ -59,6 +61,21 @@ module.exports = {
   set: fn.curry(function(property, value, target) {
     var object = {};
     object[property] = value;
-    return copy(target, [object]);
-  })
+    return self.copy(target, object);
+  }),
+
+  /**
+   * Gets many properties of the target object.
+   *
+   * @static
+   * @function
+   * @param {Object} target A target object.
+   * @param {...string} properties A list of properties.
+   * @returns {*} A property value.
+   */
+  pluck: fn.variadic(function(target, properties) {
+    return properties.reduce(function(b, a) {
+      return self.set(a, self.get(a, target), b);
+    }, {});
+  }),
 };
