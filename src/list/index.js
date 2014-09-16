@@ -9,6 +9,7 @@ var util = require('../util');
  * @author Josh Bassett
  */
 module.exports = util.extend({}, [
+  require('./base'),
   require('./build'),
   require('./fold'),
   require('./map'),
