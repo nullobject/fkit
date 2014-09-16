@@ -41,9 +41,7 @@ module.exports = {
    * @returns {*} A property value.
    * @example get('name', person) == 'bob'
    */
-  get: core.curry(function(property, target) {
-    return target[property];
-  }),
+  get: core.curry(function(property, target) { return target[property]; }),
 
   /**
    * Creates a copy of the `target` object with the `property` set to the

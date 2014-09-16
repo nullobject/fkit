@@ -4,15 +4,21 @@ var core = require('../core'),
     list = require('../list');
 
 function concat(as) {
-  return list.toArray(as).reduce(core.flip(list.append), list.mempty(as));
+  return list
+    .toArray(as)
+    .reduce(core.flip(list.append), list.mempty(as));
 }
 
 function fold(f, s, as) {
-  return list.toArray(as).reduce(f, s);
+  return list
+    .toArray(as)
+    .reduce(f, s);
 }
 
 function foldRight(f, s, as) {
-  return list.toArray(as).reduceRight(core.flip(f), s);
+  return list
+    .toArray(as)
+    .reduceRight(core.flip(f), s);
 }
 
 /**

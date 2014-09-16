@@ -16,10 +16,12 @@ describe('list.zip', function() {
 
     it('should zip arrays of non-equal length', function() {
       expect(zip.zipWith(f)([1, 2, 3])([4, 5])).to.be.eql([5, 7]);
+      expect(zip.zipWith(f)([1, 2])([3, 4, 5])).to.be.eql([4, 6]);
     });
 
     it('should zip strings of non-equal length', function() {
       expect(zip.zipWith(f)('foo')('ba')).to.be.eql(['fb', 'oa']);
+      expect(zip.zipWith(f)('fo')('bar')).to.be.eql(['fb', 'oa']);
     });
   });
 

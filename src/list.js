@@ -3,9 +3,7 @@
 var core = require('./core'),
     fn   = require('./fn');
 
-function length(as) {
-  return as.length;
-}
+function length(as) { return as.length; }
 
 function append(a, b) {
   if (typeof b === 'string') {
@@ -78,9 +76,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {*} The result.
    */
-  head: function(as) {
-    return as[0];
-  },
+  head: function(as) { return as[0]; },
 
   /**
    * Returns the elements after the first element in the list of `as`.
@@ -88,9 +84,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {Array|String} The result.
    */
-  tail: function(as) {
-    return as.slice(1);
-  },
+  tail: function(as) { return as.slice(1); },
 
   /**
    * Returns the elements before the last element in the list of `as`.
@@ -98,9 +92,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {Array|String} The result.
    */
-  init: function(as) {
-    return as.slice(0, as.length - 1);
-  },
+  init: function(as) { return as.slice(0, as.length - 1); },
 
   /**
    * Returns the last element in the list of `as`.
@@ -108,9 +100,7 @@ module.exports = {
    * @param {Array|String} as
    * @returns {*} The result.
    */
-  last: function(as) {
-    return as[as.length - 1];
-  },
+  last: function(as) { return as[as.length - 1]; },
 
   /**
    * Returns the length of the list of `as`.
@@ -128,7 +118,5 @@ module.exports = {
    * @param {Array|String} as
    * @returns {boolean} The result.
    */
-  empty: function(as) {
-    return length(as) === 0;
-  },
+  empty: function(as) { return length(as) === 0; },
 };

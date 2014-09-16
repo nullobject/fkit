@@ -22,7 +22,7 @@ describe('list.map', function() {
     });
 
     it('should filter a string', function() {
-      function f(a) { return a == 'o'; }
+      function f(a) { return a === 'o'; }
       expect(map.filter(f)('foo')).to.be.equal('oo');
     });
   });

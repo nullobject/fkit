@@ -4,13 +4,9 @@ var core = require('../core'),
     fold = require('./fold'),
     list = require('../list');
 
-function array(n) {
-  return Array.apply(null, Array(n));
-}
+function array(n) { return Array.apply(null, Array(n)); }
 
-function pair(a, b) {
-  return [a, b];
-}
+function pair(a, b) { return [a, b]; }
 
 /**
  * This module defines build operations on lists.

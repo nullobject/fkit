@@ -58,7 +58,9 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   reverse: function(as) {
-    return fold.fold(core.flip(list.prepend), list.mempty(as), list.toArray(as));
+    return list
+      .toArray(as)
+      .reduce(core.flip(list.prepend), list.mempty(as));
   },
 
   /**
@@ -66,8 +68,8 @@ module.exports = {
    *
    * @static
    * @function
-   * @param {Array|String} as
    * @param {*} s A separator.
+   * @param {Array|String} as
    * @returns {Array|String} The result.
    */
   intersperse: core.curry(function(s, as) {
@@ -77,8 +79,8 @@ module.exports = {
     );
 
     function prependToAll(as) {
-      if (as.length === 0) {
-        return [];
+      if (list.empty(as)) {
+        return list.mempty(as);
       } else {
         return fold.concat(
           s,

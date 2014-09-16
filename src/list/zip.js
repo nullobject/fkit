@@ -2,14 +2,13 @@
 
 var build = require('./build'),
     core  = require('../core'),
-    fold  = require('./fold'),
     list  = require('../list');
 
 function zipWith(f, as, bs) {
   var n = Math.min(as.length, bs.length);
-  return list.toArray(as.slice(0, n)).map(function(a, i) {
-    return f(a, bs[i]);
-  });
+  return list
+    .toArray(as.slice(0, n))
+    .map(function(a, i) { return f(a, bs[i]); });
 }
 
 /**
@@ -42,9 +41,7 @@ module.exports = {
    * @param {Array|String} bs
    * @returns {Array|String} The result.
    */
-  zip: core.curry(function(as, bs) {
-    return zipWith(build.pair, as, bs);
-  }),
+  zip: core.curry(function(as, bs) { return zipWith(build.pair, as, bs); }),
 
   /**
    * Unzips a list of pairs into a pair of lists of `as` and `bs`.
@@ -54,10 +51,10 @@ module.exports = {
    */
   unzip: function(as) {
     var s = list.mempty(as[0]);
-    return fold.foldRight(function(ps, p) {
+    return as.reduceRight(function(p, ps) {
       var a = ps[0], b = ps[1],
           as = p[0], bs = p[1];
       return [list.prepend(a, as), list.prepend(b, bs)];
-    }, build.pair(s, s), as);
+    }, build.pair(s, s));
   },
 };
