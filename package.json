@@ -26,7 +26,7 @@
   "devDependencies": {
     "chai": "^1.9.1",
     "jsdoc": "^3.3.0-alpha9",
-    "jshint": "^2.5.4",
+    "jshint": "^2.5.5",
     "mocha": "^1.21.4",
     "sinon": "^1.10.3",
     "sinon-chai": "^2.5.0",
