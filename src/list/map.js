@@ -90,4 +90,18 @@ module.exports = {
       }
     }
   }),
+
+  /**
+   * Applies the list of functions `fs` to the value `a`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {Array} fs
+   * @param {*} a
+   * @returns {Array} The results.
+   */
+  applyAll: fn.curry(function(fs, a) {
+    return fs.map(fn.applyRight(a));
+  }),
 };
