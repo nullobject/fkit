@@ -15,11 +15,21 @@ describe('list.base', function() {
 
   describe('#prepend', function() {
     it('should prepend an element to an array', function() {
-      expect(base.prepend(4)([1, 2, 3])).to.be.eql([4, 1, 2, 3]);
+      expect(base.prepend(1)([2, 3, 4])).to.be.eql([1, 2, 3, 4]);
     });
 
     it('should prepend two strings', function() {
-      expect(base.prepend('bar')('foo')).to.be.equal('barfoo');
+      expect(base.prepend('foo')('bar')).to.be.equal('foobar');
+    });
+  });
+
+  describe('#surround', function() {
+    it('should surround an array with two elements', function() {
+      expect(base.surround(1)(4)([2, 3])).to.be.eql([1, 2, 3, 4]);
+    });
+
+    it('should surround a string with two strings', function() {
+      expect(base.surround('fo')('ar')('ob')).to.be.equal('foobar');
     });
   });
 

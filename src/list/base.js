@@ -2,13 +2,15 @@
 
 var fn = require('../fn');
 
+var self;
+
 /**
  * This module defines basic operations on lists.
  *
  * @module list/base
  * @author Josh Bassett
  */
-module.exports = {
+self = module.exports = {
   // Returns an empty monoid.
   mempty: function(as) {
     return (as && typeof as[0] === 'string') ? '' : [];
@@ -19,6 +21,7 @@ module.exports = {
     return (x && typeof x[0] === 'string') ? x : [x];
   },
 
+  // Converts the list of `as` to an array.
   toArray: function(as) {
     if (typeof as === 'string') {
       return as.split('');
@@ -28,39 +31,54 @@ module.exports = {
   },
 
   /**
-   * Appends `a` to `b`.
+   * Appends the value `a` to list of `bs`.
    *
    * @static
    * @curried
    * @function
-   * @param {Array|String} a
-   * @param {*} b
+   * @param {*} a
+   * @param {Array|String} bs
    * @returns {Array|String} The result.
    */
-  append: fn.curry(function(a, b) {
-    if (typeof b === 'string') {
-      return b + a;
+  append: fn.curry(function(a, bs) {
+    if (typeof bs === 'string') {
+      return bs + a;
     } else {
-      return b.concat(a);
+      return bs.concat(a);
     }
   }),
 
   /**
-   * Prepends `a` to `b`.
+   * Prepends the value `a` to list of `bs`.
    *
    * @static
    * @curried
    * @function
-   * @param {Array|String} a
-   * @param {*} b
+   * @param {*} a
+   * @param {Array|String} bs
    * @returns {Array|String} The result.
    */
-  prepend: fn.curry(function(a, b) {
-    if (typeof b === 'string') {
-      return a + b;
+  prepend: fn.curry(function(a, bs) {
+    if (typeof bs === 'string') {
+      return a + bs;
     } else {
-      return [a].concat(b);
+      return [a].concat(bs);
     }
+  }),
+
+  /**
+   * Surrounds the list of `cs` with the values `a` and `b`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {*} a
+   * @param {*} b
+   * @param {Array|String} cs
+   * @returns {Array|String} The result.
+   */
+  surround: fn.curry(function(a, b, cs) {
+    return self.append(b, self.prepend(a, cs));
   }),
 
   /**
