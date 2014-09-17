@@ -9,10 +9,10 @@ var self;
 /**
  * This module defines zip operations on lists.
  *
- * @module
+ * @module list/zip
  * @author Josh Bassett
  */
-module.exports = self = {
+self = module.exports = {
   /**
    * Zips the lists of `as` and `bs` with the function `f`.
    *

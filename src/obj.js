@@ -8,10 +8,10 @@ var self;
 /**
  * This module defines operations on objects.
  *
- * @module
+ * @module obj
  * @author Josh Bassett
  */
-module.exports = self = {
+self = module.exports = {
   /**
    * Creates a copy of the `target` object (using the *same* prototype). All
    * the properties of the `target` object will be copied to the new object.

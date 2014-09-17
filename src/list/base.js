@@ -5,7 +5,7 @@ var fn = require('../fn');
 /**
  * This module defines basic operations on lists.
  *
- * @module
+ * @module list/base
  * @author Josh Bassett
  */
 module.exports = {

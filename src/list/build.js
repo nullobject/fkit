@@ -9,10 +9,10 @@ var self;
 /**
  * This module defines build operations on lists.
  *
- * @module
+ * @module list/build
  * @author Josh Bassett
  */
-module.exports = self = {
+self = module.exports = {
   /**
    * Returns a new array of length `n`.
    *

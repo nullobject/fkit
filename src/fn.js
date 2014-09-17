@@ -56,10 +56,10 @@ var self;
 /**
  * This module defines the basic functions.
  *
- * @module
+ * @module fn
  * @author Josh Bassett
  */
-module.exports = self = {
+self = module.exports = {
   /**
    * Applies the function `f` to the value `a`.
    *

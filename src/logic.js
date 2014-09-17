@@ -5,7 +5,7 @@ var fn = require('./fn');
 /**
  * This module defines logic functions.
  *
- * @module
+ * @module logic
  * @author Josh Bassett
  */
 module.exports = {

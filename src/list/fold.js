@@ -14,10 +14,10 @@ function concat(as) {
 /**
  * This module defines fold operations on lists.
  *
- * @module
+ * @module list/fold
  * @author Josh Bassett
  */
-module.exports = self = {
+self = module.exports = {
   /**
    * Concatenates the list of `as`.
    *
