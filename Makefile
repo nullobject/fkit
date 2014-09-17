@@ -3,17 +3,17 @@ status  := $(shell git status --porcelain)
 version := $(shell git describe --tags)
 regex   := "s/\([\"\']version[\"\'][[:space:]]*:[[:space:]]*\)\([\"\'].*[\"\']\)/\1\"$(version)\"/g"
 
-.PHONY: build bump changelog clean doc lint publish publish-api publish-npm release test unit
+.PHONY: bump changelog clean doc lint publish publish-api publish-npm production release test unit
 
 # Builds a production version of libarary.
-build: node_modules
-	@NODE_ENV=production webpack --colors --optimize-minimize --progress
+production: node_modules
+	@NODE_ENV=production webpack --colors --progress --optimize-minimize --optimize-occurence-order --optimize-dedupe
 
 test: unit lint
 
-release: build test bump changelog publish
+release: production test publish
 
-publish: publish-api publish-npm
+publish: bump changelog publish-api publish-npm
 
 unpublish: delete-tag unpublish-npm
 

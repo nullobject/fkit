@@ -7,18 +7,15 @@ plugins = [
   })
 ];
 
-if (process.env.NODE_ENV === 'production') {
-  plugins.push(new webpack.optimize.DedupePlugin());
-  plugins.push(new webpack.optimize.UglifyJsPlugin());
-}
-
 module.exports = {
   entry: {
     fkit: './src/fkit.js'
   },
   output: {
-    filename: '[name].js',
-    path:     './dist',
-    library:  'fkit'
-  }
+    path:          './dist',
+    filename:      '[name].js',
+    library:       'fkit',
+    libraryTarget: 'var'
+  },
+  plugins: plugins
 };
