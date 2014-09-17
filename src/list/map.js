@@ -30,26 +30,6 @@ module.exports = {
   }),
 
   /**
-   * Filters the list of `as` with the predicate function `p`.
-   *
-   * @static
-   * @curried
-   * @function
-   * @param {function} p
-   * @param {Array|String} as
-   * @returns {Array|String} The result.
-   */
-  filter: fn.curry(function(p, as) {
-    if (typeof as === 'string') {
-      return fold.concatMap(function(a) {
-        return p(a) ? a : '';
-      }, as);
-    } else {
-      return as.filter(p);
-    }
-  }),
-
-  /**
    * Returns the elements of list of `as` in reverse order.
    *
    * @static

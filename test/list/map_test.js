@@ -15,18 +15,6 @@ describe('list.map', function() {
     });
   });
 
-  describe('#filter', function() {
-    it('should filter an array', function() {
-      function f(a) { return a > 1; }
-      expect(map.filter(f)([1, 2, 3])).to.be.eql([2, 3]);
-    });
-
-    it('should filter a string', function() {
-      function f(a) { return a === 'o'; }
-      expect(map.filter(f)('foo')).to.be.equal('oo');
-    });
-  });
-
   describe('#reverse', function() {
     it('should reverse an array', function() {
       expect(map.reverse([1, 2, 3])).to.be.eql([3, 2, 1]);
@@ -52,6 +40,19 @@ describe('list.map', function() {
 
     it('should intersperse a string with an empty string', function() {
       expect(map.intersperse('')('foo')).to.be.equal('foo');
+    });
+  });
+
+  describe('#applyAll', function() {
+    it('should apply the list of functions', function() {
+      var f = sinon.stub().returns(1),
+          g = sinon.stub().returns(2),
+          h = sinon.stub().returns(3),
+          a = {};
+      expect(map.applyAll([f, g, h])(a)).to.be.eql([1, 2, 3]);
+      expect(f.calledWithExactly(a)).to.be.true;
+      expect(g.calledWithExactly(a)).to.be.true;
+      expect(h.calledWithExactly(a)).to.be.true;
     });
   });
 });
