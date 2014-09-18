@@ -23,6 +23,9 @@ self = module.exports = {
    * @param {function} p
    * @param {Array|String} as
    * @returns {Array|String} The result.
+   * @example
+   *   p(a) { return a > 1; }
+   *   filter(p, [1, 2, 3]); // [2, 3]
    */
   filter: fn.curry(function(p, as) {
     if (typeof as === 'string') {
@@ -35,7 +38,7 @@ self = module.exports = {
   }),
 
   /**
-   * Determines if all elements of the list of `as` satisfy the predicate
+   * Determines if all elements in the list of `as` satisfy the predicate
    * function `p`.
    *
    * @static
@@ -44,13 +47,17 @@ self = module.exports = {
    * @param {function} p
    * @param {Array|String} as
    * @returns {boolean} The result.
+   * @example
+   *   p(a) { return a > 1; }
+   *   all(p, [1, 2, 3]); // false
+   *   all(p, [2, 3, 4]); // true
    */
   all: fn.curry(function(p, as) {
     return self.filter(p, as).length === as.length;
   }),
 
   /**
-   * Determines if any elements of the list of `as` satisfy the predicate
+   * Determines if any elements in the list of `as` satisfy the predicate
    * function `p`.
    *
    * @static
@@ -59,6 +66,10 @@ self = module.exports = {
    * @param {function} p
    * @param {Array|String} as
    * @returns {boolean} The result.
+   * @example
+   *   p(a) { return a > 1; }
+   *   any(p, [1, 2, 3]); // true
+   *   any(p, [2, 3, 4]); // true
    */
   any: fn.curry(function(p, as) {
     return self.filter(p, as).length > 0;
@@ -74,6 +85,12 @@ self = module.exports = {
    * @param {Array} ps
    * @param {*} a
    * @returns {boolean} The result.
+   * @example
+   *   p(a) { return a > 1; }
+   *   q(a) { return a > 2; }
+   *   whereAll([p, q], 1); // false
+   *   whereAll([p, q], 2); // false
+   *   whereAll([p, q], 3); // true
    */
   whereAll: fn.curry(function(ps, a) {
     return map.applyAll(ps, a).reduce(logic.and, true);
@@ -84,11 +101,18 @@ self = module.exports = {
    * their disjunction.
    *
    * @static
+   :a
    * @curried
    * @function
    * @param {Array} ps
    * @param {*} a
    * @returns {boolean} The result.
+   * @example
+   *   p(a) { return a > 1; }
+   *   q(a) { return a > 2; }
+   *   whereAny([p, q], 1); // false
+   *   whereAny([p, q], 2); // true
+   *   whereAny([p, q], 3); // true
    */
   whereAny: fn.curry(function(ps, a) {
     return map.applyAll(ps, a).reduce(logic.or, false);

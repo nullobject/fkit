@@ -15,9 +15,9 @@ module.exports = {
    * @static
    * @curried
    * @function
-   * @param {number} a
-   * @param {number} b
-   * @returns {number} The result.
+   * @param {number} a A value.
+   * @param {number} b A value.
+   * @returns {number} The value `b + a`.
    */
   add: fn.curry(function(a, b) { return b + a; }),
 
@@ -27,9 +27,9 @@ module.exports = {
    * @static
    * @curried
    * @function
-   * @param {number} a
-   * @param {number} b
-   * @returns {number} The result.
+   * @param {number} a A value.
+   * @param {number} b A value.
+   * @returns {number} The value `b - a`.
    */
   sub: fn.curry(function(a, b) { return b - a; }),
 
@@ -39,9 +39,9 @@ module.exports = {
    * @static
    * @curried
    * @function
-   * @param {number} a
-   * @param {number} b
-   * @returns {number} The result.
+   * @param {number} a A value.
+   * @param {number} b A value.
+   * @returns {number} The value `b * a`.
    */
   mul: fn.curry(function(a, b) { return b * a; }),
 
@@ -51,9 +51,9 @@ module.exports = {
    * @static
    * @curried
    * @function
-   * @param {number} a
-   * @param {number} b
-   * @returns {number} The result.
+   * @param {number} a A value.
+   * @param {number} b A value.
+   * @returns {number} The value `b / a`.
    */
   div: fn.curry(function(a, b) { return b / a; }),
 
@@ -63,9 +63,9 @@ module.exports = {
    * @static
    * @curried
    * @function
-   * @param {number} a
-   * @param {number} b
-   * @returns {number} The result.
+   * @param {number} a A value.
+   * @param {number} b A value.
+   * @returns {number} The value `b % a`.
    */
   mod: fn.curry(function(a, b) { return b % a; }),
 
@@ -75,9 +75,9 @@ module.exports = {
    * @static
    * @curried
    * @function
-   * @param {number} a
-   * @param {number} b
-   * @returns {number} The result.
+   * @param {number} a A value.
+   * @param {number} b A value.
+   * @returns {number} The minimum value of `a` and `b`.
    */
   min: fn.curry(function(a, b) { return Math.min(b, a); }),
 
@@ -87,17 +87,17 @@ module.exports = {
    * @static
    * @curried
    * @function
-   * @param {number} a
-   * @param {number} b
-   * @returns {number} The result.
+   * @param {number} a A value.
+   * @param {number} b A value.
+   * @returns {number} The maximum value of `a` and `b`.
    */
   max: fn.curry(function(a, b) { return Math.max(b, a); }),
 
   /**
    * The unary negation operator.
    *
-   * @param {number} a
-   * @returns {number} The result.
+   * @param {number} a A value.
+   * @returns {number} The value `-a`.
    */
   negate: function(a) { return -a; },
 
@@ -107,8 +107,8 @@ module.exports = {
    * @static
    * @curried
    * @function
-   * @param {*} a
-   * @param {*} b
+   * @param {*} a A value.
+   * @param {*} b A value.
    * @returns {boolean} The result.
    */
   eql: fn.curry(function(a, b) { return b === a; }),
@@ -119,8 +119,8 @@ module.exports = {
    * @static
    * @curried
    * @function
-   * @param {number} a
-   * @param {number} b
+   * @param {number} a A value.
+   * @param {number} b A value.
    * @returns {boolean} The result.
    */
   gt: fn.curry(function(a, b) { return b > a; }),
@@ -131,8 +131,8 @@ module.exports = {
    * @static
    * @curried
    * @function
-   * @param {number} a
-   * @param {number} b
+   * @param {number} a A value.
+   * @param {number} b A value.
    * @returns {boolean} The result.
    */
   gte: fn.curry(function(a, b) { return b >= a; }),
@@ -143,8 +143,8 @@ module.exports = {
    * @static
    * @curried
    * @function
-   * @param {number} a
-   * @param {number} b
+   * @param {number} a A value.
+   * @param {number} b A value.
    * @returns {boolean} The result.
    */
   lt: fn.curry(function(a, b) { return b < a; }),
@@ -155,8 +155,8 @@ module.exports = {
    * @static
    * @curried
    * @function
-   * @param {number} a
-   * @param {number} b
+   * @param {number} a A value.
+   * @param {number} b A value.
    * @returns {boolean} The result.
    */
   lte: fn.curry(function(a, b) { return b <= a; }),
@@ -164,7 +164,7 @@ module.exports = {
   /**
    * Increments the number.
    *
-   * @param {number} a
+   * @param {number} a A value.
    * @returns {number} The result.
    */
   inc: function(a) { return a + 1; },
@@ -172,7 +172,7 @@ module.exports = {
   /**
    * Decrements the number.
    *
-   * @param {number} a
+   * @param {number} a A value.
    * @returns {number} The result.
    */
   dec: function(a) { return a - 1; },

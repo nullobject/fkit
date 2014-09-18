@@ -24,7 +24,9 @@ self = module.exports = {
    * @param {Object} target A target object.
    * @param {...Object} objects A list of objects to be copied.
    * @returns {Object} A new object.
-   * @example copy(person, {name: 'bob'})
+   * @example
+   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
+   *   copy(person, {name: 'bob'}); // {name: 'bob', age: '20', city: 'Melbourne'}
    */
   copy: fn.variadic(function(target, objects) {
     return util.extend(new target.constructor(), [target].concat(objects));
@@ -39,7 +41,9 @@ self = module.exports = {
    * @param {string} property A string representing the property name.
    * @param {Object} target A target object.
    * @returns {*} A property value.
-   * @example get('name', person) == 'bob'
+   * @example
+   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
+   *   get('name', person); // 'jane'
    */
   get: fn.curry(function(property, target) {
     return target[property];
@@ -56,7 +60,8 @@ self = module.exports = {
    * @param {Object} value A property value.
    * @param {Object} target A target object.
    * @returns {Object} A new object.
-   * @example set('name', 'bob', person)
+   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
+   *   set('name', 'bob', person); // {name: 'bob', age: '20', city: 'Melbourne'}
    */
   set: fn.curry(function(property, value, target) {
     var object = {};
@@ -72,6 +77,9 @@ self = module.exports = {
    * @param {Object} target A target object.
    * @param {...string} properties A list of properties.
    * @returns {*} A property value.
+   * @example
+   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
+   *   pluck(person, name, age); // {name: 'jane', age: '20'}
    */
   pluck: fn.variadic(function(target, properties) {
     return properties.reduce(function(b, a) {

@@ -20,6 +20,8 @@ self = module.exports = {
    * @function
    * @param {number} n
    * @returns {Array} A new array.
+   * @example
+   *   array(3); // [undefined, undefined, undefined]
    */
   array: function(n) { return Array.apply(null, Array(n)); },
 
@@ -30,7 +32,9 @@ self = module.exports = {
    * @function
    * @param {*} a A value.
    * @param {*} b A value.
-   * @returns {Array} A pair.
+   * @returns {Array} A pair of `a` and `b`.
+   * @example
+   *   pair(1, 2); // [1, 2]
    */
   pair: fn.curry(function(a, b) { return [a, b]; }),
 
@@ -43,6 +47,8 @@ self = module.exports = {
    * @param {number} a
    * @param {number} n
    * @returns {Array} A new array.
+   * @example
+   *   range(1, 3); // [1, 2, 3]
    */
   range: fn.curry(function(a, n) {
     return self.array(n).map(function(_, i) { return a + i; });
@@ -57,6 +63,8 @@ self = module.exports = {
    * @param {number} n
    * @param {number} a
    * @returns {Array} A new array.
+   * @example
+   *   replicate(1, 3); // [1, 1, 1]
    */
   replicate: fn.curry(function(n, a) {
     return fold.concat(self.array(n).map(function() { return base.pure(a); }));

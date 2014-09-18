@@ -54,7 +54,7 @@ function variadic(f) {
 var self;
 
 /**
- * This module defines the basic functions.
+ * This module defines basic operations on functions.
  *
  * @module fn
  * @author Josh Bassett
@@ -66,10 +66,12 @@ self = module.exports = {
    * @static
    * @curried
    * @function
-   * @param {function} f A function to be applied.
+   * @param {function} f The function to be applied.
    * @param {*} a A value.
-   * @returns {*} The result.
-   * @example apply(f, a) == f(a)
+   * @returns {*} The result of the function.
+   * @example
+   *   function sayHi(a) { return ['Hi', a, '!'].join(' '); }
+   *   apply(sayHi, 'John'); // Hi John!
    */
   apply: curry(function(f, a) { return f(a); }),
 
@@ -79,11 +81,13 @@ self = module.exports = {
    * @static
    * @curried
    * @function
-   * @param {function} f A function to be applied.
+   * @param {function} f The function to be applied.
    * @param {*} a A value.
    * @param {*} b A value.
-   * @returns {*} The result.
-   * @example apply(f, a) == f(a)
+   * @returns {*} The result of the function.
+   * @example
+   *   function sayHi(a, b) { return ['Hi', a, b, '!'].join(' '); }
+   *   apply2(sayHi, 'John', 'Appleseed'); // Hi John Appleseed!
    */
   apply2: curry(function(f, a, b) { return f(a, b); }),
 
@@ -93,12 +97,14 @@ self = module.exports = {
    * @static
    * @curried
    * @function
-   * @param {function} f A function to be applied.
+   * @param {function} f The function to be applied.
    * @param {*} a A value.
    * @param {*} b A value.
    * @param {*} c A value.
-   * @returns {*} The result.
-   * @example apply(f, a) == f(a)
+   * @returns {*} The result of the function.
+   * @example
+   *   function sayHi(a, b, b) { return ['Hi', a, b, c, '!'].join(' '); }
+   *   apply3(sayHi, 'Mr', 'John', 'Appleseed'); // Hi Mr John Appleseed!
    */
   apply3: curry(function(f, a, b, c) { return f(a, b, c); }),
 
@@ -109,9 +115,11 @@ self = module.exports = {
    * @curried
    * @function
    * @param {*} a A value.
-   * @param {function} f A function to be applied.
-   * @returns {*} The result.
-   * @example applyRight(a, f) == f(a)
+   * @param {function} f The function to be applied.
+   * @returns {*} The result of the function.
+   * @example
+   *   function sayHi(a) { return ['Hi', a, '!'].join(' '); }
+   *   applyRight('John', sayHi); // Hi John!
    */
   applyRight: curry(function(a, f) { return f(a); }),
 
@@ -120,9 +128,10 @@ self = module.exports = {
    *
    * @static
    * @function
-   * @param {...function} fs A list of functions to be composed.
-   * @returns {function} A new function.
-   * @example compose(f, g, h)(a) == f(g(h(a)))
+   * @param {...function} fs The list of functions to be composed.
+   * @returns {function} A new composed function.
+   * @example
+   *   compose(f, g)(a); // f(g(a))
    */
   compose: variadic(function(fs) {
     return function(a) {
@@ -135,42 +144,47 @@ self = module.exports = {
   /**
    * Wraps the binary function `f` and flips the order of the arguments.
    *
-   * @param {function} f A function to be flipped.
-   * @returns {function} A new function.
+   * @param {function} f The function to be flipped.
+   * @returns {function} A new flipped function.
+   * @example
+   *   function f(a, b) { ... }
+   *   var g = flip(f);
+   *   g(1, 2); // f(2, 1)
    */
   flip: function(f) { return function(a, b) { return f(b, a); }; },
 
   /**
-   * Returns the identity function (a function that returns its first
-   * argument).
+   * Creates a function that returns the first argument (identity function).
    *
    * @param {*} a A value.
    * @returns {*} The value `a`.
-   * @example id(a) == a
+   * @example
+   *   id(1); // 1
    */
   id: function(a) { return a; },
 
   /**
-   * Returns the constant function (a function that always returns the value
-   * `c`, regardless of the given arguments).
+   * Creates a new function that always returns the value `c`, regardless of
+   * the arguments (constant function).
    *
    * @param {*} c A value.
-   * @returns {function} A new function.
-   * @example const(c)(1, 2, 3, ...) == c
+   * @returns {function} A new constant function.
+   * @example
+   *   const(1)(2, 3); // 1
    */
   const: function(c) { return function() { return c; }; },
 
   /**
-   * Creates a new function that allows partial application of the arguments
-   * to the function `f`.
+   * Creates a new function that allows partial application of the arguments to
+   * the function `f`.
    *
    * @static
    * @function
-   * @param {function} f A function to be curried.
-   * @returns {function} A new function.
+   * @param {function} f The function to be curried.
+   * @returns {function} A new curried function.
    * @example
    *   var add = curry(function(a, b) { return a + b; });
-   *   add(1)(2) == 3
+   *   add(1)(2); // 3
    */
   curry: curry,
 
@@ -178,8 +192,8 @@ self = module.exports = {
    * Creates a new function that wraps the function `f` to accept only one
    * argument.
    *
-   * @param {function} f A function to be wrapped.
-   * @returns {function} A new function.
+   * @param {function} f The function to be wrapped.
+   * @returns {function} A new unary function.
    */
   unary: function(f) { return (f.length === 1) ? f : self.apply(f); },
 
@@ -187,35 +201,37 @@ self = module.exports = {
    * Creates a new function that wraps the function `f` to accept only two
    * arguments.
    *
-   * @param {function} f A function to be wrapped.
-   * @returns {function} A new function.
+   * @param {function} f The function to be wrapped.
+   * @returns {function} A new binary function.
    */
   binary: function(f) { return (f.length === 2) ? f : self.apply2(f); },
 
   /**
    * Creates a new function that wraps the function `f` to accept any number of
-   * agruments. The last named parameter will be given an array of arguments.
+   * arguments. The last named parameter will be given an array of arguments.
    *
    * @static
    * @function
-   * @param {function} f A function to be wrapped.
-   * @returns {function} A new function.
+   * @param {function} f The function to be wrapped.
+   * @returns {function} A new variadic function.
    * @example
-   *   function foo(head, tail) { ... }
-   *   variadic(foo)(1, 2, 3) == foo(1, [2, 3])
+   *   function f(head, tail) { ... }
+   *   variadic(f)(1, 2, 3); // f(1, [2, 3])
    */
   variadic: variadic,
 
   /**
-   * Applies the side-effecting function `f` to the value `a` and returns the
-   * value `a`.
+   * Creates a new function that applies the side-effecting function `f` to the
+   * value `a` and returns the value `a`.
    *
    * @static
    * @function
-   * @param {function} f A function to be applied.
+   * @param {function} f The function to be applied.
    * @param {*} a A value.
    * @returns {*} The value `a`.
-   * @example tap(f)(a) == a
+   * @example
+   *   function f(a) { console.log(a); }
+   *   tap(f)(1); // 1
    */
   tap: curry(function(f, a) { f(a); return a; }),
 
@@ -225,14 +241,13 @@ self = module.exports = {
    * @static
    * @curried
    * @function
-   * @param {*} a - A value.
-   * @param {*} b - A value.
-   * @returns {boolean} The ordering of `a` and `b`.
+   * @param {number|String} a - A value.
+   * @param {number|String} b - A value.
+   * @returns {number} The ordering of `a` and `b`.
    * @example
-   *   compare(1, 2)
-   *   // -> -1
-   *   compare('foo', 'bar')
-   *   // -> 1
+   *   compare(1, 2); // -1
+   *   compare(2, 1); // 1
+   *   compare(2, 2); // 0
    */
   compare: curry(function(a, b) {
     if (a > b) {

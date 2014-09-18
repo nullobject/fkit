@@ -24,7 +24,9 @@ expressive code.
 
 ### Browser
 
-Download the [fkit.js](https://raw.githubusercontent.com/nullobject/fkit/master/dist/fkit.js) minified library.
+Download the
+[fkit.js](https://raw.githubusercontent.com/nullobject/fkit/master/dist/fkit.js)
+minified library.
 
 Then load it in a script tag:
 
@@ -85,4 +87,6 @@ Ship a new release x.y.z:
 
 ## License
 
-FKit is licensed under the MIT license. See the [LICENSE](https://github.com/nullobject/fkit/blob/master/LICENSE.md) file for more details.
+FKit is licensed under the MIT license. See the
+[LICENSE](https://github.com/nullobject/fkit/blob/master/LICENSE.md) file for
+more details.
