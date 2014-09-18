@@ -1,5 +1,7 @@
 'use strict';
 
+var fn = require('./fn');
+
 /**
  * This module defines string functions.
  *
@@ -8,18 +10,33 @@
  */
 module.exports = {
   /**
-   * Returns the string converted to uppercase.
+   * Converts the string `s` to uppercase.
    *
-   * @param {String} a
+   * @param {String} s
    * @returns {String} The result.
    */
-  toUpper: function(a) { return a.toUpperCase(); },
+  toUpper: function(s) { return s.toUpperCase(); },
 
   /**
-   * Returns the string converted to lowercase.
+   * Converts the string `s` to lowercase.
    *
-   * @param {String} a
+   * @param {String} s
    * @returns {String} The result.
    */
-  toLower: function(a) { return a.toLowerCase(); },
+  toLower: function(s) { return s.toLowerCase(); },
+
+  /**
+   * Replaces `a` with `b` in the string `s`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {String|RegExp} a
+   * @param {String} b
+   * @param {String} s
+   * @returns {String} The result.
+   */
+  replace: fn.curry(function(a, b, s) {
+    return s.replace(a, b);
+  }),
 };

@@ -16,4 +16,14 @@ describe('string', function() {
       expect(string.toLower('A')).to.equal('a');
     });
   });
+
+  describe('#replace', function() {
+    it('should replace a string', function() {
+      expect(string.replace('r')('z')('bar')).to.equal('baz');
+    });
+
+    it('should replace a regex', function() {
+      expect(string.replace(/r/)('z')('bar')).to.equal('baz');
+    });
+  });
 });
