@@ -217,5 +217,30 @@ self = module.exports = {
    * @returns {*} The value `a`.
    * @example tap(f)(a) == a
    */
-  tap: curry(function(f, a) { f(a); return a; })
+  tap: curry(function(f, a) { f(a); return a; }),
+
+  /**
+   * Compares the values `a` and `b` using natural ordering.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {*} a - A value.
+   * @param {*} b - A value.
+   * @returns {boolean} The ordering of `a` and `b`.
+   * @example
+   *   compare(1, 2)
+   *   // -> -1
+   *   compare('foo', 'bar')
+   *   // -> 1
+   */
+  compare: curry(function(a, b) {
+    if (a > b) {
+      return 1;
+    } else if (a < b) {
+      return -1;
+    } else {
+      return 0;
+    }
+  }),
 };

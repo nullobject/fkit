@@ -208,4 +208,18 @@ describe('fn', function() {
       expect(spy.calledWithExactly(1)).to.be.true;
     });
   });
+
+  describe('#compare', function() {
+    it('should compare two numbers', function() {
+      expect(fn.compare(1)(2)).to.be.equal(-1);
+      expect(fn.compare(2)(1)).to.be.equal(1);
+      expect(fn.compare(2)(2)).to.be.equal(0);
+    });
+
+    it('should compare two strings', function() {
+      expect(fn.compare('bar')('foo')).to.be.equal(-1);
+      expect(fn.compare('foo')('bar')).to.be.equal(1);
+      expect(fn.compare('bar')('bar')).to.be.equal(0);
+    });
+  });
 });
