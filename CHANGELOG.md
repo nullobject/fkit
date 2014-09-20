@@ -1,3 +1,15 @@
+v0.5.3 / 2014-09-20
+==================
+
+ * Documentation cleanups.
+ * Add #compare function.
+ * Add #replace function.
+ * Add license section to readme.
+ * Add #surround function.
+ * Add #all, #any, #whereAll, and #whereAny functions.
+ * Add #applyAll function.
+ * Add #pluck function.
+
 v0.5.2 / 2014-09-16
 ==================
 
