@@ -4,15 +4,20 @@
   "description": "A functional programming toolkit for JavaScript.",
   "homepage": "https://github.com/nullobject/fkit",
   "author": "Josh Bassett <josh.bassett@gmail.com> (http://joshbassett.info)",
-  "license": "MIT",
+  "license": {
+    "type": "MIT",
+    "url": "https://github.com/nullobject/fkit/blob/master/LICENSE.md"
+  },
   "keywords": [
     "functional",
     "programming",
     "library",
     "toolkit"
   ],
-  "main": "./src/fkit.js",
-  "files": ["./src"],
+  "main": "src/fkit.js",
+  "files": [
+    "src"
+  ],
   "scripts": {
     "test": "mocha"
   },
@@ -26,6 +31,7 @@
   "devDependencies": {
     "chai": "^1.9.1",
     "jsdoc": "^3.3.0-alpha9",
+    "jsdoc-react": "^0.1.0",
     "jshint": "^2.5.5",
     "mocha": "^1.21.4",
     "sinon": "^1.10.3",
