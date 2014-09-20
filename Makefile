@@ -33,7 +33,7 @@ lint:
 
 # Generates the API documentation.
 doc:
-	@node_modules/.bin/jsdoc -c jsdoc.config.json -t ../jsdoc-react src README.md
+	@node_modules/.bin/jsdoc -c jsdoc.config.json src README.md
 
 # Bumps the version of the bower and npm packages.
 bump:

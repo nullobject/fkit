@@ -4,9 +4,9 @@
   },
   "plugins": ["plugins/markdown"],
   "opts": {
-    "destination": "./doc",
+    "destination": "doc",
     "recurse": true,
-    "template": "templates/default",
+    "template": "jsdoc-react",
     "tutorials": "examples"
   }
 }
