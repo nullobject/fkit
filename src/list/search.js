@@ -10,10 +10,28 @@ var self;
 /**
  * This module defines search operations on lists.
  *
+ * @private
  * @module fkit/list/search
  * @author Josh Bassett
  */
 self = module.exports = {
+  /**
+   * Determines if the list of `as` contains the element `a`.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {*} a - A value.
+   * @param {Array|String} as
+   * @returns {boolean} The result.
+   * @example
+   *   elem(0, [1, 2, 3]); // false
+   *   elem(1, [1, 2, 3]); // true
+   */
+  elem: fn.curry(function (a, as) {
+    return as.indexOf(a) >= 0;
+  }),
+
   /**
    * Filters the list of `as` with the predicate function `p`.
    *

@@ -9,6 +9,7 @@ var self;
 /**
  * This module defines build operations on lists.
  *
+ * @private
  * @module fkit/list/build
  * @author Josh Bassett
  */

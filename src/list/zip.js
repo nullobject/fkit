@@ -9,6 +9,7 @@ var self;
 /**
  * This module defines zip operations on lists.
  *
+ * @private
  * @module fkit/list/zip
  * @author Josh Bassett
  */

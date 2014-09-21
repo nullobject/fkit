@@ -11,6 +11,7 @@ var util = require('./util');
  * more expressive code.
  *
  * @module fkit
+ * @summary Introduction
  * @author Josh Bassett
  */
 module.exports = util.extend({

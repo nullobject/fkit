@@ -6,6 +6,7 @@ var fn = require('./fn');
  * This module defines logic functions.
  *
  * @module fkit/logic
+ * @summary Logic
  * @author Josh Bassett
  */
 module.exports = {

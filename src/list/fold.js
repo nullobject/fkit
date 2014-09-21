@@ -14,6 +14,7 @@ function concat(as) {
 /**
  * This module defines fold operations on lists.
  *
+ * @private
  * @module fkit/list/fold
  * @author Josh Bassett
  */
