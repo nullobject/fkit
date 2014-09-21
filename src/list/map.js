@@ -7,7 +7,7 @@ var base = require('./base'),
 /**
  * This module defines map operations on lists.
  *
- * @module list/map
+ * @module fkit/list/map
  * @author Josh Bassett
  */
 module.exports = {

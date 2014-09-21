@@ -56,7 +56,7 @@ var self;
 /**
  * This module defines basic operations on functions.
  *
- * @module fn
+ * @module fkit/fn
  * @author Josh Bassett
  */
 self = module.exports = {

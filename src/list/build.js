@@ -9,7 +9,7 @@ var self;
 /**
  * This module defines build operations on lists.
  *
- * @module list/build
+ * @module fkit/list/build
  * @author Josh Bassett
  */
 self = module.exports = {

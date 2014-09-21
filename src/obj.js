@@ -8,7 +8,7 @@ var self;
 /**
  * This module defines operations on objects.
  *
- * @module obj
+ * @module fkit/obj
  * @author Josh Bassett
  */
 self = module.exports = {

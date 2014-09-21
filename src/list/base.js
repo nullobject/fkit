@@ -7,7 +7,7 @@ var self;
 /**
  * This module defines basic operations on lists.
  *
- * @module list/base
+ * @module fkit/list/base
  * @author Josh Bassett
  */
 self = module.exports = {
