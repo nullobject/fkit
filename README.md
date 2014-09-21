@@ -33,7 +33,7 @@ Then load it in a script tag:
 ```html
 <script src="fkit.js"></script>
 <script>
-  console.log(fkit.add(1)(2));
+  console.log(F.add(1, 2));
 </script>
 ```
 
@@ -48,8 +48,8 @@ Install the npm package:
 Then require it:
 
 ```js
-var fkit = require('fkit');
-console.log(fkit.add(1)(2));
+var F = require('fkit');
+console.log(F.add(1, 2));
 ```
 
 ### Bower
