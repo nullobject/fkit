@@ -14,7 +14,7 @@ module.exports = {
   output: {
     path:          './dist',
     filename:      '[name].js',
-    library:       'fkit',
+    library:       'fkit = F',
     libraryTarget: 'var'
   },
   plugins: plugins
