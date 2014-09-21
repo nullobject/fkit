@@ -11,6 +11,7 @@ var self;
  * This module defines search operations on lists.
  *
  * @module fkit/list/search
+ * @summary Searching Lists
  * @author Josh Bassett
  */
 self = module.exports = {

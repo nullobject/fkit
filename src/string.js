@@ -6,6 +6,7 @@ var fn = require('./fn');
  * This module defines string functions.
  *
  * @module fkit/string
+ * @summary Strings
  * @author Josh Bassett
  */
 module.exports = {

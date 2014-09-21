@@ -6,6 +6,7 @@ var util = require('../util');
  * This module defines operations on lists.
  *
  * @module fkit/list
+ * @summary Lists
  * @author Josh Bassett
  */
 module.exports = util.extend({}, [
