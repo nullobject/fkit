@@ -3,6 +3,18 @@
 var search = require('../../src/list/search');
 
 describe('list.search', function() {
+  describe('#elem', function() {
+    it('should filter an array', function() {
+      expect(search.elem(0)([1, 2, 3])).to.be.false;
+      expect(search.elem(1)([1, 2, 3])).to.be.true;
+    });
+
+    it('should filter a string', function() {
+      expect(search.elem('b')('foo')).to.be.false;
+      expect(search.elem('f')('foo')).to.be.true;
+    });
+  });
+
   describe('#filter', function() {
     it('should filter an array', function() {
       function f(a) { return a > 1; }
