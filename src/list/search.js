@@ -10,8 +10,8 @@ var self;
 /**
  * This module defines search operations on lists.
  *
+ * @private
  * @module fkit/list/search
- * @summary Searching Lists
  * @author Josh Bassett
  */
 self = module.exports = {
