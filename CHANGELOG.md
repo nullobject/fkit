@@ -1,3 +1,9 @@
+v0.5.4 / 2014-09-21
+==================
+
+ * Alias fkit as F.
+ * Change to the jsdoc-react template.
+
 v0.5.3 / 2014-09-20
 ==================
 
