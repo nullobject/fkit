@@ -103,7 +103,7 @@ self = module.exports = {
    * @param {*} c A value.
    * @returns {*} The result of the function.
    * @example
-   *   function sayHi(a, b, b) { return ['Hi', a, b, c, '!'].join(' '); }
+   *   function sayHi(a, b, c) { return ['Hi', a, b, c, '!'].join(' '); }
    *   apply3(sayHi, 'Mr', 'John', 'Appleseed'); // Hi Mr John Appleseed!
    */
   apply3: curry(function(f, a, b, c) { return f(a, b, c); }),
