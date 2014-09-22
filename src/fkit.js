@@ -3,15 +3,12 @@
 var util = require('./util');
 
 /**
- * FKit is a [functional
- * programming](http://en.wikipedia.org/wiki/Functional_programming) library
- * for JavaScript. It consists of a small number of functions and classes that
- * are squarely focused on everyday utility. This provides developers with
- * functional programming "building blocks" that they can use to write better,
- * more expressive code.
+ * This module mixes in the functions and classes from all the other FKit
+ * modules. It's available as a convenience, however if you don't need all of
+ * FKit then you can require just the module that you need.
  *
  * @module fkit
- * @summary Introduction
+ * @summary All The Things
  * @author Josh Bassett
  */
 module.exports = util.extend({

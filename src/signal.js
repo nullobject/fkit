@@ -10,7 +10,6 @@ var build = require('./list/build'),
  * The `subscribe` function is called by an observer who wishes to subscribe
  * to the signal values.
  *
- *
  * @class
  * @param {function} subscribe A subscribe function.
  * @author Josh Bassett
