@@ -109,12 +109,12 @@ describe('Signal', function() {
     });
   });
 
-  describe('#flatMap', function() {
-    it('should flat map the given function over signal values', function() {
+  describe('#concatMap', function() {
+    it('should concat map the given function over signal values', function() {
       var s = Signal.fromArray(build.range(1, 3));
       var f = function(a) { return Signal.of(a); };
 
-      s.flatMap(f).subscribe(next, done);
+      s.concatMap(f).subscribe(next, done);
 
       build.range(1, 3).map(function(a, index) {
         var call = next.getCall(index);

@@ -101,7 +101,7 @@ Signal.of = function(a) {
  * @param {function} f A unary function.
  * @returns {Signal} A new signal.
  */
-Signal.prototype.flatMap = function(f) {
+Signal.prototype.concatMap = function(f) {
   var env = this;
   return obj.copy(this, {
     subscribe: function(next, done) {
