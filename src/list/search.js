@@ -28,7 +28,7 @@ self = module.exports = {
    *   elem(0, [1, 2, 3]); // false
    *   elem(1, [1, 2, 3]); // true
    */
-  elem: fn.curry(function (a, as) {
+  elem: fn.curry(function(a, as) {
     return as.indexOf(a) >= 0;
   }),
 

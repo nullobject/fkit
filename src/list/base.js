@@ -14,21 +14,17 @@ var self;
 self = module.exports = {
   // Returns an empty monoid.
   mempty: function(as) {
-    return (as && typeof as[0] === 'string') ? '' : [];
+    return (typeof as !== undefined && as !== null && (typeof as[0] === 'string' || typeof as === 'string')) ? '' : [];
   },
 
   // Returns a value in a pure context.
   pure: function(x) {
-    return (x && typeof x[0] === 'string') ? x : [x];
+    return (typeof x !== undefined && x !== null && typeof x[0] === 'string') ? x : [x];
   },
 
   // Converts the list of `as` to an array.
   toArray: function(as) {
-    if (typeof as === 'string') {
-      return as.split('');
-    } else {
-      return as;
-    }
+    return (typeof as === 'string') ? as.split('') : as;
   },
 
   /**
@@ -42,11 +38,7 @@ self = module.exports = {
    * @returns {Array|String} The result.
    */
   append: fn.curry(function(a, bs) {
-    if (typeof bs === 'string') {
-      return bs + a;
-    } else {
-      return bs.concat(a);
-    }
+    return (typeof bs === 'string') ? bs + a : bs.concat(a);
   }),
 
   /**
@@ -60,11 +52,7 @@ self = module.exports = {
    * @returns {Array|String} The result.
    */
   prepend: fn.curry(function(a, bs) {
-    if (typeof bs === 'string') {
-      return a + bs;
-    } else {
-      return [a].concat(bs);
-    }
+    return (typeof bs === 'string') ?  a + bs : [a].concat(bs);
   }),
 
   /**
