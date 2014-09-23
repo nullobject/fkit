@@ -21,5 +21,6 @@ module.exports = util.extend({}, [
   require('./fold'),
   require('./map'),
   require('./search'),
+  require('./set'),
   require('./zip'),
 ]);
