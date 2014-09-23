@@ -36,6 +36,6 @@
     "mocha": "^1.21.4",
     "sinon": "^1.10.3",
     "sinon-chai": "^2.5.0",
-    "webpack": "^1.4.0-beta4"
+    "webpack": "^1.4.3"
   }
 }
