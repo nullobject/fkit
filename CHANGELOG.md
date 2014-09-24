@@ -1,3 +1,14 @@
+v0.6.0 / 2014-09-24
+==================
+
+ * Move #whereAll/Any to logic module.
+ * Rename eql -> eq.
+ * Update webpack version.
+ * Add list.set module.
+ * Rename Signal#flatMap -> Signal#concatMap.
+ * Add #elem function.
+ * Use F in readme examples.
+
 v0.5.4 / 2014-09-21
 ==================
 
