@@ -56,18 +56,18 @@ describe('math', function() {
     });
   });
 
-  describe('#eql', function() {
+  describe('#eq', function() {
     it('should compare the values', function() {
       var a = {}, b = {};
 
-      expect(math.eql(1)(2)).to.be.false;
-      expect(math.eql(2)(2)).to.be.true;
+      expect(math.eq(1)(2)).to.be.false;
+      expect(math.eq(2)(2)).to.be.true;
 
-      expect(math.eql('lorem')('ipsum')).to.be.false;
-      expect(math.eql('lorem')('lorem')).to.be.true;
+      expect(math.eq('lorem')('ipsum')).to.be.false;
+      expect(math.eq('lorem')('lorem')).to.be.true;
 
-      expect(math.eql(a)(b)).to.be.false;
-      expect(math.eql(a)(a)).to.be.true;
+      expect(math.eq(a)(b)).to.be.false;
+      expect(math.eq(a)(a)).to.be.true;
     });
   });
 

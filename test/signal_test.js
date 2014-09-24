@@ -144,7 +144,7 @@ describe('Signal', function() {
     it('should filter the signal values with the given predicate', function() {
       var s = Signal.fromArray(build.range(1, 3));
 
-      s.filter(math.eql(2)).subscribe(next, done);
+      s.filter(math.eq(2)).subscribe(next, done);
 
       expect(next.calledWithExactly(1)).to.be.false;
       expect(next.calledWithExactly(2)).to.be.true;

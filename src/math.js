@@ -112,7 +112,7 @@ module.exports = {
    * @param {*} b A value.
    * @returns {boolean} The result.
    */
-  eql: fn.curry(function(a, b) { return b === a; }),
+  eq: fn.curry(function(a, b) { return b === a; }),
 
   /**
    * The greater than operator.
