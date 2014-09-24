@@ -87,7 +87,7 @@ self = module.exports = {
    *   whereAll([p, q], 3); // true
    */
   whereAll: fn.curry(function(ps, a) {
-    return map.applyAll(ps, a).reduce(self.and, true);
+    return ps.map(fn.applyRight(a)).reduce(self.and, true);
   }),
 
   /**
@@ -95,7 +95,6 @@ self = module.exports = {
    * their disjunction.
    *
    * @static
-   :a
    * @curried
    * @function
    * @param {Array} ps
@@ -109,6 +108,6 @@ self = module.exports = {
    *   whereAny([p, q], 3); // true
    */
   whereAny: fn.curry(function(ps, a) {
-    return map.applyAll(ps, a).reduce(self.or, false);
+    return ps.map(fn.applyRight(a)).reduce(self.or, false);
   }),
 };

@@ -75,6 +75,7 @@ module.exports = {
   /**
    * Applies the list of functions `fs` to the value `a`.
    *
+   * @deprecated
    * @static
    * @curried
    * @function
