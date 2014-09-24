@@ -36,6 +36,9 @@ self = module.exports = {
    * @param {*} a - A value.
    * @param {Array|String} bs - A list.
    * @returns {Array|String} The result.
+   * @example
+   *   append(3, [1, 2]); // [1, 2, 3]
+   *   append('o', 'fo'); // 'foo'
    */
   append: fn.curry(function(a, bs) {
     return (typeof bs === 'string') ? bs + a : bs.concat(a);
@@ -50,6 +53,9 @@ self = module.exports = {
    * @param {*} a - A value.
    * @param {Array|String} bs - A list.
    * @returns {Array|String} The result.
+   * @example
+   *   prepend(1, [2, 3]); // [1, 2, 3]
+   *   prepend('f', 'oo'); // 'foo'
    */
   prepend: fn.curry(function(a, bs) {
     return (typeof bs === 'string') ?  a + bs : [a].concat(bs);
@@ -66,8 +72,8 @@ self = module.exports = {
    * @param {Array|String} cs - A list.
    * @returns {Array|String} The result.
    * @example
-   *   surround('(', ')', 'foo'); // (foo)
    *   surround(0, 4, [1, 2, 3]); // [0, 1, 2, 3, 4]
+   *   surround('(', ')', 'foo'); // '(foo)'
    */
   surround: fn.curry(function(a, b, cs) {
     return self.append(b, self.prepend(a, cs));
@@ -78,6 +84,9 @@ self = module.exports = {
    *
    * @param {Array|String} as - A list.
    * @returns {*} The head element.
+   * @example
+   *   head([1, 2, 3]); // 1
+   *   head('foo'); // 'f'
    */
   head: function(as) { return as[0]; },
 
@@ -86,6 +95,9 @@ self = module.exports = {
    *
    * @param {Array|String} as - A list.
    * @returns {Array|String} The tail elements.
+   * @example
+   *   tail([1, 2, 3]); // [2, 3]
+   *   tail('foo'); // 'oo'
    */
   tail: function(as) { return as.slice(1); },
 
@@ -94,6 +106,9 @@ self = module.exports = {
    *
    * @param {Array|String} as - A list.
    * @returns {Array|String} The initial elements.
+   * @example
+   *   init([1, 2, 3]); // [1, 2]
+   *   init('foo'); // 'fo'
    */
   init: function(as) { return as.slice(0, as.length - 1); },
 
@@ -102,6 +117,9 @@ self = module.exports = {
    *
    * @param {Array|String} as - A list.
    * @returns {*} The last element.
+   * @example
+   *   head([1, 2, 3]); // 3
+   *   head('foo'); // 'o'
    */
   last: function(as) { return as[as.length - 1]; },
 
@@ -112,6 +130,9 @@ self = module.exports = {
    * @function
    * @param {Array|String} as - A list.
    * @returns {number} The length of `as`.
+   * @example
+   *   head([1, 2, 3]); // 3
+   *   head('foo'); // 3
    */
   length: function(as) { return as.length; },
 
@@ -120,6 +141,11 @@ self = module.exports = {
    *
    * @param {Array|String} as - A list.
    * @returns {boolean} The result.
+   * @example
+   *   empty([1, 2, 3]); // false
+   *   empty([]); // true
+   *   empty('foo'); // false
+   *   empty(''); // true
    */
   empty: function(as) { return as.length === 0; },
 };

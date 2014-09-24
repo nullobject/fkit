@@ -57,12 +57,24 @@ var self;
  * This module defines basic operations on functions.
  *
  * @module fkit/fn
- * @summary Core
+ * @summary Core Functions
  * @author Josh Bassett
  */
 self = module.exports = {
   /**
    * Applies the function `f` to the value `a`.
+   *
+   * In JavaScript we would normally use the expression `f(a)` to apply a
+   * function to a value. This is very concise, however sometimes it's not very
+   * useful. You can actully think of function application as a binary
+   * operation.
+   *
+   * For example, say we want to fold right-to-left over a list of functions
+   * and apply each function to the accumulated value:
+   *
+   * ```js
+   * F.foldRight(F.apply, 0, [F.add(1), F.div(2), F.mul(3)]);
+   * ```
    *
    * @static
    * @curried
@@ -112,6 +124,16 @@ self = module.exports = {
   /**
    * Applies the function `f` to the value `a`.
    *
+   * It is the same as `apply`, however the order of the arguments is flipped.
+   * This can be useful in certain situations.
+   *
+   * For example, say we want to fold left-to-right over a list of functions
+   * and apply each function to the accumulated value:
+   *
+   * ```js
+   * F.fold(F.applyRight, 0, [F.add(1), F.div(2), F.mul(3)]);
+   * ```
+   *
    * @static
    * @curried
    * @function
@@ -132,7 +154,7 @@ self = module.exports = {
    * @param {...function} fs The list of functions to be composed.
    * @returns {function} A new composed function.
    * @example
-   *   compose(f, g)(a); // f(g(a))
+   *   compose(f, g, h)(a); // f(g(h(a)))
    */
   compose: variadic(function(fs) {
     return function(a) {
@@ -155,7 +177,7 @@ self = module.exports = {
   flip: function(f) { return function(a, b) { return f(b, a); }; },
 
   /**
-   * Creates a function that returns the first argument (identity function).
+   * Returns the value `a` unchanged (identity function).
    *
    * @param {*} a A value.
    * @returns {*} The value `a`.

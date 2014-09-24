@@ -6,7 +6,7 @@ var fn = require('./fn');
  * This module defines math functions.
  *
  * @module fkit/math
- * @summary Math
+ * @summary Yay, Numbers!
  * @author Josh Bassett
  */
 module.exports = {

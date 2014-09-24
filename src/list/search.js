@@ -27,6 +27,8 @@ self = module.exports = {
    * @example
    *   elem(0, [1, 2, 3]); // false
    *   elem(1, [1, 2, 3]); // true
+   *   elem('a', 'foo'); // false
+   *   elem('f', 'foo'); // true
    */
   elem: fn.curry(function(a, as) {
     return as.indexOf(a) >= 0;

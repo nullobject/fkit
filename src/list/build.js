@@ -66,6 +66,7 @@ self = module.exports = {
    * @returns {Array} A new array.
    * @example
    *   replicate(1, 3); // [1, 1, 1]
+   *   replicate('a', 3); // 'aaa'
    */
   replicate: fn.curry(function(n, a) {
     return fold.concat(self.array(n).map(function() { return base.pure(a); }));
