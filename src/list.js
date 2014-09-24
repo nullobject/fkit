@@ -1,6 +1,6 @@
 'use strict';
 
-var util = require('../util');
+var util = require('./util');
 
 /**
  * This module defines operations on lists.
@@ -12,15 +12,15 @@ var util = require('../util');
  * @mixes module:fkit/list/map
  * @mixes module:fkit/list/search
  * @mixes module:fkit/list/zip
- * @summary Lists
+ * @summary List Functions And Combinators
  * @author Josh Bassett
  */
 module.exports = util.extend({}, [
-  require('./base'),
-  require('./build'),
-  require('./fold'),
-  require('./map'),
-  require('./search'),
-  require('./set'),
-  require('./zip'),
+  require('./list/base'),
+  require('./list/build'),
+  require('./list/fold'),
+  require('./list/map'),
+  require('./list/search'),
+  require('./list/set'),
+  require('./list/zip'),
 ]);

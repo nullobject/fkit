@@ -11,6 +11,7 @@ var build = require('./list/build'),
  * to the signal values.
  *
  * @class
+ * @summary The Signal Class
  * @param {function} subscribe A subscribe function.
  * @author Josh Bassett
  */
