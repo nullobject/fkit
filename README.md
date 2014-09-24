@@ -31,7 +31,7 @@ F.fold(F.add, 0, [1, 2, 3]); // 6
 
 // Filter a list of numbers where n > 1 and n < 5.
 F.filter(
-  F.whereAll([F.gt(1), F.lt(5)),
+  F.whereAll([F.gt(1), F.lt(5)]),
   [1, 2, 3, 4, 5]
 ); // [2, 3, 4]
 ```

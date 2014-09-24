@@ -1,15 +1,18 @@
 'use strict';
 
-var fn = require('./fn');
+var fn  = require('./fn'),
+    map = require('./list/map');
+
+var self;
 
 /**
  * This module defines logic functions.
  *
  * @module fkit/logic
- * @summary Boolean Functions and Combinators
+ * @summary Logical Functions and Combinators
  * @author Josh Bassett
  */
-module.exports = {
+self = module.exports = {
   /**
    * The logical AND operator.
    *
@@ -64,5 +67,48 @@ module.exports = {
    */
   branch: fn.curry(function(p, f, g, a) {
     return p(a) ? f(a) : g(a);
+  }),
+
+  /**
+   * Applies the list of predicate functions `ps` to the value `a` and returns
+   * their conjunction.
+   *
+   * @static
+   * @curried
+   * @function
+   * @param {Array} ps
+   * @param {*} a
+   * @returns {boolean} The result.
+   * @example
+   *   p(a) { return a > 1; }
+   *   q(a) { return a > 2; }
+   *   whereAll([p, q], 1); // false
+   *   whereAll([p, q], 2); // false
+   *   whereAll([p, q], 3); // true
+   */
+  whereAll: fn.curry(function(ps, a) {
+    return map.applyAll(ps, a).reduce(self.and, true);
+  }),
+
+  /**
+   * Applies the list of predicate functions `ps` to the value `a` and returns
+   * their disjunction.
+   *
+   * @static
+   :a
+   * @curried
+   * @function
+   * @param {Array} ps
+   * @param {*} a
+   * @returns {boolean} The result.
+   * @example
+   *   p(a) { return a > 1; }
+   *   q(a) { return a > 2; }
+   *   whereAny([p, q], 1); // false
+   *   whereAny([p, q], 2); // true
+   *   whereAny([p, q], 3); // true
+   */
+  whereAny: fn.curry(function(ps, a) {
+    return map.applyAll(ps, a).reduce(self.or, false);
   }),
 };

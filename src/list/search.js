@@ -94,47 +94,4 @@ self = module.exports = {
   any: fn.curry(function(p, as) {
     return self.filter(p, as).length > 0;
   }),
-
-  /**
-   * Applies the list of predicate functions `ps` to the value `a` and returns
-   * their conjunction.
-   *
-   * @static
-   * @curried
-   * @function
-   * @param {Array} ps
-   * @param {*} a
-   * @returns {boolean} The result.
-   * @example
-   *   p(a) { return a > 1; }
-   *   q(a) { return a > 2; }
-   *   whereAll([p, q], 1); // false
-   *   whereAll([p, q], 2); // false
-   *   whereAll([p, q], 3); // true
-   */
-  whereAll: fn.curry(function(ps, a) {
-    return map.applyAll(ps, a).reduce(logic.and, true);
-  }),
-
-  /**
-   * Applies the list of predicate functions `ps` to the value `a` and returns
-   * their disjunction.
-   *
-   * @static
-   :a
-   * @curried
-   * @function
-   * @param {Array} ps
-   * @param {*} a
-   * @returns {boolean} The result.
-   * @example
-   *   p(a) { return a > 1; }
-   *   q(a) { return a > 2; }
-   *   whereAny([p, q], 1); // false
-   *   whereAny([p, q], 2); // true
-   *   whereAny([p, q], 3); // true
-   */
-  whereAny: fn.curry(function(ps, a) {
-    return map.applyAll(ps, a).reduce(logic.or, false);
-  }),
 };

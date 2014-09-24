@@ -46,4 +46,30 @@ describe('logic', function() {
       expect(g.calledWithExactly(a)).to.be.true;
     });
   });
+
+  describe('#whereAll', function() {
+    it('should apply the list of predicate functions', function() {
+      function f(a) { return a >= 1; }
+      function g(a) { return a >= 2; }
+      function h(a) { return a >= 3; }
+      expect(logic.whereAll([f, g, h])(0)).to.be.false;
+      expect(logic.whereAll([f, g, h])(1)).to.be.false;
+      expect(logic.whereAll([f, g, h])(2)).to.be.false;
+      expect(logic.whereAll([f, g, h])(3)).to.be.true;
+      expect(logic.whereAll([f, g, h])(4)).to.be.true;
+    });
+  });
+
+  describe('#whereAny', function() {
+    it('should apply the list of predicate functions', function() {
+      function f(a) { return a >= 1; }
+      function g(a) { return a >= 2; }
+      function h(a) { return a >= 3; }
+      expect(logic.whereAny([f, g, h])(0)).to.be.false;
+      expect(logic.whereAny([f, g, h])(1)).to.be.true;
+      expect(logic.whereAny([f, g, h])(2)).to.be.true;
+      expect(logic.whereAny([f, g, h])(3)).to.be.true;
+      expect(logic.whereAny([f, g, h])(4)).to.be.true;
+    });
+  });
 });
