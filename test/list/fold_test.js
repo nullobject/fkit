@@ -11,6 +11,11 @@ describe('list.fold', function() {
     it('should concatenate strings', function() {
       expect(fold.concat('foo', 'bar', 'baz')).to.be.equal('foobarbaz');
     });
+
+    it('should concatenate arrays and strings', function() {
+      expect(fold.concat([1, 2, 3], 'foo')).to.be.eql([1, 2, 3, 'foo']);
+      expect(fold.concat('foo', [1, 2, 3])).to.be.eql(['foo', 1, 2, 3]);
+    });
   });
 
   describe('#concatMap', function() {

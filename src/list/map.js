@@ -54,19 +54,16 @@ module.exports = {
    * @returns {Array|String} The result.
    */
   intersperse: fn.curry(function(s, as) {
-    return fold.concat(
-      base.head(as),
-      prependToAll(base.tail(as))
-    );
+    return fold.concat(base.head(as), prependToAll(base.tail(as)));
 
-    function prependToAll(as) {
-      if (base.empty(as)) {
+    function prependToAll(bs) {
+      if (base.empty(bs)) {
         return base.mempty(as);
       } else {
         return fold.concat(
           s,
-          base.head(as),
-          prependToAll(base.tail(as))
+          base.head(bs),
+          prependToAll(base.tail(bs))
         );
       }
     }

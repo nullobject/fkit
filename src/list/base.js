@@ -12,23 +12,44 @@ var self;
  * @author Josh Bassett
  */
 self = module.exports = {
-  // Returns an empty monoid.
+  /**
+   * Returns true if `as` is a string or an array of strings.
+   *
+   * @private
+   */
+  isString: function(as) {
+    return typeof as === 'string' || (as.length > 0 && as.reduce(function(a, b) { return a && (typeof b === 'string'); }, true));
+  },
+
+  /**
+   * Returns an empty monoid of `as`.
+   *
+   * @private
+   */
   mempty: function(as) {
-    return (typeof as !== undefined && as !== null && (typeof as[0] === 'string' || typeof as === 'string')) ? '' : [];
+    return self.isString(as) ? '' : [];
   },
 
-  // Returns a value in a pure context.
-  pure: function(x) {
-    return (typeof x !== undefined && x !== null && typeof x[0] === 'string') ? x : [x];
+  /**
+   * Returns `a` in a pure context.
+   *
+   * @private
+   */
+  pure: function(a) {
+    return self.isString(a) ? a : [a];
   },
 
-  // Converts the list of `as` to an array.
+  /**
+   * Converts the list of `as` to an array.
+   *
+   * @private
+   */
   toArray: function(as) {
     return (typeof as === 'string') ? as.split('') : as;
   },
 
   /**
-   * Appends the value `a` to list of `bs`.
+   * Appends the value `a` to the list of `bs`.
    *
    * @static
    * @curried
@@ -45,7 +66,7 @@ self = module.exports = {
   }),
 
   /**
-   * Prepends the value `a` to list of `bs`.
+   * Prepends the value `a` to the list of `bs`.
    *
    * @static
    * @curried
