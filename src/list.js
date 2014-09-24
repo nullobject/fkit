@@ -17,6 +17,7 @@ var util = require('./util');
  * @mixes module:fkit/list/fold
  * @mixes module:fkit/list/map
  * @mixes module:fkit/list/search
+ * @mixes module:fkit/list/set
  * @mixes module:fkit/list/zip
  * @summary Working with Lists
  * @author Josh Bassett
