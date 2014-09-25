@@ -1,8 +1,8 @@
 'use strict';
 
-var base = require('./base'),
+var base  = require('./base'),
     build = require('./build'),
-    fn   = require('../fn');
+    fn    = require('../fn');
 
 var self;
 
@@ -41,6 +41,9 @@ self = module.exports = {
    * @param {Array|String} as
    * @param {Array|String} bs
    * @returns {Array|String} The result.
+   * @example
+   *   zip([1, 2, 3], [4, 5, 6]); // [[1, 4], [2, 5], [3, 6]]
+   *   zip('foo', 'bar'); // [['f', 'b'], ['o', 'a'], ['o', 'r']]
    */
   zip: fn.curry(function(as, bs) { return self.zipWith(build.pair, as, bs); }),
 
@@ -49,6 +52,9 @@ self = module.exports = {
    *
    * @param {Array|String} as
    * @returns {Array|String} The result.
+   * @example
+   *   unzip([[1, 4], [2, 5], [3, 6]]); // [[1, 2, 3], [4, 5, 6]]
+   *   unzip([['f', 'b'], ['o', 'a'], ['o', 'r']]); // ['foo', 'bar']
    */
   unzip: function(as) {
     var s = base.mempty(as[0]);

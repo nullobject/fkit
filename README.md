@@ -10,7 +10,8 @@ they can use to write better, more expressive code.
 Features:
 
 * Functions are [curried](http://en.wikipedia.org/wiki/Currying) by default, so
-  you can [partially apply]() them like a pro.
+  you can [partially apply](http://en.wikipedia.org/wiki/Partial_application)
+  them like a pro.
 * The ordering of arguments to functions is more "natural", this means they are
   highly composable.
 * Strings are treated as lists, so you can easily apply combinators like `map`,
