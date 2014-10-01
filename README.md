@@ -1,21 +1,26 @@
-# FKit [![Build Status](https://travis-ci.org/nullobject/fkit.svg?branch=master)](https://travis-ci.org/nullobject/fkit)
+<h1 align="center"><img alt="FKit" src="https://raw.github.com/nullobject/fkit/master/logo.png" width="107px" /></h1>
+
+[![Build Status](https://travis-ci.org/nullobject/fkit.svg?branch=master)](https://travis-ci.org/nullobject/fkit)
 
 FKit is a [functional
 programming](http://en.wikipedia.org/wiki/Functional_programming) library for
 JavaScript. It provides a number of functions and classes, which are sharply
-focused on everyday utility, for working with arrays, strings, and objects.
-This empowers developers with the functional programming "building blocks" that
+focused on everyday utility, for working with strings, arrays, and objects.
+This provides developers with functional programming "building blocks" that
 they can use to write better, more expressive code.
 
 Features:
 
-* Functions are [curried](http://en.wikipedia.org/wiki/Currying) by default, so
-  you can [partially apply](http://en.wikipedia.org/wiki/Partial_application)
-  them like a pro.
-* The ordering of arguments to functions is more "natural", this means they are
-  highly composable.
-* Strings are treated as lists, so you can easily apply combinators like `map`,
-  `filter`, and `fold`.
+* Most functions are [curried](http://en.wikipedia.org/wiki/Currying) by
+  default, so you can [partially
+  apply](http://en.wikipedia.org/wiki/Partial_application) them whenever you
+  need to.
+* The order of the arguments to FKit functions is designed to be more
+  "natural", this makes them highly
+  [composable](http://en.wikipedia.org/wiki/Function_composition).
+* Strings and arrays are treated as lists, this means you can apply list
+  combinators like `map`, `filter`, `fold`, and many more.
+* It's very compact, roughly 2.5 KB when minified and gzipped!
 
 ## Documentation
 
@@ -56,7 +61,7 @@ minified library.
 
 Install the npm package:
 
-```bash
+```sh
 > npm install fkit
 ```
 
@@ -71,7 +76,7 @@ console.log(F.add(1, 2));
 
 Install the bower component:
 
-```bash
+```sh
 > bower install fkit
 ```
 
@@ -81,7 +86,7 @@ Install the bower component:
 
 Build FKit:
 
-```bash
+```sh
 > make build
 ```
 
@@ -89,7 +94,7 @@ Build FKit:
 
 Run the tests:
 
-```bash
+```sh
 > make test
 ```
 
@@ -97,7 +102,7 @@ Run the tests:
 
 Ship a new release x.y.z:
 
-```bash
+```sh
 > make release version=x.y.z
 ```
 

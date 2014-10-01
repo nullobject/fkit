@@ -15,12 +15,11 @@ module.exports = {
   /**
    * Maps the list of `as` with the function `f`.
    *
-   * @static
    * @curried
    * @function
-   * @param {function} f
-   * @param {Array} as
-   * @returns {Array|String} The result.
+   * @param f A function.
+   * @param as A list.
+   * @returns A new list.
    */
   map: fn.curry(function(f, as) {
     if (typeof as === 'string') {
@@ -33,10 +32,9 @@ module.exports = {
   /**
    * Returns the elements of list of `as` in reverse order.
    *
-   * @static
    * @function
-   * @param {Array|String} as
-   * @returns {Array|String} The result.
+   * @param as A list.
+   * @returns A new list.
    */
   reverse: function(as) {
     return base
@@ -47,11 +45,11 @@ module.exports = {
   /**
    * Intersperses the elements of list of `as` with a separator `s`.
    *
-   * @static
+   * @curried
    * @function
-   * @param {*} s A separator.
-   * @param {Array|String} as
-   * @returns {Array|String} The result.
+   * @param s A separator.
+   * @param as A list.
+   * @returns A new list.
    */
   intersperse: fn.curry(function(s, as) {
     return fold.concat(base.head(as), prependToAll(base.tail(as)));
@@ -73,12 +71,11 @@ module.exports = {
    * Applies the list of functions `fs` to the value `a`.
    *
    * @deprecated
-   * @static
    * @curried
    * @function
-   * @param {Array} fs
-   * @param {*} a
-   * @returns {Array} The results.
+   * @param fs A list of functions.
+   * @param a A value.
+   * @returns A new list.
    */
   applyAll: fn.curry(function(fs, a) {
     return fs.map(fn.applyRight(a));

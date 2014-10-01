@@ -8,7 +8,7 @@ var util = require('./util');
  * FKit then you can require just the module that you need.
  *
  * @module fkit
- * @summary All The Things
+ * @summary ALL THE THINGS!
  * @author Josh Bassett
  */
 module.exports = util.extend({

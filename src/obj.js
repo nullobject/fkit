@@ -14,55 +14,60 @@ var self;
  */
 self = module.exports = {
   /**
-   * Creates a copy of the `target` object (using the *same* prototype). All
-   * the properties of the `target` object will be copied to the new object.
+   * All the properties of the `target` object will be copied to the new
+   * object (using the *same* prototype).
    *
    * A list of `objects` may also be specified to override the properties of
    * the `target` object.
    *
-   * @static
-   * @function
-   * @param {Object} target A target object.
-   * @param {...Object} objects A list of objects to be copied.
-   * @returns {Object} A new object.
+   * @summary Creates a copy of an object.
+   *
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
    *   copy(person, {name: 'bob'}); // {name: 'bob', age: '20', city: 'Melbourne'}
+   *
+   * @function
+   * @param target A target object.
+   * @param objects A list of objects to be copied.
+   * @returns A new object.
    */
   copy: fn.variadic(function(target, objects) {
     return util.extend(new target.constructor(), [target].concat(objects));
   }),
 
   /**
-   * Gets a property of the target object.
+   * @summary Gets a property of an object.
    *
-   * @static
-   * @curried
-   * @function
-   * @param {string} property A string representing the property name.
-   * @param {Object} target A target object.
-   * @returns {*} A property value.
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
    *   get('name', person); // 'jane'
+   *
+   * @curried
+   * @function
+   * @param property A string representing the property name.
+   * @param target A target object.
+   * @returns A property value.
    */
   get: fn.curry(function(property, target) {
     return target[property];
   }),
 
   /**
-   * Creates a copy of the `target` object with the `property` set to the
-   * `value`.
+   * Creates a copy of the `target` object with the `property` set to
+   * the `value`.
    *
-   * @static
-   * @curried
-   * @function
-   * @param {string} property A string representing the property name.
-   * @param {Object} value A property value.
-   * @param {Object} target A target object.
-   * @returns {Object} A new object.
+   * @summary Sets a property of an object.
+   *
+   * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
    *   set('name', 'bob', person); // {name: 'bob', age: '20', city: 'Melbourne'}
+   *
+   * @curried
+   * @function
+   * @param property A string representing the property name.
+   * @param value A property value.
+   * @param target A target object.
+   * @returns A new object.
    */
   set: fn.curry(function(property, value, target) {
     var object = {};
@@ -71,16 +76,16 @@ self = module.exports = {
   }),
 
   /**
-   * Gets many properties of the target object.
+   * @summary Gets many properties of an object.
    *
-   * @static
-   * @function
-   * @param {Object} target A target object.
-   * @param {...string} properties A list of properties.
-   * @returns {*} A property value.
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
    *   pluck(person, name, age); // {name: 'jane', age: '20'}
+   *
+   * @function
+   * @param target A target object.
+   * @param properties A list of properties.
+   * @returns A new object.
    */
   pluck: fn.variadic(function(target, properties) {
     return properties.reduce(function(b, a) {

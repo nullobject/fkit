@@ -11,34 +11,37 @@ var fn = require('./fn');
  */
 module.exports = {
   /**
-   * Converts the string `s` to uppercase.
+   * @summary Converts a string to uppercase.
    *
-   * @param {String} s
-   * @returns {String} A new uppercase string.
+   * @param s A string.
+   * @returns A new string.
    */
   toUpper: function(s) { return s.toUpperCase(); },
 
   /**
-   * Converts the string `s` to lowercase.
+   * @summary Converts a string to lowercase.
    *
-   * @param {String} s
-   * @returns {String} A new lowercase string.
+   * @param s A string.
+   * @returns A new string.
    */
   toLower: function(s) { return s.toLowerCase(); },
 
   /**
-   * Replaces the term `a` with term `b` in the string `s`.
+   * Replaces the `a` with string `b` in the string `s`.
    *
-   * @static
-   * @curried
-   * @function
-   * @param {RegExp|String} a
-   * @param {String} b
-   * @param {String} s
-   * @returns {String} The result.
+   * @summary Creates a new string with some or all matches of a pattern
+   * replaced by a string.
+   *
    * @example
    *   replace('r', 'z', 'bar'); // baz
    *   replace(/$hello/, 'goodbye', 'hello world!'); // goodbye world!
+   *
+   * @curried
+   * @function
+   * @param a A term to be replaced.
+   * @param b A string to replace the term.
+   * @param s A string to search.
+   * @returns A new string.
    */
   replace: fn.curry(function(a, b, s) {
     return s.replace(a, b);

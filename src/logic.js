@@ -14,56 +14,59 @@ var self;
  */
 self = module.exports = {
   /**
-   * The logical AND operator.
+   * @summary The logical AND operator.
    *
-   * @static
+   * @example and(a, b) == a && b
+   *
    * @curried
    * @function
-   * @param {boolean} a A value.
-   * @param {boolean} b A value.
-   * @returns {boolean} The result.
-   * @example and(a, b) === a && b
+   * @param a A boolean value.
+   * @param b A boolean value.
+   * @returns A boolean value.
    */
   and: fn.curry(function(a, b) { return b && a; }),
 
   /**
-   * The logical OR operator.
+   * @summary The logical OR operator.
    *
-   * @static
+   * @example or(a, b) == a || b
+   *
    * @curried
    * @function
-   * @param {boolean} a A value.
-   * @param {boolean} b A value.
-   * @returns {boolean} The result.
+   * @param a A boolean value.
+   * @param b A boolean value.
+   * @returns A boolean value.
    */
   or: fn.curry(function(a, b) { return b || a; }),
 
   /**
-   * The logical NOT operator.
+   * @summary The logical NOT operator.
    *
-   * @param {boolean} a A value.
-   * @returns {boolean} The result.
+   * @param a A value.
+   * @returns A boolean value.
    */
   not: function(a) { return !a; },
 
   /**
-   * Branches execution based on the predicate function `p`. If `p(a)` is true
-   * then `f` is applied to `a`, otherwise `g` is applied to `a`.
+   * If `p(a)` is true then `f` is applied to `a`, otherwise `g` is applied to
+   * `a`.
    *
-   * @static
-   * @curried
-   * @function
-   * @param {function} p The predicate function.
-   * @param {function} f A function.
-   * @param {function} g A function.
-   * @param {*} a A value.
-   * @returns {*} The result.
+   * @summary Branches execution based on a predicate function.
+   *
    * @example
    *   function big(a) { return a + ' is a big number'; }
    *   function small(a) { return a + ' is a small number'; }
    *   var f = branch(fkit.gt(10), big, small);
    *   f(10); // small number
    *   f(11); // big number
+   *
+   * @curried
+   * @function
+   * @param p A predicate function.
+   * @param f A function.
+   * @param g A function.
+   * @param a A value.
+   * @returns A value.
    */
   branch: fn.curry(function(p, f, g, a) {
     return p(a) ? f(a) : g(a);
@@ -73,18 +76,18 @@ self = module.exports = {
    * Applies the list of predicate functions `ps` to the value `a` and returns
    * their conjunction.
    *
-   * @static
-   * @curried
-   * @function
-   * @param {Array} ps
-   * @param {*} a
-   * @returns {boolean} The result.
    * @example
    *   p(a) { return a > 1; }
    *   q(a) { return a > 2; }
    *   whereAll([p, q], 1); // false
    *   whereAll([p, q], 2); // false
    *   whereAll([p, q], 3); // true
+   *
+   * @curried
+   * @function
+   * @param ps A list of predicate functions.
+   * @param a A value.
+   * @returns A boolean value.
    */
   whereAll: fn.curry(function(ps, a) {
     return ps.map(fn.applyRight(a)).reduce(self.and, true);
@@ -94,18 +97,18 @@ self = module.exports = {
    * Applies the list of predicate functions `ps` to the value `a` and returns
    * their disjunction.
    *
-   * @static
-   * @curried
-   * @function
-   * @param {Array} ps
-   * @param {*} a
-   * @returns {boolean} The result.
    * @example
    *   p(a) { return a > 1; }
    *   q(a) { return a > 2; }
    *   whereAny([p, q], 1); // false
    *   whereAny([p, q], 2); // true
    *   whereAny([p, q], 3); // true
+   *
+   * @curried
+   * @function
+   * @param ps A list of predicate functions.
+   * @param a A value.
+   * @returns A boolean value.
    */
   whereAny: fn.curry(function(ps, a) {
     return ps.map(fn.applyRight(a)).reduce(self.or, false);

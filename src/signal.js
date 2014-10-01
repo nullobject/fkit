@@ -12,15 +12,15 @@ var build = require('./list/build'),
  *
  * @class
  * @summary The Signal Class
- * @param {function} subscribe A subscribe function.
+ * @param subscribe A subscribe function.
  * @author Josh Bassett
  */
 function Signal(subscribe) {
   /**
    * Subscribes to the signal with the callbacks `next` and `end`.
    *
-   * @param {function} next A callback function.
-   * @param {function} end A callback function.
+   * @param next A callback function.
+   * @param end A callback function.
    * @function Signal#subscribe
    */
   this.subscribe = subscribe;
@@ -31,8 +31,8 @@ Signal.prototype.constructor = Signal;
 /**
  * Creates a new signal from the array `as`.
  *
- * @param {Array} as An array of values.
- * @returns {Signal} A new signal.
+ * @param as An array of values.
+ * @returns A new signal.
  */
 Signal.fromArray = function(as) {
   return new Signal(function(next, done) {
@@ -44,8 +44,8 @@ Signal.fromArray = function(as) {
 /**
  * Creates a new signal from the callback function `f`.
  *
- * @param {function} f A callback function.
- * @returns {Signal} A new signal.
+ * @param f A callback function.
+ * @returns A new signal.
  */
 Signal.fromCallback = function(f) {
   return new Signal(function(next, done) {
@@ -56,9 +56,9 @@ Signal.fromCallback = function(f) {
 /**
  * Creates a new signal by listening for events of `type` on the `target` object.
  *
- * @param {Element} target A DOM element.
- * @param {string} type A string representing the event type to listen for.
- * @returns {Signal} A new signal.
+ * @param target A DOM element.
+ * @param type A string representing the event type to listen for.
+ * @returns A new signal.
  */
 Signal.fromEvent = function(target, type) {
   return new Signal(function(next, done) {
@@ -73,8 +73,8 @@ Signal.fromEvent = function(target, type) {
 /**
  * Creates a new signal from the promise `p`.
  *
- * @param {Promise} p A Promises/A+ conformant promise.
- * @returns {Signal} A new signal.
+ * @param p A Promises/A+ conformant promise.
+ * @returns A new signal.
  */
 Signal.fromPromise = function(p) {
   return new Signal(function(next, done) {
@@ -85,8 +85,8 @@ Signal.fromPromise = function(p) {
 /**
  * Creates a new signal that contains a single value `a`.
  *
- * @param {*} a A value.
- * @returns {Signal} A new signal.
+ * @param a A value.
+ * @returns A new signal.
  */
 Signal.of = function(a) {
   return new Signal(function(next, done) {
@@ -99,8 +99,8 @@ Signal.of = function(a) {
  * Creates a new signal that applies the function `f` to the values in the
  * signal. The unary function `f` must return a {@link Signal}.
  *
- * @param {function} f A unary function.
- * @returns {Signal} A new signal.
+ * @param f A unary function.
+ * @returns A new signal.
  */
 Signal.prototype.concatMap = function(f) {
   var env = this;
@@ -117,8 +117,8 @@ Signal.prototype.concatMap = function(f) {
  * Creates a new signal that applies the function `f` to the values in the
  * signal. The unary function `f` must return a signal value.
  *
- * @param {function} f A unary function.
- * @returns {Signal} A new signal.
+ * @param f A unary function.
+ * @returns A new signal.
  */
 Signal.prototype.map = function(f) {
   var env = this;
@@ -134,8 +134,8 @@ Signal.prototype.map = function(f) {
  * predicate function `p`. The predicate function `p` must return a boolean
  * value.
  *
- * @param {function} p A predicate function.
- * @returns {Signal} A new signal.
+ * @param p A predicate function.
+ * @returns A new signal.
  */
 Signal.prototype.filter = function(p) {
   var env = this;
@@ -150,11 +150,12 @@ Signal.prototype.filter = function(p) {
 
 /**
  * Creates a new signal that reduces the signal with the starting value `a` and
- * binary function `f'. The new signal yields the result of all the applications of `f`.
+ * binary function `f`. The new signal yields the result of all the
+ * applications of `f`.
  *
- * @param {*} a An object to use as the starting value.
- * @param {function} f A binary function.
- * @returns {Signal} A new signal.
+ * @param a A starting value.
+ * @param f A binary function.
+ * @returns A new signal.
  */
 Signal.prototype.fold = function(a, f) {
   var env = this;
@@ -179,9 +180,9 @@ Signal.prototype.fold = function(a, f) {
  * binary function `f`. The new signal yields all the intermediate applications
  * of `f`.
  *
- * @param {*} a An object to use as the starting value.
- * @param {function} f A binary function.
- * @returns {Signal} A new signal.
+ * @param a A starting value.
+ * @param f A binary function.
+ * @returns A new signal.
  */
 Signal.prototype.scan = function(a, f) {
   var env = this;
@@ -200,8 +201,8 @@ Signal.prototype.scan = function(a, f) {
  * Creates a new signal that merges the signal with one or more signals.
  *
  * @function Signal#merge
- * @param {...Signal} ss A list of signals to be merged.
- * @returns {Signal} A new signal.
+ * @param ss A list of signals.
+ * @returns A new signal.
  */
 Signal.prototype.merge = fn.variadic(function(ss) {
   var env = this;
@@ -224,8 +225,8 @@ Signal.prototype.merge = fn.variadic(function(ss) {
 /**
  * Creates a new signal that splits the signal into one or more signals.
  *
- * @param {number} n A number of signals to split.
- * @returns {Array} An array of signals.
+ * @param n A number.
+ * @returns An array of signals.
  */
 Signal.prototype.split = function(n) {
   var env = this,
@@ -266,8 +267,8 @@ Signal.prototype.split = function(n) {
  * Creates a new signal that zips the signal with one or more signals.
  *
  * @function Signal#zip
- * @param {...Signal} ss A list of signals to be zipped.
- * @returns {Signal} A new signal.
+ * @param ss A list of signals.
+ * @returns A new signal.
  */
 Signal.prototype.zip = fn.variadic(function(ss) {
   var env = this;

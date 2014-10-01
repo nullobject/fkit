@@ -18,12 +18,15 @@ self = module.exports = {
   /**
    * Creates a new list which is the union of the lists of `as` and `bs`.
    *
-   * @static
+   * @example
+   *   union([1, 2, 3], [2, 3, 4]); // [1, 2, 3, 4]
+   *   union('hello', 'world'); // 'hellowrd'
+   *
    * @curried
    * @function
-   * @param {Array|String} as
-   * @param {Array|String} bs
-   * @returns {Array|String} The result.
+   * @param as A list.
+   * @param bs A list.
+   * @returns A new list.
    */
   union: fn.curry(function(as, bs) {
     return fold.fold(function(cs, b) {
@@ -35,12 +38,15 @@ self = module.exports = {
    * Creates a new list which is the intersection of the lists of `as` and
    * `bs`.
    *
-   * @static
+   * @example
+   *   intersect([1, 2, 3], [2, 3, 4]); // [2, 3]
+   *   intersect('hello', 'world'); // 'ol'
+   *
    * @curried
    * @function
-   * @param {Array|String} as
-   * @param {Array|String} bs
-   * @returns {Array|String} The result.
+   * @param as A list.
+   * @param bs A list.
+   * @returns A new list.
    */
   intersect: fn.curry(function(as, bs) {
     return fold.fold(function(cs, b) {
@@ -49,32 +55,38 @@ self = module.exports = {
   }),
 
   /**
-   * Removes the element `a` from the list of `bs`.
+   * Creates a new list which is the difference of the lists of `as` and `bs`.
    *
-   * @static
+   * @example
+   *   difference([1, 2, 3], [2, 3, 4]); // [1]
+   *   difference('hello', 'world'); // 'wrd'
+   *
    * @curried
    * @function
-   * @param {Array|String} a
-   * @param {Array|String} bs
-   * @returns {Array|String} The result.
+   * @param as A list.
+   * @param bs A list.
+   * @returns A new list.
+   */
+  difference: fn.curry(function(as, bs) {
+    return fold.fold(fn.flip(self.without), bs, as);
+  }),
+
+  /**
+   * Removes the element `a` from the list of `bs`.
+   *
+   * @example
+   *   without(2, [1, 2, 3]); // [1, 3]
+   *   without('f', 'foo'); // 'oo'
+   *
+   * @curried
+   * @function
+   * @param a A value.
+   * @param bs A list.
+   * @returns A new list.
    */
   without: fn.curry(function(a, bs) {
     return fold.fold(function(cs, b) {
       return (b === a) ? cs : base.append(b, cs);
     }, base.mempty(bs), bs);
-  }),
-
-  /**
-   * Creates a new list which is the difference of the lists of `as` and `bs`.
-   *
-   * @static
-   * @curried
-   * @function
-   * @param {Array|String} as
-   * @param {Array|String} bs
-   * @returns {Array|String} The result.
-   */
-  difference: fn.curry(function(as, bs) {
-    return fold.fold(fn.flip(self.without), bs, as);
   }),
 };

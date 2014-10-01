@@ -11,170 +11,158 @@ var fn = require('./fn');
  */
 module.exports = {
   /**
-   * The addition operator.
+   * @summary The addition operator.
    *
-   * @static
    * @curried
    * @function
-   * @param {number} a A value.
-   * @param {number} b A value.
-   * @returns {number} The value `b + a`.
+   * @param a A number.
+   * @param b A number.
+   * @returns A number.
    */
   add: fn.curry(function(a, b) { return b + a; }),
 
   /**
-   * The subtraction operator.
+   * @summary The subtraction operator.
    *
-   * @static
    * @curried
    * @function
-   * @param {number} a A value.
-   * @param {number} b A value.
-   * @returns {number} The value `b - a`.
+   * @param a A number.
+   * @param b A number.
+   * @returns A number.
    */
   sub: fn.curry(function(a, b) { return b - a; }),
 
   /**
-   * The multiplication operator.
+   * @summary The multiplication operator.
    *
-   * @static
    * @curried
    * @function
-   * @param {number} a A value.
-   * @param {number} b A value.
-   * @returns {number} The value `b * a`.
+   * @param a A number.
+   * @param b A number.
+   * @returns A number.
    */
   mul: fn.curry(function(a, b) { return b * a; }),
 
   /**
-   * The division operator.
+   * @summary The division operator.
    *
-   * @static
    * @curried
    * @function
-   * @param {number} a A value.
-   * @param {number} b A value.
-   * @returns {number} The value `b / a`.
+   * @param a A number.
+   * @param b A number.
+   * @returns A number.
    */
   div: fn.curry(function(a, b) { return b / a; }),
 
   /**
-   * The modulo operator.
+   * @summary The modulo operator.
    *
-   * @static
    * @curried
    * @function
-   * @param {number} a A value.
-   * @param {number} b A value.
-   * @returns {number} The value `b % a`.
+   * @param a A number.
+   * @param b A number.
+   * @returns A number.
    */
   mod: fn.curry(function(a, b) { return b % a; }),
 
   /**
    * Returns the smallest of the given values `a` and `b`.
    *
-   * @static
    * @curried
    * @function
-   * @param {number} a A value.
-   * @param {number} b A value.
-   * @returns {number} The minimum value of `a` and `b`.
+   * @param a A number.
+   * @param b A number.
+   * @returns A number.
    */
   min: fn.curry(function(a, b) { return Math.min(b, a); }),
 
   /**
    * Returns the largest of the given values `a` and `b`.
    *
-   * @static
    * @curried
    * @function
-   * @param {number} a A value.
-   * @param {number} b A value.
-   * @returns {number} The maximum value of `a` and `b`.
+   * @param a A number.
+   * @param b A number.
+   * @returns A number.
    */
   max: fn.curry(function(a, b) { return Math.max(b, a); }),
 
   /**
-   * The unary negation operator.
+   * @summary The unary negation operator.
    *
-   * @param {number} a A value.
-   * @returns {number} The value `-a`.
+   * @param a A number.
+   * @returns A number.
    */
   negate: function(a) { return -a; },
 
   /**
-   * The equality operator.
+   * @summary The equality operator.
    *
-   * @static
    * @curried
    * @function
-   * @param {*} a A value.
-   * @param {*} b A value.
-   * @returns {boolean} The result.
+   * @param a A number.
+   * @param b A number.
+   * @returns A boolean value.
    */
   eq: fn.curry(function(a, b) { return b === a; }),
 
   /**
-   * The greater than operator.
+   * @summary The greater than operator.
    *
-   * @static
    * @curried
    * @function
-   * @param {number} a A value.
-   * @param {number} b A value.
-   * @returns {boolean} The result.
+   * @param a A number.
+   * @param b A number.
+   * @returns A boolean value.
    */
   gt: fn.curry(function(a, b) { return b > a; }),
 
   /**
-   * The greater than or equal operator.
+   * @summary The greater than or equal operator.
    *
-   * @static
    * @curried
    * @function
-   * @param {number} a A value.
-   * @param {number} b A value.
-   * @returns {boolean} The result.
+   * @param a A number.
+   * @param b A number.
+   * @returns A boolean value.
    */
   gte: fn.curry(function(a, b) { return b >= a; }),
 
   /**
-   * The less than operator.
+   * @summary The less than operator.
    *
-   * @static
    * @curried
    * @function
-   * @param {number} a A value.
-   * @param {number} b A value.
-   * @returns {boolean} The result.
+   * @param a A number.
+   * @param b A number.
+   * @returns A boolean value.
    */
   lt: fn.curry(function(a, b) { return b < a; }),
 
   /**
-   * The less than or equal operator.
+   * @summary The less than or equal operator.
    *
-   * @static
    * @curried
    * @function
-   * @param {number} a A value.
-   * @param {number} b A value.
-   * @returns {boolean} The result.
+   * @param a A number.
+   * @param b A number.
+   * @returns A boolean value.
    */
   lte: fn.curry(function(a, b) { return b <= a; }),
 
   /**
-   * Increments the number.
+   * @summary Increments a number.
    *
-   * @param {number} a A value.
-   * @returns {number} The result.
+   * @param a A number.
+   * @returns A number.
    */
   inc: function(a) { return a + 1; },
 
   /**
-   * Decrements the number.
+   * @summary Decrements a number.
    *
-   * @param {number} a A value.
-   * @returns {number} The result.
+   * @param a A number.
+   * @returns A number.
    */
   dec: function(a) { return a - 1; },
 };

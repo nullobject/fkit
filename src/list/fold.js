@@ -22,22 +22,24 @@ self = module.exports = {
   /**
    * Concatenates the list of `as`.
    *
-   * @static
+   * @example
+   *   concat([1, 2, 3], [4]); // [1, 2, 3, 4]
+   *   concat('foo', 'bar'); // 'foobar'
+   *
    * @function
-   * @param {...*} as
-   * @returns {Array|String} The result.
+   * @param as A list.
+   * @returns A new list.
    */
   concat: fn.variadic(concat),
 
   /**
    * Maps and concatenates the list of `as` with the function `f`.
    *
-   * @static
    * @curried
    * @function
-   * @param {function} f
-   * @param {Array|String} as
-   * @returns {Array|String} The result.
+   * @param f A function.
+   * @param as A list.
+   * @returns A new list.
    */
   concatMap: fn.curry(function(f, as) {
     return concat(base.toArray(as).map(f));
@@ -45,15 +47,16 @@ self = module.exports = {
 
   /**
    * Folds the list of `as` with the binary function `f` and starting value
-   * `s`, from left to right.
+   * `s`.
    *
-   * @static
+   * @summary Folds a list from left to right.
+   *
    * @curried
    * @function
-   * @param {function} f
-   * @param {*} s
-   * @param {Array|String} as
-   * @returns {*} The result.
+   * @param f A binary function.
+   * @param s A starting value.
+   * @param as A list.
+   * @returns A value.
    */
   fold: fn.curry(function(f, s, as) {
     return base
@@ -63,15 +66,16 @@ self = module.exports = {
 
   /**
    * Folds the list of `as` with the binary function `f` and starting value
-   * `s`, from right to left.
+   * `s`.
    *
-   * @static
+   * @summary Folds a list from right to left.
+   *
    * @curried
    * @function
-   * @param {function} f
-   * @param {*} s
-   * @param {Array|String} as
-   * @returns {*} The result.
+   * @param f A binary function.
+   * @param s A starting value.
+   * @param as A list.
+   * @returns A value.
    */
   foldRight: fn.curry(function(f, s, as) {
     return base
@@ -81,15 +85,16 @@ self = module.exports = {
 
   /**
    * Scans the list of `as` with the binary function `f` and starting value
-   * `s`, from left to right.
+   * `s`.
    *
-   * @static
+   * @summary Scans a list from left to right.
+   *
    * @curried
    * @function
-   * @param {function} f
-   * @param {*} s
-   * @param {Array|String} as
-   * @returns {*} The result.
+   * @param f A binary function.
+   * @param s A starting value.
+   * @param as A list.
+   * @returns A new list.
    */
   scan: fn.curry(function(f, s, as) {
     var r = [s];
@@ -101,15 +106,16 @@ self = module.exports = {
 
   /**
    * Scans the list of `as` with the binary function `f` and starting value
-   * `s`, from right to left.
+   * `s`.
    *
-   * @static
+   * @summary Scans a list from right to left.
+   *
    * @curried
    * @function
-   * @param {function} f
-   * @param {*} s
-   * @param {Array|String} as
-   * @returns {*} The result.
+   * @param f A binary function.
+   * @param s A starting value.
+   * @param as A list.
+   * @returns A new list.
    */
   scanRight: fn.curry(function(f, s, as) {
     var r = [s];
