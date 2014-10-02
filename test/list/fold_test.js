@@ -22,9 +22,9 @@ describe('list.fold', function() {
 
   describe('#concatMap', function() {
     it('should handle arrays', function() {
-      function f(a) { return [a + 1]; }
+      function f(a) { return [a, '-']; }
       expect(fold.concatMap(f)([])).to.be.eql([]);
-      expect(fold.concatMap(f)([1, 2, 3])).to.be.eql([2, 3, 4]);
+      expect(fold.concatMap(f)([1, 2, 3])).to.be.eql([1, '-', 2, '-', 3, '-']);
     });
 
     it('should handle strings', function() {

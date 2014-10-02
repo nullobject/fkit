@@ -44,7 +44,9 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  zip: fn.curry(function(as, bs) { return self.zipWith(build.pair, as, bs); }),
+  zip: fn.curry(function(as, bs) {
+    return self.zipWith(build.pair, as, bs);
+  }),
 
   /**
    * Unzips a list of pairs into a pair of lists of `as` and `bs`.
@@ -61,6 +63,6 @@ self = module.exports = {
     return as.reduceRight(function(p, ps) {
       var a = ps[0], b = ps[1], as = p[0], bs = p[1];
       return [base.prepend(a, as), base.prepend(b, bs)];
-    }, build.pair(s, s));
+    }, [s, s]);
   },
 };

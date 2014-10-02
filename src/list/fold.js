@@ -25,8 +25,8 @@ self = module.exports = {
    * @summary Concatenates two or more lists.
    *
    * @example
-   *   concat([1, 2, 3], [4]); // [1, 2, 3, 4]
-   *   concat('foo', 'bar'); // 'foobar'
+   *   concat([1], [2, 3], [4, 5, 6]); // [1, 2, 3, 4, 5, 6]
+   *   concat('f', 'oo', 'bar'); // 'foobar'
    *
    * @function
    * @param as A list.
@@ -38,6 +38,12 @@ self = module.exports = {
    * Maps and concatenates the list of `as` with the function `f`.
    *
    * @summary Maps a function over a list and concatenates the results.
+   *
+   * @example
+   *   function p(a) { return [a, 0]; }
+   *   concatMap(p, [1, 2, 3]); // [1, 0, 2, 0, 3, 0]
+   *   function q(a) { return a + '-'; }
+   *   concatMap(q, 'foo'); // 'f-o-o-'
    *
    * @curried
    * @function

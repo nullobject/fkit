@@ -56,7 +56,7 @@ module.exports = {
 
     function prependToAll(bs) {
       return base.empty(bs) ?
-        base.mempty(as) :
+        base.mempty(bs) :
         fold.concat(s, base.head(bs), prependToAll(base.tail(bs)));
     }
   }),
