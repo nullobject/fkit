@@ -22,6 +22,8 @@ self = module.exports = {
   /**
    * Concatenates the list of `as`.
    *
+   * @summary Concatenates two or more lists.
+   *
    * @example
    *   concat([1, 2, 3], [4]); // [1, 2, 3, 4]
    *   concat('foo', 'bar'); // 'foobar'
@@ -35,6 +37,8 @@ self = module.exports = {
   /**
    * Maps and concatenates the list of `as` with the function `f`.
    *
+   * @summary Maps a function over a list and concatenates the results.
+   *
    * @curried
    * @function
    * @param f A function.
@@ -42,7 +46,14 @@ self = module.exports = {
    * @returns A new list.
    */
   concatMap: fn.curry(function(f, as) {
-    return concat(base.toArray(as).map(f));
+    // Map the function over the elements in the list and concatenate the
+    // result with an empty list. We need to include an empty list so that the
+    // kind of the original list is not lost when we do the concatenation step.
+    var bs = base
+      .toArray(as)
+      .map(f)
+      .concat(base.mempty(as));
+    return concat(bs);
   }),
 
   /**

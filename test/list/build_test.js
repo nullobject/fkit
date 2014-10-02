@@ -10,7 +10,7 @@ describe('list.build', function() {
   });
 
   describe('#pair', function() {
-    it('should return a pair', function() {
+    it('should return a pair of values', function() {
       expect(build.pair(1)(2)).to.be.eql([1, 2]);
     });
   });
@@ -23,15 +23,15 @@ describe('list.build', function() {
   });
 
   describe('#replicate', function() {
-    it('should replicate numbers', function() {
+    it('should handle numbers', function() {
       expect(build.replicate(3)(1)).to.eql([1, 1, 1]);
     });
 
-    it('should replicate arrays', function() {
+    it('should handle arrays', function() {
       expect(build.replicate(3)([1])).to.eql([[1], [1], [1]]);
     });
 
-    it('should replicate strings', function() {
+    it('should handle strings', function() {
       expect(build.replicate(3)('a')).to.eql('aaa');
     });
   });

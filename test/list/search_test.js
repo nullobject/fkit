@@ -18,11 +18,13 @@ describe('list.search', function() {
   describe('#filter', function() {
     it('should handle arrays', function() {
       function p(a) { return a > 1; }
+      expect(search.filter(p)([])).to.be.eql([]);
       expect(search.filter(p)([1, 2, 3])).to.be.eql([2, 3]);
     });
 
     it('should handle strings', function() {
       function p(a) { return a === 'o'; }
+      expect(search.filter(p)('')).to.be.equal('');
       expect(search.filter(p)('foo')).to.be.equal('oo');
     });
   });
@@ -30,11 +32,13 @@ describe('list.search', function() {
   describe('#find', function() {
     it('should handle arrays', function() {
       function p(a) { return a > 1; }
-      expect(search.find(p)([1, 2, 3])).to.be.eql(2);
+      expect(search.find(p)([])).to.be.undefined;
+      expect(search.find(p)([1, 2, 3])).to.be.equal(2);
     });
 
     it('should handle strings', function() {
       function p(a) { return a === 'o'; }
+      expect(search.find(p)('')).to.be.undefined;
       expect(search.find(p)('foo')).to.be.equal('o');
     });
   });

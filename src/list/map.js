@@ -22,11 +22,9 @@ module.exports = {
    * @returns A new list.
    */
   map: fn.curry(function(f, as) {
-    if (typeof as === 'string') {
-      return fold.concatMap(f, as);
-    } else {
-      return as.map(f);
-    }
+    return (typeof as === 'string') ?
+      fold.concatMap(f, as) :
+      as.map(f);
   }),
 
   /**
@@ -52,18 +50,14 @@ module.exports = {
    * @returns A new list.
    */
   intersperse: fn.curry(function(s, as) {
-    return fold.concat(base.head(as), prependToAll(base.tail(as)));
+    return base.empty(as) ?
+      base.mempty(as) :
+      fold.concat(base.head(as), prependToAll(base.tail(as)));
 
     function prependToAll(bs) {
-      if (base.empty(bs)) {
-        return base.mempty(as);
-      } else {
-        return fold.concat(
-          s,
-          base.head(bs),
-          prependToAll(base.tail(bs))
-        );
-      }
+      return base.empty(bs) ?
+        base.mempty(as) :
+        fold.concat(s, base.head(bs), prependToAll(base.tail(bs)));
     }
   }),
 

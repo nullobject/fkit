@@ -1,8 +1,10 @@
 'use strict';
 
-var base = require('./base'),
-    fn   = require('../fn'),
-    fold = require('./fold');
+var base  = require('./base'),
+    build = require('./build'),
+    fn    = require('../fn'),
+    fold  = require('./fold'),
+    logic = require('../logic');
 
 var self;
 
@@ -37,7 +39,7 @@ self = module.exports = {
    * Filters all elements in the list of `as` that satisfy the predicate
    * function `p`.
    *
-   * @summary Filters a list.
+   * @summary Filters a list using a predicate.
    *
    * @example
    *   function p(a) { return a > 1; }
@@ -52,20 +54,17 @@ self = module.exports = {
    * @returns A new list.
    */
   filter: fn.curry(function(p, as) {
-    if (typeof as === 'string') {
-      return fold.concatMap(function(a) {
-        return p(a) ? a : '';
-      }, as);
-    } else {
-      return as.filter(p);
-    }
+    var f = logic.branch(p, fn.id, fn.const(''));
+    return (typeof as === 'string') ?
+      fold.concatMap(f, as) :
+      as.filter(p);
   }),
 
   /**
    * Finds the first element in the list of `as` that satisfies the predicate
    * function `p`.
    *
-   * @summary Finds an element in a list.
+   * @summary Finds an element in a list using a predicate.
    *
    * @example
    *   function p(a) { return a > 1; }
