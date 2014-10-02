@@ -1,3 +1,16 @@
+v0.7.0 / 2014-10-02
+===================
+
+  * Remove #applyAll function.
+  * Rename pluck -> pick.
+  * Add #take and #drop functions.
+  * Add #elemIndex, #elemIndices, #findIndex and #findIndices functions.
+  * Add #partition function.
+  * Add #find function.
+  * Documentation.
+  * More examples.
+  * Fix an issue with concatenating arrays and strings.
+
 v0.6.0 / 2014-09-24
 ==================
 
