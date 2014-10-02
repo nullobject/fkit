@@ -24,6 +24,16 @@ describe('list.search', function() {
     it('should filter a string', function() {
       function f(a) { return a === 'o'; }
       expect(search.filter(f)('foo')).to.be.equal('oo');
+
+  describe('#find', function() {
+    it('should handle arrays', function() {
+      function p(a) { return a > 1; }
+      expect(search.find(p)([1, 2, 3])).to.be.eql(2);
+    });
+
+    it('should handle strings', function() {
+      function p(a) { return a === 'o'; }
+      expect(search.find(p)('foo')).to.be.equal('o');
     });
   });
 

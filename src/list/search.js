@@ -58,6 +58,28 @@ self = module.exports = {
   }),
 
   /**
+   * Finds the first element in the list of `as` that satisfies the predicate
+   * function `p`.
+   *
+   * @summary Finds an element in a list.
+   *
+   * @example
+   *   function p(a) { return a > 1; }
+   *   find(p, [1, 2, 3]); // 2
+   *   function q(a) { return a > 'a'; }
+   *   find(q, 'abc'); // 'b'
+   *
+   * @curried
+   * @function
+   * @param p A predicate function.
+   * @param as A list.
+   * @returns A value or `undefined` if no value was found.
+   */
+  find: fn.curry(function(p, as) {
+    return base.head(self.filter(p, as));
+  }),
+
+  /**
    * Determines if all elements in the list of `as` satisfy the predicate
    * function `p`.
    *
