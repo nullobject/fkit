@@ -73,18 +73,4 @@ module.exports = {
         fold.concat(s, base.head(bs), prependToAll(base.tail(bs)));
     }
   }),
-
-  /**
-   * Applies the list of functions `fs` to the value `a`.
-   *
-   * @deprecated
-   * @curried
-   * @function
-   * @param fs A list of functions.
-   * @param a A value.
-   * @returns A new list.
-   */
-  applyAll: fn.curry(function(fs, a) {
-    return fs.map(fn.applyRight(a));
-  }),
 };
