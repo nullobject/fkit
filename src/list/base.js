@@ -104,11 +104,13 @@ self = module.exports = {
    * @summary Gets the first element in a list.
    *
    * @example
+   *   head([]); // undefined
    *   head([1, 2, 3]); // 1
+   *   head(''); // undefined
    *   head('foo'); // 'f'
    *
    * @param as A list.
-   * @returns A value.
+   * @returns A value or `undefined` if the list is empty.
    */
   head: function(as) { return as[0]; },
 
@@ -140,11 +142,13 @@ self = module.exports = {
    * @summary Gets the last element in a list.
    *
    * @example
-   *   head([1, 2, 3]); // 3
-   *   head('foo'); // 'o'
+   *   last([]); // undefined
+   *   last([1, 2, 3]); // 3
+   *   last(''); // undefined
+   *   last('foo'); // 'o'
    *
    * @param as A list.
-   * @returns A value.
+   * @returns A value or `undefined` if the list is empty.
    */
   last: function(as) { return as[as.length - 1]; },
 

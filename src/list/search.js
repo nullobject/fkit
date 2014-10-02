@@ -1,9 +1,8 @@
 'use strict';
 
-var fn    = require('../fn'),
-    fold  = require('./fold'),
-    logic = require('../logic'),
-    map   = require('./map');
+var base = require('./base'),
+    fn   = require('../fn'),
+    fold = require('./fold');
 
 var self;
 
@@ -35,11 +34,16 @@ self = module.exports = {
   }),
 
   /**
-   * Filters the list of `as` with the predicate function `p`.
+   * Filters all elements in the list of `as` that satisfy the predicate
+   * function `p`.
+   *
+   * @summary Filters a list.
    *
    * @example
-   *   p(a) { return a > 1; }
+   *   function p(a) { return a > 1; }
    *   filter(p, [1, 2, 3]); // [2, 3]
+   *   function q(a) { return a > 'a'; }
+   *   filter(q, 'abc'); // 'bc'
    *
    * @curried
    * @function
@@ -84,9 +88,12 @@ self = module.exports = {
    * function `p`.
    *
    * @example
-   *   p(a) { return a > 1; }
+   *   function p(a) { return a > 1; }
    *   all(p, [1, 2, 3]); // false
    *   all(p, [2, 3, 4]); // true
+   *   function q(a) { return a > 'a'; }
+   *   all(q, 'abc'); // false
+   *   all(q, 'bcd'); // true
    *
    * @curried
    * @function
@@ -103,9 +110,12 @@ self = module.exports = {
    * function `p`.
    *
    * @example
-   *   p(a) { return a > 1; }
+   *   function p(a) { return a > 1; }
    *   any(p, [1, 2, 3]); // true
    *   any(p, [2, 3, 4]); // true
+   *   function q(a) { return a > 'a'; }
+   *   any(q, 'abc'); // true
+   *   any(q, 'bcd'); // true
    *
    * @curried
    * @function

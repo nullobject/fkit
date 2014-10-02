@@ -4,92 +4,108 @@ var base = require('../../src/list/base');
 
 describe('list.base', function() {
   describe('#append', function() {
-    it('should append an element to an array', function() {
+    it('should handle arrays', function() {
+      expect(base.append(4)([])).to.be.eql([4]);
       expect(base.append(4)([1, 2, 3])).to.be.eql([1, 2, 3, 4]);
     });
 
-    it('should append two strings', function() {
+    it('should handle strings', function() {
+      expect(base.append('bar')('')).to.be.equal('bar');
       expect(base.append('bar')('foo')).to.be.equal('foobar');
     });
   });
 
   describe('#prepend', function() {
-    it('should prepend an element to an array', function() {
+    it('should handle arrays', function() {
+      expect(base.prepend(1)([])).to.be.eql([1]);
       expect(base.prepend(1)([2, 3, 4])).to.be.eql([1, 2, 3, 4]);
     });
 
-    it('should prepend two strings', function() {
+    it('should handle strings', function() {
+      expect(base.prepend('foo')('')).to.be.equal('foo');
       expect(base.prepend('foo')('bar')).to.be.equal('foobar');
     });
   });
 
   describe('#surround', function() {
-    it('should surround an array with two elements', function() {
+    it('should handle arrays', function() {
+      expect(base.surround(1)(4)([])).to.be.eql([1, 4]);
       expect(base.surround(1)(4)([2, 3])).to.be.eql([1, 2, 3, 4]);
     });
 
-    it('should surround a string with two strings', function() {
+    it('should handle strings', function() {
+      expect(base.surround('fo')('ar')('')).to.be.equal('foar');
       expect(base.surround('fo')('ar')('ob')).to.be.equal('foobar');
     });
   });
 
   describe('#head', function() {
-    it('should return the first element of an array', function() {
+    it('should handle arrays', function() {
+      expect(base.head([])).to.be.undefined;
       expect(base.head([1, 2, 3])).to.be.equal(1);
     });
 
-    it('should return the first character of a string', function() {
+    it('should handle strings', function() {
+      expect(base.head('')).to.be.undefined;
       expect(base.head('foo')).to.be.equal('f');
     });
   });
 
   describe('#tail', function() {
-    it('should return the elements after the first element of an array', function() {
+    it('should handle arrays', function() {
+      expect(base.tail([])).to.be.eql([]);
       expect(base.tail([1, 2, 3])).to.be.eql([2, 3]);
     });
 
-    it('should return the characters after the first character of a string', function() {
+    it('should handle strings', function() {
+      expect(base.tail('')).to.be.equal('');
       expect(base.tail('foo')).to.be.equal('oo');
     });
   });
 
   describe('#init', function() {
-    it('should return the elements before the last element of an array', function() {
+    it('should handle arrays', function() {
+      expect(base.init([])).to.be.eql([]);
       expect(base.init([1, 2, 3])).to.be.eql([1, 2]);
     });
 
-    it('should return the characters before the last character of a string', function() {
+    it('should handle strings', function() {
+      expect(base.init('')).to.be.equal('');
       expect(base.init('foo')).to.be.equal('fo');
     });
   });
 
   describe('#last', function() {
-    it('should return the last element of an array', function() {
+    it('should handle arrays', function() {
+      expect(base.last([])).to.be.undefined;
       expect(base.last([1, 2, 3])).to.be.equal(3);
     });
 
-    it('should return the last character of a string', function() {
+    it('should handle strings', function() {
+      expect(base.last('')).to.be.undefined;
       expect(base.last('foo')).to.be.equal('o');
     });
   });
 
   describe('#length', function() {
-    it('should return the length of an array', function() {
+    it('should handle arrays', function() {
+      expect(base.length([])).to.be.equal(0);
       expect(base.length([1, 2, 3])).to.be.equal(3);
     });
 
-    it('should return the length of a string', function() {
+    it('should handle strings', function() {
+      expect(base.length('')).to.be.equal(0);
       expect(base.length('foo')).to.be.equal(3);
     });
   });
 
   describe('#empty', function() {
-    it('should test whether an array is empty', function() {
+    it('should handle arrays', function() {
       expect(base.empty([])).to.be.true;
       expect(base.empty([1, 2, 3])).to.be.false;
     });
 
-    it('should test whether a string is empty', function() {
+    it('should handle strings', function() {
       expect(base.empty('')).to.be.true;
       expect(base.empty('foo')).to.be.false;
     });
