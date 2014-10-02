@@ -165,7 +165,7 @@ self = module.exports = {
   length: function(as) { return as.length; },
 
   /**
-   * @summary Test whether a list is empty.
+   * @summary Tests whether a list is empty.
    *
    * @example
    *   empty([1, 2, 3]); // false

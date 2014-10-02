@@ -11,15 +11,17 @@ they can use to write better, more expressive code.
 
 Features:
 
-* Most functions are [curried](http://en.wikipedia.org/wiki/Currying) by
+* Why reinvent the wheel? FKit provides many functions for solving common
+  problems with functions, arrays, objects, and strings.
+* Most FKit functions are [curried](http://en.wikipedia.org/wiki/Currying) by
   default, so you can [partially
   apply](http://en.wikipedia.org/wiki/Partial_application) them whenever you
   need to.
-* The order of the arguments to FKit functions is designed to be more
-  "natural", this makes them highly
+* The ordering of arguments to FKit functions is carefully designed to be more
+  natural, this makes them highly
   [composable](http://en.wikipedia.org/wiki/Function_composition).
-* Strings and arrays are treated as lists, this means you can apply list
-  combinators like `map`, `filter`, `fold`, and many more.
+* Strings and arrays are both treated as *lists*, this means you can apply list
+  combinators like `map`, `filter`, and `fold` to both strings and arrays.
 * It's very compact, roughly 2.5 KB when minified and gzipped!
 
 ## Documentation

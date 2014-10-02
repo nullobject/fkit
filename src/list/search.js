@@ -20,7 +20,7 @@ self = module.exports = {
    * Returns `true` if the list of `as` contains the element `a`, `false`
    * otherwise.
    *
-   * @summary Gets an element from a list.
+   * @summary Tests whether a value is present in a list.
    *
    * @example
    *   elem(0, [1, 2, 3]); // false
