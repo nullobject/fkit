@@ -17,7 +17,10 @@ var self;
  */
 self = module.exports = {
   /**
-   * Determines if the list of `as` contains the element `a`.
+   * Returns `true` if the list of `as` contains the element `a`, `false`
+   * otherwise.
+   *
+   * @summary Gets an element from a list.
    *
    * @example
    *   elem(0, [1, 2, 3]); // false
@@ -36,8 +39,10 @@ self = module.exports = {
   }),
 
   /**
-   * Finds the index of the first occurance of the element `a` in the list of
+   * Returns the index of the first occurance of the element `a` in the list of
    * `as`.
+   *
+   * @summary Gets the index of the first occurance of an element in a list.
    *
    * @example
    *   elemIndex(0, [1, 2, 3]); // undefined
@@ -57,8 +62,10 @@ self = module.exports = {
   }),
 
   /**
-   * Finds the indices of all occurances of the element `a` in the list of
+   * Returns the indices of all occurances of the element `a` in the list of
    * `as`.
+   *
+   * @summary Gets the indices of all occurances of an element in a list.
    *
    * @example
    *   elemIndices(0, [1, 2, 3]); // []
@@ -77,10 +84,10 @@ self = module.exports = {
   }),
 
   /**
-   * Finds an element in the list of `as` that satisfies the predicate function
+   * Returns an element in the list of `as` that satisfies the predicate function
    * `p`.
    *
-   * @summary Finds an element in a list using a predicate.
+   * @summary Finds an element in a list that satisfies a predicate function.
    *
    * @example
    *   function p(a) { return a > 1; }
@@ -101,8 +108,11 @@ self = module.exports = {
   }),
 
   /**
-   * Finds the index of the first occurance of an element in the list of `as`
+   * Returns the index of the first occurance of an element in the list of `as`
    * that satisfies the predicate function `p`.
+   *
+   * @summary Finds the index of the first occurance of an element in a list
+   * that satisfies a predicate function.
    *
    * @example
    *   function p(a) { return a > 1; }
@@ -127,8 +137,11 @@ self = module.exports = {
   }),
 
   /**
-   * Finds the indices of the elements in the list of `as` that satisfy the
+   * Returns the indices of the elements in the list of `as` that satisfy the
    * predicate function `p`.
+   *
+   * @summary Finds the indices of all occurances of the elements in a list
+   * that satisfy a predicate function.
    *
    * @example
    *   function p(a) { return a > 1; }
@@ -145,7 +158,8 @@ self = module.exports = {
    * @returns A number or `undefined` if no value was found.
    */
   findIndices: fn.curry(function(p, as) {
-    var s = [], n = as.length;
+    var s = [],
+        n = as.length;
     for (var i = 0; i < n; i++) {
       if (p(as[i])) { s.push(i); }
     }
@@ -156,7 +170,7 @@ self = module.exports = {
    * Filters all elements in the list of `as` that satisfy the predicate
    * function `p`.
    *
-   * @summary Filters a list using a predicate.
+   * @summary Filters a list using a predicate function.
    *
    * @example
    *   function p(a) { return a > 1; }
@@ -181,7 +195,7 @@ self = module.exports = {
    * Partitions the list of `as` into two lists: elements that do and do not
    * satisfy the predicate function `p`.
    *
-   * @summary Partitions a list using a predicate.
+   * @summary Partitions a list using a predicate function.
    *
    * @example
    *   function p(a) { return a > 1; }

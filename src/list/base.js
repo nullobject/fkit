@@ -159,7 +159,6 @@ self = module.exports = {
    *   head([1, 2, 3]); // 3
    *   head('foo'); // 3
    *
-   * @function
    * @param as A list.
    * @returns A number.
    */
@@ -178,4 +177,57 @@ self = module.exports = {
    * @returns A boolean value.
    */
   empty: function(as) { return as.length === 0; },
+
+  /**
+   * Returns the first `n` elements from the list of `as`.
+   *
+   * @summary Gets the prefix of a list.
+   *
+   * @example
+   *   take(2, [1, 2, 3]); // [1, 2]
+   *   take(2, []); // []
+   *   take(2, 'foo'); // 'fo'
+   *   take(2, ''); // ''
+   *
+   * @curried
+   * @function
+   * @param n A number.
+   * @param as A list.
+   * @returns A new list.
+   */
+  take: fn.curry(function(n, as) {
+    var s = self.mempty(as),
+        m = as.length;
+    for (var i = 0; i < Math.min(m, n); i++) {
+      s = s.concat(as[i]);
+    }
+    return s;
+  }),
+
+  /**
+   * Returns the remaining elements after dropping `n` elements from the list
+   * of `as`.
+   *
+   * @summary Gets the suffix of a list.
+   *
+   * @example
+   *   drop(2, [1, 2, 3]); // [3]
+   *   drop(2, []); // []
+   *   drop(2, 'foo'); // 'o'
+   *   drop(2, ''); // ''
+   *
+   * @curried
+   * @function
+   * @param n A number.
+   * @param as A list.
+   * @returns A new list.
+   */
+  drop: fn.curry(function(n, as) {
+    var s = self.mempty(as),
+        m = as.length;
+    for (var i = n; i < m; i++) {
+      s = s.concat(as[i]);
+    }
+    return s;
+  }),
 };

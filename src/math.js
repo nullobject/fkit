@@ -100,8 +100,8 @@ module.exports = {
    *
    * @curried
    * @function
-   * @param a A number.
-   * @param b A number.
+   * @param a A value.
+   * @param b A value.
    * @returns A boolean value.
    */
   eq: fn.curry(function(a, b) { return b === a; }),

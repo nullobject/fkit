@@ -28,7 +28,13 @@ module.exports = {
   }),
 
   /**
-   * Returns the elements of list of `as` in reverse order.
+   * Returns the elements of the list of `as` in reverse order.
+   *
+   * @summary Reverse the elements in a list.
+   *
+   * @example
+   *   reverse([1, 2, 3]); // [3, 2, 1]
+   *   reverse('foo'); // 'oof'
    *
    * @function
    * @param as A list.
@@ -41,7 +47,14 @@ module.exports = {
   },
 
   /**
-   * Intersperses the elements of list of `as` with a separator `s`.
+   * Returns the elements of the list of `as` interspersed with the separator
+   * `s`.
+   *
+   * @summary Intersperses the elements of a list with separator.
+   *
+   * @example
+   *   intersperse(4, [1, 2, 3]); // [1, 4, 2, 4, 3]
+   *   intersperse('-', 'foo'); // 'f-o-o'
    *
    * @curried
    * @function

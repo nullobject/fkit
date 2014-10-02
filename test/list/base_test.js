@@ -110,4 +110,28 @@ describe('list.base', function() {
       expect(base.empty('foo')).to.be.false;
     });
   });
+
+  describe('#take', function() {
+    it('should handle arrays', function() {
+      expect(base.take(2, [])).to.be.eql([]);
+      expect(base.take(2, [1, 2, 3])).to.be.eql([1, 2]);
+    });
+
+    it('should handle strings', function() {
+      expect(base.take(2, '')).to.be.equal('');
+      expect(base.take(2, 'foo')).to.be.equal('fo');
+    });
+  });
+
+  describe('#drop', function() {
+    it('should handle arrays', function() {
+      expect(base.drop(2, [])).to.be.eql([]);
+      expect(base.drop(2, [1, 2, 3])).to.be.eql([3]);
+    });
+
+    it('should handle strings', function() {
+      expect(base.drop(2, '')).to.be.equal('');
+      expect(base.drop(2, 'foo')).to.be.equal('o');
+    });
+  });
 });
