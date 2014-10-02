@@ -60,9 +60,9 @@ describe('object', function() {
     });
   });
 
-  describe('#pluck', function() {
+  describe('#pick', function() {
     it('should get the given properties', function() {
-      var result = obj.pluck(target, 'a', 'b');
+      var result = obj.pick(target, 'a', 'b');
       expect(result).to.eql({a: 'lorem', b: 'ipsum'});
     });
   });

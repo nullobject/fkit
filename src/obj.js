@@ -80,14 +80,14 @@ self = module.exports = {
    *
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   pluck(person, name, age); // {name: 'jane', age: '20'}
+   *   pick(person, name, age); // {name: 'jane', age: '20'}
    *
    * @function
    * @param target A target object.
    * @param properties A list of properties.
    * @returns A new object.
    */
-  pluck: fn.variadic(function(target, properties) {
+  pick: fn.variadic(function(target, properties) {
     return properties.reduce(function(b, a) {
       return self.set(a, self.get(a, target), b);
     }, {});
