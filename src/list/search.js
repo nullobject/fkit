@@ -84,6 +84,31 @@ self = module.exports = {
   }),
 
   /**
+   * Partitions the list of `as` into two lists: elements that do and do not
+   * satisfy the predicate function `p`.
+   *
+   * @summary Partitions a list using a predicate.
+   *
+   * @example
+   *   function p(a) { return a > 1; }
+   *   partition(p, [1, 2, 3]); // [[2, 3], [1]]
+   *   function q(a) { return a > 'a'; }
+   *   partition(q, 'abc'); // ['bc', 'a']
+   *
+   * @curried
+   * @function
+   * @param p A predicate function.
+   * @param as A list.
+   * @returns A pair of lists.
+   */
+  partition: fn.curry(function(p, as) {
+    return build.pair(
+      self.filter(p, as),
+      self.filter(fn.compose(logic.not, p), as)
+    );
+  }),
+
+  /**
    * Determines if all elements in the list of `as` satisfy the predicate
    * function `p`.
    *

@@ -39,6 +39,20 @@ describe('list.search', function() {
     });
   });
 
+  describe('#partition', function() {
+    it('should handle arrays', function() {
+      function p(a) { return a > 1; }
+      expect(search.partition(p)([])).to.be.eql([[], []]);
+      expect(search.partition(p)([1, 2, 3])).to.be.eql([[2, 3], [1]]);
+    });
+
+    it('should handle strings', function() {
+      function p(a) { return a === 'o'; }
+      expect(search.partition(p)('')).to.be.eql(['', '']);
+      expect(search.partition(p)('foo')).to.be.eql(['oo', 'f']);
+    });
+  });
+
   describe('#all', function() {
     it('should handle arrays', function() {
       function p(a) { return a > 1; }
