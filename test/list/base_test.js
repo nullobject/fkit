@@ -134,4 +134,32 @@ describe('list.base', function() {
       expect(base.drop(2, 'foo')).to.be.equal('o');
     });
   });
+
+  describe('#takeWhile', function() {
+    it('should handle arrays', function() {
+      function p(a) { return a < 3; }
+      expect(base.takeWhile(p, [])).to.be.eql([]);
+      expect(base.takeWhile(p, [1, 2, 3])).to.be.eql([1, 2]);
+    });
+
+    it('should handle strings', function() {
+      function p(a) { return a !== 'o'; }
+      expect(base.takeWhile(p, '')).to.be.equal('');
+      expect(base.takeWhile(p, 'foo')).to.be.equal('f');
+    });
+  });
+
+  describe('#dropWhile', function() {
+    it('should handle arrays', function() {
+      function p(a) { return a < 3; }
+      expect(base.dropWhile(p, [])).to.be.eql([]);
+      expect(base.dropWhile(p, [1, 2, 3])).to.be.eql([3]);
+    });
+
+    it('should handle strings', function() {
+      function p(a) { return a !== 'o'; }
+      expect(base.dropWhile(p, '')).to.be.equal('');
+      expect(base.dropWhile(p, 'foo')).to.be.equal('oo');
+    });
+  });
 });

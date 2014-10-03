@@ -230,4 +230,66 @@ self = module.exports = {
     }
     return s;
   }),
+
+  /**
+   * Returns the initial elements from the list of `as` while the predicate
+   * function `p` is satisfied.
+   *
+   * @summary Gets the prefix of a list using a predicate function.
+   *
+   * @example
+   *   function p(a) { return a < 3; }
+   *   takeWhile(p, [1, 2, 3]); // [1, 2]
+   *   takeWhile(p, []); // []
+   *   function q(a) { return a !== 'o'; }
+   *   takeWhile(q, 'foo'); // 'f'
+   *   takeWhile(q, ''); // ''
+   *
+   * @curried
+   * @function
+   * @param p A predicate function.
+   * @param as A list.
+   * @returns A new list.
+   */
+  takeWhile: fn.curry(function(p, as) {
+    var s = self.mempty(as),
+        n = as.length;
+    for (var i = 0; i < n && p(as[i]); i++) {
+      s = s.concat(as[i]);
+    }
+    return s;
+  }),
+
+  /**
+   * Returns the remaining elements after dropping elements from the list of
+   * `as` while the predicate function `p` is satisfied.
+   *
+   * @summary Gets the suffix of a list using a predicate function.
+   *
+   * @example
+   *   function p(a) { return a < 3; }
+   *   dropWhile(p, [1, 2, 3]); // [3]
+   *   dropWhile(p, []); // []
+   *   function q(a) { return a !== 'f'; }
+   *   dropWhile(q, 'foo'); // 'oo'
+   *   dropWhile(q, ''); // ''
+   *
+   * @curried
+   * @function
+   * @param p A predicate function.
+   * @param as A list.
+   * @returns A new list.
+   */
+  dropWhile: fn.curry(function(p, as) {
+    var s = self.mempty(as),
+        m = as.length,
+        n = 0;
+    while (p(as[n]) && n < as.length) {
+      n++;
+    }
+    for (var i = n; i < m; i++) {
+      s = s.concat(as[i]);
+    }
+    return s;
+  }),
 };
