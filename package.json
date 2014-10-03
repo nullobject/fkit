@@ -31,7 +31,7 @@
   "devDependencies": {
     "chai": "^1.9.1",
     "jsdoc": "^3.3.0-alpha9",
-    "jsdoc-react": "^0.1.0",
+    "jsdoc-react": "^0.2.0",
     "jshint": "^2.5.5",
     "mocha": "^1.21.4",
     "sinon": "^1.10.3",
