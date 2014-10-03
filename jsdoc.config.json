@@ -3,6 +3,9 @@
     "allowUnknownTags": true
   },
   "plugins": ["plugins/markdown"],
+  "templates": {
+    "title": "FKit"
+  },
   "opts": {
     "destination": "doc",
     "recurse": true,
