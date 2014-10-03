@@ -179,7 +179,7 @@ self = module.exports = {
   empty: function(as) { return as.length === 0; },
 
   /**
-   * Returns the first `n` elements from the list of `as`.
+   * Returns the prefix of `n` elements from the list of `as`.
    *
    * @summary Gets the prefix of a list.
    *
@@ -205,8 +205,7 @@ self = module.exports = {
   }),
 
   /**
-   * Returns the remaining elements after dropping `n` elements from the list
-   * of `as`.
+   * Returns the suffix after dropping `n` elements from the list of `as`.
    *
    * @summary Gets the suffix of a list.
    *
@@ -232,7 +231,7 @@ self = module.exports = {
   }),
 
   /**
-   * Returns the initial elements from the list of `as` while the predicate
+   * Returns the prefix of elements from the list of `as` while the predicate
    * function `p` is satisfied.
    *
    * @summary Gets the prefix of a list using a predicate function.
@@ -261,8 +260,8 @@ self = module.exports = {
   }),
 
   /**
-   * Returns the remaining elements after dropping elements from the list of
-   * `as` while the predicate function `p` is satisfied.
+   * Returns the suffix after dropping elements from the list of `as` while
+   * the predicate function `p` is satisfied.
    *
    * @summary Gets the suffix of a list using a predicate function.
    *
@@ -291,5 +290,28 @@ self = module.exports = {
       s = s.concat(as[i]);
     }
     return s;
+  }),
+
+  /**
+   * Splits the list of `as` into two lists: a prefix of length `n` and the
+   * remainder of the list.
+   *
+   * @summary Splits a list.
+   *
+   * @example
+   *   splitAt(1, [1, 2, 3]); // [[1], [2, 3]]
+   *   splitAt(1, 'foo'); // ['f', 'oo']
+   *
+   * @curried
+   * @function
+   * @param n A number.
+   * @param as A list.
+   * @returns A pair of lists.
+   */
+  splitAt: fn.curry(function(n, as) {
+    return [
+      self.take(n, as),
+      self.drop(n, as)
+    ];
   }),
 };
