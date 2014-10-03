@@ -66,4 +66,18 @@ describe('list.sublist', function() {
       expect(sublist.splitAt(1)('foo')).to.be.eql(['f', 'oo']);
     });
   });
+
+  describe('#span', function() {
+    it('should handle arrays', function() {
+      function p(a) { return a < 3; }
+      expect(sublist.span(p)([])).to.be.eql([[], []]);
+      expect(sublist.span(p)([1, 2, 3])).to.be.eql([[1, 2], [3]]);
+    });
+
+    it('should handle strings', function() {
+      function p(a) { return a !== 'o'; }
+      expect(sublist.span(p)('')).to.be.eql(['', '']);
+      expect(sublist.span(p)('foo')).to.be.eql(['f', 'oo']);
+    });
+  });
 });

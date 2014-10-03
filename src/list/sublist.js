@@ -104,7 +104,7 @@ self = module.exports = {
    *   function p(a) { return a < 3; }
    *   dropWhile(p, [1, 2, 3]); // [3]
    *   dropWhile(p, []); // []
-   *   function q(a) { return a !== 'f'; }
+   *   function q(a) { return a !== 'o'; }
    *   dropWhile(q, 'foo'); // 'oo'
    *   dropWhile(q, ''); // ''
    *
@@ -147,6 +147,32 @@ self = module.exports = {
     return [
       self.take(n, as),
       self.drop(n, as)
+    ];
+  }),
+
+  /**
+   * Splits the list of `as` into two lists: a prefix of elements that satisfy
+   * the predicate function `p` and the remainder of the list.
+   *
+   *
+   * @summary Splits a list using a predicate function.
+   *
+   * @example
+   *   function p(a) { return a < 3; }
+   *   span(p, [1, 2, 3]); // [[1, 2], [3]]
+   *   function q(a) { return a !== 'o'; }
+   *   span(q, 'foo'); // ['f', 'oo']
+   *
+   * @curried
+   * @function
+   * @param p A predicate function.
+   * @param as A list.
+   * @returns A pair of lists.
+   */
+  span: fn.curry(function(p, as) {
+    return [
+      self.takeWhile(p, as),
+      self.dropWhile(p, as)
     ];
   }),
 };
