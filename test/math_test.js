@@ -33,19 +33,31 @@ describe('math', function() {
     });
   });
 
+  describe('#max', function() {
+    it('should handle numbers', function() {
+      expect(math.max(1)(2)).to.equal(2);
+      expect(math.max(2)(1)).to.equal(2);
+      expect(math.max(2)(2)).to.equal(2);
+    });
+
+    it('should handle strings', function() {
+      expect(math.max('a')('b')).to.equal('b');
+      expect(math.max('b')('a')).to.equal('b');
+      expect(math.max('b')('b')).to.equal('b');
+    });
+  });
+
   describe('#min', function() {
-    it('should compare the values', function() {
+    it('should handle numbers', function() {
       expect(math.min(1)(2)).to.equal(1);
       expect(math.min(2)(1)).to.equal(1);
       expect(math.min(2)(2)).to.equal(2);
     });
-  });
 
-  describe('#max', function() {
-    it('should compare the values', function() {
-      expect(math.max(1)(2)).to.equal(2);
-      expect(math.max(2)(1)).to.equal(2);
-      expect(math.max(2)(2)).to.equal(2);
+    it('should handle strings', function() {
+      expect(math.min('a')('b')).to.equal('a');
+      expect(math.min('b')('a')).to.equal('a');
+      expect(math.min('b')('b')).to.equal('b');
     });
   });
 

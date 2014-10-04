@@ -66,17 +66,6 @@ module.exports = {
   mod: fn.curry(function(a, b) { return b % a; }),
 
   /**
-   * Returns the smallest of the given values `a` and `b`.
-   *
-   * @curried
-   * @function
-   * @param a A number.
-   * @param b A number.
-   * @returns A number.
-   */
-  min: fn.curry(function(a, b) { return Math.min(b, a); }),
-
-  /**
    * Returns the largest of the given values `a` and `b`.
    *
    * @curried
@@ -85,7 +74,18 @@ module.exports = {
    * @param b A number.
    * @returns A number.
    */
-  max: fn.curry(function(a, b) { return Math.max(b, a); }),
+  max: fn.curry(function(a, b) { return b > a ? b : a; }),
+
+  /**
+   * Returns the smallest of the given values `a` and `b`.
+   *
+   * @curried
+   * @function
+   * @param a A number.
+   * @param b A number.
+   * @returns A number.
+   */
+  min: fn.curry(function(a, b) { return a > b ? b : a; }),
 
   /**
    * @summary The unary negation operator.
