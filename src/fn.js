@@ -219,6 +219,20 @@ self = module.exports = {
   curry: curry,
 
   /**
+   * @summary Converts a binary function to a function on pairs.
+   *
+   * @example
+   *   var add = uncurry(function(a, b) { return a + b; });
+   *   add([1, 2]); // 3
+   *
+   * @function
+   * @param f A function to be uncurried.
+   * @param p A pair.
+   * @returns A new function on pairs.
+   */
+  uncurry: curry(function(f, p) { return f(p[0], p[1]); }),
+
+  /**
    * @summary Creates a new function that wraps a function to accept only one
    * argument.
    *

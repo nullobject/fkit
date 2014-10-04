@@ -36,7 +36,7 @@ self = module.exports = {
    * @function
    * @param a A value.
    * @param b A value.
-   * @returns A new array.
+   * @returns A new pair.
    */
   pair: fn.curry(function(a, b) { return [a, b]; }),
 

@@ -142,6 +142,18 @@ describe('fn', function() {
     });
   });
 
+  describe('#uncurry', function() {
+    it('should uncurry a binary function', function() {
+      function f(a, b) {}
+      var spy = sinon.spy(f);
+      var g = fn.uncurry(spy);
+
+      expect(f).to.not.equal(g);
+      g(['hello', 'world']);
+      expect(spy.calledWithExactly('hello', 'world')).to.be.true;
+    });
+  });
+
   describe('#unary', function() {
     it('should return a unary function', function() {
       var spy = sinon.spy();
