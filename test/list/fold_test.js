@@ -81,4 +81,36 @@ describe('list.fold', function() {
       expect(fold.scanRight(f)('')('foo')).to.be.eql(['oof', 'oo', 'o', '']);
     });
   });
+
+  describe('#maximum', function() {
+    it('should handle arrays of numbers', function() {
+      expect(fold.maximum([1, 2, 3])).to.be.equal(3);
+    });
+
+    it('should handle strings', function() {
+      expect(fold.maximum('foo')).to.be.equal('o');
+    });
+  });
+
+  describe('#minimum', function() {
+    it('should handle arrays of numbers', function() {
+      expect(fold.minimum([1, 2, 3])).to.be.equal(1);
+    });
+
+    it('should handle strings', function() {
+      expect(fold.minimum('foo')).to.be.equal('f');
+    });
+  });
+
+  describe('#sum', function() {
+    it('should handle arrays of numbers', function() {
+      expect(fold.sum([1, 2, 3])).to.be.equal(6);
+    });
+  });
+
+  describe('#product', function() {
+    it('should handle arrays of numbers', function() {
+      expect(fold.product([2, 3, 4])).to.be.equal(24);
+    });
+  });
 });

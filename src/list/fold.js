@@ -1,7 +1,8 @@
 'use strict';
 
 var base = require('./base'),
-    fn   = require('../fn');
+    fn   = require('../fn'),
+    math = require('../math');
 
 var self;
 
@@ -140,5 +141,61 @@ self = module.exports = {
       return fn.tap(r.unshift.bind(r), f(a, b));
     }, s, as);
     return r;
+  }),
+
+  /**
+   * Returns the maximum value from the list of `as`.
+   *
+   * @summary Calculates the maximum value of a list.
+   *
+   * @curried
+   * @function
+   * @param as A list.
+   * @returns A value.
+   */
+  maximum: fn.curry(function(as) {
+    return self.fold(math.max, as[0], as);
+  }),
+
+  /**
+   * Returns the minimum value from the list of `as`.
+   *
+   * @summary Calculates the minimum value of a list.
+   *
+   * @curried
+   * @function
+   * @param as A list.
+   * @returns A value.
+   */
+  minimum: fn.curry(function(as) {
+    return self.fold(math.min, as[0], as);
+  }),
+
+  /**
+   * Returns the sum of the elements in the list of `as`.
+   *
+   * @summary Calculates the sum the elements in a list.
+   *
+   * @curried
+   * @function
+   * @param as A list.
+   * @returns A number.
+   */
+  sum: fn.curry(function(as) {
+    return self.fold(math.add, 0, as);
+  }),
+
+  /**
+   * Returns the product of the elements in the list of `as`.
+   *
+   * @summary Calculates the product the elements in a list.
+   *
+   * @curried
+   * @function
+   * @param as A list.
+   * @returns A number.
+   */
+  product: fn.curry(function(as) {
+    return self.fold(math.mul, 1, as);
   }),
 };
