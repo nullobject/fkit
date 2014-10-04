@@ -1,3 +1,12 @@
+v0.7.1 / 2014-10-04
+===================
+
+  * Add #uncurry function.
+  * Added #span function.
+  * Add #splitAt function.
+  * Add #takeWhile and #dropWhile functions.
+  * Documentation.
+
 v0.7.0 / 2014-10-02
 ===================
 
