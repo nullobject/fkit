@@ -83,6 +83,21 @@ describe('math', function() {
     });
   });
 
+  describe('#neq', function() {
+    it('should compare the values', function() {
+      var a = {}, b = {};
+
+      expect(math.neq(1)(2)).to.be.true;
+      expect(math.neq(2)(2)).to.be.false;
+
+      expect(math.neq('lorem')('ipsum')).to.be.true;
+      expect(math.neq('lorem')('lorem')).to.be.false;
+
+      expect(math.neq(a)(b)).to.be.true;
+      expect(math.neq(a)(a)).to.be.false;
+    });
+  });
+
   describe('#gt', function() {
     it('should compare the values', function() {
       expect(math.gt(1)(2)).to.be.true;

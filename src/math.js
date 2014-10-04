@@ -107,6 +107,17 @@ module.exports = {
   eq: fn.curry(function(a, b) { return b === a; }),
 
   /**
+   * @summary The inequality operator.
+   *
+   * @curried
+   * @function
+   * @param a A value.
+   * @param b A value.
+   * @returns A boolean value.
+   */
+  neq: fn.curry(function(a, b) { return b !== a; }),
+
+  /**
    * @summary The greater than operator.
    *
    * @curried
