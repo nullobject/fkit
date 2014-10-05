@@ -1,8 +1,10 @@
 'use strict';
 
 var base   = require('./base'),
+    build  = require('./build'),
     fn     = require('../fn'),
     fold   = require('./fold'),
+    map    = require('./map'),
     search = require('./search');
 
 var self;
@@ -88,5 +90,23 @@ self = module.exports = {
     return fold.fold(function(cs, b) {
       return (b === a) ? cs : base.append(b, cs);
     }, base.mempty(bs), bs);
+  }),
+
+  /**
+   * @summary Calculates the cartesian product of two lists.
+   *
+   * @curried
+   * @function
+   * @param as A list.
+   * @param bs A list.
+   * @returns A new list.
+   */
+  cartesian: fn.curry(function cartesian(as, bs) {
+    return base.empty(as) ?
+      [] :
+      fold.concat(
+        map.map(build.pair(base.head(as)), bs),
+        cartesian(base.tail(as), bs)
+      );
   }),
 };

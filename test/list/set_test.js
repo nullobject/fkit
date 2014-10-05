@@ -59,4 +59,22 @@ describe('list.set', function() {
       expect(set.without('c')('')).to.be.eql('');
     });
   });
+
+  describe('#cartesian', function() {
+    it('should handle arrays', function() {
+      expect(set.cartesian([1, 2, 3])([4, 5, 6])).to.be.eql([
+        [1, 4], [1, 5], [1, 6],
+        [2, 4], [2, 5], [2, 6],
+        [3, 4], [3, 5], [3, 6]
+      ]);
+    });
+
+    it('should handle strings', function() {
+      expect(set.cartesian('foo')('bar')).to.be.eql([
+        ['f', 'b'], ['f', 'a'], ['f', 'r'],
+        ['o', 'b'], ['o', 'a'], ['o', 'r'],
+        ['o', 'b'], ['o', 'a'], ['o', 'r']
+      ]);
+    });
+  });
 });
