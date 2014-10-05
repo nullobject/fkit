@@ -1,7 +1,9 @@
 'use strict';
 
 var base = require('./base'),
-    fn   = require('../fn');
+    fn   = require('../fn'),
+    fold = require('./fold'),
+    math = require('../math');
 
 var self;
 
@@ -174,5 +176,45 @@ self = module.exports = {
       self.takeWhile(p, as),
       self.dropWhile(p, as)
     ];
+  }),
+
+  /**
+   * Groups the elements in the list of `as` into sublists of equal elements.
+   *
+   * @summary Groups the elements in a list.
+   *
+   * @example
+   *   group([1, 2, 2, 3, 3, 3]); // [[1], [2, 2], [3, 3, 3]]
+   *   group('Mississippi'); // ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i']
+   *
+   * @function
+   * @param as A list.
+   * @returns A new list.
+   */
+  group: function(as) {
+    return self.groupBy(math.eq, as);
+  },
+
+  /**
+   * Groups the elements in the list of `as` into sublists that satisfy the
+   * the comparator function `f`.
+   *
+   * @summary Groups the elements in a list using a comparator function.
+   *
+   * @curried
+   * @function
+   * @param f A comparator function.
+   * @param as A list.
+   * @returns A new list.
+   */
+  groupBy: fn.curry(function groupBy(f, bs) {
+      var b  = base.head(bs),
+          cs = self.span(f(b), base.tail(bs));
+      return base.empty(bs) ?
+        [] :
+        base.prepend(
+          base.prepend(b, base.head(cs)),
+          groupBy(f, base.last(cs))
+        );
   }),
 };

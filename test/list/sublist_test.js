@@ -80,4 +80,16 @@ describe('list.sublist', function() {
       expect(sublist.span(p)('foo')).to.be.eql(['f', 'oo']);
     });
   });
+
+  describe('#group', function() {
+    it('should handle arrays', function() {
+      expect(sublist.group([])).to.be.eql([]);
+      expect(sublist.group([1, 2, 2, 3, 3, 3])).to.be.eql([[1], [2, 2], [3, 3, 3]]);
+    });
+
+    it('should handle strings', function() {
+      expect(sublist.group('')).to.be.eql([]);
+      expect(sublist.group('Mississippi')).to.be.eql(['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i']);
+    });
+  });
 });
