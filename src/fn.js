@@ -9,11 +9,7 @@ function flatten(as) {
 function curry(f) {
   var arity = f.length;
 
-  if (arity <= 1) {
-    return f;
-  } else {
-    return given([], 0);
-  }
+  return (arity <= 1) ? f : given([], 0);
 
   function given(args, applications) {
     return function() {
@@ -21,11 +17,9 @@ function curry(f) {
         (arguments.length > 0) ? util.slice.call(arguments, 0) : undefined
       );
 
-      if (newArgs.length >= arity) {
-        return f.apply(this, newArgs);
-      } else {
-        return given(newArgs, applications + 1);
-      }
+      return (newArgs.length >= arity) ?
+        f.apply(this, newArgs) :
+        given(newArgs, applications + 1);
     };
   }
 }
@@ -37,7 +31,10 @@ function variadic(f) {
     return f;
   } else if (arity === 1)  {
     return function() {
-      return f.call(this, flatten(util.slice.call(arguments, 0)));
+      var args    = util.slice.call(arguments, 0),
+          newArgs = (arguments.length === 1) ? flatten(args) : args;
+
+      return f.call(this, newArgs);
     };
   } else {
     return function() {

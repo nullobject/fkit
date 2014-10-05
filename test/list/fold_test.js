@@ -4,15 +4,25 @@ var fold = require('../../src/list/fold');
 
 describe('list.fold', function() {
   describe('#concat', function() {
-    it('should handle arrays', function() {
+    it('should handle a list of arrays', function() {
       expect(fold.concat([])).to.be.eql([]);
       expect(fold.concat([1], [2, 3], [4, 5, 6])).to.be.eql([1, 2, 3, 4, 5, 6]);
       expect(fold.concat([[1]], [[2, 3]], [[4, 5, 6]])).to.be.eql([[1], [2, 3], [4, 5, 6]]);
     });
 
-    it('should handle strings', function() {
+    it('should handle a list of strings', function() {
       expect(fold.concat('')).to.be.equal('');
-      expect(fold.concat('', 'f', 'oo', 'bar')).to.be.equal('foobar');
+      expect(fold.concat('f', 'oo', 'bar')).to.be.equal('foobar');
+    });
+
+    it('should handle an array of arrays', function() {
+      expect(fold.concat([[1], [2, 3], [4, 5, 6]])).to.be.eql([1, 2, 3, 4, 5, 6]);
+      expect(fold.concat([[[1]], [[2, 3]], [[4, 5, 6]]])).to.be.eql([[1], [2, 3], [4, 5, 6]]);
+    });
+
+    it('should handle an array of strings', function() {
+      expect(fold.concat(['f', 'oo', 'bar'])).to.be.eql('foobar');
+      expect(fold.concat([['f'], ['oo'], ['bar']])).to.be.eql(['f', 'oo', 'bar']);
     });
 
     it('should handle heterogenous lists', function() {

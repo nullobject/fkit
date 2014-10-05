@@ -8,7 +8,7 @@ var self;
 
 function concat(as) {
   return base
-    .toArray(as)
+    .toArray(fn.flatten(as))
     .reduce(fn.flip(base.append), base.mempty(as));
 }
 
@@ -61,7 +61,7 @@ self = module.exports = {
       .toArray(as)
       .map(f)
       .concat(base.mempty(as));
-    return concat(fn.flatten(bs));
+    return concat(bs);
   }),
 
   /**
