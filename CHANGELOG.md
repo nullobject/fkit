@@ -1,3 +1,11 @@
+v0.7.2 / 2014-10-05
+===================
+
+  * Add #group and #groupBy functions.
+  * Add #neq function.
+  * Add #maximum, #minimum, #sum, and #product functions.
+  * Update the #min and #max functions to handle strings.
+
 v0.7.1 / 2014-10-04
 ===================
 
