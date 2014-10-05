@@ -62,7 +62,7 @@ self = module.exports = {
    * @returns A new list.
    */
   append: fn.curry(function(a, bs) {
-    return (typeof bs === 'string') ? (bs + a) : bs.concat(a);
+    return (typeof bs === 'string') ? (bs + a) : bs.concat([a]);
   }),
 
   /**

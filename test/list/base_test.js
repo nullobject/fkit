@@ -7,6 +7,7 @@ describe('list.base', function() {
     it('should handle arrays', function() {
       expect(base.append(4)([])).to.be.eql([4]);
       expect(base.append(4)([1, 2, 3])).to.be.eql([1, 2, 3, 4]);
+      expect(base.append([4, 5, 6])([[1], [2, 3]])).to.be.eql([[1], [2, 3], [4, 5, 6]]);
     });
 
     it('should handle strings', function() {
@@ -19,6 +20,7 @@ describe('list.base', function() {
     it('should handle arrays', function() {
       expect(base.prepend(1)([])).to.be.eql([1]);
       expect(base.prepend(1)([2, 3, 4])).to.be.eql([1, 2, 3, 4]);
+      expect(base.prepend([1])([[2, 3], [4, 5, 6]])).to.be.eql([[1], [2, 3], [4, 5, 6]]);
     });
 
     it('should handle strings', function() {

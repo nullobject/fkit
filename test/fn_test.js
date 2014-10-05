@@ -207,7 +207,7 @@ describe('fn', function() {
 
       it('should handle an array of arguments', function() {
         fn.variadic(spy)([1, 2, 3]);
-        expect(spy.calledWith([1, 2, 3])).to.be.true;
+        expect(spy.calledWith(1, [2, 3])).to.be.true;
       });
     });
   });

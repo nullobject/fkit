@@ -7,6 +7,7 @@ describe('list.fold', function() {
     it('should handle arrays', function() {
       expect(fold.concat([])).to.be.eql([]);
       expect(fold.concat([], [1], [2, 3], [4, 5, 6])).to.be.eql([1, 2, 3, 4, 5, 6]);
+      expect(fold.concat([[1]], [[2, 3]], [[4, 5, 6]])).to.be.eql([[1], [2, 3], [4, 5, 6]]);
     });
 
     it('should handle strings', function() {
