@@ -10,8 +10,8 @@ describe('list.map', function() {
     });
 
     it('should handle strings', function() {
-      function f(a) { return a + '-'; }
-      expect(map.map(f)('foo')).to.be.equal('f-o-o-');
+      function f(a) { return a.toUpperCase(); }
+      expect(map.map(f)('foo')).to.be.eql(['F', 'O', 'O']);
     });
   });
 

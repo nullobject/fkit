@@ -22,9 +22,9 @@ module.exports = {
    * @returns A new list.
    */
   map: fn.curry(function(f, as) {
-    return (typeof as === 'string') ?
-      fold.concatMap(f, as) :
-      as.map(f);
+    return base
+      .toArray(as)
+      .map(f);
   }),
 
   /**
