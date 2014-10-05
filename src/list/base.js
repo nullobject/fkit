@@ -106,6 +106,7 @@ self = module.exports = {
    * @example
    *   head([]); // undefined
    *   head([1, 2, 3]); // 1
+   *
    *   head(''); // undefined
    *   head('foo'); // 'f'
    *
@@ -144,6 +145,7 @@ self = module.exports = {
    * @example
    *   last([]); // undefined
    *   last([1, 2, 3]); // 3
+   *
    *   last(''); // undefined
    *   last('foo'); // 'o'
    *
@@ -170,6 +172,7 @@ self = module.exports = {
    * @example
    *   empty([1, 2, 3]); // false
    *   empty([]); // true
+   *
    *   empty('foo'); // false
    *   empty(''); // true
    *

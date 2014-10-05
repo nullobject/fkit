@@ -77,8 +77,8 @@ self = module.exports = {
    * their conjunction.
    *
    * @example
-   *   p(a) { return a > 1; }
-   *   q(a) { return a > 2; }
+   *   function p(a) { return a > 1; }
+   *   function q(a) { return a > 2; }
    *   whereAll([p, q], 1); // false
    *   whereAll([p, q], 2); // false
    *   whereAll([p, q], 3); // true
@@ -98,8 +98,8 @@ self = module.exports = {
    * their disjunction.
    *
    * @example
-   *   p(a) { return a > 1; }
-   *   q(a) { return a > 2; }
+   *   function p(a) { return a > 1; }
+   *   function q(a) { return a > 2; }
    *   whereAny([p, q], 1); // false
    *   whereAny([p, q], 2); // true
    *   whereAny([p, q], 3); // true

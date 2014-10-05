@@ -25,6 +25,7 @@ self = module.exports = {
    * @example
    *   elem(0, [1, 2, 3]); // false
    *   elem(1, [1, 2, 3]); // true
+   *
    *   elem('a', 'foo'); // false
    *   elem('o', 'foo'); // true
    *
@@ -47,6 +48,7 @@ self = module.exports = {
    * @example
    *   elemIndex(0, [1, 2, 3]); // undefined
    *   elemIndex(1, [1, 2, 3]); // 0
+   *
    *   elemIndex('a', 'foo'); // undefined
    *   elemIndex('o', 'foo'); // 1
    *
@@ -70,6 +72,7 @@ self = module.exports = {
    * @example
    *   elemIndices(0, [1, 2, 3]); // []
    *   elemIndices(1, [1, 2, 3]); // [0]
+   *
    *   elemIndices('a', 'foo'); // []
    *   elemIndices('o', 'foo'); // [1, 2]
    *
@@ -93,6 +96,7 @@ self = module.exports = {
    *   function p(a) { return a > 1; }
    *   find(p, []); // undefined
    *   find(p, [1, 2, 3]); // 2
+   *
    *   function q(a) { return a === 'o'; }
    *   find(q, ''); // undefined
    *   find(q, 'foo'); // 'o'
@@ -118,6 +122,7 @@ self = module.exports = {
    *   function p(a) { return a > 1; }
    *   findIndex(p, []); // undefined
    *   findIndex(p, [1, 2, 3]); // 1
+   *
    *   function q(a) { return a === 'o'; }
    *   findIndex(q, ''); // undefined
    *   findIndex(q, 'foo'); // 1
@@ -147,6 +152,7 @@ self = module.exports = {
    *   function p(a) { return a > 1; }
    *   findIndices(p, []); // []
    *   findIndices(p, [1, 2, 3]); // [1, 2]
+   *
    *   function q(a) { return a === 'o'; }
    *   findIndices(q, ''); // []
    *   findIndices(q, 'foo'); // [1, 2]
@@ -175,6 +181,7 @@ self = module.exports = {
    * @example
    *   function p(a) { return a > 1; }
    *   filter(p, [1, 2, 3]); // [2, 3]
+   *
    *   function q(a) { return a === 'o'; }
    *   filter(q, 'foo'); // 'oo'
    *
@@ -200,6 +207,7 @@ self = module.exports = {
    * @example
    *   function p(a) { return a > 1; }
    *   partition(p, [1, 2, 3]); // [[2, 3], [1]]
+   *
    *   function q(a) { return a === 'o'; }
    *   partition(q, 'foo'); // ['oo', 'f']
    *
@@ -225,6 +233,7 @@ self = module.exports = {
    *   all(p, [1, 2, 3]); // false
    *   all(p, [2, 3]); // true
    *   all(p, [3]); // true
+   *
    *   function q(a) { return a === 'o'; }
    *   all(q, 'foo'); // false
    *   all(q, 'oo'); // true
@@ -249,6 +258,7 @@ self = module.exports = {
    *   any(p, [1, 2, 3]); // true
    *   any(p, [1, 2]); // true
    *   any(p, [1]); // false
+   *
    *   function q(a) { return a === 'o'; }
    *   any(q, 'foo'); // true
    *   any(q, 'fo'); // true

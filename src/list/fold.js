@@ -43,6 +43,7 @@ self = module.exports = {
    * @example
    *   function p(a) { return [a, 0]; }
    *   concatMap(p, [1, 2, 3]); // [1, 0, 2, 0, 3, 0]
+   *
    *   function q(a) { return a + '-'; }
    *   concatMap(q, 'foo'); // 'f-o-o-'
    *

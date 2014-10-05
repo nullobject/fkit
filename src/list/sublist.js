@@ -23,6 +23,7 @@ self = module.exports = {
    * @example
    *   take(2, [1, 2, 3]); // [1, 2]
    *   take(2, []); // []
+   *
    *   take(2, 'foo'); // 'fo'
    *   take(2, ''); // ''
    *
@@ -49,6 +50,7 @@ self = module.exports = {
    * @example
    *   drop(2, [1, 2, 3]); // [3]
    *   drop(2, []); // []
+   *
    *   drop(2, 'foo'); // 'o'
    *   drop(2, ''); // ''
    *
@@ -77,6 +79,7 @@ self = module.exports = {
    *   function p(a) { return a < 3; }
    *   takeWhile(p, [1, 2, 3]); // [1, 2]
    *   takeWhile(p, []); // []
+   *
    *   function q(a) { return a !== 'o'; }
    *   takeWhile(q, 'foo'); // 'f'
    *   takeWhile(q, ''); // ''
@@ -106,6 +109,7 @@ self = module.exports = {
    *   function p(a) { return a < 3; }
    *   dropWhile(p, [1, 2, 3]); // [3]
    *   dropWhile(p, []); // []
+   *
    *   function q(a) { return a !== 'o'; }
    *   dropWhile(q, 'foo'); // 'oo'
    *   dropWhile(q, ''); // ''
@@ -162,6 +166,7 @@ self = module.exports = {
    * @example
    *   function p(a) { return a < 3; }
    *   span(p, [1, 2, 3]); // [[1, 2], [3]]
+   *
    *   function q(a) { return a !== 'o'; }
    *   span(q, 'foo'); // ['f', 'oo']
    *
