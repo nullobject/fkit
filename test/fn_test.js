@@ -11,7 +11,11 @@ describe('fn', function() {
 
   describe('#apply', function() {
     function f() {}
-    var spy = sinon.spy(f);
+    var spy;
+
+    beforeEach(function() {
+      spy = sinon.spy(f);
+    });
 
     it('should apply a nullary function', function() {
       fn.apply(spy)();
@@ -26,7 +30,11 @@ describe('fn', function() {
 
   describe('#apply2', function() {
     function f() {}
-    var spy = sinon.spy(f);
+    var spy;
+
+    beforeEach(function() {
+      spy = sinon.spy(f);
+    });
 
     it('should apply a nullary function', function() {
       fn.apply2(spy)()();
@@ -46,7 +54,11 @@ describe('fn', function() {
 
   describe('#apply3', function() {
     function f() {}
-    var spy = sinon.spy(f);
+    var spy;
+
+    beforeEach(function() {
+      spy = sinon.spy(f);
+    });
 
     it('should apply a nullary function', function() {
       fn.apply3(spy)()()();
@@ -173,7 +185,11 @@ describe('fn', function() {
   describe('#variadic', function() {
     context('with a unary function', function() {
       function f(a) {}
-      var spy = sinon.spy(f);
+      var spy;
+
+      beforeEach(function() {
+        spy = sinon.spy(f);
+      });
 
       it('should handle one argument', function() {
         fn.variadic(spy)(1);
@@ -185,29 +201,33 @@ describe('fn', function() {
         expect(spy.calledWithExactly([1, 2, 3])).to.be.true;
       });
 
-      it('should handle an array with one element', function() {
-        fn.variadic(spy)([1]);
-        expect(spy.calledWithExactly([1])).to.be.true;
-      });
-
-      it('should handle an array with many elements', function() {
-        fn.variadic(spy)([1, 2, 3]);
-        expect(spy.calledWithExactly([1, 2, 3])).to.be.true;
+      it('should handle an array of arguments', function() {
+        fn.variadic(spy)([1, [2, 3]]);
+        expect(spy.calledWithExactly([1, [2, 3]])).to.be.true;
       });
     });
 
     context('with a binary function', function() {
       function f(a, b) {}
-      var spy = sinon.spy(f);
+      var spy;
 
-      it('should handle a list of arguments', function() {
+      beforeEach(function() {
+        spy = sinon.spy(f);
+      });
+
+      it('should handle one arguments', function() {
+        fn.variadic(spy)(1);
+        expect(spy.calledWithExactly(1, [])).to.be.true;
+      });
+
+      it('should handle many arguments', function() {
         fn.variadic(spy)(1, 2, 3);
         expect(spy.calledWithExactly(1, [2, 3])).to.be.true;
       });
 
       it('should handle an array of arguments', function() {
-        fn.variadic(spy)([1, 2, 3]);
-        expect(spy.calledWith(1, [2, 3])).to.be.true;
+        fn.variadic(spy)([1, [2, 3]]);
+        expect(spy.calledWith([1, [2, 3]], [])).to.be.true;
       });
     });
   });
