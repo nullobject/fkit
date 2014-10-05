@@ -60,7 +60,7 @@ self = module.exports = {
       .toArray(as)
       .map(f)
       .concat(base.mempty(as));
-    return concat(bs);
+    return concat(fn.flatten(bs));
   }),
 
   /**

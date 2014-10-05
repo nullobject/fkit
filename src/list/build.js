@@ -70,6 +70,6 @@ self = module.exports = {
    * @returns A new array.
    */
   replicate: fn.curry(function(n, a) {
-    return fold.concat(self.array(n).map(fn.const(base.pure(a))));
+    return fold.concat(fn.flatten(self.array(n).map(fn.const(base.pure(a)))));
   }),
 };

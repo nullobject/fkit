@@ -61,6 +61,13 @@ var self;
  * @author Josh Bassett
  */
 self = module.exports = {
+  /*
+   * Flattens the list of `as`.
+   *
+   * @private
+   */
+  flatten: flatten,
+
   /**
    * In JavaScript we would normally use the expression `f(a)` to apply a
    * function to a value. This is very concise, however sometimes it's not very
