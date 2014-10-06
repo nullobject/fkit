@@ -5,6 +5,7 @@ var base   = require('./base'),
     fn     = require('../fn'),
     fold   = require('./fold'),
     map    = require('./map'),
+    math   = require('../math'),
     search = require('./search');
 
 var self;
@@ -91,8 +92,8 @@ self = module.exports = {
    * @summary Removes the first occurance of an element from a list.
    *
    * @example
-   *   without(2, [1, 2, 3]); // [1, 3]
-   *   without('f', 'foo'); // 'oo'
+   *   remove(2, [1, 2, 3]); // [1, 3]
+   *   remove('f', 'foo'); // 'oo'
    *
    * @curried
    * @function
@@ -100,10 +101,30 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  without: fn.curry(function(a, bs) {
-    return fold.fold(function(cs, b) {
-      return (b === a) ? cs : base.append(b, cs);
-    }, base.mempty(bs), bs);
+  remove: fn.curry(function(a, bs) {
+    return self.removeBy(math.eq, a, bs);
+  }),
+
+  /**
+   * Removes the first occurance of the element `a` from the list of `bs` that
+   * satisfies the comparator function `f`.
+   *
+   * @summary Removes the first occurance of an element from a list using a
+   * comparator function.
+   *
+   * @curried
+   * @function
+   * @param f A comparator function.
+   * @param a A value.
+   * @param bs A list.
+   * @returns A new list.
+   */
+  removeBy: fn.curry(function removeBy(f, a, bs) {
+    var b   = base.head(bs),
+        bss = base.tail(bs);
+    return base.empty(bs) ?
+      base.mempty(bs) :
+      f(a, b) ? bss : base.prepend(b, removeBy(f, a, bss));
   }),
 
   /**

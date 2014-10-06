@@ -57,19 +57,21 @@ describe('list.set', function() {
     });
   });
 
-  describe('#without', function() {
+  describe('#remove', function() {
     it('should handle arrays', function() {
-      expect(set.without(1)([1, 2])).to.be.eql([2]);
-      expect(set.without(2)([1, 2])).to.be.eql([1]);
-      expect(set.without(3)([1, 2])).to.be.eql([1, 2]);
-      expect(set.without(3)([])).to.be.eql([]);
+      expect(set.remove(1)([])).to.be.eql([]);
+      expect(set.remove(1)([1, 2, 3])).to.be.eql([2, 3]);
+      expect(set.remove(2)([1, 2, 3])).to.be.eql([1, 3]);
+      expect(set.remove(3)([1, 2, 3])).to.be.eql([1, 2]);
+      expect(set.remove(1)([1, 1])).to.be.eql([1]);
     });
 
     it('should handle strings', function() {
-      expect(set.without('a')('ab')).to.be.eql('b');
-      expect(set.without('b')('ab')).to.be.eql('a');
-      expect(set.without('c')('ab')).to.be.eql('ab');
-      expect(set.without('c')('')).to.be.eql('');
+      expect(set.remove('a')('')).to.be.eql('');
+      expect(set.remove('a')('abc')).to.be.eql('bc');
+      expect(set.remove('b')('abc')).to.be.eql('ac');
+      expect(set.remove('c')('abc')).to.be.eql('ab');
+      expect(set.remove('a')('aa')).to.be.eql('a');
     });
   });
 
