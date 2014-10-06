@@ -1,3 +1,15 @@
+v0.8.0 / 2014-10-06
+===================
+
+  * Add #nub function.
+  * Rename #without -> #remove and add #removeBy function.
+  * Fix an issue with handling duplicate values in set functions.
+  * Fix in the #variadic function when passing arrays of arguments.
+  * Add #cartesian function.
+  * Fix an issue where the #map function would concat strings.
+  * Fix a bug in #concat.
+  * Fix a bug in #append for nested lists.
+
 v0.7.2 / 2014-10-05
 ===================
 
