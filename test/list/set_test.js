@@ -3,6 +3,18 @@
 var set = require('../../src/list/set');
 
 describe('list.set', function() {
+  describe('#nub', function() {
+    it('should handle arrays', function() {
+      expect(set.nub([])).to.be.eql([]);
+      expect(set.nub([1, 2, 2, 3, 3, 3])).to.be.eql([1, 2, 3]);
+    });
+
+    it('should handle strings', function() {
+      expect(set.nub('')).to.be.eql('');
+      expect(set.nub('abbccc')).to.be.eql('abc');
+    });
+  });
+
   describe('#union', function() {
     it('should handle arrays', function() {
       expect(set.union([1, 2, 3])([])).to.be.eql([1, 2, 3]);

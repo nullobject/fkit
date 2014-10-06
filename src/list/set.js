@@ -19,6 +19,43 @@ var self;
  */
 self = module.exports = {
   /**
+   * Returns a list with all duplicate elements removed from the list of `as`.
+   *
+   * @summary Removes duplicate elements from a list.
+   *
+   * @example
+   *   nub([1, 2, 2, 3, 3, 3]); // [1, 2, 3]
+   *   nub('abbccc'); // 'abc'
+   *
+   * @param as A list.
+   * @returns A new list.
+   */
+  nub: function(as) {
+    return self.nubBy(math.eq, as);
+  },
+
+  /**
+   * Returns a list with all duplicate elements that satisfy the comparator
+   * function `f` removed from the list of `bs`.
+   *
+   * @summary Removes duplicate elements from a list using a comparator
+   * function.
+   *
+   * @curried
+   * @function
+   * @param f A comparator function.
+   * @param as A list.
+   * @returns A new list.
+   */
+  nubBy: fn.curry(function nubBy(f, as) {
+    var b   = base.head(as),
+        bss = base.tail(as);
+    return base.empty(as) ?
+      base.mempty(as) :
+      base.prepend(b, nubBy(f, search.filter(function(a) { return !f(a, b); }, bss)));
+  }),
+
+  /**
    * Creates a new list from the union of the lists of `as` and `bs`.
    *
    * Duplicates are removed from `bs`, but if `as` contains duplicates then so
