@@ -18,7 +18,12 @@ var self;
  */
 self = module.exports = {
   /**
-   * Creates a new list which is the union of the lists of `as` and `bs`.
+   * Creates a new list from the union of the lists of `as` and `bs`.
+   *
+   * Duplicates are removed from `bs`, but if `as` contains duplicates then so
+   * will the result.
+   *
+   * @summary Calculates the union of two lists.
    *
    * @example
    *   union([1, 2, 3], [2, 3, 4]); // [1, 2, 3, 4]
@@ -37,8 +42,13 @@ self = module.exports = {
   }),
 
   /**
-   * Creates a new list which is the intersection of the lists of `as` and
+   * Creates a new list from the intersection of the lists of `as` and
    * `bs`.
+   *
+   * Duplicates are removed from `bs`, but if `as` contains duplicates then so
+   * will the result.
+   *
+   * @summary Calculates the intersection of two lists.
    *
    * @example
    *   intersect([1, 2, 3], [2, 3, 4]); // [2, 3]
@@ -51,13 +61,15 @@ self = module.exports = {
    * @returns A new list.
    */
   intersect: fn.curry(function(as, bs) {
-    return fold.fold(function(cs, b) {
-      return (search.elem(b, as)) ? base.append(b, cs) : cs;
-    }, base.mempty(as), bs);
+    return fold.fold(function(cs, a) {
+      return (search.elem(a, bs)) ? base.append(a, cs) : cs;
+    }, base.mempty(as), as);
   }),
 
   /**
-   * Creates a new list which is the difference of the lists of `as` and `bs`.
+   * Creates a new list from the difference of the lists of `as` and `bs`.
+   *
+   * @summary Calculates the difference of two lists.
    *
    * @example
    *   difference([1, 2, 3], [2, 3, 4]); // [1]
@@ -70,11 +82,13 @@ self = module.exports = {
    * @returns A new list.
    */
   difference: fn.curry(function(as, bs) {
-    return fold.fold(fn.flip(self.without), bs, as);
+    return fold.fold(fn.flip(self.remove), as, bs);
   }),
 
   /**
-   * Removes the element `a` from the list of `bs`.
+   * Removes the first occurance of the element `a` from the list of `bs`.
+   *
+   * @summary Removes the first occurance of an element from a list.
    *
    * @example
    *   without(2, [1, 2, 3]); // [1, 3]
