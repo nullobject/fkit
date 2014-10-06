@@ -56,7 +56,8 @@ self = module.exports = {
   }),
 
   /**
-   * Creates a new list from the union of the lists of `as` and `bs`.
+   * Returns a list that contains the union of elements in the lists of `as`
+   * and `bs`.
    *
    * Duplicates are removed from `bs`, but if `as` contains duplicates then so
    * will the result.
@@ -80,8 +81,8 @@ self = module.exports = {
   }),
 
   /**
-   * Creates a new list from the intersection of the lists of `as` and
-   * `bs`.
+   * Returns a list that contains the intersection of the elments in the lists
+   * of `as` and `bs`.
    *
    * Duplicates are removed from `bs`, but if `as` contains duplicates then so
    * will the result.
@@ -105,7 +106,8 @@ self = module.exports = {
   }),
 
   /**
-   * Creates a new list from the difference of the lists of `as` and `bs`.
+   * Returns a list that contains the difference of the elements in the lists
+   * of `as` and `bs`.
    *
    * @summary Calculates the difference of two lists.
    *
@@ -124,7 +126,8 @@ self = module.exports = {
   }),
 
   /**
-   * Removes the first occurance of the element `a` from the list of `bs`.
+   * Returns a list with the first occurance of the element `a` removed from
+   * the list of `bs`.
    *
    * @summary Removes the first occurance of an element from a list.
    *
@@ -143,8 +146,8 @@ self = module.exports = {
   }),
 
   /**
-   * Removes the first occurance of the element `a` from the list of `bs` that
-   * satisfies the comparator function `f`.
+   * Returns a list with the first occurance of the element `a` that satisfies
+   * the comparator function `f` removed from the list of `bs`.
    *
    * @summary Removes the first occurance of an element from a list using a
    * comparator function.
@@ -165,7 +168,14 @@ self = module.exports = {
   }),
 
   /**
+   * Returns a list that contains all the ordered pairs `[a, b]` in the lists
+   * of `as` and `bs`.
+   *
    * @summary Calculates the cartesian product of two lists.
+   *
+   * @example
+   *   cartesian([1, 2], [3, 4]); // [[1, 3], [1, 4], [2, 3], [2, 4]]
+   *   cartesian('ab', 'cd'); // [['a', 'c'], ['a', 'd'], ['b', 'c'], ['b', 'd']]
    *
    * @curried
    * @function

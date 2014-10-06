@@ -15,22 +15,26 @@ var self;
  */
 self = module.exports = {
   /**
-   * Creates a new array of length `n`.
+   * Returns an array of length `n`.
+   *
+   * @summary Creates a new array.
    *
    * @example
    *   array(3); // [undefined, undefined, undefined]
    *
-   * @function
    * @param n A number.
    * @returns A new array.
    */
   array: function(n) { return Array.apply(null, Array(n)); },
 
   /**
-   * Creates a new pair with the values `a` and `b`.
+   * Returns an ordered pair with the values `a` and `b`.
+   *
+   * @summary Creates a new ordered pair.
    *
    * @example
    *   pair(1, 2); // [1, 2]
+   *   pair('a', 'b'); // ['a', 'b']
    *
    * @curried
    * @function
@@ -41,7 +45,9 @@ self = module.exports = {
   pair: fn.curry(function(a, b) { return [a, b]; }),
 
   /**
-   * Creates a new array of numbers from `a` of length `n`.
+   * Returns an array of numbers of length `n` starting from `a`.
+   *
+   * @summary Creates a new array of numbers.
    *
    * @example
    *   range(1, 3); // [1, 2, 3]
@@ -57,7 +63,9 @@ self = module.exports = {
   }),
 
   /**
-   * Creates a new list of length `n` with `a` the value of every element.
+   * Returns a list of length `n` with `a` the value of every element.
+   *
+   * @summary Creates a new list of values.
    *
    * @example
    *   replicate(1, 3); // [1, 1, 1]

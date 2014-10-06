@@ -22,10 +22,7 @@ self = module.exports = {
    *
    * @example
    *   take(2, [1, 2, 3]); // [1, 2]
-   *   take(2, []); // []
-   *
    *   take(2, 'foo'); // 'fo'
-   *   take(2, ''); // ''
    *
    * @curried
    * @function
@@ -49,10 +46,7 @@ self = module.exports = {
    *
    * @example
    *   drop(2, [1, 2, 3]); // [3]
-   *   drop(2, []); // []
-   *
    *   drop(2, 'foo'); // 'o'
-   *   drop(2, ''); // ''
    *
    * @curried
    * @function
@@ -78,11 +72,9 @@ self = module.exports = {
    * @example
    *   function p(a) { return a < 3; }
    *   takeWhile(p, [1, 2, 3]); // [1, 2]
-   *   takeWhile(p, []); // []
    *
    *   function q(a) { return a !== 'o'; }
    *   takeWhile(q, 'foo'); // 'f'
-   *   takeWhile(q, ''); // ''
    *
    * @curried
    * @function
@@ -108,11 +100,9 @@ self = module.exports = {
    * @example
    *   function p(a) { return a < 3; }
    *   dropWhile(p, [1, 2, 3]); // [3]
-   *   dropWhile(p, []); // []
    *
    *   function q(a) { return a !== 'o'; }
    *   dropWhile(q, 'foo'); // 'oo'
-   *   dropWhile(q, ''); // ''
    *
    * @curried
    * @function
@@ -134,8 +124,8 @@ self = module.exports = {
   }),
 
   /**
-   * Splits the list of `as` into two lists: a prefix of length `n` and the
-   * remainder of the list.
+   * Returns a list that contains the elements in the list of `as` split into a
+   * pair of lists: a prefix of length `n` and the remainder of the list.
    *
    * @summary Splits a list.
    *
@@ -150,16 +140,13 @@ self = module.exports = {
    * @returns A pair of lists.
    */
   splitAt: fn.curry(function(n, as) {
-    return [
-      self.take(n, as),
-      self.drop(n, as)
-    ];
+    return [self.take(n, as), self.drop(n, as)];
   }),
 
   /**
-   * Splits the list of `as` into two lists: a prefix of elements that satisfy
-   * the predicate function `p` and the remainder of the list.
-   *
+   * Returns a list that contains the elements in the list of `as` split into a
+   * pair of lists: a prefix of elements that satisfy the predicate function
+   * `p` and the remainder of the list.
    *
    * @summary Splits a list using a predicate function.
    *
@@ -177,14 +164,12 @@ self = module.exports = {
    * @returns A pair of lists.
    */
   span: fn.curry(function(p, as) {
-    return [
-      self.takeWhile(p, as),
-      self.dropWhile(p, as)
-    ];
+    return [self.takeWhile(p, as), self.dropWhile(p, as)];
   }),
 
   /**
-   * Groups the elements in the list of `as` into sublists of equal elements.
+   * Returns a list that contains the elements in the list of `as` grouped into
+   * sublists of equal elements.
    *
    * @summary Groups the elements in a list.
    *
@@ -192,17 +177,14 @@ self = module.exports = {
    *   group([1, 2, 2, 3, 3, 3]); // [[1], [2, 2], [3, 3, 3]]
    *   group('Mississippi'); // ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i']
    *
-   * @function
    * @param as A list.
    * @returns A new list.
    */
-  group: function(as) {
-    return self.groupBy(math.eq, as);
-  },
+  group: function(as) { return self.groupBy(math.eq, as); },
 
   /**
-   * Groups the elements in the list of `as` into sublists that satisfy the
-   * the comparator function `f`.
+   * Returns a list that contains the elements in the list of `as` grouped into
+   * sublists that satisfy the comparator function `f`.
    *
    * @summary Groups the elements in a list using a comparator function.
    *
@@ -212,14 +194,14 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  groupBy: fn.curry(function groupBy(f, bs) {
-      var b  = base.head(bs),
-          cs = self.span(f(b), base.tail(bs));
-      return base.empty(bs) ?
-        [] :
-        base.prepend(
-          base.prepend(b, base.head(cs)),
-          groupBy(f, base.last(cs))
-        );
+  groupBy: fn.curry(function groupBy(f, as) {
+    var b  = base.head(as),
+        bs = self.span(f(b), base.tail(as));
+    return base.empty(as) ?
+      [] :
+      base.prepend(
+        base.prepend(b, base.head(bs)),
+        groupBy(f, base.last(bs))
+      );
   }),
 };

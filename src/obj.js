@@ -80,7 +80,7 @@ self = module.exports = {
    *
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   pick(person, name, age); // {name: 'jane', age: '20'}
+   *   pick(person, 'name', 'age'); // {name: 'jane', age: '20'}
    *
    * @function
    * @param target A target object.

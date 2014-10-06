@@ -21,7 +21,8 @@ function concat(as) {
  */
 self = module.exports = {
   /**
-   * Concatenates the list of `as`.
+   * Returns a list that contains the elements in the list of `as` concatenated
+   * together.
    *
    * @summary Concatenates two or more lists.
    *
@@ -36,7 +37,8 @@ self = module.exports = {
   concat: fn.variadic(concat),
 
   /**
-   * Maps and concatenates the list of `as` with the function `f`.
+   * Returns a list that contains the elements in the list of `as` mapped with
+   * the function `f` concatenated together.
    *
    * @summary Maps a function over a list and concatenates the results.
    *
@@ -65,10 +67,14 @@ self = module.exports = {
   }),
 
   /**
-   * Folds the list of `as` with the binary function `f` and starting value
-   * `s`.
+   * Returns a list that contains the elements in the list of `as` folded
+   * left-to-right with the binary function `f` and starting value `s`.
    *
    * @summary Folds a list from left to right.
+   *
+   * @example
+   *   fold(flip(prepend), [], [1, 2, 3]); // [3, 2, 1]
+   *   fold(flip(prepend), '', 'foo'); // 'oof'
    *
    * @curried
    * @function
@@ -84,10 +90,14 @@ self = module.exports = {
   }),
 
   /**
-   * Folds the list of `as` with the binary function `f` and starting value
-   * `s`.
+   * Returns a list that contains the elements in the list of `as` folded
+   * right-to-left with the binary function `f` and starting value `s`.
    *
    * @summary Folds a list from right to left.
+   *
+   * @example
+   *   foldRight(append, [], [1, 2, 3]); // [3, 2, 1]
+   *   foldRight(append, '', 'foo'); // 'oof'
    *
    * @curried
    * @function
@@ -103,10 +113,14 @@ self = module.exports = {
   }),
 
   /**
-   * Scans the list of `as` with the binary function `f` and starting value
-   * `s`.
+   * Returns a list that contains the elements in the list of `as` scanned
+   * left-to-right with the binary function `f` and starting value `s`.
    *
    * @summary Scans a list from left to right.
+   *
+   * @example
+   *   fold(flip(prepend), [],  [1, 2, 3]); // [[], [1], [2, 1], [3, 2, 1]]
+   *   fold(flip(prepend), '',  'foo'); // ['', 'f', 'of', 'oof']
    *
    * @curried
    * @function
@@ -124,10 +138,14 @@ self = module.exports = {
   }),
 
   /**
-   * Scans the list of `as` with the binary function `f` and starting value
-   * `s`.
+   * Returns a list that contains the elements in the list of `as` scanned
+   * right-to-left with the binary function `f` and starting value `s`.
    *
    * @summary Scans a list from right to left.
+   *
+   * @example
+   *   foldRight(append, [],  [1, 2, 3]); // [[3, 2, 1], [3, 2], [3], []]
+   *   foldRight(append, '',  'foo'); // ['oof', 'oo', 'o', '']
    *
    * @curried
    * @function
@@ -145,58 +163,56 @@ self = module.exports = {
   }),
 
   /**
-   * Returns the maximum value from the list of `as`.
+   * Returns the maximum value in the list of `as`.
    *
    * @summary Calculates the maximum value of a list.
    *
-   * @curried
-   * @function
+   * @example
+   *   maximum([1, 2, 3]); // 3
+   *   maximum('abc'); // 'c'
+   *
    * @param as A list.
    * @returns A value.
    */
-  maximum: fn.curry(function(as) {
-    return self.fold(math.max, as[0], as);
-  }),
+  maximum: function(as) { return self.fold(math.max, as[0], as); },
 
   /**
-   * Returns the minimum value from the list of `as`.
+   * Returns the minimum value in the list of `as`.
    *
    * @summary Calculates the minimum value of a list.
    *
-   * @curried
-   * @function
+   * @example
+   *   minimum([1, 2, 3]); // 1
+   *   minimum('abc'); // 'a'
+   *
    * @param as A list.
    * @returns A value.
    */
-  minimum: fn.curry(function(as) {
-    return self.fold(math.min, as[0], as);
-  }),
+  minimum: function(as) { return self.fold(math.min, as[0], as); },
 
   /**
    * Returns the sum of the elements in the list of `as`.
    *
    * @summary Calculates the sum the elements in a list.
    *
-   * @curried
-   * @function
+   * @example
+   *   sum([1, 2, 3]); // 6
+   *
    * @param as A list.
    * @returns A number.
    */
-  sum: fn.curry(function(as) {
-    return self.fold(math.add, 0, as);
-  }),
+  sum: function(as) { return self.fold(math.add, 0, as); },
 
   /**
    * Returns the product of the elements in the list of `as`.
    *
    * @summary Calculates the product the elements in a list.
    *
-   * @curried
-   * @function
+   * @example
+   *   product([1, 2, 3]); // 6
+   *
    * @param as A list.
    * @returns A number.
    */
-  product: fn.curry(function(as) {
-    return self.fold(math.mul, 1, as);
-  }),
+  product: function(as) { return self.fold(math.mul, 1, as); },
 };

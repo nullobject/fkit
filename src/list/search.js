@@ -173,8 +173,8 @@ self = module.exports = {
   }),
 
   /**
-   * Filters all elements in the list of `as` that satisfy the predicate
-   * function `p`.
+   * Returns a list that contains the elements in the list of `as` that satisfy
+   * the predicate function `p`.
    *
    * @summary Filters a list using a predicate function.
    *
@@ -199,8 +199,9 @@ self = module.exports = {
   }),
 
   /**
-   * Partitions the list of `as` into two lists: elements that do and do not
-   * satisfy the predicate function `p`.
+   * Returns a list that contains the elements in the list of `as` split into a
+   * pair of lists: the elements that satisfy the predicate function `p` and
+   * the elements that do not satisfy the predicate function `p`.
    *
    * @summary Partitions a list using a predicate function.
    *
@@ -225,8 +226,11 @@ self = module.exports = {
   }),
 
   /**
-   * Determines if all elements in the list of `as` satisfy the predicate
-   * function `p`.
+   * Returns `true` if all elements in the list of `as` satisfy the predicate
+   * function `p`, `false` otherwise.
+   *
+   * @summary Determines if all elements in a list satisfy a predicate
+   * function.
    *
    * @example
    *   function p(a) { return a > 1; }
@@ -250,8 +254,11 @@ self = module.exports = {
   }),
 
   /**
-   * Determines if any elements in the list of `as` satisfy the predicate
-   * function `p`.
+   * Returns `true` if any elements in the list of `as` satisfy the predicate
+   * function `p`, `false` otherwise.
+   *
+   * @summary Determines if any elements in a list satisfy a predicate
+   * function.
    *
    * @example
    *   function p(a) { return a > 1; }

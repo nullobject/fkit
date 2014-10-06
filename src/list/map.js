@@ -13,7 +13,14 @@ var base = require('./base'),
  */
 module.exports = {
   /**
-   * Maps the list of `as` with the function `f`.
+   * Returns a list that contains the elements in the list of `as` mapped with
+   * the function `f`.
+   *
+   * @summary Maps a function over a list.
+   *
+   * @example
+   *   map(inc, [1, 2, 3]); // [2, 3, 4]
+   *   map(toUpper, 'foo'); // ['F', 'O', 'O']
    *
    * @curried
    * @function
@@ -28,15 +35,15 @@ module.exports = {
   }),
 
   /**
-   * Returns the elements of the list of `as` in reverse order.
+   * Returns a list that contains the elements in the list of `as` in reverse
+   * order.
    *
-   * @summary Reverse the elements in a list.
+   * @summary Reverses the elements in a list.
    *
    * @example
    *   reverse([1, 2, 3]); // [3, 2, 1]
    *   reverse('foo'); // 'oof'
    *
-   * @function
    * @param as A list.
    * @returns A new list.
    */
@@ -47,8 +54,8 @@ module.exports = {
   },
 
   /**
-   * Returns the elements of the list of `as` interspersed with the separator
-   * `s`.
+   * Returns a list that contains the elements in the list of `as` interspersed
+   * with the separator `s`.
    *
    * @summary Intersperses the elements of a list with separator.
    *

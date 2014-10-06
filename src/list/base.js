@@ -49,7 +49,9 @@ self = module.exports = {
   },
 
   /**
-   * Appends the value `a` to the list of `bs`.
+   * Returns a list that contains the value `a` appended to the list of `bs`.
+   *
+   * @summary Appends a value to a list.
    *
    * @example
    *   append(3, [1, 2]); // [1, 2, 3]
@@ -66,7 +68,9 @@ self = module.exports = {
   }),
 
   /**
-   * Prepends the value `a` to the list of `bs`.
+   * Returns a list that contains the value `a` prepended to the list of `bs`.
+   *
+   * @summary Prepends a value to a list.
    *
    * @example
    *   prepend(1, [2, 3]); // [1, 2, 3]
@@ -101,13 +105,12 @@ self = module.exports = {
   }),
 
   /**
+   * Returns the first element in the list of `as`.
+   *
    * @summary Gets the first element in a list.
    *
    * @example
-   *   head([]); // undefined
    *   head([1, 2, 3]); // 1
-   *
-   *   head(''); // undefined
    *   head('foo'); // 'f'
    *
    * @param as A list.
@@ -116,6 +119,9 @@ self = module.exports = {
   head: function(as) { return as[0]; },
 
   /**
+   * Returns a list that contains the elements after the first element in the
+   * list of `as`.
+   *
    * @summary Get the elements after the first element in a list.
    *
    * @example
@@ -128,6 +134,9 @@ self = module.exports = {
   tail: function(as) { return as.slice(1); },
 
   /**
+   * Returns a list that contains the elements before the last element in the
+   * list of `as`.
+   *
    * @summary Gets the elements before the last element in a list.
    *
    * @example
@@ -140,13 +149,12 @@ self = module.exports = {
   init: function(as) { return as.slice(0, as.length - 1); },
 
   /**
+   * Returns the last element in the list of `as`.
+   *
    * @summary Gets the last element in a list.
    *
    * @example
-   *   last([]); // undefined
    *   last([1, 2, 3]); // 3
-   *
-   *   last(''); // undefined
    *   last('foo'); // 'o'
    *
    * @param as A list.
@@ -155,11 +163,13 @@ self = module.exports = {
   last: function(as) { return as[as.length - 1]; },
 
   /**
+   * Returns the number of elements in the list of `as`.
+   *
    * @summary Gets the length of a list.
    *
    * @example
-   *   head([1, 2, 3]); // 3
-   *   head('foo'); // 3
+   *   length([1, 2, 3]); // 3
+   *   length('foo'); // 3
    *
    * @param as A list.
    * @returns A number.
@@ -167,14 +177,16 @@ self = module.exports = {
   length: function(as) { return as.length; },
 
   /**
+   * Returns `true` if the list of `as` is empty, `false` otherwise.
+   *
    * @summary Tests whether a list is empty.
    *
    * @example
-   *   empty([1, 2, 3]); // false
    *   empty([]); // true
+   *   empty([1, 2, 3]); // false
    *
-   *   empty('foo'); // false
    *   empty(''); // true
+   *   empty('foo'); // false
    *
    * @param as A list.
    * @returns A boolean value.
