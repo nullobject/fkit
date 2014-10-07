@@ -49,6 +49,37 @@ self = module.exports = {
   },
 
   /**
+   * Returns the number of elements in the list of `as`.
+   *
+   * @summary Gets the length of a list.
+   *
+   * @example
+   *   length([1, 2, 3]); // 3
+   *   length('foo'); // 3
+   *
+   * @param as A list.
+   * @returns A number.
+   */
+  length: function(as) { return as.length; },
+
+  /**
+   * Returns `true` if the list of `as` is empty, `false` otherwise.
+   *
+   * @summary Determines if a list is empty.
+   *
+   * @example
+   *   empty([]); // true
+   *   empty([1, 2, 3]); // false
+   *
+   *   empty(''); // true
+   *   empty('foo'); // false
+   *
+   * @param as A list.
+   * @returns A boolean value.
+   */
+  empty: function(as) { return as.length === 0; },
+
+  /**
    * Returns a list that contains the value `a` appended to the list of `bs`.
    *
    * @summary Appends a value to a list.
@@ -199,35 +230,4 @@ self = module.exports = {
       self.empty(as) ? [] : tails(self.tail(as))
     );
   },
-
-  /**
-   * Returns the number of elements in the list of `as`.
-   *
-   * @summary Gets the length of a list.
-   *
-   * @example
-   *   length([1, 2, 3]); // 3
-   *   length('foo'); // 3
-   *
-   * @param as A list.
-   * @returns A number.
-   */
-  length: function(as) { return as.length; },
-
-  /**
-   * Returns `true` if the list of `as` is empty, `false` otherwise.
-   *
-   * @summary Determines if a list is empty.
-   *
-   * @example
-   *   empty([]); // true
-   *   empty([1, 2, 3]); // false
-   *
-   *   empty(''); // true
-   *   empty('foo'); // false
-   *
-   * @param as A list.
-   * @returns A boolean value.
-   */
-  empty: function(as) { return as.length === 0; },
 };

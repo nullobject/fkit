@@ -3,6 +3,30 @@
 var base = require('../../src/list/base');
 
 describe('list.base', function() {
+  describe('#length', function() {
+    it('should handle arrays', function() {
+      expect(base.length([])).to.be.equal(0);
+      expect(base.length([1, 2, 3])).to.be.equal(3);
+    });
+
+    it('should handle strings', function() {
+      expect(base.length('')).to.be.equal(0);
+      expect(base.length('foo')).to.be.equal(3);
+    });
+  });
+
+  describe('#empty', function() {
+    it('should handle arrays', function() {
+      expect(base.empty([])).to.be.true;
+      expect(base.empty([1, 2, 3])).to.be.false;
+    });
+
+    it('should handle strings', function() {
+      expect(base.empty('')).to.be.true;
+      expect(base.empty('foo')).to.be.false;
+    });
+  });
+
   describe('#append', function() {
     it('should handle arrays', function() {
       expect(base.append(4)([])).to.be.eql([4]);
@@ -110,30 +134,6 @@ describe('list.base', function() {
     it('should handle strings', function() {
       expect(base.tails('')).to.be.eql(['']);
       expect(base.tails('foo')).to.be.eql(['foo', 'oo', 'o', '']);
-    });
-  });
-
-  describe('#length', function() {
-    it('should handle arrays', function() {
-      expect(base.length([])).to.be.equal(0);
-      expect(base.length([1, 2, 3])).to.be.equal(3);
-    });
-
-    it('should handle strings', function() {
-      expect(base.length('')).to.be.equal(0);
-      expect(base.length('foo')).to.be.equal(3);
-    });
-  });
-
-  describe('#empty', function() {
-    it('should handle arrays', function() {
-      expect(base.empty([])).to.be.true;
-      expect(base.empty([1, 2, 3])).to.be.false;
-    });
-
-    it('should handle strings', function() {
-      expect(base.empty('')).to.be.true;
-      expect(base.empty('foo')).to.be.false;
     });
   });
 });
