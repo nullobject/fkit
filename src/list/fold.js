@@ -70,7 +70,7 @@ self = module.exports = {
    * Returns a list that contains the elements in the list of `as` folded
    * left-to-right with the binary function `f` and starting value `s`.
    *
-   * @summary Folds a list from left to right.
+   * @summary Folds a list from left to right with a function.
    *
    * @example
    *   fold(flip(prepend), [], [1, 2, 3]); // [3, 2, 1]
@@ -93,7 +93,7 @@ self = module.exports = {
    * Returns a list that contains the elements in the list of `as` folded
    * right-to-left with the binary function `f` and starting value `s`.
    *
-   * @summary Folds a list from right to left.
+   * @summary Folds a list from right to left with a function.
    *
    * @example
    *   foldRight(append, [], [1, 2, 3]); // [3, 2, 1]
@@ -116,7 +116,7 @@ self = module.exports = {
    * Returns a list that contains the elements in the list of `as` scanned
    * left-to-right with the binary function `f` and starting value `s`.
    *
-   * @summary Scans a list from left to right.
+   * @summary Scans a list from left to right with a function.
    *
    * @example
    *   fold(flip(prepend), [],  [1, 2, 3]); // [[], [1], [2, 1], [3, 2, 1]]
@@ -141,7 +141,7 @@ self = module.exports = {
    * Returns a list that contains the elements in the list of `as` scanned
    * right-to-left with the binary function `f` and starting value `s`.
    *
-   * @summary Scans a list from right to left.
+   * @summary Scans a list from right to left with a function.
    *
    * @example
    *   foldRight(append, [],  [1, 2, 3]); // [[3, 2, 1], [3, 2], [3], []]

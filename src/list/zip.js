@@ -15,7 +15,9 @@ var self;
  */
 self = module.exports = {
   /**
-   * Zips the lists of `as` and `bs` with the function `f`.
+   * Returns the lists of `as` and `bs` zipped with the binary function `f`.
+   *
+   * @summary Zips two lists with a function.
    *
    * @curried
    * @function
@@ -32,7 +34,9 @@ self = module.exports = {
   }),
 
   /**
-   * Zips the lists of `as` and `bs` into a list of pairs.
+   * Returns the lists of `as` and `bs` zipped into a list of pairs.
+   *
+   * @summary Zips two lists into list of pairs.
    *
    * @example
    *   zip([1, 2, 3], [4, 5, 6]); // [[1, 4], [2, 5], [3, 6]]
@@ -49,7 +53,9 @@ self = module.exports = {
   }),
 
   /**
-   * Unzips a list of pairs into a pair of lists of `as` and `bs`.
+   * Returns the list of pairs `as` unzipped into a pair of lists.
+   *
+   * @summary Unzips a list of pairs into a pair of lists.
    *
    * @example
    *   unzip([[1, 4], [2, 5], [3, 6]]); // [[1, 2, 3], [4, 5, 6]]

@@ -14,9 +14,9 @@ var self;
  */
 self = module.exports = {
   /**
-   * @summary The logical AND operator.
+   * Returns the result of `b && a`.
    *
-   * @example and(a, b) == a && b
+   * @summary The logical AND operator.
    *
    * @curried
    * @function
@@ -27,9 +27,9 @@ self = module.exports = {
   and: fn.curry(function(a, b) { return b && a; }),
 
   /**
-   * @summary The logical OR operator.
+   * Returns the result of `b || a`.
    *
-   * @example or(a, b) == a || b
+   * @summary The logical OR operator.
    *
    * @curried
    * @function
@@ -40,9 +40,11 @@ self = module.exports = {
   or: fn.curry(function(a, b) { return b || a; }),
 
   /**
+   * Returns the result of `!a`.
+   *
    * @summary The logical NOT operator.
    *
-   * @param a A value.
+   * @param a A boolean.
    * @returns A boolean value.
    */
   not: function(a) { return !a; },

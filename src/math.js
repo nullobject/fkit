@@ -11,6 +11,8 @@ var fn = require('./fn');
  */
 module.exports = {
   /**
+   * Returns the result of `b + a`.
+   *
    * @summary The addition operator.
    *
    * @curried
@@ -22,6 +24,8 @@ module.exports = {
   add: fn.curry(function(a, b) { return b + a; }),
 
   /**
+   * Returns the result of `b - a`.
+   *
    * @summary The subtraction operator.
    *
    * @curried
@@ -33,6 +37,8 @@ module.exports = {
   sub: fn.curry(function(a, b) { return b - a; }),
 
   /**
+   * Returns the result of `b * a`.
+   *
    * @summary The multiplication operator.
    *
    * @curried
@@ -44,6 +50,8 @@ module.exports = {
   mul: fn.curry(function(a, b) { return b * a; }),
 
   /**
+   * Returns the result of `b / a`.
+   *
    * @summary The division operator.
    *
    * @curried
@@ -55,6 +63,8 @@ module.exports = {
   div: fn.curry(function(a, b) { return b / a; }),
 
   /**
+   * Returns the result of `b % a`.
+   *
    * @summary The modulo operator.
    *
    * @curried
@@ -66,7 +76,9 @@ module.exports = {
   mod: fn.curry(function(a, b) { return b % a; }),
 
   /**
-   * Returns the largest of the given values `a` and `b`.
+   * Returns the largest of the numbers `a` and `b`.
+   *
+   * @summary Determines the largest of two numbers.
    *
    * @curried
    * @function
@@ -77,7 +89,9 @@ module.exports = {
   max: fn.curry(function(a, b) { return b > a ? b : a; }),
 
   /**
-   * Returns the smallest of the given values `a` and `b`.
+   * Returns the smallest of the numbers `a` and `b`.
+   *
+   * @summary Determines the smallest of two numbers.
    *
    * @curried
    * @function
@@ -88,7 +102,9 @@ module.exports = {
   min: fn.curry(function(a, b) { return a > b ? b : a; }),
 
   /**
-   * @summary The unary negation operator.
+   * Returns the negation of the number `a`.
+   *
+   * @summary The negation operator.
    *
    * @param a A number.
    * @returns A number.
@@ -96,6 +112,9 @@ module.exports = {
   negate: function(a) { return -a; },
 
   /**
+   * Returns `true` if the value `a` is equal to the value `b`, false
+   * otherwise.
+   *
    * @summary The equality operator.
    *
    * @curried
@@ -107,6 +126,9 @@ module.exports = {
   eq: fn.curry(function(a, b) { return b === a; }),
 
   /**
+   * Returns `true` if the value `a` is not equal to the value `b`, false
+   * otherwise.
+   *
    * @summary The inequality operator.
    *
    * @curried
@@ -118,6 +140,9 @@ module.exports = {
   neq: fn.curry(function(a, b) { return b !== a; }),
 
   /**
+   * Returns `true` if the value `a` is greater than the value `b`, false
+   * otherwise.
+   *
    * @summary The greater than operator.
    *
    * @curried
@@ -129,6 +154,9 @@ module.exports = {
   gt: fn.curry(function(a, b) { return b > a; }),
 
   /**
+   * Returns `true` if the value `a` is greater than or equal to the value `b`,
+   * false otherwise.
+   *
    * @summary The greater than or equal operator.
    *
    * @curried
@@ -140,6 +168,9 @@ module.exports = {
   gte: fn.curry(function(a, b) { return b >= a; }),
 
   /**
+   * Returns `true` if the value `a` is less than the value `b`, false
+   * otherwise.
+   *
    * @summary The less than operator.
    *
    * @curried
@@ -151,6 +182,9 @@ module.exports = {
   lt: fn.curry(function(a, b) { return b < a; }),
 
   /**
+   * Returns `true` if the value `a` is less than or equal to the value `b`,
+   * false otherwise.
+   *
    * @summary The less than or equal operator.
    *
    * @curried
@@ -162,6 +196,8 @@ module.exports = {
   lte: fn.curry(function(a, b) { return b <= a; }),
 
   /**
+   * Returns the result of `a + 1`.
+   *
    * @summary Increments a number.
    *
    * @param a A number.
@@ -170,6 +206,8 @@ module.exports = {
   inc: function(a) { return a + 1; },
 
   /**
+   * Returns the result of `a - 1`.
+   *
    * @summary Decrements a number.
    *
    * @param a A number.

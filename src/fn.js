@@ -66,42 +66,34 @@ self = module.exports = {
   flatten: flatten,
 
   /**
-   * In JavaScript we would normally use the expression `f(a)` to apply a
-   * function to a value. This is very concise, however sometimes it's not very
-   * useful. You can actully think of function application as a binary
-   * operation.
-   *
-   * For example, say we want to fold right-to-left over a list of functions
-   * and apply each function to the accumulated value:
-   *
-   * ```js
-   * F.foldRight(F.apply, 0, [F.add(1), F.div(2), F.mul(3)]);
-   * ```
+   * Returns the result of the function `f` applied to the value `a`.
    *
    * @summary Applies a function to a value.
    *
    * @example
    *   function sayHi(a) { return ['Hi', a, '!'].join(' '); }
-   *   apply(sayHi, 'John'); // Hi John!
+   *   apply(sayHi, 'Jane'); // Hi Jane!
    *
    * @curried
    * @function
-   * @param f A function to be applied.
+   * @param f A function.
    * @param a A value.
    * @returns The result of `f(a)`.
    */
   apply: curry(function(f, a) { return f(a); }),
 
   /**
+   * Returns the result of the function `f` applied to the values `a` and `b`.
+   *
    * @summary Applies a function to two values.
    *
    * @example
    *   function sayHi(a, b) { return ['Hi', a, b, '!'].join(' '); }
-   *   apply2(sayHi, 'John', 'Appleseed'); // Hi John Appleseed!
+   *   apply2(sayHi, 'Jane', 'Appleseed'); // Hi Jane Appleseed!
    *
    * @curried
    * @function
-   * @param f A function to be applied.
+   * @param f A function.
    * @param a A value.
    * @param b A value.
    * @returns The result of `f(a, b)`.
@@ -109,15 +101,18 @@ self = module.exports = {
   apply2: curry(function(f, a, b) { return f(a, b); }),
 
   /**
+   * Returns the result of the function `f` applied to the values `a`, `b`, and
+   * `c`.
+   *
    * @summary Applies a function to three values.
    *
    * @example
    *   function sayHi(a, b, c) { return ['Hi', a, b, c, '!'].join(' '); }
-   *   apply3(sayHi, 'Mr', 'John', 'Appleseed'); // Hi Mr John Appleseed!
+   *   apply3(sayHi, 'Ms', 'Jane', 'Appleseed'); // Hi Ms Jane Appleseed!
    *
    * @curried
    * @function
-   * @param f A function to be applied.
+   * @param f A function.
    * @param a A value.
    * @param b A value.
    * @param c A value.
@@ -126,31 +121,27 @@ self = module.exports = {
   apply3: curry(function(f, a, b, c) { return f(a, b, c); }),
 
   /**
-   * It is the same as `apply`, however the order of the arguments is flipped.
-   * This can be useful in certain situations.
+   * Returns the result of the function `f` applied to the value `a`.
    *
-   * For example, say we want to fold left-to-right over a list of functions
-   * and apply each function to the accumulated value:
-   *
-   * ```js
-   * F.fold(F.applyRight, 0, [F.add(1), F.div(2), F.mul(3)]);
-   * ```
+   * This is similar to `apply`, however the order of the arguments is flipped.
    *
    * @summary Applies a function to a value.
    *
    * @example
    *   function sayHi(a) { return ['Hi', a, '!'].join(' '); }
-   *   applyRight('John', sayHi); // Hi John!
+   *   applyRight('Jane', sayHi); // Hi Jane!
    *
    * @curried
    * @function
    * @param a A value.
-   * @param f A function to be applied.
+   * @param f A function.
    * @returns The result of `f(a)`.
    */
   applyRight: curry(function(a, f) { return f(a); }),
 
   /**
+   * Returns a function that is the composition of the list of functions `fs`.
+   *
    * @summary Composes a list of functions.
    *
    * @example
@@ -158,7 +149,7 @@ self = module.exports = {
    *
    * @function
    * @param fs A list of functions.
-   * @returns A new composed function.
+   * @returns A new function.
    */
   compose: variadic(function(fs) {
     return function(a) {
@@ -169,15 +160,18 @@ self = module.exports = {
   }),
 
   /**
-   * @summary Wraps a binary function and flips the order of the arguments.
+   * Returns a function that flips the order of the arguments to the function
+   * `f`.
+   *
+   * @summary Flips the order of the arguments to a function.
    *
    * @example
    *   function f(a, b) { ... }
    *   var g = flip(f);
    *   g(1, 2); // f(2, 1)
    *
-   * @param f A function to be flipped.
-   * @returns A new flipped function.
+   * @param f A function.
+   * @returns A new function.
    */
   flip: function(f) { return function(a, b) { return f(b, a); }; },
 
@@ -190,13 +184,13 @@ self = module.exports = {
    *   id(1); // 1
    *
    * @param a A value.
-   * @returns A value.
+   * @returns The value `a`.
    */
   id: function(a) { return a; },
 
   /**
-   * Creates a new function that always returns the same value, regardless of
-   * the arguments.
+   * Returns a function that always returns the value `c`, regardless of the
+   * arguments.
    *
    * @summary The constant function.
    *
@@ -204,25 +198,29 @@ self = module.exports = {
    *   const(1)(2, 3); // 1
    *
    * @param c A value.
-   * @returns A new constant function.
+   * @returns A new function.
    */
   const: function(c) { return function() { return c; }; },
 
   /**
-   * @summary Creates a new function that allows partial application of the
-   * arguments to a function.
+   * Returns a function that allows partial application of the arguments to the
+   * function `f`.
+   *
+   * @summary Converts a function to a curried function.
    *
    * @example
    *   var add = curry(function(a, b) { return a + b; });
    *   add(1)(2); // 3
    *
    * @function
-   * @param f A function to be curried.
-   * @returns A new curried function.
+   * @param f A function.
+   * @returns A new function.
    */
   curry: curry,
 
   /**
+   * Returns a function that wraps the binary function `f` to accept a pair.
+   *
    * @summary Converts a binary function to a function on pairs.
    *
    * @example
@@ -230,62 +228,70 @@ self = module.exports = {
    *   add([1, 2]); // 3
    *
    * @function
-   * @param f A function to be uncurried.
-   * @param p A pair.
-   * @returns A new function on pairs.
+   * @param f A function.
+   * @returns A new function.
    */
   uncurry: curry(function(f, p) { return f(p[0], p[1]); }),
 
   /**
-   * @summary Creates a new function that wraps a function to accept only one
-   * argument.
+   * Returns a function that wraps the function `f` to accept only one argument.
    *
-   * @param f A function to be wrapped.
-   * @returns A new unary function.
+   * @summary Converts a function to a unary function.
+   *
+   * @param f A function.
+   * @returns A new function.
    */
   unary: function(f) { return (f.length === 1) ? f : self.apply(f); },
 
   /**
-   * @summary Creates a new function that wraps a function to accept only two
-   * arguments.
+   * Returns a function that wraps the function `f` to accept only two arguments.
    *
-   * @param f A function to be wrapped.
-   * @returns A new binary function.
+   * @summary Converts a function to a binary function.
+   *
+   * @param f A function.
+   * @returns A new function.
    */
   binary: function(f) { return (f.length === 2) ? f : self.apply2(f); },
 
   /**
+   * Returns a function that wraps the function `f` to accept any number of
+   * arguments.
+   *
    * The last named parameter will be given an array of arguments.
    *
-   * @summary Creates a new function that wraps a function to accept any number
-   * of arguments.
+   * @summary Converts a function to a variadic function.
    *
    * @example
    *   function f(head, tail) { ... }
    *   variadic(f)(1, 2, 3); // f(1, [2, 3])
    *
    * @function
-   * @param f A function to be wrapped.
-   * @returns A new variadic function.
+   * @param f A function.
+   * @returns A new function.
    */
   variadic: variadic,
 
   /**
-   * @summary Creates a new function that applies a side-effecting function to
-   * a value.
+   * Applies the function `f` to the value `a` and returns the value `a`
+   * unchanged.
+   *
+   * @summary Applies a side-effecting function to a value.
    *
    * @example
    *   function f(a) { console.log(a); }
    *   tap(f)(1); // 1
    *
+   * @curried
    * @function
-   * @param f A function to be tapped.
+   * @param f A function.
    * @param a A value.
-   * @returns A value.
+   * @returns The value `a`.
    */
   tap: curry(function(f, a) { f(a); return a; }),
 
   /**
+   * Returns the ordering of the two values `a` and `b`.
+   *
    * @summary Compares two values using natural ordering.
    *
    * @example

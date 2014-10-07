@@ -27,10 +27,10 @@ module.exports = {
   toLower: function(s) { return s.toLowerCase(); },
 
   /**
-   * Replaces the `a` with string `b` in the string `s`.
+   * Returns the result of replacing term `a` with the string `b` in the string
+   * `s`.
    *
-   * @summary Creates a new string with some or all matches of a pattern
-   * replaced by a string.
+   * @summary Replaces a term in a string.
    *
    * @example
    *   replace('r', 'z', 'bar'); // baz
@@ -38,9 +38,9 @@ module.exports = {
    *
    * @curried
    * @function
-   * @param a A term to be replaced.
-   * @param b A string to replace the term.
-   * @param s A string to search.
+   * @param a A string or a regexp.
+   * @param b A string.
+   * @param s A string.
    * @returns A new string.
    */
   replace: fn.curry(function(a, b, s) {
