@@ -53,15 +53,15 @@ describe('list.base', function() {
     });
   });
 
-  describe('#tail', function() {
+  describe('#last', function() {
     it('should handle arrays', function() {
-      expect(base.tail([])).to.be.eql([]);
-      expect(base.tail([1, 2, 3])).to.be.eql([2, 3]);
+      expect(base.last([])).to.be.undefined;
+      expect(base.last([1, 2, 3])).to.be.equal(3);
     });
 
     it('should handle strings', function() {
-      expect(base.tail('')).to.be.equal('');
-      expect(base.tail('foo')).to.be.equal('oo');
+      expect(base.last('')).to.be.undefined;
+      expect(base.last('foo')).to.be.equal('o');
     });
   });
 
@@ -77,15 +77,39 @@ describe('list.base', function() {
     });
   });
 
-  describe('#last', function() {
+  describe('#tail', function() {
     it('should handle arrays', function() {
-      expect(base.last([])).to.be.undefined;
-      expect(base.last([1, 2, 3])).to.be.equal(3);
+      expect(base.tail([])).to.be.eql([]);
+      expect(base.tail([1, 2, 3])).to.be.eql([2, 3]);
     });
 
     it('should handle strings', function() {
-      expect(base.last('')).to.be.undefined;
-      expect(base.last('foo')).to.be.equal('o');
+      expect(base.tail('')).to.be.equal('');
+      expect(base.tail('foo')).to.be.equal('oo');
+    });
+  });
+
+  describe('#inits', function() {
+    it('should handle arrays', function() {
+      expect(base.inits([])).to.be.eql([[]]);
+      expect(base.inits([1, 2, 3])).to.be.eql([[], [1], [1, 2], [1, 2, 3]]);
+    });
+
+    it('should handle strings', function() {
+      expect(base.inits('')).to.be.eql(['']);
+      expect(base.inits('foo')).to.be.eql(['', 'f', 'fo', 'foo']);
+    });
+  });
+
+  describe('#tails', function() {
+    it('should handle arrays', function() {
+      expect(base.tails([])).to.be.eql([[]]);
+      expect(base.tails([1, 2, 3])).to.be.eql([[1, 2, 3], [2, 3], [3], []]);
+    });
+
+    it('should handle strings', function() {
+      expect(base.tails('')).to.be.eql(['']);
+      expect(base.tails('foo')).to.be.eql(['foo', 'oo', 'o', '']);
     });
   });
 

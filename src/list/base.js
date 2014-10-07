@@ -119,19 +119,18 @@ self = module.exports = {
   head: function(as) { return as[0]; },
 
   /**
-   * Returns a list that contains the elements after the first element in the
-   * list of `as`.
+   * Returns the last element in the list of `as`.
    *
-   * @summary Get the elements after the first element in a list.
+   * @summary Gets the last element in a list.
    *
    * @example
-   *   tail([1, 2, 3]); // [2, 3]
-   *   tail('foo'); // 'oo'
+   *   last([1, 2, 3]); // 3
+   *   last('foo'); // 'o'
    *
    * @param as A list.
-   * @returns A new list.
+   * @returns A value or `undefined` if the list is empty.
    */
-  tail: function(as) { return as.slice(1); },
+  last: function(as) { return as[as.length - 1]; },
 
   /**
    * Returns a list that contains the elements before the last element in the
@@ -149,18 +148,57 @@ self = module.exports = {
   init: function(as) { return as.slice(0, as.length - 1); },
 
   /**
-   * Returns the last element in the list of `as`.
+   * Returns a list that contains the elements after the first element in the
+   * list of `as`.
    *
-   * @summary Gets the last element in a list.
+   * @summary Get the elements after the first element in a list.
    *
    * @example
-   *   last([1, 2, 3]); // 3
-   *   last('foo'); // 'o'
+   *   tail([1, 2, 3]); // [2, 3]
+   *   tail('foo'); // 'oo'
    *
    * @param as A list.
-   * @returns A value or `undefined` if the list is empty.
+   * @returns A new list.
    */
-  last: function(as) { return as[as.length - 1]; },
+  tail: function(as) { return as.slice(1); },
+
+  /**
+   * Returns a list that contains all initial segments of the list of `as`.
+   *
+   * @summary Gets all initial segments of a list.
+   *
+   * @example
+   *   inits([1, 2, 3]); // [[], [1], [1, 2], [1, 2, 3]]
+   *   inits('foo'); // ['', 'f', 'fo', 'foo']
+   *
+   * @param as A list.
+   * @returns A new list.
+   */
+  inits: function inits(as) {
+    return self.prepend(
+      self.mempty(as),
+      self.empty(as) ? [] : inits(self.tail(as)).map(self.prepend(self.head(as)))
+    );
+  },
+
+  /**
+   * Returns a list that contains all final segments of the list of `as`.
+   *
+   * @summary Gets all final segments of a list.
+   *
+   * @example
+   *   tails([1, 2, 3]); // [[1, 2, 3], [2, 3], [3], []]
+   *   tails('foo'); // ['foo', 'oo', 'o', '']
+   *
+   * @param as A list.
+   * @returns A new list.
+   */
+  tails: function tails(as) {
+    return self.prepend(
+      as,
+      self.empty(as) ? [] : tails(self.tail(as))
+    );
+  },
 
   /**
    * Returns the number of elements in the list of `as`.
