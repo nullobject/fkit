@@ -1,3 +1,9 @@
+v0.8.1 / 2014-10-07
+===================
+
+  * Add #inits and #tails functions.
+  * Add #isPrefixOf, #isSuffixOf, and #isInfixOf functions.
+
 v0.8.0 / 2014-10-06
 ===================
 
