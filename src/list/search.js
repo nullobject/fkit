@@ -4,6 +4,7 @@ var base  = require('./base'),
     fn    = require('../fn'),
     fold  = require('./fold'),
     logic = require('../logic'),
+    map   = require('./map'),
     math  = require('../math');
 
 var self;
@@ -279,5 +280,61 @@ self = module.exports = {
    */
   any: fn.curry(function(p, as) {
     return self.filter(p, as).length > 0;
+  }),
+
+  /**
+   * Returns `true` if the list of `as` is a prefix of the list of `bs`,
+   * `false` otherwise.
+   *
+   * @summary Determines if a list is a prefix of another list.
+   *
+   * @example
+   *   isPrefixOf([], [1, 2, 3]); // true
+   *   isPrefixOf([1], [1, 2, 3]); // true
+   *   isPrefixOf([2, 3], [1, 2, 3]); // false
+   *
+   *   isPrefixOf('', 'foo'); // true
+   *   isPrefixOf('f', 'foo'); // true
+   *   isPrefixOf('oo', 'foo'); // false
+   *
+   * @curried
+   * @function
+   * @param as A list.
+   * @param bs A list.
+   * @returns A boolean value.
+   */
+  isPrefixOf: fn.curry(function isPrefixOf(as, bs) {
+    if (base.empty(as)) {
+      return true;
+    } else if (base.empty(bs)) {
+      return false;
+    } else {
+      return base.head(as) === base.head(bs) && isPrefixOf(base.tail(as), base.tail(bs));
+    }
+  }),
+
+  /**
+   * Returns `true` if the list of `as` is a suffix of the list of `bs`,
+   * `false` otherwise.
+   *
+   * @summary Determines if a list is a suffix of another list.
+   *
+   * @example
+   *   isSuffixOf([], [1, 2, 3]); // true
+   *   isSuffixOf([1], [1, 2, 3]); // false
+   *   isSuffixOf([2, 3], [1, 2, 3]); // true
+   *
+   *   isSuffixOf('', 'foo'); // true
+   *   isSuffixOf('f', 'foo'); // false
+   *   isSuffixOf('oo', 'foo'); // true
+   *
+   * @curried
+   * @function
+   * @param as A list.
+   * @param bs A list.
+   * @returns A boolean value.
+   */
+  isSuffixOf: fn.curry(function(as, bs) {
+    return self.isPrefixOf(map.reverse(as), map.reverse(bs));
   }),
 };

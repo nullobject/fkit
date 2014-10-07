@@ -140,4 +140,36 @@ describe('list.search', function() {
       expect(search.any(p)('bar')).to.be.true;
     });
   });
+
+  describe('#isPrefixOf', function() {
+    it('should handle arrays', function() {
+      expect(search.isPrefixOf([]    )([]       )).to.be.true;
+      expect(search.isPrefixOf([1]   )([]       )).to.be.false;
+      expect(search.isPrefixOf([1]   )([1, 2, 3])).to.be.true;
+      expect(search.isPrefixOf([2, 3])([1, 2, 3])).to.be.false;
+    });
+
+    it('should handle strings', function() {
+      expect(search.isPrefixOf(''  )(''   )).to.be.true;
+      expect(search.isPrefixOf('f' )(''   )).to.be.false;
+      expect(search.isPrefixOf('f' )('foo')).to.be.true;
+      expect(search.isPrefixOf('oo')('foo')).to.be.false;
+    });
+  });
+
+  describe('#isSuffixOf', function() {
+    it('should handle arrays', function() {
+      expect(search.isSuffixOf([]    )([]       )).to.be.true;
+      expect(search.isSuffixOf([1]   )([]       )).to.be.false;
+      expect(search.isSuffixOf([1]   )([1, 2, 3])).to.be.false;
+      expect(search.isSuffixOf([2, 3])([1, 2, 3])).to.be.true;
+    });
+
+    it('should handle strings', function() {
+      expect(search.isSuffixOf(''  )(''   )).to.be.true;
+      expect(search.isSuffixOf('f' )(''   )).to.be.false;
+      expect(search.isSuffixOf('f' )('foo')).to.be.false;
+      expect(search.isSuffixOf('oo')('foo')).to.be.true;
+    });
+  });
 });
