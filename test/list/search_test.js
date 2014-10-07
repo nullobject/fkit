@@ -172,4 +172,23 @@ describe('list.search', function() {
       expect(search.isSuffixOf('oo')('foo')).to.be.true;
     });
   });
+
+  describe('#isInfixOf', function() {
+    it('should handle arrays', function() {
+      expect(search.isInfixOf([]       )([]       )).to.be.true;
+      expect(search.isInfixOf([1]      )([1, 2, 3])).to.be.true;
+      expect(search.isInfixOf([2, 3]   )([1, 2, 3])).to.be.true;
+      expect(search.isInfixOf([1, 2, 3])([1, 2, 3])).to.be.true;
+      expect(search.isInfixOf([3, 2]   )([1, 2, 3])).to.be.false;
+      expect(search.isInfixOf([1]      )([]       )).to.be.false;
+    });
+
+    it('should handle strings', function() {
+      expect(search.isInfixOf(''   )(''   )).to.be.true;
+      expect(search.isInfixOf('f'  )('foo')).to.be.true;
+      expect(search.isInfixOf('oo' )('foo')).to.be.true;
+      expect(search.isInfixOf('foo')('foo')).to.be.true;
+      expect(search.isInfixOf('f'  )(''   )).to.be.false;
+    });
+  });
 });

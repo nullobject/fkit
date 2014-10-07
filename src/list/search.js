@@ -21,7 +21,7 @@ self = module.exports = {
    * Returns `true` if the list of `as` contains the element `a`, `false`
    * otherwise.
    *
-   * @summary Tests whether a value is present in a list.
+   * @summary Determines if a value is present in a list.
    *
    * @example
    *   elem(0, [1, 2, 3]); // false
@@ -290,11 +290,11 @@ self = module.exports = {
    *
    * @example
    *   isPrefixOf([], [1, 2, 3]); // true
-   *   isPrefixOf([1], [1, 2, 3]); // true
+   *   isPrefixOf([1, 2], [1, 2, 3]); // true
    *   isPrefixOf([2, 3], [1, 2, 3]); // false
    *
    *   isPrefixOf('', 'foo'); // true
-   *   isPrefixOf('f', 'foo'); // true
+   *   isPrefixOf('fo', 'foo'); // true
    *   isPrefixOf('oo', 'foo'); // false
    *
    * @curried
@@ -321,11 +321,11 @@ self = module.exports = {
    *
    * @example
    *   isSuffixOf([], [1, 2, 3]); // true
-   *   isSuffixOf([1], [1, 2, 3]); // false
+   *   isSuffixOf([1, 2], [1, 2, 3]); // false
    *   isSuffixOf([2, 3], [1, 2, 3]); // true
    *
    *   isSuffixOf('', 'foo'); // true
-   *   isSuffixOf('f', 'foo'); // false
+   *   isSuffixOf('fo', 'foo'); // false
    *   isSuffixOf('oo', 'foo'); // true
    *
    * @curried
@@ -336,5 +336,30 @@ self = module.exports = {
    */
   isSuffixOf: fn.curry(function(as, bs) {
     return self.isPrefixOf(map.reverse(as), map.reverse(bs));
+  }),
+
+  /**
+   * Returns `true` if the list of `as` is contained within the list of `bs`,
+   * `false` otherwise.
+   *
+   * @summary Determines if a list is contained within another list.
+   *
+   * @example
+   *   isInfixOf([], [1, 2, 3]); // true
+   *   isInfixOf([2, 3], [1, 2, 3]); // true
+   *   isInfixOf([3, 2], [1, 2, 3]); // false
+   *
+   *   isInfixOf('', 'foo'); // true
+   *   isInfixOf('oo', 'foo'); // true
+   *   isInfixOf('of', 'foo'); // false
+   *
+   * @curried
+   * @function
+   * @param as A list.
+   * @param bs A list.
+   * @returns A boolean value.
+   */
+  isInfixOf: fn.curry(function(as, bs) {
+    return self.any(self.isPrefixOf(as), base.tails(bs));
   }),
 };

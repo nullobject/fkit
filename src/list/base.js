@@ -217,7 +217,7 @@ self = module.exports = {
   /**
    * Returns `true` if the list of `as` is empty, `false` otherwise.
    *
-   * @summary Tests whether a list is empty.
+   * @summary Determines if a list is empty.
    *
    * @example
    *   empty([]); // true
