@@ -1,3 +1,9 @@
+v0.8.2 / 2014-10-08
+===================
+
+  * Add strict and non-strict equality operators.
+  * Documentation.
+
 v0.8.1 / 2014-10-07
 ===================
 
