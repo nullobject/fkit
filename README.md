@@ -22,7 +22,7 @@ Features:
   [composable](http://en.wikipedia.org/wiki/Function_composition).
 * Strings and arrays are both treated as *lists*, this means you can apply list
   combinators like `map`, `filter`, and `fold` to both strings and arrays.
-* It's very compact, roughly 3.0 KB when minified and gzipped!
+* It's very compact, roughly 3 KB when minified and gzipped!
 
 ## Documentation
 
