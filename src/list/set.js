@@ -5,7 +5,6 @@ var base   = require('./base'),
     fn     = require('../fn'),
     fold   = require('./fold'),
     map    = require('./map'),
-    math   = require('../math'),
     search = require('./search');
 
 var self;
@@ -31,7 +30,7 @@ self = module.exports = {
    * @returns A new list.
    */
   nub: function(as) {
-    return self.nubBy(math.eq, as);
+    return self.nubBy(fn.equal, as);
   },
 
   /**
@@ -142,7 +141,7 @@ self = module.exports = {
    * @returns A new list.
    */
   remove: fn.curry(function(a, bs) {
-    return self.removeBy(math.eq, a, bs);
+    return self.removeBy(fn.equal, a, bs);
   }),
 
   /**

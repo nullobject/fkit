@@ -112,10 +112,10 @@ module.exports = {
   negate: function(a) { return -a; },
 
   /**
-   * Returns `true` if the value `a` is equal to the value `b`, false
+   * Returns `true` if the value `a` is equal (`==`) to the value `b`, false
    * otherwise.
    *
-   * @summary The equality operator.
+   * @summary The non-strict equality operator.
    *
    * @curried
    * @function
@@ -123,13 +123,13 @@ module.exports = {
    * @param b A value.
    * @returns A boolean value.
    */
-  eq: fn.curry(function(a, b) { return b === a; }),
+  eq: fn.curry(function(a, b) { return b == a; }),
 
   /**
-   * Returns `true` if the value `a` is not equal to the value `b`, false
-   * otherwise.
+   * Returns `true` if the value `a` is not equal (`!=`) to the value `b`,
+   * false otherwise.
    *
-   * @summary The inequality operator.
+   * @summary The non-strict inequality operator.
    *
    * @curried
    * @function
@@ -137,7 +137,7 @@ module.exports = {
    * @param b A value.
    * @returns A boolean value.
    */
-  neq: fn.curry(function(a, b) { return b !== a; }),
+  neq: fn.curry(function(a, b) { return b != a; }),
 
   /**
    * Returns `true` if the value `a` is greater than the value `b`, false

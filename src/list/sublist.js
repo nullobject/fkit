@@ -2,8 +2,7 @@
 
 var base = require('./base'),
     fn   = require('../fn'),
-    fold = require('./fold'),
-    math = require('../math');
+    fold = require('./fold');
 
 var self;
 
@@ -180,7 +179,7 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  group: function(as) { return self.groupBy(math.eq, as); },
+  group: function(as) { return self.groupBy(fn.equal, as); },
 
   /**
    * Returns a list that contains the elements in the list of `as` grouped into

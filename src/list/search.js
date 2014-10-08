@@ -4,8 +4,7 @@ var base  = require('./base'),
     fn    = require('../fn'),
     fold  = require('./fold'),
     logic = require('../logic'),
-    map   = require('./map'),
-    math  = require('../math');
+    map   = require('./map');
 
 var self;
 
@@ -84,7 +83,7 @@ self = module.exports = {
    * @returns A number or `undefined` if no value was found.
    */
   elemIndices: fn.curry(function(a, as) {
-    return self.findIndices(math.eq(a), as);
+    return self.findIndices(fn.equal(a), as);
   }),
 
   /**

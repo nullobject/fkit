@@ -290,6 +290,34 @@ self = module.exports = {
   tap: curry(function(f, a) { f(a); return a; }),
 
   /**
+   * Returns `true` if the value `a` is strictly equal (`===`) to the value
+   * `b`, false otherwise.
+   *
+   * @summary The strict equality operator.
+   *
+   * @curried
+   * @function
+   * @param a A value.
+   * @param b A value.
+   * @returns A boolean value.
+   */
+  equal: curry(function(a, b) { return b === a; }),
+
+  /**
+   * Returns `true` if the value `a` is strictly not equal (`!==`) to the value
+   * `b`, false otherwise.
+   *
+   * @summary The strict inequality operator.
+   *
+   * @curried
+   * @function
+   * @param a A value.
+   * @param b A value.
+   * @returns A boolean value.
+   */
+  notEqual: curry(function(a, b) { return b !== a; }),
+
+  /**
    * Returns the ordering of the two values `a` and `b`.
    *
    * @summary Compares two values using natural ordering.
