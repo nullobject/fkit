@@ -27,6 +27,7 @@ Features:
 ## Documentation
 
 * [API documentation](http://nullobject.github.io/fkit/api.html)
+* [Presentation by Josh Bassett: Everyday Functional Programming in JavaScript](https://speakerdeck.com/nullobject/fkit-everyday-functional-programming-in-javascript)
 
 ## Examples
 
