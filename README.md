@@ -20,14 +20,16 @@ Features:
 * The ordering of arguments to FKit functions is carefully designed to be more
   natural, this makes them highly
   [composable](http://en.wikipedia.org/wiki/Function_composition).
-* Strings and arrays are both treated as *lists*, this means you can apply list
-  combinators like `map`, `filter`, and `fold` to both strings and arrays.
+* FKit treats both strings and arrays as *lists*, this means you can apply the
+  same list functions to both strings and arrays (e.g. `map`, `filter`, and
+  `fold`).
 * It's very compact, roughly 3 KB when minified and gzipped!
 
 ## Documentation
 
 * [API documentation](http://nullobject.github.io/fkit/api.html)
-* [Presentation by Josh Bassett: Everyday Functional Programming in JavaScript](https://speakerdeck.com/nullobject/fkit-everyday-functional-programming-in-javascript)
+* [Presentation by Josh Bassett: Everyday Functional Programming in
+  JavaScript](https://speakerdeck.com/nullobject/fkit-everyday-functional-programming-in-javascript)
 
 ## Examples
 
