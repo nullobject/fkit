@@ -28,6 +28,7 @@
         function doRequest(callback) {
           superagent
             .get(URL.replace('@', count))
+            .set('X-Requested-With', null)
             .end(callback);
         }
       }
@@ -49,7 +50,7 @@
         .merge(less)
         .scan(1, fkit.add)
         .map(fkit.max(1))
-        .flatMap(randomNumbers)
+        .concatMap(randomNumbers)
         .subscribe(show);
     </script>
   </body>
