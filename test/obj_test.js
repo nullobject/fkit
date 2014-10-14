@@ -66,4 +66,11 @@ describe('object', function() {
       expect(result).to.eql({a: 'lorem', b: 'ipsum'});
     });
   });
+
+  describe('#pairs', function() {
+    it('should return the key value pairs', function() {
+      var result = obj.pairs(target);
+      expect(result).to.eql([['a', 'lorem'], ['b', 'ipsum'], ['c', 1], ['d', 2]]);
+    });
+  });
 });

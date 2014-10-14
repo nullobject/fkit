@@ -92,4 +92,23 @@ self = module.exports = {
       return self.set(a, self.get(a, target), b);
     }, {});
   }),
+
+  /**
+   * Returns a list that contains the key-value pairs for the `target` object.
+   *
+   * @summary Gets the key-value pairs for an object.
+   *
+   * @example
+   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
+   *   pick(person, 'name', 'age'); // {name: 'jane', age: '20'}
+   *
+   * @function
+   * @param target A target object.
+   * @returns A new list.
+   */
+  pairs: function(target) {
+    return Object.keys(target).map(function(key) {
+      return [key, target[key]];
+    });
+  },
 };
