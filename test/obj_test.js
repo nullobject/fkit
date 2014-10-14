@@ -59,9 +59,16 @@ describe('object', function() {
   });
 
   describe('#pick', function() {
-    it('should get the given properties', function() {
+    it('should copy the given object with the properties', function() {
       var result = obj.pick(['a', 'b'])(target);
       expect(result).to.eql({a: 'lorem', b: 'ipsum'});
+    });
+  });
+
+  describe('#omit', function() {
+    it('should copy the given object without the properties', function() {
+      var result = obj.omit(['a', 'b'])(target);
+      expect(result).to.eql({c: 1});
     });
   });
 

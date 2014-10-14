@@ -1,6 +1,7 @@
 'use strict';
 
 var fn   = require('./fn'),
+    set  = require('./list/set'),
     util = require('./util');
 
 var self;
@@ -75,8 +76,8 @@ self = module.exports = {
   }),
 
   /**
-   * Returns an object that contains only the properties of the object `o` from
-   * the list of `ks`.
+   * Returns a copy of the object `o` *with* the properties in the list of
+   * `ks`.
    *
    * @summary Picks properties of an object.
    *
@@ -94,6 +95,30 @@ self = module.exports = {
     return ks.reduce(function(p, k) {
       return self.set(k, self.get(k, o), p);
     }, {});
+  }),
+
+  /**
+   * Returns a copy of the object `o` *without* the properties in the list of
+   * `ks`.
+   *
+   * @summary Omits properties of an object.
+   *
+   * @example
+   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
+   *   omit(['name', 'age'], person); // {city: 'Melbourne'}
+   *
+   * @curried
+   * @function
+   * @param o An object.
+   * @param ks A list.
+   * @returns A new object.
+   */
+  omit: fn.curry(function(ks, o) {
+    return set
+      .difference(self.keys(o), ks)
+      .reduce(function(p, k) {
+        return self.set(k, self.get(k, o), p);
+      }, {});
   }),
 
   /**
