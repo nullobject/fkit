@@ -78,18 +78,19 @@ self = module.exports = {
    * Returns an object that contains only the properties of the object `o` from
    * the list of `ks`.
    *
-   * @summary Gets properties of an object.
+   * @summary Picks properties of an object.
    *
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   pick(person, 'name', 'age'); // {name: 'jane', age: '20'}
+   *   pick(['name', 'age'], person); // {name: 'jane', age: '20'}
    *
+   * @curried
    * @function
    * @param o An object.
    * @param ks A list.
    * @returns A new object.
    */
-  pick: fn.variadic(function(o, ks) {
+  pick: fn.curry(function(ks, o) {
     return ks.reduce(function(p, k) {
       return self.set(k, self.get(k, o), p);
     }, {});

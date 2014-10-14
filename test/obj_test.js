@@ -60,7 +60,7 @@ describe('object', function() {
 
   describe('#pick', function() {
     it('should get the given properties', function() {
-      var result = obj.pick(target, 'a', 'b');
+      var result = obj.pick(['a', 'b'])(target);
       expect(result).to.eql({a: 'lorem', b: 'ipsum'});
     });
   });
