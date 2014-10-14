@@ -2,27 +2,26 @@
 
 [![Build Status](https://travis-ci.org/nullobject/fkit.svg?branch=master)](https://travis-ci.org/nullobject/fkit)
 
-FKit is a [functional
-programming](http://en.wikipedia.org/wiki/Functional_programming) library for
-JavaScript. It provides a number of functions and classes, which are sharply
-focused on everyday utility, for working with strings, arrays, and objects.
-This provides developers with functional programming "building blocks" that
-they can use to write better, more expressive code.
+FKit (pronounced eff-kit) is a [functional
+programming](http://en.wikipedia.org/wiki/Functional_programming) toolkit for
+JavaScript. It provides many functions for solving common problems with
+functions, objects, arrays, and strings. It aims to provide reusable building
+blocks while maintaining a laser focus on everyday utility.
 
 Features:
 
 * Why reinvent the wheel? FKit provides many functions for solving common
   problems with functions, arrays, objects, and strings.
-* Most FKit functions are [curried](http://en.wikipedia.org/wiki/Currying) by
-  default, so you can [partially
-  apply](http://en.wikipedia.org/wiki/Partial_application) them whenever you
-  need to.
+* FKit treats both strings and arrays as *lists*, this means you can apply the
+  same list functions to both strings and arrays (e.g. `head`, `tail`, `map`,
+  `filter`, and `fold`).
+* Most FKit functions are already
+  [curried](http://en.wikipedia.org/wiki/Currying) by default, so you can
+  [partially apply](http://en.wikipedia.org/wiki/Partial_application) them
+  wherever you need to.
 * The ordering of arguments to FKit functions is carefully designed to be more
   natural, this makes them highly
   [composable](http://en.wikipedia.org/wiki/Function_composition).
-* FKit treats both strings and arrays as *lists*, this means you can apply the
-  same list functions to both strings and arrays (e.g. `map`, `filter`, and
-  `fold`).
 * It's very compact, roughly 3 KB when minified and gzipped!
 
 ## Documentation
@@ -36,17 +35,20 @@ Features:
 ## Examples
 
 ```js
+// Sum the numbers in a list.
+F.sum([1, 2, 3]); // 6
+
 // Stash a string.
 F.map(F.surround('{', '}'), 'hello'); // '{h}{e}{l}{l}{o}'
 
-// Add a list of numbers.
-F.fold(F.add, 0, [1, 2, 3]); // 6
+// Intersperse the numbers in a list with another number.
+F.intersperse(4, [1, 2, 3]); // [1, 4, 2, 4, 3]
 
-// Filter a list of numbers where n > 1 and n < 5.
-F.filter(
-  F.whereAll([F.gt(1), F.lt(5)]),
-  [1, 2, 3, 4, 5]
-); // [2, 3, 4]
+// Filter the numbers in a list where 1 < n < 5.
+[1, 2, 3, 4, 5].filter(F.whereAll([F.gt(1), F.lt(5)])); // [2, 3, 4]
+
+// Calculate the cartesian product of two lists.
+F.cartesian([1, 2], [3, 4]); // [[1, 3], [1, 4], [2, 3], [2, 4]]
 ```
 
 Check out some more examples:
@@ -72,7 +74,7 @@ Install the npm package:
 > npm install fkit
 ```
 
-Then require it in your code:
+Require it in your code:
 
 ```js
 var F = require('fkit');
