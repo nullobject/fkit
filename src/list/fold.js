@@ -193,7 +193,7 @@ self = module.exports = {
   /**
    * Returns the sum of the elements in the list of `as`.
    *
-   * @summary Calculates the sum the elements in a list.
+   * @summary Calculates the sum of the elements in a list.
    *
    * @example
    *   sum([1, 2, 3]); // 6
@@ -206,7 +206,7 @@ self = module.exports = {
   /**
    * Returns the product of the elements in the list of `as`.
    *
-   * @summary Calculates the product the elements in a list.
+   * @summary Calculates the product of the elements in a list.
    *
    * @example
    *   product([1, 2, 3]); // 6
