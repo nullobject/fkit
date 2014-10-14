@@ -1,3 +1,10 @@
+v0.10.0 / 2014-10-14
+====================
+
+  * Add .omit function.
+  * Change .pick to a curried function.
+  * Add .keys/.values functions.
+
 v0.9.0 / 2014-10-14
 ===================
 
