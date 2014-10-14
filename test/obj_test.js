@@ -11,7 +11,6 @@ function buildObject() {
   o.a = 'lorem';
   o.b = 'ipsum';
   o.c = 1;
-  o.d = 2;
 
   return o;
 }
@@ -23,7 +22,7 @@ describe('object', function() {
     var result = obj.copy(target, {b: 'dolor'}, {c: 0});
 
     it('should copy the properties of the given objects', function() {
-      expect(result).to.eql({a: 'lorem', b: 'dolor', c: 0, d: 2});
+      expect(result).to.eql({a: 'lorem', b: 'dolor', c: 0});
     });
 
     it('should not mutate the target object', function() {
@@ -40,7 +39,6 @@ describe('object', function() {
       expect(obj.get('a', target)).to.equal('lorem');
       expect(obj.get('b', target)).to.equal('ipsum');
       expect(obj.get('c', target)).to.equal(1);
-      expect(obj.get('d', target)).to.equal(2);
     });
   });
 
@@ -48,7 +46,7 @@ describe('object', function() {
     var result = obj.set('b', 'dolor', target);
 
     it('should set the given property', function() {
-      expect(result).to.eql({a: 'lorem', b: 'dolor', c: 1, d: 2});
+      expect(result).to.eql({a: 'lorem', b: 'dolor', c: 1});
     });
 
     it('should not mutate the target object', function() {
@@ -70,7 +68,7 @@ describe('object', function() {
   describe('#pairs', function() {
     it('should return the key value pairs', function() {
       var result = obj.pairs(target);
-      expect(result).to.eql([['a', 'lorem'], ['b', 'ipsum'], ['c', 1], ['d', 2]]);
+      expect(result).to.eql([['a', 'lorem'], ['b', 'ipsum'], ['c', 1]]);
     });
   });
 });

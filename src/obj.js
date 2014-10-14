@@ -14,11 +14,11 @@ var self;
  */
 self = module.exports = {
   /**
-   * All the properties of the `target` object will be copied to the new
-   * object (using the *same* prototype).
+   * Returns a copy of the objects in the list of `os`.
    *
-   * A list of `objects` may also be specified to override the properties of
-   * the `target` object.
+   * Properties with the same key will take precedence from right to left.
+   *
+   * The copy will have the *same* prototype as the *first* object in the list.
    *
    * @summary Creates a copy of an object.
    *
@@ -27,8 +27,7 @@ self = module.exports = {
    *   copy(person, {name: 'bob'}); // {name: 'bob', age: '20', city: 'Melbourne'}
    *
    * @function
-   * @param target A target object.
-   * @param objects A list of objects to be copied.
+   * @param os A list.
    * @returns A new object.
    */
   copy: fn.variadic(function(target, objects) {
@@ -36,6 +35,8 @@ self = module.exports = {
   }),
 
   /**
+   * Returns the property `k` of the object `o`.
+   *
    * @summary Gets a property of an object.
    *
    * @example
@@ -44,17 +45,17 @@ self = module.exports = {
    *
    * @curried
    * @function
-   * @param property A string representing the property name.
-   * @param target A target object.
-   * @returns A property value.
+   * @param k A string.
+   * @param o An object.
+   * @returns A value.
    */
   get: fn.curry(function(property, target) {
     return target[property];
   }),
 
   /**
-   * Creates a copy of the `target` object with the `property` set to
-   * the `value`.
+   * Returns a copy of the object `o` with the property `k` set to the value
+   * `v`.
    *
    * @summary Sets a property of an object.
    *
@@ -64,9 +65,9 @@ self = module.exports = {
    *
    * @curried
    * @function
-   * @param property A string representing the property name.
-   * @param value A property value.
-   * @param target A target object.
+   * @param k A string.
+   * @param v A value.
+   * @param o An object.
    * @returns A new object.
    */
   set: fn.curry(function(property, value, target) {
@@ -76,15 +77,18 @@ self = module.exports = {
   }),
 
   /**
-   * @summary Gets many properties of an object.
+   * Returns an object that contains only the properties of the object `o` from
+   * the list of `ks`.
+   *
+   * @summary Gets properties of an object.
    *
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
    *   pick(person, 'name', 'age'); // {name: 'jane', age: '20'}
    *
    * @function
-   * @param target A target object.
-   * @param properties A list of properties.
+   * @param o An object.
+   * @param ks A list.
    * @returns A new object.
    */
   pick: fn.variadic(function(target, properties) {
@@ -94,16 +98,15 @@ self = module.exports = {
   }),
 
   /**
-   * Returns a list that contains the key-value pairs for the `target` object.
+   * Returns a list of key-value pairs for the properties of the object `o`.
    *
-   * @summary Gets the key-value pairs for an object.
+   * @summary Gets the key-value pairs of an object.
    *
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   pick(person, 'name', 'age'); // {name: 'jane', age: '20'}
+   *   pairs(person); // [['name', 'jane'], ['age', '20'], ['city', 'Melbourne']]
    *
-   * @function
-   * @param target A target object.
+   * @param o An object.
    * @returns A new list.
    */
   pairs: function(target) {
