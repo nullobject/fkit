@@ -114,4 +114,38 @@ self = module.exports = {
       return [key, target[key]];
     });
   },
+
+  /**
+   * Returns a list of keys for the properties of the object `o`.
+   *
+   * @summary Gets the keys of an object.
+   *
+   * @example
+   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
+   *   keys(person); // ['name', 'age', 'city']
+   *
+   * @param o An object.
+   * @returns A new list.
+   */
+  keys: function(o) {
+    return Object.keys(o);
+  },
+
+  /**
+   * Returns a list of values for the properties of the object `o`.
+   *
+   * @summary Gets the values of an object.
+   *
+   * @example
+   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
+   *   values(person); // ['jane', '20', 'Melbourne']
+   *
+   * @param o An object.
+   * @returns A new list.
+   */
+  values: function(o) {
+    return Object.keys(o).map(function(k) {
+      return o[k];
+    });
+  },
 };

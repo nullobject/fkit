@@ -66,9 +66,23 @@ describe('object', function() {
   });
 
   describe('#pairs', function() {
-    it('should return the key value pairs', function() {
+    it('should return the key-value pairs of the given object', function() {
       var result = obj.pairs(target);
       expect(result).to.eql([['a', 'lorem'], ['b', 'ipsum'], ['c', 1]]);
+    });
+  });
+
+  describe('#keys', function() {
+    it('should return the keys of the given object', function() {
+      var result = obj.keys(target);
+      expect(result).to.eql(['a', 'b', 'c']);
+    });
+  });
+
+  describe('#values', function() {
+    it('should return the values of the given object', function() {
+      var result = obj.values(target);
+      expect(result).to.eql(['lorem', 'ipsum', 1]);
     });
   });
 });
