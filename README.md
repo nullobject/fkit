@@ -91,10 +91,10 @@ Install the bower component:
 
 ### Build
 
-Build FKit:
+Build the library:
 
 ```sh
-> make build
+> make production
 ```
 
 ### Test

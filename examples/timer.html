@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en-au">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Timer Example</title>
@@ -8,12 +8,12 @@
   <body>
     <script>
       function timer(next) {
-        setInterval(fkit.compose(next, Math.random), 100);
+        setInterval(F.compose(next, Math.random), 100);
       }
 
-      var sum = fkit.fold(fkit.add, 0),
-          s   = new fkit.Signal(timer).map(fkit.mul(+1)),
-          t   = new fkit.Signal(timer).map(fkit.mul(-1)),
+      var sum = F.fold(F.add, 0),
+          s   = new F.Signal(timer).map(F.mul(+1)),
+          t   = new F.Signal(timer).map(F.mul(-1)),
           u   = s.zip(t).map(sum);
 
       u.subscribe(console.log.bind(console));

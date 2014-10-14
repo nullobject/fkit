@@ -1,17 +1,34 @@
 <!DOCTYPE html>
-<html lang="en-au">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <title>Signal Example</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+    <style>
+      body { padding: 10px 0; }
+      .container { max-width: 730px; }
+    </style>
     <script src="../dist/fkit.js"></script>
     <script src="http://cdnjs.cloudflare.com/ajax/libs/superagent/0.15.7/superagent.min.js"></script>
   </head>
   <body>
-    <button id="more">More</button>
-    <button id="less">Less</button>
+    <div class="container">
+      <div class="jumbotron">
+        <h1>Signal Example</h1>
+        <p>This example makes use of the FKit <code>Signal</code> class to
+          handle user interaction and trigger AJAX requests.</p>
+        <p>It uses the random.org API to generate a number of random strings
+          every time the "more" or "less" button is clicked.</p>
+        <p>
+          <button type="button" class="btn btn-success" id="more">More</button>
+          <button type="button" class="btn btn-danger" id="less">Less</button>
+        </p>
+      </div>
 
-    <h1>Results</h1>
-    <ul id="results"></ul>
+      <h2>Results</h2>
+      <pre><code id="results"></code></pre>
+    </div>
 
     <script>
       var URL = 'http://www.random.org/strings/?num=@&len=8&digits=on&upperalpha=on&loweralpha=on&unique=on&format=plain&rnd=new';
@@ -21,11 +38,11 @@
       }
 
       function randomNumbers(count) {
-        return fkit.Signal
-          .fromCallback(doRequest)
-          .map(fkit.compose(splitOnNewline, fkit.get('text')));
+        return F.Signal
+          .fromCallback(request)
+          .map(F.compose(splitOnNewline, F.get('text')));
 
-        function doRequest(callback) {
+        function request(callback) {
           superagent
             .get(URL.replace('@', count))
             .set('X-Requested-With', null)
@@ -36,20 +53,16 @@
       function show(result) {
         document
           .getElementById('results')
-          .appendChild(
-            fkit.tap(function(li) {
-              li.appendChild(document.createTextNode(result.join(', ')));
-            }, document.createElement('li'))
-          );
+          .appendChild(document.createTextNode(result.join(', ') + '\n'));
       }
 
-      var more = fkit.Signal.fromEvent(document.getElementById('more'), 'click').map(fkit.const(1)),
-          less = fkit.Signal.fromEvent(document.getElementById('less'), 'click').map(fkit.const(-1));
+      var more = F.Signal.fromEvent(document.getElementById('more'), 'click').map(F.const(+1)),
+          less = F.Signal.fromEvent(document.getElementById('less'), 'click').map(F.const(-1));
 
       more
         .merge(less)
-        .scan(1, fkit.add)
-        .map(fkit.max(1))
+        .scan(1, F.add)
+        .map(F.max(1))
         .concatMap(randomNumbers)
         .subscribe(show);
     </script>
