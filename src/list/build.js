@@ -20,7 +20,7 @@ self = module.exports = {
    * @summary Creates a new array.
    *
    * @example
-   *   array(3); // [undefined, undefined, undefined]
+   *   F.array(3); // [undefined, undefined, undefined]
    *
    * @param n A number.
    * @returns A new array.
@@ -33,8 +33,8 @@ self = module.exports = {
    * @summary Creates a new ordered pair.
    *
    * @example
-   *   pair(1, 2); // [1, 2]
-   *   pair('a', 'b'); // ['a', 'b']
+   *   F.pair(1, 2); // [1, 2]
+   *   F.pair('a', 'b'); // ['a', 'b']
    *
    * @curried
    * @function
@@ -50,7 +50,7 @@ self = module.exports = {
    * @summary Creates a new array of numbers.
    *
    * @example
-   *   range(1, 3); // [1, 2, 3]
+   *   F.range(1, 3); // [1, 2, 3]
    *
    * @curried
    * @function
@@ -68,8 +68,8 @@ self = module.exports = {
    * @summary Creates a new list of values.
    *
    * @example
-   *   replicate(1, 3); // [1, 1, 1]
-   *   replicate('a', 3); // 'aaa'
+   *   F.replicate(1, 3); // [1, 1, 1]
+   *   F.replicate('a', 3); // 'aaa'
    *
    * @curried
    * @function

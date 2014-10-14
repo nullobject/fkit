@@ -20,8 +20,8 @@ self = module.exports = {
    * @summary Gets the prefix of a list.
    *
    * @example
-   *   take(2, [1, 2, 3]); // [1, 2]
-   *   take(2, 'foo'); // 'fo'
+   *   F.take(2, [1, 2, 3]); // [1, 2]
+   *   F.take(2, 'foo'); // 'fo'
    *
    * @curried
    * @function
@@ -44,8 +44,8 @@ self = module.exports = {
    * @summary Gets the suffix of a list.
    *
    * @example
-   *   drop(2, [1, 2, 3]); // [3]
-   *   drop(2, 'foo'); // 'o'
+   *   F.drop(2, [1, 2, 3]); // [3]
+   *   F.drop(2, 'foo'); // 'o'
    *
    * @curried
    * @function
@@ -69,11 +69,8 @@ self = module.exports = {
    * @summary Gets the prefix of a list using a predicate function.
    *
    * @example
-   *   function p(a) { return a < 3; }
-   *   takeWhile(p, [1, 2, 3]); // [1, 2]
-   *
-   *   function q(a) { return a !== 'o'; }
-   *   takeWhile(q, 'foo'); // 'f'
+   *   F.takeWhile(F.lt(3), [1, 2, 3]); // [1, 2]
+   *   F.takeWhile(F.neq(o), 'foo'); // 'f'
    *
    * @curried
    * @function
@@ -97,11 +94,8 @@ self = module.exports = {
    * @summary Gets the suffix of a list using a predicate function.
    *
    * @example
-   *   function p(a) { return a < 3; }
-   *   dropWhile(p, [1, 2, 3]); // [3]
-   *
-   *   function q(a) { return a !== 'o'; }
-   *   dropWhile(q, 'foo'); // 'oo'
+   *   F.dropWhile(F.lt(3), [1, 2, 3]); // [3]
+   *   F.dropWhile(F.neq(o), 'foo'); // 'oo'
    *
    * @curried
    * @function
@@ -129,8 +123,8 @@ self = module.exports = {
    * @summary Splits a list.
    *
    * @example
-   *   splitAt(1, [1, 2, 3]); // [[1], [2, 3]]
-   *   splitAt(1, 'foo'); // ['f', 'oo']
+   *   F.splitAt(1, [1, 2, 3]); // [[1], [2, 3]]
+   *   F.splitAt(1, 'foo'); // ['f', 'oo']
    *
    * @curried
    * @function
@@ -150,11 +144,8 @@ self = module.exports = {
    * @summary Splits a list using a predicate function.
    *
    * @example
-   *   function p(a) { return a < 3; }
-   *   span(p, [1, 2, 3]); // [[1, 2], [3]]
-   *
-   *   function q(a) { return a !== 'o'; }
-   *   span(q, 'foo'); // ['f', 'oo']
+   *   F.span(F.lt(3), [1, 2, 3]); // [[1, 2], [3]]
+   *   F.span(F.neq(o), 'foo'); // ['f', 'oo']
    *
    * @curried
    * @function
@@ -170,11 +161,14 @@ self = module.exports = {
    * Returns a list that contains the elements in the list of `as` grouped into
    * sublists of equal elements.
    *
+   * It is a special case of the `groupBy` function where the elements are
+   * compared using the strict equality `===` operator.
+   *
    * @summary Groups the elements in a list.
    *
    * @example
-   *   group([1, 2, 2, 3, 3, 3]); // [[1], [2, 2], [3, 3, 3]]
-   *   group('Mississippi'); // ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i']
+   *   F.group([1, 2, 2, 3, 3, 3]); // [[1], [2, 2], [3, 3, 3]]
+   *   F.group('Mississippi'); // ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i']
    *
    * @param as A list.
    * @returns A new list.

@@ -72,7 +72,7 @@ self = module.exports = {
    *
    * @example
    *   function sayHi(a) { return ['Hi', a, '!'].join(' '); }
-   *   apply(sayHi, 'Jane'); // Hi Jane!
+   *   F.apply(sayHi, 'Jane'); // Hi Jane!
    *
    * @curried
    * @function
@@ -89,7 +89,7 @@ self = module.exports = {
    *
    * @example
    *   function sayHi(a, b) { return ['Hi', a, b, '!'].join(' '); }
-   *   apply2(sayHi, 'Jane', 'Appleseed'); // Hi Jane Appleseed!
+   *   F.apply2(sayHi, 'Jane', 'Appleseed'); // Hi Jane Appleseed!
    *
    * @curried
    * @function
@@ -108,7 +108,7 @@ self = module.exports = {
    *
    * @example
    *   function sayHi(a, b, c) { return ['Hi', a, b, c, '!'].join(' '); }
-   *   apply3(sayHi, 'Ms', 'Jane', 'Appleseed'); // Hi Ms Jane Appleseed!
+   *   F.apply3(sayHi, 'Ms', 'Jane', 'Appleseed'); // Hi Ms Jane Appleseed!
    *
    * @curried
    * @function
@@ -129,7 +129,7 @@ self = module.exports = {
    *
    * @example
    *   function sayHi(a) { return ['Hi', a, '!'].join(' '); }
-   *   applyRight('Jane', sayHi); // Hi Jane!
+   *   F.applyRight('Jane', sayHi); // Hi Jane!
    *
    * @curried
    * @function
@@ -145,7 +145,7 @@ self = module.exports = {
    * @summary Composes a list of functions.
    *
    * @example
-   *   compose(f, g, h)(a); // f(g(h(a)))
+   *   F.compose(f, g, h)(a); // f(g(h(a)))
    *
    * @function
    * @param fs A list of functions.
@@ -166,7 +166,7 @@ self = module.exports = {
    *
    * @example
    *   function f(a, b) { ... }
-   *   var g = flip(f);
+   *   var g = F.flip(f);
    *   g(1, 2); // f(2, 1)
    *
    * @param f A function.
@@ -182,7 +182,7 @@ self = module.exports = {
    * @summary The identity function.
    *
    * @example
-   *   id(1); // 1
+   *   F.id(1); // 1
    *
    * @param a A value.
    * @returns The value `a`.
@@ -196,7 +196,7 @@ self = module.exports = {
    * @summary The constant function.
    *
    * @example
-   *   const(1)(2, 3); // 1
+   *   F.const(1)(2, 3); // 1
    *
    * @param c A value.
    * @returns A new function.
@@ -210,7 +210,7 @@ self = module.exports = {
    * @summary Converts a function to a curried function.
    *
    * @example
-   *   var add = curry(function(a, b) { return a + b; });
+   *   var add = F.curry(function(a, b) { return a + b; });
    *   add(1)(2); // 3
    *
    * @function
@@ -225,7 +225,7 @@ self = module.exports = {
    * @summary Converts a binary function to a function on pairs.
    *
    * @example
-   *   var add = uncurry(function(a, b) { return a + b; });
+   *   var add = F.uncurry(function(a, b) { return a + b; });
    *   add([1, 2]); // 3
    *
    * @function
@@ -264,7 +264,7 @@ self = module.exports = {
    *
    * @example
    *   function f(head, tail) { ... }
-   *   variadic(f)(1, 2, 3); // f(1, [2, 3])
+   *   F.variadic(f)(1, 2, 3); // f(1, [2, 3])
    *
    * @function
    * @param f A function.
@@ -280,7 +280,7 @@ self = module.exports = {
    *
    * @example
    *   function f(a) { console.log(a); }
-   *   tap(f)(1); // 1
+   *   F.tap(f)(1); // 1
    *
    * @curried
    * @function
@@ -324,9 +324,9 @@ self = module.exports = {
    * @summary Compares two values using natural ordering.
    *
    * @example
-   *   compare(1, 2); // -1
-   *   compare(2, 1); // 1
-   *   compare(2, 2); // 0
+   *   F.compare(1, 2); // -1
+   *   F.compare(2, 1); // 1
+   *   F.compare(2, 2); // 0
    *
    * @curried
    * @function

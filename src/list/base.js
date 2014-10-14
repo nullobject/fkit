@@ -54,8 +54,8 @@ self = module.exports = {
    * @summary Gets the length of a list.
    *
    * @example
-   *   length([1, 2, 3]); // 3
-   *   length('foo'); // 3
+   *   F.length([1, 2, 3]); // 3
+   *   F.length('foo'); // 3
    *
    * @param as A list.
    * @returns A number.
@@ -68,11 +68,11 @@ self = module.exports = {
    * @summary Determines if a list is empty.
    *
    * @example
-   *   empty([]); // true
-   *   empty([1, 2, 3]); // false
+   *   F.empty([]); // true
+   *   F.empty([1, 2, 3]); // false
    *
-   *   empty(''); // true
-   *   empty('foo'); // false
+   *   F.empty(''); // true
+   *   F.empty('foo'); // false
    *
    * @param as A list.
    * @returns A boolean value.
@@ -85,8 +85,8 @@ self = module.exports = {
    * @summary Appends a value to a list.
    *
    * @example
-   *   append(3, [1, 2]); // [1, 2, 3]
-   *   append('o', 'fo'); // 'foo'
+   *   F.append(3, [1, 2]); // [1, 2, 3]
+   *   F.append('o', 'fo'); // 'foo'
    *
    * @curried
    * @function
@@ -104,8 +104,8 @@ self = module.exports = {
    * @summary Prepends a value to a list.
    *
    * @example
-   *   prepend(1, [2, 3]); // [1, 2, 3]
-   *   prepend('f', 'oo'); // 'foo'
+   *   F.prepend(1, [2, 3]); // [1, 2, 3]
+   *   F.prepend('f', 'oo'); // 'foo'
    *
    * @curried
    * @function
@@ -121,8 +121,8 @@ self = module.exports = {
    * Surrounds the list of `cs` with the values `a` and `b`.
    *
    * @example
-   *   surround(0, 4, [1, 2, 3]); // [0, 1, 2, 3, 4]
-   *   surround('(', ')', 'foo'); // '(foo)'
+   *   F.surround(0, 4, [1, 2, 3]); // [0, 1, 2, 3, 4]
+   *   F.surround('(', ')', 'foo'); // '(foo)'
    *
    * @curried
    * @function
@@ -141,8 +141,8 @@ self = module.exports = {
    * @summary Gets the first element in a list.
    *
    * @example
-   *   head([1, 2, 3]); // 1
-   *   head('foo'); // 'f'
+   *   F.head([1, 2, 3]); // 1
+   *   F.head('foo'); // 'f'
    *
    * @param as A list.
    * @returns A value or `undefined` if the list is empty.
@@ -155,8 +155,8 @@ self = module.exports = {
    * @summary Gets the last element in a list.
    *
    * @example
-   *   last([1, 2, 3]); // 3
-   *   last('foo'); // 'o'
+   *   F.last([1, 2, 3]); // 3
+   *   F.last('foo'); // 'o'
    *
    * @param as A list.
    * @returns A value or `undefined` if the list is empty.
@@ -170,8 +170,8 @@ self = module.exports = {
    * @summary Gets the elements before the last element in a list.
    *
    * @example
-   *   init([1, 2, 3]); // [1, 2]
-   *   init('foo'); // 'fo'
+   *   F.init([1, 2, 3]); // [1, 2]
+   *   F.init('foo'); // 'fo'
    *
    * @param as A list.
    * @returns A new list.
@@ -185,8 +185,8 @@ self = module.exports = {
    * @summary Get the elements after the first element in a list.
    *
    * @example
-   *   tail([1, 2, 3]); // [2, 3]
-   *   tail('foo'); // 'oo'
+   *   F.tail([1, 2, 3]); // [2, 3]
+   *   F.tail('foo'); // 'oo'
    *
    * @param as A list.
    * @returns A new list.
@@ -199,8 +199,8 @@ self = module.exports = {
    * @summary Gets all initial segments of a list.
    *
    * @example
-   *   inits([1, 2, 3]); // [[], [1], [1, 2], [1, 2, 3]]
-   *   inits('foo'); // ['', 'f', 'fo', 'foo']
+   *   F.inits([1, 2, 3]); // [[], [1], [1, 2], [1, 2, 3]]
+   *   F.inits('foo'); // ['', 'f', 'fo', 'foo']
    *
    * @param as A list.
    * @returns A new list.
@@ -218,8 +218,8 @@ self = module.exports = {
    * @summary Gets all final segments of a list.
    *
    * @example
-   *   tails([1, 2, 3]); // [[1, 2, 3], [2, 3], [3], []]
-   *   tails('foo'); // ['foo', 'oo', 'o', '']
+   *   F.tails([1, 2, 3]); // [[1, 2, 3], [2, 3], [3], []]
+   *   F.tails('foo'); // ['foo', 'oo', 'o', '']
    *
    * @param as A list.
    * @returns A new list.

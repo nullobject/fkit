@@ -23,11 +23,11 @@ self = module.exports = {
    * @summary Determines if a value is present in a list.
    *
    * @example
-   *   elem(0, [1, 2, 3]); // false
-   *   elem(1, [1, 2, 3]); // true
+   *   F.elem(0, [1, 2, 3]); // false
+   *   F.elem(1, [1, 2, 3]); // true
    *
-   *   elem('a', 'foo'); // false
-   *   elem('o', 'foo'); // true
+   *   F.elem('a', 'foo'); // false
+   *   F.elem('o', 'foo'); // true
    *
    * @curried
    * @function
@@ -46,11 +46,11 @@ self = module.exports = {
    * @summary Gets the index of the first occurance of an element in a list.
    *
    * @example
-   *   elemIndex(0, [1, 2, 3]); // undefined
-   *   elemIndex(1, [1, 2, 3]); // 0
+   *   F.elemIndex(0, [1, 2, 3]); // undefined
+   *   F.elemIndex(1, [1, 2, 3]); // 0
    *
-   *   elemIndex('a', 'foo'); // undefined
-   *   elemIndex('o', 'foo'); // 1
+   *   F.elemIndex('a', 'foo'); // undefined
+   *   F.elemIndex('o', 'foo'); // 1
    *
    * @curried
    * @function
@@ -70,11 +70,11 @@ self = module.exports = {
    * @summary Gets the indices of all occurances of an element in a list.
    *
    * @example
-   *   elemIndices(0, [1, 2, 3]); // []
-   *   elemIndices(1, [1, 2, 3]); // [0]
+   *   F.elemIndices(0, [1, 2, 3]); // []
+   *   F.elemIndices(1, [1, 2, 3]); // [0]
    *
-   *   elemIndices('a', 'foo'); // []
-   *   elemIndices('o', 'foo'); // [1, 2]
+   *   F.elemIndices('a', 'foo'); // []
+   *   F.elemIndices('o', 'foo'); // [1, 2]
    *
    * @curried
    * @function
@@ -93,13 +93,11 @@ self = module.exports = {
    * @summary Finds an element in a list that satisfies a predicate function.
    *
    * @example
-   *   function p(a) { return a > 1; }
-   *   find(p, []); // undefined
-   *   find(p, [1, 2, 3]); // 2
+   *   F.find(F.gt(1), []); // undefined
+   *   F.find(F.gt(1), [1, 2, 3]); // 2
    *
-   *   function q(a) { return a === 'o'; }
-   *   find(q, ''); // undefined
-   *   find(q, 'foo'); // 'o'
+   *   F.find(F.eq('o'), ''); // undefined
+   *   F.find(F.eq('o'), 'foo'); // 'o'
    *
    * @curried
    * @function
@@ -119,13 +117,11 @@ self = module.exports = {
    * that satisfies a predicate function.
    *
    * @example
-   *   function p(a) { return a > 1; }
-   *   findIndex(p, []); // undefined
-   *   findIndex(p, [1, 2, 3]); // 1
+   *   F.findIndex(F.gt(1), []); // undefined
+   *   F.findIndex(F.gt(1), [1, 2, 3]); // 1
    *
-   *   function q(a) { return a === 'o'; }
-   *   findIndex(q, ''); // undefined
-   *   findIndex(q, 'foo'); // 1
+   *   F.findIndex(F.eq('o'), ''); // undefined
+   *   F.findIndex(F.eq('o'), 'foo'); // 1
    *
    * @curried
    * @function
@@ -149,13 +145,11 @@ self = module.exports = {
    * that satisfy a predicate function.
    *
    * @example
-   *   function p(a) { return a > 1; }
-   *   findIndices(p, []); // []
-   *   findIndices(p, [1, 2, 3]); // [1, 2]
+   *   F.findIndices(F.gt(1), []); // []
+   *   F.findIndices(F.gt(1), [1, 2, 3]); // [1, 2]
    *
-   *   function q(a) { return a === 'o'; }
-   *   findIndices(q, ''); // []
-   *   findIndices(q, 'foo'); // [1, 2]
+   *   F.findIndices(F.eq('o'), ''); // []
+   *   F.findIndices(F.eq('o'), 'foo'); // [1, 2]
    *
    * @curried
    * @function
@@ -179,11 +173,8 @@ self = module.exports = {
    * @summary Filters a list using a predicate function.
    *
    * @example
-   *   function p(a) { return a > 1; }
-   *   filter(p, [1, 2, 3]); // [2, 3]
-   *
-   *   function q(a) { return a === 'o'; }
-   *   filter(q, 'foo'); // 'oo'
+   *   F.filter(F.gt(1), [1, 2, 3]); // [2, 3]
+   *   F.filter(F.eq('o'), 'foo'); // 'oo'
    *
    * @curried
    * @function
@@ -206,11 +197,8 @@ self = module.exports = {
    * @summary Partitions a list using a predicate function.
    *
    * @example
-   *   function p(a) { return a > 1; }
-   *   partition(p, [1, 2, 3]); // [[2, 3], [1]]
-   *
-   *   function q(a) { return a === 'o'; }
-   *   partition(q, 'foo'); // ['oo', 'f']
+   *   F.partition(F.gt(1), [1, 2, 3]); // [[2, 3], [1]]
+   *   F.partition(F.eq('o'), 'foo'); // ['oo', 'f']
    *
    * @curried
    * @function
@@ -233,15 +221,13 @@ self = module.exports = {
    * function.
    *
    * @example
-   *   function p(a) { return a > 1; }
-   *   all(p, [1, 2, 3]); // false
-   *   all(p, [2, 3]); // true
-   *   all(p, [3]); // true
+   *   F.all(F.gt(1), [1, 2, 3]); // false
+   *   F.all(F.gt(1), [2, 3]); // true
+   *   F.all(F.gt(1), [3]); // true
    *
-   *   function q(a) { return a === 'o'; }
-   *   all(q, 'foo'); // false
-   *   all(q, 'oo'); // true
-   *   all(q, 'o'); // true
+   *   F.all(F.eq('o'), 'foo'); // false
+   *   F.all(F.eq('o'), 'oo'); // true
+   *   F.all(F.eq('o'), 'o'); // true
    *
    * @curried
    * @function
@@ -261,15 +247,13 @@ self = module.exports = {
    * function.
    *
    * @example
-   *   function p(a) { return a > 1; }
-   *   any(p, [1, 2, 3]); // true
-   *   any(p, [1, 2]); // true
-   *   any(p, [1]); // false
+   *   F.any(F.gt(1), [1, 2, 3]); // true
+   *   F.any(F.gt(1), [1, 2]); // true
+   *   F.any(F.gt(1), [1]); // false
    *
-   *   function q(a) { return a === 'o'; }
-   *   any(q, 'foo'); // true
-   *   any(q, 'fo'); // true
-   *   any(q, 'f'); // false
+   *   F.any(F.eq('o'), 'foo'); // true
+   *   F.any(F.eq('o'), 'fo'); // true
+   *   F.any(F.eq('o'), 'f'); // false
    *
    * @curried
    * @function
@@ -288,13 +272,13 @@ self = module.exports = {
    * @summary Determines if a list is a prefix of another list.
    *
    * @example
-   *   isPrefixOf([], [1, 2, 3]); // true
-   *   isPrefixOf([1, 2], [1, 2, 3]); // true
-   *   isPrefixOf([2, 3], [1, 2, 3]); // false
+   *   F.isPrefixOf([], [1, 2, 3]); // true
+   *   F.isPrefixOf([1, 2], [1, 2, 3]); // true
+   *   F.isPrefixOf([2, 3], [1, 2, 3]); // false
    *
-   *   isPrefixOf('', 'foo'); // true
-   *   isPrefixOf('fo', 'foo'); // true
-   *   isPrefixOf('oo', 'foo'); // false
+   *   F.isPrefixOf('', 'foo'); // true
+   *   F.isPrefixOf('fo', 'foo'); // true
+   *   F.isPrefixOf('oo', 'foo'); // false
    *
    * @curried
    * @function
@@ -319,13 +303,13 @@ self = module.exports = {
    * @summary Determines if a list is a suffix of another list.
    *
    * @example
-   *   isSuffixOf([], [1, 2, 3]); // true
-   *   isSuffixOf([1, 2], [1, 2, 3]); // false
-   *   isSuffixOf([2, 3], [1, 2, 3]); // true
+   *   F.isSuffixOf([], [1, 2, 3]); // true
+   *   F.isSuffixOf([1, 2], [1, 2, 3]); // false
+   *   F.isSuffixOf([2, 3], [1, 2, 3]); // true
    *
-   *   isSuffixOf('', 'foo'); // true
-   *   isSuffixOf('fo', 'foo'); // false
-   *   isSuffixOf('oo', 'foo'); // true
+   *   F.isSuffixOf('', 'foo'); // true
+   *   F.isSuffixOf('fo', 'foo'); // false
+   *   F.isSuffixOf('oo', 'foo'); // true
    *
    * @curried
    * @function
@@ -344,13 +328,13 @@ self = module.exports = {
    * @summary Determines if a list is contained within another list.
    *
    * @example
-   *   isInfixOf([], [1, 2, 3]); // true
-   *   isInfixOf([2, 3], [1, 2, 3]); // true
-   *   isInfixOf([3, 2], [1, 2, 3]); // false
+   *   F.isInfixOf([], [1, 2, 3]); // true
+   *   F.isInfixOf([2, 3], [1, 2, 3]); // true
+   *   F.isInfixOf([3, 2], [1, 2, 3]); // false
    *
-   *   isInfixOf('', 'foo'); // true
-   *   isInfixOf('oo', 'foo'); // true
-   *   isInfixOf('of', 'foo'); // false
+   *   F.isInfixOf('', 'foo'); // true
+   *   F.isInfixOf('oo', 'foo'); // true
+   *   F.isInfixOf('of', 'foo'); // false
    *
    * @curried
    * @function

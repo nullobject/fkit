@@ -36,11 +36,14 @@ self = module.exports = {
   /**
    * Returns the lists of `as` and `bs` zipped into a list of pairs.
    *
+   * It is a special case of the `zipWith` function where the elements are combined
+   * using the `F.pair` function.
+   *
    * @summary Zips two lists into list of pairs.
    *
    * @example
-   *   zip([1, 2, 3], [4, 5, 6]); // [[1, 4], [2, 5], [3, 6]]
-   *   zip('foo', 'bar'); // [['f', 'b'], ['o', 'a'], ['o', 'r']]
+   *   F.zip([1, 2, 3], [4, 5, 6]); // [[1, 4], [2, 5], [3, 6]]
+   *   F.zip('foo', 'bar'); // [['f', 'b'], ['o', 'a'], ['o', 'r']]
    *
    * @curried
    * @function
@@ -58,8 +61,8 @@ self = module.exports = {
    * @summary Unzips a list of pairs into a pair of lists.
    *
    * @example
-   *   unzip([[1, 4], [2, 5], [3, 6]]); // [[1, 2, 3], [4, 5, 6]]
-   *   unzip([['f', 'b'], ['o', 'a'], ['o', 'r']]); // ['foo', 'bar']
+   *   F.unzip([[1, 4], [2, 5], [3, 6]]); // [[1, 2, 3], [4, 5, 6]]
+   *   F.unzip([['f', 'b'], ['o', 'a'], ['o', 'r']]); // ['foo', 'bar']
    *
    * @param as A list.
    * @returns A new list.

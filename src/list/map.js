@@ -19,8 +19,8 @@ module.exports = {
    * @summary Maps a function over a list.
    *
    * @example
-   *   map(inc, [1, 2, 3]); // [2, 3, 4]
-   *   map(toUpper, 'foo'); // ['F', 'O', 'O']
+   *   F.map(F.inc, [1, 2, 3]); // [2, 3, 4]
+   *   F.map(F.toUpper, 'foo'); // ['F', 'O', 'O']
    *
    * @curried
    * @function
@@ -41,8 +41,8 @@ module.exports = {
    * @summary Reverses the elements in a list.
    *
    * @example
-   *   reverse([1, 2, 3]); // [3, 2, 1]
-   *   reverse('foo'); // 'oof'
+   *   F.reverse([1, 2, 3]); // [3, 2, 1]
+   *   F.reverse('foo'); // 'oof'
    *
    * @param as A list.
    * @returns A new list.
@@ -60,8 +60,8 @@ module.exports = {
    * @summary Intersperses the elements of a list with separator.
    *
    * @example
-   *   intersperse(4, [1, 2, 3]); // [1, 4, 2, 4, 3]
-   *   intersperse('-', 'foo'); // 'f-o-o'
+   *   F.intersperse(4, [1, 2, 3]); // [1, 4, 2, 4, 3]
+   *   F.intersperse('-', 'foo'); // 'f-o-o'
    *
    * @curried
    * @function

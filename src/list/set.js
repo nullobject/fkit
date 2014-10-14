@@ -20,11 +20,16 @@ self = module.exports = {
   /**
    * Returns a list with all duplicate elements removed from the list of `as`.
    *
+   * It is a special case of the `nubBy` function where the elements are
+   * compared using the strict equality `===` operator.
+   *
+   * The resulting list will only contain unique elements.
+   *
    * @summary Removes duplicate elements from a list.
    *
    * @example
-   *   nub([1, 2, 2, 3, 3, 3]); // [1, 2, 3]
-   *   nub('abbccc'); // 'abc'
+   *   F.nub([1, 2, 2, 3, 3, 3]); // [1, 2, 3]
+   *   F.nub('abbccc'); // 'abc'
    *
    * @param as A list.
    * @returns A new list.
@@ -64,8 +69,8 @@ self = module.exports = {
    * @summary Calculates the union of two lists.
    *
    * @example
-   *   union([1, 2, 3], [2, 3, 4]); // [1, 2, 3, 4]
-   *   union('hello', 'world'); // 'hellowrd'
+   *   F.union([1, 2, 3], [2, 3, 4]); // [1, 2, 3, 4]
+   *   F.union('hello', 'world'); // 'hellowrd'
    *
    * @curried
    * @function
@@ -89,8 +94,8 @@ self = module.exports = {
    * @summary Calculates the intersection of two lists.
    *
    * @example
-   *   intersect([1, 2, 3], [2, 3, 4]); // [2, 3]
-   *   intersect('hello', 'world'); // 'ol'
+   *   F.intersect([1, 2, 3], [2, 3, 4]); // [2, 3]
+   *   F.intersect('hello', 'world'); // 'ol'
    *
    * @curried
    * @function
@@ -111,8 +116,8 @@ self = module.exports = {
    * @summary Calculates the difference of two lists.
    *
    * @example
-   *   difference([1, 2, 3], [2, 3, 4]); // [1]
-   *   difference('hello', 'world'); // 'wrd'
+   *   F.difference([1, 2, 3], [2, 3, 4]); // [1]
+   *   F.difference('hello', 'world'); // 'wrd'
    *
    * @curried
    * @function
@@ -128,11 +133,14 @@ self = module.exports = {
    * Returns a list with the first occurance of the element `a` removed from
    * the list of `bs`.
    *
+   * It is a special case of the `removeBy` function where the elements are
+   * compared using the strict equality `===` operator.
+   *
    * @summary Removes the first occurance of an element from a list.
    *
    * @example
-   *   remove(2, [1, 2, 3]); // [1, 3]
-   *   remove('f', 'foo'); // 'oo'
+   *   F.remove(2, [1, 2, 3]); // [1, 3]
+   *   F.remove('f', 'foo'); // 'oo'
    *
    * @curried
    * @function
@@ -173,8 +181,8 @@ self = module.exports = {
    * @summary Calculates the cartesian product of two lists.
    *
    * @example
-   *   cartesian([1, 2], [3, 4]); // [[1, 3], [1, 4], [2, 3], [2, 4]]
-   *   cartesian('ab', 'cd'); // [['a', 'c'], ['a', 'd'], ['b', 'c'], ['b', 'd']]
+   *   F.cartesian([1, 2], [3, 4]); // [[1, 3], [1, 4], [2, 3], [2, 4]]
+   *   F.cartesian('ab', 'cd'); // [['a', 'c'], ['a', 'd'], ['b', 'c'], ['b', 'd']]
    *
    * @curried
    * @function

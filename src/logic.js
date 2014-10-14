@@ -58,7 +58,7 @@ self = module.exports = {
    * @example
    *   function big(a) { return a + ' is a big number'; }
    *   function small(a) { return a + ' is a small number'; }
-   *   var f = branch(fkit.gt(10), big, small);
+   *   var f = F.branch(F.gt(10), big, small);
    *   f(10); // small number
    *   f(11); // big number
    *
@@ -79,11 +79,10 @@ self = module.exports = {
    * their conjunction.
    *
    * @example
-   *   function p(a) { return a > 1; }
-   *   function q(a) { return a > 2; }
-   *   whereAll([p, q], 1); // false
-   *   whereAll([p, q], 2); // false
-   *   whereAll([p, q], 3); // true
+   *   var ps = [F.gt(1), F.gt(2)];
+   *   F.whereAll(ps, 1); // false
+   *   F.whereAll(ps, 2); // false
+   *   F.whereAll(ps, 3); // true
    *
    * @curried
    * @function
@@ -100,11 +99,10 @@ self = module.exports = {
    * their disjunction.
    *
    * @example
-   *   function p(a) { return a > 1; }
-   *   function q(a) { return a > 2; }
-   *   whereAny([p, q], 1); // false
-   *   whereAny([p, q], 2); // true
-   *   whereAny([p, q], 3); // true
+   *   var ps = [F.gt(1), F.gt(2)];
+   *   F.whereAny(ps, 1); // false
+   *   F.whereAny(ps, 2); // true
+   *   F.whereAny(ps, 3); // true
    *
    * @curried
    * @function

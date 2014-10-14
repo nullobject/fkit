@@ -33,8 +33,8 @@ module.exports = {
    * @summary Replaces a term in a string.
    *
    * @example
-   *   replace('r', 'z', 'bar'); // baz
-   *   replace(/$hello/, 'goodbye', 'hello world!'); // goodbye world!
+   *   F.replace('r', 'z', 'bar'); // baz
+   *   F.replace(/$hello/, 'goodbye', 'hello world!'); // goodbye world!
    *
    * @curried
    * @function
