@@ -1,3 +1,11 @@
+v0.9.0 / 2014-10-14
+===================
+
+  * Add .pairs function.
+  * Curry .flip function.
+  * Fix signal example.
+  * Documentation.
+
 v0.8.2 / 2014-10-08
 ===================
 
