@@ -160,8 +160,7 @@ self = module.exports = {
   }),
 
   /**
-   * Returns a function that flips the order of the arguments to the function
-   * `f`.
+   * Returns the result of applying the function `f` to the values `b` and `a`.
    *
    * @summary Flips the order of the arguments to a function.
    *
@@ -171,9 +170,11 @@ self = module.exports = {
    *   g(1, 2); // f(2, 1)
    *
    * @param f A function.
+   * @param a A value.
+   * @param b A value.
    * @returns A new function.
    */
-  flip: function(f) { return function(a, b) { return f(b, a); }; },
+  flip: curry(function(f, a, b) { return f(b, a); }),
 
   /**
    * Returns the value `a` unchanged.

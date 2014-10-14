@@ -118,7 +118,7 @@ describe('fn', function() {
     it('should flip the arguments for the given function', function() {
       function f(a, b) {}
       var spy = sinon.spy(f);
-      fn.flip(spy)('hello', 'world');
+      fn.flip(spy)('hello')('world');
       expect(spy.calledWithExactly('world', 'hello')).to.be.true;
     });
   });
