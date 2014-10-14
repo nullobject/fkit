@@ -30,8 +30,8 @@ self = module.exports = {
    * @param os A list.
    * @returns A new object.
    */
-  copy: fn.variadic(function(target, objects) {
-    return util.extend(new target.constructor(), [target].concat(objects));
+  copy: fn.variadic(function(o, ps) {
+    return util.extend(new o.constructor(), [o].concat(ps));
   }),
 
   /**
@@ -49,9 +49,7 @@ self = module.exports = {
    * @param o An object.
    * @returns A value.
    */
-  get: fn.curry(function(property, target) {
-    return target[property];
-  }),
+  get: fn.curry(function(k, o) { return o[k]; }),
 
   /**
    * Returns a copy of the object `o` with the property `k` set to the value
@@ -70,10 +68,10 @@ self = module.exports = {
    * @param o An object.
    * @returns A new object.
    */
-  set: fn.curry(function(property, value, target) {
-    var object = {};
-    object[property] = value;
-    return self.copy(target, object);
+  set: fn.curry(function(k, v, o) {
+    var p = {};
+    p[k] = v;
+    return self.copy(o, p);
   }),
 
   /**
@@ -91,9 +89,9 @@ self = module.exports = {
    * @param ks A list.
    * @returns A new object.
    */
-  pick: fn.variadic(function(target, properties) {
-    return properties.reduce(function(b, a) {
-      return self.set(a, self.get(a, target), b);
+  pick: fn.variadic(function(o, ks) {
+    return ks.reduce(function(p, k) {
+      return self.set(k, self.get(k, o), p);
     }, {});
   }),
 
@@ -109,9 +107,9 @@ self = module.exports = {
    * @param o An object.
    * @returns A new list.
    */
-  pairs: function(target) {
-    return Object.keys(target).map(function(key) {
-      return [key, target[key]];
+  pairs: function(o) {
+    return Object.keys(o).map(function(k) {
+      return [k, self.get(k, o)];
     });
   },
 
@@ -144,8 +142,8 @@ self = module.exports = {
    * @returns A new list.
    */
   values: function(o) {
-    return Object.keys(o).map(function(k) {
-      return o[k];
-    });
+    return Object
+      .keys(o)
+      .map(fn.flip(self.get)(o));
   },
 };
