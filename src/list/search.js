@@ -131,9 +131,11 @@ self = module.exports = {
    */
   findIndex: fn.curry(function(p, as) {
     var n = as.length;
+
     for (var i = 0; i < n; i++) {
       if (p(as[i])) { return i; }
     }
+
     return undefined;
   }),
 
@@ -160,9 +162,11 @@ self = module.exports = {
   findIndices: fn.curry(function(p, as) {
     var s = [],
         n = as.length;
+
     for (var i = 0; i < n; i++) {
       if (p(as[i])) { s.push(i); }
     }
+
     return s;
   }),
 
@@ -184,6 +188,7 @@ self = module.exports = {
    */
   filter: fn.curry(function(p, as) {
     var f = logic.branch(p, fn.id, fn.const(''));
+
     return (typeof as === 'string') ?
       fold.concatMap(f, as) :
       as.filter(p);

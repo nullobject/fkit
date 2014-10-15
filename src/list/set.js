@@ -52,11 +52,14 @@ self = module.exports = {
    * @returns A new list.
    */
   nubBy: fn.curry(function nubBy(f, as) {
-    var b   = base.head(as),
-        bss = base.tail(as);
+    var a = base.head(as);
+
     return base.empty(as) ?
       base.mempty(as) :
-      base.prepend(b, nubBy(f, search.filter(function(a) { return !f(a, b); }, bss)));
+      base.prepend(
+        a,
+        nubBy(f, search.filter(function(b) { return !f(a, b); }, base.tail(as)))
+      );
   }),
 
   /**
@@ -166,12 +169,13 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  removeBy: fn.curry(function removeBy(f, a, bs) {
-    var b   = base.head(bs),
-        bss = base.tail(bs);
-    return base.empty(bs) ?
-      base.mempty(bs) :
-      f(a, b) ? bss : base.prepend(b, removeBy(f, a, bss));
+  removeBy: fn.curry(function removeBy(f, a, bs_) {
+    var b  = base.head(bs_),
+        bs = base.tail(bs_);
+
+    return base.empty(bs_) ?
+      base.mempty(bs_) :
+      f(a, b) ? bs : base.prepend(b, removeBy(f, a, bs));
   }),
 
   /**
@@ -215,27 +219,27 @@ self = module.exports = {
   permutations: function permutations(as) {
     return base.prepend(as, permutations_(as, []));
 
-    function permutations_(bs, cs) {
-      var b   = base.head(bs),
-          bss = base.tail(bs);
+    function permutations_(bs_, cs) {
+      var b  = base.head(bs_),
+          bs = base.tail(bs_);
 
-      return base.empty(bs) ? [] :
+      return base.empty(bs_) ? [] :
         fold.foldRight(
           interleave,
-          permutations_(bss, base.prepend(b, cs)),
+          permutations_(bs, base.prepend(b, cs)),
           permutations(cs)
         );
 
       function interleave(ds, r) {
         return interleave_(fn.id, ds)[1];
 
-        function interleave_(f, es) {
-          if (base.empty(es)) {
-            return [bss, r];
+        function interleave_(f, es_) {
+          if (base.empty(es_)) {
+            return [bs, r];
           } else {
-            var e   = base.head(es),
-                ess = base.tail(es),
-                s   = interleave_(fn.compose(f, base.prepend(e)), ess);
+            var e  = base.head(es_),
+                es = base.tail(es_),
+                s  = interleave_(fn.compose(f, base.prepend(e)), es);
 
             return [
               base.prepend(e, s[0]),

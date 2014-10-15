@@ -32,9 +32,11 @@ self = module.exports = {
   take: fn.curry(function(n, as) {
     var s = base.mempty(as),
         m = as.length;
+
     for (var i = 0; i < Math.min(m, n); i++) {
       s = s.concat(as[i]);
     }
+
     return s;
   }),
 
@@ -56,9 +58,11 @@ self = module.exports = {
   drop: fn.curry(function(n, as) {
     var s = base.mempty(as),
         m = as.length;
+
     for (var i = n; i < m; i++) {
       s = s.concat(as[i]);
     }
+
     return s;
   }),
 
@@ -81,9 +85,11 @@ self = module.exports = {
   takeWhile: fn.curry(function(p, as) {
     var s = base.mempty(as),
         n = as.length;
+
     for (var i = 0; i < n && p(as[i]); i++) {
       s = s.concat(as[i]);
     }
+
     return s;
   }),
 
@@ -107,12 +113,15 @@ self = module.exports = {
     var s = base.mempty(as),
         m = as.length,
         n = 0;
+
     while (p(as[n]) && n < as.length) {
       n++;
     }
+
     for (var i = n; i < m; i++) {
       s = s.concat(as[i]);
     }
+
     return s;
   }),
 
@@ -190,6 +199,7 @@ self = module.exports = {
   groupBy: fn.curry(function groupBy(f, as) {
     var b  = base.head(as),
         bs = self.span(f(b), base.tail(as));
+
     return base.empty(as) ?
       [] :
       base.prepend(

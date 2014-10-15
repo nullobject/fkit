@@ -65,6 +65,7 @@ self = module.exports = {
       .toArray(as)
       .map(f)
       .concat(base.mempty(as));
+
     return concat(bs);
   }),
 
@@ -133,9 +134,11 @@ self = module.exports = {
    */
   scan: fn.curry(function(f, s, as) {
     var r = [s];
+
     self.fold(function(b, a) {
       return fn.tap(r.push.bind(r), f(b, a));
     }, s, as);
+
     return r;
   }),
 
@@ -158,9 +161,11 @@ self = module.exports = {
    */
   scanRight: fn.curry(function(f, s, as) {
     var r = [s];
+
     self.foldRight(function(a, b) {
       return fn.tap(r.unshift.bind(r), f(a, b));
     }, s, as);
+
     return r;
   }),
 

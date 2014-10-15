@@ -104,6 +104,7 @@ Signal.of = function(a) {
  */
 Signal.prototype.concatMap = function(f) {
   var env = this;
+
   return obj.copy(this, {
     subscribe: function(next, done) {
       env.subscribe(function(a) {
@@ -122,6 +123,7 @@ Signal.prototype.concatMap = function(f) {
  */
 Signal.prototype.map = function(f) {
   var env = this;
+
   return obj.copy(this, {
     subscribe: function(next, done) {
       env.subscribe(fn.compose(next, f), done);
@@ -139,6 +141,7 @@ Signal.prototype.map = function(f) {
  */
 Signal.prototype.filter = function(p) {
   var env = this;
+
   return obj.copy(this, {
     subscribe: function(next, done) {
       env.subscribe(function(a) {
@@ -159,6 +162,7 @@ Signal.prototype.filter = function(p) {
  */
 Signal.prototype.fold = function(a, f) {
   var env = this;
+
   return obj.copy(this, {
     subscribe: function(next, done) {
       env.subscribe(
@@ -186,6 +190,7 @@ Signal.prototype.fold = function(a, f) {
  */
 Signal.prototype.scan = function(a, f) {
   var env = this;
+
   return obj.copy(this, {
     subscribe: function(next, done) {
       next(a);
@@ -206,6 +211,7 @@ Signal.prototype.scan = function(a, f) {
  */
 Signal.prototype.merge = fn.variadic(function(ss) {
   var env = this;
+
   return obj.copy(this, {
     subscribe: function(next, done) {
       var count = 0;
@@ -259,6 +265,7 @@ Signal.prototype.split = function(n) {
         }
       );
     }
+
     isSubscribed = true;
   }
 };
