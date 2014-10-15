@@ -89,7 +89,7 @@ self = module.exports = {
    *
    * @example
    *   F.sample(2, [1, 2, 3]); // [3, 1]
-   *   F.sample(2, 'foo'); // ['o', 'f']
+   *   F.sample(2, 'foo'); // 'of'
    *
    * @curried
    * @function
