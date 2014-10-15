@@ -11,9 +11,7 @@ var util = require('./util');
  * @summary ALL THE THINGS!
  * @author Josh Bassett
  */
-module.exports = util.extend({
-  Signal: require('./signal')
-}, [
+module.exports = util.extend({}, [
   require('./fn'),
   require('./list'),
   require('./logic'),

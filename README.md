@@ -61,7 +61,6 @@ Check out some more examples:
 * [Arrays](http://codepen.io/nullobject/pen/vbcCr?editors=001)
 * [Objects](http://codepen.io/nullobject/pen/rKszh?editors=001)
 * [Branching](http://codepen.io/nullobject/pen/LdtDK?editors=001)
-* [Signals](http://codepen.io/nullobject/pen/zxJlv?editors=001)
 
 ## Download
 
