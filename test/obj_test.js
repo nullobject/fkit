@@ -43,18 +43,17 @@ describe('object', function() {
   });
 
   describe('#set', function() {
-    var result = obj.set('b', 'dolor', target);
-
     it('should set the given property', function() {
+      var result = obj.set('b', 'dolor', target);
       expect(result).to.eql({a: 'lorem', b: 'dolor', c: 1});
     });
+  });
 
-    it('should not mutate the target object', function() {
-      expect(target).to.eql(target);
-    });
-
-    it('should preserve the prototype of the target object', function() {
-      expect(result).to.be.instanceof(MyObject);
+  describe('#update', function() {
+    it('should update the given property', function() {
+      function f(a) { return a + 1; }
+      var result = obj.update('c', f, target);
+      expect(result).to.eql({a: 'lorem', b: 'ipsum', c: 2});
     });
   });
 

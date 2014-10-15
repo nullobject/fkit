@@ -76,6 +76,27 @@ self = module.exports = {
   }),
 
   /**
+   * Returns a copy of the object `o` with the property `k` updated with the
+   * function `f`.
+   *
+   * @summary Update a property of an object with a function.
+   *
+   * @example
+   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
+   *   F.update('age', F.inc, person); // {name: 'jane', age: 21, city: 'Melbourne'}
+   *
+   * @curried
+   * @function
+   * @param k A string.
+   * @param f A function.
+   * @param o An object.
+   * @returns A new object.
+   */
+  update: fn.curry(function(k, f, o) {
+    return self.set(k, f(self.get(k, o)), o);
+  }),
+
+  /**
    * Returns a copy of the object `o` *with* the properties in the list of
    * `ks`.
    *
