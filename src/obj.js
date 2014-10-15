@@ -79,7 +79,7 @@ self = module.exports = {
    * Returns a copy of the object `o` with the property `k` updated with the
    * function `f`.
    *
-   * @summary Update a property of an object with a function.
+   * @summary Updates a property of an object with a function.
    *
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
