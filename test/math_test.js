@@ -143,4 +143,16 @@ describe('math', function() {
       expect(math.dec(2)).to.equal(1);
     });
   });
+
+  describe('#randomInt', function() {
+    it('should return a random integer', function() {
+      expect(math.randomInt(1)(3)).to.be.within(1, 3);
+    });
+  });
+
+  describe('#randomFloat', function() {
+    it('should return a random float', function() {
+      expect(math.randomFloat(1)(3)).to.be.within(1, 3);
+    });
+  });
 });

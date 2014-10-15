@@ -214,4 +214,30 @@ module.exports = {
    * @returns A number.
    */
   dec: function(a) { return a - 1; },
+
+  /**
+   * Returns a random integer between `a` and `b`.
+   *
+   * @summary Generates a random integer.
+   *
+   * @param a A number.
+   * @param b A number.
+   * @returns A number.
+   */
+  randomInt: fn.curry(function(a, b) {
+    return Math.floor(Math.random() * (b - a + 1)) + a;
+  }),
+
+  /**
+   * Returns a random float between `a` and `b`.
+   *
+   * @summary Generates a random float.
+   *
+   * @param a A number.
+   * @param b A number.
+   * @returns A number.
+   */
+  randomFloat: fn.curry(function(a, b) {
+    return (Math.random() * (b - a)) + a;
+  }),
 };
