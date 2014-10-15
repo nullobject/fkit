@@ -1,3 +1,13 @@
+v0.11.0 / 2014-10-15
+====================
+
+  * Add .sample function.
+  * Add .randomInt/.randomFloat functions.
+  * Add .update function.
+  * Add .subsequences function.
+  * Add .permutations function.
+  * Documentation.
+
 v0.10.0 / 2014-10-14
 ====================
 
