@@ -49,6 +49,9 @@ F.intersperse(4, [1, 2, 3]); // [1, 4, 2, 4, 3]
 
 // Calculate the cartesian product of two lists.
 F.cartesian([1, 2], [3, 4]); // [[1, 3], [1, 4], [2, 3], [2, 4]]
+
+// Calculate the permutations of a list.
+F.permutations('abc'); // ['abc', 'bac', 'cba', 'bca', 'cab', 'acb']
 ```
 
 Check out some more examples:

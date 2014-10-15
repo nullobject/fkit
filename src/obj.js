@@ -25,7 +25,7 @@ self = module.exports = {
    *
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   F.copy(person, {name: 'bob'}); // {name: 'bob', age: '20', city: 'Melbourne'}
+   *   F.copy(person, {name: 'bob'}); // {name: 'bob', age: 20, city: 'Melbourne'}
    *
    * @function
    * @param os A list.
@@ -60,7 +60,7 @@ self = module.exports = {
    *
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   F.set('name', 'bob', person); // {name: 'bob', age: '20', city: 'Melbourne'}
+   *   F.set('name', 'bob', person); // {name: 'bob', age: 20, city: 'Melbourne'}
    *
    * @curried
    * @function
@@ -104,7 +104,7 @@ self = module.exports = {
    *
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   F.pick(['name', 'age'], person); // {name: 'jane', age: '20'}
+   *   F.pick(['name', 'age'], person); // {name: 'jane', age: 20}
    *
    * @curried
    * @function
@@ -149,7 +149,7 @@ self = module.exports = {
    *
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   F.pairs(person); // [['name', 'jane'], ['age', '20'], ['city', 'Melbourne']]
+   *   F.pairs(person); // [['name', 'jane'], ['age', 20], ['city', 'Melbourne']]
    *
    * @param o An object.
    * @returns A new list.
@@ -183,7 +183,7 @@ self = module.exports = {
    *
    * @example
    *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   F.values(person); // ['jane', '20', 'Melbourne']
+   *   F.values(person); // ['jane', 20, 'Melbourne']
    *
    * @param o An object.
    * @returns A new list.
