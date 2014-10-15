@@ -204,6 +204,37 @@ self = module.exports = {
   }),
 
   /**
+   * Returns a list that contains all the subsequences of the elements in the
+   * list of `as`.
+   *
+   * @summary Calculates the subsequences of a list.
+   *
+   * @example
+   *   F.subsequences([1, 2, 3]); // [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+   *   F.subsequences('abc'); // ['', 'a', 'b', 'ab', 'c', 'ac', 'bc', 'abc']
+   *
+   * @param as A list.
+   * @returns A new list.
+   */
+  subsequences: function(as) {
+    return base.prepend(base.mempty(as), subsequences_(as));
+
+    function subsequences_(bs) {
+      var b = base.head(bs);
+
+      if (base.empty(bs)) {
+        return [];
+      } else {
+        return base.prepend(base.pure(b), fold.foldRight(f, [], subsequences_(base.tail(bs))));
+      }
+
+      function f(ys, r) {
+        return fold.concat(base.pure(ys), base.pure(base.prepend(b, ys)), r);
+      }
+    }
+  },
+
+  /**
    * Returns a list that contains all the permutations of the elements in the
    * list of `as`.
    *
