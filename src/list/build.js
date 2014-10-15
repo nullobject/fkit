@@ -100,11 +100,8 @@ self = module.exports = {
   sample: fn.curry(function(n, as) {
     var m = as.length;
 
-    return self
-      .range(1, Math.min(m, n))
-      .map(function() {
-        var i = math.randomInt(0, m - 1);
-        return as[i];
-      });
+    return fold.concatMap(function() {
+      return as[math.randomInt(0, m - 1)];
+    }, self.range(1, Math.min(m, n)));
   }),
 };

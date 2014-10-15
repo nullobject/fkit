@@ -44,7 +44,7 @@ describe('list.build', function() {
 
     it('should handle strings', function() {
       expect(build.sample(2)('')).to.be.eql([]);
-      expect(['f', 'o', 'o']).to.include.members(build.sample(2)('foo'));
+      expect(['a', 'b', 'c']).to.include.members(build.sample(2)('abc').split(''));
     });
   });
 });
