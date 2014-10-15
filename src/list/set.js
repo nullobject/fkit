@@ -198,4 +198,52 @@ self = module.exports = {
         cartesian(base.tail(as), bs)
       );
   }),
+
+  /**
+   * Returns a list that contains all the permutations of the elements in the
+   * list of `as`.
+   *
+   * @summary Calculates the permutations of a list.
+   *
+   * @example
+   *   F.permutations([1, 2, 3]); // [[1, 2, 3], [2, 1, 3], [3, 2, 1], [2, 3, 1], [3, 1, 2], [1, 3, 2]]
+   *   F.permutations('abc'); // ['abc', 'bac', 'cba', 'bca', 'cab', 'acb']
+   *
+   * @param as A list.
+   * @returns A new list.
+   */
+  permutations: function permutations(as) {
+    return base.prepend(as, permutations_(as, []));
+
+    function permutations_(bs, cs) {
+      var b   = base.head(bs),
+          bss = base.tail(bs);
+
+      return base.empty(bs) ? [] :
+        fold.foldRight(
+          interleave,
+          permutations_(bss, base.prepend(b, cs)),
+          permutations(cs)
+        );
+
+      function interleave(ds, r) {
+        return interleave_(fn.id, ds)[1];
+
+        function interleave_(f, es) {
+          if (base.empty(es)) {
+            return [bss, r];
+          } else {
+            var e   = base.head(es),
+                ess = base.tail(es),
+                s   = interleave_(fn.compose(f, base.prepend(e)), ess);
+
+            return [
+              base.prepend(e, s[0]),
+              base.prepend(f(fold.concat(b, e, s[0])), s[1])
+            ];
+          }
+        }
+      }
+    }
+  },
 };

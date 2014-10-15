@@ -104,4 +104,14 @@ describe('list.set', function() {
       ]);
     });
   });
+
+  describe('#permutations', function() {
+    it('should handle arrays', function() {
+      expect(set.permutations([1, 2, 3])).to.be.eql([[1, 2, 3], [2, 1, 3], [3, 2, 1], [2, 3, 1], [3, 1, 2], [1, 3, 2]]);
+    });
+
+    it('should handle strings', function() {
+      expect(set.permutations('abc')).to.be.eql(['abc', 'bac', 'cba', 'bca', 'cab', 'acb']);
+    });
+  });
 });
