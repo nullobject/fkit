@@ -35,4 +35,16 @@ describe('list.build', function() {
       expect(build.replicate(3)('a')).to.eql('aaa');
     });
   });
+
+  describe('#sample', function() {
+    it('should handle arrays', function() {
+      expect(build.sample(2)([])).to.be.eql([]);
+      expect([1, 2, 3]).to.include.members(build.sample(2)([1, 2, 3]));
+    });
+
+    it('should handle strings', function() {
+      expect(build.sample(2)('')).to.be.eql([]);
+      expect(['f', 'o', 'o']).to.include.members(build.sample(2)('foo'));
+    });
+  });
 });

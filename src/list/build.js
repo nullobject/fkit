@@ -2,7 +2,8 @@
 
 var base = require('./base'),
     fn   = require('../fn'),
-    fold = require('./fold');
+    fold = require('./fold'),
+    math = require('../math');
 
 var self;
 
@@ -75,9 +76,35 @@ self = module.exports = {
    * @function
    * @param n A number.
    * @param a A value.
-   * @returns A new array.
+   * @returns A new list.
    */
   replicate: fn.curry(function(n, a) {
     return fold.concatMap(fn.const(base.pure(a)), self.array(n));
+  }),
+
+  /**
+   * Returns a list of `n` random elements from the list of `as`.
+   *
+   * @summary Samples random elements from a list.
+   *
+   * @example
+   *   F.sample(2, [1, 2, 3]); // [3, 1]
+   *   F.sample(2, 'foo'); // ['o', 'f']
+   *
+   * @curried
+   * @function
+   * @param n A number.
+   * @param a A list.
+   * @returns A new list.
+   */
+  sample: fn.curry(function(n, as) {
+    var m = as.length;
+
+    return self
+      .range(1, Math.min(m, n))
+      .map(function() {
+        var i = math.randomInt(0, m - 1);
+        return as[i];
+      });
   }),
 };
