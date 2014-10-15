@@ -1,3 +1,8 @@
+v0.11.1 / 2014-10-16
+====================
+
+  * Fix .sample to return a string when sampling a string.
+
 v0.11.0 / 2014-10-15
 ====================
 
