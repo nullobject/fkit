@@ -1,3 +1,13 @@
+v0.12.0 / 2014-10-16
+====================
+
+  * Remove signal class (this may be extracted into another library).
+  * Fix the .concatMap function.
+  * Add .shuffle function.
+  * Fix the .sample function.
+  * Update logo.
+  * Refactor tests.
+
 v0.11.1 / 2014-10-16
 ====================
 
