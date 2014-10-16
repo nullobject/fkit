@@ -5,7 +5,8 @@ var fn = require('../src/fn');
 describe('fn', function() {
   describe('#id', function() {
     it('should return a function that returns its argument', function() {
-      expect(fn.id(1)).to.equal(1);
+      var a = {};
+      expect(fn.id(a)).to.equal(a);
     });
   });
 

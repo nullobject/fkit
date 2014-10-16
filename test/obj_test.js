@@ -36,9 +36,9 @@ describe('object', function() {
 
   describe('#get', function() {
     it('should get the given property', function() {
-      expect(obj.get('a', target)).to.equal('lorem');
-      expect(obj.get('b', target)).to.equal('ipsum');
-      expect(obj.get('c', target)).to.equal(1);
+      expect(obj.get('a', target)).to.eql('lorem');
+      expect(obj.get('b', target)).to.eql('ipsum');
+      expect(obj.get('c', target)).to.eql(1);
     });
   });
 

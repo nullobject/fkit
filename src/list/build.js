@@ -126,7 +126,7 @@ self = module.exports = {
   }),
 
   /**
-   * Returns a list that contains the elements of the list of `as` randomly
+   * Returns a list that contains the elements in the list of `as` randomly
    * shuffled using the [Fisher-Yates
    * algorithm](http://en.wikipedia.org/wiki/Fisher-Yates_shuffle).
    *

@@ -188,10 +188,7 @@ self = module.exports = {
    */
   filter: fn.curry(function(p, as) {
     var f = logic.branch(p, fn.id, fn.const(''));
-
-    return (typeof as === 'string') ?
-      fold.concatMap(f, as) :
-      as.filter(p);
+    return base.isString(as) ? fold.concatMap(f, as) : as.filter(p);
   }),
 
   /**

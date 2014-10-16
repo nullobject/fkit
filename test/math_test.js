@@ -5,66 +5,66 @@ var math = require('../src/math');
 describe('math', function() {
   describe('#add', function() {
     it('should add the values', function() {
-      expect(math.add(2)(1)).to.equal(3);
+      expect(math.add(2)(1)).to.eql(3);
     });
   });
 
   describe('#sub', function() {
     it('should subtract the values', function() {
-      expect(math.sub(2)(1)).to.equal(-1);
+      expect(math.sub(2)(1)).to.eql(-1);
     });
   });
 
   describe('#mul', function() {
     it('should multiply the values', function() {
-      expect(math.mul(2)(1)).to.equal(2);
+      expect(math.mul(2)(1)).to.eql(2);
     });
   });
 
   describe('#div', function() {
     it('should divide the values', function() {
-      expect(math.div(2)(1)).to.equal(0.5);
+      expect(math.div(2)(1)).to.eql(0.5);
     });
   });
 
   describe('#mod', function() {
     it('should modulo the values', function() {
-      expect(math.mod(2)(1)).to.equal(1);
+      expect(math.mod(2)(1)).to.eql(1);
     });
   });
 
   describe('#max', function() {
     it('should handle numbers', function() {
-      expect(math.max(1)(2)).to.equal(2);
-      expect(math.max(2)(1)).to.equal(2);
-      expect(math.max(2)(2)).to.equal(2);
+      expect(math.max(1)(2)).to.eql(2);
+      expect(math.max(2)(1)).to.eql(2);
+      expect(math.max(2)(2)).to.eql(2);
     });
 
     it('should handle strings', function() {
-      expect(math.max('a')('b')).to.equal('b');
-      expect(math.max('b')('a')).to.equal('b');
-      expect(math.max('b')('b')).to.equal('b');
+      expect(math.max('a')('b')).to.eql('b');
+      expect(math.max('b')('a')).to.eql('b');
+      expect(math.max('b')('b')).to.eql('b');
     });
   });
 
   describe('#min', function() {
     it('should handle numbers', function() {
-      expect(math.min(1)(2)).to.equal(1);
-      expect(math.min(2)(1)).to.equal(1);
-      expect(math.min(2)(2)).to.equal(2);
+      expect(math.min(1)(2)).to.eql(1);
+      expect(math.min(2)(1)).to.eql(1);
+      expect(math.min(2)(2)).to.eql(2);
     });
 
     it('should handle strings', function() {
-      expect(math.min('a')('b')).to.equal('a');
-      expect(math.min('b')('a')).to.equal('a');
-      expect(math.min('b')('b')).to.equal('b');
+      expect(math.min('a')('b')).to.eql('a');
+      expect(math.min('b')('a')).to.eql('a');
+      expect(math.min('b')('b')).to.eql('b');
     });
   });
 
   describe('#negate', function() {
     it('should negate the value', function() {
-      expect(math.negate(1)).to.equal(-1);
-      expect(math.negate(-1)).to.equal(1);
+      expect(math.negate(1)).to.eql(-1);
+      expect(math.negate(-1)).to.eql(1);
     });
   });
 
@@ -132,15 +132,15 @@ describe('math', function() {
 
   describe('#inc', function() {
     it('should increment the value', function() {
-      expect(math.inc(1)).to.equal(2);
-      expect(math.inc(2)).to.equal(3);
+      expect(math.inc(1)).to.eql(2);
+      expect(math.inc(2)).to.eql(3);
     });
   });
 
   describe('#dec', function() {
     it('should decrement the value', function() {
-      expect(math.dec(3)).to.equal(2);
-      expect(math.dec(2)).to.equal(1);
+      expect(math.dec(3)).to.eql(2);
+      expect(math.dec(2)).to.eql(1);
     });
   });
 
