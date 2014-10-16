@@ -18,7 +18,18 @@ self = module.exports = {
    * @private
    */
   isString: function(as) {
-    return typeof as === 'string' || (as.length > 0 && as.reduce(function(a, b) { return a && (typeof b === 'string'); }, true));
+    return (typeof as === 'string');
+  },
+
+  /**
+   * Returns true if the list of `as` is an array of strings, false otherwise.
+   *
+   * @private
+   */
+  isArrayOfStrings: function(as) {
+    return Array.isArray(as) &&
+      as.length > 0 &&
+      as.reduce(function(a, b) { return a && self.isString(b); }, true);
   },
 
   /**
@@ -27,7 +38,7 @@ self = module.exports = {
    * @private
    */
   mempty: function(as) {
-    return self.isString(as) ? '' : [];
+    return self.isString(as) || self.isArrayOfStrings(as) ? '' : [];
   },
 
   /**
@@ -36,7 +47,7 @@ self = module.exports = {
    * @private
    */
   pure: function(a) {
-    return self.isString(a) ? a : [a];
+    return self.isString(a) || self.isArrayOfStrings(a) ? a : [a];
   },
 
   /**
@@ -45,7 +56,7 @@ self = module.exports = {
    * @private
    */
   toArray: function(as) {
-    return (typeof as === 'string') ? as.split('') : as;
+    return self.isString(as) ? as.split('') : as;
   },
 
   /**
@@ -95,7 +106,7 @@ self = module.exports = {
    * @returns A new list.
    */
   append: fn.curry(function(a, bs) {
-    return (typeof bs === 'string') ? (bs + a) : bs.concat([a]);
+    return self.isString(bs) ? (bs + a) : bs.concat([a]);
   }),
 
   /**
@@ -114,7 +125,7 @@ self = module.exports = {
    * @returns A new list.
    */
   prepend: fn.curry(function(a, bs) {
-    return (typeof bs === 'string') ? (a + bs) : [a].concat(bs);
+    return self.isString(bs) ? (a + bs) : [a].concat(bs);
   }),
 
   /**
