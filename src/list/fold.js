@@ -6,12 +6,6 @@ var base = require('./base'),
 
 var self;
 
-function concat(as) {
-  return base
-    .toArray(fn.flatten(as))
-    .reduce(fn.flip(base.append), base.mempty(as));
-}
-
 /**
  * This module defines fold operations on lists.
  *
@@ -21,10 +15,39 @@ function concat(as) {
  */
 self = module.exports = {
   /**
-   * Returns a list that contains the elements in the list of `as` concatenated
-   * together.
+   * Flattens any strings in the list of `as`.
    *
-   * @summary Concatenates two or more lists.
+   * @private
+   */
+  flattenStrings: function flattenStrings(as) {
+    if (base.isArrayOfStrings(as)) {
+      return self.concat(as);
+    } else {
+      if (Array.isArray(as)) {
+        return as.map(flattenStrings);
+      } else {
+        return as;
+      }
+    }
+  },
+
+  /**
+   * Returns a list that contains the elements in the list of `as` concatenated
+   * with the starting value `s`.
+   *
+   * @private
+   */
+  concatWith: fn.curry(function(s, as) {
+    return base
+      .toArray(fn.flatten(as))
+      .reduce(fn.flip(base.append), s);
+  }),
+
+  /**
+   * Returns a list that contains the concatenated elements in the list of
+   * `as`.
+   *
+   * @summary Concatenates lists.
    *
    * @example
    *   F.concat([1], [2, 3], [4, 5, 6]); // [1, 2, 3, 4, 5, 6]
@@ -34,7 +57,9 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  concat: fn.variadic(concat),
+  concat: fn.variadic(function(as) {
+    return self.concatWith(base.mempty(as), as);
+  }),
 
   /**
    * Returns a list that contains the elements in the list of `as` mapped with
@@ -48,7 +73,7 @@ self = module.exports = {
    *   }, [1, 2, 3]); // [1, 0, 2, 0, 3, 0]
    *
    *   F.concatMap(function(a) {
-   *     return a + '-';
+   *     return [a, '-'];
    *   }, 'foo'); // 'f-o-o-'
    *
    * @curried
@@ -58,15 +83,10 @@ self = module.exports = {
    * @returns A new list.
    */
   concatMap: fn.curry(function(f, as) {
-    // Map the function over the elements in the list and concatenate the
-    // result with an empty list. We need to include an empty list so that the
-    // kind of the original list is not lost when we do the concatenation step.
-    var bs = base
-      .toArray(as)
-      .map(f)
-      .concat(base.mempty(as));
+    var bs = base.toArray(as).map(fn.compose(self.flattenStrings, f)),
+        cs = bs.length > 0 ? bs : as;
 
-    return concat(bs);
+    return self.concatWith(base.mempty(cs), bs);
   }),
 
   /**
