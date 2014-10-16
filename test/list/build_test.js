@@ -82,11 +82,35 @@ describe('list.build', function() {
       expect(['a', 'b', 'c']).to.include.members(result.split(''));
     });
   });
+
+  describe('#shuffle', function() {
+    it('should handle an empty array', function() {
+      expect(build.shuffle([])).to.eql([]);
     });
 
-    it('should handle strings', function() {
-      expect(build.sample(2)('')).to.be.eql([]);
-      expect(['a', 'b', 'c']).to.include.members(build.sample(2)('abc').split(''));
+    it('should handle an empty string', function() {
+      expect(build.shuffle('')).to.eql('');
+    });
+
+    it('should handle an array of numbers', function() {
+      var result = build.shuffle([1, 2, 3]);
+      expect(result).to.be.a('array');
+      expect(result.length).to.eql(3);
+      expect([1, 2, 3]).to.include.members(result);
+    });
+
+    it('should handle an array of strings', function() {
+      var result = build.shuffle(['a', 'b', 'c']);
+      expect(result).to.be.a('array');
+      expect(result.length).to.eql(3);
+      expect(['a', 'b', 'c']).to.include.members(result);
+    });
+
+    it('should handle a string', function() {
+      var result = build.shuffle('abc');
+      expect(result).to.be.a('string');
+      expect(result.length).to.eql(3);
+      expect(['a', 'b', 'c']).to.include.members(result.split(''));
     });
   });
 });

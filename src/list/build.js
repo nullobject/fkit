@@ -124,4 +124,38 @@ self = module.exports = {
       return as[math.randomInt(0, m - 1)];
     }
   }),
+
+  /**
+   * Returns a list that contains the elements of the list of `as` randomly
+   * shuffled using the [Fisher-Yates
+   * algorithm](http://en.wikipedia.org/wiki/Fisher-Yates_shuffle).
+   *
+   * @summary Shuffles a list.
+   *
+   * @example
+   *   F.shuffle([1, 2, 3]); // [2, 3, 1]
+   *   F.shuffle('abc'); // 'bca'
+   *
+   * @curried
+   * @function
+   * @param a A list.
+   * @returns A new list.
+   */
+  shuffle: function(as) {
+    var i  = -1,
+        r  = self.array(as.length),
+        bs = fold.fold(f, r, as),
+        s  = base.isString(as) ? '' : [];
+
+    return fold.concatWith(s, bs);
+
+    function f(b, a) {
+      var j = math.randomInt(0, ++i);
+
+      b[i] = b[j];
+      b[j] = a;
+
+      return b;
+    }
+  },
 };
