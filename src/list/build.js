@@ -3,6 +3,7 @@
 var base = require('./base'),
     fn   = require('../fn'),
     fold = require('./fold'),
+    map = require('./map'),
     math = require('../math');
 
 var self;
@@ -27,6 +28,19 @@ self = module.exports = {
    * @returns A new array.
    */
   array: function(n) { return Array.apply(null, Array(n)); },
+
+  /**
+   * Returns an string of length `n`.
+   *
+   * @summary Creates a new string.
+   *
+   * @example
+   *   F.string(3); // '   '
+   *
+   * @param n A number.
+   * @returns A new string.
+   */
+  string: function(n) { return self.array(n + 1).join(' '); },
 
   /**
    * Returns an ordered pair with the values `a` and `b`.
@@ -66,11 +80,11 @@ self = module.exports = {
   /**
    * Returns a list of length `n` with `a` the value of every element.
    *
-   * @summary Creates a new list of values.
+   * @summary Replicates a value.
    *
    * @example
-   *   F.replicate(1, 3); // [1, 1, 1]
-   *   F.replicate('a', 3); // 'aaa'
+   *   F.replicate(3, 1); // [1, 1, 1]
+   *   F.replicate(3, 'a'); // 'aaa'
    *
    * @curried
    * @function
@@ -79,17 +93,18 @@ self = module.exports = {
    * @returns A new list.
    */
   replicate: fn.curry(function(n, a) {
-    return fold.concatMap(fn.const(base.pure(a)), self.array(n));
+    var as = base.isString(a) ? self.string(n) : self.array(n);
+    return fold.concatMap(function() { return [a]; }, as);
   }),
 
   /**
-   * Returns a list of `n` random elements from the list of `as`.
+   * Returns a list of `n` elements randomly sampled from the list of `as`.
    *
    * @summary Samples random elements from a list.
    *
    * @example
    *   F.sample(2, [1, 2, 3]); // [3, 1]
-   *   F.sample(2, 'foo'); // 'of'
+   *   F.sample(2, 'abc'); // 'ca'
    *
    * @curried
    * @function
@@ -98,10 +113,15 @@ self = module.exports = {
    * @returns A new list.
    */
   sample: fn.curry(function(n, as) {
-    var m = as.length;
+    var m  = as.length,
+        r  = self.array(Math.min(m, n)),
+        bs = map.map(f, r),
+        s  = base.isString(as) ? '' : [];
 
-    return fold.concatMap(function() {
+    return fold.concatWith(s, bs);
+
+    function f() {
       return as[math.randomInt(0, m - 1)];
-    }, self.range(1, Math.min(m, n)));
+    }
   }),
 };
