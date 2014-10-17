@@ -6,6 +6,16 @@ describe('list.zip', function() {
   describe('#zipWith', function() {
     function f(a, b) { return a + b; }
 
+    it('should handle an empty array', function() {
+      expect(zip.zipWith(f)([1, 2, 3])([])).to.eql([]);
+      expect(zip.zipWith(f)([])([3, 4, 5])).to.eql([]);
+    });
+
+    it('should handle an empty string', function() {
+      expect(zip.zipWith(f)('foo')('')).to.eql([]);
+      expect(zip.zipWith(f)('')('bar')).to.eql([]);
+    });
+
     it('should handle an array', function() {
       expect(zip.zipWith(f)([1, 2, 3])([4, 5, 6])).to.eql([5, 7, 9]);
       expect(zip.zipWith(f)([1, 2, 3])([4, 5])).to.eql([5, 7]);
@@ -20,6 +30,16 @@ describe('list.zip', function() {
   });
 
   describe('#zip', function() {
+    it('should handle an empty array', function() {
+      expect(zip.zip([1, 2, 3])([])).to.eql([]);
+      expect(zip.zip([])([3, 4, 5])).to.eql([]);
+    });
+
+    it('should handle an empty string', function() {
+      expect(zip.zip('foo')('')).to.eql([]);
+      expect(zip.zip('')('bar')).to.eql([]);
+    });
+
     it('should handle an array', function() {
       expect(zip.zip([1, 2, 3])([4, 5, 6])).to.eql([[1, 4], [2, 5], [3, 6]]);
       expect(zip.zip([1, 2, 3])([4, 5])).to.eql([[1, 4], [2, 5]]);
@@ -34,11 +54,15 @@ describe('list.zip', function() {
   });
 
   describe('#unzip', function() {
-    it('should handle an array', function() {
+    it('should handle an empty array', function() {
+      expect(zip.unzip([])).to.eql([[], []]);
+    });
+
+    it('should handle an array of numbers', function() {
       expect(zip.unzip([[1, 4], [2, 5], [3, 6]])).to.eql([[1, 2, 3], [4, 5, 6]]);
     });
 
-    it('should handle a string', function() {
+    it('should handle an array of string', function() {
       expect(zip.unzip([['f', 'b'], ['o', 'a'], ['o', 'r']])).to.eql(['foo', 'bar']);
     });
   });

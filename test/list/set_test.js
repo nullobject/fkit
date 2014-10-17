@@ -4,20 +4,35 @@ var set = require('../../src/list/set');
 
 describe('list.set', function() {
   describe('#nub', function() {
-    it('should handle an array', function() {
+    it('should handle an empty array', function() {
       expect(set.nub([])).to.eql([]);
+    });
+
+    it('should handle an empty string', function() {
+      expect(set.nub('')).to.eql('');
+    });
+
+    it('should handle an array', function() {
       expect(set.nub([1, 2, 2, 3, 3, 3])).to.eql([1, 2, 3]);
     });
 
     it('should handle a string', function() {
-      expect(set.nub('')).to.eql('');
       expect(set.nub('abbccc')).to.eql('abc');
     });
   });
 
   describe('#union', function() {
-    it('should handle an array', function() {
+    it('should handle an empty array', function() {
       expect(set.union([1, 2, 3])([])).to.eql([1, 2, 3]);
+      expect(set.union([])([1, 2, 3])).to.eql([1, 2, 3]);
+    });
+
+    it('should handle an empty string', function() {
+      expect(set.union('abc')('')).to.eql('abc');
+      expect(set.union('')('abc')).to.eql('abc');
+    });
+
+    it('should handle an array', function() {
       expect(set.union([1, 2, 3])([1, 2, 3])).to.eql([1, 2, 3]);
       expect(set.union([1, 2, 3])([2, 3, 4])).to.eql([1, 2, 3, 4]);
       expect(set.union([1, 2, 3])([4, 5, 6])).to.eql([1, 2, 3, 4, 5, 6]);
@@ -25,7 +40,6 @@ describe('list.set', function() {
     });
 
     it('should handle a string', function() {
-      expect(set.union('abc')('')).to.eql('abc');
       expect(set.union('abc')('abc')).to.eql('abc');
       expect(set.union('abc')('bcd')).to.eql('abcd');
       expect(set.union('abc')('def')).to.eql('abcdef');
@@ -34,8 +48,17 @@ describe('list.set', function() {
   });
 
   describe('#intersect', function() {
-    it('should handle an array', function() {
+    it('should handle an empty array', function() {
       expect(set.intersect([1, 2, 3])([])).to.eql([]);
+      expect(set.intersect([])([1, 2, 3])).to.eql([]);
+    });
+
+    it('should handle an empty string', function() {
+      expect(set.intersect('abc')('')).to.eql('');
+      expect(set.intersect('')('abc')).to.eql('');
+    });
+
+    it('should handle an array', function() {
       expect(set.intersect([1, 2, 3])([1, 2, 3])).to.eql([1, 2, 3]);
       expect(set.intersect([1, 2, 3])([2, 3, 4])).to.eql([2, 3]);
       expect(set.intersect([1, 2, 3])([4, 5, 6])).to.eql([]);
@@ -43,7 +66,6 @@ describe('list.set', function() {
     });
 
     it('should handle a string', function() {
-      expect(set.intersect('abc')('')).to.eql('');
       expect(set.intersect('abc')('abc')).to.eql('abc');
       expect(set.intersect('abc')('bcd')).to.eql('bc');
       expect(set.intersect('abc')('def')).to.eql('');
@@ -52,8 +74,17 @@ describe('list.set', function() {
   });
 
   describe('#difference', function() {
-    it('should handle an array', function() {
+    it('should handle an empty array', function() {
       expect(set.difference([1, 2, 3])([])).to.eql([1, 2, 3]);
+      expect(set.difference([])([1, 2, 3])).to.eql([]);
+    });
+
+    it('should handle an empty string', function() {
+      expect(set.difference('abc')('')).to.eql('abc');
+      expect(set.difference('')('abc')).to.eql('');
+    });
+
+    it('should handle an array', function() {
       expect(set.difference([1, 2, 3])([1, 2, 3])).to.eql([]);
       expect(set.difference([1, 2, 3])([2, 3, 4])).to.eql([1]);
       expect(set.difference([1, 2, 3])([4, 5, 6])).to.eql([1, 2, 3]);
@@ -61,7 +92,6 @@ describe('list.set', function() {
     });
 
     it('should handle a string', function() {
-      expect(set.difference('abc')('')).to.eql('abc');
       expect(set.difference('abc')('abc')).to.eql('');
       expect(set.difference('abc')('bcd')).to.eql('a');
       expect(set.difference('abc')('def')).to.eql('abc');
@@ -70,8 +100,15 @@ describe('list.set', function() {
   });
 
   describe('#remove', function() {
-    it('should handle an array', function() {
+    it('should handle an empty array', function() {
       expect(set.remove(1)([])).to.eql([]);
+    });
+
+    it('should handle an empty string', function() {
+      expect(set.remove('a')('')).to.eql('');
+    });
+
+    it('should handle an array', function() {
       expect(set.remove(1)([1, 2, 3])).to.eql([2, 3]);
       expect(set.remove(2)([1, 2, 3])).to.eql([1, 3]);
       expect(set.remove(3)([1, 2, 3])).to.eql([1, 2]);
@@ -79,7 +116,6 @@ describe('list.set', function() {
     });
 
     it('should handle a string', function() {
-      expect(set.remove('a')('')).to.eql('');
       expect(set.remove('a')('abc')).to.eql('bc');
       expect(set.remove('b')('abc')).to.eql('ac');
       expect(set.remove('c')('abc')).to.eql('ab');
@@ -88,6 +124,16 @@ describe('list.set', function() {
   });
 
   describe('#cartesian', function() {
+    it('should handle an empty array', function() {
+      expect(set.cartesian([1, 2, 3])([])).to.eql([]);
+      expect(set.cartesian([])([4, 5, 6])).to.eql([]);
+    });
+
+    it('should handle an empty string', function() {
+      expect(set.cartesian('foo')('')).to.eql([]);
+      expect(set.cartesian('')('bar')).to.eql([]);
+    });
+
     it('should handle an array', function() {
       expect(set.cartesian([1, 2, 3])([4, 5, 6])).to.eql([
         [1, 4], [1, 5], [1, 6],
@@ -106,25 +152,37 @@ describe('list.set', function() {
   });
 
   describe('#subsequences', function() {
-    it('should handle an array', function() {
+    it('should handle an empty array', function() {
       expect(set.subsequences([])).to.eql([[]]);
+    });
+
+    it('should handle an empty string', function() {
+      expect(set.subsequences('')).to.eql(['']);
+    });
+
+    it('should handle an array', function() {
       expect(set.subsequences([1, 2, 3])).to.eql([[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]);
     });
 
     it('should handle a string', function() {
-      expect(set.subsequences('')).to.eql(['']);
       expect(set.subsequences('abc')).to.eql(['', 'a', 'b', 'ab', 'c', 'ac', 'bc', 'abc']);
     });
   });
 
   describe('#permutations', function() {
-    it('should handle an array', function() {
+    it('should handle an empty array', function() {
       expect(set.permutations([])).to.eql([[]]);
+    });
+
+    it('should handle an empty string', function() {
+      expect(set.permutations('')).to.eql(['']);
+    });
+
+    it('should handle an array', function() {
       expect(set.permutations([1, 2, 3])).to.eql([[1, 2, 3], [2, 1, 3], [3, 2, 1], [2, 3, 1], [3, 1, 2], [1, 3, 2]]);
     });
 
     it('should handle a string', function() {
-      expect(set.permutations('')).to.eql(['']);
       expect(set.permutations('abc')).to.eql(['abc', 'bac', 'cba', 'bca', 'cab', 'acb']);
     });
   });
