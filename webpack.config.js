@@ -1,11 +1,4 @@
-var webpack = require('webpack');
-
-plugins = [
-  new webpack.DefinePlugin({
-    DEVELOPMENT: process.env.NODE_ENV === 'development' || true,
-    PRODUCTION:  process.env.NODE_ENV === 'production' || false
-  })
-];
+var DefinePlugin = require('webpack').DefinePlugin;
 
 module.exports = {
   entry: {
@@ -17,5 +10,10 @@ module.exports = {
     library:       'fkit = F',
     libraryTarget: 'var'
   },
-  plugins: plugins
+  plugins: [
+    new DefinePlugin({
+      DEVELOPMENT: process.env.NODE_ENV === 'development' || true,
+      PRODUCTION:  process.env.NODE_ENV === 'production' || false
+    })
+  ]
 };
