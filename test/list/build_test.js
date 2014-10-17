@@ -41,14 +41,14 @@ describe('list.build', function() {
       expect(build.replicate(3)([1])).to.eql([[1], [1], [1]]);
     });
 
-    it('should handle a string', function() {
-      expect(build.replicate(0)('a')).to.eql('');
-      expect(build.replicate(3)('a')).to.eql('aaa');
-    });
-
     it('should handle an array of strings', function() {
       expect(build.replicate(0)(['a'])).to.eql([]);
       expect(build.replicate(3)(['a'])).to.eql(['a', 'a', 'a']);
+    });
+
+    it('should handle a string', function() {
+      expect(build.replicate(0)('a')).to.eql('');
+      expect(build.replicate(3)('a')).to.eql('aaa');
     });
   });
 

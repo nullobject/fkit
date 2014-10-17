@@ -1,10 +1,10 @@
 'use strict';
 
-var base = require('./base'),
-    fn   = require('../fn'),
-    fold = require('./fold'),
-    map = require('./map'),
-    math = require('../math');
+var base    = require('./base'),
+    fn      = require('../fn'),
+    fold    = require('./fold'),
+    math    = require('../math'),
+    sublist = require('./sublist');
 
 var self;
 
@@ -113,16 +113,7 @@ self = module.exports = {
    * @returns A new list.
    */
   sample: fn.curry(function(n, as) {
-    var m  = as.length,
-        r  = self.array(Math.min(m, n)),
-        bs = map.map(f, r),
-        s  = base.isString(as) ? '' : [];
-
-    return fold.concatWith(s, bs);
-
-    function f() {
-      return as[math.randomInt(0, m - 1)];
-    }
+    return sublist.take(n, self.shuffle(as));
   }),
 
   /**
