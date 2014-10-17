@@ -30,7 +30,7 @@ self = module.exports = {
    * @returns A new list.
    */
   take: fn.curry(function(n, as) {
-    var s = base.mempty(as),
+    var s = base.isString(as) ? '' : [],
         m = as.length;
 
     for (var i = 0; i < Math.min(m, n); i++) {
@@ -56,7 +56,7 @@ self = module.exports = {
    * @returns A new list.
    */
   drop: fn.curry(function(n, as) {
-    var s = base.mempty(as),
+    var s = base.isString(as) ? '' : [],
         m = as.length;
 
     for (var i = n; i < m; i++) {
@@ -83,7 +83,7 @@ self = module.exports = {
    * @returns A new list.
    */
   takeWhile: fn.curry(function(p, as) {
-    var s = base.mempty(as),
+    var s = base.isString(as) ? '' : [],
         n = as.length;
 
     for (var i = 0; i < n && p(as[i]); i++) {
@@ -110,7 +110,7 @@ self = module.exports = {
    * @returns A new list.
    */
   dropWhile: fn.curry(function(p, as) {
-    var s = base.mempty(as),
+    var s = base.isString(as) ? '' : [],
         m = as.length,
         n = 0;
 
