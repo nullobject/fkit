@@ -2,5 +2,5 @@
   "expr": true,
   "newcap": false,
   "node": true,
-  "predef": ["context", "describe", "it", "expect", "sinon", "beforeEach", "DEVELOPMENT", "PRODUCTION"]
+  "predef": ["context", "describe", "it", "expect", "sinon", "beforeEach", "afterEach", "DEVELOPMENT", "PRODUCTION"]
 }
