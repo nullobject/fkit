@@ -60,6 +60,15 @@ self = module.exports = {
   },
 
   /**
+   * Converts the list of `as` to a list of type `t`.
+   *
+   * @private
+   */
+  toList: function(as, t) {
+    return t === 'string' ? as.join('') : as;
+  },
+
+  /**
    * Returns the number of elements in the list of `as`.
    *
    * @summary Gets the length of a list.
