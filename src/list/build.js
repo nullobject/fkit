@@ -109,7 +109,7 @@ self = module.exports = {
    * @curried
    * @function
    * @param n A number.
-   * @param a A list.
+   * @param as A list.
    * @returns A new list.
    */
   sample: fn.curry(function(n, as) {
@@ -129,7 +129,7 @@ self = module.exports = {
    *
    * @curried
    * @function
-   * @param a A list.
+   * @param as A list.
    * @returns A new list.
    */
   shuffle: function(as) {
