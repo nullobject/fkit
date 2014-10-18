@@ -1,3 +1,11 @@
+v0.13.0 / 2014-10-19
+====================
+
+  * Add .sort/.sortBy functions.
+  * Fix .sample to duplicate elements.
+  * Fix .drop/.take to work with list of strings.
+  * Remove signal examples.
+
 v0.12.0 / 2014-10-16
 ====================
 
