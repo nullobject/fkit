@@ -9,7 +9,6 @@
   "opts": {
     "destination": "doc",
     "recurse": true,
-    "template": "jsdoc-react",
-    "tutorials": "examples"
+    "template": "jsdoc-react"
   }
 }
