@@ -20,6 +20,7 @@ var util = require('./util');
  * @mixes module:fkit/list/map
  * @mixes module:fkit/list/search
  * @mixes module:fkit/list/set
+ * @mixes module:fkit/list/sort
  * @mixes module:fkit/list/sublist
  * @mixes module:fkit/list/zip
  * @author Josh Bassett
@@ -31,6 +32,7 @@ module.exports = util.extend({}, [
   require('./list/map'),
   require('./list/search'),
   require('./list/set'),
+  require('./list/sort'),
   require('./list/sublist'),
   require('./list/zip'),
 ]);
