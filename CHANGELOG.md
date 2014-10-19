@@ -1,3 +1,9 @@
+v0.13.1 / 2014-10-19
+====================
+
+  * Fix an issue where the sort function weren't included in the fkit module.
+  * Don't include examples in API docs.
+
 v0.13.0 / 2014-10-19
 ====================
 
