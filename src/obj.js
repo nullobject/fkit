@@ -15,6 +15,72 @@ var self;
  */
 self = module.exports = {
   /**
+   * Returns the result of the method `k` of object `o` applied to the value
+   * `a`.
+   *
+   * @summary Applies a function to a method.
+   *
+   * @example
+   *   var person = {sayHi: function(a) { return ['Hi', a, '!'].join(' '); }};
+   *   F.applyMethod(sayHi, 'Jane', person); // Hi Jane!
+   *
+   * @curried
+   * @function
+   * @param k A string.
+   * @param a A value.
+   * @param o An object.
+   * @returns A value.
+   */
+  applyMethod: fn.curry(function(k, a, o) {
+    return o[k](a);
+  }),
+
+  /**
+   * Returns the result of the method `k` of object `o` applied to the values
+   * `a` and `b`.
+   *
+   * @summary Applies a function to a method.
+   *
+   * @example
+   *   var person = {sayHi: function(a, b) { return ['Hi', a, b, '!'].join(' '); }};
+   *   F.applyMethod2(sayHi, 'Jane', 'Appleseed', person); // Hi Jane Appleseed!
+   *
+   * @curried
+   * @function
+   * @param k A string.
+   * @param a A value.
+   * @param b A value.
+   * @param o An object.
+   * @returns A value.
+   */
+  applyMethod2: fn.curry(function(k, a, b, o) {
+    return o[k](a, b);
+  }),
+
+  /**
+   * Returns the result of the method `k` of object `o` applied to the values
+   * `a`, `b`, and `c`.
+   *
+   * @summary Applies a function to a method.
+   *
+   * @example
+   *   var person = {sayHi: function(a, b, c) { return ['Hi', a, b, c, '!'].join(' '); }};
+   *   F.applyMethod3(sayHi, 'Ms', 'Jane', 'Appleseed', person); // Hi Ms Jane Appleseed!
+   *
+   * @curried
+   * @function
+   * @param k A string.
+   * @param a A value.
+   * @param b A value.
+   * @param c A value.
+   * @param o An object.
+   * @returns A value.
+   */
+  applyMethod3: fn.curry(function(k, a, b, c, o) {
+    return o[k](a, b, c);
+  }),
+
+  /**
    * Returns a copy of the objects in the list of `os`.
    *
    * Properties with the same key will take precedence from right to left.
