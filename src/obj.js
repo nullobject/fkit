@@ -18,7 +18,7 @@ self = module.exports = {
    * Returns the result of the method `k` of object `o` applied to the value
    * `a`.
    *
-   * @summary Applies a function to a method.
+   * @summary Applies a method to a method.
    *
    * @example
    *   var person = {sayHi: function(a) { return ['Hi', a, '!'].join(' '); }};
@@ -39,7 +39,7 @@ self = module.exports = {
    * Returns the result of the method `k` of object `o` applied to the values
    * `a` and `b`.
    *
-   * @summary Applies a function to a method.
+   * @summary Applies a method to two values.
    *
    * @example
    *   var person = {sayHi: function(a, b) { return ['Hi', a, b, '!'].join(' '); }};
@@ -61,7 +61,7 @@ self = module.exports = {
    * Returns the result of the method `k` of object `o` applied to the values
    * `a`, `b`, and `c`.
    *
-   * @summary Applies a function to a method.
+   * @summary Applies a method to three values.
    *
    * @example
    *   var person = {sayHi: function(a, b, c) { return ['Hi', a, b, c, '!'].join(' '); }};
