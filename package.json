@@ -33,8 +33,8 @@
     "jsdoc": "^3.3.0-alpha9",
     "jsdoc-react": "^0.2.0",
     "jshint": "^2.5.5",
-    "mocha": "^1.21.4",
-    "sinon": "^1.10.3",
+    "mocha": "^2.0.1",
+    "sinon": "^1.11.0",
     "sinon-chai": "^2.5.0",
     "webpack": "^1.4.3"
   }
