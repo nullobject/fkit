@@ -1,3 +1,10 @@
+v0.15.0 / 2014-10-28
+====================
+
+  * Add .getIn function to obj.
+  * Documentation.
+  * Cleanups.
+
 v0.14.0 / 2014-10-23
 ====================
 
