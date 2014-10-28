@@ -90,8 +90,8 @@ self = module.exports = {
    * @summary Creates a copy of an object.
    *
    * @example
-   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   F.copy(person, {name: 'bob'}); // {name: 'bob', age: 20, city: 'Melbourne'}
+   *   var person = {name: 'Jane', age: 20, city: 'Melbourne'};
+   *   F.copy(person, {name: 'Steve'}); // {name: 'Steve', age: 20, city: 'Melbourne'}
    *
    * @function
    * @param os A list.
@@ -102,13 +102,13 @@ self = module.exports = {
   }),
 
   /**
-   * Returns the property `k` of the object `o`.
+   * Returns the property at the key `k` in the object `o`.
    *
    * @summary Gets a property of an object.
    *
    * @example
-   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   F.get('name', person); // 'jane'
+   *   var person = {name: 'Jane', age: 20, city: 'Melbourne'};
+   *   F.get('name', person); // 'Jane'
    *
    * @curried
    * @function
@@ -125,8 +125,8 @@ self = module.exports = {
    * @summary Sets a property of an object.
    *
    * @example
-   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   F.set('name', 'bob', person); // {name: 'bob', age: 20, city: 'Melbourne'}
+   *   var person = {name: 'Jane', age: 20, city: 'Melbourne'};
+   *   F.set('name', 'Steve', person); // {name: 'Steve', age: 20, city: 'Melbourne'}
    *
    * @curried
    * @function
@@ -148,8 +148,8 @@ self = module.exports = {
    * @summary Updates a property of an object with a function.
    *
    * @example
-   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   F.update('age', F.inc, person); // {name: 'jane', age: 21, city: 'Melbourne'}
+   *   var person = {name: 'Jane', age: 20, city: 'Melbourne'};
+   *   F.update('age', F.inc, person); // {name: 'Jane', age: 21, city: 'Melbourne'}
    *
    * @curried
    * @function
@@ -169,13 +169,13 @@ self = module.exports = {
    * @summary Picks properties of an object.
    *
    * @example
-   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   F.pick(['name', 'age'], person); // {name: 'jane', age: 20}
+   *   var person = {name: 'Jane', age: 20, city: 'Melbourne'};
+   *   F.pick(['name', 'age'], person); // {name: 'Jane', age: 20}
    *
    * @curried
    * @function
-   * @param o An object.
    * @param ks A list.
+   * @param o An object.
    * @returns A new object.
    */
   pick: fn.curry(function(ks, o) {
@@ -191,13 +191,13 @@ self = module.exports = {
    * @summary Omits properties of an object.
    *
    * @example
-   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
+   *   var person = {name: 'Jane', age: 20, city: 'Melbourne'};
    *   F.omit(['name', 'age'], person); // {city: 'Melbourne'}
    *
    * @curried
    * @function
-   * @param o An object.
    * @param ks A list.
+   * @param o An object.
    * @returns A new object.
    */
   omit: fn.curry(function(ks, o) {
@@ -214,8 +214,8 @@ self = module.exports = {
    * @summary Gets the key-value pairs of an object.
    *
    * @example
-   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   F.pairs(person); // [['name', 'jane'], ['age', 20], ['city', 'Melbourne']]
+   *   var person = {name: 'Jane', age: 20, city: 'Melbourne'};
+   *   F.pairs(person); // [['name', 'Jane'], ['age', 20], ['city', 'Melbourne']]
    *
    * @param o An object.
    * @returns A new list.
@@ -232,7 +232,7 @@ self = module.exports = {
    * @summary Gets the keys of an object.
    *
    * @example
-   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
+   *   var person = {name: 'Jane', age: 20, city: 'Melbourne'};
    *   F.keys(person); // ['name', 'age', 'city']
    *
    * @param o An object.
@@ -248,8 +248,8 @@ self = module.exports = {
    * @summary Gets the values of an object.
    *
    * @example
-   *   var person = {name: 'jane', age: 20, city: 'Melbourne'};
-   *   F.values(person); // ['jane', 20, 'Melbourne']
+   *   var person = {name: 'Jane', age: 20, city: 'Melbourne'};
+   *   F.values(person); // ['Jane', 20, 'Melbourne']
    *
    * @param o An object.
    * @returns A new list.
