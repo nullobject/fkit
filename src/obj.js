@@ -119,6 +119,27 @@ self = module.exports = {
   get: fn.curry(function(k, o) { return o[k]; }),
 
   /**
+   * Returns the property at the key path `ks` in the object `o`.
+   *
+   * @summary Gets a property of an object using a key path.
+   *
+   * @example
+   *   var person = {name: 'Jane', age: 20, address: {city: 'Melbourne', country: 'Australia'}};
+   *   F.getIn(['address', 'city'], person); // 'Melbourne'
+   *
+   * @curried
+   * @function
+   * @param ks A list.
+   * @param o An object.
+   * @returns A value.
+   */
+  getIn: fn.curry(function(ks, o) {
+    return ks.reduce(function(a, b) {
+      return (a !== undefined) ? a[b] : undefined;
+    }, o);
+  }),
+
+  /**
    * Returns a copy of the object `o` with the property `k` set to the value
    * `v`.
    *

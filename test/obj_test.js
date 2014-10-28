@@ -75,12 +75,19 @@ describe('object', function() {
   });
 
   describe('#get', function() {
-    it('should get the given property', function() {
+    it('should return the property at the given key', function() {
       expect(obj.get('name')(target)).to.eql('Jane');
       expect(obj.get('age')(target)).to.eql(20);
       expect(obj.get('address')(target)).to.eql({city: 'Melbourne', country: 'Australia'});
       expect(obj.get('hello')(target)).to.eql(spy);
       expect(obj.get('foo')(target)).to.be.undefined;
+    });
+  });
+
+  describe('#getIn', function() {
+    it('should return the property at the given key path', function() {
+      expect(obj.getIn(['address', 'city'])(target)).to.eql('Melbourne');
+      expect(obj.getIn(['foo', 'bar'])(target)).to.be.undefined;
     });
   });
 
