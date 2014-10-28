@@ -17,7 +17,7 @@ self = module.exports = {
   /**
    * Returns a list that contains the elements in the list of `as` sorted.
    *
-   * @summary Sorts a list using.
+   * @summary Sorts a list using natural ordering.
    *
    * @example
    *   F.sort([2, 3, 1]); // [1, 2, 3]
