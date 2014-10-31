@@ -169,6 +169,7 @@ self = module.exports = {
    *   var g = F.flip(f);
    *   g(1, 2); // f(2, 1)
    *
+   * @function
    * @param f A function.
    * @param a A value.
    * @param b A value.
