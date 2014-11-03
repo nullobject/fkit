@@ -58,7 +58,7 @@ var self;
  * @author Josh Bassett
  */
 self = module.exports = {
-  /*
+  /**
    * Flattens the list of `as`.
    *
    * @private
