@@ -1,3 +1,12 @@
+v0.16.0 / 2014-11-17
+====================
+
+  * Curry the sortBy function.
+  * Add minimum/maximumBy functions.
+  * Shrinkwrap dependencies.
+  * Exclude CNAME in rsync.
+  * Fix documentation for .flip function.
+
 v0.15.0 / 2014-10-28
 ====================
 
