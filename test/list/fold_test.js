@@ -159,6 +159,30 @@ describe('list.fold', function() {
     });
   });
 
+  describe('#maximumBy', function() {
+    function f(a, b) { return a > b; }
+
+    it('should handle an array of numbers', function() {
+      expect(fold.maximumBy(f)([1, 2, 3])).to.eql(3);
+    });
+
+    it('should handle a string', function() {
+      expect(fold.maximumBy(f)('foo')).to.eql('o');
+    });
+  });
+
+  describe('#minimumBy', function() {
+    function f(a, b) { return a < b; }
+
+    it('should handle an array of numbers', function() {
+      expect(fold.minimumBy(f)([1, 2, 3])).to.eql(1);
+    });
+
+    it('should handle a string', function() {
+      expect(fold.minimumBy(f)('foo')).to.eql('f');
+    });
+  });
+
   describe('#sum', function() {
     it('should handle an array of numbers', function() {
       expect(fold.sum([1, 2, 3])).to.eql(6);

@@ -218,6 +218,43 @@ self = module.exports = {
   minimum: function(as) { return self.fold(math.min, as[0], as); },
 
   /**
+   * Returns the maximum value in the list of `as` using the comparator
+   * function `c`.
+   *
+   * @summary Calculates the maximum value of a list using a comparator.
+   *
+   * @curried
+   * @function
+   * @param c A comparator function.
+   * @param as A list.
+   * @returns A value.
+   */
+  maximumBy: fn.curry(function(c, as) {
+    return self.fold(function(a, b) {
+      return c(a, b) ? a : b;
+    }, as[0], as);
+  }),
+
+  /**
+   * Returns the minimum value in the list of `as` using the comparator
+   * function `c`.
+   *
+   * @summary Calculates the minimum value of a list using a comparator
+   * function.
+   *
+   * @curried
+   * @function
+   * @param c A comparator function.
+   * @param as A list.
+   * @returns A value.
+   */
+  minimumBy: fn.curry(function(c, as) {
+    return self.fold(function(a, b) {
+      return c(a, b) ? a : b;
+    }, as[0], as);
+  }),
+
+  /**
    * Returns the sum of the elements in the list of `as`.
    *
    * @summary Calculates the sum of the elements in a list.
