@@ -25,11 +25,11 @@ describe('list.sort', function() {
     }
 
     it('should handle an array of numbers', function() {
-      expect(sort.sortBy(c, [2, 3, 1])).to.eql([3, 2, 1]);
+      expect(sort.sortBy(c)([2, 3, 1])).to.eql([3, 2, 1]);
     });
 
     it('should handle a string', function() {
-      expect(sort.sortBy(c, 'bca')).to.eql('cba');
+      expect(sort.sortBy(c)('bca')).to.eql('cba');
     });
   });
 });
