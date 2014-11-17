@@ -44,8 +44,8 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  sortBy: function(c, as) {
+  sortBy: fn.curry(function(c, as) {
     var bs = base.toArray(as.slice(0));
     return base.toList(bs.sort(c), typeof as);
-  },
+  }),
 };
