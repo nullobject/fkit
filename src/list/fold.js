@@ -231,7 +231,7 @@ self = module.exports = {
    */
   maximumBy: fn.curry(function(c, as) {
     return self.fold(function(a, b) {
-      return c(a, b) ? a : b;
+      return c(a, b) > 0? a : b;
     }, as[0], as);
   }),
 
@@ -250,7 +250,7 @@ self = module.exports = {
    */
   minimumBy: fn.curry(function(c, as) {
     return self.fold(function(a, b) {
-      return c(a, b) ? a : b;
+      return c(a, b) < 0 ? a : b;
     }, as[0], as);
   }),
 

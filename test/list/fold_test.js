@@ -1,6 +1,8 @@
 'use strict';
 
-var fold = require('../../src/list/fold');
+var fn   = require('../../src/fn'),
+    fold = require('../../src/list/fold');
+
 
 describe('list.fold', function() {
   describe('#flattenStrings', function() {
@@ -160,7 +162,7 @@ describe('list.fold', function() {
   });
 
   describe('#maximumBy', function() {
-    function f(a, b) { return a > b; }
+    var f = fn.compare;
 
     it('should handle an array of numbers', function() {
       expect(fold.maximumBy(f)([1, 2, 3])).to.eql(3);
@@ -172,7 +174,7 @@ describe('list.fold', function() {
   });
 
   describe('#minimumBy', function() {
-    function f(a, b) { return a < b; }
+    var f = fn.compare;
 
     it('should handle an array of numbers', function() {
       expect(fold.minimumBy(f)([1, 2, 3])).to.eql(1);
