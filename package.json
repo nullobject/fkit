@@ -4,10 +4,7 @@
   "description": "A functional programming toolkit for JavaScript.",
   "homepage": "https://github.com/nullobject/fkit",
   "author": "Josh Bassett <josh.bassett@gmail.com> (http://joshbassett.info)",
-  "license": {
-    "type": "MIT",
-    "url": "https://github.com/nullobject/fkit/blob/master/LICENSE.md"
-  },
+  "license": "MIT",
   "keywords": [
     "functional",
     "programming",
