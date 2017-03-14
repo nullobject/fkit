@@ -1,4 +1,4 @@
-<h1 align="center"><img alt="FKit" src="https://github.com/nullobject/fkit/blob/master/logo.png" width="256px" /></h1>
+<h1 align="center"><img alt="FKit" src="https://raw.githubusercontent.com/nullobject/fkit/master/logo.png" width="256px" /></h1>
 
 [![Build Status](https://travis-ci.org/nullobject/fkit.svg?branch=master)](https://travis-ci.org/nullobject/fkit)
 
