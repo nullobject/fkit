@@ -57,7 +57,7 @@ publish-api: doc
 	@git reset --hard origin/gh-pages
 	@rsync -a --delete --exclude=".git*" --exclude=CNAME --exclude-from=.gitignore doc/ ./
 	@git add --all .
-	@git commit -m "Publish $(version)."
+	@git commit -m "Publish $(version)"
 	@git push
 	@git checkout master
 
