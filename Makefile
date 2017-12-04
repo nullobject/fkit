@@ -7,7 +7,7 @@ regex   := "s/\([\"\']version[\"\'][[:space:]]*:[[:space:]]*\)\([\"\'].*[\"\']\)
 
 # Builds a production version of libarary.
 production: node_modules
-	@NODE_ENV=production ./node_modules/.bin/webpack --colors --progress -p
+	./node_modules/.bin/webpack --colors --progress -p
 
 test: unit lint
 

@@ -5,7 +5,7 @@ module.exports = {
     fkit: './src/fkit.js'
   },
   output: {
-    path:          './dist',
+    path:          __dirname + '/dist',
     filename:      '[name].js',
     library:       'fkit = F',
     libraryTarget: 'var'
