@@ -190,6 +190,9 @@ self = module.exports = {
    *
    * @summary Groups the elements in a list using a comparator function.
    *
+   * @example
+   *   F.groupBy(F.lt(3), [1, 2, 2, 3, 3, 3]); // [[1, 2, 2], [3, 3, 3]]
+   *
    * @curried
    * @function
    * @param f A comparator function.
