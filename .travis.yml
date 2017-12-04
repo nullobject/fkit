@@ -1,7 +1,7 @@
 language: node_js
 node_js:
-  - "0.11"
-  - "0.10"
+  - "8"
+  - "6"
 notifications:
   email:
     on_success: never
