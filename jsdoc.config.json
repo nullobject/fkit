@@ -9,6 +9,6 @@
   "opts": {
     "destination": "doc",
     "recurse": true,
-    "template": "jsdoc-react"
+    "template": "node_modules/jsdoc-react"
   }
 }
