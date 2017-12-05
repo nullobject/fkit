@@ -65,31 +65,34 @@ describe('list.fold', function() {
 
   describe('#concatMap', function() {
     function f(a) { return [a, 0]; }
-    function g(a) { return [a, '-']; }
-    function h(a) { return [[a, 0]]; }
-    function i(a) { return [[a, '-']]; }
+    function g(a) { return [[a, 0]]; }
+    function h(a) { return [a, '-']; }
+    function i(a) { return a + '-'; }
+    function j(a) { return [[a, '-']]; }
 
     it('should handle an empty array', function() {
       expect(fold.concatMap(f)([])).to.eql([]);
     });
 
     it('should handle an empty string', function() {
-      expect(fold.concatMap(g)('')).to.eql('');
+      expect(fold.concatMap(h)('')).to.eql('');
     });
 
     it('should handle an array of numbers', function() {
       expect(fold.concatMap(f)([1, 2, 3])).to.eql([1, 0, 2, 0, 3, 0]);
-      expect(fold.concatMap(h)([1, 2, 3])).to.eql([[1, 0], [2, 0], [3, 0]]);
+      expect(fold.concatMap(g)([1, 2, 3])).to.eql([[1, 0], [2, 0], [3, 0]]);
     });
 
     it('should handle an array of strings', function() {
-      expect(fold.concatMap(g)(['f', 'o', 'o'])).to.eql('f-o-o-');
-      expect(fold.concatMap(i)(['f', 'o', 'o'])).to.eql(['f-', 'o-', 'o-']);
+      expect(fold.concatMap(h)(['f', 'o', 'o'])).to.eql('f-o-o-');
+      expect(fold.concatMap(i)(['f', 'o', 'o'])).to.eql('f-o-o-');
+      expect(fold.concatMap(j)(['f', 'o', 'o'])).to.eql(['f-', 'o-', 'o-']);
     });
 
     it('should handle a string', function() {
-      expect(fold.concatMap(g)('foo')).to.eql('f-o-o-');
-      expect(fold.concatMap(i)('foo')).to.eql(['f-', 'o-', 'o-']);
+      expect(fold.concatMap(h)('foo')).to.eql('f-o-o-');
+      expect(fold.concatMap(i)('foo')).to.eql('f-o-o-');
+      expect(fold.concatMap(j)('foo')).to.eql(['f-', 'o-', 'o-']);
     });
   });
 
