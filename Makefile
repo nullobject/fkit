@@ -29,7 +29,7 @@ unit:
 
 # Runs jslint.
 lint:
-	@node_modules/.bin/jshint src
+	@node_modules/.bin/standard --env mocha "src/**/*.js" "test/**/*.js"
 
 # Generates the API documentation.
 doc:
