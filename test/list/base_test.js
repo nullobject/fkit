@@ -1,227 +1,228 @@
-'use strict';
+'use strict'
 
-var base = require('../../src/list/base');
+var assert = require('chai').assert
+var base = require('../../src/list/base')
 
-describe('list.base', function() {
-  describe('#isArrayOfStrings', function() {
-    it('should handle an empty array', function() {
-      expect(base.isArrayOfStrings([])).to.be.false;
-    });
+describe('list.base', function () {
+  describe('#isArrayOfStrings', function () {
+    it('should handle an empty array', function () {
+      assert.isFalse(base.isArrayOfStrings([]))
+    })
 
-    it('should handle an empty string', function() {
-      expect(base.isArrayOfStrings('')).to.be.false;
-    });
+    it('should handle an empty string', function () {
+      assert.isFalse(base.isArrayOfStrings(''))
+    })
 
-    it('should handle an array of numbers', function() {
-      expect(base.isArrayOfStrings([1, 2, 3])).to.be.false;
-      expect(base.isArrayOfStrings([1, [2, 3]])).to.be.false;
-    });
+    it('should handle an array of numbers', function () {
+      assert.isFalse(base.isArrayOfStrings([1, 2, 3]))
+      assert.isFalse(base.isArrayOfStrings([1, [2, 3]]))
+    })
 
-    it('should handle an array of strings', function() {
-      expect(base.isArrayOfStrings(['a', 'b', 'c'])).to.be.true;
-      expect(base.isArrayOfStrings(['a', ['b', 'c']])).to.be.false;
-    });
-  });
+    it('should handle an array of strings', function () {
+      assert.isTrue(base.isArrayOfStrings(['a', 'b', 'c']))
+      assert.isFalse(base.isArrayOfStrings(['a', ['b', 'c']]))
+    })
+  })
 
-  describe('#length', function() {
-    it('should handle an empty array', function() {
-      expect(base.length([])).to.eql(0);
-    });
+  describe('#length', function () {
+    it('should handle an empty array', function () {
+      assert.equal(base.length([]), 0)
+    })
 
-    it('should handle an empty string', function() {
-      expect(base.length('')).to.eql(0);
-    });
+    it('should handle an empty string', function () {
+      assert.equal(base.length(''), 0)
+    })
 
-    it('should handle an array', function() {
-      expect(base.length([1, 2, 3])).to.eql(3);
-    });
+    it('should handle an array', function () {
+      assert.equal(base.length([1, 2, 3]), 3)
+    })
 
-    it('should handle a string', function() {
-      expect(base.length('foo')).to.eql(3);
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(base.length('foo'), 3)
+    })
+  })
 
-  describe('#empty', function() {
-    it('should handle an empty array', function() {
-      expect(base.empty([])).to.be.true;
-    });
+  describe('#empty', function () {
+    it('should handle an empty array', function () {
+      assert.isTrue(base.empty([]))
+    })
 
-    it('should handle an empty string', function() {
-      expect(base.empty('')).to.be.true;
-    });
+    it('should handle an empty string', function () {
+      assert.isTrue(base.empty(''))
+    })
 
-    it('should handle an array', function() {
-      expect(base.empty([1, 2, 3])).to.be.false;
-    });
+    it('should handle an array', function () {
+      assert.isFalse(base.empty([1, 2, 3]))
+    })
 
-    it('should handle a string', function() {
-      expect(base.empty('foo')).to.be.false;
-    });
-  });
+    it('should handle a string', function () {
+      assert.isFalse(base.empty('foo'))
+    })
+  })
 
-  describe('#append', function() {
-    it('should handle an empty array', function() {
-      expect(base.append(4)([])).to.eql([4]);
-    });
+  describe('#append', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(base.append(4)([]), [4])
+    })
 
-    it('should handle an empty string', function() {
-      expect(base.append('bar')('')).to.eql('bar');
-    });
+    it('should handle an empty string', function () {
+      assert.equal(base.append('bar')(''), 'bar')
+    })
 
-    it('should handle an array', function() {
-      expect(base.append(4)([1, 2, 3])).to.eql([1, 2, 3, 4]);
-      expect(base.append([4, 5, 6])([[1], [2, 3]])).to.eql([[1], [2, 3], [4, 5, 6]]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(base.append(4)([1, 2, 3]), [1, 2, 3, 4])
+      assert.deepEqual(base.append([4, 5, 6])([[1], [2, 3]]), [[1], [2, 3], [4, 5, 6]])
+    })
 
-    it('should handle a string', function() {
-      expect(base.append('bar')('foo')).to.eql('foobar');
-      expect(base.append('bar')(['f', 'oo'])).to.eql(['f', 'oo', 'bar']);
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(base.append('bar')('foo'), 'foobar')
+      assert.deepEqual(base.append('bar')(['f', 'oo']), ['f', 'oo', 'bar'])
+    })
+  })
 
-  describe('#prepend', function() {
-    it('should handle an empty array', function() {
-      expect(base.prepend(1)([])).to.eql([1]);
-    });
+  describe('#prepend', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(base.prepend(1)([]), [1])
+    })
 
-    it('should handle an empty string', function() {
-      expect(base.prepend('foo')('')).to.eql('foo');
-    });
+    it('should handle an empty string', function () {
+      assert.equal(base.prepend('foo')(''), 'foo')
+    })
 
-    it('should handle an array', function() {
-      expect(base.prepend(1)([2, 3, 4])).to.eql([1, 2, 3, 4]);
-      expect(base.prepend([1])([[2, 3], [4, 5, 6]])).to.eql([[1], [2, 3], [4, 5, 6]]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(base.prepend(1)([2, 3, 4]), [1, 2, 3, 4])
+      assert.deepEqual(base.prepend([1])([[2, 3], [4, 5, 6]]), [[1], [2, 3], [4, 5, 6]])
+    })
 
-    it('should handle a string', function() {
-      expect(base.prepend('foo')('bar')).to.eql('foobar');
-      expect(base.prepend('f')(['oo', 'bar'])).to.eql(['f', 'oo', 'bar']);
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(base.prepend('foo')('bar'), 'foobar')
+      assert.deepEqual(base.prepend('f')(['oo', 'bar']), ['f', 'oo', 'bar'])
+    })
+  })
 
-  describe('#surround', function() {
-    it('should handle an empty array', function() {
-      expect(base.surround(1)(4)([])).to.eql([1, 4]);
-    });
+  describe('#surround', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(base.surround(1)(4)([]), [1, 4])
+    })
 
-    it('should handle an empty string', function() {
-      expect(base.surround('fo')('ar')('')).to.eql('foar');
-    });
+    it('should handle an empty string', function () {
+      assert.equal(base.surround('fo')('ar')(''), 'foar')
+    })
 
-    it('should handle an array', function() {
-      expect(base.surround(1)(4)([2, 3])).to.eql([1, 2, 3, 4]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(base.surround(1)(4)([2, 3]), [1, 2, 3, 4])
+    })
 
-    it('should handle a string', function() {
-      expect(base.surround('fo')('ar')('ob')).to.eql('foobar');
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(base.surround('fo')('ar')('ob'), 'foobar')
+    })
+  })
 
-  describe('#head', function() {
-    it('should handle an empty array', function() {
-      expect(base.head([])).to.be.undefined;
-    });
+  describe('#head', function () {
+    it('should handle an empty array', function () {
+      assert.isUndefined(base.head([]))
+    })
 
-    it('should handle an empty string', function() {
-      expect(base.head('')).to.be.undefined;
-    });
+    it('should handle an empty string', function () {
+      assert.isUndefined(base.head(''))
+    })
 
-    it('should handle an array', function() {
-      expect(base.head([1, 2, 3])).to.eql(1);
-    });
+    it('should handle an array', function () {
+      assert.equal(base.head([1, 2, 3]), 1)
+    })
 
-    it('should handle a string', function() {
-      expect(base.head('foo')).to.eql('f');
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(base.head('foo'), 'f')
+    })
+  })
 
-  describe('#last', function() {
-    it('should handle an empty array', function() {
-      expect(base.last([])).to.be.undefined;
-    });
+  describe('#last', function () {
+    it('should handle an empty array', function () {
+      assert.isUndefined(base.last([]))
+    })
 
-    it('should handle an empty string', function() {
-      expect(base.last('')).to.be.undefined;
-    });
+    it('should handle an empty string', function () {
+      assert.isUndefined(base.last(''))
+    })
 
-    it('should handle an array', function() {
-      expect(base.last([1, 2, 3])).to.eql(3);
-    });
+    it('should handle an array', function () {
+      assert.equal(base.last([1, 2, 3]), 3)
+    })
 
-    it('should handle a string', function() {
-      expect(base.last('foo')).to.eql('o');
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(base.last('foo'), 'o')
+    })
+  })
 
-  describe('#init', function() {
-    it('should handle an empty array', function() {
-      expect(base.init([])).to.eql([]);
-    });
+  describe('#init', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(base.init([]), [])
+    })
 
-    it('should handle an empty string', function() {
-      expect(base.init('')).to.eql('');
-    });
+    it('should handle an empty string', function () {
+      assert.equal(base.init(''), '')
+    })
 
-    it('should handle an array', function() {
-      expect(base.init([1, 2, 3])).to.eql([1, 2]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(base.init([1, 2, 3]), [1, 2])
+    })
 
-    it('should handle a string', function() {
-      expect(base.init('foo')).to.eql('fo');
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(base.init('foo'), 'fo')
+    })
+  })
 
-  describe('#tail', function() {
-    it('should handle an empty array', function() {
-      expect(base.tail([])).to.eql([]);
-    });
+  describe('#tail', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(base.tail([]), [])
+    })
 
-    it('should handle an empty string', function() {
-      expect(base.tail('')).to.eql('');
-    });
+    it('should handle an empty string', function () {
+      assert.equal(base.tail(''), '')
+    })
 
-    it('should handle an array', function() {
-      expect(base.tail([1, 2, 3])).to.eql([2, 3]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(base.tail([1, 2, 3]), [2, 3])
+    })
 
-    it('should handle a string', function() {
-      expect(base.tail('foo')).to.eql('oo');
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(base.tail('foo'), 'oo')
+    })
+  })
 
-  describe('#inits', function() {
-    it('should handle an empty array', function() {
-      expect(base.inits([])).to.eql([[]]);
-    });
+  describe('#inits', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(base.inits([]), [[]])
+    })
 
-    it('should handle an empty string', function() {
-      expect(base.inits('')).to.eql(['']);
-    });
+    it('should handle an empty string', function () {
+      assert.deepEqual(base.inits(''), [''])
+    })
 
-    it('should handle an array', function() {
-      expect(base.inits([1, 2, 3])).to.eql([[], [1], [1, 2], [1, 2, 3]]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(base.inits([1, 2, 3]), [[], [1], [1, 2], [1, 2, 3]])
+    })
 
-    it('should handle a string', function() {
-      expect(base.inits('foo')).to.eql(['', 'f', 'fo', 'foo']);
-    });
-  });
+    it('should handle a string', function () {
+      assert.deepEqual(base.inits('foo'), ['', 'f', 'fo', 'foo'])
+    })
+  })
 
-  describe('#tails', function() {
-    it('should handle an empty array', function() {
-      expect(base.tails([])).to.eql([[]]);
-    });
+  describe('#tails', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(base.tails([]), [[]])
+    })
 
-    it('should handle an empty string', function() {
-      expect(base.tails('')).to.eql(['']);
-    });
+    it('should handle an empty string', function () {
+      assert.deepEqual(base.tails(''), [''])
+    })
 
-    it('should handle an array', function() {
-      expect(base.tails([1, 2, 3])).to.eql([[1, 2, 3], [2, 3], [3], []]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(base.tails([1, 2, 3]), [[1, 2, 3], [2, 3], [3], []])
+    })
 
-    it('should handle a string', function() {
-      expect(base.tails('foo')).to.eql(['foo', 'oo', 'o', '']);
-    });
-  });
-});
+    it('should handle a string', function () {
+      assert.deepEqual(base.tails('foo'), ['foo', 'oo', 'o', ''])
+    })
+  })
+})

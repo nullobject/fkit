@@ -1,6 +1,6 @@
-'use strict';
+'use strict'
 
-var util = require('./util');
+var util = require('./util')
 
 /**
  * FKit treats both arrays and strings as *lists*: an array is a list of
@@ -34,5 +34,5 @@ module.exports = util.extend({}, [
   require('./list/set'),
   require('./list/sort'),
   require('./list/sublist'),
-  require('./list/zip'),
-]);
+  require('./list/zip')
+])

@@ -1,54 +1,54 @@
-'use strict';
+'use strict'
 
-var util = require('./util');
+var util = require('./util')
 
-function flatten(as) {
-  return as.reduce(function(a, b) { return a.concat(b); }, []);
+function flatten (as) {
+  return as.reduce(function (a, b) { return a.concat(b) }, [])
 }
 
-function curry(f) {
-  var arity = f.length;
+function curry (f) {
+  var arity = f.length
 
-  return (arity <= 1) ? f : given([], 0);
+  return (arity <= 1) ? f : given([], 0)
 
-  function given(args, applications) {
-    return function() {
+  function given (args, applications) {
+    return function () {
       var newArgs = args.concat(
         (arguments.length > 0) ? util.slice.call(arguments, 0) : undefined
-      );
+      )
 
-      return (newArgs.length >= arity) ?
-        f.apply(this, newArgs) :
-        given(newArgs, applications + 1);
-    };
+      return (newArgs.length >= arity)
+        ? f.apply(this, newArgs)
+        : given(newArgs, applications + 1)
+    }
   }
 }
 
-function variadic(f) {
-  var arity = f.length;
+function variadic (f) {
+  var arity = f.length
 
   if (arity < 1) {
-    return f;
-  } else if (arity === 1)  {
-    return function() {
-      var args    = util.slice.call(arguments, 0),
-          newArgs = (arguments.length === 1) ? flatten(args) : args;
+    return f
+  } else if (arity === 1) {
+    return function () {
+      var args = util.slice.call(arguments, 0)
+      var newArgs = (arguments.length === 1) ? flatten(args) : args
 
-      return f.call(this, newArgs);
-    };
+      return f.call(this, newArgs)
+    }
   } else {
-    return function() {
-      var numMissingArgs = Math.max(arity - arguments.length - 1, 0),
-          missingArgs    = new Array(numMissingArgs),
-          namedArgs      = util.slice.call(arguments, 0, arity - 1),
-          variadicArgs   = util.slice.call(arguments, f.length - 1);
+    return function () {
+      var numMissingArgs = Math.max(arity - arguments.length - 1, 0)
+      var missingArgs = new Array(numMissingArgs)
+      var namedArgs = util.slice.call(arguments, 0, arity - 1)
+      var variadicArgs = util.slice.call(arguments, f.length - 1)
 
-      return f.apply(this, namedArgs.concat(missingArgs).concat([variadicArgs]));
-    };
+      return f.apply(this, namedArgs.concat(missingArgs).concat([variadicArgs]))
+    }
   }
 }
 
-var self;
+var self
 
 /**
  * This module defines basic operations on functions.
@@ -80,7 +80,7 @@ self = module.exports = {
    * @param a A value.
    * @returns The result of `f(a)`.
    */
-  apply: curry(function(f, a) { return f(a); }),
+  apply: curry(function (f, a) { return f(a) }),
 
   /**
    * Returns the result of the function `f` applied to the values `a` and `b`.
@@ -98,7 +98,7 @@ self = module.exports = {
    * @param b A value.
    * @returns The result of `f(a, b)`.
    */
-  apply2: curry(function(f, a, b) { return f(a, b); }),
+  apply2: curry(function (f, a, b) { return f(a, b) }),
 
   /**
    * Returns the result of the function `f` applied to the values `a`, `b`, and
@@ -118,7 +118,7 @@ self = module.exports = {
    * @param c A value.
    * @returns The result of `f(a, b, c)`.
    */
-  apply3: curry(function(f, a, b, c) { return f(a, b, c); }),
+  apply3: curry(function (f, a, b, c) { return f(a, b, c) }),
 
   /**
    * Returns the result of the function `f` applied to the value `a`.
@@ -137,7 +137,7 @@ self = module.exports = {
    * @param f A function.
    * @returns The result of `f(a)`.
    */
-  applyRight: curry(function(a, f) { return f(a); }),
+  applyRight: curry(function (a, f) { return f(a) }),
 
   /**
    * Returns a function that is the composition of the list of functions `fs`.
@@ -151,12 +151,12 @@ self = module.exports = {
    * @param fs A list of functions.
    * @returns A new function.
    */
-  compose: variadic(function(fs) {
-    return function(a) {
-      return fs.reduceRight(function(a, f) {
-        return f(a);
-      }, a);
-    };
+  compose: variadic(function (fs) {
+    return function (a) {
+      return fs.reduceRight(function (a, f) {
+        return f(a)
+      }, a)
+    }
   }),
 
   /**
@@ -175,7 +175,7 @@ self = module.exports = {
    * @param b A value.
    * @returns A new function.
    */
-  flip: curry(function(f, a, b) { return f(b, a); }),
+  flip: curry(function (f, a, b) { return f(b, a) }),
 
   /**
    * Returns the value `a` unchanged.
@@ -188,7 +188,7 @@ self = module.exports = {
    * @param a A value.
    * @returns The value `a`.
    */
-  id: function(a) { return a; },
+  id: function (a) { return a },
 
   /**
    * Returns a function that always returns the value `c`, regardless of the
@@ -202,7 +202,7 @@ self = module.exports = {
    * @param c A value.
    * @returns A new function.
    */
-  const: function(c) { return function() { return c; }; },
+  const: function (c) { return function () { return c } },
 
   /**
    * Returns a function that allows partial application of the arguments to the
@@ -233,7 +233,7 @@ self = module.exports = {
    * @param f A function.
    * @returns A new function.
    */
-  uncurry: curry(function(f, p) { return f(p[0], p[1]); }),
+  uncurry: curry(function (f, p) { return f(p[0], p[1]) }),
 
   /**
    * Returns a function that wraps the function `f` to accept only one argument.
@@ -243,7 +243,7 @@ self = module.exports = {
    * @param f A function.
    * @returns A new function.
    */
-  unary: function(f) { return (f.length === 1) ? f : self.apply(f); },
+  unary: function (f) { return (f.length === 1) ? f : self.apply(f) },
 
   /**
    * Returns a function that wraps the function `f` to accept only two arguments.
@@ -253,7 +253,7 @@ self = module.exports = {
    * @param f A function.
    * @returns A new function.
    */
-  binary: function(f) { return (f.length === 2) ? f : self.apply2(f); },
+  binary: function (f) { return (f.length === 2) ? f : self.apply2(f) },
 
   /**
    * Returns a function that wraps the function `f` to accept any number of
@@ -289,7 +289,7 @@ self = module.exports = {
    * @param a A value.
    * @returns The value `a`.
    */
-  tap: curry(function(f, a) { f(a); return a; }),
+  tap: curry(function (f, a) { f(a); return a }),
 
   /**
    * Returns `true` if the value `a` is strictly equal (`===`) to the value
@@ -303,7 +303,7 @@ self = module.exports = {
    * @param b A value.
    * @returns A boolean value.
    */
-  equal: curry(function(a, b) { return b === a; }),
+  equal: curry(function (a, b) { return b === a }),
 
   /**
    * Returns `true` if the value `a` is strictly not equal (`!==`) to the value
@@ -317,7 +317,7 @@ self = module.exports = {
    * @param b A value.
    * @returns A boolean value.
    */
-  notEqual: curry(function(a, b) { return b !== a; }),
+  notEqual: curry(function (a, b) { return b !== a }),
 
   /**
    * Returns the ordering of the two values `a` and `b`.
@@ -335,13 +335,13 @@ self = module.exports = {
    * @param b A value.
    * @returns A number.
    */
-  compare: curry(function(a, b) {
+  compare: curry(function (a, b) {
     if (a > b) {
-      return 1;
+      return 1
     } else if (a < b) {
-      return -1;
+      return -1
     } else {
-      return 0;
+      return 0
     }
-  }),
-};
+  })
+}

@@ -1,10 +1,8 @@
-'use strict';
+'use strict'
 
-var base = require('./base'),
-    fn   = require('../fn'),
-    fold = require('./fold');
-
-var self;
+var base = require('./base')
+var fn = require('../fn')
+var self
 
 /**
  * This module defines sublist operations on lists.
@@ -29,15 +27,15 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  take: fn.curry(function(n, as) {
-    var s = base.isString(as) ? '' : [],
-        m = as.length;
+  take: fn.curry(function (n, as) {
+    var s = base.isString(as) ? '' : []
+    var m = as.length
 
     for (var i = 0; i < Math.min(m, n); i++) {
-      s = s.concat(as[i]);
+      s = s.concat(as[i])
     }
 
-    return s;
+    return s
   }),
 
   /**
@@ -55,15 +53,15 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  drop: fn.curry(function(n, as) {
-    var s = base.isString(as) ? '' : [],
-        m = as.length;
+  drop: fn.curry(function (n, as) {
+    var s = base.isString(as) ? '' : []
+    var m = as.length
 
     for (var i = n; i < m; i++) {
-      s = s.concat(as[i]);
+      s = s.concat(as[i])
     }
 
-    return s;
+    return s
   }),
 
   /**
@@ -82,15 +80,15 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  takeWhile: fn.curry(function(p, as) {
-    var s = base.isString(as) ? '' : [],
-        n = as.length;
+  takeWhile: fn.curry(function (p, as) {
+    var s = base.isString(as) ? '' : []
+    var n = as.length
 
     for (var i = 0; i < n && p(as[i]); i++) {
-      s = s.concat(as[i]);
+      s = s.concat(as[i])
     }
 
-    return s;
+    return s
   }),
 
   /**
@@ -109,20 +107,20 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  dropWhile: fn.curry(function(p, as) {
-    var s = base.isString(as) ? '' : [],
-        m = as.length,
-        n = 0;
+  dropWhile: fn.curry(function (p, as) {
+    var s = base.isString(as) ? '' : []
+    var m = as.length
+    var n = 0
 
     while (p(as[n]) && n < as.length) {
-      n++;
+      n++
     }
 
     for (var i = n; i < m; i++) {
-      s = s.concat(as[i]);
+      s = s.concat(as[i])
     }
 
-    return s;
+    return s
   }),
 
   /**
@@ -141,8 +139,8 @@ self = module.exports = {
    * @param as A list.
    * @returns A pair of lists.
    */
-  splitAt: fn.curry(function(n, as) {
-    return [self.take(n, as), self.drop(n, as)];
+  splitAt: fn.curry(function (n, as) {
+    return [self.take(n, as), self.drop(n, as)]
   }),
 
   /**
@@ -162,8 +160,8 @@ self = module.exports = {
    * @param as A list.
    * @returns A pair of lists.
    */
-  span: fn.curry(function(p, as) {
-    return [self.takeWhile(p, as), self.dropWhile(p, as)];
+  span: fn.curry(function (p, as) {
+    return [self.takeWhile(p, as), self.dropWhile(p, as)]
   }),
 
   /**
@@ -182,7 +180,7 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  group: function(as) { return self.groupBy(fn.equal, as); },
+  group: function (as) { return self.groupBy(fn.equal, as) },
 
   /**
    * Returns a list that contains the elements in the list of `as` grouped into
@@ -199,15 +197,15 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  groupBy: fn.curry(function groupBy(f, as) {
-    var b  = base.head(as),
-        bs = self.span(f(b), base.tail(as));
+  groupBy: fn.curry(function groupBy (f, as) {
+    var b = base.head(as)
+    var bs = self.span(f(b), base.tail(as))
 
-    return base.empty(as) ?
-      [] :
-      base.prepend(
+    return base.empty(as)
+      ? []
+      : base.prepend(
         base.prepend(b, base.head(bs)),
         groupBy(f, base.last(bs))
-      );
-  }),
-};
+      )
+  })
+}

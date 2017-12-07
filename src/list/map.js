@@ -1,8 +1,8 @@
-'use strict';
+'use strict'
 
-var base = require('./base'),
-    fn   = require('../fn'),
-    fold = require('./fold');
+var base = require('./base')
+var fn = require('../fn')
+var fold = require('./fold')
 
 /**
  * This module defines map operations on lists.
@@ -28,10 +28,10 @@ module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  map: fn.curry(function(f, as) {
+  map: fn.curry(function (f, as) {
     return base
       .toArray(as)
-      .map(f);
+      .map(f)
   }),
 
   /**
@@ -47,10 +47,10 @@ module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  reverse: function(as) {
+  reverse: function (as) {
     return base
       .toArray(as)
-      .reduce(fn.flip(base.prepend), base.mempty(as));
+      .reduce(fn.flip(base.prepend), base.mempty(as))
   },
 
   /**
@@ -69,15 +69,15 @@ module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  intersperse: fn.curry(function(s, as) {
-    return base.empty(as) ?
-      base.mempty(as) :
-      fold.concat(base.head(as), prependToAll(base.tail(as)));
+  intersperse: fn.curry(function (s, as) {
+    return base.empty(as)
+      ? base.mempty(as)
+      : fold.concat(base.head(as), prependToAll(base.tail(as)))
 
-    function prependToAll(bs) {
-      return base.empty(bs) ?
-        base.mempty(bs) :
-        fold.concat(s, base.head(bs), prependToAll(base.tail(bs)));
+    function prependToAll (bs) {
+      return base.empty(bs)
+        ? base.mempty(bs)
+        : fold.concat(s, base.head(bs), prependToAll(base.tail(bs)))
     }
-  }),
-};
+  })
+}

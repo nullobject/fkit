@@ -1,69 +1,70 @@
-'use strict';
+'use strict'
 
-var zip = require('../../src/list/zip');
+var assert = require('chai').assert
+var zip = require('../../src/list/zip')
 
-describe('list.zip', function() {
-  describe('#zipWith', function() {
-    function f(a, b) { return a + b; }
+describe('list.zip', function () {
+  describe('#zipWith', function () {
+    function f (a, b) { return a + b }
 
-    it('should handle an empty array', function() {
-      expect(zip.zipWith(f)([1, 2, 3])([])).to.eql([]);
-      expect(zip.zipWith(f)([])([3, 4, 5])).to.eql([]);
-    });
+    it('should handle an empty array', function () {
+      assert.deepEqual(zip.zipWith(f)([1, 2, 3])([]), [])
+      assert.deepEqual(zip.zipWith(f)([])([3, 4, 5]), [])
+    })
 
-    it('should handle an empty string', function() {
-      expect(zip.zipWith(f)('foo')('')).to.eql([]);
-      expect(zip.zipWith(f)('')('bar')).to.eql([]);
-    });
+    it('should handle an empty string', function () {
+      assert.deepEqual(zip.zipWith(f)('foo')(''), [])
+      assert.deepEqual(zip.zipWith(f)('')('bar'), [])
+    })
 
-    it('should handle an array', function() {
-      expect(zip.zipWith(f)([1, 2, 3])([4, 5, 6])).to.eql([5, 7, 9]);
-      expect(zip.zipWith(f)([1, 2, 3])([4, 5])).to.eql([5, 7]);
-      expect(zip.zipWith(f)([1, 2])([3, 4, 5])).to.eql([4, 6]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(zip.zipWith(f)([1, 2, 3])([4, 5, 6]), [5, 7, 9])
+      assert.deepEqual(zip.zipWith(f)([1, 2, 3])([4, 5]), [5, 7])
+      assert.deepEqual(zip.zipWith(f)([1, 2])([3, 4, 5]), [4, 6])
+    })
 
-    it('should handle a string', function() {
-      expect(zip.zipWith(f)('foo')('bar')).to.eql(['fb', 'oa', 'or']);
-      expect(zip.zipWith(f)('foo')('ba')).to.eql(['fb', 'oa']);
-      expect(zip.zipWith(f)('fo')('bar')).to.eql(['fb', 'oa']);
-    });
-  });
+    it('should handle a string', function () {
+      assert.deepEqual(zip.zipWith(f)('foo')('bar'), ['fb', 'oa', 'or'])
+      assert.deepEqual(zip.zipWith(f)('foo')('ba'), ['fb', 'oa'])
+      assert.deepEqual(zip.zipWith(f)('fo')('bar'), ['fb', 'oa'])
+    })
+  })
 
-  describe('#zip', function() {
-    it('should handle an empty array', function() {
-      expect(zip.zip([1, 2, 3])([])).to.eql([]);
-      expect(zip.zip([])([3, 4, 5])).to.eql([]);
-    });
+  describe('#zip', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(zip.zip([1, 2, 3])([]), [])
+      assert.deepEqual(zip.zip([])([3, 4, 5]), [])
+    })
 
-    it('should handle an empty string', function() {
-      expect(zip.zip('foo')('')).to.eql([]);
-      expect(zip.zip('')('bar')).to.eql([]);
-    });
+    it('should handle an empty string', function () {
+      assert.deepEqual(zip.zip('foo')(''), [])
+      assert.deepEqual(zip.zip('')('bar'), [])
+    })
 
-    it('should handle an array', function() {
-      expect(zip.zip([1, 2, 3])([4, 5, 6])).to.eql([[1, 4], [2, 5], [3, 6]]);
-      expect(zip.zip([1, 2, 3])([4, 5])).to.eql([[1, 4], [2, 5]]);
-      expect(zip.zip([1, 2])([4, 5, 6])).to.eql([[1, 4], [2, 5]]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(zip.zip([1, 2, 3])([4, 5, 6]), [[1, 4], [2, 5], [3, 6]])
+      assert.deepEqual(zip.zip([1, 2, 3])([4, 5]), [[1, 4], [2, 5]])
+      assert.deepEqual(zip.zip([1, 2])([4, 5, 6]), [[1, 4], [2, 5]])
+    })
 
-    it('should handle a string', function() {
-      expect(zip.zip('foo')('bar')).to.eql([['f', 'b'], ['o', 'a'], ['o', 'r']]);
-      expect(zip.zip('foo')('ba')).to.eql([['f', 'b'], ['o', 'a']]);
-      expect(zip.zip('fo')('bar')).to.eql([['f', 'b'], ['o', 'a']]);
-    });
-  });
+    it('should handle a string', function () {
+      assert.deepEqual(zip.zip('foo')('bar'), [['f', 'b'], ['o', 'a'], ['o', 'r']])
+      assert.deepEqual(zip.zip('foo')('ba'), [['f', 'b'], ['o', 'a']])
+      assert.deepEqual(zip.zip('fo')('bar'), [['f', 'b'], ['o', 'a']])
+    })
+  })
 
-  describe('#unzip', function() {
-    it('should handle an empty array', function() {
-      expect(zip.unzip([])).to.eql([[], []]);
-    });
+  describe('#unzip', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(zip.unzip([]), [[], []])
+    })
 
-    it('should handle an array of numbers', function() {
-      expect(zip.unzip([[1, 4], [2, 5], [3, 6]])).to.eql([[1, 2, 3], [4, 5, 6]]);
-    });
+    it('should handle an array of numbers', function () {
+      assert.deepEqual(zip.unzip([[1, 4], [2, 5], [3, 6]]), [[1, 2, 3], [4, 5, 6]])
+    })
 
-    it('should handle an array of string', function() {
-      expect(zip.unzip([['f', 'b'], ['o', 'a'], ['o', 'r']])).to.eql(['foo', 'bar']);
-    });
-  });
-});
+    it('should handle an array of string', function () {
+      assert.deepEqual(zip.unzip([['f', 'b'], ['o', 'a'], ['o', 'r']]), ['foo', 'bar'])
+    })
+  })
+})
