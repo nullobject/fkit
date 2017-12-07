@@ -1,9 +1,7 @@
-'use strict';
+'use strict'
 
-var fn  = require('./fn'),
-    map = require('./list/map');
-
-var self;
+var fn = require('./fn')
+var self
 
 /**
  * This module defines logic functions.
@@ -24,7 +22,7 @@ self = module.exports = {
    * @param b A boolean value.
    * @returns A boolean value.
    */
-  and: fn.curry(function(a, b) { return b && a; }),
+  and: fn.curry(function (a, b) { return b && a }),
 
   /**
    * Returns the result of `b || a`.
@@ -37,7 +35,7 @@ self = module.exports = {
    * @param b A boolean value.
    * @returns A boolean value.
    */
-  or: fn.curry(function(a, b) { return b || a; }),
+  or: fn.curry(function (a, b) { return b || a }),
 
   /**
    * Returns the result of `!a`.
@@ -47,7 +45,7 @@ self = module.exports = {
    * @param a A boolean.
    * @returns A boolean value.
    */
-  not: function(a) { return !a; },
+  not: function (a) { return !a },
 
   /**
    * If `p(a)` is true then `f` is applied to `a`, otherwise `g` is applied to
@@ -70,8 +68,8 @@ self = module.exports = {
    * @param a A value.
    * @returns A value.
    */
-  branch: fn.curry(function(p, f, g, a) {
-    return p(a) ? f(a) : g(a);
+  branch: fn.curry(function (p, f, g, a) {
+    return p(a) ? f(a) : g(a)
   }),
 
   /**
@@ -90,8 +88,8 @@ self = module.exports = {
    * @param a A value.
    * @returns A boolean value.
    */
-  whereAll: fn.curry(function(ps, a) {
-    return ps.map(fn.applyRight(a)).reduce(self.and, true);
+  whereAll: fn.curry(function (ps, a) {
+    return ps.map(fn.applyRight(a)).reduce(self.and, true)
   }),
 
   /**
@@ -110,7 +108,7 @@ self = module.exports = {
    * @param a A value.
    * @returns A boolean value.
    */
-  whereAny: fn.curry(function(ps, a) {
-    return ps.map(fn.applyRight(a)).reduce(self.or, false);
-  }),
-};
+  whereAny: fn.curry(function (ps, a) {
+    return ps.map(fn.applyRight(a)).reduce(self.or, false)
+  })
+}

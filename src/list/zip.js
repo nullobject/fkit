@@ -1,10 +1,9 @@
-'use strict';
+'use strict'
 
-var base  = require('./base'),
-    build = require('./build'),
-    fn    = require('../fn');
-
-var self;
+var base = require('./base')
+var build = require('./build')
+var fn = require('../fn')
+var self
 
 /**
  * This module defines zip operations on lists.
@@ -26,12 +25,12 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  zipWith: fn.curry(function(f, as, bs) {
-    var n = Math.min(as.length, bs.length);
+  zipWith: fn.curry(function (f, as, bs) {
+    var n = Math.min(as.length, bs.length)
 
     return base
       .toArray(as.slice(0, n))
-      .map(function(a, i) { return f(a, bs[i]); });
+      .map(function (a, i) { return f(a, bs[i]) })
   }),
 
   /**
@@ -52,8 +51,8 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  zip: fn.curry(function(as, bs) {
-    return self.zipWith(build.pair, as, bs);
+  zip: fn.curry(function (as, bs) {
+    return self.zipWith(build.pair, as, bs)
   }),
 
   /**
@@ -68,12 +67,15 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  unzip: function(as) {
-    var s = base.mempty(as[0]);
+  unzip: function (as) {
+    var s = base.mempty(as[0])
 
-    return as.reduceRight(function(p, ps) {
-      var a = ps[0], b = ps[1], as = p[0], bs = p[1];
-      return [base.prepend(a, as), base.prepend(b, bs)];
-    }, [s, s]);
-  },
-};
+    return as.reduceRight(function (p, ps) {
+      var a = ps[0]
+      var b = ps[1]
+      var as = p[0]
+      var bs = p[1]
+      return [base.prepend(a, as), base.prepend(b, bs)]
+    }, [s, s])
+  }
+}

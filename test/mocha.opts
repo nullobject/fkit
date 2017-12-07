@@ -1,3 +1,2 @@
 --recursive
 --reporter spec
---require ./test/support/helper.js

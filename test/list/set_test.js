@@ -1,189 +1,196 @@
-'use strict';
+'use strict'
 
-var set = require('../../src/list/set');
+var assert = require('chai').assert
+var set = require('../../src/list/set')
 
-describe('list.set', function() {
-  describe('#nub', function() {
-    it('should handle an empty array', function() {
-      expect(set.nub([])).to.eql([]);
-    });
+describe('list.set', function () {
+  describe('#nub', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(set.nub([]), [])
+    })
 
-    it('should handle an empty string', function() {
-      expect(set.nub('')).to.eql('');
-    });
+    it('should handle an empty string', function () {
+      assert.equal(set.nub(''), '')
+    })
 
-    it('should handle an array', function() {
-      expect(set.nub([1, 2, 2, 3, 3, 3])).to.eql([1, 2, 3]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(set.nub([1, 2, 2, 3, 3, 3]), [1, 2, 3])
+    })
 
-    it('should handle a string', function() {
-      expect(set.nub('abbccc')).to.eql('abc');
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(set.nub('abbccc'), 'abc')
+    })
+  })
 
-  describe('#union', function() {
-    it('should handle an empty array', function() {
-      expect(set.union([1, 2, 3])([])).to.eql([1, 2, 3]);
-      expect(set.union([])([1, 2, 3])).to.eql([1, 2, 3]);
-    });
+  describe('#union', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(set.union([1, 2, 3])([]), [1, 2, 3])
+      assert.deepEqual(set.union([])([1, 2, 3]), [1, 2, 3])
+    })
 
-    it('should handle an empty string', function() {
-      expect(set.union('abc')('')).to.eql('abc');
-      expect(set.union('')('abc')).to.eql('abc');
-    });
+    it('should handle an empty string', function () {
+      assert.equal(set.union('abc')(''), 'abc')
+      assert.equal(set.union('')('abc'), 'abc')
+    })
 
-    it('should handle an array', function() {
-      expect(set.union([1, 2, 3])([1, 2, 3])).to.eql([1, 2, 3]);
-      expect(set.union([1, 2, 3])([2, 3, 4])).to.eql([1, 2, 3, 4]);
-      expect(set.union([1, 2, 3])([4, 5, 6])).to.eql([1, 2, 3, 4, 5, 6]);
-      expect(set.union([1, 1])([1])).to.eql([1, 1]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(set.union([1, 2, 3])([1, 2, 3]), [1, 2, 3])
+      assert.deepEqual(set.union([1, 2, 3])([2, 3, 4]), [1, 2, 3, 4])
+      assert.deepEqual(set.union([1, 2, 3])([4, 5, 6]), [1, 2, 3, 4, 5, 6])
+      assert.deepEqual(set.union([1, 1])([1]), [1, 1])
+    })
 
-    it('should handle a string', function() {
-      expect(set.union('abc')('abc')).to.eql('abc');
-      expect(set.union('abc')('bcd')).to.eql('abcd');
-      expect(set.union('abc')('def')).to.eql('abcdef');
-      expect(set.union('aa')('a')).to.eql('aa');
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(set.union('abc')('abc'), 'abc')
+      assert.equal(set.union('abc')('bcd'), 'abcd')
+      assert.equal(set.union('abc')('def'), 'abcdef')
+      assert.equal(set.union('aa')('a'), 'aa')
+    })
+  })
 
-  describe('#intersect', function() {
-    it('should handle an empty array', function() {
-      expect(set.intersect([1, 2, 3])([])).to.eql([]);
-      expect(set.intersect([])([1, 2, 3])).to.eql([]);
-    });
+  describe('#intersect', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(set.intersect([1, 2, 3])([]), [])
+      assert.deepEqual(set.intersect([])([1, 2, 3]), [])
+    })
 
-    it('should handle an empty string', function() {
-      expect(set.intersect('abc')('')).to.eql('');
-      expect(set.intersect('')('abc')).to.eql('');
-    });
+    it('should handle an empty string', function () {
+      assert.equal(set.intersect('abc')(''), '')
+      assert.equal(set.intersect('')('abc'), '')
+    })
 
-    it('should handle an array', function() {
-      expect(set.intersect([1, 2, 3])([1, 2, 3])).to.eql([1, 2, 3]);
-      expect(set.intersect([1, 2, 3])([2, 3, 4])).to.eql([2, 3]);
-      expect(set.intersect([1, 2, 3])([4, 5, 6])).to.eql([]);
-      expect(set.intersect([1, 1])([1])).to.eql([1, 1]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(set.intersect([1, 2, 3])([1, 2, 3]), [1, 2, 3])
+      assert.deepEqual(set.intersect([1, 2, 3])([2, 3, 4]), [2, 3])
+      assert.deepEqual(set.intersect([1, 2, 3])([4, 5, 6]), [])
+      assert.deepEqual(set.intersect([1, 1])([1]), [1, 1])
+    })
 
-    it('should handle a string', function() {
-      expect(set.intersect('abc')('abc')).to.eql('abc');
-      expect(set.intersect('abc')('bcd')).to.eql('bc');
-      expect(set.intersect('abc')('def')).to.eql('');
-      expect(set.intersect('aa')('a')).to.eql('aa');
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(set.intersect('abc')('abc'), 'abc')
+      assert.equal(set.intersect('abc')('bcd'), 'bc')
+      assert.equal(set.intersect('abc')('def'), '')
+      assert.equal(set.intersect('aa')('a'), 'aa')
+    })
+  })
 
-  describe('#difference', function() {
-    it('should handle an empty array', function() {
-      expect(set.difference([1, 2, 3])([])).to.eql([1, 2, 3]);
-      expect(set.difference([])([1, 2, 3])).to.eql([]);
-    });
+  describe('#difference', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(set.difference([1, 2, 3])([]), [1, 2, 3])
+      assert.deepEqual(set.difference([])([1, 2, 3]), [])
+    })
 
-    it('should handle an empty string', function() {
-      expect(set.difference('abc')('')).to.eql('abc');
-      expect(set.difference('')('abc')).to.eql('');
-    });
+    it('should handle an empty string', function () {
+      assert.equal(set.difference('abc')(''), 'abc')
+      assert.equal(set.difference('')('abc'), '')
+    })
 
-    it('should handle an array', function() {
-      expect(set.difference([1, 2, 3])([1, 2, 3])).to.eql([]);
-      expect(set.difference([1, 2, 3])([2, 3, 4])).to.eql([1]);
-      expect(set.difference([1, 2, 3])([4, 5, 6])).to.eql([1, 2, 3]);
-      expect(set.difference([1, 1])([1])).to.eql([1]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(set.difference([1, 2, 3])([1, 2, 3]), [])
+      assert.deepEqual(set.difference([1, 2, 3])([2, 3, 4]), [1])
+      assert.deepEqual(set.difference([1, 2, 3])([4, 5, 6]), [1, 2, 3])
+      assert.deepEqual(set.difference([1, 1])([1]), [1])
+    })
 
-    it('should handle a string', function() {
-      expect(set.difference('abc')('abc')).to.eql('');
-      expect(set.difference('abc')('bcd')).to.eql('a');
-      expect(set.difference('abc')('def')).to.eql('abc');
-      expect(set.difference('aa')('a')).to.eql('a');
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(set.difference('abc')('abc'), '')
+      assert.equal(set.difference('abc')('bcd'), 'a')
+      assert.equal(set.difference('abc')('def'), 'abc')
+      assert.equal(set.difference('aa')('a'), 'a')
+    })
+  })
 
-  describe('#remove', function() {
-    it('should handle an empty array', function() {
-      expect(set.remove(1)([])).to.eql([]);
-    });
+  describe('#remove', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(set.remove(1)([]), [])
+    })
 
-    it('should handle an empty string', function() {
-      expect(set.remove('a')('')).to.eql('');
-    });
+    it('should handle an empty string', function () {
+      assert.equal(set.remove('a')(''), '')
+    })
 
-    it('should handle an array', function() {
-      expect(set.remove(1)([1, 2, 3])).to.eql([2, 3]);
-      expect(set.remove(2)([1, 2, 3])).to.eql([1, 3]);
-      expect(set.remove(3)([1, 2, 3])).to.eql([1, 2]);
-      expect(set.remove(1)([1, 1])).to.eql([1]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(set.remove(1)([1, 2, 3]), [2, 3])
+      assert.deepEqual(set.remove(2)([1, 2, 3]), [1, 3])
+      assert.deepEqual(set.remove(3)([1, 2, 3]), [1, 2])
+      assert.deepEqual(set.remove(1)([1, 1]), [1])
+    })
 
-    it('should handle a string', function() {
-      expect(set.remove('a')('abc')).to.eql('bc');
-      expect(set.remove('b')('abc')).to.eql('ac');
-      expect(set.remove('c')('abc')).to.eql('ab');
-      expect(set.remove('a')('aa')).to.eql('a');
-    });
-  });
+    it('should handle a string', function () {
+      assert.equal(set.remove('a')('abc'), 'bc')
+      assert.equal(set.remove('b')('abc'), 'ac')
+      assert.equal(set.remove('c')('abc'), 'ab')
+      assert.equal(set.remove('a')('aa'), 'a')
+    })
+  })
 
-  describe('#cartesian', function() {
-    it('should handle an empty array', function() {
-      expect(set.cartesian([1, 2, 3])([])).to.eql([]);
-      expect(set.cartesian([])([4, 5, 6])).to.eql([]);
-    });
+  describe('#cartesian', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(set.cartesian([1, 2, 3])([]), [])
+      assert.deepEqual(set.cartesian([])([4, 5, 6]), [])
+    })
 
-    it('should handle an empty string', function() {
-      expect(set.cartesian('foo')('')).to.eql([]);
-      expect(set.cartesian('')('bar')).to.eql([]);
-    });
+    it('should handle an empty string', function () {
+      assert.deepEqual(set.cartesian('foo')(''), [])
+      assert.deepEqual(set.cartesian('')('bar'), [])
+    })
 
-    it('should handle an array', function() {
-      expect(set.cartesian([1, 2, 3])([4, 5, 6])).to.eql([
-        [1, 4], [1, 5], [1, 6],
-        [2, 4], [2, 5], [2, 6],
-        [3, 4], [3, 5], [3, 6]
-      ]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(
+        set.cartesian([1, 2, 3])([4, 5, 6]),
+        [
+          [1, 4], [1, 5], [1, 6],
+          [2, 4], [2, 5], [2, 6],
+          [3, 4], [3, 5], [3, 6]
+        ]
+      )
+    })
 
-    it('should handle a string', function() {
-      expect(set.cartesian('foo')('bar')).to.eql([
-        ['f', 'b'], ['f', 'a'], ['f', 'r'],
-        ['o', 'b'], ['o', 'a'], ['o', 'r'],
-        ['o', 'b'], ['o', 'a'], ['o', 'r']
-      ]);
-    });
-  });
+    it('should handle a string', function () {
+      assert.deepEqual(
+        set.cartesian('foo')('bar'),
+        [
+          ['f', 'b'], ['f', 'a'], ['f', 'r'],
+          ['o', 'b'], ['o', 'a'], ['o', 'r'],
+          ['o', 'b'], ['o', 'a'], ['o', 'r']
+        ]
+      )
+    })
+  })
 
-  describe('#subsequences', function() {
-    it('should handle an empty array', function() {
-      expect(set.subsequences([])).to.eql([[]]);
-    });
+  describe('#subsequences', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(set.subsequences([]), [[]])
+    })
 
-    it('should handle an empty string', function() {
-      expect(set.subsequences('')).to.eql(['']);
-    });
+    it('should handle an empty string', function () {
+      assert.deepEqual(set.subsequences(''), [''])
+    })
 
-    it('should handle an array', function() {
-      expect(set.subsequences([1, 2, 3])).to.eql([[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(set.subsequences([1, 2, 3]), [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]])
+    })
 
-    it('should handle a string', function() {
-      expect(set.subsequences('abc')).to.eql(['', 'a', 'b', 'ab', 'c', 'ac', 'bc', 'abc']);
-    });
-  });
+    it('should handle a string', function () {
+      assert.deepEqual(set.subsequences('abc'), ['', 'a', 'b', 'ab', 'c', 'ac', 'bc', 'abc'])
+    })
+  })
 
-  describe('#permutations', function() {
-    it('should handle an empty array', function() {
-      expect(set.permutations([])).to.eql([[]]);
-    });
+  describe('#permutations', function () {
+    it('should handle an empty array', function () {
+      assert.deepEqual(set.permutations([]), [[]])
+    })
 
-    it('should handle an empty string', function() {
-      expect(set.permutations('')).to.eql(['']);
-    });
+    it('should handle an empty string', function () {
+      assert.deepEqual(set.permutations(''), [''])
+    })
 
-    it('should handle an array', function() {
-      expect(set.permutations([1, 2, 3])).to.eql([[1, 2, 3], [2, 1, 3], [3, 2, 1], [2, 3, 1], [3, 1, 2], [1, 3, 2]]);
-    });
+    it('should handle an array', function () {
+      assert.deepEqual(set.permutations([1, 2, 3]), [[1, 2, 3], [2, 1, 3], [3, 2, 1], [2, 3, 1], [3, 1, 2], [1, 3, 2]])
+    })
 
-    it('should handle a string', function() {
-      expect(set.permutations('abc')).to.eql(['abc', 'bac', 'cba', 'bca', 'cab', 'acb']);
-    });
-  });
-});
+    it('should handle a string', function () {
+      assert.deepEqual(set.permutations('abc'), ['abc', 'bac', 'cba', 'bca', 'cab', 'acb'])
+    })
+  })
+})

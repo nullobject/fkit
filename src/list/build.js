@@ -1,12 +1,11 @@
-'use strict';
+'use strict'
 
-var base    = require('./base'),
-    fn      = require('../fn'),
-    fold    = require('./fold'),
-    math    = require('../math'),
-    sublist = require('./sublist');
-
-var self;
+var base = require('./base')
+var fn = require('../fn')
+var fold = require('./fold')
+var math = require('../math')
+var sublist = require('./sublist')
+var self
 
 /**
  * This module defines operations for building lists.
@@ -27,7 +26,7 @@ self = module.exports = {
    * @param n A number.
    * @returns A new array.
    */
-  array: function(n) { return Array.apply(null, Array(n)); },
+  array: function (n) { return Array.apply(null, Array(n)) },
 
   /**
    * Returns an string of length `n`.
@@ -40,7 +39,7 @@ self = module.exports = {
    * @param n A number.
    * @returns A new string.
    */
-  string: function(n) { return self.array(n + 1).join(' '); },
+  string: function (n) { return self.array(n + 1).join(' ') },
 
   /**
    * Returns an ordered pair with the values `a` and `b`.
@@ -57,7 +56,7 @@ self = module.exports = {
    * @param b A value.
    * @returns A new pair.
    */
-  pair: fn.curry(function(a, b) { return [a, b]; }),
+  pair: fn.curry(function (a, b) { return [a, b] }),
 
   /**
    * Returns an array of numbers of length `n` starting from `a`.
@@ -73,8 +72,8 @@ self = module.exports = {
    * @param n A number.
    * @returns A new array.
    */
-  range: fn.curry(function(a, n) {
-    return self.array(n).map(function(_, i) { return a + i; });
+  range: fn.curry(function (a, n) {
+    return self.array(n).map(function (_, i) { return a + i })
   }),
 
   /**
@@ -92,9 +91,9 @@ self = module.exports = {
    * @param a A value.
    * @returns A new list.
    */
-  replicate: fn.curry(function(n, a) {
-    var as = base.isString(a) ? self.string(n) : self.array(n);
-    return fold.concatMap(function() { return [a]; }, as);
+  replicate: fn.curry(function (n, a) {
+    var as = base.isString(a) ? self.string(n) : self.array(n)
+    return fold.concatMap(function () { return [a] }, as)
   }),
 
   /**
@@ -112,8 +111,8 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  sample: fn.curry(function(n, as) {
-    return sublist.take(n, self.shuffle(as));
+  sample: fn.curry(function (n, as) {
+    return sublist.take(n, self.shuffle(as))
   }),
 
   /**
@@ -132,21 +131,21 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  shuffle: function(as) {
-    var i  = -1,
-        r  = self.array(as.length),
-        bs = fold.fold(f, r, as),
-        s  = base.isString(as) ? '' : [];
+  shuffle: function (as) {
+    var i = -1
+    var r = self.array(as.length)
+    var bs = fold.fold(f, r, as)
+    var s = base.isString(as) ? '' : []
 
-    return fold.concatWith(s, bs);
+    return fold.concatWith(s, bs)
 
-    function f(b, a) {
-      var j = math.randomInt(0, ++i);
+    function f (b, a) {
+      var j = math.randomInt(0, ++i)
 
-      b[i] = b[j];
-      b[j] = a;
+      b[i] = b[j]
+      b[j] = a
 
-      return b;
+      return b
     }
-  },
-};
+  }
+}

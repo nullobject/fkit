@@ -1,10 +1,8 @@
-'use strict';
+'use strict'
 
-var base = require('./base'),
-    fn   = require('../fn'),
-    util = require('../util');
-
-var self;
+var base = require('./base')
+var fn = require('../fn')
+var self
 
 /**
  * This module defines operations for sorting lists.
@@ -28,8 +26,8 @@ self = module.exports = {
    * @param a A list.
    * @returns A new list.
    */
-  sort: function(as) {
-    return self.sortBy(fn.compare, as);
+  sort: function (as) {
+    return self.sortBy(fn.compare, as)
   },
 
   /**
@@ -44,8 +42,8 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  sortBy: fn.curry(function(c, as) {
-    var bs = base.toArray(as.slice(0));
-    return base.toList(bs.sort(c), typeof as);
-  }),
-};
+  sortBy: fn.curry(function (c, as) {
+    var bs = base.toArray(as.slice(0))
+    return base.toList(bs.sort(c), typeof as)
+  })
+}

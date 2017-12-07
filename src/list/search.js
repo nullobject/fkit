@@ -1,12 +1,11 @@
-'use strict';
+'use strict'
 
-var base  = require('./base'),
-    fn    = require('../fn'),
-    fold  = require('./fold'),
-    logic = require('../logic'),
-    map   = require('./map');
-
-var self;
+var base = require('./base')
+var fn = require('../fn')
+var fold = require('./fold')
+var logic = require('../logic')
+var map = require('./map')
+var self
 
 /**
  * This module defines search operations on lists.
@@ -35,8 +34,8 @@ self = module.exports = {
    * @param as A list.
    * @returns A boolean value.
    */
-  elem: fn.curry(function(a, as) {
-    return as.indexOf(a) >= 0;
+  elem: fn.curry(function (a, as) {
+    return as.indexOf(a) >= 0
   }),
 
   /**
@@ -58,9 +57,9 @@ self = module.exports = {
    * @param as A list.
    * @returns A number or `undefined` if no value was found.
    */
-  elemIndex: fn.curry(function(a, as) {
-    var i = as.indexOf(a);
-    return (i >= 0) ? i : undefined;
+  elemIndex: fn.curry(function (a, as) {
+    var i = as.indexOf(a)
+    return (i >= 0) ? i : undefined
   }),
 
   /**
@@ -82,8 +81,8 @@ self = module.exports = {
    * @param as A list.
    * @returns A number or `undefined` if no value was found.
    */
-  elemIndices: fn.curry(function(a, as) {
-    return self.findIndices(fn.equal(a), as);
+  elemIndices: fn.curry(function (a, as) {
+    return self.findIndices(fn.equal(a), as)
   }),
 
   /**
@@ -105,8 +104,8 @@ self = module.exports = {
    * @param as A list.
    * @returns A value or `undefined` if no value was found.
    */
-  find: fn.curry(function(p, as) {
-    return base.head(self.filter(p, as));
+  find: fn.curry(function (p, as) {
+    return base.head(self.filter(p, as))
   }),
 
   /**
@@ -129,14 +128,14 @@ self = module.exports = {
    * @param as A list.
    * @returns A number or `undefined` if no value was found.
    */
-  findIndex: fn.curry(function(p, as) {
-    var n = as.length;
+  findIndex: fn.curry(function (p, as) {
+    var n = as.length
 
     for (var i = 0; i < n; i++) {
-      if (p(as[i])) { return i; }
+      if (p(as[i])) { return i }
     }
 
-    return undefined;
+    return undefined
   }),
 
   /**
@@ -159,15 +158,15 @@ self = module.exports = {
    * @param as A list.
    * @returns A number or `undefined` if no value was found.
    */
-  findIndices: fn.curry(function(p, as) {
-    var s = [],
-        n = as.length;
+  findIndices: fn.curry(function (p, as) {
+    var s = []
+    var n = as.length
 
     for (var i = 0; i < n; i++) {
-      if (p(as[i])) { s.push(i); }
+      if (p(as[i])) { s.push(i) }
     }
 
-    return s;
+    return s
   }),
 
   /**
@@ -186,9 +185,9 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  filter: fn.curry(function(p, as) {
-    var f = logic.branch(p, fn.id, fn.const(''));
-    return base.isString(as) ? fold.concatMap(f, as) : as.filter(p);
+  filter: fn.curry(function (p, as) {
+    var f = logic.branch(p, fn.id, fn.const(''))
+    return base.isString(as) ? fold.concatMap(f, as) : as.filter(p)
   }),
 
   /**
@@ -208,11 +207,11 @@ self = module.exports = {
    * @param as A list.
    * @returns A pair of lists.
    */
-  partition: fn.curry(function(p, as) {
+  partition: fn.curry(function (p, as) {
     return [
       self.filter(p, as),
       self.filter(fn.compose(logic.not, p), as)
-    ];
+    ]
   }),
 
   /**
@@ -237,8 +236,8 @@ self = module.exports = {
    * @param as A list.
    * @returns A boolean value.
    */
-  all: fn.curry(function(p, as) {
-    return self.filter(p, as).length === as.length;
+  all: fn.curry(function (p, as) {
+    return self.filter(p, as).length === as.length
   }),
 
   /**
@@ -263,8 +262,8 @@ self = module.exports = {
    * @param as A list.
    * @returns A boolean value.
    */
-  any: fn.curry(function(p, as) {
-    return self.filter(p, as).length > 0;
+  any: fn.curry(function (p, as) {
+    return self.filter(p, as).length > 0
   }),
 
   /**
@@ -288,13 +287,13 @@ self = module.exports = {
    * @param bs A list.
    * @returns A boolean value.
    */
-  isPrefixOf: fn.curry(function isPrefixOf(as, bs) {
+  isPrefixOf: fn.curry(function isPrefixOf (as, bs) {
     if (base.empty(as)) {
-      return true;
+      return true
     } else if (base.empty(bs)) {
-      return false;
+      return false
     } else {
-      return base.head(as) === base.head(bs) && isPrefixOf(base.tail(as), base.tail(bs));
+      return base.head(as) === base.head(bs) && isPrefixOf(base.tail(as), base.tail(bs))
     }
   }),
 
@@ -319,8 +318,8 @@ self = module.exports = {
    * @param bs A list.
    * @returns A boolean value.
    */
-  isSuffixOf: fn.curry(function(as, bs) {
-    return self.isPrefixOf(map.reverse(as), map.reverse(bs));
+  isSuffixOf: fn.curry(function (as, bs) {
+    return self.isPrefixOf(map.reverse(as), map.reverse(bs))
   }),
 
   /**
@@ -344,7 +343,7 @@ self = module.exports = {
    * @param bs A list.
    * @returns A boolean value.
    */
-  isInfixOf: fn.curry(function(as, bs) {
-    return self.any(self.isPrefixOf(as), base.tails(bs));
-  }),
-};
+  isInfixOf: fn.curry(function (as, bs) {
+    return self.any(self.isPrefixOf(as), base.tails(bs))
+  })
+}

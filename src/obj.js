@@ -1,10 +1,9 @@
-'use strict';
+'use strict'
 
-var fn   = require('./fn'),
-    set  = require('./list/set'),
-    util = require('./util');
-
-var self;
+var fn = require('./fn')
+var set = require('./list/set')
+var util = require('./util')
+var self
 
 /**
  * This module defines operations on objects.
@@ -31,8 +30,8 @@ self = module.exports = {
    * @param o An object.
    * @returns A value.
    */
-  applyMethod: fn.curry(function(k, a, o) {
-    return o[k](a);
+  applyMethod: fn.curry(function (k, a, o) {
+    return o[k](a)
   }),
 
   /**
@@ -53,8 +52,8 @@ self = module.exports = {
    * @param o An object.
    * @returns A value.
    */
-  applyMethod2: fn.curry(function(k, a, b, o) {
-    return o[k](a, b);
+  applyMethod2: fn.curry(function (k, a, b, o) {
+    return o[k](a, b)
   }),
 
   /**
@@ -76,8 +75,8 @@ self = module.exports = {
    * @param o An object.
    * @returns A value.
    */
-  applyMethod3: fn.curry(function(k, a, b, c, o) {
-    return o[k](a, b, c);
+  applyMethod3: fn.curry(function (k, a, b, c, o) {
+    return o[k](a, b, c)
   }),
 
   /**
@@ -97,8 +96,8 @@ self = module.exports = {
    * @param os A list.
    * @returns A new object.
    */
-  copy: fn.variadic(function(o, ps) {
-    return util.extend(new o.constructor(), [o].concat(ps));
+  copy: fn.variadic(function (o, ps) {
+    return util.extend(new o.constructor(), [o].concat(ps))
   }),
 
   /**
@@ -116,7 +115,7 @@ self = module.exports = {
    * @param o An object.
    * @returns A value.
    */
-  get: fn.curry(function(k, o) { return o[k]; }),
+  get: fn.curry(function (k, o) { return o[k] }),
 
   /**
    * Returns the property at the key path `ks` in the object `o`.
@@ -133,10 +132,10 @@ self = module.exports = {
    * @param o An object.
    * @returns A value.
    */
-  getIn: fn.curry(function(ks, o) {
-    return ks.reduce(function(a, b) {
-      return (a !== undefined) ? a[b] : undefined;
-    }, o);
+  getIn: fn.curry(function (ks, o) {
+    return ks.reduce(function (a, b) {
+      return (a !== undefined) ? a[b] : undefined
+    }, o)
   }),
 
   /**
@@ -156,10 +155,10 @@ self = module.exports = {
    * @param o An object.
    * @returns A new object.
    */
-  set: fn.curry(function(k, v, o) {
-    var p = {};
-    p[k] = v;
-    return self.copy(o, p);
+  set: fn.curry(function (k, v, o) {
+    var p = {}
+    p[k] = v
+    return self.copy(o, p)
   }),
 
   /**
@@ -179,8 +178,8 @@ self = module.exports = {
    * @param o An object.
    * @returns A new object.
    */
-  update: fn.curry(function(k, f, o) {
-    return self.set(k, f(self.get(k, o)), o);
+  update: fn.curry(function (k, f, o) {
+    return self.set(k, f(self.get(k, o)), o)
   }),
 
   /**
@@ -199,10 +198,10 @@ self = module.exports = {
    * @param o An object.
    * @returns A new object.
    */
-  pick: fn.curry(function(ks, o) {
-    return ks.reduce(function(p, k) {
-      return self.set(k, self.get(k, o), p);
-    }, {});
+  pick: fn.curry(function (ks, o) {
+    return ks.reduce(function (p, k) {
+      return self.set(k, self.get(k, o), p)
+    }, {})
   }),
 
   /**
@@ -221,12 +220,12 @@ self = module.exports = {
    * @param o An object.
    * @returns A new object.
    */
-  omit: fn.curry(function(ks, o) {
+  omit: fn.curry(function (ks, o) {
     return set
       .difference(self.keys(o), ks)
-      .reduce(function(p, k) {
-        return self.set(k, self.get(k, o), p);
-      }, {});
+      .reduce(function (p, k) {
+        return self.set(k, self.get(k, o), p)
+      }, {})
   }),
 
   /**
@@ -241,10 +240,10 @@ self = module.exports = {
    * @param o An object.
    * @returns A new list.
    */
-  pairs: function(o) {
-    return Object.keys(o).map(function(k) {
-      return [k, self.get(k, o)];
-    });
+  pairs: function (o) {
+    return Object.keys(o).map(function (k) {
+      return [k, self.get(k, o)]
+    })
   },
 
   /**
@@ -259,8 +258,8 @@ self = module.exports = {
    * @param o An object.
    * @returns A new list.
    */
-  keys: function(o) {
-    return Object.keys(o);
+  keys: function (o) {
+    return Object.keys(o)
   },
 
   /**
@@ -275,9 +274,9 @@ self = module.exports = {
    * @param o An object.
    * @returns A new list.
    */
-  values: function(o) {
+  values: function (o) {
     return Object
       .keys(o)
-      .map(fn.flip(self.get)(o));
-  },
-};
+      .map(fn.flip(self.get)(o))
+  }
+}

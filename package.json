@@ -29,10 +29,10 @@
     "chai": "^4.1.2",
     "jsdoc": "^3.5.5",
     "jsdoc-react": "^0.3.0",
-    "jshint": "^2.5.5",
     "mocha": "^4.0.1",
     "sinon": "^4.1.2",
     "sinon-chai": "^2.14.0",
+    "standard": "^10.0.3",
     "webpack": "^3.9.1"
   }
 }

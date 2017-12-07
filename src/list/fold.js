@@ -1,10 +1,9 @@
-'use strict';
+'use strict'
 
-var base = require('./base'),
-    fn   = require('../fn'),
-    math = require('../math');
-
-var self;
+var base = require('./base')
+var fn = require('../fn')
+var math = require('../math')
+var self
 
 /**
  * This module defines fold operations on lists.
@@ -19,14 +18,14 @@ self = module.exports = {
    *
    * @private
    */
-  flattenStrings: function flattenStrings(as) {
+  flattenStrings: function flattenStrings (as) {
     if (base.isArrayOfStrings(as)) {
-      return self.concat(as);
+      return self.concat(as)
     } else {
       if (Array.isArray(as)) {
-        return as.map(flattenStrings);
+        return as.map(flattenStrings)
       } else {
-        return as;
+        return as
       }
     }
   },
@@ -37,10 +36,10 @@ self = module.exports = {
    *
    * @private
    */
-  concatWith: fn.curry(function(s, as) {
+  concatWith: fn.curry(function (s, as) {
     return base
       .toArray(fn.flatten(as))
-      .reduce(fn.flip(base.append), s);
+      .reduce(fn.flip(base.append), s)
   }),
 
   /**
@@ -57,8 +56,8 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  concat: fn.variadic(function(as) {
-    return self.concatWith(base.mempty(as), as);
+  concat: fn.variadic(function (as) {
+    return self.concatWith(base.mempty(as), as)
   }),
 
   /**
@@ -82,11 +81,11 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  concatMap: fn.curry(function(f, as) {
-    var bs = base.toArray(as).map(fn.compose(self.flattenStrings, f)),
-        cs = bs.length > 0 ? bs : as;
+  concatMap: fn.curry(function (f, as) {
+    var bs = base.toArray(as).map(fn.compose(self.flattenStrings, f))
+    var cs = bs.length > 0 ? bs : as
 
-    return self.concatWith(base.mempty(cs), bs);
+    return self.concatWith(base.mempty(cs), bs)
   }),
 
   /**
@@ -106,10 +105,10 @@ self = module.exports = {
    * @param as A list.
    * @returns A value.
    */
-  fold: fn.curry(function(f, s, as) {
+  fold: fn.curry(function (f, s, as) {
     return base
       .toArray(as)
-      .reduce(f, s);
+      .reduce(f, s)
   }),
 
   /**
@@ -129,10 +128,10 @@ self = module.exports = {
    * @param as A list.
    * @returns A value.
    */
-  foldRight: fn.curry(function(f, s, as) {
+  foldRight: fn.curry(function (f, s, as) {
     return base
       .toArray(as)
-      .reduceRight(fn.flip(f), s);
+      .reduceRight(fn.flip(f), s)
   }),
 
   /**
@@ -152,14 +151,14 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  scan: fn.curry(function(f, s, as) {
-    var r = [s];
+  scan: fn.curry(function (f, s, as) {
+    var r = [s]
 
-    self.fold(function(b, a) {
-      return fn.tap(r.push.bind(r), f(b, a));
-    }, s, as);
+    self.fold(function (b, a) {
+      return fn.tap(r.push.bind(r), f(b, a))
+    }, s, as)
 
-    return r;
+    return r
   }),
 
   /**
@@ -179,14 +178,14 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  scanRight: fn.curry(function(f, s, as) {
-    var r = [s];
+  scanRight: fn.curry(function (f, s, as) {
+    var r = [s]
 
-    self.foldRight(function(a, b) {
-      return fn.tap(r.unshift.bind(r), f(a, b));
-    }, s, as);
+    self.foldRight(function (a, b) {
+      return fn.tap(r.unshift.bind(r), f(a, b))
+    }, s, as)
 
-    return r;
+    return r
   }),
 
   /**
@@ -201,7 +200,7 @@ self = module.exports = {
    * @param as A list.
    * @returns A value.
    */
-  maximum: function(as) { return self.fold(math.max, as[0], as); },
+  maximum: function (as) { return self.fold(math.max, as[0], as) },
 
   /**
    * Returns the minimum value in the list of `as`.
@@ -215,7 +214,7 @@ self = module.exports = {
    * @param as A list.
    * @returns A value.
    */
-  minimum: function(as) { return self.fold(math.min, as[0], as); },
+  minimum: function (as) { return self.fold(math.min, as[0], as) },
 
   /**
    * Returns the maximum value in the list of `as` using the comparator
@@ -229,10 +228,10 @@ self = module.exports = {
    * @param as A list.
    * @returns A value.
    */
-  maximumBy: fn.curry(function(c, as) {
-    return self.fold(function(a, b) {
-      return c(a, b) > 0? a : b;
-    }, as[0], as);
+  maximumBy: fn.curry(function (c, as) {
+    return self.fold(function (a, b) {
+      return c(a, b) > 0 ? a : b
+    }, as[0], as)
   }),
 
   /**
@@ -248,10 +247,10 @@ self = module.exports = {
    * @param as A list.
    * @returns A value.
    */
-  minimumBy: fn.curry(function(c, as) {
-    return self.fold(function(a, b) {
-      return c(a, b) < 0 ? a : b;
-    }, as[0], as);
+  minimumBy: fn.curry(function (c, as) {
+    return self.fold(function (a, b) {
+      return c(a, b) < 0 ? a : b
+    }, as[0], as)
   }),
 
   /**
@@ -265,7 +264,7 @@ self = module.exports = {
    * @param as A list.
    * @returns A number.
    */
-  sum: function(as) { return self.fold(math.add, 0, as); },
+  sum: function (as) { return self.fold(math.add, 0, as) },
 
   /**
    * Returns the product of the elements in the list of `as`.
@@ -278,5 +277,5 @@ self = module.exports = {
    * @param as A list.
    * @returns A number.
    */
-  product: function(as) { return self.fold(math.mul, 1, as); },
-};
+  product: function (as) { return self.fold(math.mul, 1, as) }
+}

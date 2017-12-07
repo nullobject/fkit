@@ -1,13 +1,12 @@
-'use strict';
+'use strict'
 
-var base   = require('./base'),
-    build  = require('./build'),
-    fn     = require('../fn'),
-    fold   = require('./fold'),
-    map    = require('./map'),
-    search = require('./search');
-
-var self;
+var base = require('./base')
+var build = require('./build')
+var fn = require('../fn')
+var fold = require('./fold')
+var map = require('./map')
+var search = require('./search')
+var self
 
 /**
  * This module defines set operations on lists.
@@ -34,8 +33,8 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  nub: function(as) {
-    return self.nubBy(fn.equal, as);
+  nub: function (as) {
+    return self.nubBy(fn.equal, as)
   },
 
   /**
@@ -51,15 +50,15 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  nubBy: fn.curry(function nubBy(f, as) {
-    var a = base.head(as);
+  nubBy: fn.curry(function nubBy (f, as) {
+    var a = base.head(as)
 
-    return base.empty(as) ?
-      base.mempty(as) :
-      base.prepend(
+    return base.empty(as)
+      ? base.mempty(as)
+      : base.prepend(
         a,
-        nubBy(f, search.filter(function(b) { return !f(a, b); }, base.tail(as)))
-      );
+        nubBy(f, search.filter(function (b) { return !f(a, b) }, base.tail(as)))
+      )
   }),
 
   /**
@@ -81,10 +80,10 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  union: fn.curry(function(as, bs) {
-    return fold.fold(function(cs, b) {
-      return (search.elem(b, cs)) ? cs : base.append(b, cs);
-    }, as, bs);
+  union: fn.curry(function (as, bs) {
+    return fold.fold(function (cs, b) {
+      return (search.elem(b, cs)) ? cs : base.append(b, cs)
+    }, as, bs)
   }),
 
   /**
@@ -106,10 +105,10 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  intersect: fn.curry(function(as, bs) {
-    return fold.fold(function(cs, a) {
-      return (search.elem(a, bs)) ? base.append(a, cs) : cs;
-    }, base.mempty(as), as);
+  intersect: fn.curry(function (as, bs) {
+    return fold.fold(function (cs, a) {
+      return (search.elem(a, bs)) ? base.append(a, cs) : cs
+    }, base.mempty(as), as)
   }),
 
   /**
@@ -128,8 +127,8 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  difference: fn.curry(function(as, bs) {
-    return fold.fold(fn.flip(self.remove), as, bs);
+  difference: fn.curry(function (as, bs) {
+    return fold.fold(fn.flip(self.remove), as, bs)
   }),
 
   /**
@@ -151,8 +150,8 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  remove: fn.curry(function(a, bs) {
-    return self.removeBy(fn.equal, a, bs);
+  remove: fn.curry(function (a, bs) {
+    return self.removeBy(fn.equal, a, bs)
   }),
 
   /**
@@ -169,13 +168,13 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  removeBy: fn.curry(function removeBy(f, a, bs_) {
-    var b  = base.head(bs_),
-        bs = base.tail(bs_);
+  removeBy: fn.curry(function removeBy (f, a, bs_) {
+    var b = base.head(bs_)
+    var bs = base.tail(bs_)
 
-    return base.empty(bs_) ?
-      base.mempty(bs_) :
-      f(a, b) ? bs : base.prepend(b, removeBy(f, a, bs));
+    return base.empty(bs_)
+      ? base.mempty(bs_)
+      : f(a, b) ? bs : base.prepend(b, removeBy(f, a, bs))
   }),
 
   /**
@@ -194,13 +193,13 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  cartesian: fn.curry(function cartesian(as, bs) {
-    return base.empty(as) ?
-      [] :
-      fold.concat(
+  cartesian: fn.curry(function cartesian (as, bs) {
+    return base.empty(as)
+      ? []
+      : fold.concat(
         map.map(build.pair(base.head(as)), bs),
         cartesian(base.tail(as), bs)
-      );
+      )
   }),
 
   /**
@@ -216,20 +215,20 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  subsequences: function(as) {
-    return base.prepend(base.mempty(as), subsequences_(as));
+  subsequences: function (as) {
+    return base.prepend(base.mempty(as), subsequences_(as))
 
-    function subsequences_(bs) {
-      var b = base.head(bs);
+    function subsequences_ (bs) {
+      var b = base.head(bs)
 
       if (base.empty(bs)) {
-        return [];
+        return []
       } else {
-        return base.prepend(base.pure(b), fold.foldRight(f, [], subsequences_(base.tail(bs))));
+        return base.prepend(base.pure(b), fold.foldRight(f, [], subsequences_(base.tail(bs))))
       }
 
-      function f(ys, r) {
-        return fold.concat(base.pure(ys), base.pure(base.prepend(b, ys)), r);
+      function f (ys, r) {
+        return fold.concat(base.pure(ys), base.pure(base.prepend(b, ys)), r)
       }
     }
   },
@@ -247,38 +246,38 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  permutations: function permutations(as) {
-    return base.prepend(as, permutations_(as, []));
+  permutations: function permutations (as) {
+    return base.prepend(as, permutations_(as, []))
 
-    function permutations_(bs_, cs) {
-      var b  = base.head(bs_),
-          bs = base.tail(bs_);
+    function permutations_ (bs_, cs) {
+      var b = base.head(bs_)
+      var bs = base.tail(bs_)
 
-      return base.empty(bs_) ? [] :
-        fold.foldRight(
+      return base.empty(bs_) ? []
+        : fold.foldRight(
           interleave,
           permutations_(bs, base.prepend(b, cs)),
           permutations(cs)
-        );
+        )
 
-      function interleave(ds, r) {
-        return interleave_(fn.id, ds)[1];
+      function interleave (ds, r) {
+        return interleave_(fn.id, ds)[1]
 
-        function interleave_(f, es_) {
+        function interleave_ (f, es_) {
           if (base.empty(es_)) {
-            return [bs, r];
+            return [bs, r]
           } else {
-            var e  = base.head(es_),
-                es = base.tail(es_),
-                s  = interleave_(fn.compose(f, base.prepend(e)), es);
+            var e = base.head(es_)
+            var es = base.tail(es_)
+            var s = interleave_(fn.compose(f, base.prepend(e)), es)
 
             return [
               base.prepend(e, s[0]),
               base.prepend(f(fold.concat(b, e, s[0])), s[1])
-            ];
+            ]
           }
         }
       }
     }
-  },
-};
+  }
+}

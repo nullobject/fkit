@@ -1,8 +1,7 @@
-'use strict';
+'use strict'
 
-var fn = require('../fn');
-
-var self;
+var fn = require('../fn')
+var self
 
 /**
  * This module defines basic operations on lists.
@@ -17,8 +16,8 @@ self = module.exports = {
    *
    * @private
    */
-  isString: function(as) {
-    return (typeof as === 'string');
+  isString: function (as) {
+    return (typeof as === 'string')
   },
 
   /**
@@ -26,10 +25,10 @@ self = module.exports = {
    *
    * @private
    */
-  isArrayOfStrings: function(as) {
+  isArrayOfStrings: function (as) {
     return Array.isArray(as) &&
       as.length > 0 &&
-      as.reduce(function(a, b) { return a && self.isString(b); }, true);
+      as.reduce(function (a, b) { return a && self.isString(b) }, true)
   },
 
   /**
@@ -37,8 +36,8 @@ self = module.exports = {
    *
    * @private
    */
-  mempty: function(as) {
-    return self.isString(as) || self.isArrayOfStrings(as) ? '' : [];
+  mempty: function (as) {
+    return self.isString(as) || self.isArrayOfStrings(as) ? '' : []
   },
 
   /**
@@ -46,8 +45,8 @@ self = module.exports = {
    *
    * @private
    */
-  pure: function(a) {
-    return self.isString(a) || self.isArrayOfStrings(a) ? a : [a];
+  pure: function (a) {
+    return self.isString(a) || self.isArrayOfStrings(a) ? a : [a]
   },
 
   /**
@@ -55,8 +54,8 @@ self = module.exports = {
    *
    * @private
    */
-  toArray: function(as) {
-    return self.isString(as) ? as.split('') : as;
+  toArray: function (as) {
+    return self.isString(as) ? as.split('') : as
   },
 
   /**
@@ -64,8 +63,8 @@ self = module.exports = {
    *
    * @private
    */
-  toList: function(as, t) {
-    return t === 'string' ? as.join('') : as;
+  toList: function (as, t) {
+    return t === 'string' ? as.join('') : as
   },
 
   /**
@@ -80,7 +79,7 @@ self = module.exports = {
    * @param as A list.
    * @returns A number.
    */
-  length: function(as) { return as.length; },
+  length: function (as) { return as.length },
 
   /**
    * Returns `true` if the list of `as` is empty, `false` otherwise.
@@ -97,7 +96,7 @@ self = module.exports = {
    * @param as A list.
    * @returns A boolean value.
    */
-  empty: function(as) { return as.length === 0; },
+  empty: function (as) { return as.length === 0 },
 
   /**
    * Returns a list that contains the value `a` appended to the list of `bs`.
@@ -114,8 +113,8 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  append: fn.curry(function(a, bs) {
-    return self.isString(bs) ? (bs + a) : bs.concat([a]);
+  append: fn.curry(function (a, bs) {
+    return self.isString(bs) ? (bs + a) : bs.concat([a])
   }),
 
   /**
@@ -133,8 +132,8 @@ self = module.exports = {
    * @param bs A list.
    * @returns A new list.
    */
-  prepend: fn.curry(function(a, bs) {
-    return self.isString(bs) ? (a + bs) : [a].concat(bs);
+  prepend: fn.curry(function (a, bs) {
+    return self.isString(bs) ? (a + bs) : [a].concat(bs)
   }),
 
   /**
@@ -151,8 +150,8 @@ self = module.exports = {
    * @param cs A list.
    * @returns A new list.
    */
-  surround: fn.curry(function(a, b, cs) {
-    return self.append(b, self.prepend(a, cs));
+  surround: fn.curry(function (a, b, cs) {
+    return self.append(b, self.prepend(a, cs))
   }),
 
   /**
@@ -167,7 +166,7 @@ self = module.exports = {
    * @param as A list.
    * @returns A value or `undefined` if the list is empty.
    */
-  head: function(as) { return as[0]; },
+  head: function (as) { return as[0] },
 
   /**
    * Returns the last element in the list of `as`.
@@ -181,7 +180,7 @@ self = module.exports = {
    * @param as A list.
    * @returns A value or `undefined` if the list is empty.
    */
-  last: function(as) { return as[as.length - 1]; },
+  last: function (as) { return as[as.length - 1] },
 
   /**
    * Returns a list that contains the elements before the last element in the
@@ -196,7 +195,7 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  init: function(as) { return as.slice(0, as.length - 1); },
+  init: function (as) { return as.slice(0, as.length - 1) },
 
   /**
    * Returns a list that contains the elements after the first element in the
@@ -211,7 +210,7 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  tail: function(as) { return as.slice(1); },
+  tail: function (as) { return as.slice(1) },
 
   /**
    * Returns a list that contains all initial segments of the list of `as`.
@@ -225,11 +224,11 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  inits: function inits(as) {
+  inits: function inits (as) {
     return self.prepend(
       self.mempty(as),
       self.empty(as) ? [] : inits(self.tail(as)).map(self.prepend(self.head(as)))
-    );
+    )
   },
 
   /**
@@ -244,10 +243,10 @@ self = module.exports = {
    * @param as A list.
    * @returns A new list.
    */
-  tails: function tails(as) {
+  tails: function tails (as) {
     return self.prepend(
       as,
       self.empty(as) ? [] : tails(self.tail(as))
-    );
-  },
-};
+    )
+  }
+}
