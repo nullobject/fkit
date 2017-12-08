@@ -1,7 +1,7 @@
-var base = require('./base')
-var build = require('./build')
-var fn = require('../fn')
-var self
+const base = require('./base')
+const build = require('./build')
+const fn = require('../fn')
+let self
 
 /**
  * This module defines zip operations on lists.
@@ -24,7 +24,7 @@ self = module.exports = {
    * @returns A new list.
    */
   zipWith: fn.curry(function (f, as, bs) {
-    var n = Math.min(as.length, bs.length)
+    const n = Math.min(as.length, bs.length)
 
     return base
       .toArray(as.slice(0, n))
@@ -66,13 +66,13 @@ self = module.exports = {
    * @returns A new list.
    */
   unzip: function (as) {
-    var s = base.mempty(as[0])
+    const s = base.mempty(as[0])
 
     return as.reduceRight(function (p, ps) {
-      var a = ps[0]
-      var b = ps[1]
-      var as = p[0]
-      var bs = p[1]
+      const a = ps[0]
+      const b = ps[1]
+      const as = p[0]
+      const bs = p[1]
       return [base.prepend(a, as), base.prepend(b, bs)]
     }, [s, s])
   }

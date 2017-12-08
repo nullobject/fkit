@@ -1,10 +1,10 @@
-var base = require('./base')
-var build = require('./build')
-var fn = require('../fn')
-var fold = require('./fold')
-var map = require('./map')
-var search = require('./search')
-var self
+const base = require('./base')
+const build = require('./build')
+const fn = require('../fn')
+const fold = require('./fold')
+const map = require('./map')
+const search = require('./search')
+let self
 
 /**
  * This module defines set operations on lists.
@@ -49,7 +49,7 @@ self = module.exports = {
    * @returns A new list.
    */
   nubBy: fn.curry(function nubBy (f, as) {
-    var a = base.head(as)
+    const a = base.head(as)
 
     return base.empty(as)
       ? base.mempty(as)
@@ -167,8 +167,8 @@ self = module.exports = {
    * @returns A new list.
    */
   removeBy: fn.curry(function removeBy (f, a, bs_) {
-    var b = base.head(bs_)
-    var bs = base.tail(bs_)
+    const b = base.head(bs_)
+    const bs = base.tail(bs_)
 
     return base.empty(bs_)
       ? base.mempty(bs_)
@@ -217,7 +217,7 @@ self = module.exports = {
     return base.prepend(base.mempty(as), subsequences_(as))
 
     function subsequences_ (bs) {
-      var b = base.head(bs)
+      const b = base.head(bs)
 
       if (base.empty(bs)) {
         return []
@@ -248,8 +248,8 @@ self = module.exports = {
     return base.prepend(as, permutations_(as, []))
 
     function permutations_ (bs_, cs) {
-      var b = base.head(bs_)
-      var bs = base.tail(bs_)
+      const b = base.head(bs_)
+      const bs = base.tail(bs_)
 
       return base.empty(bs_) ? []
         : fold.foldRight(
@@ -265,9 +265,9 @@ self = module.exports = {
           if (base.empty(es_)) {
             return [bs, r]
           } else {
-            var e = base.head(es_)
-            var es = base.tail(es_)
-            var s = interleave_(fn.compose(f, base.prepend(e)), es)
+            const e = base.head(es_)
+            const es = base.tail(es_)
+            const s = interleave_(fn.compose(f, base.prepend(e)), es)
 
             return [
               base.prepend(e, s[0]),

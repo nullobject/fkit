@@ -1,5 +1,5 @@
-var assert = require('chai').assert
-var zip = require('../../src/list/zip')
+const assert = require('chai').assert
+const zip = require('../../src/list/zip')
 
 describe('list.zip', function () {
   describe('#zipWith', function () {

@@ -1,5 +1,5 @@
-var assert = require('chai').assert
-var sublist = require('../../src/list/sublist')
+const assert = require('chai').assert
+const sublist = require('../../src/list/sublist')
 
 describe('list.sublist', function () {
   describe('#take', function () {

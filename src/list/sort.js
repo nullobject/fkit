@@ -1,6 +1,6 @@
-var base = require('./base')
-var fn = require('../fn')
-var self
+const base = require('./base')
+const fn = require('../fn')
+let self
 
 /**
  * This module defines operations for sorting lists.
@@ -41,7 +41,7 @@ self = module.exports = {
    * @returns A new list.
    */
   sortBy: fn.curry(function (c, as) {
-    var bs = base.toArray(as.slice(0))
+    const bs = base.toArray(as.slice(0))
     return base.toList(bs.sort(c), typeof as)
   })
 }

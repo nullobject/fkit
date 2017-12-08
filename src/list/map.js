@@ -1,6 +1,6 @@
-var base = require('./base')
-var fn = require('../fn')
-var fold = require('./fold')
+const base = require('./base')
+const fn = require('../fn')
+const fold = require('./fold')
 
 /**
  * This module defines map operations on lists.

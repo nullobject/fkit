@@ -1,5 +1,5 @@
-var assert = require('chai').assert
-var sort = require('../../src/list/sort')
+const assert = require('chai').assert
+const sort = require('../../src/list/sort')
 
 describe('list.sort', function () {
   describe('#sort', function () {

@@ -1,9 +1,9 @@
-var base = require('./base')
-var fn = require('../fn')
-var fold = require('./fold')
-var math = require('../math')
-var sublist = require('./sublist')
-var self
+const base = require('./base')
+const fn = require('../fn')
+const fold = require('./fold')
+const math = require('../math')
+const sublist = require('./sublist')
+let self
 
 /**
  * This module defines operations for building lists.
@@ -90,7 +90,7 @@ self = module.exports = {
    * @returns A new list.
    */
   replicate: fn.curry(function (n, a) {
-    var as = base.isString(a) ? self.string(n) : self.array(n)
+    const as = base.isString(a) ? self.string(n) : self.array(n)
     return fold.concatMap(function () { return [a] }, as)
   }),
 
@@ -130,15 +130,15 @@ self = module.exports = {
    * @returns A new list.
    */
   shuffle: function (as) {
-    var i = -1
-    var r = self.array(as.length)
-    var bs = fold.fold(f, r, as)
-    var s = base.isString(as) ? '' : []
+    let i = -1
+    const r = self.array(as.length)
+    const bs = fold.fold(f, r, as)
+    const s = base.isString(as) ? '' : []
 
     return fold.concatWith(s, bs)
 
     function f (b, a) {
-      var j = math.randomInt(0, ++i)
+      const j = math.randomInt(0, ++i)
 
       b[i] = b[j]
       b[j] = a

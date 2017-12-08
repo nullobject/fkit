@@ -1,6 +1,6 @@
-var base = require('./base')
-var fn = require('../fn')
-var self
+const base = require('./base')
+const fn = require('../fn')
+let self
 
 /**
  * This module defines sublist operations on lists.
@@ -26,10 +26,10 @@ self = module.exports = {
    * @returns A new list.
    */
   take: fn.curry(function (n, as) {
-    var s = base.isString(as) ? '' : []
-    var m = as.length
+    let s = base.isString(as) ? '' : []
+    const m = as.length
 
-    for (var i = 0; i < Math.min(m, n); i++) {
+    for (let i = 0; i < Math.min(m, n); i++) {
       s = s.concat(as[i])
     }
 
@@ -52,10 +52,10 @@ self = module.exports = {
    * @returns A new list.
    */
   drop: fn.curry(function (n, as) {
-    var s = base.isString(as) ? '' : []
-    var m = as.length
+    let s = base.isString(as) ? '' : []
+    const m = as.length
 
-    for (var i = n; i < m; i++) {
+    for (let i = n; i < m; i++) {
       s = s.concat(as[i])
     }
 
@@ -79,10 +79,10 @@ self = module.exports = {
    * @returns A new list.
    */
   takeWhile: fn.curry(function (p, as) {
-    var s = base.isString(as) ? '' : []
-    var n = as.length
+    let s = base.isString(as) ? '' : []
+    const n = as.length
 
-    for (var i = 0; i < n && p(as[i]); i++) {
+    for (let i = 0; i < n && p(as[i]); i++) {
       s = s.concat(as[i])
     }
 
@@ -106,15 +106,15 @@ self = module.exports = {
    * @returns A new list.
    */
   dropWhile: fn.curry(function (p, as) {
-    var s = base.isString(as) ? '' : []
-    var m = as.length
-    var n = 0
+    let s = base.isString(as) ? '' : []
+    const m = as.length
+    let n = 0
 
     while (p(as[n]) && n < as.length) {
       n++
     }
 
-    for (var i = n; i < m; i++) {
+    for (let i = n; i < m; i++) {
       s = s.concat(as[i])
     }
 
@@ -196,8 +196,8 @@ self = module.exports = {
    * @returns A new list.
    */
   groupBy: fn.curry(function groupBy (f, as) {
-    var b = base.head(as)
-    var bs = self.span(f(b), base.tail(as))
+    const b = base.head(as)
+    const bs = self.span(f(b), base.tail(as))
 
     return base.empty(as)
       ? []

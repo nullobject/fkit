@@ -1,4 +1,4 @@
-var util = require('./util')
+const util = require('./util')
 
 /**
  * FKit treats both arrays and strings as *lists*: an array is a list of

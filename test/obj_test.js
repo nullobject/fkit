@@ -1,15 +1,15 @@
-var assert = require('chai').assert
-var obj = require('../src/obj')
-var sinon = require('sinon')
+const assert = require('chai').assert
+const obj = require('../src/obj')
+const sinon = require('sinon')
 
 function f () {}
-var spy = sinon.spy(f)
+const spy = sinon.spy(f)
 
 function MyObject () {}
 MyObject.prototype.constructor = MyObject
 
 function buildObject () {
-  var o = new MyObject()
+  const o = new MyObject()
 
   o.name = 'Jane'
   o.age = 20
@@ -20,7 +20,7 @@ function buildObject () {
 }
 
 describe('object', function () {
-  var target = buildObject()
+  const target = buildObject()
 
   describe('#applyMethod', function () {
     it('should apply a nullary function', function () {
@@ -59,7 +59,7 @@ describe('object', function () {
   })
 
   describe('#copy', function () {
-    var result = obj.copy(target, {age: 21})
+    const result = obj.copy(target, {age: 21})
 
     it('should copy the properties of the given objects', function () {
       assert.deepEqual(result, {name: 'Jane', age: 21, address: {city: 'Melbourne', country: 'Australia'}, hello: spy})
@@ -89,49 +89,49 @@ describe('object', function () {
 
   describe('#set', function () {
     it('should set the given property', function () {
-      var result = obj.set('name')('Steve')(target)
+      const result = obj.set('name')('Steve')(target)
       assert.propertyVal(result, 'name', 'Steve')
     })
   })
 
   describe('#update', function () {
     it('should update the given property', function () {
-      var result = obj.update('age')(function (a) { return a + 1 })(target)
+      const result = obj.update('age')(function (a) { return a + 1 })(target)
       assert.propertyVal(result, 'age', 21)
     })
   })
 
   describe('#pick', function () {
     it('should copy the given object with the properties', function () {
-      var result = obj.pick(['name', 'age'])(target)
+      const result = obj.pick(['name', 'age'])(target)
       assert.deepEqual(result, {name: 'Jane', age: 20})
     })
   })
 
   describe('#omit', function () {
     it('should copy the given object without the properties', function () {
-      var result = obj.omit(['name', 'age', 'address'])(target)
+      const result = obj.omit(['name', 'age', 'address'])(target)
       assert.deepEqual(result, {hello: spy})
     })
   })
 
   describe('#pairs', function () {
     it('should return the key-value pairs of the given object', function () {
-      var result = obj.pairs(target)
+      const result = obj.pairs(target)
       assert.deepEqual(result, [['name', 'Jane'], ['age', 20], ['address', {city: 'Melbourne', country: 'Australia'}], ['hello', spy]])
     })
   })
 
   describe('#keys', function () {
     it('should return the keys of the given object', function () {
-      var result = obj.keys(target)
+      const result = obj.keys(target)
       assert.deepEqual(result, ['name', 'age', 'address', 'hello'])
     })
   })
 
   describe('#values', function () {
     it('should return the values of the given object', function () {
-      var result = obj.values(target)
+      const result = obj.values(target)
       assert.deepEqual(result, ['Jane', 20, {city: 'Melbourne', country: 'Australia'}, spy])
     })
   })

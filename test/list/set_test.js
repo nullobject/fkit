@@ -1,5 +1,5 @@
-var assert = require('chai').assert
-var set = require('../../src/list/set')
+const assert = require('chai').assert
+const set = require('../../src/list/set')
 
 describe('list.set', function () {
   describe('#nub', function () {

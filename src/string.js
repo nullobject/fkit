@@ -1,4 +1,4 @@
-var fn = require('./fn')
+const fn = require('./fn')
 
 /**
  * This module defines string functions.

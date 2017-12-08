@@ -1,5 +1,5 @@
-var assert = require('chai').assert
-var math = require('../src/math')
+const assert = require('chai').assert
+const math = require('../src/math')
 
 describe('math', function () {
   describe('#add', function () {
@@ -69,8 +69,8 @@ describe('math', function () {
 
   describe('#eq', function () {
     it('should compare the values', function () {
-      var a = {}
-      var b = {}
+      const a = {}
+      const b = {}
 
       assert.isFalse(math.eq(1)(2))
       assert.isTrue(math.eq(2)(2))
@@ -85,8 +85,8 @@ describe('math', function () {
 
   describe('#neq', function () {
     it('should compare the values', function () {
-      var a = {}
-      var b = {}
+      const a = {}
+      const b = {}
 
       assert.isTrue(math.neq(1)(2))
       assert.isFalse(math.neq(2)(2))
@@ -147,7 +147,7 @@ describe('math', function () {
 
   describe('#randomInt', function () {
     it('should return a random integer', function () {
-      var n = math.randomInt(1)(3)
+      const n = math.randomInt(1)(3)
       assert.isAtLeast(n, 1)
       assert.isAtMost(n, 3)
     })
@@ -155,7 +155,7 @@ describe('math', function () {
 
   describe('#randomFloat', function () {
     it('should return a random float', function () {
-      var n = math.randomFloat(1)(3)
+      const n = math.randomFloat(1)(3)
       assert.isAtLeast(n, 1)
       assert.isAtMost(n, 3)
     })

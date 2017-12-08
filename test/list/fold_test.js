@@ -1,6 +1,6 @@
-var assert = require('chai').assert
-var fn = require('../../src/fn')
-var fold = require('../../src/list/fold')
+const assert = require('chai').assert
+const fn = require('../../src/fn')
+const fold = require('../../src/list/fold')
 
 describe('list.fold', function () {
   describe('#flattenStrings', function () {
@@ -163,7 +163,7 @@ describe('list.fold', function () {
   })
 
   describe('#maximumBy', function () {
-    var f = fn.compare
+    const f = fn.compare
 
     it('should handle an array of numbers', function () {
       assert.equal(fold.maximumBy(f)([1, 2, 3]), 3)
@@ -175,7 +175,7 @@ describe('list.fold', function () {
   })
 
   describe('#minimumBy', function () {
-    var f = fn.compare
+    const f = fn.compare
 
     it('should handle an array of numbers', function () {
       assert.equal(fold.minimumBy(f)([1, 2, 3]), 1)

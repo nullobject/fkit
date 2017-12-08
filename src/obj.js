@@ -1,7 +1,7 @@
-var fn = require('./fn')
-var set = require('./list/set')
-var util = require('./util')
-var self
+const fn = require('./fn')
+const set = require('./list/set')
+const util = require('./util')
+let self
 
 /**
  * This module defines operations on objects.
@@ -154,7 +154,7 @@ self = module.exports = {
    * @returns A new object.
    */
   set: fn.curry(function (k, v, o) {
-    var p = {}
+    const p = {}
     p[k] = v
     return self.copy(o, p)
   }),

@@ -1,7 +1,7 @@
-var base = require('./base')
-var fn = require('../fn')
-var math = require('../math')
-var self
+const base = require('./base')
+const fn = require('../fn')
+const math = require('../math')
+let self
 
 /**
  * This module defines fold operations on lists.
@@ -80,8 +80,8 @@ self = module.exports = {
    * @returns A new list.
    */
   concatMap: fn.curry(function (f, as) {
-    var bs = base.toArray(as).map(fn.compose(self.flattenStrings, f))
-    var cs = bs.length > 0 ? bs : as
+    const bs = base.toArray(as).map(fn.compose(self.flattenStrings, f))
+    const cs = bs.length > 0 ? bs : as
 
     return self.concatWith(base.mempty(cs), bs)
   }),
@@ -150,7 +150,7 @@ self = module.exports = {
    * @returns A new list.
    */
   scan: fn.curry(function (f, s, as) {
-    var r = [s]
+    const r = [s]
 
     self.fold(function (b, a) {
       return fn.tap(r.push.bind(r), f(b, a))
@@ -177,7 +177,7 @@ self = module.exports = {
    * @returns A new list.
    */
   scanRight: fn.curry(function (f, s, as) {
-    var r = [s]
+    const r = [s]
 
     self.foldRight(function (a, b) {
       return fn.tap(r.unshift.bind(r), f(a, b))

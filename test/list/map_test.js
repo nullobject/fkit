@@ -1,5 +1,5 @@
-var assert = require('chai').assert
-var map = require('../../src/list/map')
+const assert = require('chai').assert
+const map = require('../../src/list/map')
 
 describe('list.map', function () {
   describe('#map', function () {

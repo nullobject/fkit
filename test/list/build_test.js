@@ -1,5 +1,5 @@
-var assert = require('chai').assert
-var build = require('../../src/list/build')
+const assert = require('chai').assert
+const build = require('../../src/list/build')
 
 describe('list.build', function () {
   describe('#array', function () {
@@ -61,21 +61,21 @@ describe('list.build', function () {
     })
 
     it('should handle an array of numbers', function () {
-      var result = build.sample(2)([1, 2, 3])
+      const result = build.sample(2)([1, 2, 3])
       assert.isArray(result)
       assert.equal(result.length, 2)
       assert.includeMembers([1, 2, 3], result)
     })
 
     it('should handle an array of strings', function () {
-      var result = build.sample(2)(['a', 'b', 'c'])
+      const result = build.sample(2)(['a', 'b', 'c'])
       assert.isArray(result)
       assert.equal(result.length, 2)
       assert.includeMembers(['a', 'b', 'c'], result)
     })
 
     it('should handle a string', function () {
-      var result = build.sample(2)('abc')
+      const result = build.sample(2)('abc')
       assert.isString(result)
       assert.equal(result.length, 2)
       assert.includeMembers(['a', 'b', 'c'], result.split(''))
@@ -92,21 +92,21 @@ describe('list.build', function () {
     })
 
     it('should handle an array of numbers', function () {
-      var result = build.shuffle([1, 2, 3])
+      const result = build.shuffle([1, 2, 3])
       assert.isArray(result)
       assert.equal(result.length, 3)
       assert.includeMembers([1, 2, 3], result)
     })
 
     it('should handle an array of strings', function () {
-      var result = build.shuffle(['a', 'b', 'c'])
+      const result = build.shuffle(['a', 'b', 'c'])
       assert.isArray(result)
       assert.equal(result.length, 3)
       assert.includeMembers(['a', 'b', 'c'], result)
     })
 
     it('should handle a string', function () {
-      var result = build.shuffle('abc')
+      const result = build.shuffle('abc')
       assert.isString(result)
       assert.equal(result.length, 3)
       assert.includeMembers(['a', 'b', 'c'], result.split(''))

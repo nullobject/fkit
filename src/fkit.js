@@ -1,4 +1,4 @@
-var util = require('./util')
+const util = require('./util')
 
 /**
  * This module mixes in the functions and classes from all the other FKit

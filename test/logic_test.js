@@ -1,6 +1,6 @@
-var assert = require('chai').assert
-var logic = require('../src/logic')
-var sinon = require('sinon')
+const assert = require('chai').assert
+const logic = require('../src/logic')
+const sinon = require('sinon')
 
 describe('logic', function () {
   describe('#and', function () {
@@ -29,10 +29,10 @@ describe('logic', function () {
   })
 
   describe('#branch', function () {
-    var p = sinon.stub().returns(true)
-    var f = sinon.spy()
-    var g = sinon.spy()
-    var a = {}
+    const p = sinon.stub().returns(true)
+    const f = sinon.spy()
+    const g = sinon.spy()
+    const a = {}
 
     it('should return f(a) if p(a) is true', function () {
       logic.branch(p.returns(true), f, g, a)

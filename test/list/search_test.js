@@ -1,5 +1,5 @@
-var assert = require('chai').assert
-var search = require('../../src/list/search')
+const assert = require('chai').assert
+const search = require('../../src/list/search')
 
 describe('list.search', function () {
   describe('#elem', function () {

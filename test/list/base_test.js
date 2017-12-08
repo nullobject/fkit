@@ -1,5 +1,5 @@
-var assert = require('chai').assert
-var base = require('../../src/list/base')
+const assert = require('chai').assert
+const base = require('../../src/list/base')
 
 describe('list.base', function () {
   describe('#isArrayOfStrings', function () {

@@ -1,5 +1,5 @@
-var assert = require('chai').assert
-var string = require('../src/string')
+const assert = require('chai').assert
+const string = require('../src/string')
 
 describe('string', function () {
   describe('#toUpper', function () {

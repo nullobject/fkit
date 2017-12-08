@@ -1,9 +1,9 @@
-var base = require('./base')
-var fn = require('../fn')
-var fold = require('./fold')
-var logic = require('../logic')
-var map = require('./map')
-var self
+const base = require('./base')
+const fn = require('../fn')
+const fold = require('./fold')
+const logic = require('../logic')
+const map = require('./map')
+let self
 
 /**
  * This module defines search operations on lists.
@@ -56,7 +56,7 @@ self = module.exports = {
    * @returns A number or `undefined` if no value was found.
    */
   elemIndex: fn.curry(function (a, as) {
-    var i = as.indexOf(a)
+    const i = as.indexOf(a)
     return (i >= 0) ? i : undefined
   }),
 
@@ -127,9 +127,9 @@ self = module.exports = {
    * @returns A number or `undefined` if no value was found.
    */
   findIndex: fn.curry(function (p, as) {
-    var n = as.length
+    const n = as.length
 
-    for (var i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
       if (p(as[i])) { return i }
     }
 
@@ -157,10 +157,10 @@ self = module.exports = {
    * @returns A number or `undefined` if no value was found.
    */
   findIndices: fn.curry(function (p, as) {
-    var s = []
-    var n = as.length
+    const s = []
+    const n = as.length
 
-    for (var i = 0; i < n; i++) {
+    for (let i = 0; i < n; i++) {
       if (p(as[i])) { s.push(i) }
     }
 
@@ -184,7 +184,7 @@ self = module.exports = {
    * @returns A new list.
    */
   filter: fn.curry(function (p, as) {
-    var f = logic.branch(p, fn.id, fn.const(''))
+    const f = logic.branch(p, fn.id, fn.const(''))
     return base.isString(as) ? fold.concatMap(f, as) : as.filter(p)
   }),
 

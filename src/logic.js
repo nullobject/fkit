@@ -1,5 +1,5 @@
-var fn = require('./fn')
-var self
+const fn = require('./fn')
+let self
 
 /**
  * This module defines logic functions.

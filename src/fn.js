@@ -1,17 +1,17 @@
-var util = require('./util')
+const util = require('./util')
 
 function flatten (as) {
   return as.reduce(function (a, b) { return a.concat(b) }, [])
 }
 
 function curry (f) {
-  var arity = f.length
+  const arity = f.length
 
   return (arity <= 1) ? f : given([], 0)
 
   function given (args, applications) {
     return function () {
-      var newArgs = args.concat(
+      const newArgs = args.concat(
         (arguments.length > 0) ? util.slice.call(arguments, 0) : undefined
       )
 
@@ -23,30 +23,30 @@ function curry (f) {
 }
 
 function variadic (f) {
-  var arity = f.length
+  const arity = f.length
 
   if (arity < 1) {
     return f
   } else if (arity === 1) {
     return function () {
-      var args = util.slice.call(arguments, 0)
-      var newArgs = (arguments.length === 1) ? flatten(args) : args
+      const args = util.slice.call(arguments, 0)
+      const newArgs = (arguments.length === 1) ? flatten(args) : args
 
       return f.call(this, newArgs)
     }
   } else {
     return function () {
-      var numMissingArgs = Math.max(arity - arguments.length - 1, 0)
-      var missingArgs = new Array(numMissingArgs)
-      var namedArgs = util.slice.call(arguments, 0, arity - 1)
-      var variadicArgs = util.slice.call(arguments, f.length - 1)
+      const numMissingArgs = Math.max(arity - arguments.length - 1, 0)
+      const missingArgs = new Array(numMissingArgs)
+      const namedArgs = util.slice.call(arguments, 0, arity - 1)
+      const variadicArgs = util.slice.call(arguments, f.length - 1)
 
       return f.apply(this, namedArgs.concat(missingArgs).concat([variadicArgs]))
     }
   }
 }
 
-var self
+let self
 
 /**
  * This module defines basic operations on functions.
