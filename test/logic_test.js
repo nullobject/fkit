@@ -1,5 +1,3 @@
-'use strict'
-
 var assert = require('chai').assert
 var logic = require('../src/logic')
 var sinon = require('sinon')

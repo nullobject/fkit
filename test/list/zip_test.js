@@ -1,5 +1,3 @@
-'use strict'
-
 var assert = require('chai').assert
 var zip = require('../../src/list/zip')
 

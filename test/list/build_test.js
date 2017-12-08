@@ -1,5 +1,3 @@
-'use strict'
-
 var assert = require('chai').assert
 var build = require('../../src/list/build')
 

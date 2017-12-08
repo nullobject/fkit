@@ -1,5 +1,3 @@
-'use strict'
-
 var util = require('./util')
 
 function flatten (as) {

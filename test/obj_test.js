@@ -1,5 +1,3 @@
-'use strict'
-
 var assert = require('chai').assert
 var obj = require('../src/obj')
 var sinon = require('sinon')

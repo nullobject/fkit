@@ -1,5 +1,3 @@
-'use strict'
-
 var fn = require('./fn')
 var set = require('./list/set')
 var util = require('./util')

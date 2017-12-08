@@ -1,5 +1,3 @@
-'use strict'
-
 var base = require('./base')
 var build = require('./build')
 var fn = require('../fn')

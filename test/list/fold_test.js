@@ -1,5 +1,3 @@
-'use strict'
-
 var assert = require('chai').assert
 var fn = require('../../src/fn')
 var fold = require('../../src/list/fold')

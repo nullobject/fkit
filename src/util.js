@@ -1,5 +1,3 @@
-'use strict'
-
 module.exports = {
   extend: function (target, objects) {
     objects.forEach(function (object) {

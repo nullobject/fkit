@@ -1,5 +1,3 @@
-'use strict'
-
 var base = require('./base')
 var fn = require('../fn')
 var math = require('../math')

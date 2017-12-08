@@ -1,5 +1,3 @@
-'use strict'
-
 var fn = require('../fn')
 var self
 
