@@ -1,3 +1,9 @@
+v0.17.1 / 2017-12-09
+====================
+
+  * Switch to rollup for bundling
+  * Replace jshint with standard
+
 v0.16.3 / 2017-12-04
 ====================
 
