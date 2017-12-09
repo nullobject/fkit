@@ -15,7 +15,7 @@ describe('math', function () {
   })
 
   describe('#mul', function () {
-    it('multiplys the values', function () {
+    it('multiplies the values', function () {
       assert.equal(math.mul(2)(1), 2)
     })
   })

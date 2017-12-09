@@ -48,7 +48,7 @@ describe('logic', function () {
   })
 
   describe('#whereAll', function () {
-    it('applys the list of predicate functions', function () {
+    it('applies the list of predicate functions', function () {
       function f (a) { return a >= 1 }
       function g (a) { return a >= 2 }
       function h (a) { return a >= 3 }
@@ -61,7 +61,7 @@ describe('logic', function () {
   })
 
   describe('#whereAny', function () {
-    it('applys the list of predicate functions', function () {
+    it('applies the list of predicate functions', function () {
       function f (a) { return a >= 1 }
       function g (a) { return a >= 2 }
       function h (a) { return a >= 3 }

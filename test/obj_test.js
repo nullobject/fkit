@@ -23,36 +23,36 @@ describe('object', function () {
   const target = buildObject()
 
   describe('#applyMethod', function () {
-    it('applys a nullary function', function () {
+    it('applies a nullary function', function () {
       obj.applyMethod('hello')()(target)
       assert.isTrue(spy.calledWithExactly(undefined))
     })
 
-    it('applys a unary function', function () {
+    it('applies a unary function', function () {
       obj.applyMethod('hello')(1)(target)
       assert.isTrue(spy.calledWithExactly(1))
     })
   })
 
   describe('#applyMethod2', function () {
-    it('applys a nullary function', function () {
+    it('applies a nullary function', function () {
       obj.applyMethod2('hello')()()(target)
       assert.isTrue(spy.calledWithExactly(undefined, undefined))
     })
 
-    it('applys a unary function', function () {
+    it('applies a unary function', function () {
       obj.applyMethod2('hello')(1)(2)(target)
       assert.isTrue(spy.calledWithExactly(1, 2))
     })
   })
 
   describe('#applyMethod3', function () {
-    it('applys a nullary function', function () {
+    it('applies a nullary function', function () {
       obj.applyMethod3('hello')()()()(target)
       assert.isTrue(spy.calledWithExactly(undefined, undefined, undefined))
     })
 
-    it('applys a unary function', function () {
+    it('applies a unary function', function () {
       obj.applyMethod3('hello')(1)(2)(3)(target)
       assert.isTrue(spy.calledWithExactly(1, 2, 3))
     })
@@ -61,7 +61,7 @@ describe('object', function () {
   describe('#copy', function () {
     const result = obj.copy(target, {age: 21})
 
-    it('copys the properties of the given objects', function () {
+    it('copies the properties of the given objects', function () {
       assert.deepEqual(result, {name: 'Jane', age: 21, address: {city: 'Melbourne', country: 'Australia'}, hello: spy})
     })
 
@@ -102,14 +102,14 @@ describe('object', function () {
   })
 
   describe('#pick', function () {
-    it('copys the given object with the properties', function () {
+    it('copies the given object with the properties', function () {
       const result = obj.pick(['name', 'age'])(target)
       assert.deepEqual(result, {name: 'Jane', age: 20})
     })
   })
 
   describe('#omit', function () {
-    it('copys the given object without the properties', function () {
+    it('copies the given object without the properties', function () {
       const result = obj.omit(['name', 'age', 'address'])(target)
       assert.deepEqual(result, {hello: spy})
     })

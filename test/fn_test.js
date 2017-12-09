@@ -18,12 +18,12 @@ describe('fn', function () {
       spy = sinon.spy(f)
     })
 
-    it('applys a nullary function', function () {
+    it('applies a nullary function', function () {
       fn.apply(spy)()
       assert.isTrue(spy.calledWithExactly(undefined))
     })
 
-    it('applys a unary function', function () {
+    it('applies a unary function', function () {
       fn.apply(spy)(1)
       assert.isTrue(spy.calledWithExactly(1))
     })
@@ -37,17 +37,17 @@ describe('fn', function () {
       spy = sinon.spy(f)
     })
 
-    it('applys a nullary function', function () {
+    it('applies a nullary function', function () {
       fn.apply2(spy)()()
       assert.isTrue(spy.calledWithExactly(undefined, undefined))
     })
 
-    it('applys a unary function', function () {
+    it('applies a unary function', function () {
       fn.apply2(spy)(1)()
       assert.isTrue(spy.calledWithExactly(1, undefined))
     })
 
-    it('applys a binary function', function () {
+    it('applies a binary function', function () {
       fn.apply2(spy)(1)(2)
       assert.isTrue(spy.calledWithExactly(1, 2))
     })
@@ -61,36 +61,36 @@ describe('fn', function () {
       spy = sinon.spy(f)
     })
 
-    it('applys a nullary function', function () {
+    it('applies a nullary function', function () {
       fn.apply3(spy)()()()
       assert.isTrue(spy.calledWithExactly(undefined, undefined, undefined))
     })
 
-    it('applys a unary function', function () {
+    it('applies a unary function', function () {
       fn.apply3(spy)(1)()()
       assert.isTrue(spy.calledWithExactly(1, undefined, undefined))
     })
 
-    it('applys a binary function', function () {
+    it('applies a binary function', function () {
       fn.apply3(spy)(1)(2)()
       assert.isTrue(spy.calledWithExactly(1, 2, undefined))
     })
 
-    it('applys a ternary function', function () {
+    it('applies a ternary function', function () {
       fn.apply3(spy)(1)(2)(3)
       assert.isTrue(spy.calledWithExactly(1, 2, 3))
     })
   })
 
   describe('#applyRight', function () {
-    it('applys a nullary function', function () {
+    it('applies a nullary function', function () {
       function f () {}
       const spy = sinon.spy(f)
       fn.applyRight()(spy)
       assert.isTrue(spy.calledWithExactly(undefined))
     })
 
-    it('applys a unary function', function () {
+    it('applies a unary function', function () {
       function f (a) {}
       const spy = sinon.spy(f)
       fn.applyRight(1)(spy)
@@ -144,7 +144,7 @@ describe('fn', function () {
       assert.equal(f, g)
     })
 
-    it('currys a binary function', function () {
+    it('curries a binary function', function () {
       function f (a, b) {}
       const spy = sinon.spy(f)
       const g = fn.curry(spy)
@@ -156,7 +156,7 @@ describe('fn', function () {
   })
 
   describe('#uncurry', function () {
-    it('uncurrys a binary function', function () {
+    it('uncurries a binary function', function () {
       function f (a, b) {}
       const spy = sinon.spy(f)
       const g = fn.uncurry(spy)
