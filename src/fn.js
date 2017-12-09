@@ -287,7 +287,10 @@ self = module.exports = {
    * @param a A value.
    * @returns The value `a`.
    */
-  tap: curry(function (f, a) { f(a); return a }),
+  tap: curry(function (f, a) {
+    f(a)
+    return a
+  }),
 
   /**
    * Returns `true` if the value `a` is strictly equal (`===`) to the value
