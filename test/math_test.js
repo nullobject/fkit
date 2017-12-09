@@ -3,43 +3,43 @@ const math = require('../src/math')
 
 describe('math', function () {
   describe('#add', function () {
-    it('should add the values', function () {
+    it('adds the values', function () {
       assert.equal(math.add(2)(1), 3)
     })
   })
 
   describe('#sub', function () {
-    it('should subtract the values', function () {
+    it('subtracts the values', function () {
       assert.equal(math.sub(2)(1), -1)
     })
   })
 
   describe('#mul', function () {
-    it('should multiply the values', function () {
+    it('multiplys the values', function () {
       assert.equal(math.mul(2)(1), 2)
     })
   })
 
   describe('#div', function () {
-    it('should divide the values', function () {
+    it('divides the values', function () {
       assert.equal(math.div(2)(1), 0.5)
     })
   })
 
   describe('#mod', function () {
-    it('should modulo the values', function () {
+    it('modulos the values', function () {
       assert.equal(math.mod(2)(1), 1)
     })
   })
 
   describe('#max', function () {
-    it('should handle numbers', function () {
+    it('handles numbers', function () {
       assert.equal(math.max(1)(2), 2)
       assert.equal(math.max(2)(1), 2)
       assert.equal(math.max(2)(2), 2)
     })
 
-    it('should handle strings', function () {
+    it('handles strings', function () {
       assert.equal(math.max('a')('b'), 'b')
       assert.equal(math.max('b')('a'), 'b')
       assert.equal(math.max('b')('b'), 'b')
@@ -47,13 +47,13 @@ describe('math', function () {
   })
 
   describe('#min', function () {
-    it('should handle numbers', function () {
+    it('handles numbers', function () {
       assert.equal(math.min(1)(2), 1)
       assert.equal(math.min(2)(1), 1)
       assert.equal(math.min(2)(2), 2)
     })
 
-    it('should handle strings', function () {
+    it('handles strings', function () {
       assert.equal(math.min('a')('b'), 'a')
       assert.equal(math.min('b')('a'), 'a')
       assert.equal(math.min('b')('b'), 'b')
@@ -61,14 +61,14 @@ describe('math', function () {
   })
 
   describe('#negate', function () {
-    it('should negate the value', function () {
+    it('negates the value', function () {
       assert.equal(math.negate(1), -1)
       assert.equal(math.negate(-1), 1)
     })
   })
 
   describe('#eq', function () {
-    it('should compare the values', function () {
+    it('compares the values', function () {
       const a = {}
       const b = {}
 
@@ -84,7 +84,7 @@ describe('math', function () {
   })
 
   describe('#neq', function () {
-    it('should compare the values', function () {
+    it('compares the values', function () {
       const a = {}
       const b = {}
 
@@ -100,7 +100,7 @@ describe('math', function () {
   })
 
   describe('#gt', function () {
-    it('should compare the values', function () {
+    it('compares the values', function () {
       assert.isTrue(math.gt(1)(2))
       assert.isFalse(math.gt(2)(1))
       assert.isFalse(math.gt(2)(2))
@@ -108,7 +108,7 @@ describe('math', function () {
   })
 
   describe('#gte', function () {
-    it('should compare the values', function () {
+    it('compares the values', function () {
       assert.isTrue(math.gte(1)(2))
       assert.isFalse(math.gte(2)(1))
       assert.isTrue(math.gte(2)(2))
@@ -116,7 +116,7 @@ describe('math', function () {
   })
 
   describe('#lt', function () {
-    it('should compare the values', function () {
+    it('compares the values', function () {
       assert.isFalse(math.lt(1)(2))
       assert.isTrue(math.lt(2)(1))
       assert.isFalse(math.lt(2)(2))
@@ -124,7 +124,7 @@ describe('math', function () {
   })
 
   describe('#lte', function () {
-    it('should compare the values', function () {
+    it('compares the values', function () {
       assert.isFalse(math.lte(1)(2))
       assert.isTrue(math.lte(2)(1))
       assert.isTrue(math.lte(2)(2))
@@ -132,21 +132,21 @@ describe('math', function () {
   })
 
   describe('#inc', function () {
-    it('should increment the value', function () {
+    it('increments the value', function () {
       assert.equal(math.inc(1), 2)
       assert.equal(math.inc(2), 3)
     })
   })
 
   describe('#dec', function () {
-    it('should decrement the value', function () {
+    it('decrements the value', function () {
       assert.equal(math.dec(3), 2)
       assert.equal(math.dec(2), 1)
     })
   })
 
   describe('#randomInt', function () {
-    it('should return a random integer', function () {
+    it('returns a random integer', function () {
       const n = math.randomInt(1)(3)
       assert.isAtLeast(n, 1)
       assert.isAtMost(n, 3)
@@ -154,7 +154,7 @@ describe('math', function () {
   })
 
   describe('#randomFloat', function () {
-    it('should return a random float', function () {
+    it('returns a random float', function () {
       const n = math.randomFloat(1)(3)
       assert.isAtLeast(n, 1)
       assert.isAtMost(n, 3)

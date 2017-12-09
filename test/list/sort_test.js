@@ -3,11 +3,11 @@ const sort = require('../../src/list/sort')
 
 describe('list.sort', function () {
   describe('#sort', function () {
-    it('should handle an array of numbers', function () {
+    it('handles an array of numbers', function () {
       assert.deepEqual(sort.sort([2, 3, 1]), [1, 2, 3])
     })
 
-    it('should handle a string', function () {
+    it('handles a string', function () {
       assert.equal(sort.sort('bca'), 'abc')
     })
   })
@@ -23,11 +23,11 @@ describe('list.sort', function () {
       }
     }
 
-    it('should handle an array of numbers', function () {
+    it('handles an array of numbers', function () {
       assert.deepEqual(sort.sortBy(c)([2, 3, 1]), [3, 2, 1])
     })
 
-    it('should handle a string', function () {
+    it('handles a string', function () {
       assert.equal(sort.sortBy(c)('bca'), 'cba')
     })
   })
