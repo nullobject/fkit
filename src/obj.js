@@ -15,7 +15,7 @@ self = module.exports = {
    * Returns the result of the method `k` of object `o` applied to the value
    * `a`.
    *
-   * @summary Applies a method to a method.
+   * @summary Applies a method to a value.
    *
    * @example
    *   var person = {sayHi: function(a) { return ['Hi', a, '!'].join(' '); }};
