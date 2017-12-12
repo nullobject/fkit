@@ -26,12 +26,15 @@
     "url": "https://github.com/nullobject/fkit/issues"
   },
   "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.6.1",
     "chai": "^4.1.2",
     "jsdoc": "^3.5.5",
     "jsdoc-react": "^0.3.0",
     "mocha": "^4.0.1",
     "rollup": "^0.52.1",
-    "rollup-plugin-buble": "^0.18.0",
+    "rollup-plugin-babel": "^3.0.2",
     "rollup-plugin-commonjs": "^8.2.6",
     "rollup-plugin-uglify": "^2.0.1",
     "sinon": "^4.1.2",

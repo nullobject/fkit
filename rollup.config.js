@@ -1,4 +1,4 @@
-import buble from 'rollup-plugin-buble'
+import babel from 'rollup-plugin-babel'
 import commonjs from 'rollup-plugin-commonjs'
 import uglify from 'rollup-plugin-uglify'
 
@@ -10,7 +10,7 @@ export default {
   },
   name: 'F',
   plugins: [
-    buble(),
+    babel({ exclude: 'node_modules/**' }),
     commonjs(),
     uglify()
   ]
