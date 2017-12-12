@@ -3,10 +3,13 @@ status  := $(shell git status --porcelain)
 version := $(shell git describe --tags)
 regex   := "s/\([\"\']version[\"\'][[:space:]]*:[[:space:]]*\)\([\"\'].*[\"\']\)/\1\"$(version)\"/g"
 
-.PHONY: bump changelog clean doc lint publish publish-api publish-npm production release test unit
+.PHONY: bump changelog clean dev doc lint publish publish-api publish-npm production release test unit
+
+dev: node_modules
+	@node_modules/.bin/rollup -c --watch
 
 production: node_modules
-	./node_modules/.bin/rollup -c
+	./node_modules/.bin/rollup -c --environment BUILD:production
 
 test: unit lint
 
@@ -28,7 +31,7 @@ unit: node_modules
 
 # Runs jslint.
 lint: node_modules
-	@node_modules/.bin/standard --env mocha "src/**/*.js" "test/**/*.js"
+	@node_modules/.bin/standard --env mocha "*.js" "src/**/*.js" "test/**/*.js"
 
 # Generates the API documentation.
 doc: node_modules
