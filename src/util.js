@@ -1,12 +1,10 @@
-module.exports = {
-  extend: function (target, objects) {
-    objects.forEach(function (object) {
-      Object.getOwnPropertyNames(object).forEach(function (property) {
-        target[property] = object[property]
-      })
+export function extend (target, objects) {
+  objects.forEach(object => {
+    Object.getOwnPropertyNames(object).forEach(property => {
+      target[property] = object[property]
     })
-    return target
-  },
-
-  slice: Array.prototype.slice
+  })
+  return target
 }
+
+export const slice = Array.prototype.slice

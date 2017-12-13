@@ -1,10 +1,10 @@
-const assert = require('chai').assert
-const logic = require('../src/logic')
-const sinon = require('sinon')
+import {assert} from 'chai'
+import * as logic from '../src/logic'
+import sinon from 'sinon'
 
-describe('logic', function () {
-  describe('#and', function () {
-    it('ANDs the values', function () {
+describe('logic', () => {
+  describe('#and', () => {
+    it('ANDs the values', () => {
       assert.isFalse(logic.and(false)(false))
       assert.isFalse(logic.and(false)(true))
       assert.isFalse(logic.and(true)(false))
@@ -12,8 +12,8 @@ describe('logic', function () {
     })
   })
 
-  describe('#or', function () {
-    it('ORs the values', function () {
+  describe('#or', () => {
+    it('ORs the values', () => {
       assert.isFalse(logic.or(false)(false))
       assert.isTrue(logic.or(false)(true))
       assert.isTrue(logic.or(true)(false))
@@ -21,34 +21,34 @@ describe('logic', function () {
     })
   })
 
-  describe('#not', function () {
-    it('NOTs the value', function () {
+  describe('#not', () => {
+    it('NOTs the value', () => {
       assert.isTrue(logic.not(false))
       assert.isFalse(logic.not(true))
     })
   })
 
-  describe('#branch', function () {
+  describe('#branch', () => {
     const p = sinon.stub().returns(true)
     const f = sinon.spy()
     const g = sinon.spy()
     const a = {}
 
-    it('returns f(a) if p(a) is true', function () {
+    it('returns f(a) if p(a) is true', () => {
       logic.branch(p.returns(true), f, g, a)
       assert.isTrue(p.calledWithExactly(a))
       assert.isTrue(f.calledWithExactly(a))
     })
 
-    it('returns g(a) if p(a) is false', function () {
+    it('returns g(a) if p(a) is false', () => {
       logic.branch(p.returns(false), f, g, a)
       assert.isTrue(p.calledWithExactly(a))
       assert.isTrue(g.calledWithExactly(a))
     })
   })
 
-  describe('#whereAll', function () {
-    it('applies the list of predicate functions', function () {
+  describe('#whereAll', () => {
+    it('applies the list of predicate functions', () => {
       function f (a) { return a >= 1 }
       function g (a) { return a >= 2 }
       function h (a) { return a >= 3 }
@@ -60,8 +60,8 @@ describe('logic', function () {
     })
   })
 
-  describe('#whereAny', function () {
-    it('applies the list of predicate functions', function () {
+  describe('#whereAny', () => {
+    it('applies the list of predicate functions', () => {
       function f (a) { return a >= 1 }
       function g (a) { return a >= 2 }
       function h (a) { return a >= 3 }

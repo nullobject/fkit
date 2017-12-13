@@ -1,9 +1,8 @@
-const assert = require('chai').assert
-const obj = require('../src/obj')
-const sinon = require('sinon')
+import {assert} from 'chai'
+import * as obj from '../src/obj'
+import sinon from 'sinon'
 
-function f () {}
-const spy = sinon.spy(f)
+const spy = sinon.spy()
 
 function MyObject () {}
 MyObject.prototype.constructor = MyObject
@@ -19,59 +18,59 @@ function buildObject () {
   return o
 }
 
-describe('object', function () {
+describe('object', () => {
   const target = buildObject()
 
-  describe('#applyMethod', function () {
-    it('applies a nullary function', function () {
+  describe('#applyMethod', () => {
+    it('applies a nullary function', () => {
       obj.applyMethod('hello')()(target)
       assert.isTrue(spy.calledWithExactly(undefined))
     })
 
-    it('applies a unary function', function () {
+    it('applies a unary function', () => {
       obj.applyMethod('hello')(1)(target)
       assert.isTrue(spy.calledWithExactly(1))
     })
   })
 
-  describe('#applyMethod2', function () {
-    it('applies a nullary function', function () {
+  describe('#applyMethod2', () => {
+    it('applies a nullary function', () => {
       obj.applyMethod2('hello')()()(target)
       assert.isTrue(spy.calledWithExactly(undefined, undefined))
     })
 
-    it('applies a unary function', function () {
+    it('applies a unary function', () => {
       obj.applyMethod2('hello')(1)(2)(target)
       assert.isTrue(spy.calledWithExactly(1, 2))
     })
   })
 
-  describe('#applyMethod3', function () {
-    it('applies a nullary function', function () {
+  describe('#applyMethod3', () => {
+    it('applies a nullary function', () => {
       obj.applyMethod3('hello')()()()(target)
       assert.isTrue(spy.calledWithExactly(undefined, undefined, undefined))
     })
 
-    it('applies a unary function', function () {
+    it('applies a unary function', () => {
       obj.applyMethod3('hello')(1)(2)(3)(target)
       assert.isTrue(spy.calledWithExactly(1, 2, 3))
     })
   })
 
-  describe('#copy', function () {
+  describe('#copy', () => {
     const result = obj.copy(target, {age: 21})
 
-    it('copies the properties of the given objects', function () {
+    it('copies the properties of the given objects', () => {
       assert.deepEqual(result, {name: 'Jane', age: 21, address: {city: 'Melbourne', country: 'Australia'}, hello: spy})
     })
 
-    it('preserves the prototype of the target object', function () {
+    it('preserves the prototype of the target object', () => {
       assert.instanceOf(result, MyObject)
     })
   })
 
-  describe('#get', function () {
-    it('returns the property at the given key', function () {
+  describe('#get', () => {
+    it('returns the property at the given key', () => {
       assert.equal(obj.get('name')(target), 'Jane')
       assert.equal(obj.get('age')(target), 20)
       assert.deepEqual(obj.get('address')(target), {city: 'Melbourne', country: 'Australia'})
@@ -80,57 +79,57 @@ describe('object', function () {
     })
   })
 
-  describe('#getIn', function () {
-    it('returns the property at the given key path', function () {
+  describe('#getIn', () => {
+    it('returns the property at the given key path', () => {
       assert.equal(obj.getIn(['address', 'city'])(target), 'Melbourne')
       assert.isUndefined(obj.getIn(['foo', 'bar'])(target))
     })
   })
 
-  describe('#set', function () {
-    it('sets the given property', function () {
+  describe('#set', () => {
+    it('sets the given property', () => {
       const result = obj.set('name')('Steve')(target)
       assert.propertyVal(result, 'name', 'Steve')
     })
   })
 
-  describe('#update', function () {
-    it('updates the given property', function () {
-      const result = obj.update('age')(function (a) { return a + 1 })(target)
+  describe('#update', () => {
+    it('updates the given property', () => {
+      const result = obj.update('age')(a => { return a + 1 })(target)
       assert.propertyVal(result, 'age', 21)
     })
   })
 
-  describe('#pick', function () {
-    it('copies the given object with the properties', function () {
+  describe('#pick', () => {
+    it('copies the given object with the properties', () => {
       const result = obj.pick(['name', 'age'])(target)
       assert.deepEqual(result, {name: 'Jane', age: 20})
     })
   })
 
-  describe('#omit', function () {
-    it('copies the given object without the properties', function () {
+  describe('#omit', () => {
+    it('copies the given object without the properties', () => {
       const result = obj.omit(['name', 'age', 'address'])(target)
       assert.deepEqual(result, {hello: spy})
     })
   })
 
-  describe('#pairs', function () {
-    it('returns the key-value pairs of the given object', function () {
+  describe('#pairs', () => {
+    it('returns the key-value pairs of the given object', () => {
       const result = obj.pairs(target)
       assert.deepEqual(result, [['name', 'Jane'], ['age', 20], ['address', {city: 'Melbourne', country: 'Australia'}], ['hello', spy]])
     })
   })
 
-  describe('#keys', function () {
-    it('returns the keys of the given object', function () {
+  describe('#keys', () => {
+    it('returns the keys of the given object', () => {
       const result = obj.keys(target)
       assert.deepEqual(result, ['name', 'age', 'address', 'hello'])
     })
   })
 
-  describe('#values', function () {
-    it('returns the values of the given object', function () {
+  describe('#values', () => {
+    it('returns the values of the given object', () => {
       const result = obj.values(target)
       assert.deepEqual(result, ['Jane', 20, {city: 'Melbourne', country: 'Australia'}, spy])
     })
