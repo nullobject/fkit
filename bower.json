@@ -13,10 +13,11 @@
     "library",
     "toolkit"
   ],
-  "main": "./dist/fkit.js",
+  "main": "dist/fkit.js",
   "ignore": [
     "**/.*",
     "bower_components",
+    "build",
     "doc",
     "examples",
     "jsdoc.config.json",

@@ -8,10 +8,10 @@
   "keywords": [
     "functional",
     "programming",
-    "library",
-    "toolkit"
+    "library"
   ],
-  "main": "src/fkit.js",
+  "main": "dist/fkit.js",
+  "module": "src/fkit.js",
   "files": [
     "src"
   ],
@@ -24,6 +24,9 @@
   },
   "bugs": {
     "url": "https://github.com/nullobject/fkit/issues"
+  },
+  "standard": {
+    "env": "mocha"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",

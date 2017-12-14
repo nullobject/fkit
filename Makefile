@@ -10,6 +10,7 @@ dev: node_modules
 
 production: node_modules
 	@node_modules/.bin/webpack --colors --progress --optimize-minimize --env.NODE_ENV=production
+	@node_modules/.bin/babel src --out-dir build
 
 test: unit lint
 
@@ -31,7 +32,7 @@ unit: node_modules
 
 # Runs jslint.
 lint: node_modules
-	@node_modules/.bin/standard --env mocha "*.js" "src/**/*.js" "test/**/*.js"
+	@node_modules/.bin/standard "*.js" "src/**/*.js" "test/**/*.js"
 
 # Generates the API documentation.
 doc: node_modules
