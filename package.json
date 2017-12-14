@@ -10,9 +10,10 @@
     "programming",
     "library"
   ],
-  "main": "dist/fkit.js",
+  "main": "build/fkit.js",
   "module": "src/fkit.js",
   "files": [
+    "build",
     "src"
   ],
   "scripts": {
