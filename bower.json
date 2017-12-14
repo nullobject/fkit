@@ -1,6 +1,6 @@
 {
   "name": "fkit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A functional programming toolkit for JavaScript.",
   "homepage": "https://github.com/nullobject/fkit",
   "authors": [
