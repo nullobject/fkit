@@ -1,44 +1,64 @@
-const assert = require('chai').assert
-const set = require('../../src/list/set')
+import {assert} from 'chai'
+import * as set from '../../src/list/set'
 
-describe('list.set', function () {
-  describe('#nub', function () {
-    it('handles an empty array', function () {
+describe('list.set', () => {
+  describe('#nub', () => {
+    it('handles an empty array', () => {
       assert.deepEqual(set.nub([]), [])
     })
 
-    it('handles an empty string', function () {
+    it('handles an empty string', () => {
       assert.equal(set.nub(''), '')
     })
 
-    it('handles an array', function () {
+    it('handles an array', () => {
       assert.deepEqual(set.nub([1, 2, 2, 3, 3, 3]), [1, 2, 3])
     })
 
-    it('handles a string', function () {
+    it('handles a string', () => {
       assert.equal(set.nub('abbccc'), 'abc')
     })
   })
 
-  describe('#union', function () {
-    it('handles an empty array', function () {
+  describe('#nubBy', () => {
+    const f = (a, b) => a === b
+
+    it('handles an empty array', () => {
+      assert.deepEqual(set.nubBy(f, []), [])
+    })
+
+    it('handles an empty string', () => {
+      assert.equal(set.nubBy(f, ''), '')
+    })
+
+    it('handles an array', () => {
+      assert.deepEqual(set.nubBy(f, [1, 2, 2, 3, 3, 3]), [1, 2, 3])
+    })
+
+    it('handles a string', () => {
+      assert.equal(set.nubBy(f, 'abbccc'), 'abc')
+    })
+  })
+
+  describe('#union', () => {
+    it('handles an empty array', () => {
       assert.deepEqual(set.union([1, 2, 3])([]), [1, 2, 3])
       assert.deepEqual(set.union([])([1, 2, 3]), [1, 2, 3])
     })
 
-    it('handles an empty string', function () {
+    it('handles an empty string', () => {
       assert.equal(set.union('abc')(''), 'abc')
       assert.equal(set.union('')('abc'), 'abc')
     })
 
-    it('handles an array', function () {
+    it('handles an array', () => {
       assert.deepEqual(set.union([1, 2, 3])([1, 2, 3]), [1, 2, 3])
       assert.deepEqual(set.union([1, 2, 3])([2, 3, 4]), [1, 2, 3, 4])
       assert.deepEqual(set.union([1, 2, 3])([4, 5, 6]), [1, 2, 3, 4, 5, 6])
       assert.deepEqual(set.union([1, 1])([1]), [1, 1])
     })
 
-    it('handles a string', function () {
+    it('handles a string', () => {
       assert.equal(set.union('abc')('abc'), 'abc')
       assert.equal(set.union('abc')('bcd'), 'abcd')
       assert.equal(set.union('abc')('def'), 'abcdef')
@@ -46,25 +66,25 @@ describe('list.set', function () {
     })
   })
 
-  describe('#intersect', function () {
-    it('handles an empty array', function () {
+  describe('#intersect', () => {
+    it('handles an empty array', () => {
       assert.deepEqual(set.intersect([1, 2, 3])([]), [])
       assert.deepEqual(set.intersect([])([1, 2, 3]), [])
     })
 
-    it('handles an empty string', function () {
+    it('handles an empty string', () => {
       assert.equal(set.intersect('abc')(''), '')
       assert.equal(set.intersect('')('abc'), '')
     })
 
-    it('handles an array', function () {
+    it('handles an array', () => {
       assert.deepEqual(set.intersect([1, 2, 3])([1, 2, 3]), [1, 2, 3])
       assert.deepEqual(set.intersect([1, 2, 3])([2, 3, 4]), [2, 3])
       assert.deepEqual(set.intersect([1, 2, 3])([4, 5, 6]), [])
       assert.deepEqual(set.intersect([1, 1])([1]), [1, 1])
     })
 
-    it('handles a string', function () {
+    it('handles a string', () => {
       assert.equal(set.intersect('abc')('abc'), 'abc')
       assert.equal(set.intersect('abc')('bcd'), 'bc')
       assert.equal(set.intersect('abc')('def'), '')
@@ -72,25 +92,25 @@ describe('list.set', function () {
     })
   })
 
-  describe('#difference', function () {
-    it('handles an empty array', function () {
+  describe('#difference', () => {
+    it('handles an empty array', () => {
       assert.deepEqual(set.difference([1, 2, 3])([]), [1, 2, 3])
       assert.deepEqual(set.difference([])([1, 2, 3]), [])
     })
 
-    it('handles an empty string', function () {
+    it('handles an empty string', () => {
       assert.equal(set.difference('abc')(''), 'abc')
       assert.equal(set.difference('')('abc'), '')
     })
 
-    it('handles an array', function () {
+    it('handles an array', () => {
       assert.deepEqual(set.difference([1, 2, 3])([1, 2, 3]), [])
       assert.deepEqual(set.difference([1, 2, 3])([2, 3, 4]), [1])
       assert.deepEqual(set.difference([1, 2, 3])([4, 5, 6]), [1, 2, 3])
       assert.deepEqual(set.difference([1, 1])([1]), [1])
     })
 
-    it('handles a string', function () {
+    it('handles a string', () => {
       assert.equal(set.difference('abc')('abc'), '')
       assert.equal(set.difference('abc')('bcd'), 'a')
       assert.equal(set.difference('abc')('def'), 'abc')
@@ -98,23 +118,23 @@ describe('list.set', function () {
     })
   })
 
-  describe('#remove', function () {
-    it('handles an empty array', function () {
+  describe('#remove', () => {
+    it('handles an empty array', () => {
       assert.deepEqual(set.remove(1)([]), [])
     })
 
-    it('handles an empty string', function () {
+    it('handles an empty string', () => {
       assert.equal(set.remove('a')(''), '')
     })
 
-    it('handles an array', function () {
+    it('handles an array', () => {
       assert.deepEqual(set.remove(1)([1, 2, 3]), [2, 3])
       assert.deepEqual(set.remove(2)([1, 2, 3]), [1, 3])
       assert.deepEqual(set.remove(3)([1, 2, 3]), [1, 2])
       assert.deepEqual(set.remove(1)([1, 1]), [1])
     })
 
-    it('handles a string', function () {
+    it('handles a string', () => {
       assert.equal(set.remove('a')('abc'), 'bc')
       assert.equal(set.remove('b')('abc'), 'ac')
       assert.equal(set.remove('c')('abc'), 'ab')
@@ -122,18 +142,44 @@ describe('list.set', function () {
     })
   })
 
-  describe('#cartesian', function () {
-    it('handles an empty array', function () {
+  describe('#removeBy', () => {
+    const f = (a, b) => a === b
+
+    it('handles an empty array', () => {
+      assert.deepEqual(set.removeBy(f, 1)([]), [])
+    })
+
+    it('handles an empty string', () => {
+      assert.equal(set.removeBy(f, 'a')(''), '')
+    })
+
+    it('handles an array', () => {
+      assert.deepEqual(set.removeBy(f, 1)([1, 2, 3]), [2, 3])
+      assert.deepEqual(set.removeBy(f, 2)([1, 2, 3]), [1, 3])
+      assert.deepEqual(set.removeBy(f, 3)([1, 2, 3]), [1, 2])
+      assert.deepEqual(set.removeBy(f, 1)([1, 1]), [1])
+    })
+
+    it('handles a string', () => {
+      assert.equal(set.removeBy(f, 'a')('abc'), 'bc')
+      assert.equal(set.removeBy(f, 'b')('abc'), 'ac')
+      assert.equal(set.removeBy(f, 'c')('abc'), 'ab')
+      assert.equal(set.removeBy(f, 'a')('aa'), 'a')
+    })
+  })
+
+  describe('#cartesian', () => {
+    it('handles an empty array', () => {
       assert.deepEqual(set.cartesian([1, 2, 3])([]), [])
       assert.deepEqual(set.cartesian([])([4, 5, 6]), [])
     })
 
-    it('handles an empty string', function () {
+    it('handles an empty string', () => {
       assert.deepEqual(set.cartesian('foo')(''), [])
       assert.deepEqual(set.cartesian('')('bar'), [])
     })
 
-    it('handles an array', function () {
+    it('handles an array', () => {
       assert.deepEqual(
         set.cartesian([1, 2, 3])([4, 5, 6]),
         [
@@ -144,7 +190,7 @@ describe('list.set', function () {
       )
     })
 
-    it('handles a string', function () {
+    it('handles a string', () => {
       assert.deepEqual(
         set.cartesian('foo')('bar'),
         [
@@ -156,38 +202,38 @@ describe('list.set', function () {
     })
   })
 
-  describe('#subsequences', function () {
-    it('handles an empty array', function () {
+  describe('#subsequences', () => {
+    it('handles an empty array', () => {
       assert.deepEqual(set.subsequences([]), [[]])
     })
 
-    it('handles an empty string', function () {
+    it('handles an empty string', () => {
       assert.deepEqual(set.subsequences(''), [''])
     })
 
-    it('handles an array', function () {
+    it('handles an array', () => {
       assert.deepEqual(set.subsequences([1, 2, 3]), [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]])
     })
 
-    it('handles a string', function () {
+    it('handles a string', () => {
       assert.deepEqual(set.subsequences('abc'), ['', 'a', 'b', 'ab', 'c', 'ac', 'bc', 'abc'])
     })
   })
 
-  describe('#permutations', function () {
-    it('handles an empty array', function () {
+  describe('#permutations', () => {
+    it('handles an empty array', () => {
       assert.deepEqual(set.permutations([]), [[]])
     })
 
-    it('handles an empty string', function () {
+    it('handles an empty string', () => {
       assert.deepEqual(set.permutations(''), [''])
     })
 
-    it('handles an array', function () {
+    it('handles an array', () => {
       assert.deepEqual(set.permutations([1, 2, 3]), [[1, 2, 3], [2, 1, 3], [3, 2, 1], [2, 3, 1], [3, 1, 2], [1, 3, 2]])
     })
 
-    it('handles a string', function () {
+    it('handles a string', () => {
       assert.deepEqual(set.permutations('abc'), ['abc', 'bac', 'cba', 'bca', 'cab', 'acb'])
     })
   })

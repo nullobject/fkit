@@ -1,96 +1,96 @@
-const assert = require('chai').assert
-const fn = require('../src/fn')
-const sinon = require('sinon')
+import {assert} from 'chai'
+import * as fn from '../src/fn'
+import sinon from 'sinon'
 
-describe('fn', function () {
-  describe('#id', function () {
-    it('returns a function that returns its argument', function () {
+describe('fn', () => {
+  describe('#id', () => {
+    it('returns a function that returns its argument', () => {
       const a = {}
       assert.equal(fn.id(a), a)
     })
   })
 
-  describe('#apply', function () {
+  describe('#apply', () => {
     function f () {}
     let spy
 
-    beforeEach(function () {
+    beforeEach(() => {
       spy = sinon.spy(f)
     })
 
-    it('applies a nullary function', function () {
+    it('applies a nullary function', () => {
       fn.apply(spy)()
       assert.isTrue(spy.calledWithExactly(undefined))
     })
 
-    it('applies a unary function', function () {
+    it('applies a unary function', () => {
       fn.apply(spy)(1)
       assert.isTrue(spy.calledWithExactly(1))
     })
   })
 
-  describe('#apply2', function () {
+  describe('#apply2', () => {
     function f () {}
     let spy
 
-    beforeEach(function () {
+    beforeEach(() => {
       spy = sinon.spy(f)
     })
 
-    it('applies a nullary function', function () {
+    it('applies a nullary function', () => {
       fn.apply2(spy)()()
       assert.isTrue(spy.calledWithExactly(undefined, undefined))
     })
 
-    it('applies a unary function', function () {
+    it('applies a unary function', () => {
       fn.apply2(spy)(1)()
       assert.isTrue(spy.calledWithExactly(1, undefined))
     })
 
-    it('applies a binary function', function () {
+    it('applies a binary function', () => {
       fn.apply2(spy)(1)(2)
       assert.isTrue(spy.calledWithExactly(1, 2))
     })
   })
 
-  describe('#apply3', function () {
+  describe('#apply3', () => {
     function f () {}
     let spy
 
-    beforeEach(function () {
+    beforeEach(() => {
       spy = sinon.spy(f)
     })
 
-    it('applies a nullary function', function () {
+    it('applies a nullary function', () => {
       fn.apply3(spy)()()()
       assert.isTrue(spy.calledWithExactly(undefined, undefined, undefined))
     })
 
-    it('applies a unary function', function () {
+    it('applies a unary function', () => {
       fn.apply3(spy)(1)()()
       assert.isTrue(spy.calledWithExactly(1, undefined, undefined))
     })
 
-    it('applies a binary function', function () {
+    it('applies a binary function', () => {
       fn.apply3(spy)(1)(2)()
       assert.isTrue(spy.calledWithExactly(1, 2, undefined))
     })
 
-    it('applies a ternary function', function () {
+    it('applies a ternary function', () => {
       fn.apply3(spy)(1)(2)(3)
       assert.isTrue(spy.calledWithExactly(1, 2, 3))
     })
   })
 
-  describe('#applyRight', function () {
-    it('applies a nullary function', function () {
+  describe('#applyRight', () => {
+    it('applies a nullary function', () => {
       function f () {}
       const spy = sinon.spy(f)
       fn.applyRight()(spy)
       assert.isTrue(spy.calledWithExactly(undefined))
     })
 
-    it('applies a unary function', function () {
+    it('applies a unary function', () => {
       function f (a) {}
       const spy = sinon.spy(f)
       fn.applyRight(1)(spy)
@@ -98,15 +98,15 @@ describe('fn', function () {
     })
   })
 
-  describe('#compose', function () {
-    it('composes two functions', function () {
+  describe('#compose', () => {
+    it('composes two functions', () => {
       function f (a) { return a / 2 }
       function g (a) { return a + 2 }
       const h = fn.compose(f, g)
       assert.equal(h(1), f(g(1)))
     })
 
-    it('composes any number of functions', function () {
+    it('composes any number of functions', () => {
       function f (a) { return a / 2 }
       function g (a) { return a + 2 }
       function h (a) { return a * 2 }
@@ -115,8 +115,8 @@ describe('fn', function () {
     })
   })
 
-  describe('#flip', function () {
-    it('flips the arguments for the given function', function () {
+  describe('#flip', () => {
+    it('flips the arguments for the given function', () => {
       function f (a, b) {}
       const spy = sinon.spy(f)
       fn.flip(spy)('hello')('world')
@@ -124,39 +124,43 @@ describe('fn', function () {
     })
   })
 
-  describe('#const', function () {
-    it('returns a function that returns a constant value', function () {
-      const f = fn.const(1)
+  describe('#always', () => {
+    it('returns a function that returns a constant value', () => {
+      const f = fn.always(1)
       assert.equal(f(), 1)
     })
   })
 
-  describe('#curry', function () {
-    it('nots curry a nullary function', function () {
-      function f () {}
+  describe('#curry', () => {
+    it('ignores a nullary function', () => {
+      const f = () => {}
       const g = fn.curry(f)
       assert.equal(f, g)
     })
 
-    it('nots curry a unary function', function () {
-      function f (a) {}
+    it('ignores a unary function', () => {
+      const f = (a) => {}
       const g = fn.curry(f)
       assert.equal(f, g)
     })
 
-    it('curries a binary function', function () {
-      function f (a, b) {}
+    it('curries a binary function', () => {
+      const f = (a, b) => {}
       const spy = sinon.spy(f)
       const g = fn.curry(spy)
 
       assert.notEqual(f, g)
+
       g('hello')('world')
+      g('hello', 'world')
+
+      assert.isTrue(spy.calledTwice)
       assert.isTrue(spy.calledWithExactly('hello', 'world'))
     })
   })
 
-  describe('#uncurry', function () {
-    it('uncurries a binary function', function () {
+  describe('#uncurry', () => {
+    it('uncurries a binary function', () => {
       function f (a, b) {}
       const spy = sinon.spy(f)
       const g = fn.uncurry(spy)
@@ -167,74 +171,74 @@ describe('fn', function () {
     })
   })
 
-  describe('#unary', function () {
-    it('returns a unary function', function () {
+  describe('#unary', () => {
+    it('returns a unary function', () => {
       const spy = sinon.spy()
       fn.unary(spy)(1, 2, 3)
       assert.isTrue(spy.calledWithExactly(1))
     })
   })
 
-  describe('#binary', function () {
-    it('returns a binary function', function () {
+  describe('#binary', () => {
+    it('returns a binary function', () => {
       const spy = sinon.spy()
       fn.binary(spy)(1, 2, 3)
       assert.isTrue(spy.calledWithExactly(1, 2))
     })
   })
 
-  describe('#variadic', function () {
-    context('with a unary function', function () {
+  describe('#variadic', () => {
+    context('with a unary function', () => {
       function f (a) {}
       let spy
 
-      beforeEach(function () {
+      beforeEach(() => {
         spy = sinon.spy(f)
       })
 
-      it('handles an argument', function () {
+      it('handles an argument', () => {
         fn.variadic(spy)(1)
         assert.isTrue(spy.calledWithExactly([1]))
       })
 
-      it('handles a list of arguments', function () {
+      it('handles a list of arguments', () => {
         fn.variadic(spy)(1, [2, 3])
         assert.isTrue(spy.calledWithExactly([1, [2, 3]]))
       })
 
-      it('handles an array of arguments', function () {
+      it('handles an array of arguments', () => {
         fn.variadic(spy)([1, [2, 3]])
         assert.isTrue(spy.calledWithExactly([1, [2, 3]]))
       })
     })
 
-    context('with a binary function', function () {
+    context('with a binary function', () => {
       function f (a, b) {}
       let spy
 
-      beforeEach(function () {
+      beforeEach(() => {
         spy = sinon.spy(f)
       })
 
-      it('handles an argument', function () {
+      it('handles an argument', () => {
         fn.variadic(spy)(1)
         assert.isTrue(spy.calledWithExactly(1, []))
       })
 
-      it('handles a list of arguments', function () {
+      it('handles a list of arguments', () => {
         fn.variadic(spy)(1, 2, 3)
         assert.isTrue(spy.calledWithExactly(1, [2, 3]))
       })
 
-      it('handles an array of arguments', function () {
+      it('handles an array of arguments', () => {
         fn.variadic(spy)([1, [2, 3]])
         assert.isTrue(spy.calledWith([1, [2, 3]], []))
       })
     })
   })
 
-  describe('#tap', function () {
-    it('returns apply the given function to a value and return the value', function () {
+  describe('#tap', () => {
+    it('returns apply the given function to a value and return the value', () => {
       function f (a) {}
       const spy = sinon.spy(f)
       assert.equal(fn.tap(spy)(1), 1)
@@ -242,14 +246,14 @@ describe('fn', function () {
     })
   })
 
-  describe('#compare', function () {
-    it('compares two numbers', function () {
+  describe('#compare', () => {
+    it('compares two numbers', () => {
       assert.equal(fn.compare(1)(2), -1)
       assert.equal(fn.compare(2)(1), 1)
       assert.equal(fn.compare(2)(2), 0)
     })
 
-    it('compares two strings', function () {
+    it('compares two strings', () => {
       assert.equal(fn.compare('bar')('foo'), -1)
       assert.equal(fn.compare('foo')('bar'), 1)
       assert.equal(fn.compare('bar')('bar'), 0)

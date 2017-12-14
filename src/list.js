@@ -1,4 +1,12 @@
-const util = require('./util')
+export * from './list/base'
+export * from './list/build'
+export * from './list/fold'
+export * from './list/map'
+export * from './list/search'
+export * from './list/set'
+export * from './list/sort'
+export * from './list/sublist'
+export * from './list/zip'
 
 /**
  * FKit treats both arrays and strings as *lists*: an array is a list of
@@ -23,14 +31,3 @@ const util = require('./util')
  * @mixes module:fkit/list/zip
  * @author Josh Bassett
  */
-module.exports = util.extend({}, [
-  require('./list/base'),
-  require('./list/build'),
-  require('./list/fold'),
-  require('./list/map'),
-  require('./list/search'),
-  require('./list/set'),
-  require('./list/sort'),
-  require('./list/sublist'),
-  require('./list/zip')
-])

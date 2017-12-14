@@ -1,4 +1,9 @@
-const util = require('./util')
+export * from './fn'
+export * from './list'
+export * from './logic'
+export * from './math'
+export * from './obj'
+export * from './string'
 
 /**
  * This module mixes in the functions and classes from all the other FKit
@@ -9,11 +14,3 @@ const util = require('./util')
  * @summary ALL THE THINGS!
  * @author Josh Bassett
  */
-module.exports = util.extend({}, [
-  require('./fn'),
-  require('./list'),
-  require('./logic'),
-  require('./math'),
-  require('./obj'),
-  require('./string')
-])

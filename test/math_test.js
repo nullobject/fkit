@@ -1,74 +1,74 @@
-const assert = require('chai').assert
-const math = require('../src/math')
+import {assert} from 'chai'
+import * as math from '../src/math'
 
-describe('math', function () {
-  describe('#add', function () {
-    it('adds the values', function () {
+describe('math', () => {
+  describe('#add', () => {
+    it('adds the values', () => {
       assert.equal(math.add(2)(1), 3)
     })
   })
 
-  describe('#sub', function () {
-    it('subtracts the values', function () {
+  describe('#sub', () => {
+    it('subtracts the values', () => {
       assert.equal(math.sub(2)(1), -1)
     })
   })
 
-  describe('#mul', function () {
-    it('multiplies the values', function () {
+  describe('#mul', () => {
+    it('multiplies the values', () => {
       assert.equal(math.mul(2)(1), 2)
     })
   })
 
-  describe('#div', function () {
-    it('divides the values', function () {
+  describe('#div', () => {
+    it('divides the values', () => {
       assert.equal(math.div(2)(1), 0.5)
     })
   })
 
-  describe('#mod', function () {
-    it('modulos the values', function () {
+  describe('#mod', () => {
+    it('modulos the values', () => {
       assert.equal(math.mod(2)(1), 1)
     })
   })
 
-  describe('#max', function () {
-    it('handles numbers', function () {
+  describe('#max', () => {
+    it('handles numbers', () => {
       assert.equal(math.max(1)(2), 2)
       assert.equal(math.max(2)(1), 2)
       assert.equal(math.max(2)(2), 2)
     })
 
-    it('handles strings', function () {
+    it('handles strings', () => {
       assert.equal(math.max('a')('b'), 'b')
       assert.equal(math.max('b')('a'), 'b')
       assert.equal(math.max('b')('b'), 'b')
     })
   })
 
-  describe('#min', function () {
-    it('handles numbers', function () {
+  describe('#min', () => {
+    it('handles numbers', () => {
       assert.equal(math.min(1)(2), 1)
       assert.equal(math.min(2)(1), 1)
       assert.equal(math.min(2)(2), 2)
     })
 
-    it('handles strings', function () {
+    it('handles strings', () => {
       assert.equal(math.min('a')('b'), 'a')
       assert.equal(math.min('b')('a'), 'a')
       assert.equal(math.min('b')('b'), 'b')
     })
   })
 
-  describe('#negate', function () {
-    it('negates the value', function () {
+  describe('#negate', () => {
+    it('negates the value', () => {
       assert.equal(math.negate(1), -1)
       assert.equal(math.negate(-1), 1)
     })
   })
 
-  describe('#eq', function () {
-    it('compares the values', function () {
+  describe('#eq', () => {
+    it('compares the values', () => {
       const a = {}
       const b = {}
 
@@ -83,8 +83,8 @@ describe('math', function () {
     })
   })
 
-  describe('#neq', function () {
-    it('compares the values', function () {
+  describe('#neq', () => {
+    it('compares the values', () => {
       const a = {}
       const b = {}
 
@@ -99,62 +99,62 @@ describe('math', function () {
     })
   })
 
-  describe('#gt', function () {
-    it('compares the values', function () {
+  describe('#gt', () => {
+    it('compares the values', () => {
       assert.isTrue(math.gt(1)(2))
       assert.isFalse(math.gt(2)(1))
       assert.isFalse(math.gt(2)(2))
     })
   })
 
-  describe('#gte', function () {
-    it('compares the values', function () {
+  describe('#gte', () => {
+    it('compares the values', () => {
       assert.isTrue(math.gte(1)(2))
       assert.isFalse(math.gte(2)(1))
       assert.isTrue(math.gte(2)(2))
     })
   })
 
-  describe('#lt', function () {
-    it('compares the values', function () {
+  describe('#lt', () => {
+    it('compares the values', () => {
       assert.isFalse(math.lt(1)(2))
       assert.isTrue(math.lt(2)(1))
       assert.isFalse(math.lt(2)(2))
     })
   })
 
-  describe('#lte', function () {
-    it('compares the values', function () {
+  describe('#lte', () => {
+    it('compares the values', () => {
       assert.isFalse(math.lte(1)(2))
       assert.isTrue(math.lte(2)(1))
       assert.isTrue(math.lte(2)(2))
     })
   })
 
-  describe('#inc', function () {
-    it('increments the value', function () {
+  describe('#inc', () => {
+    it('increments the value', () => {
       assert.equal(math.inc(1), 2)
       assert.equal(math.inc(2), 3)
     })
   })
 
-  describe('#dec', function () {
-    it('decrements the value', function () {
+  describe('#dec', () => {
+    it('decrements the value', () => {
       assert.equal(math.dec(3), 2)
       assert.equal(math.dec(2), 1)
     })
   })
 
-  describe('#randomInt', function () {
-    it('returns a random integer', function () {
+  describe('#randomInt', () => {
+    it('returns a random integer', () => {
       const n = math.randomInt(1)(3)
       assert.isAtLeast(n, 1)
       assert.isAtMost(n, 3)
     })
   })
 
-  describe('#randomFloat', function () {
-    it('returns a random float', function () {
+  describe('#randomFloat', () => {
+    it('returns a random float', () => {
       const n = math.randomFloat(1)(3)
       assert.isAtLeast(n, 1)
       assert.isAtMost(n, 3)
