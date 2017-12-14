@@ -143,7 +143,7 @@ export const flip = curry((f, a, b) => f(b, a))
  * @summary The constant function.
  *
  * @example
- *   F.const(1)(2, 3); // 1
+ *   F.always(1)(2, 3); // 1
  *
  * @param c A value.
  * @returns A new function.
