@@ -6,10 +6,10 @@ regex   := "s/\([\"\']version[\"\'][[:space:]]*:[[:space:]]*\)\([\"\'].*[\"\']\)
 .PHONY: bump changelog clean dev doc lint publish publish-api publish-npm production release test unit
 
 dev: node_modules
-	@node_modules/.bin/webpack --colors --progress -w
+	@node_modules/.bin/rollup -c
 
 production: node_modules
-	@node_modules/.bin/webpack --colors --progress --optimize-minimize --env.NODE_ENV=production
+	@NODE_ENV=production node_modules/.bin/rollup -c
 	@node_modules/.bin/babel src --out-dir build
 
 test: unit lint
