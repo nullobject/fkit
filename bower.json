@@ -25,7 +25,7 @@
     "package.json",
     "src",
     "test",
-    "webpack.config.js",
+    "rollup.config.js",
     "Makefile"
   ]
 }
