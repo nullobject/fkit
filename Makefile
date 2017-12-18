@@ -38,9 +38,8 @@ lint: node_modules
 doc: node_modules
 	@node_modules/.bin/jsdoc -c jsdoc.config.json src README.md
 
-# Bumps the version of the bower and npm packages.
+# Bumps the version.
 bump:
-	@sed -i "" $(regex) bower.json
 	@sed -i "" $(regex) package.json
 
 # Updates the changelog and tags the release.
