@@ -1,20 +1,29 @@
+import pkg from './package.json'
+import babel from 'rollup-plugin-babel'
 import uglify from 'rollup-plugin-uglify'
 import {minify} from 'uglify-es'
 
-const filename = process.env.NODE_ENV === 'production' ? 'fkit.min.js' : 'fkit.js'
+const plugins = [
+  babel({exclude: '**/node_modules/**'})
+]
 
-const config = {
-  input: 'src/fkit',
-  output: {
-    file: 'dist/' + filename,
-    format: 'umd'
+export default [
+  // UMD and ES versions.
+  {
+    input: 'src/fkit',
+    output: [
+      {file: pkg.main, format: 'umd', name: 'F'},
+      {file: pkg.module, format: 'es'}
+    ],
+    plugins
   },
-  name: 'F',
-  plugins: []
-}
 
-if (process.env.NODE_ENV === 'production') {
-  config.plugins.push(uglify({}, minify))
-}
-
-export default config
+  // Browser minified version.
+  {
+    input: 'src/fkit',
+    output: [
+      {file: pkg.unpkg, format: 'umd', name: 'F'}
+    ],
+    plugins: plugins.concat([uglify({}, minify)])
+  }
+]
