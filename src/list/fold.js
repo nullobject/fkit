@@ -44,8 +44,8 @@ export function concatWith (s, as) {
  * @summary Concatenates lists.
  *
  * @example
- *   F.concat([1], [2, 3], [4, 5, 6]); // [1, 2, 3, 4, 5, 6]
- *   F.concat('f', 'oo', 'bar'); // 'foobar'
+ *   F.concat([1], [2, 3], [4, 5, 6]) // [1, 2, 3, 4, 5, 6]
+ *   F.concat('f', 'oo', 'bar') // 'foobar'
  *
  * @function
  * @param as A list.
@@ -61,12 +61,12 @@ export const concat = variadic(as => concatWith(mempty(as), as))
  *
  * @example
  *   F.concatMap(function(a) {
- *     return [a, 0];
- *   }, [1, 2, 3]); // [1, 0, 2, 0, 3, 0]
+ *     return [a, 0]
+ *   }, [1, 2, 3]) // [1, 0, 2, 0, 3, 0]
  *
  *   F.concatMap(function(a) {
- *     return [a, '-'];
- *   }, 'foo'); // 'f-o-o-'
+ *     return [a, '-']
+ *   }, 'foo') // 'f-o-o-'
  *
  * @curried
  * @function
@@ -87,8 +87,8 @@ export const concatMap = curry((f, as) => {
  * @summary Folds a list from left to right with a function.
  *
  * @example
- *   F.fold(F.flip(F.prepend), [], [1, 2, 3]); // [3, 2, 1]
- *   F.fold(F.flip(F.prepend), '', 'foo'); // 'oof'
+ *   F.fold(F.flip(F.prepend), [], [1, 2, 3]) // [3, 2, 1]
+ *   F.fold(F.flip(F.prepend), '', 'foo') // 'oof'
  *
  * @curried
  * @function
@@ -106,8 +106,8 @@ export const fold = curry((f, s, as) => toArray(as).reduce(f, s))
  * @summary Folds a list from right to left with a function.
  *
  * @example
- *   F.foldRight(F.append, [], [1, 2, 3]); // [3, 2, 1]
- *   F.foldRight(F.append, '', 'foo'); // 'oof'
+ *   F.foldRight(F.append, [], [1, 2, 3]) // [3, 2, 1]
+ *   F.foldRight(F.append, '', 'foo') // 'oof'
  *
  * @curried
  * @function
@@ -125,8 +125,8 @@ export const foldRight = curry((f, s, as) => toArray(as).reduceRight(flip(f), s)
  * @summary Scans a list from left to right with a function.
  *
  * @example
- *   F.fold(F.flip(F.prepend), [],  [1, 2, 3]); // [[], [1], [2, 1], [3, 2, 1]]
- *   F.fold(F.flip(F.prepend), '',  'foo'); // ['', 'f', 'of', 'oof']
+ *   F.fold(F.flip(F.prepend), [],  [1, 2, 3]) // [[], [1], [2, 1], [3, 2, 1]]
+ *   F.fold(F.flip(F.prepend), '',  'foo') // ['', 'f', 'of', 'oof']
  *
  * @curried
  * @function
@@ -148,8 +148,8 @@ export const scan = curry((f, s, as) => {
  * @summary Scans a list from right to left with a function.
  *
  * @example
- *   F.foldRight(F.append, [],  [1, 2, 3]); // [[3, 2, 1], [3, 2], [3], []]
- *   F.foldRight(F.append, '',  'foo'); // ['oof', 'oo', 'o', '']
+ *   F.foldRight(F.append, [],  [1, 2, 3]) // [[3, 2, 1], [3, 2], [3], []]
+ *   F.foldRight(F.append, '',  'foo') // ['oof', 'oo', 'o', '']
  *
  * @curried
  * @function
@@ -170,8 +170,8 @@ export const scanRight = curry((f, s, as) => {
  * @summary Calculates the maximum value of a list.
  *
  * @example
- *   F.maximum([1, 2, 3]); // 3
- *   F.maximum('abc'); // 'c'
+ *   F.maximum([1, 2, 3]) // 3
+ *   F.maximum('abc') // 'c'
  *
  * @param as A list.
  * @returns A value.
@@ -184,8 +184,8 @@ export function maximum (as) { return fold(max, as[0], as) }
  * @summary Calculates the minimum value of a list.
  *
  * @example
- *   F.minimum([1, 2, 3]); // 1
- *   F.minimum('abc'); // 'a'
+ *   F.minimum([1, 2, 3]) // 1
+ *   F.minimum('abc') // 'a'
  *
  * @param as A list.
  * @returns A value.
@@ -231,7 +231,7 @@ export const minimumBy = curry((c, as) =>
  * @summary Calculates the sum of the elements in a list.
  *
  * @example
- *   F.sum([1, 2, 3]); // 6
+ *   F.sum([1, 2, 3]) // 6
  *
  * @param as A list.
  * @returns A number.
@@ -244,7 +244,7 @@ export function sum (as) { return fold(add, 0, as) }
  * @summary Calculates the product of the elements in a list.
  *
  * @example
- *   F.product([1, 2, 3]); // 6
+ *   F.product([1, 2, 3]) // 6
  *
  * @param as A list.
  * @returns A number.

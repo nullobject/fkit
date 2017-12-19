@@ -15,8 +15,8 @@ import {compare, curry} from '../fn'
  * @summary Sorts a list using natural ordering.
  *
  * @example
- *   F.sort([2, 3, 1]); // [1, 2, 3]
- *   F.sort('bca'); // 'abc'
+ *   F.sort([2, 3, 1]) // [1, 2, 3]
+ *   F.sort('bca') // 'abc'
  *
  * @param a A list.
  * @returns A new list.

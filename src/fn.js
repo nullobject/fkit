@@ -23,7 +23,7 @@ export function flatten (as) {
  * @summary The identity function.
  *
  * @example
- *   F.id(1); // 1
+ *   F.id(1) // 1
  *
  * @param a A value.
  * @returns The value `a`.
@@ -36,8 +36,8 @@ export function id (a) { return a }
  * @summary Applies a function to a value.
  *
  * @example
- *   function sayHi(a) { return ['Hi', a, '!'].join(' '); }
- *   F.apply(sayHi, 'Jane'); // Hi Jane!
+ *   function sayHi(a) { return ['Hi', a, '!'].join(' ') }
+ *   F.apply(sayHi, 'Jane') // Hi Jane!
  *
  * @curried
  * @function
@@ -53,8 +53,8 @@ export const apply = curry((f, a) => f(a))
  * @summary Applies a function to two values.
  *
  * @example
- *   function sayHi(a, b) { return ['Hi', a, b, '!'].join(' '); }
- *   F.apply2(sayHi, 'Jane', 'Appleseed'); // Hi Jane Appleseed!
+ *   function sayHi(a, b) { return ['Hi', a, b, '!'].join(' ') }
+ *   F.apply2(sayHi, 'Jane', 'Appleseed') // Hi Jane Appleseed!
  *
  * @curried
  * @function
@@ -72,8 +72,8 @@ export const apply2 = curry((f, a, b) => f(a, b))
  * @summary Applies a function to three values.
  *
  * @example
- *   function sayHi(a, b, c) { return ['Hi', a, b, c, '!'].join(' '); }
- *   F.apply3(sayHi, 'Ms', 'Jane', 'Appleseed'); // Hi Ms Jane Appleseed!
+ *   function sayHi(a, b, c) { return ['Hi', a, b, c, '!'].join(' ') }
+ *   F.apply3(sayHi, 'Ms', 'Jane', 'Appleseed') // Hi Ms Jane Appleseed!
  *
  * @curried
  * @function
@@ -93,8 +93,8 @@ export const apply3 = curry((f, a, b, c) => f(a, b, c))
  * @summary Applies a function to a value.
  *
  * @example
- *   function sayHi(a) { return ['Hi', a, '!'].join(' '); }
- *   F.applyRight('Jane', sayHi); // Hi Jane!
+ *   function sayHi(a) { return ['Hi', a, '!'].join(' ') }
+ *   F.applyRight('Jane', sayHi) // Hi Jane!
  *
  * @curried
  * @function
@@ -110,7 +110,7 @@ export const applyRight = curry((a, f) => f(a))
  * @summary Composes a list of functions.
  *
  * @example
- *   F.compose(f, g, h)(a); // f(g(h(a)))
+ *   F.compose(f, g, h)(a) // f(g(h(a)))
  *
  * @function
  * @param fs A list of functions.
@@ -125,8 +125,8 @@ export const compose = variadic(fs => a => fs.reduceRight((a, f) => f(a), a))
  *
  * @example
  *   function f(a, b) { ... }
- *   var g = F.flip(f);
- *   g(1, 2); // f(2, 1)
+ *   var g = F.flip(f)
+ *   g(1, 2) // f(2, 1)
  *
  * @function
  * @param f A function.
@@ -143,7 +143,7 @@ export const flip = curry((f, a, b) => f(b, a))
  * @summary The constant function.
  *
  * @example
- *   F.always(1)(2, 3); // 1
+ *   F.always(1)(2, 3) // 1
  *
  * @param c A value.
  * @returns A new function.
@@ -157,8 +157,8 @@ export function always (a) { return () => a }
  * @summary Converts a function to a curried function.
  *
  * @example
- *   var add = F.curry(function(a, b) { return a + b; });
- *   add(1)(2); // 3
+ *   var add = F.curry(function(a, b) { return a + b })
+ *   add(1)(2) // 3
  *
  * @param f A function.
  * @returns A new function.
@@ -184,8 +184,8 @@ export function curry (f) {
  * @summary Converts a binary function to a function on pairs.
  *
  * @example
- *   var add = F.uncurry(function(a, b) { return a + b; });
- *   add([1, 2]); // 3
+ *   var add = F.uncurry(function(a, b) { return a + b })
+ *   add([1, 2]) // 3
  *
  * @function
  * @param f A function.
@@ -227,7 +227,7 @@ export function binary (f) {
  *
  * @example
  *   function f(head, tail) { ... }
- *   F.variadic(f)(1, 2, 3); // f(1, [2, 3])
+ *   F.variadic(f)(1, 2, 3) // f(1, [2, 3])
  *
  * @param f A function.
  * @returns A new function.
@@ -262,8 +262,8 @@ export function variadic (f) {
  * @summary Applies a side-effecting function to a value.
  *
  * @example
- *   function f(a) { console.log(a); }
- *   F.tap(f)(1); // 1
+ *   function f(a) { console.log(a) }
+ *   F.tap(f)(1) // 1
  *
  * @curried
  * @function
@@ -310,9 +310,9 @@ export const notEqual = curry((a, b) => b !== a)
  * @summary Compares two values using natural ordering.
  *
  * @example
- *   F.compare(1, 2); // -1
- *   F.compare(2, 1); // 1
- *   F.compare(2, 2); // 0
+ *   F.compare(1, 2) // -1
+ *   F.compare(2, 1) // 1
+ *   F.compare(2, 2) // 0
  *
  * @curried
  * @function

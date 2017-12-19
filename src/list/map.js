@@ -17,8 +17,8 @@ import {concat} from './fold'
  * @summary Maps a function over a list.
  *
  * @example
- *   F.map(F.inc, [1, 2, 3]); // [2, 3, 4]
- *   F.map(F.toUpper, 'foo'); // ['F', 'O', 'O']
+ *   F.map(F.inc, [1, 2, 3]) // [2, 3, 4]
+ *   F.map(F.toUpper, 'foo') // ['F', 'O', 'O']
  *
  * @curried
  * @function
@@ -35,8 +35,8 @@ export const map = curry((f, as) => toArray(as).map(f))
  * @summary Reverses the elements in a list.
  *
  * @example
- *   F.reverse([1, 2, 3]); // [3, 2, 1]
- *   F.reverse('foo'); // 'oof'
+ *   F.reverse([1, 2, 3]) // [3, 2, 1]
+ *   F.reverse('foo') // 'oof'
  *
  * @param as A list.
  * @returns A new list.
@@ -50,8 +50,8 @@ export const reverse = as => toArray(as).reduce(flip(prepend), mempty(as))
  * @summary Intersperses the elements of a list with separator.
  *
  * @example
- *   F.intersperse(4, [1, 2, 3]); // [1, 4, 2, 4, 3]
- *   F.intersperse('-', 'foo'); // 'f-o-o'
+ *   F.intersperse(4, [1, 2, 3]) // [1, 4, 2, 4, 3]
+ *   F.intersperse('-', 'foo') // 'f-o-o'
  *
  * @curried
  * @function

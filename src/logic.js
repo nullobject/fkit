@@ -51,11 +51,11 @@ export function not (a) { return !a }
  * @summary Branches execution based on a predicate function.
  *
  * @example
- *   function big(a) { return a + ' is a big number'; }
- *   function small(a) { return a + ' is a small number'; }
- *   var f = F.branch(F.gt(10), big, small);
- *   f(10); // small number
- *   f(11); // big number
+ *   function big(a) { return a + ' is a big number' }
+ *   function small(a) { return a + ' is a small number' }
+ *   var f = F.branch(F.gt(10), big, small)
+ *   f(10) // small number
+ *   f(11) // big number
  *
  * @curried
  * @function
@@ -72,10 +72,10 @@ export const branch = curry((p, f, g, a) => p(a) ? f(a) : g(a))
  * their conjunction.
  *
  * @example
- *   var ps = [F.gt(1), F.gt(2)];
- *   F.whereAll(ps, 1); // false
- *   F.whereAll(ps, 2); // false
- *   F.whereAll(ps, 3); // true
+ *   var ps = [F.gt(1), F.gt(2)]
+ *   F.whereAll(ps, 1) // false
+ *   F.whereAll(ps, 2) // false
+ *   F.whereAll(ps, 3) // true
  *
  * @curried
  * @function
@@ -90,10 +90,10 @@ export const whereAll = curry((ps, a) => ps.map(applyRight(a)).reduce(and, true)
  * their disjunction.
  *
  * @example
- *   var ps = [F.gt(1), F.gt(2)];
- *   F.whereAny(ps, 1); // false
- *   F.whereAny(ps, 2); // true
- *   F.whereAny(ps, 3); // true
+ *   var ps = [F.gt(1), F.gt(2)]
+ *   F.whereAny(ps, 1) // false
+ *   F.whereAny(ps, 2) // true
+ *   F.whereAny(ps, 3) // true
  *
  * @curried
  * @function
