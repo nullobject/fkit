@@ -2,7 +2,6 @@ import pkg from './package.json'
 import babel from 'rollup-plugin-babel'
 import filesize from 'rollup-plugin-filesize'
 import uglify from 'rollup-plugin-uglify'
-import {minify} from 'uglify-es'
 
 const plugins = [
   babel({exclude: '**/node_modules/**'}),
@@ -26,6 +25,6 @@ export default [
     output: [
       {file: pkg.unpkg, format: 'umd', name: 'F'}
     ],
-    plugins: plugins.concat([uglify({}, minify)])
+    plugins: plugins.concat([uglify()])
   }
 ]

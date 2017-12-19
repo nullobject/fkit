@@ -42,7 +42,6 @@
     "rollup-plugin-filesize": "^1.5.0",
     "rollup-plugin-uglify": "^2.0.1",
     "sinon": "^4.1.2",
-    "standard": "^10.0.3",
-    "uglify-es": "^3.2.2"
+    "standard": "^10.0.3"
   }
 }
