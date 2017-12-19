@@ -36,22 +36,22 @@ Features:
 
 ```js
 // Sum the numbers in a list.
-F.sum([1, 2, 3]); // 6
+F.sum([1, 2, 3]) // 6
 
 // Stash a string.
-F.map(F.surround('{', '}'), 'hello'); // '{h}{e}{l}{l}{o}'
+F.map(F.surround('{', '}'), 'hello') // '{h}{e}{l}{l}{o}'
 
 // Intersperse the numbers in a list with another number.
-F.intersperse(4, [1, 2, 3]); // [1, 4, 2, 4, 3]
+F.intersperse(4, [1, 2, 3]) // [1, 4, 2, 4, 3]
 
 // Filter the numbers in a list where 1 < n < 5.
-[1, 2, 3, 4, 5].filter(F.whereAll([F.gt(1), F.lt(5)])); // [2, 3, 4]
+[1, 2, 3, 4, 5].filter(F.whereAll([F.gt(1), F.lt(5)])) // [2, 3, 4]
 
 // Calculate the cartesian product of two lists.
-F.cartesian([1, 2], [3, 4]); // [[1, 3], [1, 4], [2, 3], [2, 4]]
+F.cartesian([1, 2], [3, 4]) // [[1, 3], [1, 4], [2, 3], [2, 4]]
 
 // Calculate the permutations of a list.
-F.permutations('abc'); // ['abc', 'bac', 'cba', 'bca', 'cab', 'acb']
+F.permutations('abc') // ['abc', 'bac', 'cba', 'bca', 'cab', 'acb']
 ```
 
 Check out some more examples:
@@ -79,16 +79,8 @@ Install the npm package:
 Require it in your code:
 
 ```js
-var F = require('fkit');
-console.log(F.add(1, 2));
-```
-
-### Bower
-
-Install the bower component:
-
-```sh
-> bower install fkit
+var F = require('fkit')
+console.log(F.add(1, 2))
 ```
 
 ## Contribute
