@@ -10,25 +10,87 @@ blocks while maintaining a laser focus on everyday utility.
 
 Features:
 
-* Why reinvent the wheel? FKit provides many functions for solving common
-  problems with functions, arrays, objects, and strings.
-* FKit treats both strings and arrays as *lists*, this means you can apply the
+* Why reinvent the wheel? FKit provides many functions for solving everyday
+  problems to do with functions, arrays, objects, and strings.
+
+* FKit treats both strings and arrays as *lists*, which means you can apply the
   same list functions to both strings and arrays (e.g. `head`, `tail`, `map`,
-  `filter`, and `fold`).
+  `filter`, `fold`, etc).
+
 * Most FKit functions are already
   [curried](http://en.wikipedia.org/wiki/Currying) by default, so you can
   [partially apply](http://en.wikipedia.org/wiki/Partial_application) them
   wherever you need to.
+
 * The ordering of arguments to FKit functions is carefully designed to be more
   natural, this makes them highly
   [composable](http://en.wikipedia.org/wiki/Function_composition).
+
 * It's very compact, roughly 3 KB when minified and gzipped!
+
+## Table of Contents
+
+* [Getting Started](#getting-started)
+  * [CDN](#cdn)
+  * [Node](#node)
+* [Documentation](#documentation)
+* [Examples](#examples)
+* [Contribute](#contribute)
+  * [Build](#build)
+  * [Test](#test)
+  * [Release](#release)
+* [License](#license)
+
+## Getting Started
+
+### CDN
+
+The quickest and easiest way to start using FKit is to include a reference to
+the minified file in the head of your HTML file.
+
+You can always grab the latest version with:
+
+```html
+<script src="https://unpkg.com/fkit/dist/fkit.min.js"></script>
+```
+
+You can also use a specific version with:
+
+```html
+<script src="https://unpkg.com/fkit@1.0.4/dist/fkit.min.js"></script>
+```
+
+### Node
+
+Install the npm package:
+
+```sh
+> npm install fkit
+```
+
+Require it in your code:
+
+```js
+var F = require('fkit')
+console.log(F.add(1, 2))
+```
+
+Or, if you are using [ES6
+modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import),
+you can just import the bits you want:
+
+```js
+import {add} from 'fkit'
+console.log(add(1, 2))
+```
 
 ## Documentation
 
 * [API documentation](http://nullobject.github.io/fkit/api.html)
+
 * Presentation by Josh Bassett: [Everyday Functional Programming in
   JavaScript](https://speakerdeck.com/nullobject/fkit-everyday-functional-programming-in-javascript)
+
 * Article by Josh Bassett: [Take Your Code to the Next Level with
   FKit](http://joshbassett.info/2014/take-your-code-to-the-next-level-with-fkit/)
 
@@ -62,27 +124,6 @@ Check out some more examples:
 * [Objects](http://codepen.io/nullobject/pen/rKszh?editors=001)
 * [Branching](http://codepen.io/nullobject/pen/LdtDK?editors=001)
 
-## Download
-
-Download the
-[fkit.js](https://raw.githubusercontent.com/nullobject/fkit/master/dist/fkit.js)
-minified library.
-
-### Node
-
-Install the npm package:
-
-```sh
-> npm install fkit
-```
-
-Require it in your code:
-
-```js
-var F = require('fkit')
-console.log(F.add(1, 2))
-```
-
 ## Contribute
 
 ### Build
@@ -90,7 +131,7 @@ console.log(F.add(1, 2))
 Build the library:
 
 ```sh
-> make production
+> make dist
 ```
 
 ### Test
