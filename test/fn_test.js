@@ -1,6 +1,6 @@
-import {assert} from 'chai'
 import * as fn from '../src/fn'
 import sinon from 'sinon'
+import {assert} from 'chai'
 
 describe('fn', () => {
   describe('#id', () => {

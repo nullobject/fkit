@@ -1,5 +1,6 @@
-import {assert} from 'chai'
 import * as sublist from '../../src/list/sublist'
+import sinon from 'sinon'
+import {assert} from 'chai'
 
 describe('list.sublist', () => {
   describe('#take', () => {
@@ -150,6 +151,32 @@ describe('list.sublist', () => {
 
     it('handles a string', () => {
       assert.deepEqual(sublist.group('Mississippi'), ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i'])
+    })
+  })
+
+  describe('#groupBy', () => {
+    const f = (a, b) => a === b
+
+    it('handles an empty array', () => {
+      assert.deepEqual(sublist.groupBy(f, []), [])
+    })
+
+    it('handles an empty string', () => {
+      assert.deepEqual(sublist.groupBy(f, ''), [])
+    })
+
+    it('handles an array', () => {
+      assert.deepEqual(sublist.groupBy(f, [1, 2, 2, 3, 3, 3]), [[1], [2, 2], [3, 3, 3]])
+    })
+
+    it('handles a string', () => {
+      assert.deepEqual(sublist.groupBy(f, 'Mississippi'), ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i'])
+    })
+
+    it('calls the comparator function', () => {
+      const spy = sinon.stub().returns(true)
+      sublist.groupBy(spy, [1, 2])
+      assert.isTrue(spy.calledWithExactly(2, 1))
     })
   })
 })

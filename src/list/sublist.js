@@ -192,7 +192,7 @@ export function group (as) { return groupBy(equal, as) }
  */
 export const groupBy = curry(function groupBy (f, as) {
   const b = head(as)
-  const bs = span(f(b), tail(as))
+  const bs = span(a => f(a, b), tail(as))
 
   return empty(as)
     ? []
