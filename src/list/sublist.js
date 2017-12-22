@@ -109,7 +109,7 @@ export const dropWhile = curry((p, as) => {
   const m = as.length
   let n = 0
 
-  while (p(as[n]) && n < as.length) {
+  while (n < m && p(as[n])) {
     n++
   }
 
