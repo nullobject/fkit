@@ -1,3 +1,13 @@
+v1.0.5 / 2017-12-24
+===================
+
+  * Add comparator function documentation to *By functions
+  * Fix example for difference function
+  * Fix issue in groupBy function
+  * Fix issue in dropWhile function
+  * Remove uglify-es
+  * Add filesize rollup plugin
+
 v1.0.4 / 2017-12-19
 ===================
 
