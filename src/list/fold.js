@@ -196,7 +196,15 @@ export function minimum (as) { return fold(min, as[0], as) }
  * Returns the maximum value in the list of `as` using the comparator function
  * `c`.
  *
- * @summary Calculates the maximum value of a list using a comparator.
+ * The comparator function compares two elements, `a` and `b`. If `a` is
+ * greater than `b`, then the comparator function should return `1`. If `a` is
+ * less than `b`, then the comparator function should return `-1`. If both
+ * elements are equal then, the comparator function should return `0`.
+ *
+ * @summary Calculates the maximum value of a list using a comparator function.
+ *
+ * @example
+ *   F.maximumBy((a, b) => a === b, [1, 2, 3]) // 3
  *
  * @curried
  * @function
@@ -214,6 +222,14 @@ export const maximumBy = curry((c, as) =>
  *
  * @summary Calculates the minimum value of a list using a comparator
  * function.
+ *
+ * The comparator function compares two elements, `a` and `b`. If `a` is
+ * greater than `b`, then the comparator function should return `1`. If `a` is
+ * less than `b`, then the comparator function should return `-1`. If both
+ * elements are equal, then the comparator function should return `0`.
+ *
+ * @example
+ *   F.minimumBy((a, b) => a === b, [1, 2, 3]) // 1
  *
  * @curried
  * @function

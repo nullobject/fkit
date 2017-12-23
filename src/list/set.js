@@ -34,24 +34,31 @@ export function nub (as) { return nubBy(equal, as) }
 
 /**
  * Returns a list with all duplicate elements that satisfy the comparator
- * function `f` removed from the list of `bs`.
+ * function `c` removed from the list of `bs`.
+ *
+ * The comparator function compares two elements, `a` and `b`. If the elements
+ * are both considered to equal, then the comparator function should return
+ * `true`. Otherwise it should return `false`.
  *
  * @summary Removes duplicate elements from a list using a comparator function.
  *
+ * @example
+ *   F.nubBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [1, 2, 3]
+ *
  * @curried
  * @function
- * @param f A comparator function.
+ * @param c A comparator function.
  * @param as A list.
  * @returns A new list.
  */
-export const nubBy = curry(function nubBy (f, as) {
+export const nubBy = curry(function nubBy (c, as) {
   const a = head(as)
 
   return empty(as)
     ? mempty(as)
     : prepend(
       a,
-      nubBy(f, filter(b => !f(a, b), tail(as)))
+      nubBy(c, filter(b => !c(a, b), tail(as)))
     )
 })
 
@@ -148,8 +155,15 @@ export const remove = curry((a, bs) => removeBy(equal, a, bs))
  * Returns a list with the first occurance of the element `a` that satisfies
  * the comparator function `f` removed from the list of `bs`.
  *
+ * The comparator function compares two elements, `a` and `b`. If the elements
+ * are both considered to equal, then the comparator function should return
+ * `true`. Otherwise it should return `false`.
+ *
  * @summary Removes the first occurance of an element from a list using a
  * comparator function.
+ *
+ * @example
+ *   F.removeBy((a, b) => a === b, 2, [1, 2, 3]) // [1, 3]
  *
  * @curried
  * @function
