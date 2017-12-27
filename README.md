@@ -57,7 +57,7 @@ You can always grab the latest version with:
 You can also use a specific version with:
 
 ```html
-<script src="https://unpkg.com/fkit@1.0.4/dist/fkit.min.js"></script>
+<script src="https://unpkg.com/fkit@1.0.0/dist/fkit.min.js"></script>
 ```
 
 ### Node
@@ -77,7 +77,7 @@ console.log(F.add(1, 2))
 
 Or, if you are using [ES6
 modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import),
-you can just import the bits you want:
+you can import just the bits you want:
 
 ```js
 import {add} from 'fkit'
