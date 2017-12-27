@@ -131,6 +131,22 @@ describe('math', () => {
     })
   })
 
+  describe('#even', () => {
+    it('tests whether a value is even', () => {
+      assert.isFalse(math.even(1))
+      assert.isTrue(math.even(2))
+      assert.isFalse(math.even(3))
+    })
+  })
+
+  describe('#odd', () => {
+    it('tests whether a value is odd', () => {
+      assert.isTrue(math.odd(1))
+      assert.isFalse(math.odd(2))
+      assert.isTrue(math.odd(3))
+    })
+  })
+
   describe('#inc', () => {
     it('increments the value', () => {
       assert.equal(math.inc(1), 2)

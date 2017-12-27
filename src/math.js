@@ -179,8 +179,8 @@ export const gte = curry((a, b) => b >= a)
 export const lt = curry((a, b) => b < a)
 
 /**
- * Returns `true` if the value `a` is less than or equal to the value `b` false
- * otherwise.
+ * Returns `true` if the value `a` is less than or equal to the value `b`,
+ * false otherwise.
  *
  * @summary The less than or equal operator.
  *
@@ -191,6 +191,26 @@ export const lt = curry((a, b) => b < a)
  * @returns A boolean value.
  */
 export const lte = curry((a, b) => b <= a)
+
+/**
+ * Returns `true` if the value `a` is even, false otherwise.
+ *
+ * @summary Tests whether a value is even.
+ *
+ * @param a A number.
+ * @returns A boolean value.
+ */
+export function even (a) { return !(a % 2) }
+
+/**
+ * Returns `true` if the value `a` is odd, false otherwise.
+ *
+ * @summary Tests whether a value is odd.
+ *
+ * @param a A number.
+ * @returns A boolean value.
+ */
+export function odd (a) { return !!(a % 2) }
 
 /**
  * Returns the result of `a + 1`.
