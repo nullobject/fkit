@@ -60,6 +60,15 @@ describe('math', () => {
     })
   })
 
+  describe('#clamp', () => {
+    it('clamps the number', () => {
+      assert.equal(math.clamp(1)(3)(0), 1)
+      assert.equal(math.clamp(1)(3)(1), 1)
+      assert.equal(math.clamp(1)(3)(2), 2)
+      assert.equal(math.clamp(1)(3)(4), 3)
+    })
+  })
+
   describe('#negate', () => {
     it('negates the value', () => {
       assert.equal(math.negate(1), -1)

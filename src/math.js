@@ -100,6 +100,20 @@ export const max = curry((a, b) => b > a ? b : a)
 export const min = curry((a, b) => a > b ? b : a)
 
 /**
+ * Clamps the number `b` between the numbers `a` and `c` (i.e. a >= b >= c).
+ *
+ * @summary Clamps a number.
+ *
+ * @curried
+ * @function
+ * @param a A number.
+ * @param b A number.
+ * @param c A number.
+ * @returns A number.
+ */
+export const clamp = curry((a, c, b) => max(a, min(b, c)))
+
+/**
  * Returns the negation of the number `a`.
  *
  * @summary The negation operator.
