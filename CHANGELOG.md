@@ -1,3 +1,9 @@
+v1.1.0 / 2017-12-29
+===================
+
+  * Add clamp function
+  * Add even and odd functions
+
 v1.0.5 / 2017-12-24
 ===================
 
