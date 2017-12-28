@@ -39,7 +39,7 @@ Features:
   * [Build](#build)
   * [Test](#test)
   * [Release](#release)
-* [License](#license)
+* [Licence](#licence)
 
 ## Getting Started
 
@@ -150,8 +150,8 @@ Ship a new release x.y.z:
 > make release version=x.y.z
 ```
 
-## License
+## Licence
 
-FKit is licensed under the MIT license. See the
-[LICENSE](https://github.com/nullobject/fkit/blob/master/LICENSE.md) file for
+FKit is licensed under the MIT licence. See the
+[LICENCE](https://github.com/nullobject/fkit/blob/master/LICENCE.md) file for
 more details.

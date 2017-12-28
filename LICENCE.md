@@ -1,4 +1,4 @@
-The MIT License (MIT)
+The MIT Licence (MIT)
 
 Copyright (c) 2018 Josh Bassett
 
