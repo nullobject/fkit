@@ -5,7 +5,6 @@ import {curry} from './fn'
  *
  * @module fkit/string
  * @summary Strings
- * @author Josh Bassett
  */
 
 /**

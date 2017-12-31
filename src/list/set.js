@@ -10,7 +10,6 @@ import {elem, filter} from './search'
  *
  * @private
  * @module fkit/list/set
- * @author Josh Bassett
  */
 
 /**

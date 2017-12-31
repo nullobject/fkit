@@ -7,7 +7,6 @@ import {extend} from './util'
  *
  * @module fkit/obj
  * @summary Objects
- * @author Josh Bassett
  */
 
 /**

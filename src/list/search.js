@@ -9,7 +9,6 @@ import {reverse} from './map'
  *
  * @private
  * @module fkit/list/search
- * @author Josh Bassett
  */
 
 /**

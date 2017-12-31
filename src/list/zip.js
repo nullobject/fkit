@@ -7,7 +7,6 @@ import {curry} from '../fn'
  *
  * @private
  * @module fkit/list/zip
- * @author Josh Bassett
  */
 
 /**

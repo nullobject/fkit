@@ -6,7 +6,6 @@ import {curry, equal} from '../fn'
  *
  * @private
  * @module fkit/list/sublist
- * @author Josh Bassett
  */
 
 /**

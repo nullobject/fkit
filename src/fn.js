@@ -5,7 +5,6 @@ import {slice} from './util'
  *
  * @module fkit/fn
  * @summary Core Functions
- * @author Josh Bassett
  */
 
 /**

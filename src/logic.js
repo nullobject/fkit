@@ -5,7 +5,6 @@ import {applyRight, curry} from './fn'
  *
  * @module fkit/logic
  * @summary Logical Functions and Combinators
- * @author Josh Bassett
  */
 
 /**

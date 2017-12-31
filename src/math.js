@@ -5,7 +5,6 @@ import {curry, equal, notEqual} from './fn'
  *
  * @module fkit/math
  * @summary Yay, Numbers!
- * @author Josh Bassett
  */
 
 /**

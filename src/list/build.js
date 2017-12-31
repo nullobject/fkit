@@ -9,7 +9,6 @@ import {take} from './sublist'
  *
  * @private
  * @module fkit/list/build
- * @author Josh Bassett
  */
 
 /**

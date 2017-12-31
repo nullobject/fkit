@@ -3,11 +3,15 @@
     "allowUnknownTags": true
   },
   "plugins": ["plugins/markdown"],
+  "markdown": {
+    "excludeTags": ["summary"]
+  },
   "templates": {
     "title": "FKit"
   },
   "opts": {
     "destination": "doc",
+    "private": true,
     "recurse": true,
     "template": "node_modules/jsdoc-react"
   }

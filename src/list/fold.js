@@ -7,7 +7,6 @@ import {add, max, min, mul} from '../math'
  *
  * @private
  * @module fkit/list/fold
- * @author Josh Bassett
  */
 
 /**

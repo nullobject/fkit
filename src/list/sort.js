@@ -6,7 +6,6 @@ import {compare, curry} from '../fn'
  *
  * @private
  * @module fkit/list/sort
- * @author Josh Bassett
  */
 
 /**

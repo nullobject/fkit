@@ -29,5 +29,4 @@ export * from './list/zip'
  * @mixes module:fkit/list/sort
  * @mixes module:fkit/list/sublist
  * @mixes module:fkit/list/zip
- * @author Josh Bassett
  */

@@ -7,7 +7,6 @@ import {concat} from './fold'
  *
  * @private
  * @module fkit/list/map
- * @author Josh Bassett
  */
 
 /**
