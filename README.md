@@ -35,10 +35,6 @@ Features:
   * [Node](#node)
 * [Documentation](#documentation)
 * [Examples](#examples)
-* [Contribute](#contribute)
-  * [Build](#build)
-  * [Test](#test)
-  * [Release](#release)
 * [Licence](#licence)
 
 ## Getting Started
@@ -123,32 +119,6 @@ Check out some more examples:
 * [Arrays](http://codepen.io/nullobject/pen/vbcCr?editors=001)
 * [Objects](http://codepen.io/nullobject/pen/rKszh?editors=001)
 * [Branching](http://codepen.io/nullobject/pen/LdtDK?editors=001)
-
-## Contribute
-
-### Build
-
-Build the library:
-
-```sh
-> make dist
-```
-
-### Test
-
-Run the tests:
-
-```sh
-> make test
-```
-
-### Release
-
-Ship a new release x.y.z:
-
-```sh
-> make release version=x.y.z
-```
 
 ## Licence
 
