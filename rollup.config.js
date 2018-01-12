@@ -11,7 +11,7 @@ const plugins = [
 export default [
   // UMD and ES versions.
   {
-    input: 'src/fkit.js',
+    input: 'src/index.js',
     output: [
       {file: pkg.main, format: 'umd', name: 'F'},
       {file: pkg.module, format: 'es'}
@@ -21,7 +21,7 @@ export default [
 
   // Browser minified version.
   {
-    input: 'src/fkit.js',
+    input: 'src/index.js',
     output: [
       {file: pkg.unpkg, format: 'umd', name: 'F'}
     ],
