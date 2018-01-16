@@ -13,6 +13,9 @@ dist: node_modules
 
 test: unit lint
 
+watch: node_modules
+	@BABEL_ENV=mocha ./node_modules/.bin/mocha -w
+
 release: dist test publish
 
 publish: bump changelog publish-api publish-npm
