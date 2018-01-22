@@ -42,7 +42,7 @@
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-filesize": "^1.5.0",
     "rollup-plugin-uglify": "^3.0.0",
-    "sinon": "^4.1.6",
+    "sinon": "^4.2.0",
     "standard": "^10.0.3"
   }
 }
