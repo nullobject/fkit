@@ -1,3 +1,12 @@
+v1.2.0 / 2018-01-23
+===================
+
+  * Add between function
+  * Update deps
+  * Add watch task
+  * Remove contribute section from readme
+  * Fix documentation
+
 v1.1.0 / 2017-12-29
 ===================
 
