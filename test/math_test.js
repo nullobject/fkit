@@ -69,6 +69,15 @@ describe('math', () => {
     })
   })
 
+  describe('#between', () => {
+    it('compares the values', () => {
+      assert.isFalse(math.between(1)(3)(0))
+      assert.isTrue(math.between(1)(3)(1))
+      assert.isTrue(math.between(1)(3)(2))
+      assert.isFalse(math.between(1)(3)(4))
+    })
+  })
+
   describe('#negate', () => {
     it('negates the value', () => {
       assert.equal(math.negate(1), -1)
