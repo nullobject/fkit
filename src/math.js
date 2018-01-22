@@ -116,7 +116,7 @@ export const clamp = curry((a, b, n) => max(a, min(n, b)))
  * Retruns true if the number `n` is between the numbers `a` and `b` (i.e. a <=
  * n <= b), false otherwise.
  *
- * @summary Clamps a number.
+ * @summary The between operator.
  *
  * @curried
  * @function
