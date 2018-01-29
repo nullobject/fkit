@@ -1,3 +1,9 @@
+v1.3.0 / 2018-01-29
+===================
+
+  * Fix issue with copy function
+  * Fix between function summary
+
 v1.2.0 / 2018-01-23
 ===================
 
