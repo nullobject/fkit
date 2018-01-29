@@ -85,7 +85,7 @@ export const applyMethod3 = curry((k, a, b, c, o) => o[k](a, b, c))
  * @param os A list.
  * @returns A new object.
  */
-export const copy = variadic((o, ps) => extend(new o.constructor(), [o].concat(ps)))
+export const copy = variadic((o, ps) => extend(Object.create(Object.getPrototypeOf(o)), [o].concat(ps)))
 
 /**
  * Returns the property at the key `k` in the object `o`.
