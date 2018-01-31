@@ -1,3 +1,8 @@
+v1.4.0 / 2018-01-31
+===================
+
+  * Add generalised `unionBy`, `intersectBy`, and `differenceBy` functions.
+
 v1.3.0 / 2018-01-29
 ===================
 
