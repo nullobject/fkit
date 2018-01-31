@@ -3,7 +3,7 @@ import {pair} from './build'
 import {compose, curry, equal, flip, id} from '../fn'
 import {concat, fold, foldRight} from './fold'
 import {map} from './map'
-import {elem, filter} from './search'
+import {any, filter} from './search'
 
 /**
  * This module defines set operations on lists.
@@ -11,6 +11,36 @@ import {elem, filter} from './search'
  * @private
  * @module fkit/list/set
  */
+
+/**
+ * Returns a list with all duplicate elements removed from the list of `bs`.
+ * The elements are compared using the comparator function `f`.
+ *
+ * The comparator function compares two elements, `a` and `b`. If the elements
+ * are both considered to equal, then the comparator function should return
+ * `true`. Otherwise it should return `false`.
+ *
+ * @summary Removes duplicate elements from a list using a comparator function.
+ *
+ * @example
+ *   F.nubBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [1, 2, 3]
+ *
+ * @curried
+ * @function
+ * @param f A comparator function.
+ * @param as A list.
+ * @returns A new list.
+ */
+export const nubBy = curry(function nubBy (f, as) {
+  const a = head(as)
+
+  return empty(as)
+    ? mempty(as)
+    : prepend(
+      a,
+      nubBy(f, filter(b => !f(a, b), tail(as)))
+    )
+})
 
 /**
  * Returns a list with all duplicate elements removed from the list of `as`.
@@ -29,41 +59,44 @@ import {elem, filter} from './search'
  * @param as A list.
  * @returns A new list.
  */
-export function nub (as) { return nubBy(equal, as) }
+export const nub = nubBy(equal)
 
 /**
- * Returns a list with all duplicate elements that satisfy the comparator
- * function `c` removed from the list of `bs`.
+ * Returns a list that contains the union of elements in the lists of `as` and
+ * `bs`. The elements are compared using the comparator function `f`.
  *
  * The comparator function compares two elements, `a` and `b`. If the elements
  * are both considered to equal, then the comparator function should return
  * `true`. Otherwise it should return `false`.
  *
- * @summary Removes duplicate elements from a list using a comparator function.
+ * Duplicates are removed from `bs`, but if `as` contains duplicates then so
+ * will the result.
+ *
+ * @summary Calculates the union of two lists.
  *
  * @example
- *   F.nubBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [1, 2, 3]
+ *   F.unionBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1, 2, 3, 4]
+ *   F.unionBy((a, b) => a === b, 'hello', 'world') // 'hellowrd'
  *
  * @curried
  * @function
- * @param c A comparator function.
+ * @param f A comparator function.
  * @param as A list.
+ * @param bs A list.
  * @returns A new list.
  */
-export const nubBy = curry(function nubBy (c, as) {
-  const a = head(as)
-
-  return empty(as)
-    ? mempty(as)
-    : prepend(
-      a,
-      nubBy(c, filter(b => !c(a, b), tail(as)))
-    )
-})
+export const unionBy = curry((f, as, bs) =>
+  fold((cs, b) =>
+    any(a => f(a, b), as) ? cs : append(b, cs)
+  , as, bs)
+)
 
 /**
  * Returns a list that contains the union of elements in the lists of `as` and
  * `bs`.
+ *
+ * It is a special case of the `unionBy` function where the elements are
+ * compared using the strict equality `===` operator.
  *
  * Duplicates are removed from `bs`, but if `as` contains duplicates then so
  * will the result.
@@ -80,15 +113,44 @@ export const nubBy = curry(function nubBy (c, as) {
  * @param bs A list.
  * @returns A new list.
  */
-export const union = curry((as, bs) =>
-  fold((cs, b) =>
-    (elem(b, cs)) ? cs : append(b, cs)
-  , as, bs)
+export const union = unionBy(equal)
+
+/**
+ * Returns a list that contains the intersection of the elments in the lists of
+ * `as` and `bs`. The elements are compared using the comparator function `f`.
+ *
+ * The comparator function compares two elements, `a` and `b`. If the elements
+ * are both considered to equal, then the comparator function should return
+ * `true`. Otherwise it should return `false`.
+ *
+ * Duplicates are removed from `bs`, but if `as` contains duplicates then so
+ * will the result.
+ *
+ * @summary Calculates the intersection of two lists.
+ *
+ * @example
+ *   F.intersectBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [2, 3]
+ *   F.intersectBy((a, b) => a === b, 'hello', 'world') // 'ol'
+ *
+ * @curried
+ * @function
+ * @param f A comparator function.
+ * @param as A list.
+ * @param bs A list.
+ * @returns A new list.
+ */
+export const intersectBy = curry((f, as, bs) =>
+  fold((cs, a) =>
+    any(b => f(a, b), bs) ? append(a, cs) : cs
+  , mempty(as), as)
 )
 
 /**
  * Returns a list that contains the intersection of the elments in the lists of
  * `as` and `bs`.
+ *
+ * It is a special case of the `intersectBy` function where the elements are
+ * compared using the strict equality `===` operator.
  *
  * Duplicates are removed from `bs`, but if `as` contains duplicates then so
  * will the result.
@@ -105,15 +167,37 @@ export const union = curry((as, bs) =>
  * @param bs A list.
  * @returns A new list.
  */
-export const intersect = curry((as, bs) =>
-  fold((cs, a) =>
-    (elem(a, bs)) ? append(a, cs) : cs
-  , mempty(as), as)
-)
+export const intersect = intersectBy(equal)
+
+/**
+ * Returns a list that contains the difference of the elements in the lists of
+ * `as` and `bs`. The elements are compared using the comparator function `f`.
+ *
+ * The comparator function compares two elements, `a` and `b`. If the elements
+ * are both considered to equal, then the comparator function should return
+ * `true`. Otherwise it should return `false`.
+ *
+ * @summary Calculates the difference of two lists.
+ *
+ * @example
+ *   F.differenceBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1]
+ *   F.differenceBy((a, b) => a === b, 'hello', 'world') // 'hel'
+ *
+ * @curried
+ * @function
+ * @param f A comparator function.
+ * @param as A list.
+ * @param bs A list.
+ * @returns A new list.
+ */
+export const differenceBy = curry((f, as, bs) => fold(flip(removeBy(f)), as, bs))
 
 /**
  * Returns a list that contains the difference of the elements in the lists of
  * `as` and `bs`.
+ *
+ * It is a special case of the `differenceBy` function where the elements are
+ * compared using the strict equality `===` operator.
  *
  * @summary Calculates the difference of two lists.
  *
@@ -127,32 +211,11 @@ export const intersect = curry((as, bs) =>
  * @param bs A list.
  * @returns A new list.
  */
-export const difference = curry((as, bs) => fold(flip(remove), as, bs))
+export const difference = differenceBy(equal)
 
 /**
  * Returns a list with the first occurance of the element `a` removed from the
- * list of `bs`.
- *
- * It is a special case of the `removeBy` function where the elements are
- * compared using the strict equality `===` operator.
- *
- * @summary Removes the first occurance of an element from a list.
- *
- * @example
- *   F.remove(2, [1, 2, 3]) // [1, 3]
- *   F.remove('f', 'foo') // 'oo'
- *
- * @curried
- * @function
- * @param a A value.
- * @param bs A list.
- * @returns A new list.
- */
-export const remove = curry((a, bs) => removeBy(equal, a, bs))
-
-/**
- * Returns a list with the first occurance of the element `a` that satisfies
- * the comparator function `f` removed from the list of `bs`.
+ * list of `bs`. The elements are compared using the comparator function `f`.
  *
  * The comparator function compares two elements, `a` and `b`. If the elements
  * are both considered to equal, then the comparator function should return
@@ -179,6 +242,27 @@ export const removeBy = curry(function removeBy (f, a, bs_) {
     ? mempty(bs_)
     : f(a, b) ? bs : prepend(b, removeBy(f, a, bs))
 })
+
+/**
+ * Returns a list with the first occurance of the element `a` removed from the
+ * list of `bs`.
+ *
+ * It is a special case of the `removeBy` function where the elements are
+ * compared using the strict equality `===` operator.
+ *
+ * @summary Removes the first occurance of an element from a list.
+ *
+ * @example
+ *   F.remove(2, [1, 2, 3]) // [1, 3]
+ *   F.remove('f', 'foo') // 'oo'
+ *
+ * @curried
+ * @function
+ * @param a A value.
+ * @param bs A list.
+ * @returns A new list.
+ */
+export const remove = removeBy(equal)
 
 /**
  * Returns a list that contains all the ordered pairs `[a, b]` in the lists of
