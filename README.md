@@ -102,8 +102,8 @@ F.map(F.surround('{', '}'), 'hello') // '{h}{e}{l}{l}{o}'
 // Intersperse the numbers in a list with another number.
 F.intersperse(4, [1, 2, 3]) // [1, 4, 2, 4, 3]
 
-// Filter the numbers in a list where 1 < n < 5.
-[1, 2, 3, 4, 5].filter(F.whereAll([F.gt(1), F.lt(5)])) // [2, 3, 4]
+// Filter the numbers in a list where 1 <= n <= 5.
+[1, 2, 3, 4, 5].filter(F.between(2, 4)) // [2, 3, 4]
 
 // Calculate the cartesian product of two lists.
 F.cartesian([1, 2], [3, 4]) // [[1, 3], [1, 4], [2, 3], [2, 4]]
