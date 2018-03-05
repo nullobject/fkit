@@ -86,9 +86,9 @@ export const nub = nubBy(equal)
  * @returns A new list.
  */
 export const unionBy = curry((f, as, bs) =>
-  fold((cs, b) =>
-    any(a => f(a, b), as) ? cs : append(b, cs)
-  , as, bs)
+  fold((cs, b) => {
+    return any(a => f(a, b), as) ? cs : append(b, cs)
+  }, as, bs)
 )
 
 /**
@@ -140,9 +140,9 @@ export const union = unionBy(equal)
  * @returns A new list.
  */
 export const intersectBy = curry((f, as, bs) =>
-  fold((cs, a) =>
-    any(b => f(a, b), bs) ? append(a, cs) : cs
-  , mempty(as), as)
+  fold((cs, a) => {
+    return any(b => f(a, b), bs) ? append(a, cs) : cs
+  }, mempty(as), as)
 )
 
 /**
