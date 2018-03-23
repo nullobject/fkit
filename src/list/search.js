@@ -18,11 +18,12 @@ import {reverse} from './map'
  * @summary Determines if a value is present in a list.
  *
  * @example
- *   F.elem(0, [1, 2, 3]) // false
- *   F.elem(1, [1, 2, 3]) // true
  *
- *   F.elem('a', 'foo') // false
- *   F.elem('o', 'foo') // true
+ * F.elem(0, [1, 2, 3]) // false
+ * F.elem(1, [1, 2, 3]) // true
+ *
+ * F.elem('a', 'foo') // false
+ * F.elem('o', 'foo') // true
  *
  * @curried
  * @function
@@ -39,11 +40,12 @@ export const elem = curry((a, as) => as.indexOf(a) >= 0)
  * @summary Gets the index of the first occurance of an element in a list.
  *
  * @example
- *   F.elemIndex(0, [1, 2, 3]) // undefined
- *   F.elemIndex(1, [1, 2, 3]) // 0
  *
- *   F.elemIndex('a', 'foo') // undefined
- *   F.elemIndex('o', 'foo') // 1
+ * F.elemIndex(0, [1, 2, 3]) // undefined
+ * F.elemIndex(1, [1, 2, 3]) // 0
+ *
+ * F.elemIndex('a', 'foo') // undefined
+ * F.elemIndex('o', 'foo') // 1
  *
  * @curried
  * @function
@@ -63,11 +65,12 @@ export const elemIndex = curry((a, as) => {
  * @summary Gets the indices of all occurances of an element in a list.
  *
  * @example
- *   F.elemIndices(0, [1, 2, 3]) // []
- *   F.elemIndices(1, [1, 2, 3]) // [0]
  *
- *   F.elemIndices('a', 'foo') // []
- *   F.elemIndices('o', 'foo') // [1, 2]
+ * F.elemIndices(0, [1, 2, 3]) // []
+ * F.elemIndices(1, [1, 2, 3]) // [0]
+ *
+ * F.elemIndices('a', 'foo') // []
+ * F.elemIndices('o', 'foo') // [1, 2]
  *
  * @curried
  * @function
@@ -84,11 +87,12 @@ export const elemIndices = curry((a, as) => findIndices(equal(a), as))
  * @summary Finds an element in a list that satisfies a predicate function.
  *
  * @example
- *   F.find(F.gt(1), []) // undefined
- *   F.find(F.gt(1), [1, 2, 3]) // 2
  *
- *   F.find(F.eq('o'), '') // undefined
- *   F.find(F.eq('o'), 'foo') // 'o'
+ * F.find(F.gt(1), []) // undefined
+ * F.find(F.gt(1), [1, 2, 3]) // 2
+ *
+ * F.find(F.eq('o'), '') // undefined
+ * F.find(F.eq('o'), 'foo') // 'o'
  *
  * @curried
  * @function
@@ -106,11 +110,12 @@ export const find = curry((p, as) => head(filter(p, as)))
  * satisfies a predicate function.
  *
  * @example
- *   F.findIndex(F.gt(1), []) // undefined
- *   F.findIndex(F.gt(1), [1, 2, 3]) // 1
  *
- *   F.findIndex(F.eq('o'), '') // undefined
- *   F.findIndex(F.eq('o'), 'foo') // 1
+ * F.findIndex(F.gt(1), []) // undefined
+ * F.findIndex(F.gt(1), [1, 2, 3]) // 1
+ *
+ * F.findIndex(F.eq('o'), '') // undefined
+ * F.findIndex(F.eq('o'), 'foo') // 1
  *
  * @curried
  * @function
@@ -136,11 +141,12 @@ export const findIndex = curry((p, as) => {
  * satisfy a predicate function.
  *
  * @example
- *   F.findIndices(F.gt(1), []) // []
- *   F.findIndices(F.gt(1), [1, 2, 3]) // [1, 2]
  *
- *   F.findIndices(F.eq('o'), '') // []
- *   F.findIndices(F.eq('o'), 'foo') // [1, 2]
+ * F.findIndices(F.gt(1), []) // []
+ * F.findIndices(F.gt(1), [1, 2, 3]) // [1, 2]
+ *
+ * F.findIndices(F.eq('o'), '') // []
+ * F.findIndices(F.eq('o'), 'foo') // [1, 2]
  *
  * @curried
  * @function
@@ -166,8 +172,9 @@ export const findIndices = curry((p, as) => {
  * @summary Filters a list using a predicate function.
  *
  * @example
- *   F.filter(F.gt(1), [1, 2, 3]) // [2, 3]
- *   F.filter(F.eq('o'), 'foo') // 'oo'
+ *
+ * F.filter(F.gt(1), [1, 2, 3]) // [2, 3]
+ * F.filter(F.eq('o'), 'foo') // 'oo'
  *
  * @curried
  * @function
@@ -188,8 +195,9 @@ export const filter = curry((p, as) => {
  * @summary Partitions a list using a predicate function.
  *
  * @example
- *   F.partition(F.gt(1), [1, 2, 3]) // [[2, 3], [1]]
- *   F.partition(F.eq('o'), 'foo') // ['oo', 'f']
+ *
+ * F.partition(F.gt(1), [1, 2, 3]) // [[2, 3], [1]]
+ * F.partition(F.eq('o'), 'foo') // ['oo', 'f']
  *
  * @curried
  * @function
@@ -211,13 +219,14 @@ export const partition = curry((p, as) =>
  * @summary Determines if all elements in a list satisfy a predicate function.
  *
  * @example
- *   F.all(F.gt(1), [1, 2, 3]) // false
- *   F.all(F.gt(1), [2, 3]) // true
- *   F.all(F.gt(1), [3]) // true
  *
- *   F.all(F.eq('o'), 'foo') // false
- *   F.all(F.eq('o'), 'oo') // true
- *   F.all(F.eq('o'), 'o') // true
+ * F.all(F.gt(1), [1, 2, 3]) // false
+ * F.all(F.gt(1), [2, 3]) // true
+ * F.all(F.gt(1), [3]) // true
+ *
+ * F.all(F.eq('o'), 'foo') // false
+ * F.all(F.eq('o'), 'oo') // true
+ * F.all(F.eq('o'), 'o') // true
  *
  * @curried
  * @function
@@ -236,13 +245,14 @@ export const all = curry((p, as) => {
  * @summary Determines if any elements in a list satisfy a predicate function.
  *
  * @example
- *   F.any(F.gt(1), [1, 2, 3]) // true
- *   F.any(F.gt(1), [1, 2]) // true
- *   F.any(F.gt(1), [1]) // false
  *
- *   F.any(F.eq('o'), 'foo') // true
- *   F.any(F.eq('o'), 'fo') // true
- *   F.any(F.eq('o'), 'f') // false
+ * F.any(F.gt(1), [1, 2, 3]) // true
+ * F.any(F.gt(1), [1, 2]) // true
+ * F.any(F.gt(1), [1]) // false
+ *
+ * F.any(F.eq('o'), 'foo') // true
+ * F.any(F.eq('o'), 'fo') // true
+ * F.any(F.eq('o'), 'f') // false
  *
  * @curried
  * @function
@@ -259,13 +269,14 @@ export const any = curry((p, as) => filter(p, as).length > 0)
  * @summary Determines if a list is a prefix of another list.
  *
  * @example
- *   F.isPrefixOf([], [1, 2, 3]) // true
- *   F.isPrefixOf([1, 2], [1, 2, 3]) // true
- *   F.isPrefixOf([2, 3], [1, 2, 3]) // false
  *
- *   F.isPrefixOf('', 'foo') // true
- *   F.isPrefixOf('fo', 'foo') // true
- *   F.isPrefixOf('oo', 'foo') // false
+ * F.isPrefixOf([], [1, 2, 3]) // true
+ * F.isPrefixOf([1, 2], [1, 2, 3]) // true
+ * F.isPrefixOf([2, 3], [1, 2, 3]) // false
+ *
+ * F.isPrefixOf('', 'foo') // true
+ * F.isPrefixOf('fo', 'foo') // true
+ * F.isPrefixOf('oo', 'foo') // false
  *
  * @curried
  * @function
@@ -290,13 +301,14 @@ export const isPrefixOf = curry(function isPrefixOf (as, bs) {
  * @summary Determines if a list is a suffix of another list.
  *
  * @example
- *   F.isSuffixOf([], [1, 2, 3]) // true
- *   F.isSuffixOf([1, 2], [1, 2, 3]) // false
- *   F.isSuffixOf([2, 3], [1, 2, 3]) // true
  *
- *   F.isSuffixOf('', 'foo') // true
- *   F.isSuffixOf('fo', 'foo') // false
- *   F.isSuffixOf('oo', 'foo') // true
+ * F.isSuffixOf([], [1, 2, 3]) // true
+ * F.isSuffixOf([1, 2], [1, 2, 3]) // false
+ * F.isSuffixOf([2, 3], [1, 2, 3]) // true
+ *
+ * F.isSuffixOf('', 'foo') // true
+ * F.isSuffixOf('fo', 'foo') // false
+ * F.isSuffixOf('oo', 'foo') // true
  *
  * @curried
  * @function
@@ -313,13 +325,14 @@ export const isSuffixOf = curry((as, bs) => isPrefixOf(reverse(as), reverse(bs))
  * @summary Determines if a list is contained within another list.
  *
  * @example
- *   F.isInfixOf([], [1, 2, 3]) // true
- *   F.isInfixOf([2, 3], [1, 2, 3]) // true
- *   F.isInfixOf([3, 2], [1, 2, 3]) // false
  *
- *   F.isInfixOf('', 'foo') // true
- *   F.isInfixOf('oo', 'foo') // true
- *   F.isInfixOf('of', 'foo') // false
+ * F.isInfixOf([], [1, 2, 3]) // true
+ * F.isInfixOf([2, 3], [1, 2, 3]) // true
+ * F.isInfixOf([3, 2], [1, 2, 3]) // false
+ *
+ * F.isInfixOf('', 'foo') // true
+ * F.isInfixOf('oo', 'foo') // true
+ * F.isInfixOf('of', 'foo') // false
  *
  * @curried
  * @function

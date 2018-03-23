@@ -17,7 +17,8 @@ import {take} from './sublist'
  * @summary Creates a new array.
  *
  * @example
- *   F.array(3) // [undefined, undefined, undefined]
+ *
+ * F.array(3) // [undefined, undefined, undefined]
  *
  * @param n A number.
  * @returns A new array.
@@ -30,7 +31,8 @@ export function array (n) { return Array.apply(null, Array(n)) }
  * @summary Creates a new string.
  *
  * @example
- *   F.string(3) // '   '
+ *
+ * F.string(3) // '   '
  *
  * @param n A number.
  * @returns A new string.
@@ -43,8 +45,9 @@ export function string (n) { return array(n + 1).join(' ') }
  * @summary Creates a new ordered pair.
  *
  * @example
- *   F.pair(1, 2) // [1, 2]
- *   F.pair('a', 'b') // ['a', 'b']
+ *
+ * F.pair(1, 2) // [1, 2]
+ * F.pair('a', 'b') // ['a', 'b']
  *
  * @curried
  * @function
@@ -60,7 +63,8 @@ export const pair = curry((a, b) => [a, b])
  * @summary Creates a new array of numbers.
  *
  * @example
- *   F.range(1, 3) // [1, 2, 3]
+ *
+ * F.range(1, 3) // [1, 2, 3]
  *
  * @curried
  * @function
@@ -76,8 +80,9 @@ export const range = curry((a, n) => array(n).map((_, i) => a + i))
  * @summary Replicates a value.
  *
  * @example
- *   F.replicate(3, 1) // [1, 1, 1]
- *   F.replicate(3, 'a') // 'aaa'
+ *
+ * F.replicate(3, 1) // [1, 1, 1]
+ * F.replicate(3, 'a') // 'aaa'
  *
  * @curried
  * @function
@@ -96,8 +101,9 @@ export const replicate = curry((n, a) => {
  * @summary Samples random elements from a list.
  *
  * @example
- *   F.sample(2, [1, 2, 3]) // [3, 1]
- *   F.sample(2, 'abc') // 'ca'
+ *
+ * F.sample(2, [1, 2, 3]) // [3, 1]
+ * F.sample(2, 'abc') // 'ca'
  *
  * @curried
  * @function
@@ -115,8 +121,9 @@ export const sample = curry((n, as) => take(n, shuffle(as)))
  * @summary Shuffles a list.
  *
  * @example
- *   F.shuffle([1, 2, 3]) // [2, 3, 1]
- *   F.shuffle('abc') // 'bca'
+ *
+ * F.shuffle([1, 2, 3]) // [2, 3, 1]
+ * F.shuffle('abc') // 'bca'
  *
  * @param as A list.
  * @returns A new list.

@@ -23,7 +23,8 @@ import {any, filter} from './search'
  * @summary Removes duplicate elements from a list using a comparator function.
  *
  * @example
- *   F.nubBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [1, 2, 3]
+ *
+ * F.nubBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [1, 2, 3]
  *
  * @curried
  * @function
@@ -53,8 +54,9 @@ export const nubBy = curry(function nubBy (f, as) {
  * @summary Removes duplicate elements from a list.
  *
  * @example
- *   F.nub([1, 2, 2, 3, 3, 3]) // [1, 2, 3]
- *   F.nub('abbccc') // 'abc'
+ *
+ * F.nub([1, 2, 2, 3, 3, 3]) // [1, 2, 3]
+ * F.nub('abbccc') // 'abc'
  *
  * @param as A list.
  * @returns A new list.
@@ -75,8 +77,9 @@ export const nub = nubBy(equal)
  * @summary Calculates the union of two lists.
  *
  * @example
- *   F.unionBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1, 2, 3, 4]
- *   F.unionBy((a, b) => a === b, 'hello', 'world') // 'hellowrd'
+ *
+ * F.unionBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1, 2, 3, 4]
+ * F.unionBy((a, b) => a === b, 'hello', 'world') // 'hellowrd'
  *
  * @curried
  * @function
@@ -104,8 +107,9 @@ export const unionBy = curry((f, as, bs) =>
  * @summary Calculates the union of two lists.
  *
  * @example
- *   F.union([1, 2, 3], [2, 3, 4]) // [1, 2, 3, 4]
- *   F.union('hello', 'world') // 'hellowrd'
+ *
+ * F.union([1, 2, 3], [2, 3, 4]) // [1, 2, 3, 4]
+ * F.union('hello', 'world') // 'hellowrd'
  *
  * @curried
  * @function
@@ -129,8 +133,9 @@ export const union = unionBy(equal)
  * @summary Calculates the intersection of two lists.
  *
  * @example
- *   F.intersectBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [2, 3]
- *   F.intersectBy((a, b) => a === b, 'hello', 'world') // 'ol'
+ *
+ * F.intersectBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [2, 3]
+ * F.intersectBy((a, b) => a === b, 'hello', 'world') // 'ol'
  *
  * @curried
  * @function
@@ -158,8 +163,9 @@ export const intersectBy = curry((f, as, bs) =>
  * @summary Calculates the intersection of two lists.
  *
  * @example
- *   F.intersect([1, 2, 3], [2, 3, 4]) // [2, 3]
- *   F.intersect('hello', 'world') // 'ol'
+ *
+ * F.intersect([1, 2, 3], [2, 3, 4]) // [2, 3]
+ * F.intersect('hello', 'world') // 'ol'
  *
  * @curried
  * @function
@@ -180,8 +186,9 @@ export const intersect = intersectBy(equal)
  * @summary Calculates the difference of two lists.
  *
  * @example
- *   F.differenceBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1]
- *   F.differenceBy((a, b) => a === b, 'hello', 'world') // 'hel'
+ *
+ * F.differenceBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1]
+ * F.differenceBy((a, b) => a === b, 'hello', 'world') // 'hel'
  *
  * @curried
  * @function
@@ -202,8 +209,9 @@ export const differenceBy = curry((f, as, bs) => fold(flip(removeBy(f)), as, bs)
  * @summary Calculates the difference of two lists.
  *
  * @example
- *   F.difference([1, 2, 3], [2, 3, 4]) // [1]
- *   F.difference('hello', 'world') // 'hel'
+ *
+ * F.difference([1, 2, 3], [2, 3, 4]) // [1]
+ * F.difference('hello', 'world') // 'hel'
  *
  * @curried
  * @function
@@ -225,7 +233,8 @@ export const difference = differenceBy(equal)
  * comparator function.
  *
  * @example
- *   F.removeBy((a, b) => a === b, 2, [1, 2, 3]) // [1, 3]
+ *
+ * F.removeBy((a, b) => a === b, 2, [1, 2, 3]) // [1, 3]
  *
  * @curried
  * @function
@@ -253,8 +262,9 @@ export const removeBy = curry(function removeBy (f, a, bs_) {
  * @summary Removes the first occurance of an element from a list.
  *
  * @example
- *   F.remove(2, [1, 2, 3]) // [1, 3]
- *   F.remove('f', 'foo') // 'oo'
+ *
+ * F.remove(2, [1, 2, 3]) // [1, 3]
+ * F.remove('f', 'foo') // 'oo'
  *
  * @curried
  * @function
@@ -271,8 +281,9 @@ export const remove = removeBy(equal)
  * @summary Calculates the cartesian product of two lists.
  *
  * @example
- *   F.cartesian([1, 2], [3, 4]) // [[1, 3], [1, 4], [2, 3], [2, 4]]
- *   F.cartesian('ab', 'cd') // [['a', 'c'], ['a', 'd'], ['b', 'c'], ['b', 'd']]
+ *
+ * F.cartesian([1, 2], [3, 4]) // [[1, 3], [1, 4], [2, 3], [2, 4]]
+ * F.cartesian('ab', 'cd') // [['a', 'c'], ['a', 'd'], ['b', 'c'], ['b', 'd']]
  *
  * @curried
  * @function
@@ -296,8 +307,9 @@ export const cartesian = curry(function cartesian (as, bs) {
  * @summary Calculates the subsequences of a list.
  *
  * @example
- *   F.subsequences([1, 2, 3]) // [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
- *   F.subsequences('abc') // ['', 'a', 'b', 'ab', 'c', 'ac', 'bc', 'abc']
+ *
+ * F.subsequences([1, 2, 3]) // [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+ * F.subsequences('abc') // ['', 'a', 'b', 'ab', 'c', 'ac', 'bc', 'abc']
  *
  * @param as A list.
  * @returns A new list.
@@ -324,8 +336,9 @@ export function subsequences (as) {
  * @summary Calculates the permutations of a list.
  *
  * @example
- *   F.permutations([1, 2, 3]) // [[1, 2, 3], [2, 1, 3], [3, 2, 1], [2, 3, 1], [3, 1, 2], [1, 3, 2]]
- *   F.permutations('abc') // ['abc', 'bac', 'cba', 'bca', 'cab', 'acb']
+ *
+ * F.permutations([1, 2, 3]) // [[1, 2, 3], [2, 1, 3], [3, 2, 1], [2, 3, 1], [3, 1, 2], [1, 3, 2]]
+ * F.permutations('abc') // ['abc', 'bac', 'cba', 'bca', 'cab', 'acb']
  *
  * @param as A list.
  * @returns A new list.

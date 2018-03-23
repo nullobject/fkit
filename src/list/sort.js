@@ -14,8 +14,9 @@ import {compare, curry} from '../fn'
  * @summary Sorts a list using natural ordering.
  *
  * @example
- *   F.sort([2, 3, 1]) // [1, 2, 3]
- *   F.sort('bca') // 'abc'
+ *
+ * F.sort([2, 3, 1]) // [1, 2, 3]
+ * F.sort('bca') // 'abc'
  *
  * @param a A list.
  * @returns A new list.
@@ -34,9 +35,10 @@ export function sort (as) { return sortBy(compare, as) }
  * @summary Sorts a list using a comparator function.
  *
  * @example
- *   F.sortBy((a, b) =>
- *     a > b ? 1 : (a < b ? -1 : 0)
- *   , [2, 3, 1]) // [1, 2, 3]
+ *
+ * F.sortBy((a, b) =>
+ *   a > b ? 1 : (a < b ? -1 : 0)
+ * , [2, 3, 1]) // [1, 2, 3]
  *
  * @curried
  * @function

@@ -14,8 +14,9 @@ import {curry, equal} from '../fn'
  * @summary Gets the prefix of a list.
  *
  * @example
- *   F.take(2, [1, 2, 3]) // [1, 2]
- *   F.take(2, 'foo') // 'fo'
+ *
+ * F.take(2, [1, 2, 3]) // [1, 2]
+ * F.take(2, 'foo') // 'fo'
  *
  * @curried
  * @function
@@ -40,8 +41,9 @@ export const take = curry((n, as) => {
  * @summary Gets the suffix of a list.
  *
  * @example
- *   F.drop(2, [1, 2, 3]) // [3]
- *   F.drop(2, 'foo') // 'o'
+ *
+ * F.drop(2, [1, 2, 3]) // [3]
+ * F.drop(2, 'foo') // 'o'
  *
  * @curried
  * @function
@@ -67,8 +69,9 @@ export const drop = curry((n, as) => {
  * @summary Gets the prefix of a list using a predicate function.
  *
  * @example
- *   F.takeWhile(F.lt(3), [1, 2, 3]) // [1, 2]
- *   F.takeWhile(F.neq(o), 'foo') // 'f'
+ *
+ * F.takeWhile(F.lt(3), [1, 2, 3]) // [1, 2]
+ * F.takeWhile(F.neq(o), 'foo') // 'f'
  *
  * @curried
  * @function
@@ -94,8 +97,9 @@ export const takeWhile = curry((p, as) => {
  * @summary Gets the suffix of a list using a predicate function.
  *
  * @example
- *   F.dropWhile(F.lt(3), [1, 2, 3]) // [3]
- *   F.dropWhile(F.neq(o), 'foo') // 'oo'
+ *
+ * F.dropWhile(F.lt(3), [1, 2, 3]) // [3]
+ * F.dropWhile(F.neq(o), 'foo') // 'oo'
  *
  * @curried
  * @function
@@ -126,8 +130,9 @@ export const dropWhile = curry((p, as) => {
  * @summary Splits a list.
  *
  * @example
- *   F.splitAt(1, [1, 2, 3]) // [[1], [2, 3]]
- *   F.splitAt(1, 'foo') // ['f', 'oo']
+ *
+ * F.splitAt(1, [1, 2, 3]) // [[1], [2, 3]]
+ * F.splitAt(1, 'foo') // ['f', 'oo']
  *
  * @curried
  * @function
@@ -145,8 +150,9 @@ export const splitAt = curry((n, as) => [take(n, as), drop(n, as)])
  * @summary Splits a list using a predicate function.
  *
  * @example
- *   F.span(F.lt(3), [1, 2, 3]) // [[1, 2], [3]]
- *   F.span(F.neq(o), 'foo') // ['f', 'oo']
+ *
+ * F.span(F.lt(3), [1, 2, 3]) // [[1, 2], [3]]
+ * F.span(F.neq(o), 'foo') // ['f', 'oo']
  *
  * @curried
  * @function
@@ -166,8 +172,9 @@ export const span = curry((p, as) => [takeWhile(p, as), dropWhile(p, as)])
  * @summary Groups the elements in a list.
  *
  * @example
- *   F.group([1, 2, 2, 3, 3, 3]) // [[1], [2, 2], [3, 3, 3]]
- *   F.group('Mississippi') // ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i']
+ *
+ * F.group([1, 2, 2, 3, 3, 3]) // [[1], [2, 2], [3, 3, 3]]
+ * F.group('Mississippi') // ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i']
  *
  * @param as A list.
  * @returns A new list.
@@ -185,7 +192,8 @@ export function group (as) { return groupBy(equal, as) }
  * @summary Groups the elements in a list using a comparator function.
  *
  * @example
- *   F.groupBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [[1], [2, 2], [3, 3, 3]]
+ *
+ * F.groupBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [[1], [2, 2], [3, 3, 3]]
  *
  * @curried
  * @function

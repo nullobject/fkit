@@ -1,6 +1,6 @@
 import {append, isArray, isArrayOfStrings, mempty, toArray} from './base'
-import {compose, curry, flatten, flip, tap, variadic} from '../fn'
-import {add, max, min, mul} from '../math'
+import {compare, compose, curry, flatten, flip, tap, variadic} from '../fn'
+import {add, mul} from '../math'
 
 /**
  * This module defines fold operations on lists.
@@ -43,8 +43,9 @@ export function concatWith (s, as) {
  * @summary Concatenates lists.
  *
  * @example
- *   F.concat([1], [2, 3], [4, 5, 6]) // [1, 2, 3, 4, 5, 6]
- *   F.concat('f', 'oo', 'bar') // 'foobar'
+ *
+ * F.concat([1], [2, 3], [4, 5, 6]) // [1, 2, 3, 4, 5, 6]
+ * F.concat('f', 'oo', 'bar') // 'foobar'
  *
  * @function
  * @param as A list.
@@ -59,13 +60,10 @@ export const concat = variadic(as => concatWith(mempty(as), as))
  * @summary Maps a function over a list and concatenates the results.
  *
  * @example
- *   F.concatMap(function(a) {
- *     return [a, 0]
- *   }, [1, 2, 3]) // [1, 0, 2, 0, 3, 0]
  *
- *   F.concatMap(function(a) {
- *     return [a, '-']
- *   }, 'foo') // 'f-o-o-'
+ * F.concatMap(a => [a, 0], [1, 2, 3]) // [1, 0, 2, 0, 3, 0]
+ *
+ * F.concatMap(a => [a, '-'], 'foo') // 'f-o-o-'
  *
  * @curried
  * @function
@@ -86,8 +84,9 @@ export const concatMap = curry((f, as) => {
  * @summary Folds a list from left to right with a function.
  *
  * @example
- *   F.fold(F.flip(F.prepend), [], [1, 2, 3]) // [3, 2, 1]
- *   F.fold(F.flip(F.prepend), '', 'foo') // 'oof'
+ *
+ * F.fold(F.flip(F.prepend), [], [1, 2, 3]) // [3, 2, 1]
+ * F.fold(F.flip(F.prepend), '', 'foo') // 'oof'
  *
  * @curried
  * @function
@@ -105,8 +104,9 @@ export const fold = curry((f, s, as) => toArray(as).reduce(f, s))
  * @summary Folds a list from right to left with a function.
  *
  * @example
- *   F.foldRight(F.append, [], [1, 2, 3]) // [3, 2, 1]
- *   F.foldRight(F.append, '', 'foo') // 'oof'
+ *
+ * F.foldRight(F.append, [], [1, 2, 3]) // [3, 2, 1]
+ * F.foldRight(F.append, '', 'foo') // 'oof'
  *
  * @curried
  * @function
@@ -124,8 +124,9 @@ export const foldRight = curry((f, s, as) => toArray(as).reduceRight(flip(f), s)
  * @summary Scans a list from left to right with a function.
  *
  * @example
- *   F.fold(F.flip(F.prepend), [],  [1, 2, 3]) // [[], [1], [2, 1], [3, 2, 1]]
- *   F.fold(F.flip(F.prepend), '',  'foo') // ['', 'f', 'of', 'oof']
+ *
+ * F.fold(F.flip(F.prepend), [],  [1, 2, 3]) // [[], [1], [2, 1], [3, 2, 1]]
+ * F.fold(F.flip(F.prepend), '',  'foo') // ['', 'f', 'of', 'oof']
  *
  * @curried
  * @function
@@ -147,8 +148,9 @@ export const scan = curry((f, s, as) => {
  * @summary Scans a list from right to left with a function.
  *
  * @example
- *   F.foldRight(F.append, [],  [1, 2, 3]) // [[3, 2, 1], [3, 2], [3], []]
- *   F.foldRight(F.append, '',  'foo') // ['oof', 'oo', 'o', '']
+ *
+ * F.foldRight(F.append, [],  [1, 2, 3]) // [[3, 2, 1], [3, 2], [3], []]
+ * F.foldRight(F.append, '',  'foo') // ['oof', 'oo', 'o', '']
  *
  * @curried
  * @function
@@ -164,36 +166,8 @@ export const scanRight = curry((f, s, as) => {
 })
 
 /**
- * Returns the maximum value in the list of `as`.
- *
- * @summary Calculates the maximum value of a list.
- *
- * @example
- *   F.maximum([1, 2, 3]) // 3
- *   F.maximum('abc') // 'c'
- *
- * @param as A list.
- * @returns A value.
- */
-export function maximum (as) { return fold(max, as[0], as) }
-
-/**
- * Returns the minimum value in the list of `as`.
- *
- * @summary Calculates the minimum value of a list.
- *
- * @example
- *   F.minimum([1, 2, 3]) // 1
- *   F.minimum('abc') // 'a'
- *
- * @param as A list.
- * @returns A value.
- */
-export function minimum (as) { return fold(min, as[0], as) }
-
-/**
  * Returns the maximum value in the list of `as` using the comparator function
- * `c`.
+ * `f`.
  *
  * The comparator function compares two elements, `a` and `b`. If `a` is
  * greater than `b`, then the comparator function should return `1`. If `a` is
@@ -203,21 +177,37 @@ export function minimum (as) { return fold(min, as[0], as) }
  * @summary Calculates the maximum value of a list using a comparator function.
  *
  * @example
- *   F.maximumBy((a, b) => a === b, [1, 2, 3]) // 3
+ *
+ * F.maximumBy(F.compare, [1, 2, 3]) // 3
  *
  * @curried
  * @function
- * @param c A comparator function.
+ * @param f A comparator function.
  * @param as A list.
  * @returns A value.
  */
-export const maximumBy = curry((c, as) =>
-  fold((a, b) => c(a, b) > 0 ? a : b, as[0], as)
+export const maximumBy = curry((f, as) =>
+  fold((a, b) => f(a, b) > 0 ? a : b, as[0], as)
 )
 
 /**
+ * Returns the maximum value in the list of `as`.
+ *
+ * @summary Calculates the maximum value of a list.
+ *
+ * @example
+ *
+ * F.maximum([1, 2, 3]) // 3
+ * F.maximum('abc') // 'c'
+ *
+ * @param as A list.
+ * @returns A value.
+ */
+export const maximum = maximumBy(compare)
+
+/**
  * Returns the minimum value in the list of `as` using the comparator function
- * `c`.
+ * `f`.
  *
  * @summary Calculates the minimum value of a list using a comparator
  * function.
@@ -228,17 +218,33 @@ export const maximumBy = curry((c, as) =>
  * elements are equal, then the comparator function should return `0`.
  *
  * @example
- *   F.minimumBy((a, b) => a === b, [1, 2, 3]) // 1
+ *
+ * F.minimumBy(F.compare, [1, 2, 3]) // 1
  *
  * @curried
  * @function
- * @param c A comparator function.
+ * @param f A comparator function.
  * @param as A list.
  * @returns A value.
  */
-export const minimumBy = curry((c, as) =>
-  fold((a, b) => c(a, b) < 0 ? a : b, as[0], as)
+export const minimumBy = curry((f, as) =>
+  fold((a, b) => f(a, b) < 0 ? a : b, as[0], as)
 )
+
+/**
+ * Returns the minimum value in the list of `as`.
+ *
+ * @summary Calculates the minimum value of a list.
+ *
+ * @example
+ *
+ * F.minimum([1, 2, 3]) // 1
+ * F.minimum('abc') // 'a'
+ *
+ * @param as A list.
+ * @returns A value.
+ */
+export const minimum = minimumBy(compare)
 
 /**
  * Returns the sum of the elements in the list of `as`.
@@ -246,7 +252,8 @@ export const minimumBy = curry((c, as) =>
  * @summary Calculates the sum of the elements in a list.
  *
  * @example
- *   F.sum([1, 2, 3]) // 6
+ *
+ * F.sum([1, 2, 3]) // 6
  *
  * @param as A list.
  * @returns A number.
@@ -259,7 +266,8 @@ export function sum (as) { return fold(add, 0, as) }
  * @summary Calculates the product of the elements in a list.
  *
  * @example
- *   F.product([1, 2, 3]) // 6
+ *
+ * F.product([1, 2, 3]) // 6
  *
  * @param as A list.
  * @returns A number.

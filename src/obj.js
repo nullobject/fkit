@@ -15,8 +15,9 @@ import {extend} from './util'
  * @summary Applies a method to a value.
  *
  * @example
- *   var person = {sayHi: function(a) { return ['Hi', a, '!'].join(' ') }}
- *   F.applyMethod(sayHi, 'Jane', person) // Hi Jane!
+ *
+ * var person = {sayHi: a => ['Hi', a, '!'].join(' ')}
+ * F.applyMethod(sayHi, 'Jane', person) // Hi Jane!
  *
  * @curried
  * @function
@@ -34,8 +35,9 @@ export const applyMethod = curry((k, a, o) => o[k](a))
  * @summary Applies a method to two values.
  *
  * @example
- *   var person = {sayHi: function(a, b) { return ['Hi', a, b, '!'].join(' ') }}
- *   F.applyMethod2(sayHi, 'Jane', 'Appleseed', person) // Hi Jane Appleseed!
+ *
+ * var person = {sayHi: (a, b) => ['Hi', a, b, '!'].join(' ')}
+ * F.applyMethod2(sayHi, 'Jane', 'Appleseed', person) // Hi Jane Appleseed!
  *
  * @curried
  * @function
@@ -54,8 +56,9 @@ export const applyMethod2 = curry((k, a, b, o) => o[k](a, b))
  * @summary Applies a method to three values.
  *
  * @example
- *   var person = {sayHi: function(a, b, c) { return ['Hi', a, b, c, '!'].join(' ') }}
- *   F.applyMethod3(sayHi, 'Ms', 'Jane', 'Appleseed', person) // Hi Ms Jane Appleseed!
+ *
+ * var person = {sayHi: (a, b, c) => ['Hi', a, b, c, '!'].join(' ')}
+ * F.applyMethod3(sayHi, 'Ms', 'Jane', 'Appleseed', person) // Hi Ms Jane Appleseed!
  *
  * @curried
  * @function
@@ -78,8 +81,9 @@ export const applyMethod3 = curry((k, a, b, c, o) => o[k](a, b, c))
  * @summary Creates a copy of an object.
  *
  * @example
- *   var person = {name: 'Jane', age: 20, city: 'Melbourne'}
- *   F.copy(person, {name: 'Steve'}) // {name: 'Steve', age: 20, city: 'Melbourne'}
+ *
+ * var person = {name: 'Jane', age: 20, city: 'Melbourne'}
+ * F.copy(person, {name: 'Steve'}) // {name: 'Steve', age: 20, city: 'Melbourne'}
  *
  * @function
  * @param os A list.
@@ -93,8 +97,9 @@ export const copy = variadic((o, ps) => extend(Object.create(Object.getPrototype
  * @summary Gets a property of an object.
  *
  * @example
- *   var person = {name: 'Jane', age: 20, city: 'Melbourne'}
- *   F.get('name', person) // 'Jane'
+ *
+ * var person = {name: 'Jane', age: 20, city: 'Melbourne'}
+ * F.get('name', person) // 'Jane'
  *
  * @curried
  * @function
@@ -110,8 +115,9 @@ export const get = curry((k, o) => o[k])
  * @summary Gets a property of an object using a key path.
  *
  * @example
- *   var person = {name: 'Jane', age: 20, address: {city: 'Melbourne', country: 'Australia'}}
- *   F.getIn(['address', 'city'], person) // 'Melbourne'
+ *
+ * var person = {name: 'Jane', age: 20, address: {city: 'Melbourne', country: 'Australia'}}
+ * F.getIn(['address', 'city'], person) // 'Melbourne'
  *
  * @curried
  * @function
@@ -129,8 +135,9 @@ export const getIn = curry((ks, o) =>
  * @summary Sets a property of an object.
  *
  * @example
- *   var person = {name: 'Jane', age: 20, city: 'Melbourne'}
- *   F.set('name', 'Steve', person) // {name: 'Steve', age: 20, city: 'Melbourne'}
+ *
+ * var person = {name: 'Jane', age: 20, city: 'Melbourne'}
+ * F.set('name', 'Steve', person) // {name: 'Steve', age: 20, city: 'Melbourne'}
  *
  * @curried
  * @function
@@ -152,8 +159,9 @@ export const set = curry((k, v, o) => {
  * @summary Updates a property of an object with a function.
  *
  * @example
- *   var person = {name: 'Jane', age: 20, city: 'Melbourne'}
- *   F.update('age', F.inc, person) // {name: 'Jane', age: 21, city: 'Melbourne'}
+ *
+ * var person = {name: 'Jane', age: 20, city: 'Melbourne'}
+ * F.update('age', F.inc, person) // {name: 'Jane', age: 21, city: 'Melbourne'}
  *
  * @curried
  * @function
@@ -170,8 +178,9 @@ export const update = curry((k, f, o) => set(k, f(get(k, o)), o))
  * @summary Picks properties of an object.
  *
  * @example
- *   var person = {name: 'Jane', age: 20, city: 'Melbourne'}
- *   F.pick(['name', 'age'], person) // {name: 'Jane', age: 20}
+ *
+ * var person = {name: 'Jane', age: 20, city: 'Melbourne'}
+ * F.pick(['name', 'age'], person) // {name: 'Jane', age: 20}
  *
  * @curried
  * @function
@@ -190,8 +199,9 @@ export const pick = curry((ks, o) =>
  * @summary Omits properties of an object.
  *
  * @example
- *   var person = {name: 'Jane', age: 20, city: 'Melbourne'}
- *   F.omit(['name', 'age'], person) // {city: 'Melbourne'}
+ *
+ * var person = {name: 'Jane', age: 20, city: 'Melbourne'}
+ * F.omit(['name', 'age'], person) // {city: 'Melbourne'}
  *
  * @curried
  * @function
@@ -209,8 +219,9 @@ export const omit = curry((ks, o) =>
  * @summary Gets the key-value pairs of an object.
  *
  * @example
- *   var person = {name: 'Jane', age: 20, city: 'Melbourne'}
- *   F.pairs(person) // [['name', 'Jane'], ['age', 20], ['city', 'Melbourne']]
+ *
+ * var person = {name: 'Jane', age: 20, city: 'Melbourne'}
+ * F.pairs(person) // [['name', 'Jane'], ['age', 20], ['city', 'Melbourne']]
  *
  * @param o An object.
  * @returns A new list.
@@ -225,8 +236,9 @@ export function pairs (o) {
  * @summary Gets the keys of an object.
  *
  * @example
- *   var person = {name: 'Jane', age: 20, city: 'Melbourne'}
- *   F.keys(person) // ['name', 'age', 'city']
+ *
+ * var person = {name: 'Jane', age: 20, city: 'Melbourne'}
+ * F.keys(person) // ['name', 'age', 'city']
  *
  * @param o An object.
  * @returns A new list.
@@ -241,8 +253,9 @@ export function keys (o) {
  * @summary Gets the values of an object.
  *
  * @example
- *   var person = {name: 'Jane', age: 20, city: 'Melbourne'}
- *   F.values(person) // ['Jane', 20, 'Melbourne']
+ *
+ * var person = {name: 'Jane', age: 20, city: 'Melbourne'}
+ * F.values(person) // ['Jane', 20, 'Melbourne']
  *
  * @param o An object.
  * @returns A new list.

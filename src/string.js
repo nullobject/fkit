@@ -30,8 +30,9 @@ export function toLower (s) { return s.toLowerCase() }
  * @summary Replaces a term in a string.
  *
  * @example
- *   F.replace('r', 'z', 'bar') // baz
- *   F.replace(/$hello/, 'goodbye', 'hello world!') // goodbye world!
+ *
+ * F.replace('r', 'z', 'bar') // baz
+ * F.replace(/$hello/, 'goodbye', 'hello world!') // goodbye world!
  *
  * @curried
  * @function
