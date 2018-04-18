@@ -36,13 +36,13 @@
     "chai": "^4.1.2",
     "jsdoc": "^3.5.5",
     "jsdoc-react": "^1.0.0",
-    "mocha": "^5.0.4",
-    "react": "^16.2.0",
+    "mocha": "^5.1.0",
+    "react": "^16.3.2",
     "rollup": "^0.57.1",
     "rollup-plugin-babel": "^3.0.3",
     "rollup-plugin-filesize": "^1.5.0",
     "rollup-plugin-uglify": "^3.0.0",
-    "sinon": "^4.4.6",
+    "sinon": "^4.5.0",
     "standard": "^11.0.1"
   }
 }
