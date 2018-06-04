@@ -30,18 +30,18 @@
     "env": "mocha"
   },
   "devDependencies": {
-    "babel-core": "^6.26.2",
+    "babel-core": "^6.26.3",
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-es2015": "^6.24.1",
     "chai": "^4.1.2",
     "jsdoc": "^3.5.5",
     "jsdoc-react": "^1.0.0",
     "mocha": "^5.1.1",
-    "react": "^16.3.2",
-    "rollup": "^0.58.2",
+    "react": "^16.4.0",
+    "rollup": "^0.59.4",
     "rollup-plugin-babel": "^3.0.4",
     "rollup-plugin-filesize": "^1.5.0",
-    "rollup-plugin-uglify": "^3.0.0",
+    "rollup-plugin-uglify": "^4.0.0",
     "sinon": "^4.5.0",
     "standard": "^11.0.1"
   }
