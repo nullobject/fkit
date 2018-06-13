@@ -1,28 +1,27 @@
-import {assert} from 'chai'
 import * as string from '../src/string'
 
 describe('string', () => {
   describe('#toUpper', () => {
     it('converts a string to uppercase', () => {
-      assert.equal(string.toUpper('a'), 'A')
-      assert.equal(string.toUpper('A'), 'A')
+      expect(string.toUpper('a')).toEqual('A')
+      expect(string.toUpper('A')).toEqual('A')
     })
   })
 
   describe('#toLower', () => {
     it('converts a string to uppercase', () => {
-      assert.equal(string.toLower('a'), 'a')
-      assert.equal(string.toLower('A'), 'a')
+      expect(string.toLower('a')).toEqual('a')
+      expect(string.toLower('A')).toEqual('a')
     })
   })
 
   describe('#replace', () => {
     it('replaces a string', () => {
-      assert.equal(string.replace('r')('z')('bar'), 'baz')
+      expect(string.replace('r')('z')('bar')).toEqual('baz')
     })
 
     it('replaces a regex', () => {
-      assert.equal(string.replace(/r/)('z')('bar'), 'baz')
+      expect(string.replace(/r/)('z')('bar')).toEqual('baz')
     })
   })
 })

@@ -1,49 +1,47 @@
 import * as sublist from '../../src/list/sublist'
-import sinon from 'sinon'
-import {assert} from 'chai'
 
 describe('list.sublist', () => {
   describe('#take', () => {
     it('handles an empty array', () => {
-      assert.deepEqual(sublist.take(2)([]), [])
+      expect(sublist.take(2)([])).toEqual([])
     })
 
     it('handles an empty string', () => {
-      assert.equal(sublist.take(2)(''), '')
+      expect(sublist.take(2)('')).toBe('')
     })
 
     it('handles an array', () => {
-      assert.deepEqual(sublist.take(2)([1, 2, 3]), [1, 2])
+      expect(sublist.take(2)([1, 2, 3])).toEqual([1, 2])
     })
 
     it('handles an array of strings', () => {
-      assert.deepEqual(sublist.take(2)(['f', 'o', 'o']), ['f', 'o'])
+      expect(sublist.take(2)(['f', 'o', 'o'])).toEqual(['f', 'o'])
     })
 
     it('handles a string', () => {
-      assert.equal(sublist.take(2)('foo'), 'fo')
+      expect(sublist.take(2)('foo')).toBe('fo')
     })
   })
 
   describe('#drop', () => {
     it('handles an empty array', () => {
-      assert.deepEqual(sublist.drop(2)([]), [])
+      expect(sublist.drop(2)([])).toEqual([])
     })
 
     it('handles an empty string', () => {
-      assert.equal(sublist.drop(2)(''), '')
+      expect(sublist.drop(2)('')).toBe('')
     })
 
     it('handles an array', () => {
-      assert.deepEqual(sublist.drop(2)([1, 2, 3]), [3])
+      expect(sublist.drop(2)([1, 2, 3])).toEqual([3])
     })
 
     it('handles an array of strings', () => {
-      assert.deepEqual(sublist.drop(2)(['f', 'o', 'o']), ['o'])
+      expect(sublist.drop(2)(['f', 'o', 'o'])).toEqual(['o'])
     })
 
     it('handles a string', () => {
-      assert.equal(sublist.drop(2)('foo'), 'o')
+      expect(sublist.drop(2)('foo')).toBe('o')
     })
   })
 
@@ -52,23 +50,23 @@ describe('list.sublist', () => {
     const q = a => a !== 'o'
 
     it('handles an empty array', () => {
-      assert.deepEqual(sublist.takeWhile(p)([]), [])
+      expect(sublist.takeWhile(p)([])).toEqual([])
     })
 
     it('handles an empty string', () => {
-      assert.equal(sublist.takeWhile(q)(''), '')
+      expect(sublist.takeWhile(q)('')).toBe('')
     })
 
     it('handles an array', () => {
-      assert.deepEqual(sublist.takeWhile(p)([1, 2, 3]), [1, 2])
+      expect(sublist.takeWhile(p)([1, 2, 3])).toEqual([1, 2])
     })
 
     it('handles an array of strings', () => {
-      assert.deepEqual(sublist.takeWhile(q)(['f', 'o', 'o']), ['f'])
+      expect(sublist.takeWhile(q)(['f', 'o', 'o'])).toEqual(['f'])
     })
 
     it('handles a string', () => {
-      assert.equal(sublist.takeWhile(q)('foo'), 'f')
+      expect(sublist.takeWhile(q)('foo')).toBe('f')
     })
   })
 
@@ -77,41 +75,41 @@ describe('list.sublist', () => {
     const q = a => a !== 'o'
 
     it('handles an empty array', () => {
-      assert.deepEqual(sublist.dropWhile(p)([]), [])
+      expect(sublist.dropWhile(p)([])).toEqual([])
     })
 
     it('handles an empty string', () => {
-      assert.equal(sublist.dropWhile(q)(''), '')
+      expect(sublist.dropWhile(q)('')).toBe('')
     })
 
     it('handles an array', () => {
-      assert.deepEqual(sublist.dropWhile(p)([1, 2, 3]), [3])
+      expect(sublist.dropWhile(p)([1, 2, 3])).toEqual([3])
     })
 
     it('handles an array of strings', () => {
-      assert.deepEqual(sublist.dropWhile(q)(['f', 'o', 'o']), ['o', 'o'])
+      expect(sublist.dropWhile(q)(['f', 'o', 'o'])).toEqual(['o', 'o'])
     })
 
     it('handles a string', () => {
-      assert.equal(sublist.dropWhile(q)('foo'), 'oo')
+      expect(sublist.dropWhile(q)('foo')).toBe('oo')
     })
   })
 
   describe('#splitAt', () => {
     it('handles an empty array', () => {
-      assert.deepEqual(sublist.splitAt(1)([]), [[], []])
+      expect(sublist.splitAt(1)([])).toEqual([[], []])
     })
 
     it('handles an empty string', () => {
-      assert.deepEqual(sublist.splitAt(1)(''), ['', ''])
+      expect(sublist.splitAt(1)('')).toEqual(['', ''])
     })
 
     it('handles an array', () => {
-      assert.deepEqual(sublist.splitAt(1)([1, 2, 3]), [[1], [2, 3]])
+      expect(sublist.splitAt(1)([1, 2, 3])).toEqual([[1], [2, 3]])
     })
 
     it('handles a string', () => {
-      assert.deepEqual(sublist.splitAt(1)('foo'), ['f', 'oo'])
+      expect(sublist.splitAt(1)('foo')).toEqual(['f', 'oo'])
     })
   })
 
@@ -120,37 +118,37 @@ describe('list.sublist', () => {
     const q = a => a !== 'o'
 
     it('handles an empty array', () => {
-      assert.deepEqual(sublist.span(p)([]), [[], []])
+      expect(sublist.span(p)([])).toEqual([[], []])
     })
 
     it('handles an empty string', () => {
-      assert.deepEqual(sublist.span(q)(''), ['', ''])
+      expect(sublist.span(q)('')).toEqual(['', ''])
     })
 
     it('handles an array', () => {
-      assert.deepEqual(sublist.span(p)([1, 2, 3]), [[1, 2], [3]])
+      expect(sublist.span(p)([1, 2, 3])).toEqual([[1, 2], [3]])
     })
 
     it('handles a string', () => {
-      assert.deepEqual(sublist.span(q)('foo'), ['f', 'oo'])
+      expect(sublist.span(q)('foo')).toEqual(['f', 'oo'])
     })
   })
 
   describe('#group', () => {
     it('handles an empty array', () => {
-      assert.deepEqual(sublist.group([]), [])
+      expect(sublist.group([])).toEqual([])
     })
 
     it('handles an empty string', () => {
-      assert.deepEqual(sublist.group(''), [])
+      expect(sublist.group('')).toEqual([])
     })
 
     it('handles an array', () => {
-      assert.deepEqual(sublist.group([1, 2, 2, 3, 3, 3]), [[1], [2, 2], [3, 3, 3]])
+      expect(sublist.group([1, 2, 2, 3, 3, 3])).toEqual([[1], [2, 2], [3, 3, 3]])
     })
 
     it('handles a string', () => {
-      assert.deepEqual(sublist.group('Mississippi'), ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i'])
+      expect(sublist.group('Mississippi')).toEqual(['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i'])
     })
   })
 
@@ -158,25 +156,25 @@ describe('list.sublist', () => {
     const f = (a, b) => a === b
 
     it('handles an empty array', () => {
-      assert.deepEqual(sublist.groupBy(f, []), [])
+      expect(sublist.groupBy(f, [])).toEqual([])
     })
 
     it('handles an empty string', () => {
-      assert.deepEqual(sublist.groupBy(f, ''), [])
+      expect(sublist.groupBy(f, '')).toEqual([])
     })
 
     it('handles an array', () => {
-      assert.deepEqual(sublist.groupBy(f, [1, 2, 2, 3, 3, 3]), [[1], [2, 2], [3, 3, 3]])
+      expect(sublist.groupBy(f, [1, 2, 2, 3, 3, 3])).toEqual([[1], [2, 2], [3, 3, 3]])
     })
 
     it('handles a string', () => {
-      assert.deepEqual(sublist.groupBy(f, 'Mississippi'), ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i'])
+      expect(sublist.groupBy(f, 'Mississippi')).toEqual(['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i'])
     })
 
     it('calls the comparator function', () => {
-      const spy = sinon.stub().returns(true)
+      const spy = jest.fn()
       sublist.groupBy(spy, [1, 2])
-      assert.isTrue(spy.calledWithExactly(2, 1))
+      expect(spy).toHaveBeenCalledWith(2, 1)
     })
   })
 })

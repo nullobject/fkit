@@ -1,3 +1,0 @@
---recursive
---reporter spec
---require babel-core/register

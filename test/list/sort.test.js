@@ -1,14 +1,13 @@
-import {assert} from 'chai'
 import * as sort from '../../src/list/sort'
 
 describe('list.sort', () => {
   describe('#sort', () => {
     it('handles an array of numbers', () => {
-      assert.deepEqual(sort.sort([2, 3, 1]), [1, 2, 3])
+      expect(sort.sort([2, 3, 1])).toEqual([1, 2, 3])
     })
 
     it('handles a string', () => {
-      assert.equal(sort.sort('bca'), 'abc')
+      expect(sort.sort('bca')).toBe('abc')
     })
   })
 
@@ -24,11 +23,11 @@ describe('list.sort', () => {
     }
 
     it('handles an array of numbers', () => {
-      assert.deepEqual(sort.sortBy(c)([2, 3, 1]), [3, 2, 1])
+      expect(sort.sortBy(c)([2, 3, 1])).toEqual([3, 2, 1])
     })
 
     it('handles a string', () => {
-      assert.equal(sort.sortBy(c)('bca'), 'cba')
+      expect(sort.sortBy(c)('bca')).toBe('cba')
     })
   })
 })

@@ -1,6 +1,6 @@
 {
   "env": {
-    "mocha": {
+    "test": {
       "presets": ["es2015"]
     },
     "rollup": {
