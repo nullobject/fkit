@@ -6,7 +6,7 @@ regex   := "s/\([\"\']version[\"\'][[:space:]]*:[[:space:]]*\)\([\"\'].*[\"\']\)
 .PHONY: bump changelog clean dev dist doc lint publish publish-api publish-npm release test unit
 
 dev: node_modules
-	@BABEL_ENV=rollup node_modules/.bin/rollup -c
+	@BABEL_ENV=rollup node_modules/.bin/rollup -c -w
 
 dist: node_modules
 	@BABEL_ENV=rollup node_modules/.bin/rollup -c
@@ -14,7 +14,7 @@ dist: node_modules
 test: unit lint
 
 watch: node_modules
-	@BABEL_ENV=mocha ./node_modules/.bin/mocha -w
+	@BABEL_ENV=test node_modules/.bin/jest --watch
 
 release: dist test publish
 
@@ -30,7 +30,7 @@ node_modules:
 
 # Runs the unit tests.
 unit: node_modules
-	@BABEL_ENV=mocha node_modules/.bin/mocha
+	@BABEL_ENV=test node_modules/.bin/jest
 
 # Runs jslint.
 lint: node_modules
