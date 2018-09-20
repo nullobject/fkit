@@ -6,7 +6,7 @@ regex   := "s/\([\"\']version[\"\'][[:space:]]*:[[:space:]]*\)\([\"\'].*[\"\']\)
 .PHONY: bump changelog clean dev dist doc lint publish publish-api publish-npm release test unit
 
 dev: node_modules
-	@BABEL_ENV=rollup node_modules/.bin/rollup -c
+	@BABEL_ENV=rollup node_modules/.bin/rollup -c -w
 
 dist: node_modules
 	@BABEL_ENV=rollup node_modules/.bin/rollup -c
