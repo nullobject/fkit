@@ -1,8 +1,8 @@
-import {empty, head, isString, tail, tails} from './base'
-import {always, compose, curry, equal, id} from '../fn'
-import {concatMap} from './fold'
-import {branch, not} from '../logic'
-import {reverse} from './map'
+import { empty, head, isString, tail, tails } from './base'
+import { always, compose, curry, equal, id } from '../fn'
+import { concatMap } from './fold'
+import { branch, not } from '../logic'
+import { reverse } from './map'
 
 /**
  * This module defines search operations on lists.

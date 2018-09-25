@@ -1,8 +1,8 @@
-import {isString} from './base'
-import {curry} from '../fn'
-import {concatMap, concatWith, fold} from './fold'
-import {randomInt} from '../math'
-import {take} from './sublist'
+import { isString } from './base'
+import { curry } from '../fn'
+import { concatMap, concatWith, fold } from './fold'
+import { randomInt } from '../math'
+import { take } from './sublist'
 
 /**
  * This module defines operations for building lists.

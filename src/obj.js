@@ -1,6 +1,6 @@
-import {curry, flip, variadic} from './fn'
-import {difference} from './list/set'
-import {extend} from './util'
+import { curry, flip, variadic } from './fn'
+import { difference } from './list/set'
+import { extend } from './util'
 
 /**
  * This module defines operations on objects.

@@ -1,6 +1,6 @@
-import {append, isArray, isArrayOfStrings, mempty, toArray} from './base'
-import {compare, compose, curry, flatten, flip, tap, variadic} from '../fn'
-import {add, mul} from '../math'
+import { append, isArray, isArrayOfStrings, mempty, toArray } from './base'
+import { compare, compose, curry, flatten, flip, tap, variadic } from '../fn'
+import { add, mul } from '../math'
 
 /**
  * This module defines fold operations on lists.

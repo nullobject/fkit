@@ -1,4 +1,4 @@
-import {applyRight, curry} from './fn'
+import { applyRight, curry } from './fn'
 
 /**
  * This module defines logic functions.

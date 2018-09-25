@@ -10,7 +10,7 @@ function buildObject () {
 
   o.name = 'Jane'
   o.age = 20
-  o.address = {city: 'Melbourne', country: 'Australia'}
+  o.address = { city: 'Melbourne', country: 'Australia' }
   o.hello = spy
 
   return o
@@ -56,10 +56,10 @@ describe('object', () => {
   })
 
   describe('#copy', () => {
-    const result = obj.copy(target, {age: 21})
+    const result = obj.copy(target, { age: 21 })
 
     it('copies the properties of the given objects', () => {
-      expect(result).toEqual({name: 'Jane', age: 21, address: {city: 'Melbourne', country: 'Australia'}, hello: spy})
+      expect(result).toEqual({ name: 'Jane', age: 21, address: { city: 'Melbourne', country: 'Australia' }, hello: spy })
     })
 
     it('preserves the prototype of the target object', () => {
@@ -71,7 +71,7 @@ describe('object', () => {
     it('returns the property at the given key', () => {
       expect(obj.get('name')(target)).toEqual('Jane')
       expect(obj.get('age')(target)).toEqual(20)
-      expect(obj.get('address')(target)).toEqual({city: 'Melbourne', country: 'Australia'})
+      expect(obj.get('address')(target)).toEqual({ city: 'Melbourne', country: 'Australia' })
       expect(obj.get('hello')(target)).toEqual(spy)
       expect(obj.get('foo')(target)).toBeUndefined()
     })
@@ -101,21 +101,21 @@ describe('object', () => {
   describe('#pick', () => {
     it('copies the given object with the properties', () => {
       const result = obj.pick(['name', 'age'])(target)
-      expect(result).toEqual({name: 'Jane', age: 20})
+      expect(result).toEqual({ name: 'Jane', age: 20 })
     })
   })
 
   describe('#omit', () => {
     it('copies the given object without the properties', () => {
       const result = obj.omit(['name', 'age', 'address'])(target)
-      expect(result).toEqual({hello: spy})
+      expect(result).toEqual({ hello: spy })
     })
   })
 
   describe('#pairs', () => {
     it('returns the key-value pairs of the given object', () => {
       const result = obj.pairs(target)
-      expect(result).toEqual([['name', 'Jane'], ['age', 20], ['address', {city: 'Melbourne', country: 'Australia'}], ['hello', spy]])
+      expect(result).toEqual([['name', 'Jane'], ['age', 20], ['address', { city: 'Melbourne', country: 'Australia' }], ['hello', spy]])
     })
   })
 
@@ -129,7 +129,7 @@ describe('object', () => {
   describe('#values', () => {
     it('returns the values of the given object', () => {
       const result = obj.values(target)
-      expect(result).toEqual(['Jane', 20, {city: 'Melbourne', country: 'Australia'}, spy])
+      expect(result).toEqual(['Jane', 20, { city: 'Melbourne', country: 'Australia' }, spy])
     })
   })
 })

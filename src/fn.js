@@ -1,4 +1,4 @@
-import {slice} from './util'
+import { slice } from './util'
 
 /**
  * This module defines basic operations on functions.

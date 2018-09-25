@@ -1,4 +1,4 @@
-import {curry, equal, notEqual} from './fn'
+import { curry, equal, notEqual } from './fn'
 
 /**
  * This module defines math functions.

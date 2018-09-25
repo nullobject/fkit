@@ -1,6 +1,6 @@
-import {empty, head, mempty, prepend, tail, toArray} from './base'
-import {curry, flip} from '../fn'
-import {concat} from './fold'
+import { empty, head, mempty, prepend, tail, toArray } from './base'
+import { curry, flip } from '../fn'
+import { concat } from './fold'
 
 /**
  * This module defines map operations on lists.
