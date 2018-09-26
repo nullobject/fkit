@@ -1,7 +1,7 @@
 import pkg from './package.json'
 import babel from 'rollup-plugin-babel'
 import filesize from 'rollup-plugin-filesize'
-import uglify from 'rollup-plugin-uglify'
+import { uglify } from 'rollup-plugin-uglify'
 
 const plugins = [
   babel({ exclude: '**/node_modules/**' }),
