@@ -5,16 +5,16 @@ regex   := "s/\([\"\']version[\"\'][[:space:]]*:[[:space:]]*\)\([\"\'].*[\"\']\)
 
 .PHONY: bump changelog clean dev dist doc lint publish publish-api publish-npm release test unit
 
-dev: node_modules
-	@BABEL_ENV=rollup node_modules/.bin/rollup -c -w
+dev:
+	@node_modules/.bin/rollup -c -w
 
-dist: node_modules
-	@BABEL_ENV=rollup node_modules/.bin/rollup -c
+dist:
+	@node_modules/.bin/rollup -c
 
 test: unit lint
 
-watch: node_modules
-	@BABEL_ENV=test node_modules/.bin/jest --watch
+watch:
+	@node_modules/.bin/jest --watch
 
 release: dist test publish
 
@@ -29,15 +29,15 @@ node_modules:
 	@npm install
 
 # Runs the unit tests.
-unit: node_modules
-	@BABEL_ENV=test node_modules/.bin/jest
+unit:
+	@node_modules/.bin/jest
 
 # Runs jslint.
-lint: node_modules
+lint:
 	@node_modules/.bin/standard "*.js" "src/**/*.js" "test/**/*.js"
 
 # Generates the API documentation.
-doc: node_modules
+doc:
 	@node_modules/.bin/jsdoc -c jsdoc.config.json src README.md
 
 # Bumps the version.
