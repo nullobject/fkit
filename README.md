@@ -76,7 +76,7 @@ modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/State
 you can import just the bits you want:
 
 ```js
-import {add} from 'fkit'
+import { add } from 'fkit'
 console.log(add(1, 2))
 ```
 

@@ -32,7 +32,7 @@ export function toLower (s) { return s.toLowerCase() }
  * @example
  *
  * F.replace('r', 'z', 'bar') // baz
- * F.replace(/$hello/, 'goodbye', 'hello world!') // goodbye world!
+ * F.replace(/^hello/, 'goodbye', 'hello world!') // goodbye world!
  *
  * @curried
  * @function
