@@ -1,6 +1,7 @@
 import { curry, flip, variadic } from './fn'
 import { difference } from './list/set'
 import { extend } from './util'
+import { isString } from './list/base'
 
 /**
  * This module defines operations on objects.
@@ -118,16 +119,18 @@ export const get = curry((k, o) => o[k])
  *
  * var person = { name: 'Jane', age: 20, address: { city: 'Melbourne', country: 'Australia' } }
  * F.getIn(['address', 'city'], person) // 'Melbourne'
+ * F.getIn('address.city', person) // 'Melbourne'
  *
  * @curried
  * @function
- * @param ks A list.
+ * @param ks A list or a string.
  * @param o An object.
  * @returns A value.
  */
-export const getIn = curry((ks, o) =>
-  ks.reduce((a, b) => (a !== undefined) ? a[b] : undefined, o)
-)
+export const getIn = curry((ks, o) => {
+  ks = isString(ks) ? ks.split('.') : ks
+  return ks.reduce((a, b) => (a !== undefined) ? a[b] : undefined, o)
+})
 
 /**
  * Returns a copy of the object `o` with the property `k` set to the value `v`.
