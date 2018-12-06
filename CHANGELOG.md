@@ -1,431 +1,383 @@
-v1.4.0 / 2018-01-31
-===================
+## Unreleased
 
-  * Add generalised `unionBy`, `intersectBy`, and `differenceBy` functions.
+* Allow `getIn` keypath to be given as a string
 
-v1.3.0 / 2018-01-29
-===================
+## 1.4.0 (2018-01-31)
 
-  * Fix issue with copy function
-  * Fix between function summary
+* Add generalised `unionBy`, `intersectBy`, and `differenceBy` functions
 
-v1.2.0 / 2018-01-23
-===================
+## 1.3.0 (2018-01-29)
 
-  * Add between function
-  * Update deps
-  * Add watch task
-  * Remove contribute section from readme
-  * Fix documentation
+* Fix issue with copy function
+* Fix between function summary
 
-v1.1.0 / 2017-12-29
-===================
+## 1.2.0 (2018-01-23)
 
-  * Add clamp function
-  * Add even and odd functions
+* Add between function
+* Update deps
+* Add watch task
+* Remove contribute section from readme
+* Fix documentation
 
-v1.0.5 / 2017-12-24
-===================
+## 1.1.0 (2017-12-29)
 
-  * Add comparator function documentation to *By functions
-  * Fix example for difference function
-  * Fix issue in groupBy function
-  * Fix issue in dropWhile function
-  * Remove uglify-es
-  * Add filesize rollup plugin
+* Add clamp function
+* Add even and odd functions
 
-v1.0.4 / 2017-12-19
-===================
+## 1.0.5 (2017-12-24)
 
-  * Update babel/rollup config
-  * Remove bower file
-  * Fix always function example
+* Add comparator function documentation to*By functions
+* Fix example for difference function
+* Fix issue in groupBy function
+* Fix issue in dropWhile function
+* Remove uglify-es
+* Add filesize rollup plugin
 
-v1.0.1 / 2017-12-14
-===================
+## 1.0.4 (2017-12-19)
 
-  * Include build dir in the npm package
+* Update babel/rollup config
+* Remove bower file
+* Fix always function example
 
-v1.0.0 / 2017-12-14
-===================
+## 1.0.1 (2017-12-14)
 
-  * Refactor to ES6 modules
+* Include build dir in the npm package
 
-v0.17.1 / 2017-12-09
-====================
+## 1.0.0 (2017-12-14)
 
-  * Switch to rollup for bundling
-  * Replace jshint with standard
+* Refactor to ES6 modules
 
-v0.16.3 / 2017-12-04
-====================
+## 0.17.1 (2017-12-09)
 
-  * Update dependencies
-  * Fix logo in readme
+* Switch to rollup for bundling
+* Replace jshint with standard
 
-v0.16.2 / 2014-11-26
-====================
+## 0.16.3 (2017-12-04)
 
-  * Fix a bug in minimum/maximumBy.
+* Update dependencies
+* Fix logo in readme
 
-v0.16.1 / 2014-11-17
-====================
+## 0.16.2 (2014-11-26)
 
-  * Remove empty npm shrinkwrap.
+* Fix a bug in minimum/maximumBy
 
-v0.16.0 / 2014-11-17
-====================
+## 0.16.1 (2014-11-17)
 
-  * Curry the sortBy function.
-  * Add minimum/maximumBy functions.
-  * Shrinkwrap dependencies.
-  * Exclude CNAME in rsync.
-  * Fix documentation for .flip function.
+* Remove empty npm shrinkwrap
 
-v0.15.0 / 2014-10-28
-====================
+## 0.16.0 (2014-11-17)
 
-  * Add .getIn function to obj.
-  * Documentation.
-  * Cleanups.
+* Curry the sortBy function
+* Add minimum/maximumBy functions
+* Shrinkwrap dependencies
+* Exclude CNAME in rsync
+* Fix documentation for .flip function
 
-v0.14.0 / 2014-10-23
-====================
+## 0.15.0 (2014-10-28)
 
-  * Add .applyMethod function.
+* Add .getIn function to obj
+* Documentation
+* Cleanups
 
-v0.13.1 / 2014-10-19
-====================
+## 0.14.0 (2014-10-23)
 
-  * Fix an issue where the sort function weren't included in the fkit module.
-  * Don't include examples in API docs.
-
-v0.13.0 / 2014-10-19
-====================
-
-  * Add .sort/.sortBy functions.
-  * Fix .sample to duplicate elements.
-  * Fix .drop/.take to work with list of strings.
-  * Remove signal examples.
-
-v0.12.0 / 2014-10-16
-====================
-
-  * Remove signal class (this may be extracted into another library).
-  * Fix the .concatMap function.
-  * Add .shuffle function.
-  * Fix the .sample function.
-  * Update logo.
-  * Refactor tests.
-
-v0.11.1 / 2014-10-16
-====================
-
-  * Fix .sample to return a string when sampling a string.
-
-v0.11.0 / 2014-10-15
-====================
-
-  * Add .sample function.
-  * Add .randomInt/.randomFloat functions.
-  * Add .update function.
-  * Add .subsequences function.
-  * Add .permutations function.
-  * Documentation.
-
-v0.10.0 / 2014-10-14
-====================
-
-  * Add .omit function.
-  * Change .pick to a curried function.
-  * Add .keys/.values functions.
-
-v0.9.0 / 2014-10-14
-===================
-
-  * Add .pairs function.
-  * Curry .flip function.
-  * Fix signal example.
-  * Documentation.
-
-v0.8.2 / 2014-10-08
-===================
-
-  * Add strict and non-strict equality operators.
-  * Documentation.
-
-v0.8.1 / 2014-10-07
-===================
-
-  * Add #inits and #tails functions.
-  * Add #isPrefixOf, #isSuffixOf, and #isInfixOf functions.
-
-v0.8.0 / 2014-10-06
-===================
-
-  * Add #nub function.
-  * Rename #without -> #remove and add #removeBy function.
-  * Fix an issue with handling duplicate values in set functions.
-  * Fix in the #variadic function when passing arrays of arguments.
-  * Add #cartesian function.
-  * Fix an issue where the #map function would concat strings.
-  * Fix a bug in #concat.
-  * Fix a bug in #append for nested lists.
-
-v0.7.2 / 2014-10-05
-===================
-
-  * Add #group and #groupBy functions.
-  * Add #neq function.
-  * Add #maximum, #minimum, #sum, and #product functions.
-  * Update the #min and #max functions to handle strings.
-
-v0.7.1 / 2014-10-04
-===================
+* Add .applyMethod function
 
-  * Add #uncurry function.
-  * Added #span function.
-  * Add #splitAt function.
-  * Add #takeWhile and #dropWhile functions.
-  * Documentation.
+## 0.13.1 (2014-10-19)
 
-v0.7.0 / 2014-10-02
-===================
+* Fix an issue where the sort function weren't included in the fkit module
+* Don't include examples in API docs
 
-  * Remove #applyAll function.
-  * Rename pluck -> pick.
-  * Add #take and #drop functions.
-  * Add #elemIndex, #elemIndices, #findIndex and #findIndices functions.
-  * Add #partition function.
-  * Add #find function.
-  * Documentation.
-  * More examples.
-  * Fix an issue with concatenating arrays and strings.
+## 0.13.0 (2014-10-19)
 
-v0.6.0 / 2014-09-24
-==================
+* Add .sort/.sortBy functions
+* Fix .sample to duplicate elements
+* Fix .drop/.take to work with list of strings
+* Remove signal examples
 
- * Move #whereAll/Any to logic module.
- * Rename eql -> eq.
- * Update webpack version.
- * Add list.set module.
- * Rename Signal#flatMap -> Signal#concatMap.
- * Add #elem function.
- * Use F in readme examples.
+## 0.12.0 (2014-10-16)
 
-v0.5.4 / 2014-09-21
-==================
+* Remove signal class (this may be extracted into another library)
+* Fix the .concatMap function
+* Add .shuffle function
+* Fix the .sample function
+* Update logo
+* Refactor tests
+
+## 0.11.1 (2014-10-16)
 
- * Alias fkit as F.
- * Change to the jsdoc-react template.
+* Fix .sample to return a string when sampling a string
 
-v0.5.3 / 2014-09-20
-==================
+## 0.11.0 (2014-10-15)
 
- * Documentation cleanups.
- * Add #compare function.
- * Add #replace function.
- * Add license section to readme.
- * Add #surround function.
- * Add #all, #any, #whereAll, and #whereAny functions.
- * Add #applyAll function.
- * Add #pluck function.
+* Add .sample function
+* Add .randomInt/.randomFloat functions
+* Add .update function
+* Add .subsequences function
+* Add .permutations function
+* Documentation
 
-v0.5.2 / 2014-09-16
-==================
+## 0.10.0 (2014-10-14)
 
- * Add #apply2 and #apply3 functions.
+* Add .omit function
+* Change .pick to a curried function
+* Add .keys/.values functions
 
-v0.5.1 / 2014-09-16
-==================
+## 0.9.0 (2014-10-14)
 
- * Fix issue where base module wasn't mixed in.
+* Add .pairs function
+* Curry .flip function
+* Fix signal example
+* Documentation
 
-v0.5.0 / 2014-09-16
-==================
+## 0.8.2 (2014-10-08)
 
- * Refactor modules.
- * Change #range function to take a length argument.
- * Add #array function.
- * Fix an issue in the #intersperse function.
+* Add strict and non-strict equality operators
+* Documentation
 
-v0.4.6 / 2014-09-15
-==================
+## 0.8.1 (2014-10-07)
 
- * Add #intersperse function.
- * Fix an issue in the #zipWith function.
- * Add #replicate function.
- * Add #empty function.
- * Add #length function.
+* Add #inits and #tails functions
+* Add #isPrefixOf, #isSuffixOf, and #isInfixOf functions
 
-v0.4.5 / 2014-09-15
-==================
+## 0.8.0 (2014-10-06)
 
- * Add #unzip function.
- * Rename #tuple -> #pair.
+* Add #nub function
+* Rename #without -> #remove and add #removeBy function
+* Fix an issue with handling duplicate values in set functions
+* Fix in the #variadic function when passing arrays of arguments
+* Add #cartesian function
+* Fix an issue where the #map function would concat strings
+* Fix a bug in #concat
+* Fix a bug in #append for nested lists
 
-v0.4.4 / 2014-09-15
-==================
+## 0.7.2 (2014-10-05)
 
- * Add #zipWith and #tuple functions.
- * Add #zip function.
- * Add CodePen examples to readme.
- * Fix a bug in the #curry function.
- * Change travis notification settings.
+* Add #group and #groupBy functions
+* Add #neq function
+* Add #maximum, #minimum, #sum, and #product functions
+* Update the #min and #max functions to handle strings
 
-v0.4.3 / 2014-09-13
-==================
+## 0.7.1 (2014-10-04)
 
- * Flip the args to #append and #prepend.
- * Add #toUpper and #toLower methods.
+* Add #uncurry function
+* Added #span function
+* Add #splitAt function
+* Add #takeWhile and #dropWhile functions
+* Documentation
 
-v0.4.2 / 2014-09-13
-==================
-
- * Update the combinators to work with strings.
-
-v0.4.1 / 2014-09-13
-==================
-
- * Update #head, #tail, #init, #last, and #reverse to work with strings.
-
-v0.4.0 / 2014-09-13
-==================
-
- * Rename stream -> signal and remove bus.
- * Extract util module.
-
-v0.3.4 / 2014-09-13
-==================
-
- * Add #concatMap function.
- * Fix examples in readme.
- * Fix an issue in makefile where gh-pages could cause conflicts.
-
-v0.3.3 / 2014-09-12
-==================
-
- * Add #reverse function.
- * Add example to readme.
-
-v0.3.2 / 2014-09-12
-==================
-
- * Fix an issue with unary variadic functions.
- * Ensure gh-pages is up to date before syncing the docs.
-
-v0.3.1 / 2014-09-12
-==================
-
- * Add array functions.
- * Add #foldRight and #scanRight functions.
- * Webpack config cleanups.
-
-v0.3.0 / 2014-09-09
-==================
-
- * Move fn and obj into fkit namespace.
-
-v0.2.4 / 2014-09-09
-==================
-
- * Add a #branch function.
- * Flip the arguments to the math functions.
- * Rename #concat -> #append and add the real #concat function.
- * Rename #identity -> #id.
-
-v0.2.3 / 2014-09-06
-==================
-
- * Don't ignore the build dir.
-
-v0.2.2 / 2014-09-06
-==================
-
- * Tidy up package files.
-
-v0.2.1 / 2014-09-06
-==================
-
- * Add bump & release tasks to makefile.
- * Add bower.json.
- * Add examples to readme.
- * Update doc task to ensure removals are tracked.
- * Add a timer example.
- * Alias the core module to fkit.
- * Add zip function to stream.
- * Add map, filter, fold, and scan to fn module.
- * Remove src dir from npmignore.
- * Fix webpack config.
- * Add prod tasks to makefile.
- * Fix stream example.
- * Don't curry nullary or unary functions.
- * Don't build with node 0.8.x.
- * Add travis badge to readme.
- * Change test script to mocha.
- * Stream cleanups.
- * Add travis.yml.
- * Fix the jsdoc for fn.range.
-
-v0.2.0 / 2014-09-04
-==================
-
- * Tweak module descriptions.
- * Rename util -> fn.
- * Rename fn -> core.
- * Cleanups.
- * Add #negate function to util module.
- * Add #not function to util module.
- * Add #mod function to util module.
- * Update doc task to generate and publish docs.
- * Update readme.
- * Allow multiple functions to be composed.
- * Cleanups.
- * Cleanup the stream example.
- * Add the #tap function to the fn module.
- * Split modules into fn, obj, and util.
- * Add env argument to #curry.
- * Update readme.
- * Merge branch 'bug/bus'
- * Fix stream example.
- * Fix Bus class.
- * Add Stream#split.
- * Add functions to function module.
- * Add obj#apply function.
- * Add context to jshintrc.
- * Cleanups.
- * Add Stream class comment.
- * Tweak the fn.identity comment.
- * Add obj.binary function.
- * Document and test everything.
- * Add jsdoc to dev dependencies.
- * Ignore the doc directory.
- * Add a unary function.
- * Remove unit function.
- * Add test for fromPromise.
- * Allow merging multiple streams.
- * Add a stream example.
- * Add a Bus.
- * Add functions to Stream.
- * Switch order of arguments to #set.
- * Add arithmetic and logical functions.
- * Cleanups.
- * Add #get function.
- * Add .fromArray, .fromEvent, and #fold to stream.
- * Add #identity function.
- * Cleanups.
- * Change stream module to expose the constructor.
- * Update jshintrc.
- * Add stream module.
- * Cleanups.
- * Add #compose function.
- * Extract a function module.
- * Add #curry function.
-
-v0.1.0 / 2014-08-19
-==================
-
- * Add #set function.
- * Fix index.
- * Create LICENSE.md
- * Initial import.
+## 0.7.0 (2014-10-02)
+
+* Remove #applyAll function
+* Rename pluck -> pick
+* Add #take and #drop functions
+* Add #elemIndex, #elemIndices, #findIndex and #findIndices functions
+* Add #partition function
+* Add #find function
+* Documentation
+* More examples
+* Fix an issue with concatenating arrays and strings
+
+## 0.6.0 (2014-09-24)
+
+* Move #whereAll/Any to logic module
+* Rename eql -> eq
+* Update webpack version
+* Add list.set module
+* Rename Signal#flatMap -> Signal#concatMap
+* Add #elem function
+* Use F in readme examples
+
+## 0.5.4 (2014-09-21)
+
+* Alias fkit as F
+* Change to the jsdoc-react template
+
+## 0.5.3 (2014-09-20)
+
+* Documentation cleanups
+* Add #compare function
+* Add #replace function
+* Add license section to readme
+* Add #surround function
+* Add #all, #any, #whereAll, and #whereAny functions
+* Add #applyAll function
+* Add #pluck function
+
+## 0.5.2 (2014-09-16)
+
+* Add #apply2 and #apply3 functions
+
+## 0.5.1 (2014-09-16)
+
+* Fix issue where base module wasn't mixed in
+
+## 0.5.0 (2014-09-16)
+
+* Refactor modules
+* Change #range function to take a length argument
+* Add #array function
+* Fix an issue in the #intersperse function
+
+## 0.4.6 (2014-09-15)
+
+* Add #intersperse function
+* Fix an issue in the #zipWith function
+* Add #replicate function
+* Add #empty function
+* Add #length function
+
+## 0.4.5 (2014-09-15)
+
+* Add #unzip function
+* Rename #tuple -> #pair
+
+## 0.4.4 (2014-09-15)
+
+* Add #zipWith and #tuple functions
+* Add #zip function
+* Add CodePen examples to readme
+* Fix a bug in the #curry function
+* Change travis notification settings
+
+## 0.4.3 (2014-09-13)
+
+* Flip the args to #append and #prepend
+* Add #toUpper and #toLower methods
+
+## 0.4.2 (2014-09-13)
+
+* Update the combinators to work with strings
+
+## 0.4.1 (2014-09-13)
+
+* Update #head, #tail, #init, #last, and #reverse to work with strings
+
+## 0.4.0 (2014-09-13)
+
+* Rename stream -> signal and remove bus
+* Extract util module
+
+## 0.3.4 (2014-09-13)
+
+* Add #concatMap function
+* Fix examples in readme
+* Fix an issue in makefile where gh-pages could cause conflicts
+
+## 0.3.3 (2014-09-12)
+
+* Add #reverse function
+* Add example to readme
+
+## 0.3.2 (2014-09-12)
+
+* Fix an issue with unary variadic functions
+* Ensure gh-pages is up to date before syncing the docs
+
+## 0.3.1 (2014-09-12)
+
+* Add array functions
+* Add #foldRight and #scanRight functions
+* Webpack config cleanups
+
+## 0.3.0 (2014-09-09)
+
+* Move fn and obj into fkit namespace
+
+## 0.2.4 (2014-09-09)
+
+* Add a #branch function
+* Flip the arguments to the math functions
+* Rename #concat -> #append and add the real #concat function
+* Rename #identity -> #id
+
+## 0.2.3 (2014-09-06)
+
+* Don't ignore the build dir
+
+## 0.2.2 (2014-09-06)
+
+* Tidy up package files
+
+## 0.2.1 (2014-09-06)
+
+* Add bump & release tasks to makefile
+* Add bower.json
+* Add examples to readme
+* Update doc task to ensure removals are tracked
+* Add a timer example
+* Alias the core module to fkit
+* Add zip function to stream
+* Add map, filter, fold, and scan to fn module
+* Remove src dir from npmignore
+* Fix webpack config
+* Add prod tasks to makefile
+* Fix stream example
+* Don't curry nullary or unary functions
+* Don't build with node 0.8.x
+* Add travis badge to readme
+* Change test script to mocha
+* Stream cleanups
+* Add travis.yml
+* Fix the jsdoc for fn.range
+
+## 0.2.0 (2014-09-04)
+
+* Tweak module descriptions
+* Rename util -> fn
+* Rename fn -> core
+* Cleanups
+* Add #negate function to util module
+* Add #not function to util module
+* Add #mod function to util module
+* Update doc task to generate and publish docs
+* Update readme
+* Allow multiple functions to be composed
+* Cleanups
+* Cleanup the stream example
+* Add the #tap function to the fn module
+* Split modules into fn, obj, and util
+* Add env argument to #curry
+* Update readme
+* Merge branch 'bug/bus'
+* Fix stream example
+* Fix Bus class
+* Add Stream#split
+* Add functions to function module
+* Add obj#apply function
+* Add context to jshintrc
+* Cleanups
+* Add Stream class comment
+* Tweak the fn.identity comment
+* Add obj.binary function
+* Document and test everything
+* Add jsdoc to dev dependencies
+* Ignore the doc directory
+* Add a unary function
+* Remove unit function
+* Add test for fromPromise
+* Allow merging multiple streams
+* Add a stream example
+* Add a Bus
+* Add functions to Stream
+* Switch order of arguments to #set
+* Add arithmetic and logical functions
+* Cleanups
+* Add #get function
+* Add .fromArray, .fromEvent, and #fold to stream
+* Add #identity function
+* Cleanups
+* Change stream module to expose the constructor
+* Update jshintrc
+* Add stream module
+* Cleanups
+* Add #compose function
+* Extract a function module
+* Add #curry function
+
+## 0.1.0 (2014-08-19)
+
+* Add #set function
+* Fix index
+* Create LICENSE.md
+* Initial import

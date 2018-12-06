@@ -80,6 +80,7 @@ describe('object', () => {
   describe('#getIn', () => {
     it('returns the property at the given key path', () => {
       expect(obj.getIn(['address', 'city'])(target)).toEqual('Melbourne')
+      expect(obj.getIn('address.city')(target)).toEqual('Melbourne')
       expect(obj.getIn(['foo', 'bar'])(target)).toBeUndefined()
     })
   })
