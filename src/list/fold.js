@@ -125,8 +125,8 @@ export const foldRight = curry((f, s, as) => toArray(as).reduceRight(flip(f), s)
  *
  * @example
  *
- * F.fold(F.flip(F.prepend), [],  [1, 2, 3]) // [[], [1], [2, 1], [3, 2, 1]]
- * F.fold(F.flip(F.prepend), '',  'foo') // ['', 'f', 'of', 'oof']
+ * F.scan(F.flip(F.prepend), [],  [1, 2, 3]) // [[], [1], [2, 1], [3, 2, 1]]
+ * F.scan(F.flip(F.prepend), '',  'foo') // ['', 'f', 'of', 'oof']
  *
  * @curried
  * @function
@@ -149,8 +149,8 @@ export const scan = curry((f, s, as) => {
  *
  * @example
  *
- * F.foldRight(F.append, [],  [1, 2, 3]) // [[3, 2, 1], [3, 2], [3], []]
- * F.foldRight(F.append, '',  'foo') // ['oof', 'oo', 'o', '']
+ * F.scanRight(F.append, [],  [1, 2, 3]) // [[3, 2, 1], [3, 2], [3], []]
+ * F.scanRight(F.append, '',  'foo') // ['oof', 'oo', 'o', '']
  *
  * @curried
  * @function
