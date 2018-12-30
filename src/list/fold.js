@@ -2,8 +2,8 @@ import add from '../add'
 import append from '../append'
 import compare from '../compare'
 import compose from '../compose'
+import concatWith from '../internal/concatWith'
 import curry from '../curry'
-import flatten from '../internal/flatten'
 import flip from '../flip'
 import isArray from '../internal/isArray'
 import isArrayOfStrings from '../internal/isArrayOfStrings'
@@ -35,16 +35,6 @@ export function flattenStrings (as) {
       return as
     }
   }
-}
-
-/**
- * Returns a list that contains the elements in the list of `as` concatenated
- * with the starting value `s`.
- *
- * @private
- */
-export function concatWith (s, as) {
-  return toArray(flatten(as)).reduce(flip(append), s)
 }
 
 /**

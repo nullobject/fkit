@@ -1,7 +1,8 @@
 import array from './array'
-import { concatWith, fold } from './list/fold'
+import concatWith from './internal/concatWith'
 import isString from './internal/isString'
 import randomInt from './randomInt'
+import { fold } from './list/fold'
 
 /**
  * Returns a list that contains the elements in the list of `as` randomly
