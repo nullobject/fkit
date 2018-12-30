@@ -2,18 +2,6 @@ import compare from '../compare'
 import * as fold from '../../src/list/fold'
 
 describe('list.fold', () => {
-  describe('#scan', () => {
-    it('handles an array', () => {
-      function f (b, a) { return [a].concat(b) }
-      expect(fold.scan(f)([])([1, 2, 3])).toEqual([[], [1], [2, 1], [3, 2, 1]])
-    })
-
-    it('handles a string', () => {
-      function f (b, a) { return a + b }
-      expect(fold.scan(f)('')('foo')).toEqual(['', 'f', 'of', 'oof'])
-    })
-  })
-
   describe('#scanRight', () => {
     it('handles an array', () => {
       function f (a, b) { return b.concat(a) }
