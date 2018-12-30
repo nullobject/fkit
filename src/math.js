@@ -10,19 +10,6 @@ import notEqual from './notEqual'
  */
 
 /**
- * Returns the result of `b * a`.
- *
- * @summary The multiplication operator.
- *
- * @curried
- * @function
- * @param a A number.
- * @param b A number.
- * @returns A number.
- */
-export const mul = curry((a, b) => b * a)
-
-/**
  * Returns the result of `b / a`.
  *
  * @summary The division operator.

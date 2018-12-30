@@ -4,10 +4,10 @@ import compose from '../compose'
 import curry from '../curry'
 import flatten from '../internal/flatten'
 import flip from '../flip'
+import mul from '../mul'
 import tap from '../tap'
 import variadic from '../variadic'
 import { append, isArray, isArrayOfStrings, mempty, toArray } from './base'
-import { mul } from '../math'
 
 /**
  * This module defines fold operations on lists.
