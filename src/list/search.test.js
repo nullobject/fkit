@@ -27,20 +27,6 @@ describe('list.search', () => {
     })
   })
 
-  describe('#findIndex', () => {
-    it('handles an array', () => {
-      const p = a => a > 1
-      expect(search.findIndex(p)([])).toBeUndefined()
-      expect(search.findIndex(p)([1, 2, 3])).toBe(1)
-    })
-
-    it('handles a string', () => {
-      const p = a => a === 'o'
-      expect(search.findIndex(p)('')).toBeUndefined()
-      expect(search.findIndex(p)('foo')).toBe(1)
-    })
-  })
-
   describe('#filter', () => {
     it('handles an array', () => {
       const p = a => a > 1
