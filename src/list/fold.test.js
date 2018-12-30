@@ -1,4 +1,4 @@
-import { compare } from '../../src/fn'
+import compare from '../compare'
 import * as fold from '../../src/list/fold'
 
 describe('list.fold', () => {

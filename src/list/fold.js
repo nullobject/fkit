@@ -1,3 +1,4 @@
+import compare from '../compare'
 import compose from '../compose'
 import curry from '../curry'
 import flatten from '../internal/flatten'
@@ -5,7 +6,6 @@ import flip from '../flip'
 import tap from '../tap'
 import variadic from '../variadic'
 import { append, isArray, isArrayOfStrings, mempty, toArray } from './base'
-import { compare } from '../fn'
 import { add, mul } from '../math'
 
 /**
