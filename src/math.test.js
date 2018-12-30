@@ -1,13 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#negate', () => {
-    it('negates the value', () => {
-      expect(math.negate(1)).toEqual(-1)
-      expect(math.negate(-1)).toEqual(1)
-    })
-  })
-
   describe('#eq', () => {
     it('compares the values', () => {
       const a = {}

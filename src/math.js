@@ -10,16 +10,6 @@ import notEqual from './notEqual'
  */
 
 /**
- * Returns the negation of the number `a`.
- *
- * @summary The negation operator.
- *
- * @param a A number.
- * @returns A number.
- */
-export function negate (a) { return -a }
-
-/**
  * Returns `true` if the value `a` is strictly equal (`===`) to the value `b`,
  * false otherwise.
  *
