@@ -1,14 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#odd', () => {
-    it('tests whether a value is odd', () => {
-      expect(math.odd(1)).toBe(true)
-      expect(math.odd(2)).toBe(false)
-      expect(math.odd(3)).toBe(true)
-    })
-  })
-
   describe('#inc', () => {
     it('increments the value', () => {
       expect(math.inc(1)).toEqual(2)

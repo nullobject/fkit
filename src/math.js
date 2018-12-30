@@ -10,16 +10,6 @@ import notEqual from './notEqual'
  */
 
 /**
- * Returns `true` if the value `a` is odd, false otherwise.
- *
- * @summary Tests whether a value is odd.
- *
- * @param a A number.
- * @returns A boolean value.
- */
-export function odd (a) { return !!(a % 2) }
-
-/**
  * Returns the result of `a + 1`.
  *
  * @summary Increments a number.
