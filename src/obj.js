@@ -1,6 +1,7 @@
 import copy from './copy'
 import curry from './curry'
 import flip from './flip'
+import get from './get'
 import { difference } from './list/set'
 import { isString } from './list/base'
 
@@ -10,24 +11,6 @@ import { isString } from './list/base'
  * @module fkit/obj
  * @summary Objects
  */
-
-/**
- * Returns the property at the key `k` in the object `o`.
- *
- * @summary Gets a property of an object.
- *
- * @example
- *
- * var person = { name: 'Jane', age: 20, city: 'Melbourne' }
- * F.get('name', person) // 'Jane'
- *
- * @curried
- * @function
- * @param k A string.
- * @param o An object.
- * @returns A value.
- */
-export const get = curry((k, o) => o[k])
 
 /**
  * Returns the property at the key path `ks` in the object `o`.

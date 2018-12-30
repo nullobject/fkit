@@ -19,16 +19,6 @@ function buildObject () {
 describe('object', () => {
   const target = buildObject()
 
-  describe('#get', () => {
-    it('returns the property at the given key', () => {
-      expect(obj.get('name')(target)).toEqual('Jane')
-      expect(obj.get('age')(target)).toEqual(20)
-      expect(obj.get('address')(target)).toEqual({ city: 'Melbourne', country: 'Australia' })
-      expect(obj.get('hello')(target)).toEqual(spy)
-      expect(obj.get('foo')(target)).toBeUndefined()
-    })
-  })
-
   describe('#getIn', () => {
     it('returns the property at the given key path', () => {
       expect(obj.getIn(['address', 'city'])(target)).toEqual('Melbourne')
