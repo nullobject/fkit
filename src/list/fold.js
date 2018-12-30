@@ -1,4 +1,5 @@
 import add from '../add'
+import append from '../append'
 import compare from '../compare'
 import compose from '../compose'
 import curry from '../curry'
@@ -11,7 +12,6 @@ import mul from '../mul'
 import tap from '../tap'
 import toArray from '../internal/toArray'
 import variadic from '../variadic'
-import { append } from './base'
 
 /**
  * This module defines fold operations on lists.
