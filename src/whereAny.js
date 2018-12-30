@@ -1,14 +1,6 @@
-import and from './and'
 import applyRight from './applyRight'
 import curry from './curry'
 import or from './or'
-
-/**
- * This module defines logic functions.
- *
- * @module fkit/logic
- * @summary Logical Functions and Combinators
- */
 
 /**
  * Applies the list of predicate functions `ps` to the value `a` and returns
@@ -27,4 +19,4 @@ import or from './or'
  * @param a A value.
  * @returns A boolean value.
  */
-export const whereAny = curry((ps, a) => ps.map(applyRight(a)).reduce(or, false))
+export default curry((ps, a) => ps.map(applyRight(a)).reduce(or, false))
