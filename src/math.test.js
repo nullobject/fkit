@@ -1,15 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#between', () => {
-    it('compares the values', () => {
-      expect(math.between(1)(3)(0)).toBe(false)
-      expect(math.between(1)(3)(1)).toBe(true)
-      expect(math.between(1)(3)(2)).toBe(true)
-      expect(math.between(1)(3)(4)).toBe(false)
-    })
-  })
-
   describe('#negate', () => {
     it('negates the value', () => {
       expect(math.negate(1)).toEqual(-1)
