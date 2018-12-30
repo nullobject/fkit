@@ -1,8 +1,9 @@
+import compose from '../compose'
 import curry from '../curry'
 import flatten from '../internal/flatten'
 import variadic from '../variadic'
 import { append, isArray, isArrayOfStrings, mempty, toArray } from './base'
-import { compare, compose, flip, tap } from '../fn'
+import { compare, flip, tap } from '../fn'
 import { add, mul } from '../math'
 
 /**
