@@ -1,20 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#min', () => {
-    it('handles numbers', () => {
-      expect(math.min(1)(2)).toEqual(1)
-      expect(math.min(2)(1)).toEqual(1)
-      expect(math.min(2)(2)).toEqual(2)
-    })
-
-    it('handles strings', () => {
-      expect(math.min('a')('b')).toEqual('a')
-      expect(math.min('b')('a')).toEqual('a')
-      expect(math.min('b')('b')).toEqual('b')
-    })
-  })
-
   describe('#clamp', () => {
     it('clamps the number', () => {
       expect(math.clamp(1)(3)(0)).toEqual(1)

@@ -1,6 +1,7 @@
 import curry from './curry'
 import equal from './equal'
 import max from './max'
+import min from './min'
 import notEqual from './notEqual'
 
 /**
@@ -9,19 +10,6 @@ import notEqual from './notEqual'
  * @module fkit/math
  * @summary Yay, Numbers!
  */
-
-/**
- * Returns the smallest of the numbers `a` and `b`.
- *
- * @summary Determines the smallest of two numbers.
- *
- * @curried
- * @function
- * @param a A number.
- * @param b A number.
- * @returns A number.
- */
-export const min = curry((a, b) => a > b ? b : a)
 
 /**
  * Clamps the number `n` between the numbers `a` and `b` (i.e. a <= n <= b).
