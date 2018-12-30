@@ -1,18 +1,6 @@
 import * as search from '../../src/list/search'
 
 describe('list.search', () => {
-  describe('#elemIndex', () => {
-    it('handles an array', () => {
-      expect(search.elemIndex(0)([1, 2, 3])).toBeUndefined()
-      expect(search.elemIndex(1)([1, 2, 3])).toBe(0)
-    })
-
-    it('handles a string', () => {
-      expect(search.elemIndex('b')('foo')).toBeUndefined()
-      expect(search.elemIndex('o')('foo')).toBe(1)
-    })
-  })
-
   describe('#elemIndices', () => {
     it('handles an array', () => {
       expect(search.elemIndices(0)([1, 2, 3])).toEqual([])
