@@ -1,20 +1,6 @@
 import * as search from '../../src/list/search'
 
 describe('list.search', () => {
-  describe('#partition', () => {
-    it('handles an array', () => {
-      const p = a => a > 1
-      expect(search.partition(p)([])).toEqual([[], []])
-      expect(search.partition(p)([1, 2, 3])).toEqual([[2, 3], [1]])
-    })
-
-    it('handles a string', () => {
-      const p = a => a === 'o'
-      expect(search.partition(p)('')).toEqual(['', ''])
-      expect(search.partition(p)('foo')).toEqual(['oo', 'f'])
-    })
-  })
-
   describe('#all', () => {
     it('handles an array', () => {
       const p = a => a > 1
