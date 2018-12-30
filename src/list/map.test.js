@@ -1,16 +1,6 @@
 import * as map from '../../src/list/map'
 
 describe('list.map', () => {
-  describe('#reverse', () => {
-    it('handles an array', () => {
-      expect(map.reverse([1, 2, 3])).toEqual([3, 2, 1])
-    })
-
-    it('handles a string', () => {
-      expect(map.reverse('foo')).toBe('oof')
-    })
-  })
-
   describe('#intersperse', () => {
     it('handles an array', () => {
       expect(map.intersperse(4)([])).toEqual([])

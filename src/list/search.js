@@ -9,9 +9,9 @@ import head from '../head'
 import id from '../id'
 import isString from '../internal/isString'
 import not from '../not'
+import reverse from '../reverse'
 import tail from '../tail'
 import tails from '../tails'
-import { reverse } from './map'
 
 /**
  * This module defines search operations on lists.
