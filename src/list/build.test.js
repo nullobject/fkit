@@ -1,12 +1,6 @@
 import * as build from '../../src/list/build'
 
 describe('list.build', () => {
-  describe('#pair', () => {
-    it('returns a pair of values', () => {
-      expect(build.pair(1)(2)).toEqual([1, 2])
-    })
-  })
-
   describe('#range', () => {
     it('returns an array of numbers', () => {
       expect(build.range(1)(3)).toEqual([1, 2, 3])
