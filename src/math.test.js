@@ -1,20 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#max', () => {
-    it('handles numbers', () => {
-      expect(math.max(1)(2)).toEqual(2)
-      expect(math.max(2)(1)).toEqual(2)
-      expect(math.max(2)(2)).toEqual(2)
-    })
-
-    it('handles strings', () => {
-      expect(math.max('a')('b')).toEqual('b')
-      expect(math.max('b')('a')).toEqual('b')
-      expect(math.max('b')('b')).toEqual('b')
-    })
-  })
-
   describe('#min', () => {
     it('handles numbers', () => {
       expect(math.min(1)(2)).toEqual(1)

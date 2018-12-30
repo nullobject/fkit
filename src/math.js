@@ -1,5 +1,6 @@
 import curry from './curry'
 import equal from './equal'
+import max from './max'
 import notEqual from './notEqual'
 
 /**
@@ -8,19 +9,6 @@ import notEqual from './notEqual'
  * @module fkit/math
  * @summary Yay, Numbers!
  */
-
-/**
- * Returns the largest of the numbers `a` and `b`.
- *
- * @summary Determines the largest of two numbers.
- *
- * @curried
- * @function
- * @param a A number.
- * @param b A number.
- * @returns A number.
- */
-export const max = curry((a, b) => b > a ? b : a)
 
 /**
  * Returns the smallest of the numbers `a` and `b`.
