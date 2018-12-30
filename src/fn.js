@@ -1,3 +1,4 @@
+import apply from './apply'
 import curry from './curry'
 import { slice } from './util'
 
@@ -16,24 +17,6 @@ import { slice } from './util'
 export function flatten (as) {
   return as.reduce((a, b) => a.concat(b), [])
 }
-
-/**
- * Returns the result of the function `f` applied to the value `a`.
- *
- * @summary Applies a function to a value.
- *
- * @example
- *
- * function sayHi (a) { return ['Hi', a, '!'].join(' ') }
- * F.apply(sayHi, 'Jane') // Hi Jane!
- *
- * @curried
- * @function
- * @param f A function.
- * @param a A value.
- * @returns The result of `f(a)`.
- */
-export const apply = curry((f, a) => f(a))
 
 /**
  * Returns the result of the function `f` applied to the values `a` and `b`.

@@ -5,5 +5,6 @@ export * from './math'
 export * from './obj'
 export * from './string'
 
+export { default as apply } from './apply'
 export { default as curry } from './curry'
 export { default as id } from './id'

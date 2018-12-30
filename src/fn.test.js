@@ -1,25 +1,6 @@
 import * as fn from '../src/fn'
 
 describe('fn', () => {
-  describe('#apply', () => {
-    function f () {}
-    let spy
-
-    beforeEach(() => {
-      spy = jest.fn(f)
-    })
-
-    it('applies a nullary function', () => {
-      fn.apply(spy)()
-      expect(spy).toHaveBeenCalledWith(undefined)
-    })
-
-    it('applies a unary function', () => {
-      fn.apply(spy)(1)
-      expect(spy).toHaveBeenCalledWith(1)
-    })
-  })
-
   describe('#apply2', () => {
     function f () {}
     let spy
