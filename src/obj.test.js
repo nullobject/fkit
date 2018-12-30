@@ -19,13 +19,6 @@ function buildObject () {
 describe('object', () => {
   const target = buildObject()
 
-  describe('#update', () => {
-    it('updates the given property', () => {
-      const result = obj.update('age')(a => a + 1)(target)
-      expect(result).toHaveProperty('age', 21)
-    })
-  })
-
   describe('#pick', () => {
     it('copies the given object with the properties', () => {
       const result = obj.pick(['name', 'age'])(target)
