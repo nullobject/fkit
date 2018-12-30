@@ -1,15 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#clamp', () => {
-    it('clamps the number', () => {
-      expect(math.clamp(1)(3)(0)).toEqual(1)
-      expect(math.clamp(1)(3)(1)).toEqual(1)
-      expect(math.clamp(1)(3)(2)).toEqual(2)
-      expect(math.clamp(1)(3)(4)).toEqual(3)
-    })
-  })
-
   describe('#between', () => {
     it('compares the values', () => {
       expect(math.between(1)(3)(0)).toBe(false)
