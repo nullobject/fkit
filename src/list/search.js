@@ -1,4 +1,5 @@
 import always from '../always'
+import any from '../any'
 import branch from '../branch'
 import compose from '../compose'
 import concatMap from '../concatMap'
@@ -20,30 +21,6 @@ import tails from '../tails'
  * @private
  * @module fkit/list/search
  */
-
-/**
- * Returns `true` if any elements in the list of `as` satisfy the predicate
- * function `p`, `false` otherwise.
- *
- * @summary Determines if any elements in a list satisfy a predicate function.
- *
- * @example
- *
- * F.any(F.gt(1), [1, 2, 3]) // true
- * F.any(F.gt(1), [1, 2]) // true
- * F.any(F.gt(1), [1]) // false
- *
- * F.any(F.eq('o'), 'foo') // true
- * F.any(F.eq('o'), 'fo') // true
- * F.any(F.eq('o'), 'f') // false
- *
- * @curried
- * @function
- * @param p A predicate function.
- * @param as A list.
- * @returns A boolean value.
- */
-export const any = curry((p, as) => filter(p, as).length > 0)
 
 /**
  * Returns `true` if the list of `as` is a prefix of the list of `bs`, `false`

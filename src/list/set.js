@@ -1,3 +1,4 @@
+import any from '../any'
 import append from '../append'
 import compose from '../compose'
 import concat from '../concat'
@@ -16,7 +17,6 @@ import pair from '../pair'
 import prepend from '../prepend'
 import pure from '../internal/pure'
 import tail from '../tail'
-import { any } from './search'
 
 /**
  * This module defines set operations on lists.
