@@ -19,13 +19,6 @@ function buildObject () {
 describe('object', () => {
   const target = buildObject()
 
-  describe('#pick', () => {
-    it('copies the given object with the properties', () => {
-      const result = obj.pick(['name', 'age'])(target)
-      expect(result).toEqual({ name: 'Jane', age: 20 })
-    })
-  })
-
   describe('#omit', () => {
     it('copies the given object without the properties', () => {
       const result = obj.omit(['name', 'age', 'address'])(target)
