@@ -2,6 +2,7 @@ import array from '../array'
 import curry from '../curry'
 import isString from '../internal/isString'
 import randomInt from '../randomInt'
+import string from '../string'
 import { concatMap, concatWith, fold } from './fold'
 import { take } from './sublist'
 
@@ -11,20 +12,6 @@ import { take } from './sublist'
  * @private
  * @module fkit/list/build
  */
-
-/**
- * Returns an string of length `n`.
- *
- * @summary Creates a new string.
- *
- * @example
- *
- * F.string(3) // '   '
- *
- * @param n A number.
- * @returns A new string.
- */
-export function string (n) { return array(n + 1).join(' ') }
 
 /**
  * Returns an ordered pair with the values `a` and `b`.

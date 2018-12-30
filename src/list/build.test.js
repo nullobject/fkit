@@ -1,13 +1,6 @@
 import * as build from '../../src/list/build'
 
 describe('list.build', () => {
-  describe('#string', () => {
-    it('returns a new string', () => {
-      expect(build.string(0)).toBe('')
-      expect(build.string(3)).toBe('   ')
-    })
-  })
-
   describe('#pair', () => {
     it('returns a pair of values', () => {
       expect(build.pair(1)(2)).toEqual([1, 2])
