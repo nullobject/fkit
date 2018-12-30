@@ -1,5 +1,4 @@
 export * from './list'
-export * from './obj'
 export * from './string'
 
 export { default as add } from './add'
@@ -54,6 +53,7 @@ export { default as tap } from './tap'
 export { default as unary } from './unary'
 export { default as uncurry } from './uncurry'
 export { default as update } from './update'
+export { default as values } from './values'
 export { default as variadic } from './variadic'
 export { default as whereAll } from './whereAll'
 export { default as whereAny } from './whereAny'
