@@ -5,6 +5,7 @@ import isArray from '../internal/isArray'
 import isArrayOfStrings from '../internal/isArrayOfStrings'
 import isString from '../internal/isString'
 import mempty from '../internal/mempty'
+import prepend from '../prepend'
 
 /**
  * This module defines basic operations on lists.
@@ -12,24 +13,6 @@ import mempty from '../internal/mempty'
  * @private
  * @module fkit/list/base
  */
-
-/**
- * Returns a list that contains the value `a` prepended to the list of `bs`.
- *
- * @summary Prepends a value to a list.
- *
- * @example
- *
- * F.prepend(1, [2, 3]) // [1, 2, 3]
- * F.prepend('f', 'oo') // 'foo'
- *
- * @curried
- * @function
- * @param a A value.
- * @param bs A list.
- * @returns A new list.
- */
-export const prepend = curry((a, bs) => isString(bs) ? (a + bs) : [a].concat(bs))
 
 /**
  * Surrounds the list of `cs` with the values `a` and `b`.

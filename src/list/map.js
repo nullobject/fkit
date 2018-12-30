@@ -2,8 +2,9 @@ import curry from '../curry'
 import empty from '../empty'
 import flip from '../flip'
 import mempty from '../internal/mempty'
+import prepend from '../prepend'
 import toArray from '../internal/toArray'
-import { head, prepend, tail } from './base'
+import { head, tail } from './base'
 import { concat } from './fold'
 
 /**
