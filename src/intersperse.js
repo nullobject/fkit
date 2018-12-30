@@ -1,19 +1,9 @@
-import concat from '../concat'
-import curry from '../curry'
-import empty from '../empty'
-import flip from '../flip'
-import head from '../head'
-import mempty from '../internal/mempty'
-import prepend from '../prepend'
-import tail from '../tail'
-import toArray from '../internal/toArray'
-
-/**
- * This module defines map operations on lists.
- *
- * @private
- * @module fkit/list/map
- */
+import concat from './concat'
+import curry from './curry'
+import empty from './empty'
+import head from './head'
+import mempty from './internal/mempty'
+import tail from './tail'
 
 /**
  * Returns a list that contains the elements in the list of `as` interspersed
@@ -32,7 +22,7 @@ import toArray from '../internal/toArray'
  * @param as A list.
  * @returns A new list.
  */
-export const intersperse = curry((s, as) => {
+export default curry((s, as) => {
   const prependToAll = bs =>
     empty(bs)
       ? mempty(bs)

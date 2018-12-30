@@ -1,4 +1,3 @@
-export * from './list/map'
 export * from './list/search'
 export * from './list/set'
 export * from './list/sort'
@@ -17,7 +16,6 @@ export * from './list/zip'
  * @summary Working with Lists
  *
  * @module fkit/list
- * @mixes module:fkit/list/map
  * @mixes module:fkit/list/search
  * @mixes module:fkit/list/set
  * @mixes module:fkit/list/sort
