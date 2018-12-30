@@ -2,39 +2,6 @@ import compare from '../compare'
 import * as fold from '../../src/list/fold'
 
 describe('list.fold', () => {
-  describe('#concatMap', () => {
-    const f = a => [a, 0]
-    const g = a => [[a, 0]]
-    const h = a => [a, '-']
-    const i = a => a + '-'
-    const j = a => [[a, '-']]
-
-    it('handles an empty array', () => {
-      expect(fold.concatMap(f)([])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(fold.concatMap(h)('')).toBe('')
-    })
-
-    it('handles an array of numbers', () => {
-      expect(fold.concatMap(f)([1, 2, 3])).toEqual([1, 0, 2, 0, 3, 0])
-      expect(fold.concatMap(g)([1, 2, 3])).toEqual([[1, 0], [2, 0], [3, 0]])
-    })
-
-    it('handles an array of strings', () => {
-      expect(fold.concatMap(h)(['f', 'o', 'o'])).toBe('f-o-o-')
-      expect(fold.concatMap(i)(['f', 'o', 'o'])).toBe('f-o-o-')
-      expect(fold.concatMap(j)(['f', 'o', 'o'])).toEqual(['f-', 'o-', 'o-'])
-    })
-
-    it('handles a string', () => {
-      expect(fold.concatMap(h)('foo')).toBe('f-o-o-')
-      expect(fold.concatMap(i)('foo')).toBe('f-o-o-')
-      expect(fold.concatMap(j)('foo')).toEqual(['f-', 'o-', 'o-'])
-    })
-  })
-
   describe('#fold', () => {
     it('handles an array', () => {
       function f (b, a) { return [a].concat(b) }

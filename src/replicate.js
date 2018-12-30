@@ -1,8 +1,8 @@
 import array from './array'
+import concatMap from './concatMap'
 import curry from './curry'
 import isString from './internal/isString'
 import string from './string'
-import { concatMap } from './list/fold'
 
 /**
  * Returns a list of length `n` with `a` the value of every element.

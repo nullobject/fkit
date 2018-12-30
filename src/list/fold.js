@@ -2,10 +2,7 @@ import add from '../add'
 import append from '../append'
 import compare from '../compare'
 import compose from '../compose'
-import concat from '../concat'
-import concatWith from '../internal/concatWith'
 import curry from '../curry'
-import flattenStrings from '../internal/flattenStrings'
 import flip from '../flip'
 import isArray from '../internal/isArray'
 import isArrayOfStrings from '../internal/isArrayOfStrings'
@@ -21,30 +18,6 @@ import variadic from '../variadic'
  * @private
  * @module fkit/list/fold
  */
-
-/**
- * Returns a list that contains the elements in the list of `as` mapped with
- * the function `f` concatenated together.
- *
- * @summary Maps a function over a list and concatenates the results.
- *
- * @example
- *
- * F.concatMap(a => [a, 0], [1, 2, 3]) // [1, 0, 2, 0, 3, 0]
- *
- * F.concatMap(a => [a, '-'], 'foo') // 'f-o-o-'
- *
- * @curried
- * @function
- * @param f A function.
- * @param as A list.
- * @returns A new list.
- */
-export const concatMap = curry((f, as) => {
-  const bs = toArray(as).map(compose(flattenStrings, f))
-  const cs = bs.length > 0 ? bs : as
-  return concatWith(mempty(cs), bs)
-})
 
 /**
  * Returns a list that contains the elements in the list of `as` folded

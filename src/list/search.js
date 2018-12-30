@@ -1,6 +1,7 @@
 import always from '../always'
 import branch from '../branch'
 import compose from '../compose'
+import concatMap from '../concatMap'
 import curry from '../curry'
 import empty from '../empty'
 import equal from '../equal'
@@ -10,7 +11,6 @@ import isString from '../internal/isString'
 import not from '../not'
 import tail from '../tail'
 import tails from '../tails'
-import { concatMap } from './fold'
 import { reverse } from './map'
 
 /**
