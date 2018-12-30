@@ -10,34 +10,6 @@ import notEqual from './notEqual'
  */
 
 /**
- * Returns `true` if the value `a` is strictly equal (`===`) to the value `b`,
- * false otherwise.
- *
- * @summary The strict equality operator.
- *
- * @curried
- * @function
- * @param a A value.
- * @param b A value.
- * @returns A boolean value.
- */
-export const eq = equal
-
-/**
- * Returns `true` if the value `a` is strictly not equal (`!==`) to the value
- * `b`, false otherwise.
- *
- * @summary The strict inequality operator.
- *
- * @curried
- * @function
- * @param a A value.
- * @param b A value.
- * @returns A boolean value.
- */
-export const neq = notEqual
-
-/**
  * Returns `true` if the value `a` is greater than the value `b`, false
  * otherwise.
  *

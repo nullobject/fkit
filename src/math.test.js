@@ -1,38 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#eq', () => {
-    it('compares the values', () => {
-      const a = {}
-      const b = {}
-
-      expect(math.eq(1)(2)).toBe(false)
-      expect(math.eq(2)(2)).toBe(true)
-
-      expect(math.eq('lorem')('ipsum')).toBe(false)
-      expect(math.eq('lorem')('lorem')).toBe(true)
-
-      expect(math.eq(a)(b)).toBe(false)
-      expect(math.eq(a)(a)).toBe(true)
-    })
-  })
-
-  describe('#neq', () => {
-    it('compares the values', () => {
-      const a = {}
-      const b = {}
-
-      expect(math.neq(1)(2)).toBe(true)
-      expect(math.neq(2)(2)).toBe(false)
-
-      expect(math.neq('lorem')('ipsum')).toBe(true)
-      expect(math.neq('lorem')('lorem')).toBe(false)
-
-      expect(math.neq(a)(b)).toBe(true)
-      expect(math.neq(a)(a)).toBe(false)
-    })
-  })
-
   describe('#gt', () => {
     it('compares the values', () => {
       expect(math.gt(1)(2)).toBe(true)
