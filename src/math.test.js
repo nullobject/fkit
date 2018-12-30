@@ -1,12 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#sub', () => {
-    it('subtracts the values', () => {
-      expect(math.sub(2)(1)).toEqual(-1)
-    })
-  })
-
   describe('#mul', () => {
     it('multiplies the values', () => {
       expect(math.mul(2)(1)).toEqual(2)
