@@ -2,16 +2,6 @@ import compare from '../compare'
 import * as fold from '../../src/list/fold'
 
 describe('list.fold', () => {
-  describe('#maximum', () => {
-    it('handles an array of numbers', () => {
-      expect(fold.maximum([1, 2, 3])).toBe(3)
-    })
-
-    it('handles a string', () => {
-      expect(fold.maximum('foo')).toBe('o')
-    })
-  })
-
   describe('#minimum', () => {
     it('handles an array of numbers', () => {
       expect(fold.minimum([1, 2, 3])).toBe(1)
