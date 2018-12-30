@@ -5,6 +5,7 @@ export * from './obj'
 export * from './string'
 
 export { default as always } from './always'
+export { default as and } from './and'
 export { default as apply } from './apply'
 export { default as apply2 } from './apply2'
 export { default as apply3 } from './apply3'

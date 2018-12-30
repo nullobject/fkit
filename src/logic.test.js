@@ -1,15 +1,6 @@
 import * as logic from '../src/logic'
 
 describe('logic', () => {
-  describe('#and', () => {
-    it('ANDs the values', () => {
-      expect(logic.and(false)(false)).toBe(false)
-      expect(logic.and(false)(true)).toBe(false)
-      expect(logic.and(true)(false)).toBe(false)
-      expect(logic.and(true)(true)).toBe(true)
-    })
-  })
-
   describe('#or', () => {
     it('ORs the values', () => {
       expect(logic.or(false)(false)).toBe(false)
