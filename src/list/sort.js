@@ -1,6 +1,7 @@
 import compare from '../compare'
 import curry from '../curry'
-import { toArray, toList } from './base'
+import toArray from '../internal/toArray'
+import { toList } from './base'
 
 /**
  * This module defines operations for sorting lists.

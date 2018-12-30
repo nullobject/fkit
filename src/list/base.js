@@ -12,15 +12,6 @@ import mempty from '../internal/mempty'
  */
 
 /**
- * Converts the list of `as` to an array.
- *
- * @private
- */
-export function toArray (as) {
-  return isString(as) ? as.split('') : as
-}
-
-/**
  * Converts the list of `as` to a list of type `t`.
  *
  * @private

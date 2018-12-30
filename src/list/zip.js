@@ -1,6 +1,7 @@
 import curry from '../curry'
 import mempty from '../internal/mempty'
-import { prepend, toArray } from './base'
+import toArray from '../internal/toArray'
+import { prepend } from './base'
 import { pair } from './build'
 
 /**

@@ -9,8 +9,9 @@ import isArrayOfStrings from '../internal/isArrayOfStrings'
 import mempty from '../internal/mempty'
 import mul from '../mul'
 import tap from '../tap'
+import toArray from '../internal/toArray'
 import variadic from '../variadic'
-import { append, toArray } from './base'
+import { append } from './base'
 
 /**
  * This module defines fold operations on lists.
