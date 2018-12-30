@@ -22,20 +22,6 @@ import variadic from '../variadic'
  */
 
 /**
- * Returns the sum of the elements in the list of `as`.
- *
- * @summary Calculates the sum of the elements in a list.
- *
- * @example
- *
- * F.sum([1, 2, 3]) // 6
- *
- * @param as A list.
- * @returns A number.
- */
-export function sum (as) { return fold(add, 0, as) }
-
-/**
  * Returns the product of the elements in the list of `as`.
  *
  * @summary Calculates the product of the elements in a list.
