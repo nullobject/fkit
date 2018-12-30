@@ -1,6 +1,7 @@
 export * from './list'
 
 export { default as add } from './add'
+export { default as all } from './all'
 export { default as always } from './always'
 export { default as and } from './and'
 export { default as append } from './append'

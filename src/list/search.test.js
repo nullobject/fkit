@@ -1,22 +1,6 @@
 import * as search from '../../src/list/search'
 
 describe('list.search', () => {
-  describe('#all', () => {
-    it('handles an array', () => {
-      const p = a => a > 1
-      expect(search.all(p)([3])).toBe(true)
-      expect(search.all(p)([2, 3])).toBe(true)
-      expect(search.all(p)([3, 2, 1])).toBe(false)
-    })
-
-    it('handles a string', () => {
-      const p = a => a !== 'r'
-      expect(search.all(p)('b')).toBe(true)
-      expect(search.all(p)('ba')).toBe(true)
-      expect(search.all(p)('bar')).toBe(false)
-    })
-  })
-
   describe('#any', () => {
     it('handles an array', () => {
       const p = a => a > 1
