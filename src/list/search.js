@@ -9,7 +9,7 @@ import id from '../id'
 import isString from '../internal/isString'
 import not from '../not'
 import tail from '../tail'
-import { tails } from './base'
+import tails from '../tails'
 import { concatMap } from './fold'
 import { reverse } from './map'
 

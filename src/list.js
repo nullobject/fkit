@@ -1,4 +1,3 @@
-export * from './list/base'
 export * from './list/build'
 export * from './list/fold'
 export * from './list/map'
@@ -20,7 +19,6 @@ export * from './list/zip'
  * @summary Working with Lists
  *
  * @module fkit/list
- * @mixes module:fkit/list/base
  * @mixes module:fkit/list/build
  * @mixes module:fkit/list/fold
  * @mixes module:fkit/list/map
