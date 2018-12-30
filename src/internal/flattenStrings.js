@@ -1,3 +1,5 @@
+import concat from '../concat'
+import isArray from './isArray'
 import isArrayOfStrings from './isArrayOfStrings'
 
 /**
@@ -5,7 +7,7 @@ import isArrayOfStrings from './isArrayOfStrings'
  *
  * @private
  */
-export function flattenStrings (as) {
+export default function flattenStrings (as) {
   if (isArrayOfStrings(as)) {
     return concat(as)
   } else {
@@ -16,4 +18,3 @@ export function flattenStrings (as) {
     }
   }
 }
-

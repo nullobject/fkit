@@ -5,6 +5,7 @@ import compose from '../compose'
 import concat from '../concat'
 import concatWith from '../internal/concatWith'
 import curry from '../curry'
+import flattenStrings from '../internal/flattenStrings'
 import flip from '../flip'
 import isArray from '../internal/isArray'
 import isArrayOfStrings from '../internal/isArrayOfStrings'
@@ -20,23 +21,6 @@ import variadic from '../variadic'
  * @private
  * @module fkit/list/fold
  */
-
-/**
- * Flattens any strings in the list of `as`.
- *
- * @private
- */
-export function flattenStrings (as) {
-  if (isArrayOfStrings(as)) {
-    return concat(as)
-  } else {
-    if (isArray(as)) {
-      return as.map(flattenStrings)
-    } else {
-      return as
-    }
-  }
-}
 
 /**
  * Returns a list that contains the elements in the list of `as` mapped with

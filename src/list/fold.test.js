@@ -2,16 +2,6 @@ import compare from '../compare'
 import * as fold from '../../src/list/fold'
 
 describe('list.fold', () => {
-  describe('#flattenStrings', () => {
-    it('handles an array of numbers', () => {
-      expect(fold.flattenStrings([1, [2, 3]])).toEqual([1, [2, 3]])
-    })
-
-    it('handles an array of strings', () => {
-      expect(fold.flattenStrings(['a', ['b', 'c']])).toEqual(['a', 'bc'])
-    })
-  })
-
   describe('#concatMap', () => {
     const f = a => [a, 0]
     const g = a => [[a, 0]]
