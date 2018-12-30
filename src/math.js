@@ -1,6 +1,6 @@
 import curry from './curry'
 import equal from './equal'
-import { notEqual } from './fn'
+import notEqual from './notEqual'
 
 /**
  * This module defines math functions.

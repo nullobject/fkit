@@ -1,14 +1,4 @@
-import apply from './apply'
-import apply2 from './apply2'
 import curry from './curry'
-import variadic from './variadic'
-
-/**
- * This module defines basic operations on functions.
- *
- * @module fkit/fn
- * @summary Core Functions
- */
 
 /**
  * Returns `true` if the value `a` is strictly not equal (`!==`) to the value
@@ -25,4 +15,4 @@ import variadic from './variadic'
  * @param b A value.
  * @returns A boolean value.
  */
-export const notEqual = curry((a, b) => b !== a)
+export default curry((a, b) => b !== a)
