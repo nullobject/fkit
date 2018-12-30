@@ -1,5 +1,4 @@
 export * from './list'
-export * from './math'
 export * from './obj'
 export * from './string'
 
@@ -37,6 +36,7 @@ export { default as not } from './not'
 export { default as notEqual } from './notEqual'
 export { default as odd } from './odd'
 export { default as or } from './or'
+export { default as randomFloat } from './randomFloat'
 export { default as randomInt } from './randomInt'
 export { default as sub } from './sub'
 export { default as tap } from './tap'
