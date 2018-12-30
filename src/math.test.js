@@ -1,12 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#div', () => {
-    it('divides the values', () => {
-      expect(math.div(2)(1)).toEqual(0.5)
-    })
-  })
-
   describe('#mod', () => {
     it('modulos the values', () => {
       expect(math.mod(2)(1)).toEqual(1)
