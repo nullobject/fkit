@@ -14,27 +14,6 @@ import { take } from './sublist'
  */
 
 /**
- * Returns a list of length `n` with `a` the value of every element.
- *
- * @summary Replicates a value.
- *
- * @example
- *
- * F.replicate(3, 1) // [1, 1, 1]
- * F.replicate(3, 'a') // 'aaa'
- *
- * @curried
- * @function
- * @param n A number.
- * @param a A value.
- * @returns A new list.
- */
-export const replicate = curry((n, a) => {
-  const as = isString(a) ? string(n) : array(n)
-  return concatMap(() => [a], as)
-})
-
-/**
  * Returns a list of `n` elements randomly sampled from the list of `as`.
  *
  * @summary Samples random elements from a list.
