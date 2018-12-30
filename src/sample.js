@@ -1,13 +1,6 @@
-import curry from '../curry'
-import shuffle from '../shuffle'
-import { take } from './sublist'
-
-/**
- * This module defines operations for building lists.
- *
- * @private
- * @module fkit/list/build
- */
+import curry from './curry'
+import shuffle from './shuffle'
+import { take } from './list/sublist'
 
 /**
  * Returns a list of `n` elements randomly sampled from the list of `as`.
@@ -25,4 +18,4 @@ import { take } from './sublist'
  * @param as A list.
  * @returns A new list.
  */
-export const sample = curry((n, as) => take(n, shuffle(as)))
+export default curry((n, as) => take(n, shuffle(as)))
