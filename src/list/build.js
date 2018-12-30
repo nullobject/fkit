@@ -1,3 +1,4 @@
+import array from '../array'
 import curry from '../curry'
 import isString from '../internal/isString'
 import randomInt from '../randomInt'
@@ -10,20 +11,6 @@ import { take } from './sublist'
  * @private
  * @module fkit/list/build
  */
-
-/**
- * Returns an array of length `n`.
- *
- * @summary Creates a new array.
- *
- * @example
- *
- * F.array(3) // [undefined, undefined, undefined]
- *
- * @param n A number.
- * @returns A new array.
- */
-export function array (n) { return Array.apply(null, Array(n)) }
 
 /**
  * Returns an string of length `n`.

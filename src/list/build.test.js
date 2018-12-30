@@ -1,13 +1,6 @@
 import * as build from '../../src/list/build'
 
 describe('list.build', () => {
-  describe('#array', () => {
-    it('returns a new array', () => {
-      expect(build.array(0)).toEqual([])
-      expect(build.array(3)).toEqual([undefined, undefined, undefined])
-    })
-  })
-
   describe('#string', () => {
     it('returns a new string', () => {
       expect(build.string(0)).toBe('')
