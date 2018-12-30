@@ -1,6 +1,7 @@
 import append from '../append'
 import curry from '../curry'
 import empty from '../empty'
+import head from '../head'
 import isArray from '../internal/isArray'
 import isArrayOfStrings from '../internal/isArrayOfStrings'
 import isString from '../internal/isString'
@@ -13,21 +14,6 @@ import prepend from '../prepend'
  * @private
  * @module fkit/list/base
  */
-
-/**
- * Returns the first element in the list of `as`.
- *
- * @summary Gets the first element in a list.
- *
- * @example
- *
- * F.head([1, 2, 3]) // 1
- * F.head('foo') // 'f'
- *
- * @param as A list.
- * @returns A value or `undefined` if the list is empty.
- */
-export function head (as) { return as[0] }
 
 /**
  * Returns the last element in the list of `as`.
