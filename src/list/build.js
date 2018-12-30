@@ -1,9 +1,5 @@
-import array from '../array'
 import curry from '../curry'
-import isString from '../internal/isString'
-import randomInt from '../randomInt'
-import string from '../string'
-import { concatMap, concatWith, fold } from './fold'
+import shuffle from '../shuffle'
 import { take } from './sublist'
 
 /**
@@ -30,37 +26,3 @@ import { take } from './sublist'
  * @returns A new list.
  */
 export const sample = curry((n, as) => take(n, shuffle(as)))
-
-/**
- * Returns a list that contains the elements in the list of `as` randomly
- * shuffled using the [Fisher-Yates
- * algorithm](http://en.wikipedia.org/wiki/Fisher-Yates_shuffle).
- *
- * @summary Shuffles a list.
- *
- * @example
- *
- * F.shuffle([1, 2, 3]) // [2, 3, 1]
- * F.shuffle('abc') // 'bca'
- *
- * @param as A list.
- * @returns A new list.
- */
-export function shuffle (as) {
-  let i = -1
-
-  const f = (b, a) => {
-    const j = randomInt(0, ++i)
-
-    b[i] = b[j]
-    b[j] = a
-
-    return b
-  }
-
-  const r = array(as.length)
-  const bs = fold(f, r, as)
-  const s = isString(as) ? '' : []
-
-  return concatWith(s, bs)
-}

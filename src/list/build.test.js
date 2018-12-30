@@ -25,29 +25,4 @@ describe('list.build', () => {
       expect(['a', 'b', 'c']).toEqual(expect.arrayContaining(result.split('')))
     })
   })
-
-  describe('#shuffle', () => {
-    it('handles an empty array', () => {
-      expect(build.shuffle([])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(build.shuffle('')).toBe('')
-    })
-
-    it('handles an array of numbers', () => {
-      const result = build.shuffle([1, 2, 3])
-      expect(result).toEqual(expect.arrayContaining([1, 2, 3]))
-    })
-
-    it('handles an array of strings', () => {
-      const result = build.shuffle(['a', 'b', 'c'])
-      expect(result).toEqual(expect.arrayContaining(['a', 'b', 'c']))
-    })
-
-    it('handles a string', () => {
-      const result = build.shuffle('abc')
-      expect(result.split('')).toEqual(expect.arrayContaining(['a', 'b', 'c']))
-    })
-  })
 })
