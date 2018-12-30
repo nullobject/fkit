@@ -8,14 +8,6 @@ import curry from './curry'
  */
 
 /**
- * @summary Converts a string to lowercase.
- *
- * @param s A string.
- * @returns A new string.
- */
-export function toLower (s) { return s.toLowerCase() }
-
-/**
  * Returns the result of replacing term `a` with the string `b` in the string
  * `s`.
  *
