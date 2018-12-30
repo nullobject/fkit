@@ -1,24 +1,6 @@
 import * as base from '../../src/list/base'
 
 describe('list.base', () => {
-  describe('#init', () => {
-    it('handles an empty array', () => {
-      expect(base.init([])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(base.init('')).toBe('')
-    })
-
-    it('handles an array', () => {
-      expect(base.init([1, 2, 3])).toEqual([1, 2])
-    })
-
-    it('handles a string', () => {
-      expect(base.init('foo')).toBe('fo')
-    })
-  })
-
   describe('#tail', () => {
     it('handles an empty array', () => {
       expect(base.tail([])).toEqual([])
