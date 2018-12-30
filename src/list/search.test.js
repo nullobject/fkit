@@ -1,22 +1,6 @@
 import * as search from '../../src/list/search'
 
 describe('list.search', () => {
-  describe('#isPrefixOf', () => {
-    it('handles an array', () => {
-      expect(search.isPrefixOf([])([])).toBe(true)
-      expect(search.isPrefixOf([1])([])).toBe(false)
-      expect(search.isPrefixOf([1])([1, 2, 3])).toBe(true)
-      expect(search.isPrefixOf([2, 3])([1, 2, 3])).toBe(false)
-    })
-
-    it('handles a string', () => {
-      expect(search.isPrefixOf('')('')).toBe(true)
-      expect(search.isPrefixOf('f')('')).toBe(false)
-      expect(search.isPrefixOf('f')('foo')).toBe(true)
-      expect(search.isPrefixOf('oo')('foo')).toBe(false)
-    })
-  })
-
   describe('#isSuffixOf', () => {
     it('handles an array', () => {
       expect(search.isSuffixOf([])([])).toBe(true)

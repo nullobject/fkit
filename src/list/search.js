@@ -9,7 +9,7 @@ import equal from '../equal'
 import filter from '../filter'
 import head from '../head'
 import id from '../id'
-import isString from '../internal/isString'
+import isPrefixOf from '../isPrefixOf'
 import not from '../not'
 import reverse from '../reverse'
 import tail from '../tail'
@@ -21,38 +21,6 @@ import tails from '../tails'
  * @private
  * @module fkit/list/search
  */
-
-/**
- * Returns `true` if the list of `as` is a prefix of the list of `bs`, `false`
- * otherwise.
- *
- * @summary Determines if a list is a prefix of another list.
- *
- * @example
- *
- * F.isPrefixOf([], [1, 2, 3]) // true
- * F.isPrefixOf([1, 2], [1, 2, 3]) // true
- * F.isPrefixOf([2, 3], [1, 2, 3]) // false
- *
- * F.isPrefixOf('', 'foo') // true
- * F.isPrefixOf('fo', 'foo') // true
- * F.isPrefixOf('oo', 'foo') // false
- *
- * @curried
- * @function
- * @param as A list.
- * @param bs A list.
- * @returns A boolean value.
- */
-export const isPrefixOf = curry(function isPrefixOf (as, bs) {
-  if (empty(as)) {
-    return true
-  } else if (empty(bs)) {
-    return false
-  } else {
-    return head(as) === head(bs) && isPrefixOf(tail(as), tail(bs))
-  }
-})
 
 /**
  * Returns `true` if the list of `as` is a suffix of the list of `bs`, `false`
