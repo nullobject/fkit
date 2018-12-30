@@ -1,5 +1,6 @@
 import curry from '../curry'
 import isArray from '../internal/isArray'
+import isArrayOfStrings from '../internal/isArrayOfStrings'
 import isString from '../internal/isString'
 
 /**
@@ -8,15 +9,6 @@ import isString from '../internal/isString'
  * @private
  * @module fkit/list/base
  */
-
-/**
- * Returns true if the list of `as` is an array of strings, false otherwise.
- *
- * @private
- */
-export function isArrayOfStrings (as) {
-  return isArray(as) && as.length > 0 && as.reduce((a, b) => a && isString(b), true)
-}
 
 /**
  * Returns an empty monoid of `as`.

@@ -5,10 +5,11 @@ import curry from '../curry'
 import flatten from '../internal/flatten'
 import flip from '../flip'
 import isArray from '../internal/isArray'
+import isArrayOfStrings from '../internal/isArrayOfStrings'
 import mul from '../mul'
 import tap from '../tap'
 import variadic from '../variadic'
-import { append, isArrayOfStrings, mempty, toArray } from './base'
+import { append, mempty, toArray } from './base'
 
 /**
  * This module defines fold operations on lists.

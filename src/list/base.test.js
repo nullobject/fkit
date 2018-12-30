@@ -1,26 +1,6 @@
 import * as base from '../../src/list/base'
 
 describe('list.base', () => {
-  describe('#isArrayOfStrings', () => {
-    it('handles an empty array', () => {
-      expect(base.isArrayOfStrings([])).toBe(false)
-    })
-
-    it('handles an empty string', () => {
-      expect(base.isArrayOfStrings('')).toBe(false)
-    })
-
-    it('handles an array of numbers', () => {
-      expect(base.isArrayOfStrings([1, 2, 3])).toBe(false)
-      expect(base.isArrayOfStrings([1, [2, 3]])).toBe(false)
-    })
-
-    it('handles an array of strings', () => {
-      expect(base.isArrayOfStrings(['a', 'b', 'c'])).toBe(true)
-      expect(base.isArrayOfStrings(['a', ['b', 'c']])).toBe(false)
-    })
-  })
-
   describe('#length', () => {
     it('handles an empty array', () => {
       expect(base.length([])).toBe(0)
