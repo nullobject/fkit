@@ -22,16 +22,6 @@ describe('list.fold', () => {
     })
   })
 
-  describe('#maximumBy', () => {
-    it('handles an array of numbers', () => {
-      expect(fold.maximumBy(compare)([1, 2, 3])).toBe(3)
-    })
-
-    it('handles a string', () => {
-      expect(fold.maximumBy(compare)('foo')).toBe('o')
-    })
-  })
-
   describe('#minimumBy', () => {
     it('handles an array of numbers', () => {
       expect(fold.minimumBy(compare)([1, 2, 3])).toBe(1)
