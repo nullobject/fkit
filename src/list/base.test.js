@@ -1,24 +1,6 @@
 import * as base from '../../src/list/base'
 
 describe('list.base', () => {
-  describe('#length', () => {
-    it('handles an empty array', () => {
-      expect(base.length([])).toBe(0)
-    })
-
-    it('handles an empty string', () => {
-      expect(base.length('')).toBe(0)
-    })
-
-    it('handles an array', () => {
-      expect(base.length([1, 2, 3])).toBe(3)
-    })
-
-    it('handles a string', () => {
-      expect(base.length('foo')).toBe(3)
-    })
-  })
-
   describe('#empty', () => {
     it('handles an empty array', () => {
       expect(base.empty([])).toBe(true)

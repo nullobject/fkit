@@ -12,21 +12,6 @@ import mempty from '../internal/mempty'
  */
 
 /**
- * Returns the number of elements in the list of `as`.
- *
- * @summary Gets the length of a list.
- *
- * @example
- *
- * F.length([1, 2, 3]) // 3
- * F.length('foo') // 3
- *
- * @param as A list.
- * @returns A number.
- */
-export function length (as) { return as.length }
-
-/**
  * Returns `true` if the list of `as` is empty, `false` otherwise.
  *
  * @summary Determines if a list is empty.
