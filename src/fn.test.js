@@ -62,56 +62,6 @@ describe('fn', () => {
     })
   })
 
-  describe('#variadic', () => {
-    describe('with a unary function', () => {
-      function f (a) {}
-      let spy
-
-      beforeEach(() => {
-        spy = jest.fn(f)
-      })
-
-      it('handles an argument', () => {
-        fn.variadic(spy)(1)
-        expect(spy).toHaveBeenCalledWith([1])
-      })
-
-      it('handles a list of arguments', () => {
-        fn.variadic(spy)(1, [2, 3])
-        expect(spy).toHaveBeenCalledWith([1, [2, 3]])
-      })
-
-      it('handles an array of arguments', () => {
-        fn.variadic(spy)([1, [2, 3]])
-        expect(spy).toHaveBeenCalledWith([1, [2, 3]])
-      })
-    })
-
-    describe('with a binary function', () => {
-      function f (a, b) {}
-      let spy
-
-      beforeEach(() => {
-        spy = jest.fn(f)
-      })
-
-      it('handles an argument', () => {
-        fn.variadic(spy)(1)
-        expect(spy).toHaveBeenCalledWith(1, [])
-      })
-
-      it('handles a list of arguments', () => {
-        fn.variadic(spy)(1, 2, 3)
-        expect(spy).toHaveBeenCalledWith(1, [2, 3])
-      })
-
-      it('handles an array of arguments', () => {
-        fn.variadic(spy)([1, [2, 3]])
-        expect(spy).toHaveBeenCalledWith([1, [2, 3]], [])
-      })
-    })
-  })
-
   describe('#tap', () => {
     it('returns apply the given function to a value and return the value', () => {
       function f (a) {}

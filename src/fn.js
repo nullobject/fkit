@@ -1,7 +1,7 @@
 import apply from './apply'
 import apply2 from './apply2'
 import curry from './curry'
-import { slice } from './util'
+import variadic from './variadic'
 
 /**
  * This module defines basic operations on functions.
@@ -9,15 +9,6 @@ import { slice } from './util'
  * @module fkit/fn
  * @summary Core Functions
  */
-
-/**
- * Flattens the list of `as`.
- *
- * @private
- */
-export function flatten (as) {
-  return as.reduce((a, b) => a.concat(b), [])
-}
 
 /**
  * Returns a function that is the composition of the list of functions `fs`.
@@ -120,45 +111,6 @@ export function unary (f) {
  */
 export function binary (f) {
   return (f.length === 2) ? f : apply2(f)
-}
-
-/**
- * Returns a function that wraps the function `f` to accept any number of
- * arguments.
- *
- * The last named parameter will be given an array of arguments.
- *
- * @summary Converts a function to a variadic function.
- *
- * @example
- *
- * function f (head, tail) { ... }
- * F.variadic(f)(1, 2, 3) // f(1, [2, 3])
- *
- * @param f A function.
- * @returns A new function.
- */
-export function variadic (f) {
-  const arity = f.length
-
-  if (arity < 1) {
-    return f
-  } else if (arity === 1) {
-    return (...args) => {
-      const newArgs = (args.length === 1) ? flatten(args) : args
-
-      return f.call(this, newArgs)
-    }
-  } else {
-    return (...args) => {
-      const numMissingArgs = Math.max(arity - args.length - 1, 0)
-      const missingArgs = new Array(numMissingArgs)
-      const namedArgs = slice.call(args, 0, arity - 1)
-      const variadicArgs = slice.call(args, f.length - 1)
-
-      return f.apply(this, namedArgs.concat(missingArgs).concat([variadicArgs]))
-    }
-  }
 }
 
 /**

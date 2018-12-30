@@ -1,5 +1,6 @@
 import curry from './curry'
-import { flip, variadic } from './fn'
+import variadic from './variadic'
+import { flip } from './fn'
 import { difference } from './list/set'
 import { extend } from './util'
 import { isString } from './list/base'
