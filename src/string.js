@@ -8,14 +8,6 @@ import curry from './curry'
  */
 
 /**
- * @summary Converts a string to uppercase.
- *
- * @param s A string.
- * @returns A new string.
- */
-export function toUpper (s) { return s.toUpperCase() }
-
-/**
  * @summary Converts a string to lowercase.
  *
  * @param s A string.
