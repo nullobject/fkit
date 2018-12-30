@@ -4,6 +4,7 @@ import compare from '../compare'
 import compose from '../compose'
 import curry from '../curry'
 import flip from '../flip'
+import fold from '../fold'
 import isArray from '../internal/isArray'
 import isArrayOfStrings from '../internal/isArrayOfStrings'
 import mempty from '../internal/mempty'
@@ -18,26 +19,6 @@ import variadic from '../variadic'
  * @private
  * @module fkit/list/fold
  */
-
-/**
- * Returns a list that contains the elements in the list of `as` folded
- * left-to-right with the binary function `f` and starting value `s`.
- *
- * @summary Folds a list from left to right with a function.
- *
- * @example
- *
- * F.fold(F.flip(F.prepend), [], [1, 2, 3]) // [3, 2, 1]
- * F.fold(F.flip(F.prepend), '', 'foo') // 'oof'
- *
- * @curried
- * @function
- * @param f A binary function.
- * @param s A starting value.
- * @param as A list.
- * @returns A value.
- */
-export const fold = curry((f, s, as) => toArray(as).reduce(f, s))
 
 /**
  * Returns a list that contains the elements in the list of `as` folded
