@@ -1,7 +1,8 @@
 import curry from '../curry'
+import empty from '../empty'
 import equal from '../equal'
 import isString from '../internal/isString'
-import { empty, head, last, prepend, tail } from './base'
+import { head, last, prepend, tail } from './base'
 
 /**
  * This module defines sublist operations on lists.

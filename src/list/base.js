@@ -1,4 +1,5 @@
 import curry from '../curry'
+import empty from '../empty'
 import isArray from '../internal/isArray'
 import isArrayOfStrings from '../internal/isArrayOfStrings'
 import isString from '../internal/isString'
@@ -10,24 +11,6 @@ import mempty from '../internal/mempty'
  * @private
  * @module fkit/list/base
  */
-
-/**
- * Returns `true` if the list of `as` is empty, `false` otherwise.
- *
- * @summary Determines if a list is empty.
- *
- * @example
- *
- * F.empty([]) // true
- * F.empty([1, 2, 3]) // false
- *
- * F.empty('') // true
- * F.empty('foo') // false
- *
- * @param as A list.
- * @returns A boolean value.
- */
-export function empty (as) { return as.length === 0 }
 
 /**
  * Returns a list that contains the value `a` appended to the list of `bs`.
