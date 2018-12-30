@@ -1,13 +1,6 @@
 import * as fn from '../src/fn'
 
 describe('fn', () => {
-  describe('#id', () => {
-    it('returns a function that returns its argument', () => {
-      const a = {}
-      expect(fn.id(a)).toBe(a)
-    })
-  })
-
   describe('#apply', () => {
     function f () {}
     let spy

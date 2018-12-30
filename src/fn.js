@@ -17,20 +17,6 @@ export function flatten (as) {
 }
 
 /**
- * Returns the value `a` unchanged.
- *
- * @summary The identity function.
- *
- * @example
- *
- * F.id(1) // 1
- *
- * @param a A value.
- * @returns The value `a`.
- */
-export function id (a) { return a }
-
-/**
  * Returns the result of the function `f` applied to the value `a`.
  *
  * @summary Applies a function to a value.

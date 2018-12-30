@@ -1,5 +1,6 @@
+import id from '../id'
 import { empty, head, isString, tail, tails } from './base'
-import { always, compose, curry, equal, id } from '../fn'
+import { always, compose, curry, equal } from '../fn'
 import { concatMap } from './fold'
 import { branch, not } from '../logic'
 import { reverse } from './map'

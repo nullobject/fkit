@@ -1,6 +1,7 @@
+import id from '../id'
 import { append, empty, head, mempty, prepend, pure, tail } from './base'
 import { pair } from './build'
-import { compose, curry, equal, flip, id } from '../fn'
+import { compose, curry, equal, flip } from '../fn'
 import { concat, fold, foldRight } from './fold'
 import { map } from './map'
 import { any, filter } from './search'
