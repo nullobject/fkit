@@ -19,13 +19,6 @@ function buildObject () {
 describe('object', () => {
   const target = buildObject()
 
-  describe('#omit', () => {
-    it('copies the given object without the properties', () => {
-      const result = obj.omit(['name', 'age', 'address'])(target)
-      expect(result).toEqual({ hello: spy })
-    })
-  })
-
   describe('#pairs', () => {
     it('returns the key-value pairs of the given object', () => {
       const result = obj.pairs(target)
