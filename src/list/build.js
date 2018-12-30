@@ -1,7 +1,7 @@
 import curry from '../curry'
+import randomInt from '../randomInt'
 import { isString } from './base'
 import { concatMap, concatWith, fold } from './fold'
-import { randomInt } from '../math'
 import { take } from './sublist'
 
 /**
