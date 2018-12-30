@@ -1,24 +1,6 @@
 import * as base from '../../src/list/base'
 
 describe('list.base', () => {
-  describe('#surround', () => {
-    it('handles an empty array', () => {
-      expect(base.surround(1)(4)([])).toEqual([1, 4])
-    })
-
-    it('handles an empty string', () => {
-      expect(base.surround('fo')('ar')('')).toBe('foar')
-    })
-
-    it('handles an array', () => {
-      expect(base.surround(1)(4)([2, 3])).toEqual([1, 2, 3, 4])
-    })
-
-    it('handles a string', () => {
-      expect(base.surround('fo')('ar')('ob')).toBe('foobar')
-    })
-  })
-
   describe('#head', () => {
     it('handles an empty array', () => {
       expect(base.head([])).toBeUndefined()
