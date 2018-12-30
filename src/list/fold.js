@@ -1,9 +1,10 @@
 import compose from '../compose'
 import curry from '../curry'
 import flatten from '../internal/flatten'
+import flip from '../flip'
 import variadic from '../variadic'
 import { append, isArray, isArrayOfStrings, mempty, toArray } from './base'
-import { compare, flip, tap } from '../fn'
+import { compare, tap } from '../fn'
 import { add, mul } from '../math'
 
 /**

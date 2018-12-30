@@ -1,15 +1,6 @@
 import * as fn from '../src/fn'
 
 describe('fn', () => {
-  describe('#flip', () => {
-    it('flips the arguments for the given function', () => {
-      function f (a, b) {}
-      const spy = jest.fn(f)
-      fn.flip(spy)('hello')('world')
-      expect(spy).toHaveBeenCalledWith('world', 'hello')
-    })
-  })
-
   describe('#always', () => {
     it('returns a function that returns a constant value', () => {
       const f = fn.always(1)

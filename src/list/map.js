@@ -1,6 +1,6 @@
 import curry from '../curry'
+import flip from '../flip'
 import { empty, head, mempty, prepend, tail, toArray } from './base'
-import { flip } from '../fn'
 import { concat } from './fold'
 
 /**
