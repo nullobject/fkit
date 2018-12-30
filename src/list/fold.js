@@ -8,7 +8,6 @@ import fold from '../fold'
 import foldRight from '../foldRight'
 import isArray from '../internal/isArray'
 import isArrayOfStrings from '../internal/isArrayOfStrings'
-import minimumBy from '../minimumBy'
 import mempty from '../internal/mempty'
 import mul from '../mul'
 import tap from '../tap'
@@ -21,21 +20,6 @@ import variadic from '../variadic'
  * @private
  * @module fkit/list/fold
  */
-
-/**
- * Returns the minimum value in the list of `as`.
- *
- * @summary Calculates the minimum value of a list.
- *
- * @example
- *
- * F.minimum([1, 2, 3]) // 1
- * F.minimum('abc') // 'a'
- *
- * @param as A list.
- * @returns A value.
- */
-export const minimum = minimumBy(compare)
 
 /**
  * Returns the sum of the elements in the list of `as`.
