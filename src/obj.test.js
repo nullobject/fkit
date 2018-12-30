@@ -33,13 +33,6 @@ describe('object', () => {
     })
   })
 
-  describe('#keys', () => {
-    it('returns the keys of the given object', () => {
-      const result = obj.keys(target)
-      expect(result).toEqual(['name', 'age', 'address', 'hello'])
-    })
-  })
-
   describe('#values', () => {
     it('returns the values of the given object', () => {
       const result = obj.values(target)

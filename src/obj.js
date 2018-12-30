@@ -2,6 +2,7 @@ import copy from './copy'
 import curry from './curry'
 import flip from './flip'
 import get from './get'
+import keys from './keys'
 import set from './set'
 import { difference } from './list/set'
 
@@ -48,23 +49,6 @@ export const omit = curry((ks, o) =>
  */
 export function pairs (o) {
   return keys(o).map(k => [k, get(k, o)])
-}
-
-/**
- * Returns a list of keys for the properties of the object `o`.
- *
- * @summary Gets the keys of an object.
- *
- * @example
- *
- * var person = { name: 'Jane', age: 20, city: 'Melbourne' }
- * F.keys(person) // ['name', 'age', 'city']
- *
- * @param o An object.
- * @returns A new list.
- */
-export function keys (o) {
-  return Object.keys(o)
 }
 
 /**
