@@ -1,14 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#gte', () => {
-    it('compares the values', () => {
-      expect(math.gte(1)(2)).toBe(true)
-      expect(math.gte(2)(1)).toBe(false)
-      expect(math.gte(2)(2)).toBe(true)
-    })
-  })
-
   describe('#lt', () => {
     it('compares the values', () => {
       expect(math.lt(1)(2)).toBe(false)

@@ -10,20 +10,6 @@ import notEqual from './notEqual'
  */
 
 /**
- * Returns `true` if the value `a` is greater than or equal to the value `b`
- * false otherwise.
- *
- * @summary The greater than or equal operator.
- *
- * @curried
- * @function
- * @param a A number.
- * @param b A number.
- * @returns A boolean value.
- */
-export const gte = curry((a, b) => b >= a)
-
-/**
  * Returns `true` if the value `a` is less than the value `b`, false otherwise.
  *
  * @summary The less than operator.
