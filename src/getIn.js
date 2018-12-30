@@ -1,5 +1,5 @@
 import curry from './curry'
-import { isString } from './list/base'
+import isString from './internal/isString'
 
 /**
  * Returns the property at the key path `ks` in the object `o`.

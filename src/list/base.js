@@ -1,5 +1,6 @@
 import curry from '../curry'
 import isArray from '../internal/isArray'
+import isString from '../internal/isString'
 
 /**
  * This module defines basic operations on lists.
@@ -7,13 +8,6 @@ import isArray from '../internal/isArray'
  * @private
  * @module fkit/list/base
  */
-
-/**
- * Returns true if `as` is a string or an array of strings.
- *
- * @private
- */
-export function isString (as) { return (typeof as === 'string') }
 
 /**
  * Returns true if the list of `as` is an array of strings, false otherwise.
