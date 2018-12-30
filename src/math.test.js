@@ -1,12 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#mod', () => {
-    it('modulos the values', () => {
-      expect(math.mod(2)(1)).toEqual(1)
-    })
-  })
-
   describe('#max', () => {
     it('handles numbers', () => {
       expect(math.max(1)(2)).toEqual(2)
