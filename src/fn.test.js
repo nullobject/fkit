@@ -1,18 +1,6 @@
 import * as fn from '../src/fn'
 
 describe('fn', () => {
-  describe('#uncurry', () => {
-    it('uncurries a binary function', () => {
-      function f (a, b) {}
-      const spy = jest.fn(f)
-      const g = fn.uncurry(spy)
-
-      expect(f).not.toEqual(g)
-      g(['hello', 'world'])
-      expect(spy).toHaveBeenCalledWith('hello', 'world')
-    })
-  })
-
   describe('#unary', () => {
     it('returns a unary function', () => {
       const spy = jest.fn()
