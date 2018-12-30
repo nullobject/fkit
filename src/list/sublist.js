@@ -3,8 +3,9 @@ import empty from '../empty'
 import equal from '../equal'
 import head from '../head'
 import isString from '../internal/isString'
+import last from '../last'
 import prepend from '../prepend'
-import { last, tail } from './base'
+import { tail } from './base'
 
 /**
  * This module defines sublist operations on lists.
