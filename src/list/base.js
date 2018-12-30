@@ -1,4 +1,5 @@
 import curry from '../curry'
+import isArray from '../internal/isArray'
 
 /**
  * This module defines basic operations on lists.
@@ -6,13 +7,6 @@ import curry from '../curry'
  * @private
  * @module fkit/list/base
  */
-
-/**
- * Returns true if `as` is an array.
- *
- * @private
- */
-export function isArray (as) { return Array.isArray(as) }
 
 /**
  * Returns true if `as` is a string or an array of strings.
