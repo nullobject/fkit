@@ -14,23 +14,6 @@ import { take } from './sublist'
  */
 
 /**
- * Returns an array of numbers of length `n` starting from `a`.
- *
- * @summary Creates a new array of numbers.
- *
- * @example
- *
- * F.range(1, 3) // [1, 2, 3]
- *
- * @curried
- * @function
- * @param a A number.
- * @param n A number.
- * @returns A new array.
- */
-export const range = curry((a, n) => array(n).map((_, i) => a + i))
-
-/**
  * Returns a list of length `n` with `a` the value of every element.
  *
  * @summary Replicates a value.

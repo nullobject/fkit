@@ -1,13 +1,6 @@
 import * as build from '../../src/list/build'
 
 describe('list.build', () => {
-  describe('#range', () => {
-    it('returns an array of numbers', () => {
-      expect(build.range(1)(3)).toEqual([1, 2, 3])
-      expect(build.range(1)(1)).toEqual([1])
-    })
-  })
-
   describe('#replicate', () => {
     it('handles a number', () => {
       expect(build.replicate(0)(1)).toEqual([])
