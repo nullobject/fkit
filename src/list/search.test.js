@@ -1,20 +1,6 @@
 import * as search from '../../src/list/search'
 
 describe('list.search', () => {
-  describe('#find', () => {
-    it('handles an array', () => {
-      const p = a => a > 1
-      expect(search.find(p)([])).toBeUndefined()
-      expect(search.find(p)([1, 2, 3])).toBe(2)
-    })
-
-    it('handles a string', () => {
-      const p = a => a === 'o'
-      expect(search.find(p)('')).toBeUndefined()
-      expect(search.find(p)('foo')).toBe('o')
-    })
-  })
-
   describe('#partition', () => {
     it('handles an array', () => {
       const p = a => a > 1

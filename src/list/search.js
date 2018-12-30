@@ -6,7 +6,6 @@ import curry from '../curry'
 import empty from '../empty'
 import equal from '../equal'
 import filter from '../filter'
-import findIndices from '../findIndices'
 import head from '../head'
 import id from '../id'
 import isString from '../internal/isString'
@@ -21,28 +20,6 @@ import tails from '../tails'
  * @private
  * @module fkit/list/search
  */
-
-/**
- * Returns an element in the list of `as` that satisfies the predicate function
- * `p`.
- *
- * @summary Finds an element in a list that satisfies a predicate function.
- *
- * @example
- *
- * F.find(F.gt(1), []) // undefined
- * F.find(F.gt(1), [1, 2, 3]) // 2
- *
- * F.find(F.eq('o'), '') // undefined
- * F.find(F.eq('o'), 'foo') // 'o'
- *
- * @curried
- * @function
- * @param p A predicate function.
- * @param as A list.
- * @returns A value or `undefined` if no value was found.
- */
-export const find = curry((p, as) => head(filter(p, as)))
 
 /**
  * Returns a list that contains the elements in the list of `as` split into a
