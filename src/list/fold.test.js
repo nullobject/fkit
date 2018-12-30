@@ -12,54 +12,6 @@ describe('list.fold', () => {
     })
   })
 
-  describe('#concat', () => {
-    it('handles an empty array', () => {
-      expect(fold.concat([])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(fold.concat('')).toBe('')
-    })
-
-    it('handles a list of numbers', () => {
-      expect(fold.concat(1, 2, 3, 4, 5, 6)).toEqual([1, 2, 3, 4, 5, 6])
-      expect(fold.concat([1], [2, 3], [4, 5, 6])).toEqual([1, 2, 3, 4, 5, 6])
-    })
-
-    it('handles a list of strings', () => {
-      expect(fold.concat('foobar')).toBe('foobar')
-      expect(fold.concat('f', 'oo', 'bar')).toBe('foobar')
-    })
-
-    it('handles an array of numbers', () => {
-      expect(fold.concat([1, 2, 3, 4, 5, 6])).toEqual([1, 2, 3, 4, 5, 6])
-      expect(fold.concat([[1], [2, 3], [4, 5, 6]])).toEqual([1, 2, 3, 4, 5, 6])
-
-      expect(fold.concat([[[1]], [[2, 3]], [[4, 5, 6]]])).toEqual([[1], [2, 3], [4, 5, 6]])
-      expect(fold.concat([[[1]], [[2, 3], [4, 5, 6]]])).toEqual([[1], [2, 3], [4, 5, 6]])
-    })
-
-    it('handles an array of strings', () => {
-      expect(fold.concat(['foobar'])).toBe('foobar')
-      expect(fold.concat(['f', 'oo', 'bar'])).toBe('foobar')
-
-      expect(fold.concat([['f'], ['oo'], ['bar']])).toEqual(['f', 'oo', 'bar'])
-      expect(fold.concat([['f'], ['oo', 'bar']])).toEqual(['f', 'oo', 'bar'])
-    })
-
-    it('handles a heterogenous list', () => {
-      expect(fold.concat(1, 2, 3, 'foo')).toEqual([1, 2, 3, 'foo'])
-      expect(fold.concat(1, 2, 3, ['foo'])).toEqual([1, 2, 3, 'foo'])
-      expect(fold.concat([1, 2, 3], 'foo')).toEqual([1, 2, 3, 'foo'])
-      expect(fold.concat([1, 2, 3], ['foo'])).toEqual([1, 2, 3, 'foo'])
-
-      expect(fold.concat('foo', 1, 2, 3)).toEqual(['foo', 1, 2, 3])
-      expect(fold.concat('foo', [1, 2, 3])).toEqual(['foo', 1, 2, 3])
-      expect(fold.concat(['foo'], 1, 2, 3)).toEqual(['foo', 1, 2, 3])
-      expect(fold.concat(['foo'], [1, 2, 3])).toEqual(['foo', 1, 2, 3])
-    })
-  })
-
   describe('#concatMap', () => {
     const f = a => [a, 0]
     const g = a => [[a, 0]]

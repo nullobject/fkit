@@ -1,3 +1,4 @@
+import concat from '../concat'
 import curry from '../curry'
 import empty from '../empty'
 import flip from '../flip'
@@ -6,7 +7,6 @@ import mempty from '../internal/mempty'
 import prepend from '../prepend'
 import tail from '../tail'
 import toArray from '../internal/toArray'
-import { concat } from './fold'
 
 /**
  * This module defines map operations on lists.

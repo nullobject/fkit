@@ -2,6 +2,7 @@ import add from '../add'
 import append from '../append'
 import compare from '../compare'
 import compose from '../compose'
+import concat from '../concat'
 import concatWith from '../internal/concatWith'
 import curry from '../curry'
 import flip from '../flip'
@@ -36,23 +37,6 @@ export function flattenStrings (as) {
     }
   }
 }
-
-/**
- * Returns a list that contains the concatenated elements in the list of
- * `as`.
- *
- * @summary Concatenates lists.
- *
- * @example
- *
- * F.concat([1], [2, 3], [4, 5, 6]) // [1, 2, 3, 4, 5, 6]
- * F.concat('f', 'oo', 'bar') // 'foobar'
- *
- * @function
- * @param as A list.
- * @returns A new list.
- */
-export const concat = variadic(as => concatWith(mempty(as), as))
 
 /**
  * Returns a list that contains the elements in the list of `as` mapped with
