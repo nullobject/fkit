@@ -1,5 +1,5 @@
+import curry from '../curry'
 import { isString } from './base'
-import { curry } from '../fn'
 import { concatMap, concatWith, fold } from './fold'
 import { randomInt } from '../math'
 import { take } from './sublist'

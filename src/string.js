@@ -1,4 +1,4 @@
-import { curry } from './fn'
+import curry from './curry'
 
 /**
  * This module defines string functions.

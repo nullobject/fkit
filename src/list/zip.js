@@ -1,6 +1,6 @@
+import curry from '../curry'
 import { mempty, prepend, toArray } from './base'
 import { pair } from './build'
-import { curry } from '../fn'
 
 /**
  * This module defines zip operations on lists.

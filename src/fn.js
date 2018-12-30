@@ -1,3 +1,4 @@
+import curry from './curry'
 import { slice } from './util'
 
 /**
@@ -142,35 +143,6 @@ export const flip = curry((f, a, b) => f(b, a))
  * @returns A new function.
  */
 export function always (a) { return () => a }
-
-/**
- * Returns a function that allows partial application of the arguments to the
- * function `f`.
- *
- * @summary Converts a function to a curried function.
- *
- * @example
- *
- * var add = F.curry((a, b) => a + b)
- * add(1)(2) // 3
- *
- * @param f A function.
- * @returns A new function.
- */
-export function curry (f) {
-  const arity = f.length
-
-  const g = oldArgs => {
-    return (...args) => {
-      const newArgs = oldArgs.concat((args.length > 0) ? args : undefined)
-
-      // If we have enough args, then apply the function.
-      return (newArgs.length >= arity) ? f.apply(undefined, newArgs) : g(newArgs)
-    }
-  }
-
-  return (arity <= 1) ? f : g([])
-}
 
 /**
  * Returns a function that wraps the binary function `f` to accept a pair.

@@ -1,5 +1,6 @@
+import curry from '../curry'
 import { append, isArray, isArrayOfStrings, mempty, toArray } from './base'
-import { compare, compose, curry, flatten, flip, tap, variadic } from '../fn'
+import { compare, compose, flatten, flip, tap, variadic } from '../fn'
 import { add, mul } from '../math'
 
 /**
