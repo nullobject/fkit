@@ -19,13 +19,6 @@ function buildObject () {
 describe('object', () => {
   const target = buildObject()
 
-  describe('#set', () => {
-    it('sets the given property', () => {
-      const result = obj.set('name')('Steve')(target)
-      expect(result).toHaveProperty('name', 'Steve')
-    })
-  })
-
   describe('#update', () => {
     it('updates the given property', () => {
       const result = obj.update('age')(a => a + 1)(target)
