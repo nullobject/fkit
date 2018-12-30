@@ -1,8 +1,7 @@
+import copy from './copy'
 import curry from './curry'
 import flip from './flip'
-import variadic from './variadic'
 import { difference } from './list/set'
-import { extend } from './util'
 import { isString } from './list/base'
 
 /**
@@ -11,26 +10,6 @@ import { isString } from './list/base'
  * @module fkit/obj
  * @summary Objects
  */
-
-/**
- * Returns a copy of the objects in the list of `os`.
- *
- * Properties with the same key will take precedence from right to left.
- *
- * The copy will have the *same* prototype as the *first* object in the list.
- *
- * @summary Creates a copy of an object.
- *
- * @example
- *
- * var person = { name: 'Jane', age: 20, city: 'Melbourne' }
- * F.copy(person, { name: 'Steve' }) // { name: 'Steve', age: 20, city: 'Melbourne' }
- *
- * @function
- * @param os A list.
- * @returns A new object.
- */
-export const copy = variadic((o, ps) => extend(Object.create(Object.getPrototypeOf(o)), [o].concat(ps)))
 
 /**
  * Returns the property at the key `k` in the object `o`.

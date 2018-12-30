@@ -19,18 +19,6 @@ function buildObject () {
 describe('object', () => {
   const target = buildObject()
 
-  describe('#copy', () => {
-    const result = obj.copy(target, { age: 21 })
-
-    it('copies the properties of the given objects', () => {
-      expect(result).toEqual({ name: 'Jane', age: 21, address: { city: 'Melbourne', country: 'Australia' }, hello: spy })
-    })
-
-    it('preserves the prototype of the target object', () => {
-      expect(result).toBeInstanceOf(MyObject)
-    })
-  })
-
   describe('#get', () => {
     it('returns the property at the given key', () => {
       expect(obj.get('name')(target)).toEqual('Jane')
