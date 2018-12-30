@@ -1,13 +1,6 @@
 import curry from './curry'
 
 /**
- * This module defines string functions.
- *
- * @module fkit/string
- * @summary Strings
- */
-
-/**
  * Returns the result of replacing term `a` with the string `b` in the string
  * `s`.
  *
@@ -25,4 +18,4 @@ import curry from './curry'
  * @param s A string.
  * @returns A new string.
  */
-export const replace = curry((a, b, s) => s.replace(a, b))
+export default curry((a, b, s) => s.replace(a, b))

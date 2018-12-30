@@ -1,5 +1,4 @@
 export * from './list'
-export * from './string'
 
 export { default as add } from './add'
 export { default as always } from './always'
@@ -47,6 +46,7 @@ export { default as pairs } from './pairs'
 export { default as pick } from './pick'
 export { default as randomFloat } from './randomFloat'
 export { default as randomInt } from './randomInt'
+export { default as replace } from './replace'
 export { default as set } from './set'
 export { default as sub } from './sub'
 export { default as tap } from './tap'
