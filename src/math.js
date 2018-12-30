@@ -10,20 +10,6 @@ import notEqual from './notEqual'
  */
 
 /**
- * Returns `true` if the value `a` is less than or equal to the value `b`,
- * false otherwise.
- *
- * @summary The less than or equal operator.
- *
- * @curried
- * @function
- * @param a A number.
- * @param b A number.
- * @returns A boolean value.
- */
-export const lte = curry((a, b) => b <= a)
-
-/**
  * Returns `true` if the value `a` is even, false otherwise.
  *
  * @summary Tests whether a value is even.

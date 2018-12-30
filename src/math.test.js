@@ -1,14 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#lte', () => {
-    it('compares the values', () => {
-      expect(math.lte(1)(2)).toBe(false)
-      expect(math.lte(2)(1)).toBe(true)
-      expect(math.lte(2)(2)).toBe(true)
-    })
-  })
-
   describe('#even', () => {
     it('tests whether a value is even', () => {
       expect(math.even(1)).toBe(false)
