@@ -12,15 +12,6 @@ import mempty from '../internal/mempty'
  */
 
 /**
- * Converts the list of `as` to a list of type `t`.
- *
- * @private
- */
-export function toList (as, t) {
-  return t === 'string' ? as.join('') : as
-}
-
-/**
  * Returns the number of elements in the list of `as`.
  *
  * @summary Gets the length of a list.
