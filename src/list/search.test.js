@@ -27,20 +27,6 @@ describe('list.search', () => {
     })
   })
 
-  describe('#filter', () => {
-    it('handles an array', () => {
-      const p = a => a > 1
-      expect(search.filter(p)([])).toEqual([])
-      expect(search.filter(p)([1, 2, 3])).toEqual([2, 3])
-    })
-
-    it('handles a string', () => {
-      const p = a => a === 'o'
-      expect(search.filter(p)('')).toBe('')
-      expect(search.filter(p)('foo')).toBe('oo')
-    })
-  })
-
   describe('#partition', () => {
     it('handles an array', () => {
       const p = a => a > 1

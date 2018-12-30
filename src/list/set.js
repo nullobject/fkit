@@ -4,6 +4,7 @@ import concat from '../concat'
 import curry from '../curry'
 import empty from '../empty'
 import equal from '../equal'
+import filter from '../filter'
 import flip from '../flip'
 import fold from '../fold'
 import foldRight from '../foldRight'
@@ -15,7 +16,7 @@ import pair from '../pair'
 import prepend from '../prepend'
 import pure from '../internal/pure'
 import tail from '../tail'
-import { any, filter } from './search'
+import { any } from './search'
 
 /**
  * This module defines set operations on lists.
