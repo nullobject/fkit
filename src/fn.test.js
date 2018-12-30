@@ -1,13 +1,6 @@
 import * as fn from '../src/fn'
 
 describe('fn', () => {
-  describe('#always', () => {
-    it('returns a function that returns a constant value', () => {
-      const f = fn.always(1)
-      expect(f()).toBe(1)
-    })
-  })
-
   describe('#uncurry', () => {
     it('uncurries a binary function', () => {
       function f (a, b) {}
