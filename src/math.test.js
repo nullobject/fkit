@@ -1,13 +1,6 @@
 import * as math from '../src/math'
 
 describe('math', () => {
-  describe('#inc', () => {
-    it('increments the value', () => {
-      expect(math.inc(1)).toEqual(2)
-      expect(math.inc(2)).toEqual(3)
-    })
-  })
-
   describe('#dec', () => {
     it('decrements the value', () => {
       expect(math.dec(3)).toEqual(2)

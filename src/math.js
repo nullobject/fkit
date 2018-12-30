@@ -10,16 +10,6 @@ import notEqual from './notEqual'
  */
 
 /**
- * Returns the result of `a + 1`.
- *
- * @summary Increments a number.
- *
- * @param a A number.
- * @returns A number.
- */
-export function inc (a) { return a + 1 }
-
-/**
  * Returns the result of `a - 1`.
  *
  * @summary Decrements a number.
