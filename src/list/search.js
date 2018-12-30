@@ -3,9 +3,10 @@ import compose from '../compose'
 import curry from '../curry'
 import equal from '../equal'
 import id from '../id'
+import not from '../not'
 import { empty, head, isString, tail, tails } from './base'
 import { concatMap } from './fold'
-import { branch, not } from '../logic'
+import { branch } from '../logic'
 import { reverse } from './map'
 
 /**

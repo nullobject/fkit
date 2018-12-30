@@ -1,13 +1,6 @@
 import * as logic from '../src/logic'
 
 describe('logic', () => {
-  describe('#not', () => {
-    it('NOTs the value', () => {
-      expect(logic.not(false)).toBe(true)
-      expect(logic.not(true)).toBe(false)
-    })
-  })
-
   describe('#branch', () => {
     const f = jest.fn()
     const g = jest.fn()

@@ -11,21 +11,6 @@ import or from './or'
  */
 
 /**
- * Returns true if `a` is not truthy, false otherwise.
- *
- * @summary The logical NOT operator.
- *
- * @example
- *
- * F.not(true) // false
- * F.not(false) // true
- *
- * @param a A boolean.
- * @returns A boolean value.
- */
-export function not (a) { return !a }
-
-/**
  * If `p(a)` is true then `f` is applied to `a`, otherwise `g` is applied to
  * `a`.
  *
