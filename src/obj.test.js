@@ -19,13 +19,6 @@ function buildObject () {
 describe('object', () => {
   const target = buildObject()
 
-  describe('#pairs', () => {
-    it('returns the key-value pairs of the given object', () => {
-      const result = obj.pairs(target)
-      expect(result).toEqual([['name', 'Jane'], ['age', 20], ['address', { city: 'Melbourne', country: 'Australia' }], ['hello', spy]])
-    })
-  })
-
   describe('#values', () => {
     it('returns the values of the given object', () => {
       const result = obj.values(target)
