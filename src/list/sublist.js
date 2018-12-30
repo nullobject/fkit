@@ -5,7 +5,7 @@ import head from '../head'
 import isString from '../internal/isString'
 import last from '../last'
 import prepend from '../prepend'
-import { tail } from './base'
+import tail from '../tail'
 
 /**
  * This module defines sublist operations on lists.

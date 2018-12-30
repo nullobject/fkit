@@ -7,6 +7,7 @@ import isArrayOfStrings from '../internal/isArrayOfStrings'
 import isString from '../internal/isString'
 import mempty from '../internal/mempty'
 import prepend from '../prepend'
+import tail from '../tail'
 
 /**
  * This module defines basic operations on lists.
@@ -14,22 +15,6 @@ import prepend from '../prepend'
  * @private
  * @module fkit/list/base
  */
-
-/**
- * Returns a list that contains the elements after the first element in the
- * list of `as`.
- *
- * @summary Get the elements after the first element in a list.
- *
- * @example
- *
- * F.tail([1, 2, 3]) // [2, 3]
- * F.tail('foo') // 'oo'
- *
- * @param as A list.
- * @returns A new list.
- */
-export function tail (as) { return as.slice(1) }
 
 /**
  * Returns a list that contains all initial segments of the list of `as`.

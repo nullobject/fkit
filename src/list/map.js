@@ -4,8 +4,8 @@ import flip from '../flip'
 import head from '../head'
 import mempty from '../internal/mempty'
 import prepend from '../prepend'
+import tail from '../tail'
 import toArray from '../internal/toArray'
-import { tail } from './base'
 import { concat } from './fold'
 
 /**
