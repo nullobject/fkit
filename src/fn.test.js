@@ -1,13 +1,6 @@
 import * as fn from '../src/fn'
 
 describe('fn', () => {
-  describe('#binary', () => {
-    it('returns a binary function', () => {
-      const spy = jest.fn()
-      fn.binary(spy)(1, 2, 3)
-      expect(spy).toHaveBeenCalledWith(1, 2)
-    })
-  })
 
   describe('#tap', () => {
     it('returns apply the given function to a value and return the value', () => {
