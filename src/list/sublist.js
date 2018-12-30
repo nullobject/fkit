@@ -1,6 +1,6 @@
 import curry from '../curry'
+import equal from '../equal'
 import { empty, head, isString, last, prepend, tail } from './base'
-import { equal } from '../fn'
 
 /**
  * This module defines sublist operations on lists.
