@@ -8,7 +8,7 @@ import fold from '../fold'
 import foldRight from '../foldRight'
 import isArray from '../internal/isArray'
 import isArrayOfStrings from '../internal/isArrayOfStrings'
-import maximumBy from '../maximumBy'
+import minimumBy from '../minimumBy'
 import mempty from '../internal/mempty'
 import mul from '../mul'
 import tap from '../tap'
@@ -21,32 +21,6 @@ import variadic from '../variadic'
  * @private
  * @module fkit/list/fold
  */
-
-/**
- * Returns the minimum value in the list of `as` using the comparator function
- * `f`.
- *
- * @summary Calculates the minimum value of a list using a comparator
- * function.
- *
- * The comparator function compares two elements, `a` and `b`. If `a` is
- * greater than `b`, then the comparator function should return `1`. If `a` is
- * less than `b`, then the comparator function should return `-1`. If both
- * elements are equal, then the comparator function should return `0`.
- *
- * @example
- *
- * F.minimumBy(F.compare, [1, 2, 3]) // 1
- *
- * @curried
- * @function
- * @param f A comparator function.
- * @param as A list.
- * @returns A value.
- */
-export const minimumBy = curry((f, as) =>
-  fold((a, b) => f(a, b) < 0 ? a : b, as[0], as)
-)
 
 /**
  * Returns the minimum value in the list of `as`.
