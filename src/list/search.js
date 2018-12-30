@@ -23,28 +23,6 @@ import tails from '../tails'
  */
 
 /**
- * Returns the indices of all occurances of the element `a` in the list of
- * `as`.
- *
- * @summary Gets the indices of all occurances of an element in a list.
- *
- * @example
- *
- * F.elemIndices(0, [1, 2, 3]) // []
- * F.elemIndices(1, [1, 2, 3]) // [0]
- *
- * F.elemIndices('a', 'foo') // []
- * F.elemIndices('o', 'foo') // [1, 2]
- *
- * @curried
- * @function
- * @param a A value.
- * @param as A list.
- * @returns A number or `undefined` if no value was found.
- */
-export const elemIndices = curry((a, as) => findIndices(equal(a), as))
-
-/**
  * Returns an element in the list of `as` that satisfies the predicate function
  * `p`.
  *

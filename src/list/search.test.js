@@ -1,18 +1,6 @@
 import * as search from '../../src/list/search'
 
 describe('list.search', () => {
-  describe('#elemIndices', () => {
-    it('handles an array', () => {
-      expect(search.elemIndices(0)([1, 2, 3])).toEqual([])
-      expect(search.elemIndices(1)([1, 2, 3])).toEqual([0])
-    })
-
-    it('handles a string', () => {
-      expect(search.elemIndices('b')('foo')).toEqual([])
-      expect(search.elemIndices('o')('foo')).toEqual([1, 2])
-    })
-  })
-
   describe('#find', () => {
     it('handles an array', () => {
       const p = a => a > 1
