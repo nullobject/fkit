@@ -2,6 +2,7 @@ import curry from '../curry'
 import isArray from '../internal/isArray'
 import isArrayOfStrings from '../internal/isArrayOfStrings'
 import isString from '../internal/isString'
+import mempty from '../internal/mempty'
 
 /**
  * This module defines basic operations on lists.
@@ -9,15 +10,6 @@ import isString from '../internal/isString'
  * @private
  * @module fkit/list/base
  */
-
-/**
- * Returns an empty monoid of `as`.
- *
- * @private
- */
-export function mempty (as) {
-  return isString(as) || isArrayOfStrings(as) ? '' : []
-}
 
 /**
  * Returns `a` in a pure context.
