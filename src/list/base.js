@@ -12,15 +12,6 @@ import mempty from '../internal/mempty'
  */
 
 /**
- * Returns `a` in a pure context.
- *
- * @private
- */
-export function pure (a) {
-  return isString(a) || isArrayOfStrings(a) ? a : [a]
-}
-
-/**
  * Converts the list of `as` to an array.
  *
  * @private
