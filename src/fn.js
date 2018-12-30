@@ -11,28 +11,6 @@ import variadic from './variadic'
  */
 
 /**
- * Applies the function `f` to the value `a` and returns the value `a`
- * unchanged.
- *
- * @summary Applies a side-effecting function to a value.
- *
- * @example
- *
- * function f (a) { console.log(a) }
- * F.tap(f)(1) // 1
- *
- * @curried
- * @function
- * @param f A function.
- * @param a A value.
- * @returns The value `a`.
- */
-export const tap = curry((f, a) => {
-  f(a)
-  return a
-})
-
-/**
  * Returns `true` if the value `a` is strictly equal (`===`) to the value `b`,
  * false otherwise.
  *

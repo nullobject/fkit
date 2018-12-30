@@ -1,16 +1,6 @@
 import * as fn from '../src/fn'
 
 describe('fn', () => {
-
-  describe('#tap', () => {
-    it('returns apply the given function to a value and return the value', () => {
-      function f (a) {}
-      const spy = jest.fn(f)
-      expect(fn.tap(spy)(1)).toBe(1)
-      expect(spy).toHaveBeenCalledWith(1)
-    })
-  })
-
   describe('#compare', () => {
     it('compares two numbers', () => {
       expect(fn.compare(1)(2)).toBe(-1)
