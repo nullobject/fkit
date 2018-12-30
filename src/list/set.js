@@ -9,12 +9,12 @@ import fold from '../fold'
 import foldRight from '../foldRight'
 import head from '../head'
 import id from '../id'
+import map from '../map'
 import mempty from '../internal/mempty'
 import pair from '../pair'
 import prepend from '../prepend'
 import pure from '../internal/pure'
 import tail from '../tail'
-import { map } from './map'
 import { any, filter } from './search'
 
 /**
