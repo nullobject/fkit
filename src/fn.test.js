@@ -1,22 +1,6 @@
 import * as fn from '../src/fn'
 
 describe('fn', () => {
-  describe('#applyRight', () => {
-    it('applies a nullary function', () => {
-      function f () {}
-      const spy = jest.fn(f)
-      fn.applyRight()(spy)
-      expect(spy).toHaveBeenCalledWith(undefined)
-    })
-
-    it('applies a unary function', () => {
-      function f (a) {}
-      const spy = jest.fn(f)
-      fn.applyRight(1)(spy)
-      expect(spy).toHaveBeenCalledWith(1)
-    })
-  })
-
   describe('#compose', () => {
     it('composes two functions', () => {
       function f (a) { return a / 2 }
