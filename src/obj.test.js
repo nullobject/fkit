@@ -19,18 +19,6 @@ function buildObject () {
 describe('object', () => {
   const target = buildObject()
 
-  describe('#applyMethod2', () => {
-    it('applies a nullary function', () => {
-      obj.applyMethod2('hello')()()(target)
-      expect(spy).toHaveBeenCalledWith(undefined, undefined)
-    })
-
-    it('applies a unary function', () => {
-      obj.applyMethod2('hello')(1)(2)(target)
-      expect(spy).toHaveBeenCalledWith(1, 2)
-    })
-  })
-
   describe('#applyMethod3', () => {
     it('applies a nullary function', () => {
       obj.applyMethod3('hello')()()()(target)
