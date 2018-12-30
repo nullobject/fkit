@@ -1,6 +1,7 @@
 import and from './and'
 import applyRight from './applyRight'
 import curry from './curry'
+import or from './or'
 
 /**
  * This module defines logic functions.
@@ -8,25 +9,6 @@ import curry from './curry'
  * @module fkit/logic
  * @summary Logical Functions and Combinators
  */
-
-/**
- * Returns true if either `a` or `b` are truthy, false otherwise.
- *
- * @summary The logical OR operator.
- *
- * @example
- *
- * F.or(false, true) // true
- * F.or(0, 1) // true
- * F.or('', 'foo') // true
- *
- * @curried
- * @function
- * @param a A boolean value.
- * @param b A boolean value.
- * @returns A boolean value.
- */
-export const or = curry((a, b) => !!(b || a))
 
 /**
  * Returns true if `a` is not truthy, false otherwise.
