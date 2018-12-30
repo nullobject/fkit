@@ -19,14 +19,6 @@ function buildObject () {
 describe('object', () => {
   const target = buildObject()
 
-  describe('#getIn', () => {
-    it('returns the property at the given key path', () => {
-      expect(obj.getIn(['address', 'city'])(target)).toEqual('Melbourne')
-      expect(obj.getIn('address.city')(target)).toEqual('Melbourne')
-      expect(obj.getIn(['foo', 'bar'])(target)).toBeUndefined()
-    })
-  })
-
   describe('#set', () => {
     it('sets the given property', () => {
       const result = obj.set('name')('Steve')(target)
