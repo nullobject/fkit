@@ -19,18 +19,6 @@ function buildObject () {
 describe('object', () => {
   const target = buildObject()
 
-  describe('#applyMethod3', () => {
-    it('applies a nullary function', () => {
-      obj.applyMethod3('hello')()()()(target)
-      expect(spy).toHaveBeenCalledWith(undefined, undefined, undefined)
-    })
-
-    it('applies a unary function', () => {
-      obj.applyMethod3('hello')(1)(2)(3)(target)
-      expect(spy).toHaveBeenCalledWith(1, 2, 3)
-    })
-  })
-
   describe('#copy', () => {
     const result = obj.copy(target, { age: 21 })
 
