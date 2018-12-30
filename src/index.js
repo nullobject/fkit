@@ -3,6 +3,7 @@ export * from './math'
 export * from './obj'
 export * from './string'
 
+export { default as add } from './add'
 export { default as always } from './always'
 export { default as and } from './and'
 export { default as apply } from './apply'
