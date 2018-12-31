@@ -55,32 +55,6 @@ describe('list.set', () => {
     })
   })
 
-  describe('#removeBy', () => {
-    const f = (a, b) => a === b
-
-    it('handles an empty array', () => {
-      expect(set.removeBy(f, 1)([])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(set.removeBy(f, 'a')('')).toBe('')
-    })
-
-    it('handles an array', () => {
-      expect(set.removeBy(f, 1)([1, 2, 3])).toEqual([2, 3])
-      expect(set.removeBy(f, 2)([1, 2, 3])).toEqual([1, 3])
-      expect(set.removeBy(f, 3)([1, 2, 3])).toEqual([1, 2])
-      expect(set.removeBy(f, 1)([1, 1])).toEqual([1])
-    })
-
-    it('handles a string', () => {
-      expect(set.removeBy(f, 'a')('abc')).toBe('bc')
-      expect(set.removeBy(f, 'b')('abc')).toBe('ac')
-      expect(set.removeBy(f, 'c')('abc')).toBe('ab')
-      expect(set.removeBy(f, 'a')('aa')).toBe('a')
-    })
-  })
-
   describe('#remove', () => {
     it('handles an empty array', () => {
       expect(set.remove(1)([])).toEqual([])
