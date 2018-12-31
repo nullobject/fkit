@@ -1,27 +1,6 @@
 import * as sublist from '../../src/list/sublist'
 
 describe('list.sublist', () => {
-  describe('#span', () => {
-    const p = a => a < 3
-    const q = a => a !== 'o'
-
-    it('handles an empty array', () => {
-      expect(sublist.span(p)([])).toEqual([[], []])
-    })
-
-    it('handles an empty string', () => {
-      expect(sublist.span(q)('')).toEqual(['', ''])
-    })
-
-    it('handles an array', () => {
-      expect(sublist.span(p)([1, 2, 3])).toEqual([[1, 2], [3]])
-    })
-
-    it('handles a string', () => {
-      expect(sublist.span(q)('foo')).toEqual(['f', 'oo'])
-    })
-  })
-
   describe('#group', () => {
     it('handles an empty array', () => {
       expect(sublist.group([])).toEqual([])

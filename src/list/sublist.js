@@ -7,6 +7,7 @@ import head from '../head'
 import isString from '../internal/isString'
 import last from '../last'
 import prepend from '../prepend'
+import span from '../span'
 import tail from '../tail'
 import take from '../take'
 import takeWhile from '../takeWhile'
@@ -17,26 +18,6 @@ import takeWhile from '../takeWhile'
  * @private
  * @module fkit/list/sublist
  */
-
-/**
- * Returns a list that contains the elements in the list of `as` split into a
- * pair of lists: a prefix of elements that satisfy the predicate function `p`
- * and the remainder of the list.
- *
- * @summary Splits a list using a predicate function.
- *
- * @example
- *
- * F.span(F.lt(3), [1, 2, 3]) // [[1, 2], [3]]
- * F.span(F.neq(o), 'foo') // ['f', 'oo']
- *
- * @curried
- * @function
- * @param p A predicate function.
- * @param as A list.
- * @returns A pair of lists.
- */
-export const span = curry((p, as) => [takeWhile(p, as), dropWhile(p, as)])
 
 /**
  * Returns a list that contains the elements in the list of `as` grouped into
