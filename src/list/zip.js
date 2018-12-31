@@ -2,7 +2,7 @@ import curry from '../curry'
 import mempty from '../internal/mempty'
 import pair from '../pair'
 import prepend from '../prepend'
-import toArray from '../internal/toArray'
+import zipWith from '../zipWith'
 
 /**
  * This module defines zip operations on lists.
@@ -10,23 +10,6 @@ import toArray from '../internal/toArray'
  * @private
  * @module fkit/list/zip
  */
-
-/**
- * Returns the lists of `as` and `bs` zipped with the binary function `f`.
- *
- * @summary Zips two lists with a function.
- *
- * @curried
- * @function
- * @param f A binary function.
- * @param as A list.
- * @param bs A list.
- * @returns A new list.
- */
-export const zipWith = curry((f, as, bs) => {
-  const n = Math.min(as.length, bs.length)
-  return toArray(as.slice(0, n)).map((a, i) => f(a, bs[i]))
-})
 
 /**
  * Returns the lists of `as` and `bs` zipped into a list of pairs.

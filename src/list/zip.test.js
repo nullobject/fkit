@@ -1,32 +1,6 @@
 import * as zip from '../../src/list/zip'
 
 describe('list.zip', () => {
-  describe('#zipWith', () => {
-    const f = (a, b) => a + b
-
-    it('handles an empty array', () => {
-      expect(zip.zipWith(f)([1, 2, 3])([])).toEqual([])
-      expect(zip.zipWith(f)([])([3, 4, 5])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(zip.zipWith(f)('foo')('')).toEqual([])
-      expect(zip.zipWith(f)('')('bar')).toEqual([])
-    })
-
-    it('handles an array', () => {
-      expect(zip.zipWith(f)([1, 2, 3])([4, 5, 6])).toEqual([5, 7, 9])
-      expect(zip.zipWith(f)([1, 2, 3])([4, 5])).toEqual([5, 7])
-      expect(zip.zipWith(f)([1, 2])([3, 4, 5])).toEqual([4, 6])
-    })
-
-    it('handles a string', () => {
-      expect(zip.zipWith(f)('foo')('bar')).toEqual(['fb', 'oa', 'or'])
-      expect(zip.zipWith(f)('foo')('ba')).toEqual(['fb', 'oa'])
-      expect(zip.zipWith(f)('fo')('bar')).toEqual(['fb', 'oa'])
-    })
-  })
-
   describe('#zip', () => {
     it('handles an empty array', () => {
       expect(zip.zip([1, 2, 3])([])).toEqual([])
