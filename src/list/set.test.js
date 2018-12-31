@@ -1,34 +1,6 @@
 import * as set from '../../src/list/set'
 
 describe('list.set', () => {
-  describe('#differenceBy', () => {
-    const f = (a, b) => a === b
-
-    it('handles an empty array', () => {
-      expect(set.differenceBy(f)([1, 2, 3])([])).toEqual([1, 2, 3])
-      expect(set.differenceBy(f)([])([1, 2, 3])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(set.differenceBy(f)('abc')('')).toBe('abc')
-      expect(set.differenceBy(f)('')('abc')).toBe('')
-    })
-
-    it('handles an array', () => {
-      expect(set.differenceBy(f)([1, 2, 3])([1, 2, 3])).toEqual([])
-      expect(set.differenceBy(f)([1, 2, 3])([2, 3, 4])).toEqual([1])
-      expect(set.differenceBy(f)([1, 2, 3])([4, 5, 6])).toEqual([1, 2, 3])
-      expect(set.differenceBy(f)([1, 1])([1])).toEqual([1])
-    })
-
-    it('handles a string', () => {
-      expect(set.differenceBy(f)('abc')('abc')).toBe('')
-      expect(set.differenceBy(f)('abc')('bcd')).toBe('a')
-      expect(set.differenceBy(f)('abc')('def')).toBe('abc')
-      expect(set.differenceBy(f)('aa')('a')).toBe('a')
-    })
-  })
-
   describe('#difference', () => {
     it('handles an empty array', () => {
       expect(set.difference([1, 2, 3])([])).toEqual([1, 2, 3])
