@@ -1,24 +1,6 @@
 import * as set from '../../src/list/set'
 
 describe('list.set', () => {
-  describe('#nub', () => {
-    it('handles an empty array', () => {
-      expect(set.nub([])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(set.nub('')).toBe('')
-    })
-
-    it('handles an array', () => {
-      expect(set.nub([1, 2, 2, 3, 3, 3])).toEqual([1, 2, 3])
-    })
-
-    it('handles a string', () => {
-      expect(set.nub('abbccc')).toBe('abc')
-    })
-  })
-
   describe('#unionBy', () => {
     const f = (a, b) => a === b
 
