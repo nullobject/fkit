@@ -1,4 +1,5 @@
 import curry from '../curry'
+import drop from '../drop'
 import empty from '../empty'
 import equal from '../equal'
 import head from '../head'
@@ -14,33 +15,6 @@ import take from '../take'
  * @private
  * @module fkit/list/sublist
  */
-
-/**
- * Returns the suffix after dropping `n` elements from the list of `as`.
- *
- * @summary Gets the suffix of a list.
- *
- * @example
- *
- * F.drop(2, [1, 2, 3]) // [3]
- * F.drop(2, 'foo') // 'o'
- *
- * @curried
- * @function
- * @param n A number.
- * @param as A list.
- * @returns A new list.
- */
-export const drop = curry((n, as) => {
-  let s = isString(as) ? '' : []
-  const m = as.length
-
-  for (let i = n; i < m; i++) {
-    s = s.concat(as[i])
-  }
-
-  return s
-})
 
 /**
  * Returns the prefix of elements from the list of `as` while the predicate
