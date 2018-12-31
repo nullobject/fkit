@@ -1,12 +1,5 @@
-import compare from '../compare'
-import sortBy from '../sortBy'
-
-/**
- * This module defines operations for sorting lists.
- *
- * @private
- * @module fkit/list/sort
- */
+import compare from './compare'
+import sortBy from './sortBy'
 
 /**
  * Returns a list that contains the elements in the list of `as` sorted.
@@ -21,4 +14,4 @@ import sortBy from '../sortBy'
  * @param a A list.
  * @returns A new list.
  */
-export function sort (as) { return sortBy(compare, as) }
+export default function sort (as) { return sortBy(compare, as) }
