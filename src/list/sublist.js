@@ -1,16 +1,5 @@
-import curry from '../curry'
-import drop from '../drop'
-import dropWhile from '../dropWhile'
-import empty from '../empty'
 import equal from '../equal'
-import head from '../head'
-import isString from '../internal/isString'
-import last from '../last'
-import prepend from '../prepend'
-import span from '../span'
-import tail from '../tail'
-import take from '../take'
-import takeWhile from '../takeWhile'
+import groupBy from '../groupBy'
 
 /**
  * This module defines sublist operations on lists.
@@ -37,35 +26,3 @@ import takeWhile from '../takeWhile'
  * @returns A new list.
  */
 export function group (as) { return groupBy(equal, as) }
-
-/**
- * Returns a list that contains the elements in the list of `as` grouped into
- * sublists that satisfy the comparator function `c`.
- *
- * The comparator function compares two elements, `a` and `b`. If the elements
- * are both considered to be in the same group, then the comparator function
- * should return `true`. Otherwise it should return `false`.
- *
- * @summary Groups the elements in a list using a comparator function.
- *
- * @example
- *
- * F.groupBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [[1], [2, 2], [3, 3, 3]]
- *
- * @curried
- * @function
- * @param c A comparator function.
- * @param as A list.
- * @returns A new list.
- */
-export const groupBy = curry(function groupBy (c, as) {
-  const b = head(as)
-  const bs = span(a => c(a, b), tail(as))
-
-  return empty(as)
-    ? []
-    : prepend(
-      prepend(b, head(bs)),
-      groupBy(c, last(bs))
-    )
-})
