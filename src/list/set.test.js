@@ -1,32 +1,6 @@
 import * as set from '../../src/list/set'
 
 describe('list.set', () => {
-  describe('#intersect', () => {
-    it('handles an empty array', () => {
-      expect(set.intersect([1, 2, 3])([])).toEqual([])
-      expect(set.intersect([])([1, 2, 3])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(set.intersect('abc')('')).toBe('')
-      expect(set.intersect('')('abc')).toBe('')
-    })
-
-    it('handles an array', () => {
-      expect(set.intersect([1, 2, 3])([1, 2, 3])).toEqual([1, 2, 3])
-      expect(set.intersect([1, 2, 3])([2, 3, 4])).toEqual([2, 3])
-      expect(set.intersect([1, 2, 3])([4, 5, 6])).toEqual([])
-      expect(set.intersect([1, 1])([1])).toEqual([1, 1])
-    })
-
-    it('handles a string', () => {
-      expect(set.intersect('abc')('abc')).toBe('abc')
-      expect(set.intersect('abc')('bcd')).toBe('bc')
-      expect(set.intersect('abc')('def')).toBe('')
-      expect(set.intersect('aa')('a')).toBe('aa')
-    })
-  })
-
   describe('#differenceBy', () => {
     const f = (a, b) => a === b
 
