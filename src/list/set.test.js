@@ -1,32 +1,6 @@
 import * as set from '../../src/list/set'
 
 describe('list.set', () => {
-  describe('#difference', () => {
-    it('handles an empty array', () => {
-      expect(set.difference([1, 2, 3])([])).toEqual([1, 2, 3])
-      expect(set.difference([])([1, 2, 3])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(set.difference('abc')('')).toBe('abc')
-      expect(set.difference('')('abc')).toBe('')
-    })
-
-    it('handles an array', () => {
-      expect(set.difference([1, 2, 3])([1, 2, 3])).toEqual([])
-      expect(set.difference([1, 2, 3])([2, 3, 4])).toEqual([1])
-      expect(set.difference([1, 2, 3])([4, 5, 6])).toEqual([1, 2, 3])
-      expect(set.difference([1, 1])([1])).toEqual([1])
-    })
-
-    it('handles a string', () => {
-      expect(set.difference('abc')('abc')).toBe('')
-      expect(set.difference('abc')('bcd')).toBe('a')
-      expect(set.difference('abc')('def')).toBe('abc')
-      expect(set.difference('aa')('a')).toBe('a')
-    })
-  })
-
   describe('#cartesian', () => {
     it('handles an empty array', () => {
       expect(set.cartesian([1, 2, 3])([])).toEqual([])

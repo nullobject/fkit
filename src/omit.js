@@ -1,8 +1,8 @@
 import curry from './curry'
+import difference from './difference'
 import get from './get'
 import keys from './keys'
 import set from './set'
-import { difference } from './list/set'
 
 /**
  * Returns a copy of the object `o` *without* the properties in the list of
