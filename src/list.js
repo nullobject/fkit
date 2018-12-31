@@ -1,4 +1,3 @@
-export * from './list/set'
 export * from './list/sort'
 export * from './list/sublist'
 export * from './list/zip'
@@ -15,7 +14,6 @@ export * from './list/zip'
  * @summary Working with Lists
  *
  * @module fkit/list
- * @mixes module:fkit/list/set
  * @mixes module:fkit/list/sort
  * @mixes module:fkit/list/sublist
  * @mixes module:fkit/list/zip

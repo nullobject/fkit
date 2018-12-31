@@ -1,29 +1,11 @@
-import any from '../any'
-import append from '../append'
-import compose from '../compose'
-import concat from '../concat'
-import curry from '../curry'
-import empty from '../empty'
-import equal from '../equal'
-import filter from '../filter'
-import flip from '../flip'
-import fold from '../fold'
-import foldRight from '../foldRight'
-import head from '../head'
-import id from '../id'
-import map from '../map'
-import mempty from '../internal/mempty'
-import pair from '../pair'
-import prepend from '../prepend'
-import pure from '../internal/pure'
-import tail from '../tail'
-
-/**
- * This module defines set operations on lists.
- *
- * @private
- * @module fkit/list/set
- */
+import compose from './compose'
+import concat from './concat'
+import empty from './empty'
+import foldRight from './foldRight'
+import head from './head'
+import id from './id'
+import prepend from './prepend'
+import tail from './tail'
 
 /**
  * Returns a list that contains all the permutations of the elements in the
@@ -39,7 +21,7 @@ import tail from '../tail'
  * @param as A list.
  * @returns A new list.
  */
-export function permutations (as) {
+export default function permutations (as) {
   const permutations_ = (bs_, cs) => {
     const b = head(bs_)
     const bs = tail(bs_)
