@@ -1,5 +1,3 @@
-export * from './list'
-
 export { default as add } from './add'
 export { default as all } from './all'
 export { default as always } from './always'

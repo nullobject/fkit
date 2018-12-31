@@ -1,12 +1,5 @@
-import mempty from '../internal/mempty'
-import prepend from '../prepend'
-
-/**
- * This module defines zip operations on lists.
- *
- * @private
- * @module fkit/list/zip
- */
+import mempty from './internal/mempty'
+import prepend from './prepend'
 
 /**
  * Returns the list of pairs `as` unzipped into a pair of lists.
@@ -22,7 +15,7 @@ import prepend from '../prepend'
  * @param as A list.
  * @returns A new list.
  */
-export const unzip = as => {
+export default function unzip (as) {
   const s = mempty(as[0])
 
   return as.reduceRight((p, ps) => {
