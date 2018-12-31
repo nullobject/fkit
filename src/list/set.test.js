@@ -1,32 +1,6 @@
 import * as set from '../../src/list/set'
 
 describe('list.set', () => {
-  describe('#union', () => {
-    it('handles an empty array', () => {
-      expect(set.union([1, 2, 3])([])).toEqual([1, 2, 3])
-      expect(set.union([])([1, 2, 3])).toEqual([1, 2, 3])
-    })
-
-    it('handles an empty string', () => {
-      expect(set.union('abc')('')).toBe('abc')
-      expect(set.union('')('abc')).toBe('abc')
-    })
-
-    it('handles an array', () => {
-      expect(set.union([1, 2, 3])([1, 2, 3])).toEqual([1, 2, 3])
-      expect(set.union([1, 2, 3])([2, 3, 4])).toEqual([1, 2, 3, 4])
-      expect(set.union([1, 2, 3])([4, 5, 6])).toEqual([1, 2, 3, 4, 5, 6])
-      expect(set.union([1, 1])([1])).toEqual([1, 1])
-    })
-
-    it('handles a string', () => {
-      expect(set.union('abc')('abc')).toBe('abc')
-      expect(set.union('abc')('bcd')).toBe('abcd')
-      expect(set.union('abc')('def')).toBe('abcdef')
-      expect(set.union('aa')('a')).toBe('aa')
-    })
-  })
-
   describe('#intersectBy', () => {
     const f = (a, b) => a === b
 

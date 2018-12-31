@@ -17,7 +17,6 @@ import pair from '../pair'
 import prepend from '../prepend'
 import pure from '../internal/pure'
 import tail from '../tail'
-import unionBy from '../unionBy'
 
 /**
  * This module defines set operations on lists.
@@ -25,31 +24,6 @@ import unionBy from '../unionBy'
  * @private
  * @module fkit/list/set
  */
-
-/**
- * Returns a list that contains the union of elements in the lists of `as` and
- * `bs`.
- *
- * It is a special case of the `unionBy` function where the elements are
- * compared using the strict equality `===` operator.
- *
- * Duplicates are removed from `bs`, but if `as` contains duplicates then so
- * will the result.
- *
- * @summary Calculates the union of two lists.
- *
- * @example
- *
- * F.union([1, 2, 3], [2, 3, 4]) // [1, 2, 3, 4]
- * F.union('hello', 'world') // 'hellowrd'
- *
- * @curried
- * @function
- * @param as A list.
- * @param bs A list.
- * @returns A new list.
- */
-export const union = unionBy(equal)
 
 /**
  * Returns a list that contains the intersection of the elments in the lists of
