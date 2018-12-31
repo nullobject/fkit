@@ -1,34 +1,6 @@
 import * as set from '../../src/list/set'
 
 describe('list.set', () => {
-  describe('#intersectBy', () => {
-    const f = (a, b) => a === b
-
-    it('handles an empty array', () => {
-      expect(set.intersectBy(f)([1, 2, 3])([])).toEqual([])
-      expect(set.intersectBy(f)([])([1, 2, 3])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(set.intersectBy(f)('abc')('')).toBe('')
-      expect(set.intersectBy(f)('')('abc')).toBe('')
-    })
-
-    it('handles an array', () => {
-      expect(set.intersectBy(f)([1, 2, 3])([1, 2, 3])).toEqual([1, 2, 3])
-      expect(set.intersectBy(f)([1, 2, 3])([2, 3, 4])).toEqual([2, 3])
-      expect(set.intersectBy(f)([1, 2, 3])([4, 5, 6])).toEqual([])
-      expect(set.intersectBy(f)([1, 1])([1])).toEqual([1, 1])
-    })
-
-    it('handles a string', () => {
-      expect(set.intersectBy(f)('abc')('abc')).toBe('abc')
-      expect(set.intersectBy(f)('abc')('bcd')).toBe('bc')
-      expect(set.intersectBy(f)('abc')('def')).toBe('')
-      expect(set.intersectBy(f)('aa')('a')).toBe('aa')
-    })
-  })
-
   describe('#intersect', () => {
     it('handles an empty array', () => {
       expect(set.intersect([1, 2, 3])([])).toEqual([])
