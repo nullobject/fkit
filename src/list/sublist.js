@@ -1,5 +1,6 @@
 import curry from '../curry'
 import drop from '../drop'
+import dropWhile from '../dropWhile'
 import empty from '../empty'
 import equal from '../equal'
 import head from '../head'
@@ -16,39 +17,6 @@ import takeWhile from '../takeWhile'
  * @private
  * @module fkit/list/sublist
  */
-
-/**
- * Returns the suffix after dropping elements from the list of `as` while the
- * predicate function `p` is satisfied.
- *
- * @summary Gets the suffix of a list using a predicate function.
- *
- * @example
- *
- * F.dropWhile(F.lt(3), [1, 2, 3]) // [3]
- * F.dropWhile(F.neq(o), 'foo') // 'oo'
- *
- * @curried
- * @function
- * @param p A predicate function.
- * @param as A list.
- * @returns A new list.
- */
-export const dropWhile = curry((p, as) => {
-  let s = isString(as) ? '' : []
-  const m = as.length
-  let n = 0
-
-  while (n < m && p(as[n])) {
-    n++
-  }
-
-  for (let i = n; i < m; i++) {
-    s = s.concat(as[i])
-  }
-
-  return s
-})
 
 /**
  * Returns a list that contains the elements in the list of `as` split into a

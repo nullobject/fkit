@@ -1,31 +1,6 @@
 import * as sublist from '../../src/list/sublist'
 
 describe('list.sublist', () => {
-  describe('#dropWhile', () => {
-    const p = a => a < 3
-    const q = a => a !== 'o'
-
-    it('handles an empty array', () => {
-      expect(sublist.dropWhile(p)([])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(sublist.dropWhile(q)('')).toBe('')
-    })
-
-    it('handles an array', () => {
-      expect(sublist.dropWhile(p)([1, 2, 3])).toEqual([3])
-    })
-
-    it('handles an array of strings', () => {
-      expect(sublist.dropWhile(q)(['f', 'o', 'o'])).toEqual(['o', 'o'])
-    })
-
-    it('handles a string', () => {
-      expect(sublist.dropWhile(q)('foo')).toBe('oo')
-    })
-  })
-
   describe('#splitAt', () => {
     it('handles an empty array', () => {
       expect(sublist.splitAt(1)([])).toEqual([[], []])
