@@ -55,30 +55,6 @@ describe('list.set', () => {
     })
   })
 
-  describe('#remove', () => {
-    it('handles an empty array', () => {
-      expect(set.remove(1)([])).toEqual([])
-    })
-
-    it('handles an empty string', () => {
-      expect(set.remove('a')('')).toBe('')
-    })
-
-    it('handles an array', () => {
-      expect(set.remove(1)([1, 2, 3])).toEqual([2, 3])
-      expect(set.remove(2)([1, 2, 3])).toEqual([1, 3])
-      expect(set.remove(3)([1, 2, 3])).toEqual([1, 2])
-      expect(set.remove(1)([1, 1])).toEqual([1])
-    })
-
-    it('handles a string', () => {
-      expect(set.remove('a')('abc')).toBe('bc')
-      expect(set.remove('b')('abc')).toBe('ac')
-      expect(set.remove('c')('abc')).toBe('ab')
-      expect(set.remove('a')('aa')).toBe('a')
-    })
-  })
-
   describe('#cartesian', () => {
     it('handles an empty array', () => {
       expect(set.cartesian([1, 2, 3])([])).toEqual([])

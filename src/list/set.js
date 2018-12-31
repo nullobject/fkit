@@ -73,28 +73,6 @@ export const differenceBy = curry((f, as, bs) => fold(flip(removeBy(f)), as, bs)
 export const difference = differenceBy(equal)
 
 /**
- * Returns a list with the first occurance of the element `a` removed from the
- * list of `bs`.
- *
- * It is a special case of the `removeBy` function where the elements are
- * compared using the strict equality `===` operator.
- *
- * @summary Removes the first occurance of an element from a list.
- *
- * @example
- *
- * F.remove(2, [1, 2, 3]) // [1, 3]
- * F.remove('f', 'foo') // 'oo'
- *
- * @curried
- * @function
- * @param a A value.
- * @param bs A list.
- * @returns A new list.
- */
-export const remove = removeBy(equal)
-
-/**
  * Returns a list that contains all the ordered pairs `[a, b]` in the lists of
  * `as` and `bs`.
  *
