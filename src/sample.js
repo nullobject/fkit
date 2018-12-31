@@ -1,6 +1,6 @@
 import curry from './curry'
 import shuffle from './shuffle'
-import { take } from './list/sublist'
+import take from './take'
 
 /**
  * Returns a list of `n` elements randomly sampled from the list of `as`.

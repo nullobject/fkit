@@ -6,6 +6,7 @@ import isString from '../internal/isString'
 import last from '../last'
 import prepend from '../prepend'
 import tail from '../tail'
+import take from '../take'
 
 /**
  * This module defines sublist operations on lists.
@@ -13,33 +14,6 @@ import tail from '../tail'
  * @private
  * @module fkit/list/sublist
  */
-
-/**
- * Returns the prefix of `n` elements from the list of `as`.
- *
- * @summary Gets the prefix of a list.
- *
- * @example
- *
- * F.take(2, [1, 2, 3]) // [1, 2]
- * F.take(2, 'foo') // 'fo'
- *
- * @curried
- * @function
- * @param n A number.
- * @param as A list.
- * @returns A new list.
- */
-export const take = curry((n, as) => {
-  let s = isString(as) ? '' : []
-  const m = as.length
-
-  for (let i = 0; i < Math.min(m, n); i++) {
-    s = s.concat(as[i])
-  }
-
-  return s
-})
 
 /**
  * Returns the suffix after dropping `n` elements from the list of `as`.
