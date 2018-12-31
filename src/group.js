@@ -1,12 +1,5 @@
-import equal from '../equal'
-import groupBy from '../groupBy'
-
-/**
- * This module defines sublist operations on lists.
- *
- * @private
- * @module fkit/list/sublist
- */
+import equal from './equal'
+import groupBy from './groupBy'
 
 /**
  * Returns a list that contains the elements in the list of `as` grouped into
@@ -25,4 +18,4 @@ import groupBy from '../groupBy'
  * @param as A list.
  * @returns A new list.
  */
-export function group (as) { return groupBy(equal, as) }
+export default function group (as) { return groupBy(equal, as) }
