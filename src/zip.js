@@ -1,6 +1,6 @@
 import curry from './curry'
-import pair from './pair'
-import zipWith from './zipWith'
+import { pair } from './pair'
+import { zipWith } from './zipWith'
 
 export function zip (as, bs) {
   return zipWith(pair, as, bs)

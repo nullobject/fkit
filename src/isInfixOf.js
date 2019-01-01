@@ -1,4 +1,4 @@
-import any from './any'
+import { any } from './any'
 import curry from './curry'
 import isPrefixOf from './isPrefixOf'
 import tails from './tails'

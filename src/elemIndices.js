@@ -1,6 +1,6 @@
 import curry from './curry'
 import equal from './equal'
-import findIndices from './findIndices'
+import { findIndices } from './findIndices'
 
 export function elemIndices (a, as) {
   return findIndices(equal(a), as)

@@ -1,10 +1,10 @@
 import curry from './curry'
 import empty from './empty'
-import filter from './filter'
 import head from './head'
 import mempty from './internal/mempty'
-import prepend from './prepend'
 import tail from './tail'
+import { filter } from './filter'
+import { prepend } from './prepend'
 
 export function nubBy (f, as) {
   const a = head(as)

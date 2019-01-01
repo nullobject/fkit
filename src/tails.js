@@ -1,6 +1,6 @@
 import empty from './empty'
-import prepend from './prepend'
 import tail from './tail'
+import { prepend } from './prepend'
 
 /**
  * Returns a list that contains all final segments of the list of `as`.
@@ -16,5 +16,8 @@ import tail from './tail'
  * @returns A new list.
  */
 export default function tails (as) {
-  return prepend(as, empty(as) ? [] : tails(tail(as)))
+  return prepend(
+    as,
+    empty(as) ? [] : tails(tail(as))
+  )
 }

@@ -18,5 +18,10 @@ import tail from './tail'
  * @returns A new list.
  */
 export default function inits (as) {
-  return prepend(mempty(as), empty(as) ? [] : inits(tail(as)).map(prepend(head(as))))
+  return prepend(
+    mempty(as),
+    empty(as)
+      ? []
+      : inits(tail(as)).map(prepend(head(as)))
+  )
 }

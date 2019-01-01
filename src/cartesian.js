@@ -2,9 +2,9 @@ import concat from './concat'
 import curry from './curry'
 import empty from './empty'
 import head from './head'
-import map from './map'
 import pair from './pair'
 import tail from './tail'
+import { map } from './map'
 
 export function cartesian (as, bs) {
   return empty(as)

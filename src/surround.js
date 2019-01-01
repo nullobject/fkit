@@ -1,6 +1,6 @@
-import append from './append'
 import curry from './curry'
-import prepend from './prepend'
+import { append } from './append'
+import { prepend } from './prepend'
 
 export function surround (a, b, cs) {
   return append(b, prepend(a, cs))

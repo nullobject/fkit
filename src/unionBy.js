@@ -1,7 +1,7 @@
-import any from './any'
-import append from './append'
 import curry from './curry'
-import fold from './fold'
+import { any } from './any'
+import { append } from './append'
+import { fold } from './fold'
 
 export function unionBy (f, as, bs) {
   return fold((cs, b) => {

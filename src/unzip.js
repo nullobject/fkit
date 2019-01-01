@@ -1,5 +1,5 @@
 import mempty from './internal/mempty'
-import prepend from './prepend'
+import { prepend } from './prepend'
 
 /**
  * Returns the list of pairs `as` unzipped into a pair of lists.

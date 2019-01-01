@@ -1,7 +1,7 @@
 import compose from './compose'
 import curry from './curry'
-import filter from './filter'
 import not from './not'
+import { filter } from './filter'
 
 export function partition (p, as) {
   return [

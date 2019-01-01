@@ -1,5 +1,5 @@
 import curry from './curry'
-import isPrefixOf from './isPrefixOf'
+import { isPrefixOf } from './isPrefixOf'
 import reverse from './reverse'
 
 export function isSuffixOf (as, bs) {

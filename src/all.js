@@ -1,5 +1,5 @@
 import curry from './curry'
-import filter from './filter'
+import { filter } from './filter'
 
 export function all (p, as) {
   return filter(p, as).length === as.length

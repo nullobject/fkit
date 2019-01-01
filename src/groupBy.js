@@ -2,9 +2,9 @@ import curry from './curry'
 import empty from './empty'
 import head from './head'
 import last from './last'
-import prepend from './prepend'
 import span from './span'
 import tail from './tail'
+import { prepend } from './prepend'
 
 export function groupBy (c, as) {
   const b = head(as)

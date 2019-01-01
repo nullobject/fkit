@@ -2,8 +2,8 @@ import curry from './curry'
 import empty from './empty'
 import head from './head'
 import mempty from './internal/mempty'
-import prepend from './prepend'
 import tail from './tail'
+import { prepend } from './prepend'
 
 export function removeBy (f, a, bs_) {
   const b = head(bs_)

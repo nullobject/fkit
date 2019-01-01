@@ -1,6 +1,6 @@
 import curry from './curry'
-import max from './max'
-import min from './min'
+import { max } from './max'
+import { min } from './min'
 
 export function clamp (a, b, n) {
   return max(a, min(n, b))

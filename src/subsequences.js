@@ -1,11 +1,11 @@
 import concat from './concat'
 import empty from './empty'
-import foldRight from './foldRight'
 import head from './head'
 import mempty from './internal/mempty'
 import prepend from './prepend'
 import pure from './internal/pure'
 import tail from './tail'
+import { foldRight } from './foldRight'
 
 /**
  * Returns a list that contains all the subsequences of the elements in the

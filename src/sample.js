@@ -1,6 +1,6 @@
 import curry from './curry'
 import shuffle from './shuffle'
-import take from './take'
+import { take } from './take'
 
 export function sample (n, as) {
   return take(n, shuffle(as))

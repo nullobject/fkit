@@ -1,6 +1,6 @@
 import curry from './curry'
-import fold from './fold'
-import tap from './tap'
+import { fold } from './fold'
+import { tap } from './tap'
 
 export function scan (f, s, as) {
   const r = [s]

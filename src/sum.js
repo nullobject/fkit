@@ -1,5 +1,5 @@
 import add from './add'
-import fold from './fold'
+import { fold } from './fold'
 
 /**
  * Returns the sum of the elements in the list of `as`.

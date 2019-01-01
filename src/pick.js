@@ -1,6 +1,6 @@
 import curry from './curry'
-import get from './get'
-import set from './set'
+import { get } from './get'
+import { set } from './set'
 
 export function pick (ks, o) {
   return ks.reduce((p, k) => set(k, get(k, o), p), {})

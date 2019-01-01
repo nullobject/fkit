@@ -1,6 +1,6 @@
 import flip from './flip'
-import get from './get'
 import keys from './keys'
+import { get } from './get'
 
 /**
  * Returns a list of values for the properties of the object `o`.

@@ -1,6 +1,6 @@
 import curry from './curry'
-import dropWhile from './dropWhile'
-import takeWhile from './takeWhile'
+import { dropWhile } from './dropWhile'
+import { takeWhile } from './takeWhile'
 
 export function span (p, as) {
   return [takeWhile(p, as), dropWhile(p, as)]

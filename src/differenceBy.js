@@ -1,7 +1,7 @@
 import curry from './curry'
 import flip from './flip'
-import fold from './fold'
 import removeBy from './removeBy'
+import { fold } from './fold'
 
 export function differenceBy (f, as, bs) {
   return fold(flip(removeBy(f)), as, bs)

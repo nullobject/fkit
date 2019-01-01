@@ -1,6 +1,6 @@
 import curry from './curry'
-import filter from './filter'
 import head from './head'
+import { filter } from './filter'
 
 export function find (p, as) {
   return head(filter(p, as))

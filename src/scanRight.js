@@ -1,6 +1,6 @@
 import curry from './curry'
-import foldRight from './foldRight'
-import tap from './tap'
+import { foldRight } from './foldRight'
+import { tap } from './tap'
 
 export function scanRight (f, s, as) {
   const r = [s]

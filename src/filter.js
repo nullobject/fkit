@@ -1,9 +1,9 @@
 import always from './always'
 import branch from './branch'
-import concatMap from './concatMap'
 import curry from './curry'
 import id from './id'
 import isString from './internal/isString'
+import { concatMap } from './concatMap'
 
 export function filter (p, as) {
   const f = branch(p, id, always(''))

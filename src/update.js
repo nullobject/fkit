@@ -1,6 +1,6 @@
 import curry from './curry'
-import get from './get'
-import set from './set'
+import { get } from './get'
+import { set } from './set'
 
 export function update (k, f, o) {
   return set(k, f(get(k, o)), o)

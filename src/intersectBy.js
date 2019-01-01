@@ -1,8 +1,8 @@
-import any from './any'
-import append from './append'
 import curry from './curry'
-import fold from './fold'
 import mempty from './internal/mempty'
+import { any } from './any'
+import { append } from './append'
+import { fold } from './fold'
 
 export function intersectBy (f, as, bs) {
   return fold((cs, a) => {

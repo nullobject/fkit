@@ -6,4 +6,6 @@
  * @param a A number.
  * @returns A number.
  */
-export default function dec (a) { return a - 1 }
+export default function dec (a) {
+  return a - 1
+}
