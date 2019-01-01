@@ -38,7 +38,7 @@ lint:
 
 # Generates the API documentation.
 doc:
-	@node_modules/.bin/jsdoc -c jsdoc.config.json src README.md
+	@node_modules/.bin/documentation build src/** -f html -o doc
 
 # Bumps the version.
 bump:
