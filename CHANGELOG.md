@@ -1,7 +1,10 @@
-## Unreleased
+## 1.5.0 (2019-01-02)
 
 * Allow `getIn` keypath to be given as a string
-* Extract all functions to separate files.
+* Extract all functions to separate files
+* Change to documentation.js for API docs
+* Rename `equal` -> `eq`
+* Rename `notEqual` -> `neq`
 
 ## 1.4.0 (2018-01-31)
 
