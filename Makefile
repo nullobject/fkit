@@ -1,9 +1,7 @@
-name     = fkit
-status  := $(shell git status --porcelain)
-version := $(shell git describe --tags)
-regex   := "s/\([\"\']version[\"\'][[:space:]]*:[[:space:]]*\)\([\"\'].*[\"\']\)/\1\"$(version)\"/g"
+.PHONY: clean dev dist doc lint node_modules publish-api publish-npm release test
 
-.PHONY: bump changelog clean dev dist doc lint publish publish-api publish-npm release test unit
+node_modules:
+	@npm install
 
 dev:
 	@node_modules/.bin/rollup -c -w
@@ -11,63 +9,25 @@ dev:
 dist:
 	@node_modules/.bin/rollup -c
 
-test: unit lint
+test:
+	@node_modules/.bin/jest
 
 watch:
 	@node_modules/.bin/jest --watch
 
-release: dist test publish
-
-publish: bump changelog publish-api publish-npm
-
-unpublish: delete-tag unpublish-npm
-
-clean:
-	@rm -rf dist doc node_modules
-
-node_modules:
-	@npm install
-
-# Runs the unit tests.
-unit:
-	@node_modules/.bin/jest
-
-# Runs jslint.
 lint:
 	@node_modules/.bin/standard
 
-# Generates the API documentation.
+release: dist doc publish-api publish-npm
+
 doc:
 	@node_modules/.bin/documentation build src/** -f html -o doc
 
-# Bumps the version.
-bump:
-	@sed -i "" $(regex) package.json
+publish-api:
+	@aws s3 sync ./doc/ s3://fkit.joshbassett.info/ --acl public-read --delete --cache-control 'max-age=300'
 
-# Updates the changelog and tags the release.
-changelog:
-	@git changelog -t "v$(version)"
-	@git add --all .
-	@git release "v$(version)"
-
-delete-tag:
-	@git tag --delete "v$(version)"
-	@git push --delete origin "v$(version)"
-
-# Publishes the API documentation.
-publish-api: doc
-	@test -z "$(status)"
-	@git checkout gh-pages
-	@git reset --hard origin/gh-pages
-	@rsync -a --delete --exclude=".git*" --exclude=CNAME --exclude-from=.gitignore doc/ ./
-	@git add --all .
-	@git commit -m "Publish $(version)"
-	@git push
-	@git checkout master
-
-# Publishes the npm package.
 publish-npm:
 	@npm publish
 
-unpublish-npm:
-	@npm unpublish "$(name)@$(version)"
+clean:
+	@rm -rf dist doc node_modules
