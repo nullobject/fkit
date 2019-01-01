@@ -1,4 +1,4 @@
-import equal from './equal'
+import eq from './eq'
 import groupBy from './groupBy'
 
 /**
@@ -17,4 +17,4 @@ import groupBy from './groupBy'
  * F.group([1, 2, 2, 3, 3, 3]) // [[1], [2, 2], [3, 3, 3]]
  * F.group('Mississippi') // ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i']
  */
-export default groupBy(equal)
+export default groupBy(eq)

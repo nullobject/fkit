@@ -1,5 +1,5 @@
 import differenceBy from './differenceBy'
-import equal from './equal'
+import eq from './eq'
 
 /**
  * Calculates the difference of two lists.
@@ -18,4 +18,4 @@ import equal from './equal'
  * F.difference([1, 2, 3], [2, 3, 4]) // [1]
  * F.difference('hello', 'world') // 'hel'
  */
-export default differenceBy(equal)
+export default differenceBy(eq)

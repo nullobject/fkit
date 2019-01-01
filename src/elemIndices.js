@@ -1,5 +1,5 @@
 import curry from './curry'
-import equal from './equal'
+import eq from './eq'
 import { findIndices } from './findIndices'
 
 /**
@@ -19,7 +19,7 @@ import { findIndices } from './findIndices'
  * F.elemIndices('o', 'foo') // [1, 2]
  */
 export function elemIndices (a, as) {
-  return findIndices(equal(a), as)
+  return findIndices(eq(a), as)
 }
 
 export default curry(elemIndices)

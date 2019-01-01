@@ -1,4 +1,4 @@
-import equal from './equal'
+import eq from './eq'
 import nubBy from './nubBy'
 
 /**
@@ -16,4 +16,4 @@ import nubBy from './nubBy'
  * F.nub('abbccc') // 'abc'
  *
  */
-export default nubBy(equal)
+export default nubBy(eq)

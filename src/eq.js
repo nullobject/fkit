@@ -10,11 +10,11 @@ import curry from './curry'
  *
  * @example
  *
- * F.equal(1, 1) // true
- * F.equal(1, 2) // false
+ * F.eq(1, 1) // true
+ * F.eq(1, 2) // false
  */
-export function equal (a, b) {
+export function eq (a, b) {
   return b === a
 }
 
-export default curry(equal)
+export default curry(eq)

@@ -1,4 +1,4 @@
-import equal from './equal'
+import eq from './eq'
 import removeBy from './removeBy'
 
 /**
@@ -18,4 +18,4 @@ import removeBy from './removeBy'
  * F.remove(2, [1, 2, 3]) // [1, 3]
  * F.remove('f', 'foo') // 'oo'
  */
-export default removeBy(equal)
+export default removeBy(eq)

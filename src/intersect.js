@@ -1,4 +1,4 @@
-import equal from './equal'
+import eq from './eq'
 import intersectBy from './intersectBy'
 
 /**
@@ -21,4 +21,4 @@ import intersectBy from './intersectBy'
  * F.intersect([1, 2, 3], [2, 3, 4]) // [2, 3]
  * F.intersect('hello', 'world') // 'ol'
  */
-export default intersectBy(equal)
+export default intersectBy(eq)

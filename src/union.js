@@ -1,4 +1,4 @@
-import equal from './equal'
+import eq from './eq'
 import unionBy from './unionBy'
 
 /**
@@ -21,4 +21,4 @@ import unionBy from './unionBy'
  * F.union([1, 2, 3], [2, 3, 4]) // [1, 2, 3, 4]
  * F.union('hello', 'world') // 'hellowrd'
  */
-export default unionBy(equal)
+export default unionBy(eq)
