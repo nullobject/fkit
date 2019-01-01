@@ -1,6 +1,10 @@
 import curry from './curry'
 import filter from './filter'
 
+export function all (p, as) {
+  return filter(p, as).length === as.length
+}
+
 /**
  * Returns `true` if all elements in the list of `as` satisfy the predicate
  * function `p`, `false` otherwise.
@@ -23,6 +27,4 @@ import filter from './filter'
  * @param as A list.
  * @returns A boolean value.
  */
-export default curry((p, as) => {
-  return filter(p, as).length === as.length
-})
+export default curry(all)

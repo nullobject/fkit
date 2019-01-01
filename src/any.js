@@ -1,6 +1,10 @@
 import curry from './curry'
 import filter from './filter'
 
+export function any (p, as) {
+  return filter(p, as).length > 0
+}
+
 /**
  * Returns `true` if any elements in the list of `as` satisfy the predicate
  * function `p`, `false` otherwise.
@@ -23,4 +27,4 @@ import filter from './filter'
  * @param as A list.
  * @returns A boolean value.
  */
-export default curry((p, as) => filter(p, as).length > 0)
+export default curry(any)

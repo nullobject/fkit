@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function apply3 (f, a, b, c) {
+  return f(a, b, c)
+}
+
 /**
  * Returns the result of the function `f` applied to the values `a`, `b`, and
  * `c`.
@@ -19,4 +23,4 @@ import curry from './curry'
  * @param c A value.
  * @returns The result of `f(a, b, c)`.
  */
-export default curry((f, a, b, c) => f(a, b, c))
+export default curry(apply3)

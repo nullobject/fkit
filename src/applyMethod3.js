@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function applyMethod3 (k, a, b, c, o) {
+  return o[k](a, b, c)
+}
+
 /**
  * Returns the result of the method `k` of object `o` applied to the values
  * `a`, `b`, and `c`.
@@ -20,4 +24,4 @@ import curry from './curry'
  * @param o An object.
  * @returns A value.
  */
-export default curry((k, a, b, c, o) => o[k](a, b, c))
+export default curry(applyMethod3)

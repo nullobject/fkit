@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function applyRight (a, f) {
+  return f(a)
+}
+
 /**
  * Returns the result of the function `f` applied to the value `a`.
  *
@@ -18,4 +22,4 @@ import curry from './curry'
  * @param f A function.
  * @returns The result of `f(a)`.
  */
-export default curry((a, f) => f(a))
+export default curry(applyRight)

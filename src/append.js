@@ -1,6 +1,10 @@
 import curry from './curry'
 import isString from './internal/isString'
 
+export function append (a, bs) {
+  return isString(bs) ? (bs + a) : bs.concat([a])
+}
+
 /**
  * Returns a list that contains the value `a` appended to the list of `bs`.
  *
@@ -17,4 +21,4 @@ import isString from './internal/isString'
  * @param bs A list.
  * @returns A new list.
  */
-export default curry((a, bs) => isString(bs) ? (bs + a) : bs.concat([a]))
+export default curry(append)

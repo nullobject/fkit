@@ -11,4 +11,6 @@
  * @param c A value.
  * @returns A new function.
  */
-export default function always (a) { return () => a }
+export default function always (a) {
+  return () => a
+}

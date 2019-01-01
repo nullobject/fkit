@@ -1,19 +1,23 @@
 import curry from './curry'
 
+export function apply (f, a) {
+  return f(a)
+}
+
 /**
- * returns the result of the function `f` applied to the value `a`.
+ * Returns the result of the function `f` applied to the value `a`.
  *
- * @summary applies a function to a value.
+ * @summary Applies a function to a value.
  *
  * @example
  *
- * function sayhi (a) { return ['hi', a, '!'].join(' ') }
- * f.apply(sayhi, 'jane') // hi jane!
+ * function sayHi (a) { return ['Hi', a, '!'].join(' ') }
+ * f.apply(sayHi, 'jane') // Hi Jane!
  *
  * @curried
  * @function
- * @param f a function.
- * @param a a value.
- * @returns the result of `f(a)`.
+ * @param f A function.
+ * @param a A value.
+ * @returns The result of `f(a)`.
  */
-export default curry((f, a) => f(a))
+export default curry(apply)
