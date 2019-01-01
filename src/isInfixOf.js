@@ -3,6 +3,10 @@ import curry from './curry'
 import isPrefixOf from './isPrefixOf'
 import tails from './tails'
 
+export function isInfixOf (as, bs) {
+  return any(isPrefixOf(as), tails(bs))
+}
+
 /**
  * Returns `true` if the list of `as` is contained within the list of `bs`,
  * `false` otherwise.
@@ -25,4 +29,4 @@ import tails from './tails'
  * @param bs A list.
  * @returns A boolean value.
  */
-export default curry((as, bs) => any(isPrefixOf(as), tails(bs)))
+export default curry(isInfixOf)

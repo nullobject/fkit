@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function max (a, b) {
+  return b > a ? b : a
+}
+
 /**
  * Returns the largest of the numbers `a` and `b`.
  *
@@ -11,4 +15,4 @@ import curry from './curry'
  * @param b A number.
  * @returns A number.
  */
-export default curry((a, b) => b > a ? b : a)
+export default curry(max)

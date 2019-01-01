@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function lt (a, b) {
+  return b < a
+}
+
 /**
  * Returns `true` if the value `a` is less than the value `b`, false otherwise.
  *
@@ -11,4 +15,4 @@ import curry from './curry'
  * @param b A number.
  * @returns A boolean value.
  */
-export default curry((a, b) => b < a)
+export default curry(lt)

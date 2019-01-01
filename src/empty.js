@@ -14,4 +14,6 @@
  * @param as A list.
  * @returns A boolean value.
  */
-export default function empty (as) { return as.length === 0 }
+export default function empty (as) {
+  return as.length === 0
+}

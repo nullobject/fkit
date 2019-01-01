@@ -6,6 +6,15 @@ import map from './map'
 import pair from './pair'
 import tail from './tail'
 
+export function cartesian (as, bs) {
+  return empty(as)
+    ? []
+    : concat(
+      map(pair(head(as)), bs),
+      cartesian(tail(as), bs)
+    )
+}
+
 /**
  * Returns a list that contains all the ordered pairs `[a, b]` in the lists of
  * `as` and `bs`.
@@ -23,11 +32,4 @@ import tail from './tail'
  * @param bs A list.
  * @returns A new list.
  */
-export default curry(function cartesian (as, bs) {
-  return empty(as)
-    ? []
-    : concat(
-      map(pair(head(as)), bs),
-      cartesian(tail(as), bs)
-    )
-})
+export default curry(cartesian)

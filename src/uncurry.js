@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function uncurry (f, p) {
+  return f(p[0], p[1])
+}
+
 /**
  * Returns a function that wraps the binary function `f` to accept a pair.
  *
@@ -14,4 +18,4 @@ import curry from './curry'
  * @param f A function.
  * @returns A new function.
  */
-export default curry((f, p) => f(p[0], p[1]))
+export default curry(uncurry)

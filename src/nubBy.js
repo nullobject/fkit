@@ -6,6 +6,17 @@ import mempty from './internal/mempty'
 import prepend from './prepend'
 import tail from './tail'
 
+export function nubBy (f, as) {
+  const a = head(as)
+
+  return empty(as)
+    ? mempty(as)
+    : prepend(
+      a,
+      nubBy(f, filter(b => !f(a, b), tail(as)))
+    )
+}
+
 /**
  * Returns a list with all duplicate elements removed from the list of `bs`.
  * The elements are compared using the comparator function `f`.
@@ -26,13 +37,4 @@ import tail from './tail'
  * @param as A list.
  * @returns A new list.
  */
-export default curry(function nubBy (f, as) {
-  const a = head(as)
-
-  return empty(as)
-    ? mempty(as)
-    : prepend(
-      a,
-      nubBy(f, filter(b => !f(a, b), tail(as)))
-    )
-})
+export default curry(nubBy)

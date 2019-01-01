@@ -3,6 +3,16 @@ import empty from './empty'
 import head from './head'
 import tail from './tail'
 
+export function isPrefixOf (as, bs) {
+  if (empty(as)) {
+    return true
+  } else if (empty(bs)) {
+    return false
+  } else {
+    return head(as) === head(bs) && isPrefixOf(tail(as), tail(bs))
+  }
+}
+
 /**
  * Returns `true` if the list of `as` is a prefix of the list of `bs`, `false`
  * otherwise.
@@ -25,12 +35,4 @@ import tail from './tail'
  * @param bs A list.
  * @returns A boolean value.
  */
-export default curry(function isPrefixOf (as, bs) {
-  if (empty(as)) {
-    return true
-  } else if (empty(bs)) {
-    return false
-  } else {
-    return head(as) === head(bs) && isPrefixOf(tail(as), tail(bs))
-  }
-})
+export default curry(isPrefixOf)

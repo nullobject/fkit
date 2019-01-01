@@ -2,6 +2,10 @@ import curry from './curry'
 import max from './max'
 import min from './min'
 
+export function clamp (a, b, n) {
+  return max(a, min(n, b))
+}
+
 /**
  * Clamps the number `n` between the numbers `a` and `b` (i.e. a <= n <= b).
  *
@@ -14,4 +18,4 @@ import min from './min'
  * @param n A number.
  * @returns A number.
  */
-export default curry((a, b, n) => max(a, min(n, b)))
+export default curry(clamp)

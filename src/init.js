@@ -12,4 +12,6 @@
  * @param as A list.
  * @returns A new list.
  */
-export default function init (as) { return as.slice(0, as.length - 1) }
+export default function init (as) {
+  return as.slice(0, as.length - 1)
+}

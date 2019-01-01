@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function notEqual (a, b) {
+  return b !== a
+}
+
 /**
  * Returns `true` if the value `a` is strictly not equal (`!==`) to the value
  * `b`, false otherwise.
@@ -15,4 +19,4 @@ import curry from './curry'
  * @param b A value.
  * @returns A boolean value.
  */
-export default curry((a, b) => b !== a)
+export default curry(notEqual)

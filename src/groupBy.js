@@ -6,6 +6,18 @@ import prepend from './prepend'
 import span from './span'
 import tail from './tail'
 
+export function groupBy (c, as) {
+  const b = head(as)
+  const bs = span(a => c(a, b), tail(as))
+
+  return empty(as)
+    ? []
+    : prepend(
+      prepend(b, head(bs)),
+      groupBy(c, last(bs))
+    )
+}
+
 /**
  * Returns a list that contains the elements in the list of `as` grouped into
  * sublists that satisfy the comparator function `c`.
@@ -26,14 +38,4 @@ import tail from './tail'
  * @param as A list.
  * @returns A new list.
  */
-export default curry(function groupBy (c, as) {
-  const b = head(as)
-  const bs = span(a => c(a, b), tail(as))
-
-  return empty(as)
-    ? []
-    : prepend(
-      prepend(b, head(bs)),
-      groupBy(c, last(bs))
-    )
-})
+export default curry(groupBy)

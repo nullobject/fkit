@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function replace (a, b, s) {
+  return s.replace(a, b)
+}
+
 /**
  * Returns the result of replacing term `a` with the string `b` in the string
  * `s`.
@@ -18,4 +22,4 @@ import curry from './curry'
  * @param s A string.
  * @returns A new string.
  */
-export default curry((a, b, s) => s.replace(a, b))
+export default curry(replace)

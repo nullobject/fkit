@@ -6,4 +6,6 @@
  * @param a A number.
  * @returns A number.
  */
-export default function negate (a) { return -a }
+export default function negate (a) {
+  return -a
+}

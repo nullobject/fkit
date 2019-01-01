@@ -3,6 +3,10 @@ import flip from './flip'
 import fold from './fold'
 import removeBy from './removeBy'
 
+export function differenceBy (f, as, bs) {
+  return fold(flip(removeBy(f)), as, bs)
+}
+
 /**
  * Returns a list that contains the difference of the elements in the lists of
  * `as` and `bs`. The elements are compared using the comparator function `f`.
@@ -25,4 +29,4 @@ import removeBy from './removeBy'
  * @param bs A list.
  * @returns A new list.
  */
-export default curry((f, as, bs) => fold(flip(removeBy(f)), as, bs))
+export default curry(differenceBy)

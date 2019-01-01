@@ -10,4 +10,6 @@
  * @param n A number.
  * @returns A new array.
  */
-export default function array (n) { return Array.apply(null, Array(n)) }
+export default function array (n) {
+  return Array.apply(null, Array(n))
+}

@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function min (a, b) {
+  return a > b ? b : a
+}
+
 /**
  * Returns the smallest of the numbers `a` and `b`.
  *
@@ -11,4 +15,4 @@ import curry from './curry'
  * @param b A number.
  * @returns A number.
  */
-export default curry((a, b) => a > b ? b : a)
+export default curry(min)

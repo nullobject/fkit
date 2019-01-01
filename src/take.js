@@ -1,6 +1,17 @@
 import curry from './curry'
 import isString from './internal/isString'
 
+export function take (n, as) {
+  let s = isString(as) ? '' : []
+  const m = as.length
+
+  for (let i = 0; i < Math.min(m, n); i++) {
+    s = s.concat(as[i])
+  }
+
+  return s
+}
+
 /**
  * Returns the prefix of `n` elements from the list of `as`.
  *
@@ -17,13 +28,4 @@ import isString from './internal/isString'
  * @param as A list.
  * @returns A new list.
  */
-export default curry((n, as) => {
-  let s = isString(as) ? '' : []
-  const m = as.length
-
-  for (let i = 0; i < Math.min(m, n); i++) {
-    s = s.concat(as[i])
-  }
-
-  return s
-})
+export default curry(take)

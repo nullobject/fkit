@@ -4,6 +4,12 @@ import curry from './curry'
 import fold from './fold'
 import mempty from './internal/mempty'
 
+export function intersectBy (f, as, bs) {
+  return fold((cs, a) => {
+    return any(b => f(a, b), bs) ? append(a, cs) : cs
+  }, mempty(as), as)
+}
+
 /**
  * Returns a list that contains the intersection of the elments in the lists of
  * `as` and `bs`. The elements are compared using the comparator function `f`.
@@ -29,8 +35,4 @@ import mempty from './internal/mempty'
  * @param bs A list.
  * @returns A new list.
  */
-export default curry((f, as, bs) =>
-  fold((cs, a) => {
-    return any(b => f(a, b), bs) ? append(a, cs) : cs
-  }, mempty(as), as)
-)
+export default curry(intersectBy)

@@ -1,6 +1,10 @@
 import array from './array'
 import curry from './curry'
 
+export function range (a, n) {
+  return array(n).map((_, i) => a + i)
+}
+
 /**
  * Returns an array of numbers of length `n` starting from `a`.
  *
@@ -16,4 +20,4 @@ import curry from './curry'
  * @param n A number.
  * @returns A new array.
  */
-export default curry((a, n) => array(n).map((_, i) => a + i))
+export default curry(range)

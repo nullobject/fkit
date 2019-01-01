@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function get (k, o) {
+  return o[k]
+}
+
 /**
  * Returns the property at the key `k` in the object `o`.
  *
@@ -16,4 +20,4 @@ import curry from './curry'
  * @param o An object.
  * @returns A value.
  */
-export default curry((k, o) => o[k])
+export default curry(get)

@@ -12,4 +12,6 @@
  * @param as A list.
  * @returns A new list.
  */
-export default function tail (as) { return as.slice(1) }
+export default function tail (as) {
+  return as.slice(1)
+}

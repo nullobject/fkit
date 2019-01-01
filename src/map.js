@@ -1,6 +1,10 @@
 import curry from './curry'
 import toArray from './internal/toArray'
 
+export function map (f, as) {
+  return toArray(as).map(f)
+}
+
 /**
  * Returns a list that contains the elements in the list of `as` mapped with
  * the function `f`.
@@ -18,4 +22,4 @@ import toArray from './internal/toArray'
  * @param as A list.
  * @returns A new list.
  */
-export default curry((f, as) => toArray(as).map(f))
+export default curry(map)

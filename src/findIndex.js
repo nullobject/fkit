@@ -1,5 +1,15 @@
 import curry from './curry'
 
+export function findIndex (p, as) {
+  const n = as.length
+
+  for (let i = 0; i < n; i++) {
+    if (p(as[i])) { return i }
+  }
+
+  return undefined
+}
+
 /**
  * Returns the index of the first occurance of an element in the list of `as`
  * that satisfies the predicate function `p`.
@@ -21,12 +31,4 @@ import curry from './curry'
  * @param as A list.
  * @returns A number or `undefined` if no value was found.
  */
-export default curry((p, as) => {
-  const n = as.length
-
-  for (let i = 0; i < n; i++) {
-    if (p(as[i])) { return i }
-  }
-
-  return undefined
-})
+export default curry(findIndex)

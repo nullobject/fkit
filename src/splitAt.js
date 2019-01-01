@@ -2,6 +2,10 @@ import curry from './curry'
 import drop from './drop'
 import take from './take'
 
+export function splitAt (n, as) {
+  return [take(n, as), drop(n, as)]
+}
+
 /**
  * Returns a list that contains the elements in the list of `as` split into a
  * pair of lists: a prefix of length `n` and the remainder of the list.
@@ -19,4 +23,4 @@ import take from './take'
  * @param as A list.
  * @returns A pair of lists.
  */
-export default curry((n, as) => [take(n, as), drop(n, as)])
+export default curry(splitAt)

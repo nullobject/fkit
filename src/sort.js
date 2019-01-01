@@ -14,4 +14,4 @@ import sortBy from './sortBy'
  * @param a A list.
  * @returns A new list.
  */
-export default function sort (as) { return sortBy(compare, as) }
+export default sortBy(compare)

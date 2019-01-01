@@ -1,5 +1,15 @@
 import curry from './curry'
 
+export function compare (a, b) {
+  if (a > b) {
+    return 1
+  } else if (a < b) {
+    return -1
+  } else {
+    return 0
+  }
+}
+
 /**
  * Returns the ordering of the two values `a` and `b`.
  *
@@ -17,12 +27,4 @@ import curry from './curry'
  * @param b A value.
  * @returns A number.
  */
-export default curry((a, b) => {
-  if (a > b) {
-    return 1
-  } else if (a < b) {
-    return -1
-  } else {
-    return 0
-  }
-})
+export default curry(compare)

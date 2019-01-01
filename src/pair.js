@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function pair (a, b) {
+  return [a, b]
+}
+
 /**
  * Returns an ordered pair with the values `a` and `b`.
  *
@@ -16,4 +20,4 @@ import curry from './curry'
  * @param b A value.
  * @returns A new pair.
  */
-export default curry((a, b) => [a, b])
+export default curry(pair)

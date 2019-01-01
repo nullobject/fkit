@@ -1,6 +1,11 @@
 import curry from './curry'
 import toArray from './internal/toArray'
 
+export function zipWith (f, as, bs) {
+  const n = Math.min(as.length, bs.length)
+  return toArray(as.slice(0, n)).map((a, i) => f(a, bs[i]))
+}
+
 /**
  * Returns the lists of `as` and `bs` zipped with the binary function `f`.
  *
@@ -13,7 +18,4 @@ import toArray from './internal/toArray'
  * @param bs A list.
  * @returns A new list.
  */
-export default curry((f, as, bs) => {
-  const n = Math.min(as.length, bs.length)
-  return toArray(as.slice(0, n)).map((a, i) => f(a, bs[i]))
-})
+export default curry(zipWith)

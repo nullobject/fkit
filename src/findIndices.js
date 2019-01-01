@@ -1,5 +1,16 @@
 import curry from './curry'
 
+export function findIndices (p, as) {
+  const s = []
+  const n = as.length
+
+  for (let i = 0; i < n; i++) {
+    if (p(as[i])) { s.push(i) }
+  }
+
+  return s
+}
+
 /**
  * Returns the indices of the elements in the list of `as` that satisfy the
  * predicate function `p`.
@@ -21,13 +32,4 @@ import curry from './curry'
  * @param as A list.
  * @returns A number or `undefined` if no value was found.
  */
-export default curry((p, as) => {
-  const s = []
-  const n = as.length
-
-  for (let i = 0; i < n; i++) {
-    if (p(as[i])) { s.push(i) }
-  }
-
-  return s
-})
+export default curry(findIndices)

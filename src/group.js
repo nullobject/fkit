@@ -18,4 +18,6 @@ import groupBy from './groupBy'
  * @param as A list.
  * @returns A new list.
  */
-export default function group (as) { return groupBy(equal, as) }
+export default function group (as) {
+  return groupBy(equal, as)
+}

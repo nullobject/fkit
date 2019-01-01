@@ -5,6 +5,15 @@ import mempty from './internal/mempty'
 import prepend from './prepend'
 import tail from './tail'
 
+export function removeBy (f, a, bs_) {
+  const b = head(bs_)
+  const bs = tail(bs_)
+
+  return empty(bs_)
+    ? mempty(bs_)
+    : f(a, b) ? bs : prepend(b, removeBy(f, a, bs))
+}
+
 /**
  * Returns a list with the first occurance of the element `a` removed from the
  * list of `bs`. The elements are compared using the comparator function `f`.
@@ -27,11 +36,4 @@ import tail from './tail'
  * @param bs A list.
  * @returns A new list.
  */
-export default curry(function removeBy (f, a, bs_) {
-  const b = head(bs_)
-  const bs = tail(bs_)
-
-  return empty(bs_)
-    ? mempty(bs_)
-    : f(a, b) ? bs : prepend(b, removeBy(f, a, bs))
-})
+export default curry(removeBy)

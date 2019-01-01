@@ -4,6 +4,11 @@ import curry from './curry'
 import isString from './internal/isString'
 import string from './string'
 
+export function replicate (n, a) {
+  const as = isString(a) ? string(n) : array(n)
+  return concatMap(() => [a], as)
+}
+
 /**
  * Returns a list of length `n` with `a` the value of every element.
  *
@@ -20,7 +25,4 @@ import string from './string'
  * @param a A value.
  * @returns A new list.
  */
-export default curry((n, a) => {
-  const as = isString(a) ? string(n) : array(n)
-  return concatMap(() => [a], as)
-})
+export default curry(replicate)

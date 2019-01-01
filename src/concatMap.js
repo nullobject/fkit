@@ -5,6 +5,12 @@ import flattenStrings from './internal/flattenStrings'
 import mempty from './internal/mempty'
 import toArray from './internal/toArray'
 
+export function concatMap (f, as) {
+  const bs = toArray(as).map(compose(flattenStrings, f))
+  const cs = bs.length > 0 ? bs : as
+  return concatWith(mempty(cs), bs)
+}
+
 /**
  * Returns a list that contains the elements in the list of `as` mapped with
  * the function `f` concatenated together.
@@ -23,8 +29,4 @@ import toArray from './internal/toArray'
  * @param as A list.
  * @returns A new list.
  */
-export default curry((f, as) => {
-  const bs = toArray(as).map(compose(flattenStrings, f))
-  const cs = bs.length > 0 ? bs : as
-  return concatWith(mempty(cs), bs)
-})
+export default curry(concatMap)

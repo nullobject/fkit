@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function randomFloat (a, b) {
+  return (Math.random() * (b - a)) + a
+}
+
 /**
  * Returns a random float between `a` and `b`.
  *
@@ -11,4 +15,4 @@ import curry from './curry'
  * @param b A number.
  * @returns A number.
  */
-export default curry((a, b) => (Math.random() * (b - a)) + a)
+export default curry(randomFloat)

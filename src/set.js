@@ -1,6 +1,12 @@
 import copy from './copy'
 import curry from './curry'
 
+export function set (k, v, o) {
+  const p = {}
+  p[k] = v
+  return copy(o, p)
+}
+
 /**
  * Returns a copy of the object `o` with the property `k` set to the value `v`.
  *
@@ -18,8 +24,4 @@ import curry from './curry'
  * @param o An object.
  * @returns A new object.
  */
-export default curry((k, v, o) => {
-  const p = {}
-  p[k] = v
-  return copy(o, p)
-})
+export default curry(set)

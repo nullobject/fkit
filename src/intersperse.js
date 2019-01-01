@@ -5,6 +5,17 @@ import head from './head'
 import mempty from './internal/mempty'
 import tail from './tail'
 
+export function intersperse (s, as) {
+  const prependToAll = bs =>
+    empty(bs)
+      ? mempty(bs)
+      : concat(s, head(bs), prependToAll(tail(bs)))
+
+  return empty(as)
+    ? mempty(as)
+    : concat(head(as), prependToAll(tail(as)))
+}
+
 /**
  * Returns a list that contains the elements in the list of `as` interspersed
  * with the separator `s`.
@@ -22,13 +33,4 @@ import tail from './tail'
  * @param as A list.
  * @returns A new list.
  */
-export default curry((s, as) => {
-  const prependToAll = bs =>
-    empty(bs)
-      ? mempty(bs)
-      : concat(s, head(bs), prependToAll(tail(bs)))
-
-  return empty(as)
-    ? mempty(as)
-    : concat(head(as), prependToAll(tail(as)))
-})
+export default curry(intersperse)

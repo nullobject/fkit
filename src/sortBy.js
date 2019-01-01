@@ -2,6 +2,11 @@ import curry from './curry'
 import toArray from './internal/toArray'
 import toList from './internal/toList'
 
+export function sortBy (c, as) {
+  const bs = toArray(as.slice(0))
+  return toList(bs.sort(c), typeof as)
+}
+
 /**
  * Returns a list that contains the elements in the list of `as` sorted using
  * the comparator function `c`.
@@ -25,7 +30,4 @@ import toList from './internal/toList'
  * @param as A list.
  * @returns A new list.
  */
-export default curry((c, as) => {
-  const bs = toArray(as.slice(0))
-  return toList(bs.sort(c), typeof as)
-})
+export default curry(sortBy)

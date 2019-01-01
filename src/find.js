@@ -2,6 +2,10 @@ import curry from './curry'
 import filter from './filter'
 import head from './head'
 
+export function find (p, as) {
+  return head(filter(p, as))
+}
+
 /**
  * Returns an element in the list of `as` that satisfies the predicate function
  * `p`.
@@ -22,4 +26,4 @@ import head from './head'
  * @param as A list.
  * @returns A value or `undefined` if no value was found.
  */
-export default curry((p, as) => head(filter(p, as)))
+export default curry(find)

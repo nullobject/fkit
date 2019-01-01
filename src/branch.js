@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function branch (p, f, g, a) {
+  return p(a) ? f(a) : g(a)
+}
+
 /**
  * If `p(a)` is true then `f` is applied to `a`, otherwise `g` is applied to
  * `a`.
@@ -22,4 +26,4 @@ import curry from './curry'
  * @param a A value.
  * @returns A value.
  */
-export default curry((p, f, g, a) => p(a) ? f(a) : g(a))
+export default curry(branch)

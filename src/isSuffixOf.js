@@ -2,6 +2,10 @@ import curry from './curry'
 import isPrefixOf from './isPrefixOf'
 import reverse from './reverse'
 
+export function isSuffixOf (as, bs) {
+  return isPrefixOf(reverse(as), reverse(bs))
+}
+
 /**
  * Returns `true` if the list of `as` is a suffix of the list of `bs`, `false`
  * otherwise.
@@ -24,4 +28,4 @@ import reverse from './reverse'
  * @param bs A list.
  * @returns A boolean value.
  */
-export default curry((as, bs) => isPrefixOf(reverse(as), reverse(bs)))
+export default curry(isSuffixOf)

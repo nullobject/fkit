@@ -2,6 +2,10 @@ import curry from './curry'
 import get from './get'
 import set from './set'
 
+export function update (k, f, o) {
+  return set(k, f(get(k, o)), o)
+}
+
 /**
  * Returns a copy of the object `o` with the property `k` updated with the
  * function `f`.
@@ -20,4 +24,4 @@ import set from './set'
  * @param o An object.
  * @returns A new object.
  */
-export default curry((k, f, o) => set(k, f(get(k, o)), o))
+export default curry(update)

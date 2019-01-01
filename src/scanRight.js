@@ -2,6 +2,12 @@ import curry from './curry'
 import foldRight from './foldRight'
 import tap from './tap'
 
+export function scanRight (f, s, as) {
+  const r = [s]
+  foldRight((a, b) => tap(r.unshift.bind(r), f(a, b)), s, as)
+  return r
+}
+
 /**
  * Returns a list that contains the elements in the list of `as` scanned
  * right-to-left with the binary function `f` and starting value `s`.
@@ -20,8 +26,4 @@ import tap from './tap'
  * @param as A list.
  * @returns A new list.
  */
-export default curry((f, s, as) => {
-  const r = [s]
-  foldRight((a, b) => tap(r.unshift.bind(r), f(a, b)), s, as)
-  return r
-})
+export default curry(scanRight)

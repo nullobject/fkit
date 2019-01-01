@@ -2,6 +2,10 @@ import curry from './curry'
 import pair from './pair'
 import zipWith from './zipWith'
 
+export function zip (as, bs) {
+  return zipWith(pair, as, bs)
+}
+
 /**
  * Returns the lists of `as` and `bs` zipped into a list of pairs.
  *
@@ -21,4 +25,4 @@ import zipWith from './zipWith'
  * @param bs A list.
  * @returns A new list.
  */
-export default curry((as, bs) => zipWith(pair, as, bs))
+export default curry(zip)

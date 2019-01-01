@@ -4,6 +4,10 @@ import get from './get'
 import keys from './keys'
 import set from './set'
 
+export function omit (ks, o) {
+  return difference(keys(o), ks).reduce((p, k) => set(k, get(k, o), p), {})
+}
+
 /**
  * Returns a copy of the object `o` *without* the properties in the list of
  * `ks`.
@@ -21,6 +25,4 @@ import set from './set'
  * @param o An object.
  * @returns A new object.
  */
-export default curry((ks, o) =>
-  difference(keys(o), ks).reduce((p, k) => set(k, get(k, o), p), {})
-)
+export default curry(omit)

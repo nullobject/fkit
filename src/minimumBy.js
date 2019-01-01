@@ -1,6 +1,10 @@
 import curry from './curry'
 import fold from './fold'
 
+export function minimumBy (f, as) {
+  return fold((a, b) => f(a, b) < 0 ? a : b, as[0], as)
+}
+
 /**
  * Returns the minimum value in the list of `as` using the comparator function
  * `f`.
@@ -23,6 +27,4 @@ import fold from './fold'
  * @param as A list.
  * @returns A value.
  */
-export default curry((f, as) =>
-  fold((a, b) => f(a, b) < 0 ? a : b, as[0], as)
-)
+export default curry(minimumBy)

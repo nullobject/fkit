@@ -11,4 +11,6 @@
  * @param a A boolean.
  * @returns A boolean value.
  */
-export default function not (a) { return !a }
+export default function not (a) {
+  return !a
+}

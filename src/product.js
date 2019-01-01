@@ -13,4 +13,6 @@ import mul from './mul'
  * @param as A list.
  * @returns A number.
  */
-export default function product (as) { return fold(mul, 1, as) }
+export default function product (as) {
+  return fold(mul, 1, as)
+}

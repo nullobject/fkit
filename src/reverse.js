@@ -17,4 +17,6 @@ import toArray from './internal/toArray'
  * @param as A list.
  * @returns A new list.
  */
-export default as => toArray(as).reduce(flip(prepend), mempty(as))
+export default function (as) {
+  return toArray(as).reduce(flip(prepend), mempty(as))
+}

@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function sub (a, b) {
+  return b - a
+}
+
 /**
  * Returns the result of `b - a`.
  *
@@ -11,4 +15,4 @@ import curry from './curry'
  * @param b A number.
  * @returns A number.
  */
-export default curry((a, b) => b - a)
+export default curry(sub)

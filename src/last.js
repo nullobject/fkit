@@ -11,4 +11,6 @@
  * @param as A list.
  * @returns A value or `undefined` if the list is empty.
  */
-export default function last (as) { return as[as.length - 1] }
+export default function last (as) {
+  return as[as.length - 1]
+}

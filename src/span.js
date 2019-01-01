@@ -2,6 +2,10 @@ import curry from './curry'
 import dropWhile from './dropWhile'
 import takeWhile from './takeWhile'
 
+export function span (p, as) {
+  return [takeWhile(p, as), dropWhile(p, as)]
+}
+
 /**
  * Returns a list that contains the elements in the list of `as` split into a
  * pair of lists: a prefix of elements that satisfy the predicate function `p`
@@ -20,4 +24,4 @@ import takeWhile from './takeWhile'
  * @param as A list.
  * @returns A pair of lists.
  */
-export default curry((p, as) => [takeWhile(p, as), dropWhile(p, as)])
+export default curry(span)

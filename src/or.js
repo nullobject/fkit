@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function or (a, b) {
+  return !!(b || a)
+}
+
 /**
  * Returns true if either `a` or `b` are truthy, false otherwise.
  *
@@ -17,4 +21,4 @@ import curry from './curry'
  * @param b A boolean value.
  * @returns A boolean value.
  */
-export default curry((a, b) => !!(b || a))
+export default curry(or)

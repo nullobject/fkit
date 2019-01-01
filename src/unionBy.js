@@ -3,6 +3,12 @@ import append from './append'
 import curry from './curry'
 import fold from './fold'
 
+export function unionBy (f, as, bs) {
+  return fold((cs, b) => {
+    return any(a => f(a, b), as) ? cs : append(b, cs)
+  }, as, bs)
+}
+
 /**
  * Returns a list that contains the union of elements in the lists of `as` and
  * `bs`. The elements are compared using the comparator function `f`.
@@ -28,8 +34,4 @@ import fold from './fold'
  * @param bs A list.
  * @returns A new list.
  */
-export default curry((f, as, bs) =>
-  fold((cs, b) => {
-    return any(a => f(a, b), as) ? cs : append(b, cs)
-  }, as, bs)
-)
+export default curry(unionBy)

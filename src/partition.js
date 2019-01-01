@@ -3,6 +3,13 @@ import curry from './curry'
 import filter from './filter'
 import not from './not'
 
+export function partition (p, as) {
+  return [
+    filter(p, as),
+    filter(compose(not, p), as)
+  ]
+}
+
 /**
  * Returns a list that contains the elements in the list of `as` split into a
  * pair of lists: the elements that satisfy the predicate function `p` and the
@@ -21,9 +28,4 @@ import not from './not'
  * @param as A list.
  * @returns A pair of lists.
  */
-export default curry((p, as) =>
-  [
-    filter(p, as),
-    filter(compose(not, p), as)
-  ]
-)
+export default curry(partition)

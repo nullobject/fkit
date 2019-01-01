@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function elem (a, as) {
+  return as.indexOf(a) >= 0
+}
+
 /**
  * Returns `true` if the list of `as` contains the element `a`, `false`
  * otherwise.
@@ -20,4 +24,4 @@ import curry from './curry'
  * @param as A list.
  * @returns A boolean value.
  */
-export default curry((a, as) => as.indexOf(a) >= 0)
+export default curry(elem)

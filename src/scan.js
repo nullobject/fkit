@@ -2,6 +2,12 @@ import curry from './curry'
 import fold from './fold'
 import tap from './tap'
 
+export function scan (f, s, as) {
+  const r = [s]
+  fold((b, a) => tap(r.push.bind(r), f(b, a)), s, as)
+  return r
+}
+
 /**
  * Returns a list that contains the elements in the list of `as` scanned
  * left-to-right with the binary function `f` and starting value `s`.
@@ -20,8 +26,4 @@ import tap from './tap'
  * @param as A list.
  * @returns A new list.
  */
-export default curry((f, s, as) => {
-  const r = [s]
-  fold((b, a) => tap(r.push.bind(r), f(b, a)), s, as)
-  return r
-})
+export default curry(scan)

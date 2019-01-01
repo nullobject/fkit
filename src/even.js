@@ -6,4 +6,6 @@
  * @param a A number.
  * @returns A boolean value.
  */
-export default function even (a) { return !(a % 2) }
+export default function even (a) {
+  return !(a % 2)
+}

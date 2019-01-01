@@ -13,4 +13,6 @@ import fold from './fold'
  * @param as A list.
  * @returns A number.
  */
-export default function sum (as) { return fold(add, 0, as) }
+export default function sum (as) {
+  return fold(add, 0, as)
+}

@@ -2,6 +2,10 @@ import curry from './curry'
 import get from './get'
 import set from './set'
 
+export function pick (ks, o) {
+  return ks.reduce((p, k) => set(k, get(k, o), p), {})
+}
+
 /**
  * Returns a copy of the object `o` *with* the properties in the list of `ks`.
  *
@@ -18,6 +22,4 @@ import set from './set'
  * @param o An object.
  * @returns A new object.
  */
-export default curry((ks, o) =>
-  ks.reduce((p, k) => set(k, get(k, o), p), {})
-)
+export default curry(pick)

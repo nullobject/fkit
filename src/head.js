@@ -11,4 +11,6 @@
  * @param as A list.
  * @returns A value or `undefined` if the list is empty.
  */
-export default function head (as) { return as[0] }
+export default function head (as) {
+  return as[0]
+}

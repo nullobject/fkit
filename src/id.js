@@ -10,4 +10,6 @@
  * @param a A value.
  * @returns The value `a`.
  */
-export default function id (a) { return a }
+export default function id (a) {
+  return a
+}

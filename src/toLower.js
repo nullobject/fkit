@@ -4,4 +4,6 @@
  * @param s A string.
  * @returns A new string.
  */
-export default function toLower (s) { return s.toLowerCase() }
+export default function toLower (s) {
+  return s.toLowerCase()
+}

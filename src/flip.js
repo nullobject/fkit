@@ -1,5 +1,9 @@
 import curry from './curry'
 
+export function flip (f, a, b) {
+  return f(b, a)
+}
+
 /**
  * Returns the result of applying the function `f` to the values `b` and `a`.
  *
@@ -17,4 +21,4 @@ import curry from './curry'
  * @param b A value.
  * @returns A new function.
  */
-export default curry((f, a, b) => f(b, a))
+export default curry(flip)

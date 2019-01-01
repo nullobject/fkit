@@ -2,6 +2,10 @@ import applyRight from './applyRight'
 import curry from './curry'
 import or from './or'
 
+export function whereAny (ps, a) {
+  return ps.map(applyRight(a)).reduce(or, false)
+}
+
 /**
  * Applies the list of predicate functions `ps` to the value `a` and returns
  * their disjunction.
@@ -19,4 +23,4 @@ import or from './or'
  * @param a A value.
  * @returns A boolean value.
  */
-export default curry((ps, a) => ps.map(applyRight(a)).reduce(or, false))
+export default curry(whereAny)

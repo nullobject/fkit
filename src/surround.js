@@ -2,6 +2,10 @@ import append from './append'
 import curry from './curry'
 import prepend from './prepend'
 
+export function surround (a, b, cs) {
+  return append(b, prepend(a, cs))
+}
+
 /**
  * Surrounds the list of `cs` with the values `a` and `b`.
  *
@@ -17,4 +21,4 @@ import prepend from './prepend'
  * @param cs A list.
  * @returns A new list.
  */
-export default curry((a, b, cs) => append(b, prepend(a, cs)))
+export default curry(surround)

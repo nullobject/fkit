@@ -11,4 +11,6 @@
  * @param as A list.
  * @returns A number.
  */
-export default function length (as) { return as.length }
+export default function length (as) {
+  return as.length
+}

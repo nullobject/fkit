@@ -1,4 +1,5 @@
 import array from './array'
+
 /**
  * Returns an string of length `n`.
  *
@@ -11,4 +12,6 @@ import array from './array'
  * @param n A number.
  * @returns A new string.
  */
-export default function string (n) { return array(n + 1).join(' ') }
+export default function string (n) {
+  return array(n + 1).join(' ')
+}

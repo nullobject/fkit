@@ -2,6 +2,10 @@ import curry from './curry'
 import flip from './flip'
 import toArray from './internal/toArray'
 
+export function foldRight (f, s, as) {
+  return toArray(as).reduceRight(flip(f), s)
+}
+
 /**
  * Returns a list that contains the elements in the list of `as` folded
  * right-to-left with the binary function `f` and starting value `s`.
@@ -20,4 +24,4 @@ import toArray from './internal/toArray'
  * @param as A list.
  * @returns A value.
  */
-export default curry((f, s, as) => toArray(as).reduceRight(flip(f), s))
+export default curry(foldRight)
