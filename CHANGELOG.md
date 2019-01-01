@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Allow `getIn` keypath to be given as a string
+* Extract all functions to separate files.
 
 ## 1.4.0 (2018-01-31)
 
