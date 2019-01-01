@@ -10,21 +10,17 @@ const plugins = [
 ]
 
 export default [
-  // UMD and ES versions.
   {
     input: 'src/index.js',
     output: [
-      { file: pkg.main, format: 'umd', name: 'F' },
+      { file: pkg.main, format: 'cjs', name: 'F' },
       { file: pkg.module, format: 'es' }
     ],
     plugins
-  },
-
-  // Browser minified version.
-  {
+  }, {
     input: 'src/index.js',
     output: [
-      { file: pkg.unpkg, format: 'umd', name: 'F' }
+      { file: pkg.unpkg, format: 'iife', name: 'F' }
     ],
     plugins: plugins.concat([uglify()])
   }
