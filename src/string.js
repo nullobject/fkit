@@ -1,44 +1,14 @@
-import { curry } from './fn'
-
+import array from './array'
 /**
- * This module defines string functions.
+ * Returns an string of length `n`.
  *
- * @module fkit/string
- * @summary Strings
- */
-
-/**
- * @summary Converts a string to uppercase.
- *
- * @param s A string.
- * @returns A new string.
- */
-export function toUpper (s) { return s.toUpperCase() }
-
-/**
- * @summary Converts a string to lowercase.
- *
- * @param s A string.
- * @returns A new string.
- */
-export function toLower (s) { return s.toLowerCase() }
-
-/**
- * Returns the result of replacing term `a` with the string `b` in the string
- * `s`.
- *
- * @summary Replaces a term in a string.
+ * @summary Creates a new string.
  *
  * @example
  *
- * F.replace('r', 'z', 'bar') // baz
- * F.replace(/^hello/, 'goodbye', 'hello world!') // goodbye world!
+ * F.string(3) // '   '
  *
- * @curried
- * @function
- * @param a A string or a regexp.
- * @param b A string.
- * @param s A string.
+ * @param n A number.
  * @returns A new string.
  */
-export const replace = curry((a, b, s) => s.replace(a, b))
+export default function string (n) { return array(n + 1).join(' ') }
