@@ -31,30 +31,13 @@ Features:
 ## Table of Contents
 
 * [Getting Started](#getting-started)
-  * [CDN](#cdn)
   * [Node](#node)
+  * [Browser](#browser)
 * [Documentation](#documentation)
 * [Examples](#examples)
 * [Licence](#licence)
 
 ## Getting Started
-
-### CDN
-
-The quickest and easiest way to start using FKit is to include a reference to
-the minified file in the head of your HTML file.
-
-You can always grab the latest version with:
-
-```html
-<script src="https://unpkg.com/fkit/dist/fkit.min.js"></script>
-```
-
-You can also use a specific version with:
-
-```html
-<script src="https://unpkg.com/fkit@1.0.0/dist/fkit.min.js"></script>
-```
 
 ### Node
 
@@ -64,25 +47,34 @@ Install the npm package:
 > npm install fkit
 ```
 
-Require it in your code:
-
-```js
-var F = require('fkit')
-console.log(F.add(1, 2))
-```
-
-Or, if you are using [ES6
-modules](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import),
-you can import just the bits you want:
+Import just the functions you need:
 
 ```js
 import { add } from 'fkit'
 console.log(add(1, 2))
 ```
 
+Or import the whole library:
+
+```js
+import * as F from 'fkit'
+console.log(F.add(1, 2))
+```
+
+### Browser
+
+The easiest way to start using FKit is to include a reference to the minified
+file in your HTML file.
+
+You can always grab the latest version with:
+
+```html
+<script src="https://unpkg.com/fkit/dist/fkit.min.js"></script>
+```
+
 ## Documentation
 
-* [API documentation](http://nullobject.github.io/fkit/api.html)
+* [API documentation](http://fkit.joshbassett.info/)
 
 * Presentation by Josh Bassett: [Everyday Functional Programming in
   JavaScript](https://speakerdeck.com/nullobject/fkit-everyday-functional-programming-in-javascript)
