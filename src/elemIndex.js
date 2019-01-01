@@ -1,14 +1,12 @@
 import curry from './curry'
 
-export function elemIndex (a, as) {
-  const i = as.indexOf(a)
-  return (i >= 0) ? i : undefined
-}
 /**
- * Returns the index of the first occurance of the element `a` in the list of
- * `as`.
+ * Gets the index of the first occurance of a value in a list.
  *
- * @summary Gets the index of the first occurance of an element in a list.
+ * @param a A value.
+ * @param {Array|String} as A list.
+ * @returns {Number} The index of the first occurance of the value `a` in the
+ * list of `as`, or `undefined` if no value was found.
  *
  * @example
  *
@@ -17,11 +15,10 @@ export function elemIndex (a, as) {
  *
  * F.elemIndex('a', 'foo') // undefined
  * F.elemIndex('o', 'foo') // 1
- *
- * @curried
- * @function
- * @param a A value.
- * @param as A list.
- * @returns A number or `undefined` if no value was found.
  */
+export function elemIndex (a, as) {
+  const i = as.indexOf(a)
+  return (i >= 0) ? i : undefined
+}
+
 export default curry(elemIndex)

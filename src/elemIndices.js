@@ -2,15 +2,13 @@ import curry from './curry'
 import equal from './equal'
 import { findIndices } from './findIndices'
 
-export function elemIndices (a, as) {
-  return findIndices(equal(a), as)
-}
-
 /**
- * Returns the indices of all occurances of the element `a` in the list of
- * `as`.
+ * Gets the indices of all occurances of a value in a list.
  *
- * @summary Gets the indices of all occurances of an element in a list.
+ * @param a A value.
+ * @param {Array|String} as A list.
+ * @returns {Array} The indices of all occurances of the value `a` in the list
+ * of `as`.
  *
  * @example
  *
@@ -19,11 +17,9 @@ export function elemIndices (a, as) {
  *
  * F.elemIndices('a', 'foo') // []
  * F.elemIndices('o', 'foo') // [1, 2]
- *
- * @curried
- * @function
- * @param a A value.
- * @param as A list.
- * @returns A number or `undefined` if no value was found.
  */
+export function elemIndices (a, as) {
+  return findIndices(equal(a), as)
+}
+
 export default curry(elemIndices)

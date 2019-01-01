@@ -1,24 +1,20 @@
 import curry from './curry'
 
-export function and (a, b) {
-  return !!(b && a)
-}
-
 /**
- * Returns true if both `a` and `b` are truthy, false otherwise.
+ * Returns the logical AND of two values.
  *
- * @summary The logical AND operator.
+ * @param a The first value.
+ * @param b The second value.
+ * @returns {Boolean} The result of `b && a`.
  *
  * @example
  *
  * F.and(true, true) // true
  * F.and(0, 1) // false
  * F.and('', 'foo') // false
- *
- * @curried
- * @function
- * @param a A boolean value.
- * @param b A boolean value.
- * @returns A boolean value.
  */
+export function and (a, b) {
+  return !!(b && a)
+}
+
 export default curry(and)

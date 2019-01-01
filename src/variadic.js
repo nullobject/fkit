@@ -2,20 +2,18 @@ import flatten from './internal/flatten'
 import { slice } from './util'
 
 /**
- * Returns a function that wraps the function `f` to accept any number of
- * arguments.
+ * Converts a function to a variadic function.
  *
  * The last named parameter will be given an array of arguments.
  *
- * @summary Converts a function to a variadic function.
+ * @param {Function} f A function.
+ * @returns {Function} A function that wraps the function `f` to accept any
+ * number of arguments.
  *
  * @example
  *
  * function f (head, tail) { ... }
  * F.variadic(f)(1, 2, 3) // f(1, [2, 3])
- *
- * @param f A function.
- * @returns A new function.
  */
 export default function variadic (f) {
   const arity = f.length

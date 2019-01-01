@@ -2,16 +2,18 @@ import compare from './compare'
 import maximumBy from './maximumBy'
 
 /**
- * Returns the maximum value in the list of `as`.
+ * Calculates the maximum value of a list.
  *
- * @summary Calculates the maximum value of a list.
+ * This a special case of the `maximumBy` function where the values are
+ * compared using natural ordering.
+ *
+ * @function
+ * @param {Array|String} as A list.
+ * @returns Returns the maximum value in the list of `as`.
  *
  * @example
  *
  * F.maximum([1, 2, 3]) // 3
  * F.maximum('abc') // 'c'
- *
- * @param as A list.
- * @returns A value.
  */
 export default maximumBy(compare)

@@ -1,14 +1,12 @@
 /**
- * Returns the value `a` unchanged.
+ * The identity function.
  *
- * @summary The identity function.
+ * @param a A value.
+ * @returns The value `a`.
  *
  * @example
  *
  * F.id(1) // 1
- *
- * @param a A value.
- * @returns The value `a`.
  */
 export default function id (a) {
   return a

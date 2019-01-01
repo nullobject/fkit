@@ -1,10 +1,8 @@
 /**
- * Returns `true` if the value `a` is odd, false otherwise.
+ * Determines whether a number is odd.
  *
- * @summary Tests whether a value is odd.
- *
- * @param a A number.
- * @returns A boolean value.
+ * @param {Number} a A number.
+ * @returns {Boolean} `true` if the number `a` is odd, false otherwise.
  */
 export default function odd (a) {
   return !!(a % 2)

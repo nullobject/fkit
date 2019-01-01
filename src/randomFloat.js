@@ -1,18 +1,14 @@
 import curry from './curry'
 
+/**
+ * Generates a random float.
+ *
+ * @param {Number} a A number.
+ * @param {Number} b A number.
+ * @returns {Number} A random float between `a` and `b`.
+ */
 export function randomFloat (a, b) {
   return (Math.random() * (b - a)) + a
 }
 
-/**
- * Returns a random float between `a` and `b`.
- *
- * @summary Generates a random float.
- *
- * @curried
- * @function
- * @param a A number.
- * @param b A number.
- * @returns A number.
- */
 export default curry(randomFloat)

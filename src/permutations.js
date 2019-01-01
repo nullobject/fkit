@@ -8,18 +8,16 @@ import tail from './tail'
 import { foldRight } from './foldRight'
 
 /**
- * Returns a list that contains all the permutations of the elements in the
- * list of `as`.
+ * Calculates the permutations of a list.
  *
- * @summary Calculates the permutations of a list.
+ * @param {Array|String} as A list.
+ * @returns {Array|String} A list that contains all the permutations of the
+ * elements in the list of `as`.
  *
  * @example
  *
  * F.permutations([1, 2, 3]) // [[1, 2, 3], [2, 1, 3], [3, 2, 1], [2, 3, 1], [3, 1, 2], [1, 3, 2]]
  * F.permutations('abc') // ['abc', 'bac', 'cba', 'bca', 'cab', 'acb']
- *
- * @param as A list.
- * @returns A new list.
  */
 export default function permutations (as) {
   const permutations_ = (bs_, cs) => {

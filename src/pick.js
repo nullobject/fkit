@@ -2,24 +2,21 @@ import curry from './curry'
 import { get } from './get'
 import { set } from './set'
 
-export function pick (ks, o) {
-  return ks.reduce((p, k) => set(k, get(k, o), p), {})
-}
-
 /**
- * Returns a copy of the object `o` *with* the properties in the list of `ks`.
+ * Picks properties of an object.
  *
- * @summary Picks properties of an object.
+ * @param {Array} ks A list.
+ * @param {Object} o An object.
+ * @returns {Object} A copy of the object `o` *with* the properties in the list
+ * of `ks`.
  *
  * @example
  *
  * var person = { name: 'Jane', age: 20, city: 'Melbourne' }
  * F.pick(['name', 'age'], person) // { name: 'Jane', age: 20 }
- *
- * @curried
- * @function
- * @param ks A list.
- * @param o An object.
- * @returns A new object.
  */
+export function pick (ks, o) {
+  return ks.reduce((p, k) => set(k, get(k, o), p), {})
+}
+
 export default curry(pick)

@@ -1,10 +1,8 @@
 /**
- * Returns `true` if the value `a` is even, false otherwise.
+ * Determines whether a number is even.
  *
- * @summary Tests whether a value is even.
- *
- * @param a A number.
- * @returns A boolean value.
+ * @param {Number} a A number.
+ * @returns {Boolean} `true` if the number `a` is even, false otherwise.
  */
 export default function even (a) {
   return !(a % 2)

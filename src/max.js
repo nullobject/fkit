@@ -1,18 +1,14 @@
 import curry from './curry'
 
+/**
+ * Determines the largest of two numbers.
+ *
+ * @param {Number} a A number.
+ * @param {Number} b A number.
+ * @returns {Number} The largest of the numbers `a` and `b`.
+ */
 export function max (a, b) {
   return b > a ? b : a
 }
 
-/**
- * Returns the largest of the numbers `a` and `b`.
- *
- * @summary Determines the largest of two numbers.
- *
- * @curried
- * @function
- * @param a A number.
- * @param b A number.
- * @returns A number.
- */
 export default curry(max)

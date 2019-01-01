@@ -1,10 +1,8 @@
 /**
- * Returns the negation of the number `a`.
+ * Returns the negation of a number.
  *
- * @summary The negation operator.
- *
- * @param a A number.
- * @returns A number.
+ * @param {Number} a A number.
+ * @returns {Number} The result.
  */
 export default function negate (a) {
   return -a

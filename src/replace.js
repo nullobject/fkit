@@ -1,25 +1,21 @@
 import curry from './curry'
 
-export function replace (a, b, s) {
-  return s.replace(a, b)
-}
-
 /**
- * Returns the result of replacing term `a` with the string `b` in the string
- * `s`.
+ * Replaces a term in a string.
  *
- * @summary Replaces a term in a string.
+ * @param {String|RegExp} a A string or regular expression.
+ * @param {String} b A string.
+ * @param {String} s A string.
+ * @returns {String} The result of replacing term `a` with the string `b` in
+ * the string `s`.
  *
  * @example
  *
  * F.replace('r', 'z', 'bar') // baz
  * F.replace(/^hello/, 'goodbye', 'hello world!') // goodbye world!
- *
- * @curried
- * @function
- * @param a A string or a regexp.
- * @param b A string.
- * @param s A string.
- * @returns A new string.
  */
+export function replace (a, b, s) {
+  return s.replace(a, b)
+}
+
 export default curry(replace)

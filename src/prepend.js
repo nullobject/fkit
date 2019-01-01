@@ -1,24 +1,21 @@
 import curry from './curry'
 import isString from './internal/isString'
 
-export function prepend (a, bs) {
-  return isString(bs) ? (a + bs) : [a].concat(bs)
-}
-
 /**
- * Returns a list that contains the value `a` prepended to the list of `bs`.
+ * Prepends a value to a list.
  *
- * @summary Prepends a value to a list.
+ * @param a A value.
+ * @param {Array|String} bs A list.
+ * @returns {Array|String} A list that contains the value `a` prepended to the
+ * list of `bs`.
  *
  * @example
  *
  * F.prepend(1, [2, 3]) // [1, 2, 3]
  * F.prepend('f', 'oo') // 'foo'
- *
- * @curried
- * @function
- * @param a A value.
- * @param bs A list.
- * @returns A new list.
  */
+export function prepend (a, bs) {
+  return isString(bs) ? (a + bs) : [a].concat(bs)
+}
+
 export default curry(prepend)

@@ -8,18 +8,16 @@ import tail from './tail'
 import { foldRight } from './foldRight'
 
 /**
- * Returns a list that contains all the subsequences of the elements in the
- * list of `as`.
+ * Calculates the subsequences of a list.
  *
- * @summary Calculates the subsequences of a list.
+ * @param {Array|String} as A list.
+ * @returns {Array} A list that contains all the subsequences of the elements
+ * in the list of `as`.
  *
  * @example
  *
  * F.subsequences([1, 2, 3]) // [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
  * F.subsequences('abc') // ['', 'a', 'b', 'ab', 'c', 'ac', 'bc', 'abc']
- *
- * @param as A list.
- * @returns A new list.
  */
 export default function subsequences (as) {
   const subsequences_ = bs => {

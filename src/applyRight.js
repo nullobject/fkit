@@ -1,25 +1,20 @@
 import curry from './curry'
 
-export function applyRight (a, f) {
-  return f(a)
-}
-
 /**
- * Returns the result of the function `f` applied to the value `a`.
+ * Applies a function to a value. This is similar to `apply`, however the
+ * order of the arguments is flipped.
  *
- * This is similar to `apply`, however the order of the arguments is flipped.
- *
- * @summary Applies a function to a value.
+ * @param a A value.
+ * @param {Function} f A function.
+ * @returns The result of `f(a)`.
  *
  * @example
  *
  * function sayHi (a) { return ['Hi', a, '!'].join(' ') }
  * F.applyRight('Jane', sayHi) // Hi Jane!
- *
- * @curried
- * @function
- * @param a A value.
- * @param f A function.
- * @returns The result of `f(a)`.
  */
+export function applyRight (a, f) {
+  return f(a)
+}
+
 export default curry(applyRight)

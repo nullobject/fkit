@@ -5,19 +5,17 @@ import randomInt from './randomInt'
 import { fold } from './fold'
 
 /**
- * Returns a list that contains the elements in the list of `as` randomly
- * shuffled using the [Fisher-Yates
+ * Shuffles a list using the [Fisher-Yates
  * algorithm](http://en.wikipedia.org/wiki/Fisher-Yates_shuffle).
  *
- * @summary Shuffles a list.
+ * @param {Array|String} as A list.
+ * @returns {Array|String} A list that contains the elements in the list of
+ * `as` randomly shuffled.
  *
  * @example
  *
  * F.shuffle([1, 2, 3]) // [2, 3, 1]
  * F.shuffle('abc') // 'bca'
- *
- * @param as A list.
- * @returns A new list.
  */
 export default function shuffle (as) {
   let i = -1

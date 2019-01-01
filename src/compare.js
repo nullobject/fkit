@@ -1,5 +1,22 @@
 import curry from './curry'
 
+/**
+ * Compares two values using natural ordering.
+ *
+ * This function compares two elements, `a` and `b`. If `a` is greater than
+ * `b`, then it returns `1`. If `a` is less than `b`, then it returns `-1`. If
+ * both elements are equal, then it returns `0`.
+ *
+ * @param a A value.
+ * @param b A value.
+ * @returns {Number} The result.
+ *
+ * @example
+ *
+ * F.compare(2, 1) // 1
+ * F.compare(1, 2) // -1
+ * F.compare(2, 2) // 0
+ */
 export function compare (a, b) {
   if (a > b) {
     return 1
@@ -10,21 +27,4 @@ export function compare (a, b) {
   }
 }
 
-/**
- * Returns the ordering of the two values `a` and `b`.
- *
- * @summary Compares two values using natural ordering.
- *
- * @example
- *
- * F.compare(1, 2) // -1
- * F.compare(2, 1) // 1
- * F.compare(2, 2) // 0
- *
- * @curried
- * @function
- * @param a A value.
- * @param b A value.
- * @returns A number.
- */
 export default curry(compare)

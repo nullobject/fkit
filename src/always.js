@@ -1,16 +1,15 @@
 /**
- * Returns a function that always returns the value `c`, regardless of the
+ * Returns a function that always returns the same value, regardless of the
  * arguments.
  *
- * @summary The constant function.
+ * @param c A value.
+ * @returns {Function} A function that always returns the value `c`.
  *
  * @example
  *
- * F.always(1)(2, 3) // 1
+ * F.always(1)() // 1
  *
- * @param c A value.
- * @returns A new function.
  */
-export default function always (a) {
-  return () => a
+export default function always (c) {
+  return () => c
 }

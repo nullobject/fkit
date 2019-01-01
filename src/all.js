@@ -1,15 +1,13 @@
 import curry from './curry'
 import { filter } from './filter'
 
-export function all (p, as) {
-  return filter(p, as).length === as.length
-}
-
 /**
- * Returns `true` if all elements in the list of `as` satisfy the predicate
- * function `p`, `false` otherwise.
+ * Determines whether all elements in a list satisfy a predicate function.
  *
- * @summary Determines if all elements in a list satisfy a predicate function.
+ * @param {Function} p A predicate function.
+ * @param {Array|String} as A list.
+ * @returns {Boolean} `true` if all elements of the list of `as` satisfy the
+ * predicate, `false` otherwise.
  *
  * @example
  *
@@ -20,11 +18,9 @@ export function all (p, as) {
  * F.all(F.eq('o'), 'foo') // false
  * F.all(F.eq('o'), 'oo') // true
  * F.all(F.eq('o'), 'o') // true
- *
- * @curried
- * @function
- * @param p A predicate function.
- * @param as A list.
- * @returns A boolean value.
  */
+export function all (p, as) {
+  return filter(p, as).length === as.length
+}
+
 export default curry(all)

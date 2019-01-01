@@ -2,20 +2,19 @@ import equal from './equal'
 import groupBy from './groupBy'
 
 /**
- * Returns a list that contains the elements in the list of `as` grouped into
- * sublists of equal elements.
+ * Groups the values in a list.
  *
- * It is a special case of the `groupBy` function where the elements are
- * compared using the strict equality `===` operator.
+ * This is a special case of the `groupBy` function where the values are compared
+ * using the strict equality `===` operator.
  *
- * @summary Groups the elements in a list.
+ * @function
+ * @param {Array|String} as A list.
+ * @returns {Array|String} A list that contains the values in the list of `as`
+ * grouped into sublists of equal values.
  *
  * @example
  *
  * F.group([1, 2, 2, 3, 3, 3]) // [[1], [2, 2], [3, 3, 3]]
  * F.group('Mississippi') // ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i']
- *
- * @param as A list.
- * @returns A new list.
  */
 export default groupBy(equal)

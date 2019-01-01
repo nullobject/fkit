@@ -1,16 +1,14 @@
 import array from './array'
 
 /**
- * Returns an string of length `n`.
+ * Creates a new string.
  *
- * @summary Creates a new string.
+ * @param {Number} n The length of the string.
+ * @returns {String} A string of length `n`.
  *
  * @example
  *
  * F.string(3) // '   '
- *
- * @param n A number.
- * @returns A new string.
  */
 export default function string (n) {
   return array(n + 1).join(' ')

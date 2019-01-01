@@ -3,15 +3,13 @@ import curry from './curry'
 import isPrefixOf from './isPrefixOf'
 import tails from './tails'
 
-export function isInfixOf (as, bs) {
-  return any(isPrefixOf(as), tails(bs))
-}
-
 /**
- * Returns `true` if the list of `as` is contained within the list of `bs`,
- * `false` otherwise.
+ * Determines if a list is contained within another list.
  *
- * @summary Determines if a list is contained within another list.
+ * @param {Array|String} as A list.
+ * @param {Array|String} bs A list.
+ * @returns {Boolean} `true` if the list of `as` is contained within the list
+ * of `bs`, `false` otherwise.
  *
  * @example
  *
@@ -22,11 +20,9 @@ export function isInfixOf (as, bs) {
  * F.isInfixOf('', 'foo') // true
  * F.isInfixOf('oo', 'foo') // true
  * F.isInfixOf('of', 'foo') // false
- *
- * @curried
- * @function
- * @param as A list.
- * @param bs A list.
- * @returns A boolean value.
  */
+export function isInfixOf (as, bs) {
+  return any(isPrefixOf(as), tails(bs))
+}
+
 export default curry(isInfixOf)

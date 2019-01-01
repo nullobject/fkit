@@ -1,16 +1,15 @@
 import variadic from './variadic'
 
 /**
- * Returns a function that is the composition of the list of functions `fs`.
+ * Composes a list of functions.
  *
- * @summary Composes a list of functions.
+ * @function
+ * @param {Array} fs A list of functions.
+ * @returns {Function} A function that is the composition of the list of
+ * functions `fs`.
  *
  * @example
  *
  * F.compose(f, g, h)(a) // f(g(h(a)))
- *
- * @function
- * @param fs A list of functions.
- * @returns A new function.
  */
 export default variadic(fs => a => fs.reduceRight((a, f) => f(a), a))

@@ -1,6 +1,19 @@
 import curry from './curry'
 import isString from './internal/isString'
 
+/**
+ * Takes a number of elements from the start of a list.
+ *
+ * @param {Number} n The number of elements to take.
+ * @param {Array|String} as A list.
+ * @returns {Array|String} The result after taking `n` elements from the list
+ * of `as`.
+ *
+ * @example
+ *
+ * F.take(2, [1, 2, 3]) // [1, 2]
+ * F.take(2, 'foo') // 'fo'
+ */
 export function take (n, as) {
   let s = isString(as) ? '' : []
   const m = as.length
@@ -12,20 +25,4 @@ export function take (n, as) {
   return s
 }
 
-/**
- * Returns the prefix of `n` elements from the list of `as`.
- *
- * @summary Gets the prefix of a list.
- *
- * @example
- *
- * F.take(2, [1, 2, 3]) // [1, 2]
- * F.take(2, 'foo') // 'fo'
- *
- * @curried
- * @function
- * @param n A number.
- * @param as A list.
- * @returns A new list.
- */
 export default curry(take)

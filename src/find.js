@@ -2,15 +2,13 @@ import curry from './curry'
 import head from './head'
 import { filter } from './filter'
 
-export function find (p, as) {
-  return head(filter(p, as))
-}
-
 /**
- * Returns an element in the list of `as` that satisfies the predicate function
- * `p`.
+ * Finds the first value in a list that satisfies a predicate function.
  *
- * @summary Finds an element in a list that satisfies a predicate function.
+ * @param {Function} p A predicate function.
+ * @param {Array|String} as A list.
+ * @returns An value in the list of `as` that satisfies the predicate function
+ * `p`, or `undefined` if no value was found.
  *
  * @example
  *
@@ -19,11 +17,9 @@ export function find (p, as) {
  *
  * F.find(F.eq('o'), '') // undefined
  * F.find(F.eq('o'), 'foo') // 'o'
- *
- * @curried
- * @function
- * @param p A predicate function.
- * @param as A list.
- * @returns A value or `undefined` if no value was found.
  */
+export function find (p, as) {
+  return head(filter(p, as))
+}
+
 export default curry(find)

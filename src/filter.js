@@ -5,26 +5,22 @@ import id from './id'
 import isString from './internal/isString'
 import { concatMap } from './concatMap'
 
-export function filter (p, as) {
-  const f = branch(p, id, always(''))
-  return isString(as) ? concatMap(f, as) : as.filter(p)
-}
-
 /**
- * Returns a list that contains the elements in the list of `as` that satisfy
- * the predicate function `p`.
+ * Filters a list using a predicate function.
  *
- * @summary Filters a list using a predicate function.
+ * @param {Function} p A predicate function.
+ * @param {Array|String} as A list.
+ * @returns {Array|String} A list that contains only the elements in the list
+ * of `as` that satisfy the predicate function `p`.
  *
  * @example
  *
  * F.filter(F.gt(1), [1, 2, 3]) // [2, 3]
  * F.filter(F.eq('o'), 'foo') // 'oo'
- *
- * @curried
- * @function
- * @param p A predicate function.
- * @param as A list.
- * @returns A new list.
  */
+export function filter (p, as) {
+  const f = branch(p, id, always(''))
+  return isString(as) ? concatMap(f, as) : as.filter(p)
+}
+
 export default curry(filter)

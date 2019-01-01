@@ -1,8 +1,8 @@
 /**
- * @summary Converts a string to lowercase.
+ * Converts a string to lowercase.
  *
- * @param s A string.
- * @returns A new string.
+ * @param {String} s A string.
+ * @returns {String} A new string.
  */
 export default function toLower (s) {
   return s.toLowerCase()

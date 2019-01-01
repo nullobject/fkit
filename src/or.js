@@ -1,24 +1,20 @@
 import curry from './curry'
 
-export function or (a, b) {
-  return !!(b || a)
-}
-
 /**
- * Returns true if either `a` or `b` are truthy, false otherwise.
+ * Returns the logical OR of two values.
  *
- * @summary The logical OR operator.
+ * @param a The first value.
+ * @param b The second value.
+ * @returns {Boolean} The result of `b || a`.
  *
  * @example
  *
  * F.or(false, true) // true
  * F.or(0, 1) // true
  * F.or('', 'foo') // true
- *
- * @curried
- * @function
- * @param a A boolean value.
- * @param b A boolean value.
- * @returns A boolean value.
  */
+export function or (a, b) {
+  return !!(b || a)
+}
+
 export default curry(or)

@@ -6,6 +6,19 @@ import pair from './pair'
 import tail from './tail'
 import { map } from './map'
 
+/**
+ * Calculates the cartesian product of two lists.
+ *
+ * @param {Array|String} as A list.
+ * @param {Array|String} bs A list.
+ * @returns {Array} Returns a list that contains all the ordered pairs `[a, b]`
+ * in the lists of `as` and `bs`.
+ *
+ * @example
+ *
+ * F.cartesian([1, 2], [3, 4]) // [[1, 3], [1, 4], [2, 3], [2, 4]]
+ * F.cartesian('ab', 'cd') // [['a', 'c'], ['a', 'd'], ['b', 'c'], ['b', 'd']]
+ */
 export function cartesian (as, bs) {
   return empty(as)
     ? []
@@ -15,21 +28,4 @@ export function cartesian (as, bs) {
     )
 }
 
-/**
- * Returns a list that contains all the ordered pairs `[a, b]` in the lists of
- * `as` and `bs`.
- *
- * @summary Calculates the cartesian product of two lists.
- *
- * @example
- *
- * F.cartesian([1, 2], [3, 4]) // [[1, 3], [1, 4], [2, 3], [2, 4]]
- * F.cartesian('ab', 'cd') // [['a', 'c'], ['a', 'd'], ['b', 'c'], ['b', 'd']]
- *
- * @curried
- * @function
- * @param as A list.
- * @param bs A list.
- * @returns A new list.
- */
 export default curry(cartesian)

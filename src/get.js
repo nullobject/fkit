@@ -1,23 +1,19 @@
 import curry from './curry'
 
-export function get (k, o) {
-  return o[k]
-}
-
 /**
- * Returns the property at the key `k` in the object `o`.
+ * Gets a property of an object.
  *
- * @summary Gets a property of an object.
+ * @param {String} k A key.
+ * @param {Object} o An object.
+ * @returns The property at the key `k` in the object `o`.
  *
  * @example
  *
  * var person = { name: 'Jane', age: 20, city: 'Melbourne' }
  * F.get('name', person) // 'Jane'
- *
- * @curried
- * @function
- * @param k A string.
- * @param o An object.
- * @returns A value.
  */
+export function get (k, o) {
+  return o[k]
+}
+
 export default curry(get)

@@ -1,18 +1,14 @@
 import curry from './curry'
 
+/**
+ * Returns the product of two numbers.
+ *
+ * @param {Number} a The first number.
+ * @param {Number} b The second number.
+ * @returns {Number} The result of `b * a`.
+ */
 export function mul (a, b) {
   return b * a
 }
 
-/**
- * Returns the result of `b * a`.
- *
- * @summary The multiplication operator.
- *
- * @curried
- * @function
- * @param a A number.
- * @param b A number.
- * @returns A number.
- */
 export default curry(mul)

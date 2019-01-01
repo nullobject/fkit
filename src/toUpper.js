@@ -1,8 +1,8 @@
 /**
- * @summary Converts a string to uppercase.
+ * Converts a string to uppercase.
  *
- * @param s A string.
- * @returns A new string.
+ * @param {String} s A string.
+ * @returns {String} A new string.
  */
 export default function toUpper (s) {
   return s.toUpperCase()
