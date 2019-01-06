@@ -16,9 +16,6 @@
   "files": [
     "dist"
   ],
-  "scripts": {
-    "test": "make test"
-  },
   "repository": {
     "type": "git",
     "url": "git://github.com/nullobject/fkit.git"
