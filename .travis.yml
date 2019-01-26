@@ -5,11 +5,12 @@ env:
   global:
     - PATH=$HOME/.local/bin:$PATH
 before_install: pip install --user awscli
-script: make lint test
+script: make node_modules lint test
+before_deploy: cp .npmrc.template $HOME/.npmrc
 deploy:
   on:
     branch: master
     tags: true
   provider: script
-  script: "cp .npmrc.template $HOME/.npmrc && make release"
+  script: make release
   skip_cleanup: true

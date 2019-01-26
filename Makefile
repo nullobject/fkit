@@ -4,24 +4,24 @@ node_modules:
 	@npm install
 
 dev:
-	@node_modules/.bin/rollup -c -w
+	@npx rollup -c -w
 
 dist:
-	@node_modules/.bin/rollup -c
+	@npx rollup -c
 
 test:
-	@node_modules/.bin/jest
+	@npx jest
 
 watch:
-	@node_modules/.bin/jest --watch
+	@npx jest --watch
 
 lint:
-	@node_modules/.bin/standard
+	@npx standard
 
 release: dist doc publish-api publish-npm
 
 doc:
-	@node_modules/.bin/documentation build src/** -f html -o doc
+	@npx documentation build src/** -f html -o doc
 
 publish-api:
 	@aws s3 sync ./doc/ s3://fkit.joshbassett.info/ --acl public-read --delete --cache-control 'max-age=300'
