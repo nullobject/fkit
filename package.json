@@ -27,7 +27,6 @@
     "env": "jest"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "babel-core": "^7.0.0-bridge.0",
