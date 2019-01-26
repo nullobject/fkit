@@ -8,11 +8,11 @@ import isString from './internal/isString'
  * @param {Array|String} as A list.
  * @returns {Array|String} The result after dropping `n` elements from the list
  * of `as`.
- *
  * @example
  *
- * F.drop(2, [1, 2, 3]) // [3]
- * F.drop(2, 'foo') // 'o'
+ * import { drop } from 'fkit'
+ * drop(2, [1, 2, 3]) // [3]
+ * drop(2, 'foo') // 'o'
  */
 export function drop (n, as) {
   let s = isString(as) ? '' : []

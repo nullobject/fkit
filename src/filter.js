@@ -12,11 +12,11 @@ import { concatMap } from './concatMap'
  * @param {Array|String} as A list.
  * @returns {Array|String} A list that contains only the elements in the list
  * of `as` that satisfy the predicate function `p`.
- *
  * @example
  *
- * F.filter(F.gt(1), [1, 2, 3]) // [2, 3]
- * F.filter(F.eq('o'), 'foo') // 'oo'
+ * import { eq, filter, gt } from 'fkit'
+ * filter(gt(1), [1, 2, 3]) // [2, 3]
+ * filter(eq('o'), 'foo') // 'oo'
  */
 export function filter (p, as) {
   const f = branch(p, id, always(''))

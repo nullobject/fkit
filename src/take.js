@@ -8,11 +8,11 @@ import isString from './internal/isString'
  * @param {Array|String} as A list.
  * @returns {Array|String} The result after taking `n` elements from the list
  * of `as`.
- *
  * @example
  *
- * F.take(2, [1, 2, 3]) // [1, 2]
- * F.take(2, 'foo') // 'fo'
+ * import { take } from 'fkit'
+ * take(2, [1, 2, 3]) // [1, 2]
+ * take(2, 'foo') // 'fo'
  */
 export function take (n, as) {
   let s = isString(as) ? '' : []

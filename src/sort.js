@@ -11,10 +11,10 @@ import sortBy from './sortBy'
  * @param {Array|String} a A list.
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` sorted.
- *
  * @example
  *
- * F.sort([2, 3, 1]) // [1, 2, 3]
- * F.sort('bca') // 'abc'
+ * import { sort } from 'fkit'
+ * sort([2, 3, 1]) // [1, 2, 3]
+ * sort('bca') // 'abc'
  */
 export default sortBy(compare)

@@ -13,11 +13,11 @@ import { fold } from './fold'
  * @param {Array|String} as A list.
  * @returns The maximum value in the list of `as` using the comparator function
  * `f`.
- *
  * @example
  *
- * F.maximumBy(F.compare, [1, 2, 3]) // 3
- * F.maximumBy(F.compare, 'abc') // 'c'
+ * import { compare, maximumBy } from 'fkit'
+ * maximumBy(compare, [1, 2, 3]) // 3
+ * maximumBy(compare, 'abc') // 'c'
  */
 export function maximumBy (f, as) {
   return fold((a, b) => f(a, b) > 0 ? a : b, as[0], as)

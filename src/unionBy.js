@@ -18,11 +18,11 @@ import { fold } from './fold'
  * @param {Array|String} bs A list.
  * @returns {Array|String} A list that contains the union of elements in the
  * lists of `as` and `bs`.
- *
  * @example
  *
- * F.unionBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1, 2, 3, 4]
- * F.unionBy((a, b) => a === b, 'hello', 'world') // 'hellowrd'
+ * import { unionBy } from 'fkit'
+ * unionBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1, 2, 3, 4]
+ * unionBy((a, b) => a === b, 'hello', 'world') // 'hellowrd'
  */
 export function unionBy (f, as, bs) {
   return fold((cs, b) => {

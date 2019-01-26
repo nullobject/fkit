@@ -9,14 +9,15 @@ import { findIndices } from './findIndices'
  * @param {Array|String} as A list.
  * @returns {Array} The indices of all occurances of the value `a` in the list
  * of `as`.
- *
  * @example
  *
- * F.elemIndices(0, [1, 2, 3]) // []
- * F.elemIndices(1, [1, 2, 3]) // [0]
+ * import { elemIndices } from 'fkit'
  *
- * F.elemIndices('a', 'foo') // []
- * F.elemIndices('o', 'foo') // [1, 2]
+ * elemIndices(0, [1, 2, 3]) // []
+ * elemIndices(1, [1, 2, 3]) // [0]
+ *
+ * elemIndices('a', 'foo') // []
+ * elemIndices('o', 'foo') // [1, 2]
  */
 export function elemIndices (a, as) {
   return findIndices(eq(a), as)

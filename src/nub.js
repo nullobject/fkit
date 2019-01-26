@@ -9,11 +9,10 @@ import nubBy from './nubBy'
  *
  * @param {Array|String} as A list.
  * @returns {Array|String} A list with all duplicate elements removed from the list of `as`.
- *
  * @example
  *
- * F.nub([1, 2, 2, 3, 3, 3]) // [1, 2, 3]
- * F.nub('abbccc') // 'abc'
- *
+ * import { nub } from 'fkit'
+ * nub([1, 2, 2, 3, 3, 3]) // [1, 2, 3]
+ * nub('abbccc') // 'abc'
  */
 export default nubBy(eq)

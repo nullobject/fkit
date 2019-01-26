@@ -12,10 +12,10 @@ import eq from './eq'
  * @param {Array|String} bs A list.
  * @returns {Array|String} A list that contains the difference of the elements
  * in the lists of `as` and `bs`.
- *
  * @example
  *
- * F.difference([1, 2, 3], [2, 3, 4]) // [1]
- * F.difference('hello', 'world') // 'he'
+ * import { difference } from 'fkit'
+ * difference([1, 2, 3], [2, 3, 4]) // [1]
+ * difference('hello', 'world') // 'he'
  */
 export default differenceBy(eq)

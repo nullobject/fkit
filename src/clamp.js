@@ -10,6 +10,12 @@ import { min } from './min'
  * @param {Number} n A number.
  * @returns {Number} The result of clamping the number `n` between the numbers
  * `a` and `b` (i.e. `a <= n <= b`).
+ * @example
+ *
+ * import { clamp } from 'fkit'
+ * clamp(1, 3, 0) // 1
+ * clamp(1, 3, 2) // 2
+ * clamp(1, 3, 4) // 3
  */
 export function clamp (a, b, n) {
   return max(a, min(n, b))

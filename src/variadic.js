@@ -9,11 +9,11 @@ import { slice } from './util'
  * @param {Function} f A function.
  * @returns {Function} A function that wraps the function `f` to accept any
  * number of arguments.
- *
  * @example
  *
+ * import { variadic } from 'fkit'
  * function f (head, tail) { ... }
- * F.variadic(f)(1, 2, 3) // f(1, [2, 3])
+ * variadic(f)(1, 2, 3) // f(1, [2, 3])
  */
 export default function variadic (f) {
   const arity = f.length

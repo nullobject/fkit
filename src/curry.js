@@ -1,3 +1,18 @@
+/**
+ * Curries the given function `f`.
+ *
+ * Currying turns a function that takes multiple arguments into a function that
+ * can be applied to one or more values to give a partially applied function.
+ *
+ * @param {Function} f A function.
+ * @returns {Function} A curried function.
+ * @example
+ *
+ * import { curry } from 'fkit'
+ * const add = curry((a, b) => a + b)
+ * const add2 = add(2)
+ * add2(1) // 3
+ */
 export default function curry (f) {
   const arity = f.length
 

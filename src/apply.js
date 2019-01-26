@@ -6,11 +6,11 @@ import curry from './curry'
  * @param {Function} f A function.
  * @param a A value.
  * @returns The result of `f(a)`.
- *
  * @example
  *
- * function sayHi (a) { return ['Hi', a, '!'].join(' ') }
- * f.apply(sayHi, 'jane') // Hi Jane!
+ * import { apply } from 'fkit'
+ * const sayHi = a => ['Hi', a, '!'].join(' ')
+ * apply(sayHi, 'jane') // Hi Jane!
  */
 export function apply (f, a) {
   return f(a)

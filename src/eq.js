@@ -7,11 +7,11 @@ import curry from './curry'
  * @param b The second value.
  * @returns {Boolean} `true` if the value `a` is strictly not equal (`===`) to
  * the value `b`, false otherwise.
- *
  * @example
  *
- * F.eq(1, 1) // true
- * F.eq(1, 2) // false
+ * import { eq } from 'fkit'
+ * eq(1, 1) // true
+ * eq(1, 2) // false
  */
 export function eq (a, b) {
   return b === a

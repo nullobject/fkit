@@ -7,12 +7,12 @@ import isString from './internal/isString'
  * @param {Array|String} ks A list or a string.
  * @param {Object} o An object.
  * @returns The property at the key path `ks` in the object `o`.
- *
  * @example
  *
- * var person = { name: 'Jane', age: 20, address: { city: 'Melbourne', country: 'Australia' } }
- * F.getIn(['address', 'city'], person) // 'Melbourne'
- * F.getIn('address.city', person) // 'Melbourne'
+ * import { getIn } from 'fkit'
+ * const person = { name: 'Jane', age: 20, address: { city: 'Melbourne', country: 'Australia' } }
+ * getIn(['address', 'city'], person) // 'Melbourne'
+ * getIn('address.city', person) // 'Melbourne'
  */
 export function getIn (ks, o) {
   ks = isString(ks) ? ks.split('.') : ks

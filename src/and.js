@@ -6,12 +6,12 @@ import curry from './curry'
  * @param a The first value.
  * @param b The second value.
  * @returns {Boolean} The result of `b && a`.
- *
  * @example
  *
- * F.and(true, true) // true
- * F.and(0, 1) // false
- * F.and('', 'foo') // false
+ * import { and } from 'fkit'
+ * and(true, true) // true
+ * and(0, 1) // false
+ * and('', 'foo') // false
  */
 export function and (a, b) {
   return !!(b && a)

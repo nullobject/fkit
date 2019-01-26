@@ -6,11 +6,11 @@ import apply2 from './apply2'
  * @param {Function} f A function.
  * @returns {Function} A function that wraps the function `f` to accept only
  * two arguments.
- *
  * @example
  *
+ * import { binary } from 'fkit'
  * function f (a, b) { ... }
- * const g = F.binary(f)
+ * const g = binary(f)
  * g(1, 2, 3) // f(1, 2)
  */
 export default function binary (f) {

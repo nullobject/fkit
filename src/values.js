@@ -7,11 +7,11 @@ import { get } from './get'
  *
  * @param {Object} o An object.
  * @returns {Array} A list of values for the properties of the object `o`.
- *
  * @example
  *
- * var person = { name: 'Jane', age: 20, city: 'Melbourne' }
- * F.values(person) // ['Jane', 20, 'Melbourne']
+ * import { values } from 'fkit'
+ * const person = { name: 'Jane', age: 20, city: 'Melbourne' }
+ * values(person) // ['Jane', 20, 'Melbourne']
  */
 export default function values (o) {
   return keys(o).map(flip(get)(o))

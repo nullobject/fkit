@@ -13,11 +13,11 @@ import { map } from './map'
  * @param {Array|String} bs A list.
  * @returns {Array} Returns a list that contains all the ordered pairs `[a, b]`
  * in the lists of `as` and `bs`.
- *
  * @example
  *
- * F.cartesian([1, 2], [3, 4]) // [[1, 3], [1, 4], [2, 3], [2, 4]]
- * F.cartesian('ab', 'cd') // [['a', 'c'], ['a', 'd'], ['b', 'c'], ['b', 'd']]
+ * import { cartesian } from 'fkit'
+ * cartesian([1, 2], [3, 4]) // [[1, 3], [1, 4], [2, 3], [2, 4]]
+ * cartesian('ab', 'cd') // [['a', 'c'], ['a', 'd'], ['b', 'c'], ['b', 'd']]
  */
 export function cartesian (as, bs) {
   return empty(as)

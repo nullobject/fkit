@@ -10,10 +10,10 @@ import minimumBy from './minimumBy'
  * @function
  * @param {Array|String} as A list.
  * @returns Returns the minimum value in the list of `as`.
- *
  * @example
  *
- * F.minimum([1, 2, 3]) // 1
- * F.minimum('abc') // 'a'
+ * import { minimum } from 'fkit'
+ * minimum([1, 2, 3]) // 1
+ * minimum('abc') // 'a'
  */
 export default minimumBy(compare)

@@ -16,12 +16,11 @@ import { fold } from './fold'
  * @param {Array|String} bs A list.
  * @returns {Array|String} A list that contains the difference of the elements
  * in the lists of `as` and `bs`.
- *
- *
  * @example
  *
- * F.differenceBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1]
- * F.differenceBy((a, b) => a === b, 'hello', 'world') // 'he'
+ * import { differenceBy } from 'fkit'
+ * differenceBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1]
+ * differenceBy((a, b) => a === b, 'hello', 'world') // 'he'
  */
 export function differenceBy (f, as, bs) {
   return fold(flip(removeBy(f)), nub(as), nub(bs))

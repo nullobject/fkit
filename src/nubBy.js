@@ -17,11 +17,11 @@ import { prepend } from './prepend'
  * @param {Array|String} as A list.
  * @returns {Array|String} A list with all duplicate elements removed from the
  * list of `bs`.
- *
  * @example
  *
- * F.nubBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [1, 2, 3]
- * F.nubBy((a, b) => a === b, 'abbccc') // 'abc'
+ * import { nubBy } from 'fkit'
+ * nubBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [1, 2, 3]
+ * nubBy((a, b) => a === b, 'abbccc') // 'abc'
  */
 export function nubBy (f, as) {
   const a = head(as)

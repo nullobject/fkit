@@ -8,7 +8,11 @@ import curry from './curry'
  * @param {Number} n The number to test.
  * @returns {Number} `true` if the number `n` is between the numbers `a` and
  * `b` (i.e. a <= n <= b), `false` otherwise.
+ * @example
  *
+ * import { between } from 'fkit'
+ * between(1, 3, 2) // true
+ * between(1, 3, 4) // false
  */
 export function between (a, b, n) {
   return a <= n && b >= n

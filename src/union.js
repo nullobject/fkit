@@ -15,10 +15,10 @@ import unionBy from './unionBy'
  * @param {Array|String} bs A list.
  * @returns {Array|String} A list that contains the union of elements in the
  * lists of `as` and `bs`.
- *
  * @example
  *
- * F.union([1, 2, 3], [2, 3, 4]) // [1, 2, 3, 4]
- * F.union('hello', 'world') // 'hellowrd'
+ * import { union } from 'fkit'
+ * union([1, 2, 3], [2, 3, 4]) // [1, 2, 3, 4]
+ * union('hello', 'world') // 'hellowrd'
  */
 export default unionBy(eq)

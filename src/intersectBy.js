@@ -19,11 +19,11 @@ import { fold } from './fold'
  * @param {Array|String} bs A list.
  * @returns {Array|String} A list that contains the intersection of the elments
  * in the lists of `as` and `bs`.
- *
  * @example
  *
- * F.intersectBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [2, 3]
- * F.intersectBy((a, b) => a === b, 'hello', 'world') // 'ol'
+ * import { intersectBy } from 'fkit'
+ * intersectBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [2, 3]
+ * intersectBy((a, b) => a === b, 'hello', 'world') // 'ol'
  */
 export function intersectBy (f, as, bs) {
   return fold((cs, a) => {

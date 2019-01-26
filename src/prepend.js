@@ -8,11 +8,11 @@ import isString from './internal/isString'
  * @param {Array|String} bs A list.
  * @returns {Array|String} A list that contains the value `a` prepended to the
  * list of `bs`.
- *
  * @example
  *
- * F.prepend(1, [2, 3]) // [1, 2, 3]
- * F.prepend('f', 'oo') // 'foo'
+ * import { prepend } from 'fkit'
+ * prepend(1, [2, 3]) // [1, 2, 3]
+ * prepend('f', 'oo') // 'foo'
  */
 export function prepend (a, bs) {
   return isString(bs) ? (a + bs) : [a].concat(bs)

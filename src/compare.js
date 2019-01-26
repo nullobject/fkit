@@ -10,12 +10,12 @@ import curry from './curry'
  * @param a A value.
  * @param b A value.
  * @returns {Number} The result.
- *
  * @example
  *
- * F.compare(2, 1) // 1
- * F.compare(1, 2) // -1
- * F.compare(2, 2) // 0
+ * import { compare } from 'fkit'
+ * compare(2, 1) // 1
+ * compare(1, 2) // -1
+ * compare(2, 2) // 0
  */
 export function compare (a, b) {
   if (a > b) {

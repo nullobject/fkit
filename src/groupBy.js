@@ -17,11 +17,11 @@ import { prepend } from './prepend'
  * @param {Array|String} as A list.
  * @returns {Array|String} A list that contains the values in the list of `as`
  * grouped into sublists that satisfy the comparator function `c`.
- *
  * @example
  *
- * F.groupBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [[1], [2, 2], [3, 3, 3]]
- * F.groupBy((a, b) => a === b, 'Mississippi') // ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i']
+ * import { groupBy } from 'fkit'
+ * groupBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [[1], [2, 2], [3, 3, 3]]
+ * groupBy((a, b) => a === b, 'Mississippi') // ['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i']
  */
 export function groupBy (c, as) {
   const b = head(as)

@@ -12,11 +12,11 @@ import tail from './tail'
  * @param {Array|String} as A list.
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` interspersed with the separator `s`.
- *
  * @example
  *
- * F.intersperse(4, [1, 2, 3]) // [1, 4, 2, 4, 3]
- * F.intersperse('-', 'foo') // 'f-o-o'
+ * import { intersperse } from 'fkit'
+ * intersperse(4, [1, 2, 3]) // [1, 4, 2, 4, 3]
+ * intersperse('-', 'foo') // 'f-o-o'
  */
 export function intersperse (s, as) {
   const prependToAll = bs =>

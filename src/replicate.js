@@ -11,11 +11,11 @@ import { concatMap } from './concatMap'
  * @param a A value.
  * @returns {Array|String} A list of length `n` with `a` the value of every
  * element.
- *
  * @example
  *
- * F.replicate(3, 1) // [1, 1, 1]
- * F.replicate(3, 'a') // 'aaa'
+ * import { replicate } from 'fkit'
+ * replicate(3, 1) // [1, 1, 1]
+ * replicate(3, 'a') // 'aaa'
  */
 export function replicate (n, a) {
   const as = isString(a) ? string(n) : array(n)

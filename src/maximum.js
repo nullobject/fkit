@@ -10,10 +10,10 @@ import maximumBy from './maximumBy'
  * @function
  * @param {Array|String} as A list.
  * @returns Returns the maximum value in the list of `as`.
- *
  * @example
  *
- * F.maximum([1, 2, 3]) // 3
- * F.maximum('abc') // 'c'
+ * import { maximum } from 'fkit'
+ * maximum([1, 2, 3]) // 3
+ * maximum('abc') // 'c'
  */
 export default maximumBy(compare)

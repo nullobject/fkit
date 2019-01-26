@@ -11,11 +11,11 @@ import { fold } from './fold'
  * @param {Array|String} as A list.
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` randomly shuffled.
- *
  * @example
  *
- * F.shuffle([1, 2, 3]) // [2, 3, 1]
- * F.shuffle('abc') // 'bca'
+ * import { shuffle } from 'fkit'
+ * shuffle([1, 2, 3]) // [2, 3, 1]
+ * shuffle('abc') // 'bca'
  */
 export default function shuffle (as) {
   let i = -1

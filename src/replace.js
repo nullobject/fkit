@@ -8,11 +8,11 @@ import curry from './curry'
  * @param {String} s A string.
  * @returns {String} The result of replacing term `a` with the string `b` in
  * the string `s`.
- *
  * @example
  *
- * F.replace('r', 'z', 'bar') // baz
- * F.replace(/^hello/, 'goodbye', 'hello world!') // goodbye world!
+ * import { replace } from 'fkit'
+ * replace('r', 'z', 'bar') // baz
+ * replace(/^hello/, 'goodbye', 'hello world!') // goodbye world!
  */
 export function replace (a, b, s) {
   return s.replace(a, b)

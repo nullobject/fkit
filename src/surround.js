@@ -9,11 +9,11 @@ import { prepend } from './prepend'
  * @param b A value.
  * @param {Array|String} cs A list.
  * @returns {Array|String} A new list.
- *
  * @example
  *
- * F.surround(0, 4, [1, 2, 3]) // [0, 1, 2, 3, 4]
- * F.surround('(', ')', 'foo') // '(foo)'
+ * import { surround } from 'fkit'
+ * surround(0, 4, [1, 2, 3]) // [0, 1, 2, 3, 4]
+ * surround('(', ')', 'foo') // '(foo)'
  */
 export function surround (a, b, cs) {
   return append(b, prepend(a, cs))

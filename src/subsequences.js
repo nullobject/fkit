@@ -13,11 +13,11 @@ import { foldRight } from './foldRight'
  * @param {Array|String} as A list.
  * @returns {Array} A list that contains all the subsequences of the elements
  * in the list of `as`.
- *
  * @example
  *
- * F.subsequences([1, 2, 3]) // [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
- * F.subsequences('abc') // ['', 'a', 'b', 'ab', 'c', 'ac', 'bc', 'abc']
+ * import { subsequences } from 'fkit'
+ * subsequences([1, 2, 3]) // [[], [1], [2], [1, 2], [3], [1, 3], [2, 3], [1, 2, 3]]
+ * subsequences('abc') // ['', 'a', 'b', 'ab', 'c', 'ac', 'bc', 'abc']
  */
 export default function subsequences (as) {
   const subsequences_ = bs => {

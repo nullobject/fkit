@@ -3,14 +3,15 @@
  *
  * @param {Array|String} as A list.
  * @returns {Boolean} `true` if the list of `as` is empty, `false` otherwise.
- *
  * @example
  *
- * F.empty([]) // true
- * F.empty([1, 2, 3]) // false
+ * import { empty } from 'fkit'
  *
- * F.empty('') // true
- * F.empty('foo') // false
+ * empty([]) // true
+ * empty([1, 2, 3]) // false
+ *
+ * empty('') // true
+ * empty('foo') // false
  */
 export default function empty (as) {
   return as.length === 0

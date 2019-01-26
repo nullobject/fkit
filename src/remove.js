@@ -12,10 +12,10 @@ import removeBy from './removeBy'
  * @param {Array|String} bs A list.
  * @returns {Array|String} A list with the first occurance of the element `a`
  * removed from the list of `bs`.
- *
  * @example
  *
- * F.remove(2, [1, 2, 3]) // [1, 3]
- * F.remove('f', 'foo') // 'oo'
+ * import { remove } from 'fkit'
+ * remove(2, [1, 2, 3]) // [1, 3]
+ * remove('f', 'foo') // 'oo'
  */
 export default removeBy(eq)

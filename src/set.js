@@ -9,11 +9,11 @@ import curry from './curry'
  * @param {Object} o An object.
  * @returns {Object} A copy of the object `o` with the property `k` set to the
  * value `v`.
- *
  * @example
  *
- * var person = { name: 'Jane', age: 20, city: 'Melbourne' }
- * F.set('name', 'Steve', person) // { name: 'Steve', age: 20, city: 'Melbourne' }
+ * import { set } from 'fkit'
+ * const person = { name: 'Jane', age: 20, city: 'Melbourne' }
+ * set('name', 'Steve', person) // { name: 'Steve', age: 20, city: 'Melbourne' }
  */
 export function set (k, v, o) {
   const p = {}

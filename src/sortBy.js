@@ -14,11 +14,11 @@ import toList from './internal/toList'
  * @param {Array|String} as A list.
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` sorted using the comparator function `c`.
- *
  * @example
  *
- * F.sortBy(F.compare, [2, 3, 1]) // [1, 2, 3]
- * F.sortBy(F.compare, 'bca') // 'abc'
+ * import { compare, sortBy } from 'fkit'
+ * sortBy(compare, [2, 3, 1]) // [1, 2, 3]
+ * sortBy(compare, 'bca') // 'abc'
  */
 export function sortBy (c, as) {
   const bs = toArray(as.slice(0))

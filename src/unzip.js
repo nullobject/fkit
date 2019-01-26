@@ -6,11 +6,11 @@ import { prepend } from './prepend'
  *
  * @param {Array} as A list.
  * @returns {Array} The list of pairs `as` unzipped into a pair of lists.
- *
  * @example
  *
- * F.unzip([[1, 4], [2, 5], [3, 6]]) // [[1, 2, 3], [4, 5, 6]]
- * F.unzip([['f', 'b'], ['o', 'a'], ['o', 'r']]) // ['foo', 'bar']
+ * import { unzip } from 'fkit'
+ * unzip([[1, 4], [2, 5], [3, 6]]) // [[1, 2, 3], [4, 5, 6]]
+ * unzip([['f', 'b'], ['o', 'a'], ['o', 'r']]) // ['foo', 'bar']
  */
 export default function unzip (as) {
   const s = mempty(as[0])

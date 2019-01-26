@@ -11,11 +11,11 @@ import toArray from './internal/toArray'
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` folded right-to-left with the binary function `f` and starting value
  * `s`.
- *
  * @example
  *
- * F.foldRight(F.append, [], [1, 2, 3]) // [3, 2, 1]
- * F.foldRight(F.append, '', 'foo') // 'oof'
+ * import { foldRight } from 'fkit'
+ * foldRight((b, a) => a.concat(b), [], [1, 2, 3]) // [3, 2, 1]
+ * foldRight((b, a) => a.concat(b), '', 'foo') // 'oof'
  */
 export function foldRight (f, s, as) {
   return toArray(as).reduceRight(flip(f), s)

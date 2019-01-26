@@ -6,12 +6,12 @@ import curry from './curry'
  * @param a The first value.
  * @param b The second value.
  * @returns {Boolean} The result of `b || a`.
- *
  * @example
  *
- * F.or(false, true) // true
- * F.or(0, 1) // true
- * F.or('', 'foo') // true
+ * import { or } from 'fkit'
+ * or(false, true) // true
+ * or(0, 1) // true
+ * or('', 'foo') // true
  */
 export function or (a, b) {
   return !!(b || a)

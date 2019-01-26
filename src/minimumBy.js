@@ -13,11 +13,11 @@ import { fold } from './fold'
  * @param {Array|String} as A list.
  * @returns The minimum value in the list of `as` using the comparator function
  * `f`.
- *
  * @example
  *
- * F.minimumBy(F.compare, [1, 2, 3]) // 1
- * F.minimumBy(F.compare, 'abc') // 'a'
+ * import { compare, minimumBy } from 'fkit'
+ * minimumBy(compare, [1, 2, 3]) // 1
+ * minimumBy(compare, 'abc') // 'a'
  */
 export function minimumBy (f, as) {
   return fold((a, b) => f(a, b) < 0 ? a : b, as[0], as)

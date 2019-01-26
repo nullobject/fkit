@@ -8,11 +8,11 @@ import { prepend } from './prepend'
  * @param {Array|String} as A list.
  * @returns {Array} A list that contains all final segments of the list of
  * `as`.
- *
  * @example
  *
- * F.tails([1, 2, 3]) // [[1, 2, 3], [2, 3], [3], []]
- * F.tails('foo') // ['foo', 'oo', 'o', '']
+ * import { tails } from 'fkit'
+ * tails([1, 2, 3]) // [[1, 2, 3], [2, 3], [3], []]
+ * tails('foo') // ['foo', 'oo', 'o', '']
  */
 export default function tails (as) {
   return prepend(

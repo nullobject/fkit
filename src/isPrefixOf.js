@@ -10,16 +10,17 @@ import tail from './tail'
  * @param {Array|String} bs A list.
  * @returns {Boolean} `true` if the list of `as` is a prefix of the list of
  * `bs`, `false` otherwise.
- *
  * @example
  *
- * F.isPrefixOf([], [1, 2, 3]) // true
- * F.isPrefixOf([1, 2], [1, 2, 3]) // true
- * F.isPrefixOf([2, 3], [1, 2, 3]) // false
+ * import { isPrefixOf } from 'fkit'
  *
- * F.isPrefixOf('', 'foo') // true
- * F.isPrefixOf('fo', 'foo') // true
- * F.isPrefixOf('oo', 'foo') // false
+ * isPrefixOf([], [1, 2, 3]) // true
+ * isPrefixOf([1, 2], [1, 2, 3]) // true
+ * isPrefixOf([2, 3], [1, 2, 3]) // false
+ *
+ * isPrefixOf('', 'foo') // true
+ * isPrefixOf('fo', 'foo') // true
+ * isPrefixOf('oo', 'foo') // false
  */
 export function isPrefixOf (as, bs) {
   if (empty(as)) {

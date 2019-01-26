@@ -6,18 +6,19 @@ import { filter } from './filter'
  *
  * @param {Function} p A predicate function.
  * @param {Array|String} as A list.
- * @returns {Boolean} `true` if any elements in the list of `as` satisfy the predicate
- *
+ * @returns {Boolean} `true` if any elements in the list of `as` satisfy the
+ * predicate function `p`, `false` otherwise.
  * @example
  *
- * F.any(F.gt(1), [1, 2, 3]) // true
- * F.any(F.gt(1), [1, 2]) // true
- * F.any(F.gt(1), [1]) // false
+ * import { any, eq, gt } from 'fkit'
  *
- * F.any(F.eq('o'), 'foo') // true
- * F.any(F.eq('o'), 'fo') // true
- * F.any(F.eq('o'), 'f') // false
- * function `p`, `false` otherwise.
+ * any(gt(1), [1, 2, 3]) // true
+ * any(gt(1), [1, 2]) // true
+ * any(gt(1), [1]) // false
+ *
+ * any(eq('o'), 'foo') // true
+ * any(eq('o'), 'fo') // true
+ * any(eq('o'), 'f') // false
  */
 export function any (p, as) {
   return filter(p, as).length > 0

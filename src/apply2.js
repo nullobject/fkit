@@ -7,11 +7,11 @@ import curry from './curry'
  * @param a A value.
  * @param b A value.
  * @returns The result of `f(a, b)`.
- *
  * @example
  *
- * function sayHi (a, b) { return ['Hi', a, b, '!'].join(' ') }
- * F.apply2(sayHi, 'Jane', 'Appleseed') // Hi Jane Appleseed!
+ * import { apply2 } from 'fkit'
+ * const sayHi = (a, b) => ['Hi', a, b, '!'].join(' ')
+ * apply2(sayHi, 'Jane', 'Appleseed') // Hi Jane Appleseed!
  */
 export function apply2 (f, a, b) {
   return f(a, b)

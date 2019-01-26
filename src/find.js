@@ -9,14 +9,15 @@ import { filter } from './filter'
  * @param {Array|String} as A list.
  * @returns An value in the list of `as` that satisfies the predicate function
  * `p`, or `undefined` if no value was found.
- *
  * @example
  *
- * F.find(F.gt(1), []) // undefined
- * F.find(F.gt(1), [1, 2, 3]) // 2
+ * import { eq, find, gt } from 'fkit'
  *
- * F.find(F.eq('o'), '') // undefined
- * F.find(F.eq('o'), 'foo') // 'o'
+ * find(gt(1), []) // undefined
+ * find(gt(1), [1, 2, 3]) // 2
+ *
+ * find(eq('o'), '') // undefined
+ * find(eq('o'), 'foo') // 'o'
  */
 export function find (p, as) {
   return head(filter(p, as))

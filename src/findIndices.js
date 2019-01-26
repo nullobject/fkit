@@ -8,14 +8,15 @@ import curry from './curry'
  * @param {Array|String} as A list.
  * @returns {Array} The indices of the values in the list of `as` that satisfy
  * the predicate function `p`.
- *
  * @example
  *
- * F.findIndices(F.gt(1), []) // []
- * F.findIndices(F.gt(1), [1, 2, 3]) // [1, 2]
+ * import { eq, findIndices, gt } from 'fkit'
  *
- * F.findIndices(F.eq('o'), '') // []
- * F.findIndices(F.eq('o'), 'foo') // [1, 2]
+ * findIndices(gt(1), []) // []
+ * findIndices(gt(1), [1, 2, 3]) // [1, 2]
+ *
+ * findIndices(eq('o'), '') // []
+ * findIndices(eq('o'), 'foo') // [1, 2]
  */
 export function findIndices (p, as) {
   const s = []

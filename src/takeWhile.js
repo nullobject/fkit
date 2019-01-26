@@ -8,11 +8,11 @@ import isString from './internal/isString'
  * @param {Array|String} as A list.
  * @returns {Array|String} The prefix of elements from the list of `as` while
  * the predicate function `p` is satisfied.
- *
  * @example
  *
- * F.takeWhile(F.lt(3), [1, 2, 3]) // [1, 2]
- * F.takeWhile(F.neq(o), 'foo') // 'f'
+ * import { lt, neq, takeWhile } from 'fkit'
+ * takeWhile(lt(3), [1, 2, 3]) // [1, 2]
+ * takeWhile(neq(o), 'foo') // 'f'
  */
 export function takeWhile (p, as) {
   let s = isString(as) ? '' : []

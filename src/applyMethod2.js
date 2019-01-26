@@ -8,12 +8,12 @@ import curry from './curry'
  * @param b A value.
  * @param {Object} o An object.
  * @returns The result of the method `k` of object `o` applied to the values
- *
+ * `a` and `b`.
  * @example
  *
- * var person = { sayHi: (a, b) => ['Hi', a, b, '!'].join(' ') }
- * F.applyMethod2('sayHi', 'Jane', 'Appleseed', person) // Hi Jane Appleseed!
- * `a` and `b`.
+ * import { applyMethod2 } from 'fkit'
+ * const person = { sayHi: (a, b) => ['Hi', a, b, '!'].join(' ') }
+ * applyMethod2('sayHi', 'Jane', 'Appleseed', person) // Hi Jane Appleseed!
  */
 export function applyMethod2 (k, a, b, o) {
   return o[k](a, b)

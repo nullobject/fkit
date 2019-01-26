@@ -11,12 +11,11 @@ import { zipWith } from './zipWith'
  * @param {Array|String} as A list.
  * @param {Array|String} bs A list.
  * @returns {Array} The lists of `as` and `bs` zipped into a list of pairs.
- *
  * @example
  *
- * F.zip([1, 2, 3], [4, 5, 6]) // [[1, 4], [2, 5], [3, 6]]
- * F.zip('foo', 'bar') // [['f', 'b'], ['o', 'a'], ['o', 'r']]
- *
+ * import { zip } from 'fkit'
+ * zip([1, 2, 3], [4, 5, 6]) // [[1, 4], [2, 5], [3, 6]]
+ * zip('foo', 'bar') // [['f', 'b'], ['o', 'a'], ['o', 'r']]
  */
 export function zip (as, bs) {
   return zipWith(pair, as, bs)

@@ -7,10 +7,10 @@ import curry from './curry'
  * @param {Number} a A number.
  * @param {Number} n A number.
  * @returns {Array} An array of numbers of length `n` starting from `a`.
- *
  * @example
  *
- * F.range(1, 3) // [1, 2, 3]
+ * import { range } from 'fkit'
+ * range(1, 3) // [1, 2, 3]
  */
 export function range (a, n) {
   return array(n).map((_, i) => a + i)

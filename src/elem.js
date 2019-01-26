@@ -7,14 +7,15 @@ import curry from './curry'
  * @param {Array|String} as A list.
  * @returns {Boolean} `true` if the list of `as` contains the value `a`,
  * `false` otherwise.
- *
  * @example
  *
- * F.elem(0, [1, 2, 3]) // false
- * F.elem(1, [1, 2, 3]) // true
+ * import { elem } from 'fkit'
  *
- * F.elem('a', 'foo') // false
- * F.elem('o', 'foo') // true
+ * elem(0, [1, 2, 3]) // false
+ * elem(1, [1, 2, 3]) // true
+ *
+ * elem('a', 'foo') // false
+ * elem('o', 'foo') // true
  */
 export function elem (a, as) {
   return as.indexOf(a) >= 0

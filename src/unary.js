@@ -6,11 +6,11 @@ import apply from './apply'
  * @param {Function} f A function.
  * @returns {Function} A function that wraps the function `f` to accept only
  * one argument.
- *
  * @example
  *
+ * import { unary } from 'fkit'
  * function f (a) { ... }
- * const g = F.unary(f)
+ * const g = unary(f)
  * g(1, 2, 3) // f(1)
  */
 export default function unary (f) {

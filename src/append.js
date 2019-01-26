@@ -8,11 +8,11 @@ import isString from './internal/isString'
  * @param {Array|String} bs A list.
  * @returns {Array|String} A list that contains the value `a` appended to the
  * list of `bs`.
- *
  * @example
  *
- * F.append(3, [1, 2]) // [1, 2, 3]
- * F.append('o', 'fo') // 'foo'
+ * import { append } from 'fkit'
+ * append(3, [1, 2]) // [1, 2, 3]
+ * append('o', 'fo') // 'foo'
  */
 export function append (a, bs) {
   return isString(bs) ? (bs + a) : bs.concat([a])

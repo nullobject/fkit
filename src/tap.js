@@ -7,11 +7,11 @@ import curry from './curry'
  * @param {Function} f A function.
  * @param a A value.
  * @returns The value `a`.
- *
  * @example
  *
- * function f (a) { console.log(a) }
- * F.tap(f)(1) // 1
+ * import { tap } from 'fkit'
+ * const f = a => console.log(a)
+ * tap(f)(1) // 1
  */
 export function tap (f, a) {
   f(a)

@@ -3,10 +3,10 @@
  *
  * @param a A value.
  * @returns The value `a`.
- *
  * @example
  *
- * F.id(1) // 1
+ * import { id } from 'fkit'
+ * id(1) // 1
  */
 export default function id (a) {
   return a

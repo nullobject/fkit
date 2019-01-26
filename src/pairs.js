@@ -7,11 +7,11 @@ import keys from './keys'
  * @param {Object} o An object.
  * @returns {Array} A list of key-value pairs for the properties of the object
  * `o`.
- *
  * @example
  *
- * var person = { name: 'Jane', age: 20, city: 'Melbourne' }
- * F.pairs(person) // [['name', 'Jane'], ['age', 20], ['city', 'Melbourne']]
+ * import { pairs } from 'fkit'
+ * const person = { name: 'Jane', age: 20, city: 'Melbourne' }
+ * pairs(person) // [['name', 'Jane'], ['age', 20], ['city', 'Melbourne']]
  */
 export default function pairs (o) {
   return keys(o).map(k => [k, get(k, o)])

@@ -8,11 +8,11 @@ import isString from './internal/isString'
  * @param {Array|String} as A list.
  * @returns {Array|String} The result after dropping elements from the list of
  * `as` while the predicate function `p` is satisfied.
- *
  * @example
  *
- * F.dropWhile(F.lt(3), [1, 2, 3]) // [3]
- * F.dropWhile(F.neq(o), 'foo') // 'oo'
+ * import { dropWhile, lt, neq } from 'fkit'
+ * dropWhile(lt(3), [1, 2, 3]) // [3]
+ * dropWhile(neq(o), 'foo') // 'oo'
  */
 export function dropWhile (p, as) {
   let s = isString(as) ? '' : []

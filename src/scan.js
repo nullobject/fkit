@@ -11,11 +11,11 @@ import { tap } from './tap'
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` scanned left-to-right with the binary function `f` and starting value
  * `s`.
- *
  * @example
  *
- * F.scan(F.flip(F.prepend), [],  [1, 2, 3]) // [[], [1], [2, 1], [3, 2, 1]]
- * F.scan(F.flip(F.prepend), '',  'foo') // ['', 'f', 'of', 'oof']
+ * import { scan } from 'fkit'
+ * scan((a, b) => a.concat(b), [],  [1, 2, 3]) // [[], [1], [1, 2], [1, 2, 3]]
+ * scan((a, b) => a.concat(b), '',  'foo') // ['', 'f', 'fo', 'foo']
  */
 export function scan (f, s, as) {
   const r = [s]

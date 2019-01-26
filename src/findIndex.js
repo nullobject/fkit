@@ -9,14 +9,15 @@ import curry from './curry'
  * @returns {Number} The index of the first occurance of a value in the list of
  * `as` that satisfies the predicate function `p`,  or `undefined` if no value
  * was found.
- *
  * @example
  *
- * F.findIndex(F.gt(1), []) // undefined
- * F.findIndex(F.gt(1), [1, 2, 3]) // 1
+ * import { eq, findIndex, gt } from 'fkit'
  *
- * F.findIndex(F.eq('o'), '') // undefined
- * F.findIndex(F.eq('o'), 'foo') // 1
+ * findIndex(gt(1), []) // undefined
+ * findIndex(gt(1), [1, 2, 3]) // 1
+ *
+ * findIndex(eq('o'), '') // undefined
+ * findIndex(eq('o'), 'foo') // 1
  */
 export function findIndex (p, as) {
   const n = as.length
