@@ -1,3 +1,7 @@
+## Unreleased
+
+* Fix issue where duplicate values weren't removed by `difference` and `differenceBy` functions
+
 ## 1.5.0 (2019-01-02)
 
 * Allow `getIn` keypath to be given as a string

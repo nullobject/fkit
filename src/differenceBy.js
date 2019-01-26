@@ -1,5 +1,6 @@
 import curry from './curry'
 import flip from './flip'
+import nub from './nub'
 import removeBy from './removeBy'
 import { fold } from './fold'
 
@@ -20,10 +21,10 @@ import { fold } from './fold'
  * @example
  *
  * F.differenceBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1]
- * F.differenceBy((a, b) => a === b, 'hello', 'world') // 'hel'
+ * F.differenceBy((a, b) => a === b, 'hello', 'world') // 'he'
  */
 export function differenceBy (f, as, bs) {
-  return fold(flip(removeBy(f)), as, bs)
+  return fold(flip(removeBy(f)), nub(as), nub(bs))
 }
 
 export default curry(differenceBy)

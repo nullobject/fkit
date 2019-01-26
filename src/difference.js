@@ -16,6 +16,6 @@ import eq from './eq'
  * @example
  *
  * F.difference([1, 2, 3], [2, 3, 4]) // [1]
- * F.difference('hello', 'world') // 'hel'
+ * F.difference('hello', 'world') // 'he'
  */
 export default differenceBy(eq)
