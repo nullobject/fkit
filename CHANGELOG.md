@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Fix issue where duplicate values weren't removed by `difference` and `differenceBy` functions
+* Restore `zipWith` function
 
 ## 1.5.0 (2019-01-02)
 
