@@ -7,7 +7,8 @@ import tail from './tail'
 import { map } from './map'
 
 /**
- * Calculates the cartesian product of two lists.
+ * Calculates the [Cartesian
+ * product](https://en.wikipedia.org/wiki/Cartesian_product) of two lists.
  *
  * @param {Array|String} as A list.
  * @param {Array|String} bs A list.

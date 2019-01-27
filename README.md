@@ -63,10 +63,8 @@ console.log(F.add(1, 2))
 
 ### Browser
 
-The easiest way to start using FKit is to include a reference to the minified
-file in your HTML file.
-
-You can always grab the latest version with:
+The easiest way to start using FKit in your browser is to include it with a
+`<script>` tag in your HTML file:
 
 ```html
 <script src="https://unpkg.com/fkit/dist/fkit.min.js"></script>
@@ -84,24 +82,46 @@ You can always grab the latest version with:
 
 ## Examples
 
+Sum the numbers in a list:
+
 ```js
-// Sum the numbers in a list.
-F.sum([1, 2, 3]) // 6
+import { sum } from 'fkit'
+sum([1, 2, 3]) // 6
+```
 
-// Stash a string.
-F.map(F.surround('{', '}'), 'hello') // '{h}{e}{l}{l}{o}'
+Stash a string:
 
-// Intersperse the numbers in a list with another number.
-F.intersperse(4, [1, 2, 3]) // [1, 4, 2, 4, 3]
+```js
+import { map, surround } from 'fkit'
+map(surround('{', '}'), 'hello') // '{h}{e}{l}{l}{o}'
+```
 
-// Filter the numbers in a list where 1 <= n <= 5.
-[1, 2, 3, 4, 5].filter(F.between(2, 4)) // [2, 3, 4]
+Intersperse the numbers in a list with another number:
 
-// Calculate the cartesian product of two lists.
-F.cartesian([1, 2], [3, 4]) // [[1, 3], [1, 4], [2, 3], [2, 4]]
+```js
+import { intersperse } from 'fkit'
+intersperse(4, [1, 2, 3]) // [1, 4, 2, 4, 3]
+```
 
-// Calculate the permutations of a list.
-F.permutations('abc') // ['abc', 'bac', 'cba', 'bca', 'cab', 'acb']
+Filter the numbers in a list where 1 <= n <= 5:
+
+```js
+import { between } from 'fkit'
+[1, 2, 3, 4, 5].filter(between(2, 4)) // [2, 3, 4]
+```
+
+Calculate the Cartesian product of two lists:
+
+```js
+import { cartesian } from 'fkit'
+cartesian([1, 2], [3, 4]) // [[1, 3], [1, 4], [2, 3], [2, 4]]
+```
+
+Calculate the permutations of a list:
+
+```js
+import { permutations } from 'fkit'
+permutations('abc') // ['abc', 'bac', 'cba', 'bca', 'cab', 'acb']
 ```
 
 Check out some more examples:
