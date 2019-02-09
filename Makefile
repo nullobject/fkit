@@ -21,10 +21,10 @@ lint:
 release: dist doc publish-api publish-npm
 
 doc:
-	@npx documentation build src/** -f html -o doc
+	@npx documentation build src/** -f html -o docs
 
 publish-api:
-	@aws s3 sync ./doc/ s3://fkit.joshbassett.info/ --acl public-read --delete --cache-control 'max-age=300'
+	@aws s3 sync ./docs/ s3://fkit.joshbassett.info/ --acl public-read --delete --cache-control 'max-age=300'
 
 publish-npm:
 	@npm publish
