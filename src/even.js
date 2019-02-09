@@ -1,7 +1,7 @@
 /**
  * Determines whether a number is even.
  *
- * @param {Number} a A number.
+ * @param {Number} a The number.
  * @returns {Boolean} `true` if the number `a` is even, false otherwise.
  * @example
  *

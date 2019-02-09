@@ -3,9 +3,9 @@ import curry from './curry'
 /**
  * Replaces a term in a string.
  *
- * @param {String|RegExp} a A string or regular expression.
- * @param {String} b A string.
- * @param {String} s A string.
+ * @param {String|RegExp} a The term to find.
+ * @param {String} b The string to replace with.
+ * @param {String} s The string to perform the find and replace on.
  * @returns {String} The result of replacing term `a` with the string `b` in
  * the string `s`.
  * @example

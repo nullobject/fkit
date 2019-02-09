@@ -4,8 +4,8 @@ import { filter } from './filter'
 /**
  * Determines whether all elements in a list satisfy a predicate function.
  *
- * @param {Function} p A predicate function.
- * @param {Array|String} as A list.
+ * @param {Function} p The predicate function.
+ * @param {Array|String} as The list.
  * @returns {Boolean} `true` if all elements of the list of `as` satisfy the
  * predicate, `false` otherwise.
  * @example

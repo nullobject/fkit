@@ -4,8 +4,8 @@ import isString from './internal/isString'
 /**
  * Appends a value to a list.
  *
- * @param a A value.
- * @param {Array|String} bs A list.
+ * @param a The value to append.
+ * @param {Array|String} bs The list.
  * @returns {Array|String} A list that contains the value `a` appended to the
  * list of `bs`.
  * @example

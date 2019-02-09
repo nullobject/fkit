@@ -5,8 +5,8 @@ import { take } from './take'
 /**
  * Splits a list.
  *
- * @param {Number} n A number.
- * @param {Array|String} as A list.
+ * @param {Number} n The length of the prefix.
+ * @param {Array|String} as The list.
  * @returns {Array} A list that contains the elements in the list of `as` split
  * into a pair of lists: a prefix of length `n` and the remainder of the list.
  * @example

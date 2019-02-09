@@ -4,10 +4,10 @@ import isString from './internal/isString'
 /**
  * Drops elements from the start of a list using a predicate function.
  *
- * @param {Function} p A predicate function.
- * @param {Array|String} as A list.
- * @returns {Array|String} The result after dropping elements from the list of
- * `as` while the predicate function `p` is satisfied.
+ * @param {Function} p The predicate function.
+ * @param {Array|String} as The list.
+ * @returns {Array|String} A list that drops elements from the list of `as`
+ * while the predicate function `p` is satisfied.
  * @example
  *
  * import { dropWhile, lt, neq } from 'fkit'

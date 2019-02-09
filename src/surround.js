@@ -5,9 +5,9 @@ import { prepend } from './prepend'
 /**
  * Surrounds the list of `cs` with the values `a` and `b`.
  *
- * @param a A value.
- * @param b A value.
- * @param {Array|String} cs A list.
+ * @param a The left value.
+ * @param b The right value.
+ * @param {Array|String} cs The list to surround.
  * @returns {Array|String} A new list.
  * @example
  *

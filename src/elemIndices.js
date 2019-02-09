@@ -5,8 +5,8 @@ import { findIndices } from './findIndices'
 /**
  * Gets the indices of all occurances of a value in a list.
  *
- * @param a A value.
- * @param {Array|String} as A list.
+ * @param a The value to find.
+ * @param {Array|String} as The list.
  * @returns {Array} The indices of all occurances of the value `a` in the list
  * of `as`.
  * @example

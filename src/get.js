@@ -3,8 +3,8 @@ import curry from './curry'
 /**
  * Gets a property of an object.
  *
- * @param {String} k A key.
- * @param {Object} o An object.
+ * @param {String} k The key to get.
+ * @param {Object} o The object.
  * @returns The property at the key `k` in the object `o`.
  * @example
  *

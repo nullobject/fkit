@@ -8,7 +8,7 @@ import maximumBy from './maximumBy'
  * compared using natural ordering.
  *
  * @function
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns Returns the maximum value in the list of `as`.
  * @example
  *

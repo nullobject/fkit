@@ -6,8 +6,8 @@ import { filter } from './filter'
 /**
  * Partitions a list using a predicate function.
  *
- * @param {Function} p A predicate function.
- * @param {Array|String} as A list.
+ * @param {Function} p The predicate function.
+ * @param {Array|String} as The list.
  * @returns {Array} A list that contains the elements in the list of `as` split
  * into a pair of lists: the elements that satisfy the predicate function `p`
  * and the elements that do not satisfy the predicate function `p`.

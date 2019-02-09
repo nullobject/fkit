@@ -10,7 +10,7 @@ import { foldRight } from './foldRight'
 /**
  * Calculates the permutations of a list.
  *
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns {Array|String} A list that contains all the permutations of the
  * elements in the list of `as`.
  * @example

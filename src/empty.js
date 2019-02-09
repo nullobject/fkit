@@ -1,7 +1,7 @@
 /**
  * Determines if a list is empty.
  *
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns {Boolean} `true` if the list of `as` is empty, `false` otherwise.
  * @example
  *

@@ -8,8 +8,8 @@ import removeBy from './removeBy'
  * compared using the strict equality `===` operator.
  *
  * @function
- * @param a A value.
- * @param {Array|String} bs A list.
+ * @param a The value to remove.
+ * @param {Array|String} bs The list.
  * @returns {Array|String} A list with the first occurance of the element `a`
  * removed from the list of `bs`.
  * @example

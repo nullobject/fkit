@@ -3,11 +3,11 @@ import applyRight from './applyRight'
 import curry from './curry'
 
 /**
- * Determines whether all predicate functions in a list are satisfied when a
- * value is applied.
+ * Determines whether all predicate functions in a list are satisfied they are
+ * applied to a value.
  *
- * @param {Array} ps A list of predicate functions.
- * @param a A value.
+ * @param {Array} ps The list of predicate functions.
+ * @param a The value.
  * @returns {Boolean} `true` if all predicate functions in the list of `ps` are
  * satisfied when applied to the value `a`, `false` otherwise.
  * @example

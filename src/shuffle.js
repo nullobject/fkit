@@ -8,7 +8,7 @@ import { fold } from './fold'
  * Shuffles a list using the [Fisher-Yates
  * algorithm](http://en.wikipedia.org/wiki/Fisher-Yates_shuffle).
  *
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` randomly shuffled.
  * @example

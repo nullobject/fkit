@@ -5,10 +5,12 @@ import flattenStrings from './internal/flattenStrings'
 import mempty from './internal/mempty'
 
 /**
- * Maps a function over a list and concatenates the results.
+ * Maps a function, that returns a list, over a list and concatenates the
+ * results.
  *
- * @param {Function} f A function that returns a list.
- * @param {Array|String} as A list.
+ * @param {Function} f The function to apply to each value in the list. It must
+ * also return a list.
+ * @param {Array|String} as The list.
  * @returns {Array|String} A list that contains the elements in the list of
  * `as`, mapped with the function `f`, and concatenated together.
  * @example

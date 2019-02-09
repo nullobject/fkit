@@ -4,10 +4,10 @@ import isString from './internal/isString'
 /**
  * Gets the prefix of a list using a predicate function.
  *
- * @param {Function} p A predicate function.
- * @param {Array|String} as A list.
- * @returns {Array|String} The prefix of elements from the list of `as` while
- * the predicate function `p` is satisfied.
+ * @param {Function} p The predicate function.
+ * @param {Array|String} as The list.
+ * @returns {Array|String} A list that takes the elements from the list of `as`
+ * while the predicate function `p` is satisfied.
  * @example
  *
  * import { lt, neq, takeWhile } from 'fkit'

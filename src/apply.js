@@ -3,8 +3,8 @@ import curry from './curry'
 /**
  * Applies a function to a value.
  *
- * @param {Function} f A function.
- * @param a A value.
+ * @param {Function} f The function to apply.
+ * @param a The value.
  * @returns The result of `f(a)`.
  * @example
  *

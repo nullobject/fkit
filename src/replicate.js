@@ -7,8 +7,8 @@ import { concatMap } from './concatMap'
 /**
  * Replicates a value.
  *
- * @param {Number} n A number.
- * @param a A value.
+ * @param {Number} n The number of copies.
+ * @param a The value to replicate.
  * @returns {Array|String} A list of length `n` with `a` the value of every
  * element.
  * @example

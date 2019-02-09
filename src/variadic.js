@@ -7,7 +7,7 @@ const slice = Array.prototype.slice
  *
  * The last named parameter will be given an array of arguments.
  *
- * @param {Function} f A function.
+ * @param {Function} f The function.
  * @returns {Function} A function that wraps the function `f` to accept any
  * number of arguments.
  * @example

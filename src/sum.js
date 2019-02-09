@@ -4,7 +4,7 @@ import { fold } from './fold'
 /**
  * Calculates the sum of the elements in a list.
  *
- * @param {Array} as A list.
+ * @param {Array} as The list.
  * @returns {Number} The sum of the elements in the list of `as`.
  * @example
  *

@@ -7,8 +7,8 @@ import { set } from './set'
 /**
  * Omits properties of an object.
  *
- * @param {Array} ks A list of keys.
- * @param {Object} o An object.
+ * @param {Array} ks The list of keys to omit.
+ * @param {Object} o The object.
  * @returns {Object} A copy of the object `o` *without* the properties in the
  * list of `ks`.
  * @example

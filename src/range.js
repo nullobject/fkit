@@ -4,8 +4,8 @@ import curry from './curry'
 /**
  * Creates a new array of numbers.
  *
- * @param {Number} a A number.
- * @param {Number} n A number.
+ * @param {Number} a The starting number.
+ * @param {Number} n The number of numbers to create.
  * @returns {Array} An array of numbers of length `n` starting from `a`.
  * @example
  *

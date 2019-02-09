@@ -6,7 +6,7 @@ import variadic from './variadic'
  * Concatenates multiple lists into a single list.
  *
  * @function
- * @param {Array|String} as A list.
+ * @param {Array|String} as The lists to concatenate.
  * @returns {Array|String} A list that contains the concatenated elements in
  * the list of `as`.
  * @example

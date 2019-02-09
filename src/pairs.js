@@ -4,7 +4,7 @@ import keys from './keys'
 /**
  * Gets the key-value pairs of an object.
  *
- * @param {Object} o An object.
+ * @param {Object} o The object.
  * @returns {Array} A list of key-value pairs for the properties of the object
  * `o`.
  * @example

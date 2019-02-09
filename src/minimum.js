@@ -8,7 +8,7 @@ import minimumBy from './minimumBy'
  * compared using natural ordering.
  *
  * @function
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns Returns the minimum value in the list of `as`.
  * @example
  *

@@ -1,7 +1,7 @@
 /**
  * Returns the logical NOT of a value.
  *
- * @param a A value.
+ * @param a The value.
  * @returns {Boolean} `true` if `a` is not truthy, `false` otherwise.
  * @example
  *

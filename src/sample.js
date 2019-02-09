@@ -6,7 +6,7 @@ import { take } from './take'
  * Samples random elements from a list.
  *
  * @param {Number} n The number of elements to sample.
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns {Array|String} A list of `n` elements randomly sampled from the
  * list of `as`.
  * @example

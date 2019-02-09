@@ -3,9 +3,9 @@ import curry from './curry'
 /**
  * Zips two lists with a function.
  *
- * @param {Function} f A binary function.
- * @param {Array|String} as A list.
- * @param {Array|String} bs A list.
+ * @param {Function} f The zipping function.
+ * @param {Array|String} as The first list.
+ * @param {Array|String} bs The second list.
  * @returns {Array} The lists of `as` and `bs` zipped with the binary function `f`.
  * @example
  *

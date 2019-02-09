@@ -1,7 +1,7 @@
 /**
  * Gets the length of a list.
  *
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns {Number} The number of elements in the list of `as`.
  * @example
  *

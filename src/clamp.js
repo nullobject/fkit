@@ -5,9 +5,9 @@ import { min } from './min'
 /**
  * Clamps a number between two values.
  *
- * @param {Number} a A number.
- * @param {Number} b A number.
- * @param {Number} n A number.
+ * @param {Number} a The minimum number.
+ * @param {Number} b The maximum number.
+ * @param {Number} n The number to clamp.
  * @returns {Number} The result of clamping the number `n` between the numbers
  * `a` and `b` (i.e. `a <= n <= b`).
  * @example

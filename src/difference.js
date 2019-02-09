@@ -8,8 +8,8 @@ import eq from './eq'
  * compared using the strict equality `===` operator.
  *
  * @function
- * @param {Array|String} as A list.
- * @param {Array|String} bs A list.
+ * @param {Array|String} as The first list.
+ * @param {Array|String} bs The second list.
  * @returns {Array|String} A list that contains the difference of the elements
  * in the lists of `as` and `bs`.
  * @example

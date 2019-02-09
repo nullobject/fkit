@@ -4,7 +4,7 @@ import { prepend } from './prepend'
 /**
  * Unzips a list of pairs into a pair of lists.
  *
- * @param {Array} as A list.
+ * @param {Array} as The list.
  * @returns {Array} The list of pairs `as` unzipped into a pair of lists.
  * @example
  *

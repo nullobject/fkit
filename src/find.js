@@ -5,9 +5,9 @@ import { filter } from './filter'
 /**
  * Finds the first value in a list that satisfies a predicate function.
  *
- * @param {Function} p A predicate function.
- * @param {Array|String} as A list.
- * @returns An value in the list of `as` that satisfies the predicate function
+ * @param {Function} p The predicate function.
+ * @param {Array|String} as The list.
+ * @returns A value in the list of `as` that satisfies the predicate function
  * `p`, or `undefined` if no value was found.
  * @example
  *

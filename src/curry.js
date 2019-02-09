@@ -4,7 +4,7 @@
  * Currying turns a function that takes multiple arguments into a function that
  * can be applied to one or more values to give a partially applied function.
  *
- * @param {Function} f A function.
+ * @param {Function} f The function to curry.
  * @returns {Function} A curried function.
  * @example
  *

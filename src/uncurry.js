@@ -3,7 +3,8 @@ import curry from './curry'
 /**
  * Converts a binary function to a function on pairs.
  *
- * @param {Function} f A function.
+ * @param {Function} f The function.
+ * @param {Array} p The pair of values.
  * @returns {Function} A function that wraps the binary function `f` to accept
  * a pair.
  * @example

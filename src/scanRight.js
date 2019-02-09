@@ -5,9 +5,9 @@ import { tap } from './tap'
 /**
  * Scans a list from right-to-left with a function.
  *
- * @param {Function} f A binary function.
- * @param s A starting value.
- * @param {Array|String} as A list.
+ * @param {Function} f The folding function.
+ * @param s The starting value.
+ * @param {Array|String} as The list to scan.
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` scanned right-to-left with the binary function `f` and starting value
  * `s`.

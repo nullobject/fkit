@@ -2,10 +2,10 @@ import curry from './curry'
 /**
  * Applies a function to three values.
  *
- * @param {Function} f A function.
- * @param a A value.
- * @param b A value.
- * @param c A value.
+ * @param {Function} f The function to apply.
+ * @param a The first value.
+ * @param b The second value.
+ * @param c The third value.
  * @returns The result of `f(a, b, c)`.
  * @example
  *

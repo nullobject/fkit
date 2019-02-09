@@ -1,8 +1,8 @@
 /**
  * The identity function.
  *
- * @param a A value.
- * @returns The value `a`.
+ * @param a The value to return.
+ * @returns The value `a` unchanged.
  * @example
  *
  * import { id } from 'fkit'

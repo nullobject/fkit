@@ -1,7 +1,7 @@
 /**
  * Gets the keys of an object.
  *
- * @param {Object} o An object.
+ * @param {Object} o The object.
  * @returns {Array} A list of keys for the properties of the object `o`.
  * @example
  *

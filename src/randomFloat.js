@@ -3,8 +3,8 @@ import curry from './curry'
 /**
  * Generates a random float.
  *
- * @param {Number} a A number.
- * @param {Number} b A number.
+ * @param {Number} a The minimum number.
+ * @param {Number} b The maximum number.
  * @returns {Number} A random float between `a` and `b`.
  * @example
  *

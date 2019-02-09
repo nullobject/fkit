@@ -3,8 +3,8 @@ import curry from './curry'
 /**
  * Maps a function over a list.
  *
- * @param {Function} f A function.
- * @param {Array|String} as A list.
+ * @param {Function} f The function.
+ * @param {Array|String} as The list.
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` mapped with the function `f`.
  * @example

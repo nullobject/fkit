@@ -1,7 +1,7 @@
 /**
  * Converts a string to lowercase.
  *
- * @param {String} s A string.
+ * @param {String} s The string.
  * @returns {String} A new string.
  * @example
  *

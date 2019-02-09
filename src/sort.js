@@ -8,7 +8,7 @@ import sortBy from './sortBy'
  * using natural ordering.
  *
  * @function
- * @param {Array|String} a A list.
+ * @param {Array|String} a The list to sort.
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` sorted.
  * @example

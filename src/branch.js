@@ -3,13 +3,13 @@ import curry from './curry'
 /**
  * Branches execution based on a predicate function.
  *
- * If `p(a)` is true then `f` is applied to `a`, otherwise `g` is
- * applied to `a`.
+ * If `p(a)` is true then `f` is applied to `a`, otherwise `g` is applied to
+ * `a`.
  *
- * @param {Function} p A predicate function.
- * @param {Function} f A function.
- * @param {Function} g A function.
- * @param a The value to apply to the predicate function `p`.
+ * @param {Function} p The predicate function.
+ * @param {Function} f The function to apply when the predicate is satisfied.
+ * @param {Function} g The function to apply when the predicate is unsatisfied.
+ * @param a The value.
  * @returns The result.
  * @example
  *

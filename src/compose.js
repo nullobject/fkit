@@ -4,7 +4,7 @@ import variadic from './variadic'
  * Composes a list of functions.
  *
  * @function
- * @param {Array} fs A list of functions.
+ * @param {Array} fs The functions to compose.
  * @returns {Function} A function that is the composition of the list of
  * functions `fs`.
  * @example

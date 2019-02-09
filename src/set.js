@@ -4,9 +4,9 @@ import curry from './curry'
 /**
  * Sets a property of an object.
  *
- * @param {String} k A key.
- * @param v A value.
- * @param {Object} o An object.
+ * @param {String} k The key.
+ * @param v The value to set.
+ * @param {Object} o The object.
  * @returns {Object} A copy of the object `o` with the property `k` set to the
  * value `v`.
  * @example

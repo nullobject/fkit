@@ -5,7 +5,7 @@ import { prepend } from './prepend'
 /**
  * Gets all final segments of a list.
  *
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns {Array} A list that contains all final segments of the list of
  * `as`.
  * @example

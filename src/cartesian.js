@@ -10,8 +10,8 @@ import { map } from './map'
  * Calculates the [Cartesian
  * product](https://en.wikipedia.org/wiki/Cartesian_product) of two lists.
  *
- * @param {Array|String} as A list.
- * @param {Array|String} bs A list.
+ * @param {Array|String} as The first list.
+ * @param {Array|String} bs The second list.
  * @returns {Array} Returns a list that contains all the ordered pairs `[a, b]`
  * in the lists of `as` and `bs`.
  * @example

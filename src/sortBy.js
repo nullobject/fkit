@@ -9,8 +9,8 @@ import toList from './internal/toList'
  * less than `b`, then the comparator function should return `-1`. If both
  * elements are equal then, the comparator function should return `0`.
  *
- * @param {Function} c A comparator function.
- * @param {Array|String} as A list.
+ * @param {Function} c The comparator function.
+ * @param {Array|String} as The list to sort.
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` sorted using the comparator function `c`.
  * @example

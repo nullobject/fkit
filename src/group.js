@@ -8,7 +8,7 @@ import groupBy from './groupBy'
  * using the strict equality `===` operator.
  *
  * @function
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns {Array|String} A list that contains the values in the list of `as`
  * grouped into sublists of equal values.
  * @example

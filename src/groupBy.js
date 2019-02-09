@@ -13,8 +13,8 @@ import { prepend } from './prepend'
  * are both considered to be in the same group, then the comparator function
  * should return `true`. Otherwise it should return `false`.
  *
- * @param {Function} c A comparator function.
- * @param {Array|String} as A list.
+ * @param {Function} c The comparator function.
+ * @param {Array|String} as The list.
  * @returns {Array|String} A list that contains the values in the list of `as`
  * grouped into sublists that satisfy the comparator function `c`.
  * @example

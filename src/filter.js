@@ -8,8 +8,8 @@ import { concatMap } from './concatMap'
 /**
  * Filters a list using a predicate function.
  *
- * @param {Function} p A predicate function.
- * @param {Array|String} as A list.
+ * @param {Function} p The predicate function.
+ * @param {Array|String} as The list to filter.
  * @returns {Array|String} A list that contains only the elements in the list
  * of `as` that satisfy the predicate function `p`.
  * @example

@@ -3,8 +3,8 @@ import curry from './curry'
 /**
  * Creates a new ordered pair.
  *
- * @param a A value.
- * @param b A value.
+ * @param a The first value.
+ * @param b The second value.
  * @returns {Array} An ordered pair with the values `a` and `b`.
  * @example
  *

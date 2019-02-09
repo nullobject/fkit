@@ -3,8 +3,8 @@ import curry from './curry'
 /**
  * Gets the index of the first occurance of a value in a list.
  *
- * @param a A value.
- * @param {Array|String} as A list.
+ * @param a The value to find.
+ * @param {Array|String} as The list.
  * @returns {Number} The index of the first occurance of the value `a` in the
  * list of `as`, or `undefined` if no value was found.
  * @example

@@ -11,8 +11,8 @@ import intersectBy from './intersectBy'
  * will the result.
  *
  * @function
- * @param {Array|String} as A list.
- * @param {Array|String} bs A list.
+ * @param {Array|String} as The first list.
+ * @param {Array|String} bs The second list.
  * @returns {Array|String} A list that contains the intersection of the elments
  * in the lists of `as` and `bs`.
  * @example

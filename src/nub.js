@@ -7,7 +7,7 @@ import nubBy from './nubBy'
  * This is a special case of the `nubBy` function where the elements are compared
  * using the strict equality `===` operator.
  *
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns {Array|String} A list with all duplicate elements removed from the list of `as`.
  * @example
  *

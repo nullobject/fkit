@@ -3,9 +3,9 @@ import curry from './curry'
 /**
  * Swaps the order of the arguments to a function.
  *
- * @param {Function} f A function.
- * @param a A value.
- * @param b A value.
+ * @param {Function} f The function.
+ * @param a The first value.
+ * @param b The second value.
  * @returns {Function} The result of applying the function `f` to the values
  * `b` and `a`.
  * @example

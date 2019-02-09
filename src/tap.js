@@ -4,9 +4,9 @@ import curry from './curry'
  * Applies the function `f` to the value `a` and returns the value `a`
  * unchanged.
  *
- * @param {Function} f A function.
- * @param a A value.
- * @returns The value `a`.
+ * @param {Function} f The function to apply.
+ * @param a The value.
+ * @returns The value `a` unchanged.
  * @example
  *
  * import { tap } from 'fkit'

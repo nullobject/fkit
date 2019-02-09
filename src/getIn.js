@@ -4,8 +4,8 @@ import isString from './internal/isString'
 /**
  * Gets a property of an object using a key path.
  *
- * @param {Array|String} ks A list or a string.
- * @param {Object} o An object.
+ * @param {Array|String} ks The key path.
+ * @param {Object} o The object.
  * @returns The property at the key path `ks` in the object `o`.
  * @example
  *

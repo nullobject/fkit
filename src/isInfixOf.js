@@ -6,8 +6,8 @@ import tails from './tails'
 /**
  * Determines if a list is contained within another list.
  *
- * @param {Array|String} as A list.
- * @param {Array|String} bs A list.
+ * @param {Array|String} as The list to find.
+ * @param {Array|String} bs The list.
  * @returns {Boolean} `true` if the list of `as` is contained within the list
  * of `bs`, `false` otherwise.
  * @example

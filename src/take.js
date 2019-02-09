@@ -5,7 +5,7 @@ import isString from './internal/isString'
  * Takes a number of elements from the start of a list.
  *
  * @param {Number} n The number of elements to take.
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns {Array|String} The result after taking `n` elements from the list
  * of `as`.
  * @example

@@ -7,8 +7,8 @@ import curry from './curry'
  * `b`, then it returns `1`. If `a` is less than `b`, then it returns `-1`. If
  * both elements are equal, then it returns `0`.
  *
- * @param a A value.
- * @param b A value.
+ * @param a The first value.
+ * @param b The second value.
  * @returns {Number} The result.
  * @example
  *

@@ -3,10 +3,10 @@ import curry from './curry'
 /**
  * Applies a method to two values.
  *
- * @param {String} k A method name.
- * @param a A value.
- * @param b A value.
- * @param {Object} o An object.
+ * @param {String} k The method to apply.
+ * @param a The first value.
+ * @param b The second value.
+ * @param {Object} o The object.
  * @returns The result of the method `k` of object `o` applied to the values
  * `a` and `b`.
  * @example

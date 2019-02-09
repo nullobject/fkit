@@ -13,8 +13,8 @@ import { prepend } from './prepend'
  * are both considered to equal, then the comparator function should return
  * `true`. Otherwise it should return `false`.
  *
- * @param {Function} f A comparator function.
- * @param {Array|String} as A list.
+ * @param {Function} f The comparator function.
+ * @param {Array|String} as The list.
  * @returns {Array|String} A list with all duplicate elements removed from the
  * list of `bs`.
  * @example

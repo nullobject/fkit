@@ -10,7 +10,7 @@ import { foldRight } from './foldRight'
 /**
  * Calculates the subsequences of a list.
  *
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns {Array} A list that contains all the subsequences of the elements
  * in the list of `as`.
  * @example

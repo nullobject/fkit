@@ -5,8 +5,8 @@ import reverse from './reverse'
 /**
  * Determines if a list is a suffix of another list.
  *
- * @param {Array|String} as A list.
- * @param {Array|String} bs A list.
+ * @param {Array|String} as The suffix.
+ * @param {Array|String} bs The list to check.
  * @returns {Boolean} `true` if the list of `as` is a suffix of the list of
  * `bs`, `false` otherwise.
  * @example

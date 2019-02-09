@@ -3,11 +3,11 @@ import curry from './curry'
 import or from './or'
 
 /**
- * Determines whether any predicate functions in a list are satisfied when a
- * value is applied.
+ * Determines whether any predicate functions in a list are satisfied when they
+ * are applied to a value.
  *
- * @param {Array} ps A list of predicate functions.
- * @param a A value.
+ * @param {Array} ps The list of predicate functions.
+ * @param a The value.
  * @returns {Boolean} `true` if any predicate function in the list of `ps` are
  * satisfied when applied to the value `a`, `false` otherwise.
  * @example

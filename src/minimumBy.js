@@ -9,8 +9,8 @@ import { fold } from './fold'
  * less than `b`, then the comparator function should return `-1`. If both
  * elements are equal, then the comparator function should return `0`.
  *
- * @param {Function} f A comparator function.
- * @param {Array|String} as A list.
+ * @param {Function} f The comparator function.
+ * @param {Array|String} as The list.
  * @returns The minimum value in the list of `as` using the comparator function
  * `f`.
  * @example

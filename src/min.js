@@ -3,8 +3,8 @@ import curry from './curry'
 /**
  * Determines the smallest of two numbers.
  *
- * @param {Number} a A number.
- * @param {Number} b A number.
+ * @param {Number} a The first number.
+ * @param {Number} b The second number.
  * @returns {Number} The smallest of the numbers `a` and `b`.
  * @example
  *

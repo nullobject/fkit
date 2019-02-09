@@ -1,7 +1,7 @@
 /**
  * Increments a number.
  *
- * @param {Number} a A number.
+ * @param {Number} a The number.
  * @returns {Number} The result of `a + 1`.
  * @example
  *

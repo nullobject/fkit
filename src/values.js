@@ -5,7 +5,7 @@ import { get } from './get'
 /**
  * Gets the values of an object.
  *
- * @param {Object} o An object.
+ * @param {Object} o The object.
  * @returns {Array} A list of values for the properties of the object `o`.
  * @example
  *

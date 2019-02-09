@@ -13,9 +13,9 @@ import { prepend } from './prepend'
  * elements are both considered to equal, then the comparator function should
  * return `true`. Otherwise it should return `false`.
  *
- * @param {Function} f A comparator function.
- * @param a A value.
- * @param {Array|String} bs A list.
+ * @param {Function} f The comparator function.
+ * @param a The value to find.
+ * @param {Array|String} bs The list.
  * @returns {Array|String} A list with the first occurance of the element `a`
  * removed from the list of `bs`.
  * @example

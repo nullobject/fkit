@@ -8,8 +8,8 @@ import { zipWith } from './zipWith'
  * This is a special case of the `zipWith` function where the elements are
  * combined using the `pair` function.
  *
- * @param {Array|String} as A list.
- * @param {Array|String} bs A list.
+ * @param {Array|String} as The first list.
+ * @param {Array|String} bs The second list.
  * @returns {Array} The lists of `as` and `bs` zipped into a list of pairs.
  * @example
  *

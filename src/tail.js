@@ -1,7 +1,7 @@
 /**
  * Get the elements after the first element in a list.
  *
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns {Array|String} A list that contains the elements after the first
  * element in the list of `as`.
  * @example

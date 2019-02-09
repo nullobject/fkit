@@ -3,9 +3,9 @@ import curry from './curry'
 /**
  * Applies a function to two values.
  *
- * @param {Function} f A function.
- * @param a A value.
- * @param b A value.
+ * @param {Function} f The function to apply.
+ * @param a The first value.
+ * @param b The second value.
  * @returns The result of `f(a, b)`.
  * @example
  *

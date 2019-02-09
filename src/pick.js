@@ -5,8 +5,8 @@ import { set } from './set'
 /**
  * Picks properties of an object.
  *
- * @param {Array} ks A list.
- * @param {Object} o An object.
+ * @param {Array} ks The list of keys.
+ * @param {Object} o The object.
  * @returns {Object} A copy of the object `o` *with* the properties in the list
  * of `ks`.
  * @example

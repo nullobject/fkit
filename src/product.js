@@ -4,7 +4,7 @@ import mul from './mul'
 /**
  * Calculates the product of the elements in a list.
  *
- * @param {Array} as A list.
+ * @param {Array} as The list.
  * @returns {Number} The product of the elements in the list of `as`.
  * @example
  *

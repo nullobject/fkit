@@ -5,7 +5,7 @@ import prepend from './prepend'
 /**
  * Reverses the elements in a list.
  *
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` in reverse order.
  * @example

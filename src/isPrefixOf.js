@@ -6,8 +6,8 @@ import tail from './tail'
 /**
  * Determines if a list is a prefix of another list.
  *
- * @param {Array|String} as A list.
- * @param {Array|String} bs A list.
+ * @param {Array|String} as The prefix.
+ * @param {Array|String} bs The list to check.
  * @returns {Boolean} `true` if the list of `as` is a prefix of the list of
  * `bs`, `false` otherwise.
  * @example

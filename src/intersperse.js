@@ -8,8 +8,8 @@ import tail from './tail'
 /**
  * Intersperses the elements of a list with separator.
  *
- * @param {String} s A separator.
- * @param {Array|String} as A list.
+ * @param {String} s The separator value.
+ * @param {Array|String} as The list.
  * @returns {Array|String} A list that contains the elements in the list of
  * `as` interspersed with the separator `s`.
  * @example

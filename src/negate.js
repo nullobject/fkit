@@ -1,7 +1,7 @@
 /**
  * Returns the negation of a number.
  *
- * @param {Number} a A number.
+ * @param {Number} a The number.
  * @returns {Number} The result.
  * @example
  *

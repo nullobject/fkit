@@ -3,8 +3,8 @@ import curry from './curry'
 /**
  * Determines if a value is present in a list.
  *
- * @param a A value.
- * @param {Array|String} as A list.
+ * @param a The value to find.
+ * @param {Array|String} as The list.
  * @returns {Boolean} `true` if the list of `as` contains the value `a`,
  * `false` otherwise.
  * @example

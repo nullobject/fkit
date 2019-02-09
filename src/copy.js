@@ -16,7 +16,7 @@ function extend (target, objects) {
  * copy will have the *same* prototype as the *first* object in the list.
  *
  * @function
- * @param {Array} os A list of objects.
+ * @param {Array} os The objects to copy.
  * @returns {Object} A copy of the objects in the list of `os`.
  * @example
  *

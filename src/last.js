@@ -1,7 +1,7 @@
 /**
  * Gets the last element in a list.
  *
- * @param {Array|String} as A list.
+ * @param {Array|String} as The list.
  * @returns The last element in the list of `as`, or `undefined` if the list is empty.
  * @example
  *

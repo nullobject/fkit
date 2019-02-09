@@ -4,10 +4,9 @@ import curry from './curry'
  * Finds the indices of all the values in a list that satisfy a predicate
  * function.
  *
- * @param {Function} p A predicate function.
- * @param {Array|String} as A list.
- * @returns {Array} The indices of the values in the list of `as` that satisfy
- * the predicate function `p`.
+ * @param {Function} p The predicate function.
+ * @param {Array|String} as The list.
+ * @returns {Array} A list of indices that satisfy the predicate function `p`.
  * @example
  *
  * import { eq, findIndices, gt } from 'fkit'

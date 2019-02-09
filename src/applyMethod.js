@@ -3,9 +3,9 @@ import curry from './curry'
 /**
  * Applies a method to a value.
  *
- * @param {String} k A method name.
- * @param a A value.
- * @param {Object} o An object.
+ * @param {String} k The method to apply.
+ * @param a The value.
+ * @param {Object} o The object.
  * @returns The result of the method `k` of object `o` applied to the value
  * `a`.
  * @example

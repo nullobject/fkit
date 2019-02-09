@@ -13,9 +13,9 @@ import { fold } from './fold'
  * Duplicates are removed from `bs`, but if `as` contains duplicates then so
  * will the result.
  *
- * @param {Function} f A comparator function.
- * @param {Array|String} as A list.
- * @param {Array|String} bs A list.
+ * @param {Function} f The comparator function.
+ * @param {Array|String} as The first list.
+ * @param {Array|String} bs The second list.
  * @returns {Array|String} A list that contains the union of elements in the
  * lists of `as` and `bs`.
  * @example

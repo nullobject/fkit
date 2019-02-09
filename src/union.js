@@ -11,8 +11,8 @@ import unionBy from './unionBy'
  * will the result.
  *
  * @function
- * @param {Array|String} as A list.
- * @param {Array|String} bs A list.
+ * @param {Array|String} as The first list.
+ * @param {Array|String} bs The second list.
  * @returns {Array|String} A list that contains the union of elements in the
  * lists of `as` and `bs`.
  * @example
