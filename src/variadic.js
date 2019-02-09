@@ -1,5 +1,6 @@
 import flatten from './internal/flatten'
-import { slice } from './util'
+
+const slice = Array.prototype.slice
 
 /**
  * Converts a function to a variadic function.

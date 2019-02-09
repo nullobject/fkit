@@ -1,5 +1,13 @@
 import variadic from './variadic'
-import { extend } from './util'
+
+function extend (target, objects) {
+  objects.forEach(object => {
+    Object.getOwnPropertyNames(object).forEach(property => {
+      target[property] = object[property]
+    })
+  })
+  return target
+}
 
 /**
  * Creates a copy of one or more objects.
