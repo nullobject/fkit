@@ -1,7 +1,6 @@
 import flip from './flip'
 import mempty from './internal/mempty'
 import prepend from './prepend'
-import toArray from './internal/toArray'
 
 /**
  * Reverses the elements in a list.
@@ -16,5 +15,5 @@ import toArray from './internal/toArray'
  * reverse('foo') // 'oof'
  */
 export default function (as) {
-  return toArray(as).reduce(flip(prepend), mempty(as))
+  return Array.from(as).reduce(flip(prepend), mempty(as))
 }

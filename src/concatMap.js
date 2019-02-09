@@ -3,7 +3,6 @@ import compose from './compose'
 import concatWith from './internal/concatWith'
 import flattenStrings from './internal/flattenStrings'
 import mempty from './internal/mempty'
-import toArray from './internal/toArray'
 
 /**
  * Maps a function over a list and concatenates the results.
@@ -19,7 +18,7 @@ import toArray from './internal/toArray'
  * concatMap(a => [a, '-'], 'foo') // 'f-o-o-'
  */
 export function concatMap (f, as) {
-  const bs = toArray(as).map(compose(flattenStrings, f))
+  const bs = Array.from(as).map(compose(flattenStrings, f))
   const cs = bs.length > 0 ? bs : as
   return concatWith(mempty(cs), bs)
 }

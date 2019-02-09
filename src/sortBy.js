@@ -1,5 +1,4 @@
 import curry from './curry'
-import toArray from './internal/toArray'
 import toList from './internal/toList'
 
 /**
@@ -21,7 +20,7 @@ import toList from './internal/toList'
  * sortBy(compare, 'bca') // 'abc'
  */
 export function sortBy (c, as) {
-  const bs = toArray(as.slice(0))
+  const bs = Array.from(as.slice(0))
   return toList(bs.sort(c), typeof as)
 }
 

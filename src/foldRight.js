@@ -1,6 +1,5 @@
 import curry from './curry'
 import flip from './flip'
-import toArray from './internal/toArray'
 
 /**
  * Folds a list from right-to-left with a function.
@@ -18,7 +17,7 @@ import toArray from './internal/toArray'
  * foldRight((b, a) => a.concat(b), '', 'foo') // 'oof'
  */
 export function foldRight (f, s, as) {
-  return toArray(as).reduceRight(flip(f), s)
+  return Array.from(as).reduceRight(flip(f), s)
 }
 
 export default curry(foldRight)

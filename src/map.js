@@ -1,5 +1,4 @@
 import curry from './curry'
-import toArray from './internal/toArray'
 
 /**
  * Maps a function over a list.
@@ -15,7 +14,7 @@ import toArray from './internal/toArray'
  * map(toUpper, 'foo') // ['F', 'O', 'O']
  */
 export function map (f, as) {
-  return toArray(as).map(f)
+  return Array.from(as).map(f)
 }
 
 export default curry(map)

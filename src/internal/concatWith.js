@@ -1,7 +1,6 @@
 import append from '../append'
 import flatten from './flatten'
 import flip from '../flip'
-import toArray from './toArray'
 
 /**
  * Returns a list that contains the elements in the list of `as` concatenated
@@ -10,5 +9,5 @@ import toArray from './toArray'
  * @private
  */
 export default function concatWith (s, as) {
-  return toArray(flatten(as)).reduce(flip(append), s)
+  return Array.from(flatten(as)).reduce(flip(append), s)
 }
