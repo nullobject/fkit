@@ -10,11 +10,9 @@ import isArrayOfStrings from './isArrayOfStrings'
 export default function flattenStrings (as) {
   if (isArrayOfStrings(as)) {
     return concat(as)
+  } else if (isArray(as)) {
+    return as.map(flattenStrings)
   } else {
-    if (isArray(as)) {
-      return as.map(flattenStrings)
-    } else {
-      return as
-    }
+    return as
   }
 }
