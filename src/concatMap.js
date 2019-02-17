@@ -20,7 +20,7 @@ import mempty from './internal/mempty'
  * concatMap(a => [a, '-'], 'foo') // 'f-o-o-'
  */
 export function concatMap (f, as) {
-  const bs = Array.from(as).map(compose(flattenStrings, f))
+  const bs = Array.from(as).map(f)
   const cs = bs.length > 0 ? bs : as
   return concatWith(mempty(cs), bs)
 }

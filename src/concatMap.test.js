@@ -21,9 +21,9 @@ describe('#concatMap', () => {
   })
 
   it('handles an array of strings', () => {
-    expect(concatMap(h)(['f', 'o', 'o'])).toBe('f-o-o-')
-    expect(concatMap(i)(['f', 'o', 'o'])).toBe('f-o-o-')
-    expect(concatMap(j)(['f', 'o', 'o'])).toEqual(['f-', 'o-', 'o-'])
+    expect(concatMap(h)(['f', 'o', 'o'])).toEqual(['f', '-', 'o', '-', 'o', '-'])
+    expect(concatMap(i)(['f', 'o', 'o'])).toEqual(['f-', 'o-', 'o-'])
+    expect(concatMap(j)(['f', 'o', 'o'])).toEqual([['f', '-'], ['o', '-'], ['o', '-']])
   })
 
   it('handles a string', () => {
