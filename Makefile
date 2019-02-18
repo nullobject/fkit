@@ -30,4 +30,4 @@ publish-npm:
 	@npm publish
 
 clean:
-	@rm -rf dist doc node_modules
+	@rm -rf dist docs node_modules
