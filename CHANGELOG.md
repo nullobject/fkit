@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Use Array.from to convert iterables to arrays
+* Add `tuple` function
 
 ## 1.5.1 (2019-01-26)
 
