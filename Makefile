@@ -1,4 +1,4 @@
-.PHONY: clean dev dist doc lint node_modules publish-api publish-npm release test
+.PHONY: clean dev dist doc lint node_modules publish-api publish-npm release test watch
 
 node_modules:
 	@npm install
@@ -30,4 +30,4 @@ publish-npm:
 	@npm publish
 
 clean:
-	@rm -rf dist docs node_modules
+	@rm -rf dist docs
