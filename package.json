@@ -10,8 +10,8 @@
     "programming",
     "library"
   ],
-  "main": "dist/fkit.js",
-  "module": "dist/fkit.es.js",
+  "main": "dist/index.js",
+  "module": "dist/fkit.esm.js",
   "unpkg": "dist/fkit.min.js",
   "files": [
     "dist"
