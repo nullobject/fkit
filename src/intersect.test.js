@@ -1,6 +1,6 @@
 import intersect from './intersect'
 
-describe('#intersect', () => {
+describe('intersect', () => {
   it('handles an empty array', () => {
     expect(intersect([1, 2, 3])([])).toEqual([])
     expect(intersect([])([1, 2, 3])).toEqual([])

@@ -1,6 +1,6 @@
 import subsequences from './subsequences'
 
-describe('#subsequences', () => {
+describe('subsequences', () => {
   it('handles an empty array', () => {
     expect(subsequences([])).toEqual([[]])
   })

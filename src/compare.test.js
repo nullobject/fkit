@@ -1,6 +1,6 @@
 import compare from './compare'
 
-describe('#compare', () => {
+describe('compare', () => {
   it('compares two numbers', () => {
     expect(compare(1)(2)).toBe(-1)
     expect(compare(2)(1)).toBe(1)

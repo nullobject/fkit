@@ -1,6 +1,6 @@
 import variadic from './variadic'
 
-describe('#variadic', () => {
+describe('variadic', () => {
   describe('with a unary function', () => {
     function f (a) {}
     let spy

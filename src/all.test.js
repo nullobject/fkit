@@ -1,6 +1,6 @@
 import all from './all'
 
-describe('#all', () => {
+describe('all', () => {
   it('handles an array', () => {
     const p = a => a > 1
     expect(all(p)([3])).toBe(true)

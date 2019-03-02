@@ -1,6 +1,6 @@
 import apply2 from './apply2'
 
-describe('#apply2', () => {
+describe('apply2', () => {
   function f () {}
   let spy
 

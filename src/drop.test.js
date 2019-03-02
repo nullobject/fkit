@@ -1,6 +1,6 @@
 import drop from './drop'
 
-describe('#drop', () => {
+describe('drop', () => {
   it('handles an empty array', () => {
     expect(drop(2)([])).toEqual([])
   })

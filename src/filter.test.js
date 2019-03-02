@@ -1,6 +1,6 @@
 import filter from './filter'
 
-describe('#filter', () => {
+describe('filter', () => {
   it('handles an array', () => {
     const p = a => a > 1
     expect(filter(p)([])).toEqual([])

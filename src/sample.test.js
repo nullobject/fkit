@@ -1,6 +1,6 @@
 import sample from './sample'
 
-describe('#sample', () => {
+describe('sample', () => {
   it('handles an empty array', () => {
     expect(sample(2)([])).toEqual([])
   })

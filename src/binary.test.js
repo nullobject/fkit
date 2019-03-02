@@ -1,6 +1,6 @@
 import binary from './binary'
 
-describe('#binary', () => {
+describe('binary', () => {
   it('returns a binary function', () => {
     const spy = jest.fn()
     binary(spy)(1, 2, 3)

@@ -1,6 +1,6 @@
 import last from './last'
 
-describe('#last', () => {
+describe('last', () => {
   it('handles an empty array', () => {
     expect(last([])).toBeUndefined()
   })

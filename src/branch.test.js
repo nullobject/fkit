@@ -1,6 +1,6 @@
 import branch from './branch'
 
-describe('#branch', () => {
+describe('branch', () => {
   const f = jest.fn()
   const g = jest.fn()
   const a = {}

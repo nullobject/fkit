@@ -1,6 +1,6 @@
 import length from './length'
 
-describe('#length', () => {
+describe('length', () => {
   it('handles an empty array', () => {
     expect(length([])).toBe(0)
   })

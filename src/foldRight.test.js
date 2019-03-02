@@ -1,6 +1,6 @@
 import foldRight from './foldRight'
 
-describe('#foldRight', () => {
+describe('foldRight', () => {
   it('handles an array', () => {
     function f (a, b) { return b.concat(a) }
     expect(foldRight(f)([])([1, 2, 3])).toEqual([3, 2, 1])

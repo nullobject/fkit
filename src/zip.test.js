@@ -1,6 +1,6 @@
 import zip from './zip'
 
-describe('#zip', () => {
+describe('zip', () => {
   it('handles an empty array', () => {
     expect(zip([1, 2, 3])([])).toEqual([])
     expect(zip([])([3, 4, 5])).toEqual([])

@@ -1,6 +1,6 @@
 import unzip from './unzip'
 
-describe('#unzip', () => {
+describe('unzip', () => {
   it('handles an empty array', () => {
     expect(unzip([])).toEqual([[], []])
   })

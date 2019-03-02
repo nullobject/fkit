@@ -1,6 +1,6 @@
 import tail from './tail'
 
-describe('#tail', () => {
+describe('tail', () => {
   it('handles an empty array', () => {
     expect(tail([])).toEqual([])
   })

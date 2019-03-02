@@ -1,6 +1,6 @@
 import prepend from './prepend'
 
-describe('#prepend', () => {
+describe('prepend', () => {
   it('handles an empty array', () => {
     expect(prepend(1)([])).toEqual([1])
   })

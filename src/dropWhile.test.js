@@ -1,6 +1,6 @@
 import dropWhile from './dropWhile'
 
-describe('#dropWhile', () => {
+describe('dropWhile', () => {
   const p = a => a < 3
   const q = a => a !== 'o'
 

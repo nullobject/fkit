@@ -1,6 +1,6 @@
 import shuffle from './shuffle'
 
-describe('#shuffle', () => {
+describe('shuffle', () => {
   it('handles an empty array', () => {
     expect(shuffle([])).toEqual([])
   })

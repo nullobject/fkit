@@ -1,6 +1,6 @@
 import union from './union'
 
-describe('#union', () => {
+describe('union', () => {
   it('handles an empty array', () => {
     expect(union([1, 2, 3])([])).toEqual([1, 2, 3])
     expect(union([])([1, 2, 3])).toEqual([1, 2, 3])

@@ -1,6 +1,6 @@
 import curry from './curry'
 
-describe('#curry', () => {
+describe('curry', () => {
   it('ignores a nullary function', () => {
     const f = () => {}
     const g = curry(f)

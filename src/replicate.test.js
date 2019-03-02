@@ -1,6 +1,6 @@
 import replicate from './replicate'
 
-describe('#replicate', () => {
+describe('replicate', () => {
   it('handles a number', () => {
     expect(replicate(0)(1)).toEqual([])
     expect(replicate(3)(1)).toEqual([1, 1, 1])

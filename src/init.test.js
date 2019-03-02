@@ -1,6 +1,6 @@
 import init from './init'
 
-describe('#init', () => {
+describe('init', () => {
   it('handles an empty array', () => {
     expect(init([])).toEqual([])
   })

@@ -1,6 +1,6 @@
 import intersectBy from './intersectBy'
 
-describe('#intersectBy', () => {
+describe('intersectBy', () => {
   const f = (a, b) => a === b
 
   it('handles an empty array', () => {

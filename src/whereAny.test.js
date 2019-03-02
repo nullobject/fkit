@@ -1,6 +1,6 @@
 import whereAny from './whereAny'
 
-describe('#whereAny', () => {
+describe('whereAny', () => {
   it('applies the list of predicate functions', () => {
     function f (a) { return a >= 1 }
     function g (a) { return a >= 2 }

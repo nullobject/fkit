@@ -1,6 +1,6 @@
 import takeWhile from './takeWhile'
 
-describe('#takeWhile', () => {
+describe('takeWhile', () => {
   const p = a => a < 3
   const q = a => a !== 'o'
 

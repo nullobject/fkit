@@ -1,6 +1,6 @@
 import removeBy from './removeBy'
 
-describe('#removeBy', () => {
+describe('removeBy', () => {
   const f = (a, b) => a === b
 
   it('handles an empty array', () => {

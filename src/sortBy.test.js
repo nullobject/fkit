@@ -1,6 +1,6 @@
 import sortBy from './sortBy'
 
-describe('#sortBy', () => {
+describe('sortBy', () => {
   const c = (a, b) => {
     if (a < b) {
       return 1

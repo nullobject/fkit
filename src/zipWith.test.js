@@ -1,6 +1,6 @@
 import zipWith from './zipWith'
 
-describe('#zipWith', () => {
+describe('zipWith', () => {
   const f = (a, b) => a + b
 
   it('handles an empty array', () => {

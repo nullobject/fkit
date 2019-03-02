@@ -1,6 +1,6 @@
 import groupBy from './groupBy'
 
-describe('#groupBy', () => {
+describe('groupBy', () => {
   const f = (a, b) => a === b
 
   it('handles an empty array', () => {
