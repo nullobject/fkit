@@ -1,8 +1,10 @@
 import curry from './curry'
+import elemIndex from './uncurried/elemIndex'
 
 /**
  * Gets the index of the first occurance of a value in a list.
  *
+ * @function
  * @param a The value to find.
  * @param {Array|String} as The list.
  * @returns {Number} The index of the first occurance of the value `a` in the
@@ -17,9 +19,4 @@ import curry from './curry'
  * elemIndex('a', 'foo') // undefined
  * elemIndex('o', 'foo') // 1
  */
-export function elemIndex (a, as) {
-  const i = as.indexOf(a)
-  return (i >= 0) ? i : undefined
-}
-
 export default curry(elemIndex)

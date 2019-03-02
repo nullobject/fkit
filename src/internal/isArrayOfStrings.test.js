@@ -1,6 +1,6 @@
 import isArrayOfStrings from './isArrayOfStrings'
 
-describe('#isArrayOfStrings', () => {
+describe('isArrayOfStrings', () => {
   it('handles an empty array', () => {
     expect(isArrayOfStrings([])).toBe(false)
   })

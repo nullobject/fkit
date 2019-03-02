@@ -1,4 +1,4 @@
-import compare from './compare'
+import compare from './uncurried/compare'
 import sortBy from './sortBy'
 
 /**

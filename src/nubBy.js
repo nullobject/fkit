@@ -1,10 +1,5 @@
 import curry from './curry'
-import empty from './empty'
-import head from './head'
-import mempty from './internal/mempty'
-import tail from './tail'
-import { filter } from './filter'
-import { prepend } from './prepend'
+import nubBy from './uncurried/nubBy'
 
 /**
  * Removes duplicate elements from a list using a comparator function.
@@ -13,6 +8,7 @@ import { prepend } from './prepend'
  * are both considered to equal, then the comparator function should return
  * `true`. Otherwise it should return `false`.
  *
+ * @function
  * @param {Function} f The comparator function.
  * @param {Array|String} as The list.
  * @returns {Array|String} A list with all duplicate elements removed from the
@@ -23,15 +19,4 @@ import { prepend } from './prepend'
  * nubBy((a, b) => a === b, [1, 2, 2, 3, 3, 3]) // [1, 2, 3]
  * nubBy((a, b) => a === b, 'abbccc') // 'abc'
  */
-export function nubBy (f, as) {
-  const a = head(as)
-
-  return empty(as)
-    ? mempty(as)
-    : prepend(
-      a,
-      nubBy(f, filter(b => !f(a, b), tail(as)))
-    )
-}
-
 export default curry(nubBy)

@@ -1,9 +1,11 @@
 import curry from './curry'
+import findIndex from './uncurried/findIndex'
 
 /**
  * Finds the index of the first occurance of a value in a list that satisfies a
  * predicate function.
  *
+ * @function
  * @param {Function} p The predicate function.
  * @param {Array|String} as The list.
  * @returns {Number} An index of the first occurance of a value in the list of
@@ -19,14 +21,4 @@ import curry from './curry'
  * findIndex(eq('o'), '') // undefined
  * findIndex(eq('o'), 'foo') // 1
  */
-export function findIndex (p, as) {
-  const n = as.length
-
-  for (let i = 0; i < n; i++) {
-    if (p(as[i])) { return i }
-  }
-
-  return undefined
-}
-
 export default curry(findIndex)

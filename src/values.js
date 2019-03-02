@@ -1,6 +1,6 @@
 import flip from './flip'
+import get from './uncurried/get'
 import keys from './keys'
-import { get } from './get'
 
 /**
  * Gets the values of an object.
@@ -14,5 +14,5 @@ import { get } from './get'
  * values(person) // ['Jane', 20, 'Melbourne']
  */
 export default function values (o) {
-  return keys(o).map(flip(get)(o))
+  return keys(o).map(k => flip(get)(o, k))
 }

@@ -1,11 +1,11 @@
-import applyRight from './applyRight'
 import curry from './curry'
-import or from './or'
+import whereAny from './uncurried/whereAny'
 
 /**
  * Determines whether any predicate functions in a list are satisfied when they
  * are applied to a value.
  *
+ * @function
  * @param {Array} ps The list of predicate functions.
  * @param a The value.
  * @returns {Boolean} `true` if any predicate function in the list of `ps` are
@@ -18,8 +18,4 @@ import or from './or'
  * whereAny(ps, 2) // true
  * whereAny(ps, 3) // true
  */
-export function whereAny (ps, a) {
-  return ps.map(applyRight(a)).reduce(or, false)
-}
-
 export default curry(whereAny)

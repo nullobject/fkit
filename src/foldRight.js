@@ -1,9 +1,10 @@
 import curry from './curry'
-import flip from './flip'
+import foldRight from './uncurried/foldRight'
 
 /**
  * Folds a list from right-to-left with a function.
  *
+ * @function
  * @param {Function} f The folding function.
  * @param s The starting value.
  * @param {Array|String} as The list to fold.
@@ -16,8 +17,4 @@ import flip from './flip'
  * foldRight((b, a) => a.concat(b), [], [1, 2, 3]) // [3, 2, 1]
  * foldRight((b, a) => a.concat(b), '', 'foo') // 'oof'
  */
-export function foldRight (f, s, as) {
-  return Array.from(as).reduceRight(flip(f), s)
-}
-
 export default curry(foldRight)

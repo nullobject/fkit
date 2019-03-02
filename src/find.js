@@ -1,10 +1,10 @@
 import curry from './curry'
-import head from './head'
-import { filter } from './filter'
+import find from './uncurried/find'
 
 /**
  * Finds the first value in a list that satisfies a predicate function.
  *
+ * @function
  * @param {Function} p The predicate function.
  * @param {Array|String} as The list.
  * @returns A value in the list of `as` that satisfies the predicate function
@@ -19,8 +19,4 @@ import { filter } from './filter'
  * find(eq('o'), '') // undefined
  * find(eq('o'), 'foo') // 'o'
  */
-export function find (p, as) {
-  return head(filter(p, as))
-}
-
 export default curry(find)

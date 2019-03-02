@@ -1,13 +1,10 @@
-import always from './always'
-import branch from './branch'
 import curry from './curry'
-import id from './id'
-import isString from './internal/isString'
-import { concatMap } from './concatMap'
+import filter from './uncurried/filter'
 
 /**
  * Filters a list using a predicate function.
  *
+ * @function
  * @param {Function} p The predicate function.
  * @param {Array|String} as The list to filter.
  * @returns {Array|String} A list that contains only the elements in the list
@@ -18,9 +15,4 @@ import { concatMap } from './concatMap'
  * filter(gt(1), [1, 2, 3]) // [2, 3]
  * filter(eq('o'), 'foo') // 'oo'
  */
-export function filter (p, as) {
-  const f = branch(p, id, always(''))
-  return isString(as) ? concatMap(f, as) : as.filter(p)
-}
-
 export default curry(filter)

@@ -1,8 +1,10 @@
+import add from './uncurried/add'
 import curry from './curry'
 
 /**
  * Returns the sum of two numbers.
  *
+ * @function
  * @param {Number} a The first number.
  * @param {Number} b The second number.
  * @returns {Number} The result of `b + a`.
@@ -11,8 +13,4 @@ import curry from './curry'
  * import { add } from 'fkit'
  * add(1, 2) // 3
  */
-export function add (a, b) {
-  return b + a
-}
-
 export default curry(add)

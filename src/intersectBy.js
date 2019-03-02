@@ -1,8 +1,5 @@
 import curry from './curry'
-import mempty from './internal/mempty'
-import { any } from './any'
-import { append } from './append'
-import { fold } from './fold'
+import intersectBy from './uncurried/intersectBy'
 
 /**
  * Calculates the intersection of two lists.
@@ -14,6 +11,7 @@ import { fold } from './fold'
  * Duplicates are removed from `bs`, but if `as` contains duplicates then so
  * will the result.
  *
+ * @function
  * @param {Function} f The comparator function.
  * @param {Array|String} as The first list.
  * @param {Array|String} bs The second list.
@@ -25,10 +23,4 @@ import { fold } from './fold'
  * intersectBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [2, 3]
  * intersectBy((a, b) => a === b, 'hello', 'world') // 'ol'
  */
-export function intersectBy (f, as, bs) {
-  return fold((cs, a) => {
-    return any(b => f(a, b), bs) ? append(a, cs) : cs
-  }, mempty(as), as)
-}
-
 export default curry(intersectBy)

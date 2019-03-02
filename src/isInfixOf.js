@@ -1,11 +1,10 @@
-import { any } from './any'
 import curry from './curry'
-import isPrefixOf from './isPrefixOf'
-import tails from './tails'
+import isInfixOf from './uncurried/isInfixOf'
 
 /**
  * Determines if a list is contained within another list.
  *
+ * @function
  * @param {Array|String} as The list to find.
  * @param {Array|String} bs The list.
  * @returns {Boolean} `true` if the list of `as` is contained within the list
@@ -22,8 +21,4 @@ import tails from './tails'
  * isInfixOf('oo', 'foo') // true
  * isInfixOf('of', 'foo') // false
  */
-export function isInfixOf (as, bs) {
-  return any(isPrefixOf(as), tails(bs))
-}
-
 export default curry(isInfixOf)

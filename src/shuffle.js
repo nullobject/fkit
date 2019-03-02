@@ -1,8 +1,8 @@
 import array from './array'
 import concatWith from './internal/concatWith'
+import fold from './uncurried/fold'
 import isString from './internal/isString'
 import randomInt from './randomInt'
-import { fold } from './fold'
 
 /**
  * Shuffles a list using the [Fisher-Yates

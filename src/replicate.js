@@ -1,12 +1,10 @@
-import array from './array'
 import curry from './curry'
-import isString from './internal/isString'
-import string from './string'
-import { concatMap } from './concatMap'
+import replicate from './uncurried/replicate'
 
 /**
  * Replicates a value.
  *
+ * @function
  * @param {Number} n The number of copies.
  * @param a The value to replicate.
  * @returns {Array|String} A list of length `n` with `a` the value of every
@@ -17,9 +15,4 @@ import { concatMap } from './concatMap'
  * replicate(3, 1) // [1, 1, 1]
  * replicate(3, 'a') // 'aaa'
  */
-export function replicate (n, a) {
-  const as = isString(a) ? string(n) : array(n)
-  return concatMap(() => [a], as)
-}
-
 export default curry(replicate)

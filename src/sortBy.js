@@ -1,5 +1,5 @@
 import curry from './curry'
-import toList from './internal/toList'
+import sortBy from './uncurried/sortBy'
 
 /**
  * Sorts a list using a comparator function.
@@ -9,6 +9,7 @@ import toList from './internal/toList'
  * less than `b`, then the comparator function should return `-1`. If both
  * elements are equal then, the comparator function should return `0`.
  *
+ * @function
  * @param {Function} c The comparator function.
  * @param {Array|String} as The list to sort.
  * @returns {Array|String} A list that contains the elements in the list of
@@ -19,9 +20,4 @@ import toList from './internal/toList'
  * sortBy(compare, [2, 3, 1]) // [1, 2, 3]
  * sortBy(compare, 'bca') // 'abc'
  */
-export function sortBy (c, as) {
-  const bs = Array.from(as.slice(0))
-  return toList(bs.sort(c), typeof as)
-}
-
 export default curry(sortBy)

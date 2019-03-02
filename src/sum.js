@@ -1,5 +1,5 @@
-import add from './add'
-import { fold } from './fold'
+import add from './uncurried/add'
+import fold from './uncurried/fold'
 
 /**
  * Calculates the sum of the elements in a list.

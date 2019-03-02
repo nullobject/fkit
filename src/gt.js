@@ -1,8 +1,10 @@
 import curry from './curry'
+import gt from './uncurried/gt'
 
 /**
  * Determines whether one number is greater than another.
  *
+ * @function
  * @param {Number} a The first number.
  * @param {Number} b The second number.
  * @returns {Boolean} `true` if the number `b` is greater than the number `a`,
@@ -13,8 +15,4 @@ import curry from './curry'
  * gt(1, 2) // true
  * gt(2, 1) // false
  */
-export function gt (a, b) {
-  return b > a
-}
-
 export default curry(gt)

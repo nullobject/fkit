@@ -1,8 +1,10 @@
+import applyMethod from './uncurried/applyMethod'
 import curry from './curry'
 
 /**
  * Applies a method to a value.
  *
+ * @function
  * @param {String} k The method to apply.
  * @param a The value.
  * @param {Object} o The object.
@@ -14,8 +16,4 @@ import curry from './curry'
  * const person = { sayHi: a => ['Hi', a, '!'].join(' ') }
  * applyMethod('sayHi', 'Jane', person) // Hi Jane!
  */
-export function applyMethod (k, a, o) {
-  return o[k](a)
-}
-
 export default curry(applyMethod)

@@ -1,9 +1,10 @@
 import curry from './curry'
-import isString from './internal/isString'
+import drop from './uncurried/drop'
 
 /**
  * Drops a number of elements from the start of a list.
  *
+ * @function
  * @param {Number} n The number of elements to drop.
  * @param {Array|String} as The list.
  * @returns {Array|String} The result after dropping `n` elements from the list
@@ -14,15 +15,4 @@ import isString from './internal/isString'
  * drop(2, [1, 2, 3]) // [3]
  * drop(2, 'foo') // 'o'
  */
-export function drop (n, as) {
-  let s = isString(as) ? '' : []
-  const m = as.length
-
-  for (let i = n; i < m; i++) {
-    s = s.concat(as[i])
-  }
-
-  return s
-}
-
 export default curry(drop)

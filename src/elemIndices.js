@@ -1,10 +1,10 @@
 import curry from './curry'
-import eq from './eq'
-import { findIndices } from './findIndices'
+import elemIndices from './uncurried/elemIndices'
 
 /**
  * Gets the indices of all occurances of a value in a list.
  *
+ * @function
  * @param a The value to find.
  * @param {Array|String} as The list.
  * @returns {Array} The indices of all occurances of the value `a` in the list
@@ -19,8 +19,4 @@ import { findIndices } from './findIndices'
  * elemIndices('a', 'foo') // []
  * elemIndices('o', 'foo') // [1, 2]
  */
-export function elemIndices (a, as) {
-  return findIndices(eq(a), as)
-}
-
 export default curry(elemIndices)
