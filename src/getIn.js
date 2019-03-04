@@ -1,9 +1,10 @@
 import curry from './curry'
-import isString from './internal/isString'
+import getIn from './uncurried/getIn'
 
 /**
  * Gets a property of an object using a key path.
  *
+ * @function
  * @param {Array|String} ks The key path.
  * @param {Object} o The object.
  * @returns The property at the key path `ks` in the object `o`.
@@ -14,9 +15,4 @@ import isString from './internal/isString'
  * getIn(['address', 'city'], person) // 'Melbourne'
  * getIn('address.city', person) // 'Melbourne'
  */
-export function getIn (ks, o) {
-  ks = isString(ks) ? ks.split('.') : ks
-  return ks.reduce((a, b) => (a !== undefined) ? a[b] : undefined, o)
-}
-
 export default curry(getIn)

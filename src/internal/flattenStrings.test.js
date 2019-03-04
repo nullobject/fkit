@@ -1,6 +1,6 @@
 import flattenStrings from './flattenStrings'
 
-describe('#flattenStrings', () => {
+describe('flattenStrings', () => {
   it('handles an array of numbers', () => {
     expect(flattenStrings([1, [2, 3]])).toEqual([1, [2, 3]])
   })

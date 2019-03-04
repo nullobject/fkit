@@ -1,6 +1,6 @@
 import group from './group'
 
-describe('#group', () => {
+describe('group', () => {
   it('handles an empty array', () => {
     expect(group([])).toEqual([])
   })

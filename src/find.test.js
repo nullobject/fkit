@@ -1,6 +1,6 @@
 import find from './find'
 
-describe('#find', () => {
+describe('find', () => {
   it('handles an array', () => {
     const p = a => a > 1
     expect(find(p)([])).toBeUndefined()

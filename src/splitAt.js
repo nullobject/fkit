@@ -1,10 +1,10 @@
 import curry from './curry'
-import { drop } from './drop'
-import { take } from './take'
+import splitAt from './uncurried/splitAt'
 
 /**
  * Splits a list.
  *
+ * @function
  * @param {Number} n The length of the prefix.
  * @param {Array|String} as The list.
  * @returns {Array} A list that contains the elements in the list of `as` split
@@ -15,8 +15,4 @@ import { take } from './take'
  * splitAt(1, [1, 2, 3]) // [[1], [2, 3]]
  * splitAt(1, 'foo') // ['f', 'oo']
  */
-export function splitAt (n, as) {
-  return [take(n, as), drop(n, as)]
-}
-
 export default curry(splitAt)

@@ -1,6 +1,6 @@
 import take from './take'
 
-describe('#take', () => {
+describe('take', () => {
   it('handles an empty array', () => {
     expect(take(2)([])).toEqual([])
   })

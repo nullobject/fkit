@@ -1,6 +1,6 @@
 import remove from './remove'
 
-describe('#remove', () => {
+describe('remove', () => {
   it('handles an empty array', () => {
     expect(remove(1)([])).toEqual([])
   })

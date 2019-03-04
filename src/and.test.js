@@ -1,6 +1,6 @@
 import and from './and'
 
-describe('#and', () => {
+describe('and', () => {
   it('ANDs the values', () => {
     expect(and(false)(false)).toBe(false)
     expect(and(false)(true)).toBe(false)

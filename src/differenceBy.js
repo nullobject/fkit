@@ -1,8 +1,5 @@
 import curry from './curry'
-import flip from './flip'
-import nub from './nub'
-import removeBy from './removeBy'
-import { fold } from './fold'
+import differenceBy from './uncurried/differenceBy'
 
 /**
  * Calculates the difference of two lists.
@@ -11,6 +8,7 @@ import { fold } from './fold'
  * elements are considered to be equal, then the comparator function should
  * return `true`. Otherwise it should return `false`.
  *
+ * @function
  * @param {Function} f The comparator function.
  * @param {Array|String} as The first list.
  * @param {Array|String} bs The second list.
@@ -22,8 +20,4 @@ import { fold } from './fold'
  * differenceBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1]
  * differenceBy((a, b) => a === b, 'hello', 'world') // 'he'
  */
-export function differenceBy (f, as, bs) {
-  return fold(flip(removeBy(f)), nub(as), nub(bs))
-}
-
 export default curry(differenceBy)

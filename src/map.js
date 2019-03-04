@@ -1,8 +1,10 @@
 import curry from './curry'
+import map from './uncurried/map'
 
 /**
  * Maps a function over a list.
  *
+ * @function
  * @param {Function} f The function.
  * @param {Array|String} as The list.
  * @returns {Array|String} A list that contains the elements in the list of
@@ -13,8 +15,4 @@ import curry from './curry'
  * map(inc, [1, 2, 3]) // [2, 3, 4]
  * map(toUpper, 'foo') // ['F', 'O', 'O']
  */
-export function map (f, as) {
-  return Array.from(as).map(f)
-}
-
 export default curry(map)

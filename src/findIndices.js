@@ -1,9 +1,11 @@
 import curry from './curry'
+import findIndices from './uncurried/findIndices'
 
 /**
  * Finds the indices of all the values in a list that satisfy a predicate
  * function.
  *
+ * @function
  * @param {Function} p The predicate function.
  * @param {Array|String} as The list.
  * @returns {Array} A list of indices that satisfy the predicate function `p`.
@@ -17,15 +19,4 @@ import curry from './curry'
  * findIndices(eq('o'), '') // []
  * findIndices(eq('o'), 'foo') // [1, 2]
  */
-export function findIndices (p, as) {
-  const s = []
-  const n = as.length
-
-  for (let i = 0; i < n; i++) {
-    if (p(as[i])) { s.push(i) }
-  }
-
-  return s
-}
-
 export default curry(findIndices)

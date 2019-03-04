@@ -1,9 +1,10 @@
+import any from './uncurried/any'
 import curry from './curry'
-import { filter } from './filter'
 
 /**
  * Determines whether any elements in a list satisfy a predicate function.
  *
+ * @function
  * @param {Function} p The predicate function.
  * @param {Array|String} as The list.
  * @returns {Boolean} `true` if any elements in the list of `as` satisfy the
@@ -20,8 +21,4 @@ import { filter } from './filter'
  * any(eq('o'), 'fo') // true
  * any(eq('o'), 'f') // false
  */
-export function any (p, as) {
-  return filter(p, as).length > 0
-}
-
 export default curry(any)

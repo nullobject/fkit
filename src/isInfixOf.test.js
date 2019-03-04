@@ -1,6 +1,6 @@
 import isInfixOf from './isInfixOf'
 
-describe('#isInfixOf', () => {
+describe('isInfixOf', () => {
   it('handles an array', () => {
     expect(isInfixOf([])([])).toBe(true)
     expect(isInfixOf([1])([1, 2, 3])).toBe(true)

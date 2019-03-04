@@ -1,9 +1,10 @@
+import all from './uncurried/all'
 import curry from './curry'
-import { filter } from './filter'
 
 /**
  * Determines whether all elements in a list satisfy a predicate function.
  *
+ * @function
  * @param {Function} p The predicate function.
  * @param {Array|String} as The list.
  * @returns {Boolean} `true` if all elements of the list of `as` satisfy the
@@ -20,8 +21,4 @@ import { filter } from './filter'
  * all(eq('o'), 'oo') // true
  * all(eq('o'), 'o') // true
  */
-export function all (p, as) {
-  return filter(p, as).length === as.length
-}
-
 export default curry(all)

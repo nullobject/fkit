@@ -1,6 +1,6 @@
 import cartesian from './cartesian'
 
-describe('#cartesian', () => {
+describe('cartesian', () => {
   it('handles an empty array', () => {
     expect(cartesian([1, 2, 3])([])).toEqual([])
     expect(cartesian([])([4, 5, 6])).toEqual([])

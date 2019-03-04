@@ -1,6 +1,6 @@
 import findIndices from './findIndices'
 
-describe('#findIndices', () => {
+describe('findIndices', () => {
   it('handles an array', () => {
     const p = a => a > 1
     expect(findIndices(p)([])).toEqual([])

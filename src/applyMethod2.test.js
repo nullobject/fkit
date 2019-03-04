@@ -1,6 +1,6 @@
 import applyMethod2 from './applyMethod2'
 
-describe('#applyMethod2', () => {
+describe('applyMethod2', () => {
   const spy = jest.fn()
   const target = { hello: spy }
 

@@ -1,6 +1,6 @@
 import fold from './fold'
 
-describe('#fold', () => {
+describe('fold', () => {
   it('handles an array', () => {
     function f (b, a) { return [a].concat(b) }
     expect(fold(f)([])([1, 2, 3])).toEqual([3, 2, 1])

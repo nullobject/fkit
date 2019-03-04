@@ -1,6 +1,6 @@
 import applyRight from './applyRight'
 
-describe('#applyRight', () => {
+describe('applyRight', () => {
   it('applies a nullary function', () => {
     function f () {}
     const spy = jest.fn(f)

@@ -1,6 +1,6 @@
 import any from './any'
 
-describe('#any', () => {
+describe('any', () => {
   it('handles an array', () => {
     const p = a => a > 1
     expect(any(p)([1])).toBe(false)

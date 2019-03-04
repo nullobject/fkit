@@ -1,6 +1,6 @@
 import elemIndices from './elemIndices'
 
-describe('#elemIndices', () => {
+describe('elemIndices', () => {
   it('handles an array', () => {
     expect(elemIndices(0)([1, 2, 3])).toEqual([])
     expect(elemIndices(1)([1, 2, 3])).toEqual([0])

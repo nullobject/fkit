@@ -1,8 +1,10 @@
+import between from './uncurried/between'
 import curry from './curry'
 
 /**
  * Determines whether a number is between two numbers.
  *
+ * @function
  * @param {Number} a The first number.
  * @param {Number} b The second number.
  * @param {Number} n The number to test.
@@ -14,8 +16,4 @@ import curry from './curry'
  * between(1, 3, 2) // true
  * between(1, 3, 4) // false
  */
-export function between (a, b, n) {
-  return a <= n && b >= n
-}
-
 export default curry(between)

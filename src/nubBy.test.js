@@ -1,6 +1,6 @@
 import nubBy from './nubBy'
 
-describe('#nubBy', () => {
+describe('nubBy', () => {
   const f = (a, b) => a === b
 
   it('handles an empty array', () => {

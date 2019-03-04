@@ -1,6 +1,6 @@
 import difference from './difference'
 
-describe('#difference', () => {
+describe('difference', () => {
   it('handles an empty array', () => {
     expect(difference([1, 2, 3])([])).toEqual([1, 2, 3])
     expect(difference([])([1, 2, 3])).toEqual([])

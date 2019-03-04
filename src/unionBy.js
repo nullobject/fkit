@@ -1,7 +1,5 @@
 import curry from './curry'
-import { any } from './any'
-import { append } from './append'
-import { fold } from './fold'
+import unionBy from './uncurried/unionBy'
 
 /**
  * Calculates the union of two lists.
@@ -13,6 +11,7 @@ import { fold } from './fold'
  * Duplicates are removed from `bs`, but if `as` contains duplicates then so
  * will the result.
  *
+ * @function
  * @param {Function} f The comparator function.
  * @param {Array|String} as The first list.
  * @param {Array|String} bs The second list.
@@ -24,10 +23,4 @@ import { fold } from './fold'
  * unionBy((a, b) => a === b, [1, 2, 3], [2, 3, 4]) // [1, 2, 3, 4]
  * unionBy((a, b) => a === b, 'hello', 'world') // 'hellowrd'
  */
-export function unionBy (f, as, bs) {
-  return fold((cs, b) => {
-    return any(a => f(a, b), as) ? cs : append(b, cs)
-  }, as, bs)
-}
-
 export default curry(unionBy)

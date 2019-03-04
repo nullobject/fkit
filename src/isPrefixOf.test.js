@@ -1,6 +1,6 @@
 import isPrefixOf from './isPrefixOf'
 
-describe('#isPrefixOf', () => {
+describe('isPrefixOf', () => {
   it('handles an array', () => {
     expect(isPrefixOf([])([])).toBe(true)
     expect(isPrefixOf([1])([])).toBe(false)

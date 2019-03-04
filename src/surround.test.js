@@ -1,6 +1,6 @@
 import surround from './surround'
 
-describe('#surround', () => {
+describe('surround', () => {
   it('handles an empty array', () => {
     expect(surround(1)(4)([])).toEqual([1, 4])
   })

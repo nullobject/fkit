@@ -1,6 +1,6 @@
 import permutations from './permutations'
 
-describe('#permutations', () => {
+describe('permutations', () => {
   it('handles an empty array', () => {
     expect(permutations([])).toEqual([[]])
   })

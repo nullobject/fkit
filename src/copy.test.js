@@ -10,7 +10,7 @@ function buildObject () {
   return o
 }
 
-describe('#copy', () => {
+describe('copy', () => {
   const target = buildObject()
   const result = copy(target, { age: 21 })
 

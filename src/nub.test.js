@@ -1,6 +1,6 @@
 import nub from './nub'
 
-describe('#nub', () => {
+describe('nub', () => {
   it('handles an empty array', () => {
     expect(nub([])).toEqual([])
   })

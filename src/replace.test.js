@@ -1,6 +1,6 @@
 import replace from './replace'
 
-describe('#replace', () => {
+describe('replace', () => {
   it('replaces a string', () => {
     expect(replace('r')('z')('bar')).toEqual('baz')
   })

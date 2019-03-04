@@ -1,10 +1,10 @@
 import curry from './curry'
-import { isPrefixOf } from './isPrefixOf'
-import reverse from './reverse'
+import isSuffixOf from './uncurried/isSuffixOf'
 
 /**
  * Determines if a list is a suffix of another list.
  *
+ * @function
  * @param {Array|String} as The suffix.
  * @param {Array|String} bs The list to check.
  * @returns {Boolean} `true` if the list of `as` is a suffix of the list of
@@ -21,8 +21,4 @@ import reverse from './reverse'
  * isSuffixOf('fo', 'foo') // false
  * isSuffixOf('oo', 'foo') // true
  */
-export function isSuffixOf (as, bs) {
-  return isPrefixOf(reverse(as), reverse(bs))
-}
-
 export default curry(isSuffixOf)

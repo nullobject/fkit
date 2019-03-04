@@ -1,6 +1,6 @@
 import span from './span'
 
-describe('#span', () => {
+describe('span', () => {
   const p = a => a < 3
   const q = a => a !== 'o'
 

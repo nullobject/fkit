@@ -1,6 +1,6 @@
 import uncurry from './uncurry'
 
-describe('#uncurry', () => {
+describe('uncurry', () => {
   it('uncurries a binary function', () => {
     function f (a, b) {}
     const spy = jest.fn(f)

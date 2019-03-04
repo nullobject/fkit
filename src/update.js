@@ -1,10 +1,10 @@
 import curry from './curry'
-import { get } from './get'
-import { set } from './set'
+import update from './uncurried/update'
 
 /**
  * Updates a property of an object with a function.
  *
+ * @function
  * @param {String} k The name of the property.
  * @param {Function} f The function.
  * @param {Object} o The object.
@@ -16,8 +16,4 @@ import { set } from './set'
  * const person = { name: 'Jane', age: 20, city: 'Melbourne' }
  * update('age', inc, person) // { name: 'Jane', age: 21, city: 'Melbourne' }
  */
-export function update (k, f, o) {
-  return set(k, f(get(k, o)), o)
-}
-
 export default curry(update)

@@ -1,6 +1,6 @@
 import append from './append'
 
-describe('#append', () => {
+describe('append', () => {
   it('handles an empty array', () => {
     expect(append(4)([])).toEqual([4])
   })

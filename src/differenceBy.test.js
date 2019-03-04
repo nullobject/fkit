@@ -1,6 +1,6 @@
 import differenceBy from './differenceBy'
 
-describe('#differenceBy', () => {
+describe('differenceBy', () => {
   const f = (a, b) => a === b
 
   it('handles an empty array', () => {

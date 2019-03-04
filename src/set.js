@@ -1,9 +1,10 @@
-import copy from './copy'
 import curry from './curry'
+import set from './uncurried/set'
 
 /**
  * Sets a property of an object.
  *
+ * @function
  * @param {String} k The key.
  * @param v The value to set.
  * @param {Object} o The object.
@@ -15,10 +16,4 @@ import curry from './curry'
  * const person = { name: 'Jane', age: 20, city: 'Melbourne' }
  * set('name', 'Steve', person) // { name: 'Steve', age: 20, city: 'Melbourne' }
  */
-export function set (k, v, o) {
-  const p = {}
-  p[k] = v
-  return copy(o, p)
-}
-
 export default curry(set)

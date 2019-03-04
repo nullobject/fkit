@@ -1,6 +1,6 @@
 import maximum from './maximum'
 
-describe('#maximum', () => {
+describe('maximum', () => {
   it('handles an array of numbers', () => {
     expect(maximum([1, 2, 3])).toBe(3)
   })

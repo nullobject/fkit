@@ -1,6 +1,6 @@
 import reverse from './reverse'
 
-describe('#reverse', () => {
+describe('reverse', () => {
   it('handles an array', () => {
     expect(reverse([1, 2, 3])).toEqual([3, 2, 1])
   })

@@ -1,6 +1,6 @@
 import concatMap from './concatMap'
 
-describe('#concatMap', () => {
+describe('concatMap', () => {
   const f = a => [a, 0]
   const g = a => [[a, 0]]
   const h = a => [a, '-']

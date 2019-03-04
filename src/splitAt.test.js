@@ -1,6 +1,6 @@
 import splitAt from './splitAt'
 
-describe('#splitAt', () => {
+describe('splitAt', () => {
   it('handles an empty array', () => {
     expect(splitAt(1)([])).toEqual([[], []])
   })

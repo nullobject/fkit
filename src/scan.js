@@ -1,10 +1,10 @@
 import curry from './curry'
-import { fold } from './fold'
-import { tap } from './tap'
+import scan from './uncurried/scan'
 
 /**
  * Scans a list from left-to-right with a function.
  *
+ * @function
  * @param {Function} f The folding function.
  * @param s The starting value.
  * @param {Array|String} as The list to scan.
@@ -17,10 +17,4 @@ import { tap } from './tap'
  * scan((a, b) => a.concat(b), [],  [1, 2, 3]) // [[], [1], [1, 2], [1, 2, 3]]
  * scan((a, b) => a.concat(b), '',  'foo') // ['', 'f', 'fo', 'foo']
  */
-export function scan (f, s, as) {
-  const r = [s]
-  fold((b, a) => tap(r.push.bind(r), f(b, a)), s, as)
-  return r
-}
-
 export default curry(scan)

@@ -1,6 +1,6 @@
 import empty from './empty'
 
-describe('#empty', () => {
+describe('empty', () => {
   it('handles an empty array', () => {
     expect(empty([])).toBe(true)
   })

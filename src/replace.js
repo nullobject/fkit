@@ -1,8 +1,10 @@
 import curry from './curry'
+import replace from './uncurried/replace'
 
 /**
  * Replaces a term in a string.
  *
+ * @function
  * @param {String|RegExp} a The term to find.
  * @param {String} b The string to replace with.
  * @param {String} s The string to perform the find and replace on.
@@ -14,8 +16,4 @@ import curry from './curry'
  * replace('r', 'z', 'bar') // baz
  * replace(/^hello/, 'goodbye', 'hello world!') // goodbye world!
  */
-export function replace (a, b, s) {
-  return s.replace(a, b)
-}
-
 export default curry(replace)

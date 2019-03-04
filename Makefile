@@ -7,6 +7,7 @@ dev:
 	@npx rollup -c -w
 
 dist:
+	@rm -rf dist
 	@npx rollup -c
 
 test:

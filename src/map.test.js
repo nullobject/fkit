@@ -1,6 +1,6 @@
 import map from './map'
 
-describe('#map', () => {
+describe('map', () => {
   it('handles an array', () => {
     const f = a => [a + 1]
     expect(map(f)([1, 2, 3])).toEqual([[2], [3], [4]])

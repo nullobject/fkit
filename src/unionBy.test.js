@@ -1,6 +1,6 @@
 import unionBy from './unionBy'
 
-describe('#unionBy', () => {
+describe('unionBy', () => {
   const f = (a, b) => a === b
 
   it('handles an empty array', () => {

@@ -1,6 +1,6 @@
 import tap from './tap'
 
-describe('#tap', () => {
+describe('tap', () => {
   it('returns apply the given function to a value and return the value', () => {
     function f (a) {}
     const spy = jest.fn(f)

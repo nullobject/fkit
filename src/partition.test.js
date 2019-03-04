@@ -1,6 +1,6 @@
 import partition from './partition'
 
-describe('#partition', () => {
+describe('partition', () => {
   it('handles an array', () => {
     const p = a => a > 1
     expect(partition(p)([])).toEqual([[], []])

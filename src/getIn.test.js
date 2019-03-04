@@ -1,6 +1,6 @@
 import getIn from './getIn'
 
-describe('#getIn', () => {
+describe('getIn', () => {
   it('returns the property at the given key path', () => {
     const target = { name: 'Jane', age: 20, address: { city: 'Melbourne', country: 'Australia' } }
     expect(getIn(['name'])(target)).toBe('Jane')

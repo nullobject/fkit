@@ -1,11 +1,10 @@
-import compose from './compose'
 import curry from './curry'
-import not from './not'
-import { filter } from './filter'
+import partition from './uncurried/partition'
 
 /**
  * Partitions a list using a predicate function.
  *
+ * @function
  * @param {Function} p The predicate function.
  * @param {Array|String} as The list.
  * @returns {Array} A list that contains the elements in the list of `as` split
@@ -17,11 +16,4 @@ import { filter } from './filter'
  * partition(gt(1), [1, 2, 3]) // [[2, 3], [1]]
  * partition(eq('o'), 'foo') // ['oo', 'f']
  */
-export function partition (p, as) {
-  return [
-    filter(p, as),
-    filter(compose(not, p), as)
-  ]
-}
-
 export default curry(partition)

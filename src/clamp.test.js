@@ -1,6 +1,6 @@
 import clamp from './clamp'
 
-describe('#clamp', () => {
+describe('clamp', () => {
   it('clamps the number', () => {
     expect(clamp(1)(3)(0)).toEqual(1)
     expect(clamp(1)(3)(1)).toEqual(1)

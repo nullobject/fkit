@@ -1,6 +1,6 @@
 import empty from './empty'
+import prepend from './uncurried/prepend'
 import tail from './tail'
-import { prepend } from './prepend'
 
 /**
  * Gets all final segments of a list.

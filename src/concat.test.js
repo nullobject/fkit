@@ -1,6 +1,6 @@
 import concat from './concat'
 
-describe('#concat', () => {
+describe('concat', () => {
   it('handles an empty array', () => {
     expect(concat([])).toEqual([])
   })

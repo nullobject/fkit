@@ -1,6 +1,6 @@
 import intersperse from './intersperse'
 
-describe('#intersperse', () => {
+describe('intersperse', () => {
   it('handles an array', () => {
     expect(intersperse(4)([])).toEqual([])
     expect(intersperse(4)([1, 2, 3])).toEqual([1, 4, 2, 4, 3])

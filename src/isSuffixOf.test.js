@@ -1,6 +1,6 @@
 import isSuffixOf from './isSuffixOf'
 
-describe('#isSuffixOf', () => {
+describe('isSuffixOf', () => {
   it('handles an array', () => {
     expect(isSuffixOf([])([])).toBe(true)
     expect(isSuffixOf([1])([])).toBe(false)

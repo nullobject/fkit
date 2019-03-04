@@ -1,6 +1,6 @@
 import head from './head'
 
-describe('#head', () => {
+describe('head', () => {
   it('handles an empty array', () => {
     expect(head([])).toBeUndefined()
   })

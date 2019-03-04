@@ -1,3 +1,4 @@
+import branch from './uncurried/branch'
 import curry from './curry'
 
 /**
@@ -6,6 +7,7 @@ import curry from './curry'
  * If `p(a)` is true then `f` is applied to `a`, otherwise `g` is applied to
  * `a`.
  *
+ * @function
  * @param {Function} p The predicate function.
  * @param {Function} f The function to apply when the predicate is satisfied.
  * @param {Function} g The function to apply when the predicate is unsatisfied.
@@ -20,8 +22,4 @@ import curry from './curry'
  * f(10) // small number
  * f(11) // big number
  */
-export function branch (p, f, g, a) {
-  return p(a) ? f(a) : g(a)
-}
-
 export default curry(branch)

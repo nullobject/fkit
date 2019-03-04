@@ -2,6 +2,7 @@
 
 * Use Array.from to convert iterables to arrays
 * Add `tuple` function
+* Export curried and uncurried functions
 
 ## 1.5.1 (2019-01-26)
 

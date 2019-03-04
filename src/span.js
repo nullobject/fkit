@@ -1,10 +1,10 @@
 import curry from './curry'
-import { dropWhile } from './dropWhile'
-import { takeWhile } from './takeWhile'
+import span from './uncurried/span'
 
 /**
  * Splits a list using a predicate function.
  *
+ * @function
  * @param {Function} p The predicate function.
  * @param {Array|String} as The list.
  * @returns {Array} A list that contains the elements in the list of `as` split
@@ -16,8 +16,4 @@ import { takeWhile } from './takeWhile'
  * span(lt(3), [1, 2, 3]) // [[1, 2], [3]]
  * span(neq(o), 'foo') // ['f', 'oo']
  */
-export function span (p, as) {
-  return [takeWhile(p, as), dropWhile(p, as)]
-}
-
 export default curry(span)

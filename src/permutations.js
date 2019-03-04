@@ -1,11 +1,11 @@
 import compose from './compose'
 import concat from './concat'
 import empty from './empty'
+import foldRight from './uncurried/foldRight'
 import head from './head'
 import id from './id'
 import prepend from './prepend'
 import tail from './tail'
-import { foldRight } from './foldRight'
 
 /**
  * Calculates the permutations of a list.

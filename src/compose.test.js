@@ -1,6 +1,6 @@
 import compose from './compose'
 
-describe('#compose', () => {
+describe('compose', () => {
   it('composes two functions', () => {
     function f (a) { return a / 2 }
     function g (a) { return a + 2 }
