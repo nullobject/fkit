@@ -25,8 +25,7 @@ export default [
     output: {
       dir: 'dist',
       format: 'cjs',
-      esModule: false,
-      preferConst: true
+      esModule: false
     }
   }, {
     input: 'src/index.js',
