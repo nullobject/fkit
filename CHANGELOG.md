@@ -1,4 +1,4 @@
-## 2.0.0
+## 2.0.0 (2019-03-07)
 
 * Use Array.from to convert iterables to arrays
 * Add `tuple` function
