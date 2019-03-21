@@ -1,3 +1,3 @@
 export default function and (a, b) {
-  return !!(b && a)
+  return Boolean(b && a)
 }

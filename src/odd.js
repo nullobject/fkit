@@ -10,5 +10,5 @@
  * odd(1) // false
  */
 export default function odd (a) {
-  return !!(a % 2)
+  return Boolean(a % 2)
 }
