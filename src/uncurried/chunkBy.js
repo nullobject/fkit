@@ -5,7 +5,7 @@ import span from '../span'
 import tail from '../tail'
 import prepend from './prepend'
 
-export default function groupBy (c, as) {
+export default function chunkBy (c, as) {
   const b = head(as)
   const bs = span(a => c(a, b), tail(as))
 
@@ -13,6 +13,6 @@ export default function groupBy (c, as) {
     ? []
     : prepend(
       prepend(b, head(bs)),
-      groupBy(c, last(bs))
+      chunkBy(c, last(bs))
     )
 }
