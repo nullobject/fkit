@@ -1,4 +1,4 @@
-## Unreleased
+## 3.0.0 (2019-04-02)
 
 * Rename group -> chunk
 * Rename groupBy -> chunkBy
