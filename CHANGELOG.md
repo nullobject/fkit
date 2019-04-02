@@ -1,7 +1,11 @@
+## Unreleased
+
+* Add `groupBy` to exported functions
+
 ## 3.0.0 (2019-04-02)
 
-* Rename group -> chunk
-* Rename groupBy -> chunkBy
+* Rename `group` -> `chunk`
+* Rename `groupBy` -> `chunkBy`
 
 ## 2.0.0 (2019-03-07)
 
