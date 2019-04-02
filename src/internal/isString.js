@@ -1,6 +1,8 @@
 /**
- * Returns true if `as` is a string or an array of strings.
+ * Returns true if `a` is a string.
  *
  * @private
  */
-export default function isString (as) { return (typeof as === 'string') }
+export default function isString (a) {
+  return (typeof a === 'string')
+}

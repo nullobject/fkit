@@ -1,27 +1,26 @@
 import groupBy from './groupBy'
+import id from './id'
 
 describe('groupBy', () => {
-  const f = (a, b) => a === b
-
   it('handles an empty array', () => {
-    expect(groupBy(f, [])).toEqual([])
+    expect(groupBy(id, [])).toEqual({})
   })
 
   it('handles an empty string', () => {
-    expect(groupBy(f, '')).toEqual([])
+    expect(groupBy(id, '')).toEqual({})
   })
 
   it('handles an array', () => {
-    expect(groupBy(f, [1, 2, 2, 3, 3, 3])).toEqual([[1], [2, 2], [3, 3, 3]])
+    expect(groupBy(id, [1, 2, 2, 3, 3, 3])).toEqual({ '1': [1], '2': [2, 2], '3': [3, 3, 3] })
   })
 
   it('handles a string', () => {
-    expect(groupBy(f, 'Mississippi')).toEqual(['M', 'i', 'ss', 'i', 'ss', 'i', 'pp', 'i'])
+    expect(groupBy(id, 'Mississippi')).toEqual({ 'M': ['M'], 'i': ['i', 'i', 'i', 'i'], p: ['p', 'p'], 's': ['s', 's', 's', 's'] })
   })
 
-  it('calls the comparator function', () => {
-    const spy = jest.fn()
-    groupBy(spy, [1, 2])
-    expect(spy).toHaveBeenCalledWith(2, 1)
+  it('handles an grouping by a key path', () => {
+    const a = { address: { city: 'Melbourne' } }
+    const b = { address: { city: 'Sydney' } }
+    expect(groupBy('address.city', [a, b])).toEqual({ 'Melbourne': [a], 'Sydney': [b] })
   })
 })

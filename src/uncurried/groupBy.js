@@ -1,18 +1,12 @@
-import empty from '../empty'
-import head from '../head'
-import last from '../last'
-import span from '../span'
-import tail from '../tail'
-import prepend from './prepend'
+import fold from './fold'
+import getIn from './getIn'
+import isFunction from '../internal/isFunction'
 
-export default function groupBy (c, as) {
-  const b = head(as)
-  const bs = span(a => c(a, b), tail(as))
-
-  return empty(as)
-    ? []
-    : prepend(
-      prepend(b, head(bs)),
-      groupBy(c, last(bs))
-    )
+export default function groupBy (f, as) {
+  const iteratee = a => isFunction(f) ? f(a) : getIn(f, a)
+  return fold((memo, a) => {
+    const key = iteratee(a);
+    (memo[key] = memo[key] || []).push(a)
+    return memo
+  }, {}, as)
 }
