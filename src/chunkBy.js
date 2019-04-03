@@ -2,7 +2,7 @@ import curry from './curry'
 import chunkBy from './uncurried/chunkBy'
 
 /**
- * Chunks the values in a list using a comparator function.
+ * Chunks contiguous values in a list using a comparator function.
  *
  * The comparator function `f` compares two values, `a` and `b`. If the values
  * are both considered to be in the same chunk, then the comparator function

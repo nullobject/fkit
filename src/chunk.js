@@ -2,7 +2,7 @@ import eq from './eq'
 import chunkBy from './chunkBy'
 
 /**
- * Chunks the values in a list.
+ * Chunks contiguous values in a list.
  *
  * This is a special case of the `chunkBy` function where the values are compared
  * using the strict equality `===` operator.
