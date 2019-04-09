@@ -1,3 +1,7 @@
+## Unreleased
+
+* Fix issue with rollup config
+
 ## 3.0.1 (2019-04-02)
 
 * Add `groupBy` to exported functions

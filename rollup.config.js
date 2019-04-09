@@ -17,7 +17,9 @@ const input = glob
     return result
   }, {})
 
-const plugins = [filesize()]
+const plugins = [
+  babel()
+]
 
 export default [
   {
@@ -26,14 +28,17 @@ export default [
       dir: 'dist',
       format: 'cjs',
       esModule: false
-    }
+    },
+    plugins
   }, {
     input: 'src/index.js',
     output: {
       file: pkg.module,
       format: 'esm'
     },
-    plugins
+    plugins: plugins.concat([
+      filesize()
+    ])
   }, {
     input: 'src/index.js',
     output: {
@@ -42,7 +47,7 @@ export default [
       name: 'F'
     },
     plugins: plugins.concat([
-      babel({ exclude: '**/node_modules/**' }),
+      filesize(),
       uglify()
     ])
   }
