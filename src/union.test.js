@@ -15,13 +15,15 @@ describe('union', () => {
     expect(union([1, 2, 3])([1, 2, 3])).toEqual([1, 2, 3])
     expect(union([1, 2, 3])([2, 3, 4])).toEqual([1, 2, 3, 4])
     expect(union([1, 2, 3])([4, 5, 6])).toEqual([1, 2, 3, 4, 5, 6])
-    expect(union([1, 1])([1])).toEqual([1, 1])
+    expect(union([1, 1])([1])).toEqual([1])
+    expect(union([1])([1, 1])).toEqual([1])
   })
 
   it('handles a string', () => {
     expect(union('abc')('abc')).toBe('abc')
     expect(union('abc')('bcd')).toBe('abcd')
     expect(union('abc')('def')).toBe('abcdef')
-    expect(union('aa')('a')).toBe('aa')
+    expect(union('aa')('a')).toBe('a')
+    expect(union('a')('aa')).toBe('a')
   })
 })

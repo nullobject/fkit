@@ -1,3 +1,7 @@
+## Unreleased
+
+* Fix issue in `union` function when handling arguments with duplicate values
+
 ## 3.1.1 (2019-04-14)
 
 * Fix issue in `set` function when setting unknown properties

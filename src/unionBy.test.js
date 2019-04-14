@@ -17,13 +17,15 @@ describe('unionBy', () => {
     expect(unionBy(f)([1, 2, 3])([1, 2, 3])).toEqual([1, 2, 3])
     expect(unionBy(f)([1, 2, 3])([2, 3, 4])).toEqual([1, 2, 3, 4])
     expect(unionBy(f)([1, 2, 3])([4, 5, 6])).toEqual([1, 2, 3, 4, 5, 6])
-    expect(unionBy(f)([1, 1])([1])).toEqual([1, 1])
+    expect(unionBy(f)([1, 1])([1])).toEqual([1])
+    expect(unionBy(f)([1])([1, 1])).toEqual([1])
   })
 
   it('handles a string', () => {
     expect(unionBy(f)('abc')('abc')).toBe('abc')
     expect(unionBy(f)('abc')('bcd')).toBe('abcd')
     expect(unionBy(f)('abc')('def')).toBe('abcdef')
-    expect(unionBy(f)('aa')('a')).toBe('aa')
+    expect(unionBy(f)('aa')('a')).toBe('a')
+    expect(unionBy(f)('a')('aa')).toBe('a')
   })
 })
