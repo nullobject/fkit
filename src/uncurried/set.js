@@ -7,7 +7,7 @@ function set_ (ks, v, o) {
   const k = head(ks)
 
   if (ks.length > 1) {
-    v = set_(tail(ks), v, o[k])
+    v = set_(tail(ks), v, o[k] || {})
   }
 
   return copy(o, { [k]: v })

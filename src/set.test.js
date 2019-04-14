@@ -11,7 +11,18 @@ describe('set', () => {
       }
     }
 
-    expect(set('name')('Steve')(target)).toHaveProperty('name', 'Steve')
+    expect(set('age')(21)(target)).toHaveProperty('age', 21)
+    expect(set(['age'])(21)(target)).toHaveProperty('age', 21)
+
     expect(set('address.city')('Sydney')(target)).toHaveProperty('address.city', 'Sydney')
+    expect(set(['address', 'city'])('Sydney')(target)).toHaveProperty('address.city', 'Sydney')
+  })
+
+  it('handles unknown properties', () => {
+    expect(set('a')('foo')({})).toHaveProperty('a', 'foo')
+    expect(set(['a'])('foo')({})).toHaveProperty('a', 'foo')
+
+    expect(set('a.b')('foo')({})).toHaveProperty('a.b', 'foo')
+    expect(set(['a', 'b'])('foo')({})).toHaveProperty('a.b', 'foo')
   })
 })

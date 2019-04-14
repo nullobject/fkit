@@ -1,3 +1,7 @@
+## Unreleased
+
+* Fix issue in `set` function when setting unknown properties
+
 ## 3.1.0 (2019-04-14)
 
 * Update `get` function to accept a key path
