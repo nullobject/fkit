@@ -1,4 +1,4 @@
-## Unreleased
+## 3.1.0 (2019-04-14)
 
 * Update `get` function to accept a key path
 * Remove `getIn` function
