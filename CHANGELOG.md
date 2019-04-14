@@ -1,4 +1,4 @@
-## Unreleased
+## 3.1.2 (2019-04-14)
 
 * Fix issue in `union` function when handling arguments with duplicate values
 
