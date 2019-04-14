@@ -1,6 +1,6 @@
 import get from './get'
 import set from './set'
 
-export default function update (k, f, o) {
-  return set(k, f(get(k, o)), o)
+export default function update (ks, f, o) {
+  return set(ks, f(get(ks, o)), o)
 }

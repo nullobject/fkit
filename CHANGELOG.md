@@ -1,3 +1,10 @@
+## Unreleased
+
+* Update `get` function to accept a key path
+* Remove `getIn` function
+* Update `set` function to accept a key path
+* Update `update` function to accept a key path
+
 ## 3.0.2 (2019-04-09)
 
 * Fix issue with rollup config
