@@ -7,8 +7,8 @@ import has from './uncurried/has'
  * @function
  * @param {Array|String} ks The key path.
  * @param {Object} o The object.
- * @returns `true` if the object `o` has a property at the key path `ks`,
- * `false` otherwise.
+ * @returns {Boolean} `true` if the object `o` has a property at the key path
+ * `ks`, `false` otherwise.
  * @example
  *
  * import { has } from 'fkit'
