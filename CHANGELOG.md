@@ -1,8 +1,8 @@
-## Unreleased
+## 3.2.0 (2019-04-23)
 
 * Add `has` function
 * Refactor `values` function to use `Object.values`
-* Fix issue in `get`, `set`, `update`, and `has` functions when handling objects with integer keys.
+* Fix issue in `get`, `set`, `update`, and `has` functions when handling objects with integer keys
 
 ## 3.1.2 (2019-04-14)
 
