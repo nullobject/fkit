@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Add `has` function
+* Refactor `values` function to use `Object.values`
 
 ## 3.1.2 (2019-04-14)
 
