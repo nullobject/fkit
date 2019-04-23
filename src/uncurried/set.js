@@ -1,6 +1,6 @@
 import copy from '../copy'
 import head from '../head'
-import isString from '../internal/isString'
+import isArray from '../internal/isArray'
 import tail from '../tail'
 
 function set_ (ks, v, o) {
@@ -14,6 +14,6 @@ function set_ (ks, v, o) {
 }
 
 export default function set (ks, v, o) {
-  ks = isString(ks) ? ks.split('.') : ks
+  ks = isArray(ks) ? ks : ks.toString().split('.')
   return set_(ks, v, o)
 }

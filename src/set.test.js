@@ -25,4 +25,12 @@ describe('set', () => {
     expect(set('a.b')('foo')({})).toHaveProperty('a.b', 'foo')
     expect(set(['a', 'b'])('foo')({})).toHaveProperty('a.b', 'foo')
   })
+
+  it('handles integer properties', () => {
+    expect(set(1)('foo')({})).toHaveProperty('1', 'foo')
+    expect(set([1])('foo')({})).toHaveProperty('1', 'foo')
+
+    expect(set('a.1')('foo')({})).toHaveProperty('a.1', 'foo')
+    expect(set(['a', 1])('foo')({})).toHaveProperty('a.1', 'foo')
+  })
 })

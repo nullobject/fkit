@@ -25,4 +25,12 @@ describe('get', () => {
     expect(get('a.b')({})).toBeUndefined()
     expect(get(['a', 'b'])({})).toBeUndefined()
   })
+
+  it('handles integer properties', () => {
+    expect(get(1)({ 1: 'foo' })).toBe('foo')
+    expect(get([1])({ 1: 'foo' })).toBe('foo')
+
+    expect(get('a.1')({ a: { 1: 'foo' } })).toBe('foo')
+    expect(get(['a', 1])({ a: { 1: 'foo' } })).toBe('foo')
+  })
 })

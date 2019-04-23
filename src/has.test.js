@@ -25,4 +25,12 @@ describe('has', () => {
     expect(has('a.b')({})).toBe(false)
     expect(has(['a', 'b'])({})).toBe(false)
   })
+
+  it('handles integer properties', () => {
+    expect(has(1)({ 1: 'foo' })).toBe(true)
+    expect(has([1])({ 1: 'foo' })).toBe(true)
+
+    expect(has('a.1')({ a: { 1: 'foo' } })).toBe(true)
+    expect(has(['a', 1])({ a: { 1: 'foo' } })).toBe(true)
+  })
 })

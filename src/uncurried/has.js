@@ -1,5 +1,5 @@
 import head from '../head'
-import isString from '../internal/isString'
+import isArray from '../internal/isArray'
 import tail from '../tail'
 
 function has_ (ks, o) {
@@ -13,6 +13,6 @@ function has_ (ks, o) {
 }
 
 export default function has (ks, o) {
-  ks = isString(ks) ? ks.split('.') : ks
+  ks = isArray(ks) ? ks : ks.toString().split('.')
   return has_(ks, o)
 }

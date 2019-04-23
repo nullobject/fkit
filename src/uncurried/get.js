@@ -1,6 +1,6 @@
-import isString from '../internal/isString'
+import isArray from '../internal/isArray'
 
 export default function get (ks, o) {
-  ks = isString(ks) ? ks.split('.') : ks
+  ks = isArray(ks) ? ks : ks.toString().split('.')
   return ks.reduce((a, k) => (a !== undefined) ? a[k] : undefined, o)
 }
