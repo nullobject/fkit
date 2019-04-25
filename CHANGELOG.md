@@ -1,3 +1,7 @@
+## Unreleased
+
+* Add `pipe` function
+
 ## 3.2.0 (2019-04-23)
 
 * Add `has` function

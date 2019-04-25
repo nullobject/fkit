@@ -1,7 +1,7 @@
 import variadic from './variadic'
 
 /**
- * Composes the given functions from right-to-left.
+ * Composes the given functions from left-to-right.
  *
  * @function
  * @param {Array} fs The functions to compose.
@@ -10,6 +10,6 @@ import variadic from './variadic'
  * @example
  *
  * import { compose } from 'fkit'
- * compose(f, g, h)(a) // f(g(h(a)))
+ * pipe(f, g, h)(a) // h(g(f(a)))
  */
-export default variadic(fs => a => fs.reduceRight((a, f) => f(a), a))
+export default variadic(fs => a => fs.reduce((a, f) => f(a), a))
