@@ -1,6 +1,7 @@
 ## Unreleased
 
 * Add `pipe` function
+* Add `match` function
 
 ## 3.2.0 (2019-04-23)
 
