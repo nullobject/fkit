@@ -4,6 +4,7 @@
 * Add `match` function
 * Add `startsWith` function
 * Add `endsWith` function
+* Add `eqBy` function
 
 ## 3.2.0 (2019-04-23)
 
