@@ -2,6 +2,7 @@
 
 * Add `pipe` function
 * Add `match` function
+* Add `startsWith` function
 
 ## 3.2.0 (2019-04-23)
 
