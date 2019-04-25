@@ -7,8 +7,8 @@ import eq from './uncurried/eq'
  * @function
  * @param a The first value.
  * @param b The second value.
- * @returns {Boolean} `true` if the value `a` is strictly not equal (`===`) to
- * the value `b`, false otherwise.
+ * @returns {Boolean} `true` if the value `a` is strictly equal (`===`) to the
+ * value `b`, false otherwise.
  * @example
  *
  * import { eq } from 'fkit'
