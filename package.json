@@ -3,7 +3,7 @@
   "version": "3.2.0",
   "description": "A functional programming toolkit for JavaScript.",
   "homepage": "https://github.com/nullobject/fkit",
-  "author": "Josh Bassett <josh.bassett@gmail.com> (https://joshbassett.info)",
+  "author": "Josh Bassett <hello@joshbassett.info> (https://joshbassett.info)",
   "license": "MIT",
   "keywords": [
     "functional",
