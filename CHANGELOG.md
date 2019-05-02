@@ -1,5 +1,7 @@
 ## Unreleased
 
+## 3.4.0 (2019-05-02)
+
 * Add `compareBy` function
 
 ## 3.3.0 (2019-04-26)

@@ -1,6 +1,6 @@
 {
   "name": "fkit",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "description": "A functional programming toolkit for JavaScript.",
   "homepage": "https://github.com/nullobject/fkit",
   "author": "Josh Bassett <hello@joshbassett.info> (https://joshbassett.info)",
