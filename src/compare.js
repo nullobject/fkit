@@ -4,9 +4,9 @@ import curry from './curry'
 /**
  * Compares two values using natural ordering.
  *
- * This function compares two elements, `a` and `b`. If `a` is greater than
- * `b`, then it returns `1`. If `a` is less than `b`, then it returns `-1`. If
- * both elements are equal, then it returns `0`.
+ * This function compares two values, `a` and `b`. If `a` is greater than `b`,
+ * then it returns `1`. If `a` is less than `b`, then it returns `-1`. If both
+ * values are equal, then it returns `0`.
  *
  * @function
  * @param a The first value.
