@@ -1,7 +1,7 @@
 import eq from './eq'
 
 describe('eq', () => {
-  it('returns true if the arguments are equal', () => {
+  it('returns true if the values are equal', () => {
     expect(eq(1)(1)).toBe(true)
   })
 
