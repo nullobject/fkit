@@ -1,5 +1,7 @@
 ## Unreleased
 
+* Add `compareBy` function
+
 ## 3.3.0 (2019-04-26)
 
 * Add `pipe` function
