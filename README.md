@@ -1,6 +1,6 @@
 <h1 align="center"><img alt="FKit" src="https://raw.githubusercontent.com/nullobject/fkit/master/logo.png" width="256px" /></h1>
 
-[![Build Status](https://travis-ci.org/nullobject/fkit.svg?branch=master)](https://travis-ci.org/nullobject/fkit)
+[![Build Status](https://travis-ci.com/nullobject/fkit.svg?branch=master)](https://travis-ci.com/nullobject/fkit)
 
 FKit (pronounced eff-kit) is a [functional
 programming](http://en.wikipedia.org/wiki/Functional_programming) toolkit for
