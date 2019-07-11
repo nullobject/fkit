@@ -6,7 +6,7 @@ function has_ (ks, o) {
   const k = head(ks)
 
   if (ks.length === 1) {
-    return o.hasOwnProperty(k)
+    return Object.prototype.hasOwnProperty.call(o, k)
   } else {
     return has_(tail(ks), o[k] || {})
   }

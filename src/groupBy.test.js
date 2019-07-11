@@ -11,16 +11,16 @@ describe('groupBy', () => {
   })
 
   it('handles an array', () => {
-    expect(groupBy(id, [1, 2, 2, 3, 3, 3])).toEqual({ '1': [1], '2': [2, 2], '3': [3, 3, 3] })
+    expect(groupBy(id, [1, 2, 2, 3, 3, 3])).toEqual({ 1: [1], 2: [2, 2], 3: [3, 3, 3] })
   })
 
   it('handles a string', () => {
-    expect(groupBy(id, 'Mississippi')).toEqual({ 'M': ['M'], 'i': ['i', 'i', 'i', 'i'], p: ['p', 'p'], 's': ['s', 's', 's', 's'] })
+    expect(groupBy(id, 'Mississippi')).toEqual({ M: ['M'], i: ['i', 'i', 'i', 'i'], p: ['p', 'p'], s: ['s', 's', 's', 's'] })
   })
 
   it('handles an grouping by a key path', () => {
     const a = { address: { city: 'Melbourne' } }
     const b = { address: { city: 'Sydney' } }
-    expect(groupBy('address.city', [a, b])).toEqual({ 'Melbourne': [a], 'Sydney': [b] })
+    expect(groupBy('address.city', [a, b])).toEqual({ Melbourne: [a], Sydney: [b] })
   })
 })
