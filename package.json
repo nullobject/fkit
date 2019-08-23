@@ -37,6 +37,6 @@
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-filesize": "^6.0.1",
     "rollup-plugin-uglify": "^6.0.2",
-    "standard": "^13.0.0"
+    "standard": "^14.0.2"
   }
 }
