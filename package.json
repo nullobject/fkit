@@ -29,10 +29,10 @@
   "devDependencies": {
     "@babel/core": "^7.5.5",
     "@babel/preset-env": "^7.5.5",
-    "babel-jest": "^24.7.1",
+    "babel-jest": "^24.9.0",
     "documentation": "12.0.1",
     "glob": "^7.1.3",
-    "jest": "^24.7.1",
+    "jest": "^24.9.0",
     "rollup": "^1.10.1",
     "rollup-plugin-babel": "^4.3.2",
     "rollup-plugin-filesize": "^6.0.1",
