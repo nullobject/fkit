@@ -33,10 +33,10 @@
     "documentation": "12.3.0",
     "glob": "^7.1.4",
     "jest": "^25.5.3",
-    "rollup": "^1.20.1",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-filesize": "^6.2.0",
-    "rollup-plugin-uglify": "^6.0.2",
+    "rollup": "^2.7.6",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-filesize": "^8.0.0",
+    "rollup-plugin-uglify": "^6.0.4",
     "standard": "^14.3.3"
   }
 }
