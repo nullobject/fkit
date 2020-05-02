@@ -27,9 +27,9 @@
     "env": "jest"
   },
   "devDependencies": {
-    "@babel/core": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    "babel-jest": "^24.9.0",
+    "@babel/core": "^7.9.6",
+    "@babel/preset-env": "^7.9.6",
+    "babel-jest": "^25.5.1",
     "documentation": "12.3.0",
     "glob": "^7.1.4",
     "jest": "^25.5.3",
