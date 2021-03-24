@@ -14,8 +14,10 @@
   "module": "dist/fkit.esm.js",
   "unpkg": "dist/fkit.min.js",
   "files": [
-    "dist"
+    "dist",
+    "fkit.d.ts"
   ],
+  "types": "fkit.d.ts",
   "repository": {
     "type": "git",
     "url": "git://github.com/nullobject/fkit.git"
