@@ -1,5 +1,9 @@
 ## Unreleased
 
+## 3.4.1 (2021-03-25)
+
+* Add typescript definitions
+
 ## 3.4.0 (2019-05-02)
 
 * Add `compareBy` function
