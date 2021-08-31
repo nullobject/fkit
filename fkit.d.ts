@@ -308,6 +308,7 @@ export function pipe<A, B, C, D, E, F, G>(f0: Function1<A, B>, f1: Function1<B, 
 export function pipe<A, B, C, D, E, F, G, H>(f0: Function1<A, B>, f1: Function1<B, C>, f2: Function1<C, D>, f3: Function1<D, E>, f4: Function1<E, F>, f5: Function1<F, G>, f6: Function1<G, H>): (a: A) => H
 export function pipe<A, B, C, D, E, F, G, H, I>(f0: Function1<A, B>, f1: Function1<B, C>, f2: Function1<C, D>, f3: Function1<D, E>, f4: Function1<E, F>, f5: Function1<F, G>, f6: Function1<G, H>, f7: Function1<H, I>): (a: A) => I
 export function pipe<A, B, C, D, E, F, G, H, I, J>(f0: Function1<A, B>, f1: Function1<B, C>, f2: Function1<C, D>, f3: Function1<D, E>, f4: Function1<E, F>, f5: Function1<F, G>, f6: Function1<G, H>, f7: Function1<H, I>, f8: Function1<I, J>): (a: A) => J
+export function pipe<A, B, C, D, E, F, G, H, I, J, K>(f0: Function1<A, B>, f1: Function1<B, C>, f2: Function1<C, D>, f3: Function1<D, E>, f4: Function1<E, F>, f5: Function1<F, G>, f6: Function1<G, H>, f7: Function1<H, I>, f8: Function1<I, J>, f9: Function1<J, K>): (a: A) => K
 
 export function prepend(a: string): (as: string) => string
 export function prepend(a: string, as: string): string
